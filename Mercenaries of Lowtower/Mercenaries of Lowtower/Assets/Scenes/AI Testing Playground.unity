@@ -287,6 +287,7 @@ GameObject:
   - component: {fileID: 939718819}
   - component: {fileID: 939718818}
   - component: {fileID: 939718817}
+  - component: {fileID: 939718821}
   m_Layer: 8
   m_Name: Healer
   m_TagString: Player
@@ -352,12 +353,26 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 939718816}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -4.41, y: 0.5, z: 4.18}
+  m_LocalPosition: {x: -1.53, y: 0.5, z: 7.07}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &939718821
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 939718816}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fc61e863f34c60c46bff21c54d5750d2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  targetslot: 0
+  boss: {fileID: 1531376943}
+  damage: -1
 --- !u!1 &1276642740
 GameObject:
   m_ObjectHideFlags: 0
@@ -454,6 +469,7 @@ GameObject:
   - component: {fileID: 1531376945}
   - component: {fileID: 1531376944}
   - component: {fileID: 1531376948}
+  - component: {fileID: 1531376949}
   m_Layer: 9
   m_Name: Boss
   m_TagString: Enemy
@@ -537,6 +553,21 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   targets: []
+  targetThreat: []
+  targetThreat2: []
+  targetThreat3: []
+--- !u!114 &1531376949
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1531376943}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ac398f0ea74f4a649b1e2adb4a6b927b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  health: 0
 --- !u!1 &1830882585
 GameObject:
   m_ObjectHideFlags: 0
@@ -548,6 +579,7 @@ GameObject:
   - component: {fileID: 1830882588}
   - component: {fileID: 1830882587}
   - component: {fileID: 1830882586}
+  - component: {fileID: 1830882590}
   m_Layer: 8
   m_Name: Tank
   m_TagString: Player
@@ -613,12 +645,26 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1830882585}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 1.5899999, y: 0.5, z: 4.18}
+  m_LocalPosition: {x: 1.5899999, y: 0.5, z: 7}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1830882590
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1830882585}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fc61e863f34c60c46bff21c54d5750d2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  targetslot: 0
+  boss: {fileID: 1531376943}
+  damage: 2
 --- !u!1 &1847540417
 GameObject:
   m_ObjectHideFlags: 0
@@ -630,6 +676,7 @@ GameObject:
   - component: {fileID: 1847540420}
   - component: {fileID: 1847540419}
   - component: {fileID: 1847540418}
+  - component: {fileID: 1847540422}
   m_Layer: 8
   m_Name: Melee
   m_TagString: Player
@@ -701,6 +748,20 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1847540422
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1847540417}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fc61e863f34c60c46bff21c54d5750d2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  targetslot: 0
+  boss: {fileID: 1531376943}
+  damage: 3
 --- !u!1 &1949226226
 GameObject:
   m_ObjectHideFlags: 0
@@ -712,6 +773,8 @@ GameObject:
   - component: {fileID: 1949226229}
   - component: {fileID: 1949226228}
   - component: {fileID: 1949226227}
+  - component: {fileID: 1949226231}
+  - component: {fileID: 1949226232}
   m_Layer: 8
   m_Name: Ranged
   m_TagString: Player
@@ -777,9 +840,34 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1949226226}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 4.59, y: 0.5, z: 4.18}
+  m_LocalPosition: {x: 0, y: 0.5, z: 5}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1949226231
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1949226226}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fc61e863f34c60c46bff21c54d5750d2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  targetslot: 0
+  boss: {fileID: 1531376943}
+  damage: 4
+--- !u!114 &1949226232
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1949226226}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5c8b9131c164fb84cbe2eaeee17db2a3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
