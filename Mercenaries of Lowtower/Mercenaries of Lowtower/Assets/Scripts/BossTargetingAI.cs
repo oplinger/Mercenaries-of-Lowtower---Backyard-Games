@@ -12,6 +12,7 @@ public class BossTargetingAI : MonoBehaviour {
     float distance;
     float threatVal;
     int myID;
+    public GameObject currentTarget;
     
 
 	// Use this for initialization
@@ -27,6 +28,7 @@ public class BossTargetingAI : MonoBehaviour {
 	void Update () {
         targetDistance();
         combineThreat();
+        findCurrentTarget();
     }
 
     void FindTarget()
@@ -70,6 +72,20 @@ public class BossTargetingAI : MonoBehaviour {
             targetThreat3[i] = targetThreat[i] + targetThreat2[i];
         }
     }
+    void findCurrentTarget()
+    {
+        float highestThreat = 0;
+        for (int i = 0; i < targets.Length; i++)
+        {
+            print("Finding Target");
+            if (targetThreat3[i] > highestThreat)
+            {
+                highestThreat = targetThreat3[i];
+                currentTarget = targets[i].gameObject;
+                print("Target Acquired");
+            }
 
+        }
+    }
 
 }
