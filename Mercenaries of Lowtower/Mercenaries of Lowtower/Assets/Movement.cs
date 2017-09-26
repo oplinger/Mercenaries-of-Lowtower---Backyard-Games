@@ -40,7 +40,25 @@ public class Movement : MonoBehaviour {
         if (Input.GetAxis("Dash") == 1 && !isDashing)
         {
             isDashing = true;
-            dashVector = new Vector3(dashSpeed, 0, dashSpeed);
+
+            if (Input.GetAxis("Horizontal") > 0)
+            {
+                dashVector.x=dashSpeed;
+            }
+            if (Input.GetAxis("Horizontal") < 0)
+            {
+                dashVector.x = dashSpeed*-1;
+            }
+
+            if (Input.GetAxis("Vertical") > 0)
+            {
+                dashVector.z = dashSpeed;
+            }
+            if (Input.GetAxis("Vertical") < 0)
+            {
+                dashVector.z = dashSpeed * -1;
+            }
+
             tempDashLength = dashLength;
         }
 
@@ -55,10 +73,7 @@ public class Movement : MonoBehaviour {
             }
         }
 
-            
-        
-
-        
+        Debug.Log("" + Input.GetAxis("Vertical"));
         
         moveDirection.y -= gravity * Time.deltaTime;
         controller.Move((moveDirection + dashVector) * Time.deltaTime);
