@@ -5,12 +5,14 @@ using UnityEngine;
 public class BossAttackAI : MonoBehaviour {
     public float[] attackCDs;
     BossTargetingAI targeting;
+    BossMovementAI range;
    public float currentGCD;
     float maxGCD;
 	// Use this for initialization
 	void Start () {
         attackCDs = new float[4];
         targeting = GetComponent<BossTargetingAI>();
+        range = GetComponent<BossMovementAI>();
 
         attackCDs[0] = 10;
         attackCDs[1] = 8;
@@ -31,8 +33,8 @@ public class BossAttackAI : MonoBehaviour {
             checkAttacks();
             
         }
-        
 
+        print(range.inRange);
 
     }
 
@@ -42,7 +44,7 @@ public class BossAttackAI : MonoBehaviour {
         health.modifyHealth(20, 9);
         attackCDs[0] = 10;
         triggerGCD(2);
-        print("ATTACK1 USED");
+       // print("ATTACK1 USED");
     }
 
     void Attack2(GameObject target)
@@ -51,7 +53,7 @@ public class BossAttackAI : MonoBehaviour {
         health.modifyHealth(10, 9);
         attackCDs[1] = 8;
         triggerGCD(2);
-        print("ATTACK2 USED");
+       // print("ATTACK2 USED");
     }
 
     void Attack3(GameObject target)
@@ -60,7 +62,7 @@ public class BossAttackAI : MonoBehaviour {
         health.modifyHealth(5, 9);
         attackCDs[2] = 5;
         triggerGCD(2);
-        print("ATTACK3 USED");
+       // print("ATTACK3 USED");
     }
     
     void Attack4(GameObject target)
@@ -69,24 +71,24 @@ public class BossAttackAI : MonoBehaviour {
         health.modifyHealth(1, 9);
         attackCDs[3] = 2;
         triggerGCD(2);
-        print("ATTACK4 USED");
+       // print("ATTACK4 USED");
     }
 
     void checkAttacks()
     {
-        if (attackCDs[0] <= 0)
+        if (attackCDs[0] <= 0 && range.inRange)
         {
             Attack1(targeting.currentTarget);
             
-        } else if (attackCDs[1] <= 0)
+        } else if (attackCDs[1] <= 0 && range.inRange)
         {
             Attack2(targeting.currentTarget);
         }
-         else if (attackCDs[2] <= 0)
+         else if (attackCDs[2] <= 0 && range.inRange)
         {
             Attack3(targeting.currentTarget);
         }
-         else if (attackCDs[3] <= 0)
+         else if (attackCDs[3] <= 0 && range.inRange)
         {
             Attack4(targeting.currentTarget);
         }

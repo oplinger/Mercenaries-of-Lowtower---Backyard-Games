@@ -17,7 +17,7 @@ public class Health : MonoBehaviour {
     public void modifyHealth(float dam, int ID)
     {
         health -= dam;
-        print(dam + "damage done!");
+       // print(dam + "damage done!");
         if (gameObject.tag == "Enemy")
         {
            BossTargetingAI threat = GetComponent<BossTargetingAI>();
