@@ -13,6 +13,7 @@ public class Movement : MonoBehaviour {
     public bool isDashing=false;
     public float dashLength;
     public float tempDashLength;
+    
 
     private void Start()
     {
@@ -64,7 +65,7 @@ public class Movement : MonoBehaviour {
 
         if (isDashing)
         {
-            tempDashLength--;
+            tempDashLength--; 
 
             if (tempDashLength <= 0)
             {
@@ -72,10 +73,11 @@ public class Movement : MonoBehaviour {
                 dashVector = Vector3.zero;
             }
         }
-
-        Debug.Log("" + Input.GetAxis("Vertical"));
+        
         
         moveDirection.y -= gravity * Time.deltaTime;
+
         controller.Move((moveDirection + dashVector) * Time.deltaTime);
+
     }
 }
