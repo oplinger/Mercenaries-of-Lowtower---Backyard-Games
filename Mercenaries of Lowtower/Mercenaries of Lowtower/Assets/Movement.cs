@@ -4,14 +4,24 @@ using UnityEngine;
 
 public class Movement : MonoBehaviour {
     public float speed;
+    public float dashSpeed;
     public float jumpSpeed;
     public float gravity;
     private Vector3 moveDirection = Vector3.zero;
+    Vector3 dashVector = Vector3.zero;
+
+    public bool isDashing=false;
+    public float dashLength;
+    public float tempDashLength;
+
+    private void Start()
+    {
+        
+    }
+
     void Update()
     {
         CharacterController controller = GetComponent<CharacterController>();
-
-        //can move midair but gravity is hella weak
         
 
         if (controller.isGrounded)
@@ -27,9 +37,30 @@ public class Movement : MonoBehaviour {
             }
         }
 
+        if (Input.GetAxis("Dash") == 1 && !isDashing)
+        {
+            isDashing = true;
+            dashVector = new Vector3(dashSpeed, 0, dashSpeed);
+            tempDashLength = dashLength;
+        }
+
+        if (isDashing)
+        {
+            tempDashLength--;
+
+            if (tempDashLength <= 0)
+            {
+                isDashing = false;
+                dashVector = Vector3.zero;
+            }
+        }
+
+            
         
 
+        
+        
         moveDirection.y -= gravity * Time.deltaTime;
-        controller.Move(moveDirection * Time.deltaTime);
+        controller.Move((moveDirection + dashVector) * Time.deltaTime);
     }
 }
