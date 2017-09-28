@@ -8,8 +8,10 @@ public class BossAttackAI : MonoBehaviour {
     BossMovementAI range;
    public float currentGCD;
     float maxGCD;
-	// Use this for initialization
-	void Start () {
+    // At the start, initializes an array for each attack to have their own Cooldowns(CDs)
+    // Also pulls targeting and movement information.
+    // Hardcoded coodlown values for testing. Change or make variables (see below)
+    void Start () {
         attackCDs = new float[4];
         targeting = GetComponent<BossTargetingAI>();
         range = GetComponent<BossMovementAI>();
@@ -19,32 +21,32 @@ public class BossAttackAI : MonoBehaviour {
         attackCDs[2] = 5;
         attackCDs[3] = 2;
     }
-	
-	// Update is called once per frame
-	void Update () {
+
+    // Each CD ticks down every frame.
+    void Update () {
         currentGCD += Time.deltaTime;
         attackCDs[0] -= Time.deltaTime;
         attackCDs[1] -= Time.deltaTime;
         attackCDs[2] -= Time.deltaTime;
         attackCDs[3] -= Time.deltaTime;
-
+        // If the Global Cool Down (GCD) is finished, boss loops through attack priority
         if (currentGCD >= maxGCD)
         {
             checkAttacks();
             
         }
 
-        print(range.inRange);
 
     }
-
+    // attack one, use this as a template. When attack1 happens, it needs a target passed into it.
+    // Finds the health script of the target, sends damage and ID I gave the boss an ID of 9, but the ID doesn't matter as it has no threat.
+    // Then it resets the CD of the attack, and triggers the GCD so the boss will not attack for whatever value is placed there. For cinematic attacks, or waits for animations.
     void Attack1(GameObject target)
     {
         Health health = target.GetComponent<Health>();
         health.modifyHealth(20, 9);
         attackCDs[0] = 10;
         triggerGCD(2);
-       // print("ATTACK1 USED");
     }
 
     void Attack2(GameObject target)
@@ -53,7 +55,6 @@ public class BossAttackAI : MonoBehaviour {
         health.modifyHealth(10, 9);
         attackCDs[1] = 8;
         triggerGCD(2);
-       // print("ATTACK2 USED");
     }
 
     void Attack3(GameObject target)
@@ -62,7 +63,6 @@ public class BossAttackAI : MonoBehaviour {
         health.modifyHealth(5, 9);
         attackCDs[2] = 5;
         triggerGCD(2);
-       // print("ATTACK3 USED");
     }
     
     void Attack4(GameObject target)
@@ -71,9 +71,15 @@ public class BossAttackAI : MonoBehaviour {
         health.modifyHealth(1, 9);
         attackCDs[3] = 2;
         triggerGCD(2);
-       // print("ATTACK4 USED");
     }
-
+    //THE ATTACKS ARE IN ORDER OF PRIORITY. VERY IMPORTANT.
+    //THE ATTACKS ARE IN ORDER OF PRIORITY. VERY IMPORTANT.
+    // Method that loops through each attack and checks if they are on cooldown. //THE ATTACKS ARE IN ORDER OF PRIORITY. VERY IMPORTANT.
+    //THE ATTACKS ARE IN ORDER OF PRIORITY. VERY IMPORTANT.
+    //THE ATTACKS ARE IN ORDER OF PRIORITY. VERY IMPORTANT.
+    // since it checks in order, if they aren't in order of priority, it will use whatever attack has the faster CD. //THE ATTACKS ARE IN ORDER OF PRIORITY. VERY IMPORTANT.
+    //THE ATTACKS ARE IN ORDER OF PRIORITY. VERY IMPORTANT.
+    //THE ATTACKS ARE IN ORDER OF PRIORITY. VERY IMPORTANT.
     void checkAttacks()
     {
         if (attackCDs[0] <= 0 && range.inRange)
@@ -93,7 +99,7 @@ public class BossAttackAI : MonoBehaviour {
             Attack4(targeting.currentTarget);
         }
     }
-
+    // triggers the GCD, this method can be triggered with any value to wait for animations or anything else.
     void triggerGCD(float cooldownTime)
     {
         currentGCD = 0;

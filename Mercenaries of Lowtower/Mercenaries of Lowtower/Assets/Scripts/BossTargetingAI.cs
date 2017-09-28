@@ -5,10 +5,10 @@ using UnityEngine;
 public class BossTargetingAI : MonoBehaviour {
 
    public Collider[] targets;
-    public float[] targetThreat;
-    public float[] targetThreat2;
-    public float[] targetThreat3;
-    AttackTESTSCRIPT ID;
+    public float[] damageThreat;
+    public float[] distanceThreat;
+    public float[] combinedThreat;
+    Attack ID;
     float distance;
     float threatVal;
     int myID;
@@ -17,72 +17,83 @@ public class BossTargetingAI : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
+        // At start the boss finds targets in the arena.
+        // damageThreat is the threat from damage
+        // distanceThreat is the threat from distance
+        // combinedThreat is the combined output of the 2
         FindTarget();
-        targetThreat = new float[targets.Length];
-        targetThreat2 = new float[targets.Length];
-        targetThreat3 = new float[targets.Length];
+        damageThreat = new float[targets.Length];
+        distanceThreat = new float[targets.Length];
+        combinedThreat = new float[targets.Length];
         sendIDs();
     }
 	
-	// Update is called once per frame
+	// finds the distance threat, combines the threat values, and takes the highest threat value and makes that the bosses current target.
 	void Update () {
         targetDistance();
         combineThreat();
         findCurrentTarget();
     }
 
+    // Finds all targets in the arena in the Players layer.
     void FindTarget()
     {
         Collider[] hitColliders = Physics.OverlapSphere(transform.position, 100, 1 << 8);
-        //print(LayerMask.NameToLayer("Players"));
         targets = hitColliders;
     }
+
+    // Sends ID values to each player the boss detects, this is used to assign threat values to the characters. Is scalable.
     public void sendIDs()
     {
         for(int i = 0; i < targets.Length; i++)
         {
             GameObject currentTar = targets[i].gameObject;
-             ID = currentTar.GetComponent<AttackTESTSCRIPT>();
+             ID = currentTar.GetComponent<Attack>();
             ID.assignSlot(i);
-            //print(i);
         }
     }
+    // Finds the distance to all found targets and adds the threat value from that distance to the distance threat array
     public void targetDistance()
     {
         for (int i = 0; i < targets.Length; i++)
         {
            distance = 100 - Vector3.Distance(transform.position, targets[i].transform.position);
-            targetThreat2[i] = distance;          
+            distanceThreat[i] = distance;          
         }
     }
+
+    // This method adds the damage threat to a target. It converts any negative values to positive values, so healing applies properly to the threat table.
+    //Can be called outside of damage, so any abilities that do not do damage, can still create threat
     public void addThreat(float threat, int ID)
     {
         if (threat < 0)
         {
             threat *= -1;
         }
-        targetThreat[ID] += threat;
+        damageThreat[ID] += threat;
         
        
     }
+
+    // Combines the distance threat value and the damage threat values into a new array, maintaining ID integrity.
     public void combineThreat()
     {
         for (int i = 0; i < targets.Length; i++)
         {
-            targetThreat3[i] = targetThreat[i] + targetThreat2[i];
+            combinedThreat[i] = damageThreat[i] + distanceThreat[i];
         }
     }
+
+    // After Threat is found, it loops through targetThreat3 and finds the highest threat value, the character assigned that ID now becomes the bosses current target.
     void findCurrentTarget()
     {
         float highestThreat = 0;
         for (int i = 0; i < targets.Length; i++)
         {
-           // print("Finding Target");
-            if (targetThreat3[i] > highestThreat)
+            if (combinedThreat[i] > highestThreat)
             {
-                highestThreat = targetThreat3[i];
+                highestThreat = combinedThreat[i];
                 currentTarget = targets[i].gameObject;
-               // print("Target Acquired");
             }
 
         }
