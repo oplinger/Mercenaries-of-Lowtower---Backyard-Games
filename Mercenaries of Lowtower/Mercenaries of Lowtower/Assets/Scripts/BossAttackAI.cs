@@ -1,0 +1,109 @@
+﻿using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+
+public class BossAttackAI : MonoBehaviour {
+    public float[] attackCDs;
+    BossTargetingAI targeting;
+    BossMovementAI range;
+   public float currentGCD;
+    float maxGCD;
+    // At the start, initializes an array for each attack to have their own Cooldowns(CDs)
+    // Also pulls targeting and movement information.
+    // Hardcoded coodlown values for testing. Change or make variables (see below)
+    void Start () {
+        attackCDs = new float[4];
+        targeting = GetComponent<BossTargetingAI>();
+        range = GetComponent<BossMovementAI>();
+
+        attackCDs[0] = 10;
+        attackCDs[1] = 8;
+        attackCDs[2] = 5;
+        attackCDs[3] = 2;
+    }
+
+    // Each CD ticks down every frame.
+    void Update () {
+        currentGCD += Time.deltaTime;
+        attackCDs[0] -= Time.deltaTime;
+        attackCDs[1] -= Time.deltaTime;
+        attackCDs[2] -= Time.deltaTime;
+        attackCDs[3] -= Time.deltaTime;
+        // If the Global Cool Down (GCD) is finished, boss loops through attack priority
+        if (currentGCD >= maxGCD)
+        {
+            checkAttacks();
+            
+        }
+
+
+    }
+    // attack one, use this as a template. When attack1 happens, it needs a target passed into it.
+    // Finds the health script of the target, sends damage and ID I gave the boss an ID of 9, but the ID doesn't matter as it has no threat.
+    // Then it resets the CD of the attack, and triggers the GCD so the boss will not attack for whatever value is placed there. For cinematic attacks, or waits for animations.
+    void Attack1(GameObject target)
+    {
+        Health health = target.GetComponent<Health>();
+        health.modifyHealth(20, 9);
+        attackCDs[0] = 10;
+        triggerGCD(2);
+    }
+
+    void Attack2(GameObject target)
+    {
+        Health health = target.GetComponent<Health>();
+        health.modifyHealth(10, 9);
+        attackCDs[1] = 8;
+        triggerGCD(2);
+    }
+
+    void Attack3(GameObject target)
+    {
+        Health health = target.GetComponent<Health>();
+        health.modifyHealth(5, 9);
+        attackCDs[2] = 5;
+        triggerGCD(2);
+    }
+    
+    void Attack4(GameObject target)
+    {
+        Health health = target.GetComponent<Health>();
+        health.modifyHealth(1, 9);
+        attackCDs[3] = 2;
+        triggerGCD(2);
+    }
+    //THE ATTACKS ARE IN ORDER OF PRIORITY. VERY IMPORTANT.
+    //THE ATTACKS ARE IN ORDER OF PRIORITY. VERY IMPORTANT.
+    // Method that loops through each attack and checks if they are on cooldown. //THE ATTACKS ARE IN ORDER OF PRIORITY. VERY IMPORTANT.
+    //THE ATTACKS ARE IN ORDER OF PRIORITY. VERY IMPORTANT.
+    //THE ATTACKS ARE IN ORDER OF PRIORITY. VERY IMPORTANT.
+    // since it checks in order, if they aren't in order of priority, it will use whatever attack has the faster CD. //THE ATTACKS ARE IN ORDER OF PRIORITY. VERY IMPORTANT.
+    //THE ATTACKS ARE IN ORDER OF PRIORITY. VERY IMPORTANT.
+    //THE ATTACKS ARE IN ORDER OF PRIORITY. VERY IMPORTANT.
+    void checkAttacks()
+    {
+        if (attackCDs[0] <= 0 && range.inRange)
+        {
+            Attack1(targeting.currentTarget);
+            
+        } else if (attackCDs[1] <= 0 && range.inRange)
+        {
+            Attack2(targeting.currentTarget);
+        }
+         else if (attackCDs[2] <= 0 && range.inRange)
+        {
+            Attack3(targeting.currentTarget);
+        }
+         else if (attackCDs[3] <= 0 && range.inRange)
+        {
+            Attack4(targeting.currentTarget);
+        }
+    }
+    // triggers the GCD, this method can be triggered with any value to wait for animations or anything else.
+    void triggerGCD(float cooldownTime)
+    {
+        currentGCD = 0;
+        maxGCD = cooldownTime;
+    }
+}
+
