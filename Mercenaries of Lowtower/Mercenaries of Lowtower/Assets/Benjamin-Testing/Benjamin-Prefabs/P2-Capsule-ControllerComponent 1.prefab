@@ -23,9 +23,9 @@ GameObject:
   - component: {fileID: 136229380557225540}
   - component: {fileID: 23324989569569516}
   - component: {fileID: 143341252291276538}
-  - component: {fileID: 114098676171055878}
+  - component: {fileID: 114294470761023720}
   m_Layer: 0
-  m_Name: Capsule-ControllerComponent
+  m_Name: P2-Capsule-ControllerComponent 1
   m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -83,7 +83,7 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1961925206739816}
   m_Mesh: {fileID: 10208, guid: 0000000000000000e000000000000000, type: 0}
---- !u!114 &114098676171055878
+--- !u!114 &114294470761023720
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -91,16 +91,16 @@ MonoBehaviour:
   m_GameObject: {fileID: 1961925206739816}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 19e33e7050c70044189a265f23370130, type: 3}
+  m_Script: {fileID: 11500000, guid: 2255042ef0d27c84192a3ee099d88cb0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 12
-  dashSpeed: 20
-  jumpSpeed: 16
-  gravity: 45
-  isDashing: 0
-  dashLength: 20
-  tempDashLength: 0
+  speedP2: 12
+  dashSpeedP2: 20
+  jumpSpeedP2: 16
+  gravityP2: 45
+  isDashingP2: 0
+  dashLengthP2: 20
+  tempDashLengthP2: 0
 --- !u!136 &136229380557225540
 CapsuleCollider:
   m_ObjectHideFlags: 1

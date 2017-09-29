@@ -18,21 +18,24 @@ public class ThePackage : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
         transform.position += Vector3.forward*speed*Time.deltaTime;
-	}
+
+    }
 
     private void OnTriggerEnter(Collider other)
     {
         if (other.tag=="Enemy")
         {
             rend.material.color = Color.red;
-            int timer = 30;
-            timer--;
+        }
+    }
 
-            if (timer<=0)
-            {
-                rend.material.color = Color.white;
+    private void OnTriggerExit(Collider other)
+    {
 
-            }
+
+        if (other.tag == "Enemy")
+        {
+            rend.material.color = Color.white;
         }
     }
 }

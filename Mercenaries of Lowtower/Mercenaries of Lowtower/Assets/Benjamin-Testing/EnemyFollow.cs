@@ -8,7 +8,7 @@ public class EnemyFollow : MonoBehaviour
     public float speed;
     public Transform target;
     public Transform player;
-    public float fleeTime;
+    public float teleportDistance;
 
 
     // Use this for initialization
@@ -33,18 +33,11 @@ public class EnemyFollow : MonoBehaviour
     {
         if (other.tag=="Player")
         {
-            transform.LookAt(player);
+            teleportDistance = Random.Range(-25, 25);
 
+            //transform.LookAt(player);
             // transform.position += transform.forward *-1 * 10 * Time.deltaTime;
-            transform.position += new Vector3(15,0,15);
-            float tempfleeTime = fleeTime;
-            tempfleeTime--;
-
-            if (tempfleeTime<=0)
-            {
-
-                transform.LookAt(target);
-            }
+            transform.position += new Vector3(teleportDistance, 0, teleportDistance);
         }
     }
 }
