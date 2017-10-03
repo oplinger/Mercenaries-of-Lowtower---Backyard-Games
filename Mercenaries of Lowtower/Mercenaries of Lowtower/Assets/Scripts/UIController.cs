@@ -9,6 +9,10 @@ public class UIController : MonoBehaviour {
     public GameObject player3;
     public GameObject player4;
     public GameObject boss;
+    public GameObject controller;
+    PlayerCDController playerCooldowns;
+
+    public float timer = 600;
 
     public Text[] texts;
     public Image[] healthBars;
@@ -24,12 +28,14 @@ public class UIController : MonoBehaviour {
     void Awake () {
         texts = GetComponentsInChildren<Text>();
         healthBars = GetComponentsInChildren<Image>();
-
+        timer = 600;
         player1Health = player1.GetComponent<Health>();
         player2Health = player2.GetComponent<Health>();
         player3Health = player3.GetComponent<Health>();
         player4Health = player4.GetComponent<Health>();
         bossHealth = boss.GetComponent<Health>();
+
+        playerCooldowns = controller.GetComponent<PlayerCDController>();
 
         //Image bossHealthBar = healthBars[9];
 
@@ -38,11 +44,13 @@ public class UIController : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-        //Health bossHealth = boss.GetComponent<Health>();
-        print(healthBars[9].rectTransform.rect.width);
-
+        timer -= Time.deltaTime;
+        texts[5].text = timer.ToString();
         texts[4].text = bossHealth.health.ToString();
-        healthBars[9].rectTransform.sizeDelta = new Vector2 (300 * (bossHealth.health / 100), 25);
+
+        healthBars[3].material.SetFloat("_Tween", playerCooldowns.activeCooldowns[0]/ playerCooldowns.abilityCooldowns[0]);
+
+        healthBars[25].rectTransform.sizeDelta = new Vector2 (300 * (bossHealth.health / 100), 25);
        
 
 
