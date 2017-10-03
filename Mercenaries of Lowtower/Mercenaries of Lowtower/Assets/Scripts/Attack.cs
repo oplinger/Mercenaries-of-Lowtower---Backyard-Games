@@ -5,27 +5,48 @@ using UnityEngine;
 public class Attack : MonoBehaviour {
     float timer;
     public int targetslot;
-    public GameObject boss;
-    public float damage;
-	
-	// Update is called once per frame
-	void Update () {
-        timer += Time.deltaTime;
+    //public GameObject target;
+    public GameObject controller;
+    public PlayerAbilityController abilities;
+    public PlayerCDController cooldowns;
+    public int layer;
 
-        // Every x seconds, attack the boss. This is a testing script to deal damage to the boss and measure threat. Attacks may be more complex later.
-        if (timer > 5)
+     void Start()
+    {
+        abilities = controller.GetComponent<PlayerAbilityController>();
+        cooldowns = controller.GetComponent<PlayerCDController>();
+
+    }
+    // Update is called once per frame
+    void Update () {
+        timer += Time.deltaTime;
+        if (Input.GetKeyDown("f"))
         {
-           
-            dealDamage(boss);
-            timer = 0;
+            RaycastHit hit;
+
+            if (Physics.Raycast(transform.position, -Vector3.forward, out hit, 1<<9))
+            {
+                GameObject target = hit.collider.gameObject;
+                //print(target);
+
+                abilities.executeAttack(0, targetslot, target);
+            }
+
         }
-	}
+
+    }
 
     // This method controls the damage done, it chooses a target, finds their health script, and applies damage as well as sends their ID.
-    public void dealDamage(GameObject target)
+    //public void doAttack()
+    //{
+ 
+
+    //   abilities.executeAttack(0);
+
+    //}
+
+    public void triggerCooldown(int AttackID, float cooldown)
     {
-       Health health = target.GetComponent<Health>();
-        health.modifyHealth(damage, targetslot);
 
     }
 

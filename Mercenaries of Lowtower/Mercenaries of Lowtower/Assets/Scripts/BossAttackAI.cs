@@ -25,10 +25,13 @@ public class BossAttackAI : MonoBehaviour {
     // Each CD ticks down every frame.
     void Update () {
         currentGCD += Time.deltaTime;
-        attackCDs[0] -= Time.deltaTime;
-        attackCDs[1] -= Time.deltaTime;
-        attackCDs[2] -= Time.deltaTime;
-        attackCDs[3] -= Time.deltaTime;
+
+        for (int i = 0; i < attackCDs.Length; i++)
+        {
+            attackCDs[i] -= Time.deltaTime;
+        }
+
+
         // If the Global Cool Down (GCD) is finished, boss loops through attack priority
         if (currentGCD >= maxGCD)
         {
