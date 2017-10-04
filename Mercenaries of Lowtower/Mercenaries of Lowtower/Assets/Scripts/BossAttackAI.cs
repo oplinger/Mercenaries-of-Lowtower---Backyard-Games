@@ -44,7 +44,7 @@ public class BossAttackAI : MonoBehaviour {
     // attack one, use this as a template. When attack1 happens, it needs a target passed into it.
     // Finds the health script of the target, sends damage and ID I gave the boss an ID of 9, but the ID doesn't matter as it has no threat.
     // Then it resets the CD of the attack, and triggers the GCD so the boss will not attack for whatever value is placed there. For cinematic attacks, or waits for animations.
-    void Attack1(GameObject target)
+    void Storm(GameObject target)
     {
         Health health = target.GetComponent<Health>();
         health.modifyHealth(20, 9);
@@ -52,7 +52,7 @@ public class BossAttackAI : MonoBehaviour {
         triggerGCD(2);
     }
 
-    void Attack2(GameObject target)
+    void Slam(GameObject target)
     {
         Health health = target.GetComponent<Health>();
         health.modifyHealth(10, 9);
@@ -60,7 +60,7 @@ public class BossAttackAI : MonoBehaviour {
         triggerGCD(2);
     }
 
-    void Attack3(GameObject target)
+    void Swipe(GameObject target)
     {
         Health health = target.GetComponent<Health>();
         health.modifyHealth(5, 9);
@@ -68,7 +68,7 @@ public class BossAttackAI : MonoBehaviour {
         triggerGCD(2);
     }
     
-    void Attack4(GameObject target)
+    void Punch(GameObject target)
     {
         Health health = target.GetComponent<Health>();
         health.modifyHealth(1, 9);
@@ -87,19 +87,19 @@ public class BossAttackAI : MonoBehaviour {
     {
         if (attackCDs[0] <= 0 && range.inRange)
         {
-            Attack1(targeting.currentTarget);
+            Storm(targeting.currentTarget);
             
         } else if (attackCDs[1] <= 0 && range.inRange)
         {
-            Attack2(targeting.currentTarget);
+            Slam(targeting.currentTarget);
         }
          else if (attackCDs[2] <= 0 && range.inRange)
         {
-            Attack3(targeting.currentTarget);
+            Swipe(targeting.currentTarget);
         }
          else if (attackCDs[3] <= 0 && range.inRange)
         {
-            Attack4(targeting.currentTarget);
+            Punch(targeting.currentTarget);
         }
     }
     // triggers the GCD, this method can be triggered with any value to wait for animations or anything else.

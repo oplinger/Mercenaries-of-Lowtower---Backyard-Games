@@ -31,7 +31,7 @@ public class EnemyFollow : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.tag=="Player")
+        if (other.tag=="Player" || other.tag=="Bolt")
         {
             teleportDistance = Random.Range(-25, 25);
 
