@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Attack : MonoBehaviour {
+public class Attack1 : MonoBehaviour {
     float timer;
     public int targetslot;
     //public GameObject target;
@@ -20,18 +20,25 @@ public class Attack : MonoBehaviour {
     // Update is called once per frame
     void Update () {
         timer += Time.deltaTime;
-        if (Input.GetButtonDown("Attack"))
+        if (Input.GetButtonDown("P2Attack"))
         {
-            RaycastHit hit;
 
-            if (Physics.Raycast(transform.position, -Vector3.forward, out hit, 1<<9))
-            {
-                GameObject target = hit.collider.gameObject;
-                //print(target);
+            abilities.executeAttack(2, targetslot, gameObject);
 
-                abilities.executeAttack(1, targetslot, target);
-            }
+            //RaycastHit hit;
 
+            //if (Physics.Raycast(transform.position, -Vector3.forward, out hit, 1<<9))
+            //{
+            //    GameObject target = hit.collider.gameObject;
+            //    print(target);
+
+
+            //}
+
+        }
+        if (Input.GetButtonDown("P2Attack1"))
+        {
+            abilities.executeAttack(3, targetslot, gameObject);
         }
 
     }

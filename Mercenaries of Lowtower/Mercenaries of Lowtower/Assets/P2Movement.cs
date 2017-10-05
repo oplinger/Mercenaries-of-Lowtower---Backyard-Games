@@ -30,7 +30,7 @@ public class P2Movement : MonoBehaviour {
         if (controllerP2.isGrounded)
         {
             moveDirectionP2 = new Vector3(Input.GetAxis("P2Horizontal"), 0, Input.GetAxis("P2Vertical"));
-            moveDirectionP2 = transform.TransformDirection(moveDirectionP2);
+            //moveDirectionP2 = transform.TransformDirection(moveDirectionP2);
             moveDirectionP2 *= speedP2;
 
 
@@ -80,6 +80,8 @@ public class P2Movement : MonoBehaviour {
         moveDirectionP2.y -= gravityP2 * Time.deltaTime;
 
         controllerP2.Move((moveDirectionP2 + dashVectorP2) * Time.deltaTime);
+        transform.rotation = Quaternion.LookRotation(new Vector3(moveDirectionP2.x, 0, moveDirectionP2.z));
+
 
     }
 }

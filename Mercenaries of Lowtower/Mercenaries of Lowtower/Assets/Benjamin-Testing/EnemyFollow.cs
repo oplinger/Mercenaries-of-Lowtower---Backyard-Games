@@ -31,7 +31,7 @@ public class EnemyFollow : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.tag=="Player")
+        if (gameObject.name == "Big Cylinder" && other.tag == "Bolt")
         {
             teleportDistance = Random.Range(-25, 25);
 
@@ -39,5 +39,23 @@ public class EnemyFollow : MonoBehaviour
             // transform.position += transform.forward *-1 * 10 * Time.deltaTime;
             transform.position += new Vector3(teleportDistance, 0, teleportDistance);
         }
+        if (gameObject.name == "Cylinder")
+        {
+            if (other.tag == "Player" || other.tag == "Bolt")
+            {
+                teleportDistance = Random.Range(-25, 25);
+
+                //transform.LookAt(player);
+                // transform.position += transform.forward *-1 * 10 * Time.deltaTime;
+                transform.position += new Vector3(teleportDistance, 0, teleportDistance);
+            }
+        }
+
+        if (other.tag == "Player")
+        {
+            speed = 0;
+        }
+        
     }
+
 }

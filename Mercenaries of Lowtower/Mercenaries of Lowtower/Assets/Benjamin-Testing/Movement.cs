@@ -28,7 +28,7 @@ public class Movement : MonoBehaviour {
         if (controller.isGrounded)
         {
             moveDirection = new Vector3(Input.GetAxis("Horizontal"), 0, Input.GetAxis("Vertical"));
-            moveDirection = transform.TransformDirection(moveDirection);
+            //moveDirection = transform.TransformDirection(moveDirection);
             moveDirection *= speed;
 
 
@@ -78,6 +78,7 @@ public class Movement : MonoBehaviour {
         moveDirection.y -= gravity * Time.deltaTime;
 
         controller.Move((moveDirection + dashVector) * Time.deltaTime);
+        transform.rotation = Quaternion.LookRotation(new Vector3(moveDirection.x,0,moveDirection.z));
 
     }
 }

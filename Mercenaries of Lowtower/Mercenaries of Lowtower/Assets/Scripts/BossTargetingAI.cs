@@ -49,7 +49,7 @@ public class BossTargetingAI : MonoBehaviour {
         {
             GameObject currentTar = targets[i].gameObject;
              ID = currentTar.GetComponent<Attack>();
-            ID.assignSlot(i);
+            //ID.assignSlot(i);
         }
     }
     // Finds the distance to all found targets and adds the threat value from that distance to the distance threat array
