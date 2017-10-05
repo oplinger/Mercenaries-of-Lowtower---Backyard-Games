@@ -3,22 +3,21 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class PlayerAbilityController : MonoBehaviour {
-    BossTargetingAI bossTargets;
+   public BossTargetingAI bossTargets;
     Attack playerAttack;
     PlayerCDController cooldown;
     public GameObject bolt;
     public GameObject P2BoltSpawn;
 	// Use this for initialization
 	void Start () {
-        cooldown = GetComponent<PlayerCDController>();
-        bolt = Instantiate(Resources.Load("Bolt", typeof(GameObject))) as GameObject;
+       cooldown = GetComponent<PlayerCDController>();
+        
 
     }
 
     // Update is called once per frame
     void Update () {
-
-	}
+    }
 
    public void executeAttack(int attackID, int playerID, GameObject target)
     {
@@ -48,8 +47,24 @@ public class PlayerAbilityController : MonoBehaviour {
         {
             if (cooldown.activeCooldowns[attackID] <= 0)
             {
-                Instantiate(bolt, P2BoltSpawn.transform.position, Quaternion.identity);
-                print(attackID);
+                GameObject clone = Instantiate(bolt, P2BoltSpawn.transform.position, bossTargets.targets[0].gameObject.transform.rotation);
+                Destroy(clone, 3);
+                    
+                cooldown.triggerCooldown(attackID, 3);
+            }
+        }
+
+        if (attackID == 3)
+        {
+            if (cooldown.activeCooldowns[attackID] <= 0)
+            {
+                GameObject clone;
+                clone = Instantiate(Resources.Load("RopeBolt", typeof(GameObject)), bossTargets.targets[0].gameObject.transform.position + (Vector3.forward*2), Quaternion.identity) as GameObject;
+                Destroy(clone, 3);
+                cooldown.triggerCooldown(attackID, 5);
+                Debug.DrawRay(bossTargets.targets[0].gameObject.transform.position, Vector3.forward * 1000, Color.white, 1);
+                
+
             }
         }
 

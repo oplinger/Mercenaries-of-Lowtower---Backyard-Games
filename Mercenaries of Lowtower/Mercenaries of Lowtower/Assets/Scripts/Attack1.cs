@@ -36,6 +36,10 @@ public class Attack1 : MonoBehaviour {
             //}
 
         }
+        if (Input.GetButtonDown("P2Attack1"))
+        {
+            abilities.executeAttack(3, targetslot, gameObject);
+        }
 
     }
 
