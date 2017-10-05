@@ -11,7 +11,7 @@ public class RedTrigger : MonoBehaviour {
     {
         if (other.tag == "Player" && trigger == true)
         {
-            door.transform.position += new Vector3(0, 1, 0);
+            door.transform.position += new Vector3(0, 2, 0);
             trigger = false;
             //door moves up
         }
