@@ -75,8 +75,6 @@ public class MovementRigidbody : MonoBehaviour
     private void OnTriggerEnter(Collider other)
     {
 
-
-
         if (other.tag == "Climbable")
 
         {
