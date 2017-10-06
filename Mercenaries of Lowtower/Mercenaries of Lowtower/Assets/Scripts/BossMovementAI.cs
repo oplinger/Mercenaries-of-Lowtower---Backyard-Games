@@ -5,10 +5,17 @@ using UnityEngine;
 public class BossMovementAI : MonoBehaviour {
     BossTargetingAI targeting;
     GameObject currentTarget;
-    float targetDistance;
+    public float targetDistance;
    public bool inRange;
-	// Gets the targeting information from the BossTargetingAI script
-	void Start () {
+
+    //Variable to hold the current speed of the boss
+    public float speed;
+
+    //Variable to hold the speed at which the boss rotates to orient itself toward the player
+    public float rotateSpeed = 4f;
+
+    // Gets the targeting information from the BossTargetingAI script
+    void Start () {
         targeting = GetComponent<BossTargetingAI>();
         currentTarget = targeting.currentTarget;
 	}
@@ -27,8 +34,16 @@ public class BossMovementAI : MonoBehaviour {
         if (targetDistance > 10)
         {
             inRange = false;
-            transform.position = Vector3.MoveTowards(transform.position, new Vector3(currentTarget.transform.position.x, transform.position.y, currentTarget.transform.position.z), .01f);
-        } else
+            transform.position = Vector3.MoveTowards(transform.position, new Vector3(currentTarget.transform.position.x, transform.position.y, currentTarget.transform.position.z), speed);
+            // .01f was in place of "speed"
+
+            //Orients the boss towards the player
+            Vector3 dir = currentTarget.transform.position - transform.position;
+            Quaternion rotation = Quaternion.LookRotation(dir);
+            transform.rotation = Quaternion.Lerp(transform.rotation, rotation, rotateSpeed * Time.deltaTime);
+
+        }
+        else
         {
             inRange = true;
         }
