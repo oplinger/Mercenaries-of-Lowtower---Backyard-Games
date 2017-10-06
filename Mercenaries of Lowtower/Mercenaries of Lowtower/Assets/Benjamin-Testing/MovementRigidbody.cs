@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class MovementRigidbody : MonoBehaviour
 {
-    Rigidbody playerbody;
+    public Rigidbody playerbody;
     public GameObject player;
     public float walkspeed;
     public Vector3 playermovement;
@@ -139,4 +139,6 @@ public class MovementRigidbody : MonoBehaviour
     {
         jumpDir = direction;
     }
+
+
 }
