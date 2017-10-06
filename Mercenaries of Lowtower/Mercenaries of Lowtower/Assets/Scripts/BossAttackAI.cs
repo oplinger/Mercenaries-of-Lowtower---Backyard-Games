@@ -8,6 +8,21 @@ public class BossAttackAI : MonoBehaviour {
     BossMovementAI range;
    public float currentGCD;
     float maxGCD;
+
+    //Reference to the animator for the boss
+    Animator anim;
+
+    //Int to change the animators bossPhase parameter
+    // bossPhase = 0 is the default phase
+    // bossPhase = 1 is the PrepPunch phase
+    // bossPhase = 2 is the ReleasePunch phase
+    // bossPhase = 3 is the PrepSpin phase
+    // bossPhase = 4 is the ReleaseSpin phase
+    // bossPhase = 5 is the prepSlam phase
+    // bossPhase = 6 is the ReleaseSlam phase
+    public int bossPhase;
+
+
     // At the start, initializes an array for each attack to have their own Cooldowns(CDs)
     // Also pulls targeting and movement information.
     // Hardcoded coodlown values for testing. Change or make variables (see below)
@@ -15,6 +30,7 @@ public class BossAttackAI : MonoBehaviour {
         attackCDs = new float[4];
         targeting = GetComponent<BossTargetingAI>();
         range = GetComponent<BossMovementAI>();
+        anim = GetComponent<Animator>();
 
         attackCDs[0] = 10;
         attackCDs[1] = 8;
@@ -39,7 +55,8 @@ public class BossAttackAI : MonoBehaviour {
             
         }
 
-
+        // Sets the boss phase parameter in the animator equal to the bossPhase integer
+        anim.SetInteger("bossPhase", bossPhase);
     }
     // attack one, use this as a template. When attack1 happens, it needs a target passed into it.
     // Finds the health script of the target, sends damage and ID I gave the boss an ID of 9, but the ID doesn't matter as it has no threat.
@@ -74,6 +91,25 @@ public class BossAttackAI : MonoBehaviour {
         health.modifyHealth(1, 9);
         attackCDs[3] = 2;
         triggerGCD(2);
+
+        /*
+         
+        **********QUESTION**********:
+         Takes awhile for the punch to go off is that because the CD or GCD?
+
+         */
+
+        // If the player is within range, the punch animation will be triggered
+        if (range.inRange && bossPhase != 2)
+        {
+            bossPhase = 2;
+        }
+        // If the player is out of range, the boss will go into the preparing to punch animation
+        else if(range.inRange && bossPhase != 1)
+        {
+            bossPhase = 1;
+        }
+
     }
     //THE ATTACKS ARE IN ORDER OF PRIORITY. VERY IMPORTANT.
     //THE ATTACKS ARE IN ORDER OF PRIORITY. VERY IMPORTANT.
@@ -85,19 +121,20 @@ public class BossAttackAI : MonoBehaviour {
     //THE ATTACKS ARE IN ORDER OF PRIORITY. VERY IMPORTANT.
     void checkAttacks()
     {
-        if (attackCDs[0] <= 0 && range.inRange)
-        {
-            Storm(targeting.currentTarget);
-            
-        } else if (attackCDs[1] <= 0 && range.inRange)
-        {
-            Slam(targeting.currentTarget);
-        }
-         else if (attackCDs[2] <= 0 && range.inRange)
-        {
-            Swipe(targeting.currentTarget);
-        }
-         else if (attackCDs[3] <= 0 && range.inRange)
+        //if (attackCDs[0] <= 0 && range.inRange)
+        //{
+        //    Storm(targeting.currentTarget);
+
+        //} else if (attackCDs[1] <= 0 && range.inRange)
+        //{
+        //    Slam(targeting.currentTarget);
+        //}
+        // else if (attackCDs[2] <= 0 && range.inRange)
+        //{
+        //    Swipe(targeting.currentTarget);
+        //}
+        // else 
+        if (attackCDs[3] <= 0 /*&& range.inRange*/)
         {
             Punch(targeting.currentTarget);
         }
