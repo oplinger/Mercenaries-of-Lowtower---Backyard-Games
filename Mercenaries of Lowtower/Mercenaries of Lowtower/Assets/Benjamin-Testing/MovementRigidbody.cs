@@ -22,6 +22,8 @@ public class MovementRigidbody : MonoBehaviour
 
     public GameObject wall;
 
+    public bool isDead;
+
     // Use this for initialization
     void Start()
     {
@@ -29,7 +31,9 @@ public class MovementRigidbody : MonoBehaviour
         controller = GameObject.FindGameObjectWithTag("Controller").GetComponent<ControllerThing>();
         player = this.gameObject;
 
+        isDead = false;
 
+        jumpDir = Vector3.up*- 1;
     }
 
     // Update is called once per frame
@@ -43,10 +47,10 @@ public class MovementRigidbody : MonoBehaviour
         }
         if (isGrounded && jumpDir == Vector3.zero)
         {
-            controller.CastRay(gameObject, transform.up * -10, 0, 1, "Jump");
+            //controller.CastRay(gameObject, transform.up * -10, 0, 1, "Jump");
             print("anything");
         }
-        if (!climbing)
+        if (!climbing && !isDead)
         {
             playermovement = new Vector3(Input.GetAxis("Horizontal") * walkspeed * Time.deltaTime, 0, Input.GetAxis("Vertical") * walkspeed * Time.deltaTime);
             transform.Translate(playermovement);
@@ -57,6 +61,11 @@ public class MovementRigidbody : MonoBehaviour
             playermovement = new Vector3(0, Input.GetAxis("Vertical") / 10, 0);
             transform.Translate(playermovement);
 
+        }
+
+        if (isDead)
+        {
+            playermovement = new Vector3(0, 0, 0);
         }
 
 
@@ -85,14 +94,14 @@ public class MovementRigidbody : MonoBehaviour
         {
             isGrounded = true;
             jumpcount = 0;
-            controller.CastRay(gameObject, transform.up * -1, 0, 1, "Jump");
+            //controller.CastRay(gameObject, transform.up * -10, 0, 1, "Jump");
         }
         if (other.tag == "Wall" && jumpcount < 1)
         {
             isWalled = true;
             // controller.CastRay(gameObject, other.transform.position - transform.position, 0, 1, "Jump");
 
-            controller.CastRay(gameObject, other.transform.position - transform.position, 0, 1, "Jump");
+            //controller.CastRay(gameObject, other.transform.position - transform.position, 0, 1, "Jump");
 
         }
 
@@ -107,13 +116,13 @@ public class MovementRigidbody : MonoBehaviour
         if (other.tag == "Ground")
         {
             isGrounded = false;
-            jumpDir = Vector3.zero;
+            jumpDir = Vector3.up;
         }
         if (other.tag == "Wall")
         {
             isWalled = false;
             //jumpcount++;
-            jumpDir = Vector3.zero;
+            jumpDir = Vector3.up;
         }
     }
     public void PlayerJump(Vector3 jumpDirection)
@@ -122,7 +131,7 @@ public class MovementRigidbody : MonoBehaviour
 
         if (isGrounded)
         {
-
+            SetDirection();
             playerbody.AddForce(jumpDirection.normalized * jumpspeed, ForceMode.Impulse);
 
         }
@@ -135,9 +144,18 @@ public class MovementRigidbody : MonoBehaviour
 
         }
     }
-    public void SetDirection(Vector3 direction)
+    public void SetDirection()
     {
-        jumpDir = direction;
+        print("SetDirection");
+        RaycastHit hit;
+        Ray ray = new Ray(transform.position, Vector3.up*-10);
+        if (Physics.Raycast(ray, out hit))
+        {
+            Vector3 incomingVec = hit.point - transform.position;
+            Vector3 reflectVec = Vector3.Reflect(incomingVec, hit.normal);
+
+            jumpDir = reflectVec;
+        }
     }
 
 
