@@ -5,9 +5,11 @@ using UnityEngine;
 public class ReviveHalf : MonoBehaviour {
 
     bool nearFallen;        //true if player is near a fallen teammate
+    public MovementRigidbody teammateScript;
 
-	// Use this for initialization
-	void Start () {
+    // Use this for initialization
+    void Start () {
+
 		
 	}
 	
@@ -27,11 +29,12 @@ public class ReviveHalf : MonoBehaviour {
         if (other.tag=="Player")
             {
 
-            MovementRigidbody teammateScript = other.gameObject.GetComponent<MovementRigidbody>();
-            Health teammateHealth = other.gameObject.GetComponent<Health>();
+            teammateScript = other.gameObject.GetComponent<MovementRigidbody>();
 
             if (teammateScript.isDead==true && Input.GetButton("Revive"))
             {
+                Health teammateHealth = other.gameObject.GetComponent<Health>();
+
                 teammateHealth.health = 50;
                 teammateScript.isDead = false;
             }

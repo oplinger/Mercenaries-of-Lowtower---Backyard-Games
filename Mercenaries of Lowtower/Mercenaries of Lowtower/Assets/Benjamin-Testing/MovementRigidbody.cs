@@ -44,6 +44,7 @@ public class MovementRigidbody : MonoBehaviour
         if (isGrounded)
         {
             isWalled = false;
+            playerbody.velocity = new Vector3(0,0,0);
         }
         if (isGrounded && jumpDir == Vector3.zero)
         {
@@ -70,7 +71,7 @@ public class MovementRigidbody : MonoBehaviour
 
 
         // playermovement.y -= gravity * Time.deltaTime;
-        if (Input.GetButton("Jump"))
+        /*if (Input.GetButton("Jump"))
         {
             PlayerJump(jumpDir);
 
@@ -78,7 +79,7 @@ public class MovementRigidbody : MonoBehaviour
             //{
             //    PlayerJump(jumpDir);
             //}
-        }
+        }*/
 
     }
     private void OnTriggerEnter(Collider other)
@@ -125,7 +126,7 @@ public class MovementRigidbody : MonoBehaviour
             jumpDir = Vector3.up;
         }
     }
-    public void PlayerJump(Vector3 jumpDirection)
+    /*public void PlayerJump(Vector3 jumpDirection)
     {
 
 
@@ -156,7 +157,7 @@ public class MovementRigidbody : MonoBehaviour
 
             jumpDir = reflectVec;
         }
-    }
+    }*/
 
 
 }

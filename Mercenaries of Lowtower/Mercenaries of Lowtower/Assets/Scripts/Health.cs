@@ -13,7 +13,7 @@ public class Health : MonoBehaviour {
 	void Start () {
         health = 100;
         player = this.gameObject;
-        playerMoveScript = GetComponent<MovementRigidbody>();
+        //playerMoveScript = GetComponent<MovementRigidbody>();
 	}
 
     // This method takes passed in data and manipulates the health value. Damage is the amount of health lost or gained (negative values are healing) 
@@ -39,6 +39,8 @@ public class Health : MonoBehaviour {
     {
         if (health<=0)
         {
+
+            playerMoveScript = GetComponent<MovementRigidbody>();
             playerMoveScript.isDead = true;
         }
     }
