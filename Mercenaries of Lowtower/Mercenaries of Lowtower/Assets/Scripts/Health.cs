@@ -14,7 +14,15 @@ public class Health : MonoBehaviour {
     //and the ID is the character ID that is doing the damage. These are assigned to players by the boss on start.
     public void modifyHealth(float dam, int ID)
     {
-        health -= dam;
+        if(health > 0)
+        {
+            health -= dam;
+        }
+        else if(health <= 0)
+        {
+            Debug.Log("Player is dead.");
+            GetComponent<DeathScript>().PlayerDeath();
+        }
        
         // If the target is an enemy, it will convert any damage done to it to threat, for targeting purposes.
         if (gameObject.tag == "Enemy")
