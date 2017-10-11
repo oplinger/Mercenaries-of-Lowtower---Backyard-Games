@@ -24,6 +24,8 @@ public class MovementRigidbody : MonoBehaviour
 
     public bool isDead;
 
+    public float wallJumpForce;
+
     // Use this for initialization
     void Start()
     {
@@ -49,12 +51,16 @@ public class MovementRigidbody : MonoBehaviour
         if (isGrounded && jumpDir == Vector3.zero)
         {
             //controller.CastRay(gameObject, transform.up * -10, 0, 1, "Jump");
-            print("anything");
         }
         if (!climbing && !isDead)
         {
-            playermovement = new Vector3(Input.GetAxis("Horizontal") * walkspeed * Time.deltaTime, 0, Input.GetAxis("Vertical") * walkspeed * Time.deltaTime);
-            transform.Translate(playermovement);
+            playermovement = new Vector3(Input.GetAxis("Horizontal"), 0, Input.GetAxis("Vertical"));
+            //Vector3 relpos = playermovement - transform.position;
+            if (playermovement != Vector3.zero)
+            {
+                transform.rotation = Quaternion.LookRotation(playermovement);
+                transform.Translate(playermovement * walkspeed * Time.deltaTime, Space.World);
+            }
 
         }
         if (climbing)
@@ -100,8 +106,11 @@ public class MovementRigidbody : MonoBehaviour
         if (other.tag == "Wall" && jumpcount < 1)
         {
             isWalled = true;
-            // controller.CastRay(gameObject, other.transform.position - transform.position, 0, 1, "Jump");
 
+            //hey maybe this lets you wall jump in an inputted direction
+            playerbody.AddForce(Input.GetAxis("Horizontal") + wallJumpForce, 0, Input.GetAxis("Vertical") + wallJumpForce, ForceMode.Impulse);
+
+            // controller.CastRay(gameObject, other.transform.position - transform.position, 0, 1, "Jump");
             //controller.CastRay(gameObject, other.transform.position - transform.position, 0, 1, "Jump");
 
         }
