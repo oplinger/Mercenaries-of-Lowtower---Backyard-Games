@@ -88,6 +88,22 @@ public class MovementRigidbody : MonoBehaviour
         }*/
 
     }
+
+    private void OnTriggerStay(Collider other)
+    {
+
+        if (other.tag == "Wall" && jumpcount < 1 && Input.GetButton("Jump"))
+        {
+            isWalled = true;
+
+            //hey maybe this lets you wall jump in an inputted direction
+            playerbody.AddForce(Input.GetAxis("Horizontal") * wallJumpForce, 10, Input.GetAxis("Vertical") * wallJumpForce, ForceMode.Impulse);
+
+            // controller.CastRay(gameObject, other.transform.position - transform.position, 0, 1, "Jump");
+            //controller.CastRay(gameObject, other.transform.position - transform.position, 0, 1, "Jump");
+
+        }
+    }
     private void OnTriggerEnter(Collider other)
     {
 
@@ -102,17 +118,6 @@ public class MovementRigidbody : MonoBehaviour
             isGrounded = true;
             jumpcount = 0;
             //controller.CastRay(gameObject, transform.up * -10, 0, 1, "Jump");
-        }
-        if (other.tag == "Wall" && jumpcount < 1)
-        {
-            isWalled = true;
-
-            //hey maybe this lets you wall jump in an inputted direction
-            playerbody.AddForce(Input.GetAxis("Horizontal") + wallJumpForce, 0, Input.GetAxis("Vertical") + wallJumpForce, ForceMode.Impulse);
-
-            // controller.CastRay(gameObject, other.transform.position - transform.position, 0, 1, "Jump");
-            //controller.CastRay(gameObject, other.transform.position - transform.position, 0, 1, "Jump");
-
         }
 
     }
