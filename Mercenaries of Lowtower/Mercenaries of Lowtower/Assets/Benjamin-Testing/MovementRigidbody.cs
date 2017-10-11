@@ -73,6 +73,7 @@ public class MovementRigidbody : MonoBehaviour
         if (isDead)
         {
             playermovement = new Vector3(0, 0, 0);
+            controller.DeathCount(1,0);
         }
 
 
