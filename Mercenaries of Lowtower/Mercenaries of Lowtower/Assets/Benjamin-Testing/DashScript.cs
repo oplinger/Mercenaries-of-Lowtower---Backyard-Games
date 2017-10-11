@@ -34,14 +34,14 @@ public class DashScript : MonoBehaviour {
     void Update()
     {
         //CharacterController controller = GetComponent<CharacterController>();
-        
 
+        //print(moveRbScript.playerbody.gameObject.transform.Translate);
 
         if (Input.GetAxis("Dash") == 1 && !isDashing)
         {
             isDashing = true;
 
-            moveRbScript.playerbody.velocity=moveRbScript.playermovement*dashSpeed;
+           // moveRbScript.playerbody.velocity=moveRbScript.playermovement*dashSpeed;
 
             /*if (Input.GetAxis("Horizontal") > 0)
             {
@@ -61,14 +61,17 @@ public class DashScript : MonoBehaviour {
                 dashVector.z = dashSpeed * -1;
             }*/
 
+            //moveRbScript.playerbody.velocity = Vector3.Lerp(moveRbScript.playermovement, moveRbScript.playermovement * dashSpeed, tempDashLength);
+
             tempDashLength = dashLength;
             tempDashSpeed = dashSpeed;
         }
 
         if (isDashing)
         {
-            tempDashLength--; 
-
+            tempDashLength--;
+            //moveRbScript.playerbody.AddForce(transform.forward * dashSpeed, ForceMode.Impulse);
+            transform.localPosition += transform.forward*dashSpeed;
             if (tempDashLength <= 0)
             {
                 isDashing = false;
@@ -79,7 +82,7 @@ public class DashScript : MonoBehaviour {
         
         moveDirection.y -= gravity * Time.deltaTime;
 
-        Debug.Log("" + dashVector);
+       // Debug.Log("" + dashVector);
         //transform.rotation = Quaternion.LookRotation(new Vector3(moveDirection.x, 0, moveDirection.z));
 
     }

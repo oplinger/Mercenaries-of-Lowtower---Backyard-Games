@@ -44,7 +44,7 @@ public class P2MovementRigidbody : MonoBehaviour
         if (isGrounded && jumpDir == Vector3.zero)
         {
             controller.CastRay(gameObject, transform.up * -10, 0, 1, "P2Jump");
-            print("anything");
+           // print("anything");
         }
         if (!climbing)
         {

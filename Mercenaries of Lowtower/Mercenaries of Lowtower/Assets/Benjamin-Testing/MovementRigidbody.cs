@@ -44,12 +44,18 @@ public class MovementRigidbody : MonoBehaviour
         if (isGrounded && jumpDir == Vector3.zero)
         {
             controller.CastRay(gameObject, transform.up * -10, 0, 1, "Jump");
-            print("anything");
+            //print("anything");
         }
         if (!climbing)
         {
-            playermovement = new Vector3(Input.GetAxis("Horizontal") * walkspeed * Time.deltaTime, 0, Input.GetAxis("Vertical") * walkspeed * Time.deltaTime);
-            transform.Translate(playermovement);
+            playermovement = new Vector3(Input.GetAxis("Horizontal"), 0, Input.GetAxis("Vertical"));
+            //Vector3 relpos = playermovement - transform.position;
+            if (playermovement != Vector3.zero)
+            {
+                transform.rotation = Quaternion.LookRotation(playermovement);
+                transform.Translate(playermovement * walkspeed * Time.deltaTime, Space.World);
+            }
+           
 
         }
         if (climbing)

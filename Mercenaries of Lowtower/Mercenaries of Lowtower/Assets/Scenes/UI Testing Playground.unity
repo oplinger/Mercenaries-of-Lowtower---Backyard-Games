@@ -136,6 +136,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: be057ff609c9fa34ca28c33ab01692c2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  bossTargets: {fileID: 0}
+  bolt: {fileID: 0}
+  P2BoltSpawn: {fileID: 0}
 --- !u!114 &46216627
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1826,11 +1829,11 @@ MonoBehaviour:
   m_Script: {fileID: 1980459831, guid: f70555f144d8491a825f0804e09c671c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_UiScaleMode: 0
+  m_UiScaleMode: 1
   m_ReferencePixelsPerUnit: 100
   m_ScaleFactor: 1
   m_ReferenceResolution: {x: 800, y: 600}
-  m_ScreenMatchMode: 0
+  m_ScreenMatchMode: 1
   m_MatchWidthOrHeight: 0
   m_PhysicalUnit: 3
   m_FallbackScreenDPI: 96
@@ -2643,6 +2646,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   attackCDs: []
   currentGCD: 0
+  bossPhase: 0
 --- !u!114 &1531376951
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2654,7 +2658,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a8674ed4aac036d4a9d4fb5a968142dc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  targetDistance: 0
   inRange: 0
+  speed: 0
+  rotateSpeed: 4
 --- !u!1 &1553760784
 GameObject:
   m_ObjectHideFlags: 0
