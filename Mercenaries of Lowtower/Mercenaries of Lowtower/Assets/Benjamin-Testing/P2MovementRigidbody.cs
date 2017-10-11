@@ -43,7 +43,7 @@ public class P2MovementRigidbody : MonoBehaviour
         }
         if (isGrounded && jumpDir == Vector3.zero)
         {
-            controller.CastRay(gameObject, transform.up * -10, 0, 1, "P2Jump");
+            //controller.CastRay(gameObject, transform.up * -10, 0, 1, "P2Jump");
             print("anything");
         }
         if (!climbing)
@@ -85,14 +85,14 @@ public class P2MovementRigidbody : MonoBehaviour
         {
             isGrounded = true;
             jumpcount = 0;
-            controller.CastRay(gameObject, transform.up * -1, 0, 1, "P2Jump");
+            //controller.CastRay(gameObject, transform.up * -1, 0, 1, "P2Jump");
         }
         if (other.tag == "Wall" && jumpcount < 1)
         {
             isWalled = true;
             // controller.CastRay(gameObject, other.transform.position - transform.position, 0, 1, "Jump");
 
-            controller.CastRay(gameObject, other.transform.position - transform.position, 0, 1, "P2Jump");
+            //controller.CastRay(gameObject, other.transform.position - transform.position, 0, 1, "P2Jump");
 
         }
 

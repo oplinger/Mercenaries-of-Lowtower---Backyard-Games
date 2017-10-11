@@ -89,26 +89,27 @@ public class BossAttackAI : MonoBehaviour {
     {
         Health health = target.GetComponent<Health>();
         health.modifyHealth(1, 9);
-        attackCDs[3] = 2;
-        triggerGCD(2);
+        attackCDs[3] = 1;
+        triggerGCD(1);
 
         /*
          
         **********QUESTION**********:
          Takes awhile for the punch to go off is that because the CD or GCD?
-
+         It takes a while because once it is in range it starts in phase 2. It also is in the "punch" method, so it is only called when punch is (the CD). Swapped the stack and adjusted the CDs.
          */
 
-        // If the player is within range, the punch animation will be triggered
-        if (range.inRange && bossPhase != 2)
-        {
-            bossPhase = 2;
-        }
-        // If the player is out of range, the boss will go into the preparing to punch animation
-        else if(range.inRange && bossPhase != 1)
+               // If the player is out of range, the boss will go into the preparing to punch animation
+        if (range.inRange && bossPhase != 1)
         {
             bossPhase = 1;
         }
+        // If the player is within range, the punch animation will be triggered
+        else if (range.inRange && bossPhase != 2)
+        {
+            bossPhase = 2;
+        }
+ 
 
     }
     //THE ATTACKS ARE IN ORDER OF PRIORITY. VERY IMPORTANT.
@@ -134,7 +135,7 @@ public class BossAttackAI : MonoBehaviour {
         //    Swipe(targeting.currentTarget);
         //}
         // else 
-        if (attackCDs[3] <= 0 /*&& range.inRange*/)
+        if (attackCDs[3] <= 0 && range.inRange)
         {
             Punch(targeting.currentTarget);
         }

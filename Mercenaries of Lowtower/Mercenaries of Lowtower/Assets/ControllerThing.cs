@@ -132,7 +132,7 @@ public class ControllerThing : MonoBehaviour
 
                 move.SetDirection(reflectVec);
 
-                print(reflectVec);
+                //print(reflectVec);
             }
         }
     }

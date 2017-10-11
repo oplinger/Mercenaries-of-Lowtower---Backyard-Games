@@ -1,8 +1,8 @@
-﻿//using System.Collections;
-//using System.Collections.Generic;
-//using UnityEngine;
+﻿using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
 
-//public class ControllerThing : MonoBehaviour {
+public class ControllerThing : MonoBehaviour {
 
 //    Movement move;
 //    HealthScript health;
@@ -63,7 +63,7 @@
 //    //    Debug.DrawRay(origin, direction*range, Color.white, 3);
 //    //    RaycastHit hit;
 //    //    Ray ray = new Ray(origin, direction);
-//    //    if (Physics.Raycast(ray, out hit, range))
+//    //    f (Physics.Raycast(ray, out hit, range))
 //    //    {
 //    //        SpawnRope(prefabs[1], hit.point);
 //    //    }
@@ -136,4 +136,4 @@
 //            }
 //        }
 //    }
-//}
+}
