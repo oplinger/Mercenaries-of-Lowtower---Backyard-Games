@@ -8,6 +8,7 @@ public class MovementRigidbody : MonoBehaviour
     public GameObject player;
     public float walkspeed;
     public Vector3 playermovement;
+    PlayerID ID;
 
     ControllerThing controller;
 
@@ -29,6 +30,7 @@ public class MovementRigidbody : MonoBehaviour
     // Use this for initialization
     void Start()
     {
+        ID = GetComponent<PlayerID>();
         playerbody = GetComponent<Rigidbody>();
         controller = GameObject.FindGameObjectWithTag("Controller").GetComponent<ControllerThing>();
         player = this.gameObject;
@@ -54,13 +56,46 @@ public class MovementRigidbody : MonoBehaviour
         }
         if (!climbing && !isDead)
         {
-            playermovement = new Vector3(Input.GetAxis("Horizontal"), 0, Input.GetAxis("Vertical"));
-            //Vector3 relpos = playermovement - transform.position;
-            if (playermovement != Vector3.zero)
+            if (ID.playerID == 0)
             {
-                transform.rotation = Quaternion.LookRotation(playermovement);
-                transform.Translate(playermovement * walkspeed * Time.deltaTime, Space.World);
+                playermovement = new Vector3(Input.GetAxis("Horizontal"), 0, Input.GetAxis("Vertical"));
+                //Vector3 relpos = playermovement - transform.position;
+                if (playermovement != Vector3.zero)
+                {
+                    transform.rotation = Quaternion.LookRotation(playermovement);
+                    transform.Translate(playermovement * walkspeed * Time.deltaTime, Space.World);
+                }
             }
+            //if (ID.playerID == 1)
+            //{
+            //    playermovement = new Vector3(Input.GetAxis("P2Horizontal"), 0, Input.GetAxis("P2Vertical"));
+            //    //Vector3 relpos = playermovement - transform.position;
+            //    if (playermovement != Vector3.zero)
+            //    {
+            //        transform.rotation = Quaternion.LookRotation(playermovement);
+            //        transform.Translate(playermovement * walkspeed * Time.deltaTime, Space.World);
+            //    }
+            //}
+            if (ID.playerID == 2)
+            {
+                playermovement = new Vector3(Input.GetAxis("P2Horizontal"), 0, Input.GetAxis("P2Vertical"));
+                //Vector3 relpos = playermovement - transform.position;
+                if (playermovement != Vector3.zero)
+                {
+                    transform.rotation = Quaternion.LookRotation(playermovement);
+                    transform.Translate(playermovement * walkspeed * Time.deltaTime, Space.World);
+                }
+            }
+            //if (ID.playerID == 3)
+            //{
+            //    playermovement = new Vector3(Input.GetAxis("Horizontal"), 0, Input.GetAxis("Vertical"));
+            //    //Vector3 relpos = playermovement - transform.position;
+            //    if (playermovement != Vector3.zero)
+            //    {
+            //        transform.rotation = Quaternion.LookRotation(playermovement);
+            //        transform.Translate(playermovement * walkspeed * Time.deltaTime, Space.World);
+            //    }
+            //}
 
         }
         if (climbing)

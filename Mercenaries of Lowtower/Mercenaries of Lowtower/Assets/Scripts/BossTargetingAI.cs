@@ -4,7 +4,8 @@ using UnityEngine;
 
 public class BossTargetingAI : MonoBehaviour {
 
-   public Collider[] targets;
+    public ControllerThing controller;
+
     public float[] damageThreat;
     public float[] distanceThreat;
     public float[] combinedThreat;
@@ -17,15 +18,14 @@ public class BossTargetingAI : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
+            
         // At start the boss finds targets in the arena.
         // damageThreat is the threat from damage
         // distanceThreat is the threat from distance
         // combinedThreat is the combined output of the 2
-        FindTarget();
-        damageThreat = new float[targets.Length];
-        distanceThreat = new float[targets.Length];
-        combinedThreat = new float[targets.Length];
-        sendIDs();
+        damageThreat = new float[controller.targets.Length];
+        distanceThreat = new float[controller.targets.Length];
+        combinedThreat = new float[controller.targets.Length];
     }
 	
 	// finds the distance threat, combines the threat values, and takes the highest threat value and makes that the bosses current target.
@@ -35,29 +35,12 @@ public class BossTargetingAI : MonoBehaviour {
         findCurrentTarget();
     }
 
-    // Finds all targets in the arena in the Players layer.
-    void FindTarget()
-    {
-        Collider[] hitColliders = Physics.OverlapSphere(transform.position, 100, 1 << 8);
-        targets = hitColliders;
-    }
-
-    // Sends ID values to each player the boss detects, this is used to assign threat values to the characters. Is scalable.
-    public void sendIDs()
-    {
-        for(int i = 0; i < targets.Length; i++)
-        {
-            GameObject currentTar = targets[i].gameObject;
-             ID = currentTar.GetComponent<Attack>();
-            //ID.assignSlot(i);
-        }
-    }
     // Finds the distance to all found targets and adds the threat value from that distance to the distance threat array
     public void targetDistance()
     {
-        for (int i = 0; i < targets.Length; i++)
+        for (int i = 0; i < controller.targets.Length; i++)
         {
-           distance = 100 - Vector3.Distance(transform.position, targets[i].transform.position);
+           distance = 100 - Vector3.Distance(transform.position, controller.targets[i].transform.position);
             distanceThreat[i] = distance;          
         }
     }
@@ -78,7 +61,7 @@ public class BossTargetingAI : MonoBehaviour {
     // Combines the distance threat value and the damage threat values into a new array, maintaining ID integrity.
     public void combineThreat()
     {
-        for (int i = 0; i < targets.Length; i++)
+        for (int i = 0; i < controller.targets.Length; i++)
         {
             combinedThreat[i] = damageThreat[i] + distanceThreat[i];
         }
@@ -88,12 +71,12 @@ public class BossTargetingAI : MonoBehaviour {
     void findCurrentTarget()
     {
         float highestThreat = 0;
-        for (int i = 0; i < targets.Length; i++)
+        for (int i = 0; i < controller.targets.Length; i++)
         {
             if (combinedThreat[i] > highestThreat)
             {
                 highestThreat = combinedThreat[i];
-                currentTarget = targets[i].gameObject;
+                currentTarget = controller.targets[i].gameObject;
             }
 
         }

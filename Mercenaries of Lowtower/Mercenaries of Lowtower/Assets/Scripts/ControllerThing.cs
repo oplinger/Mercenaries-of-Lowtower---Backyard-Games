@@ -5,6 +5,8 @@ using UnityEngine.SceneManagement;
 
 public class ControllerThing : MonoBehaviour {
     public int[] deathcount;
+    public Collider[] targets;
+
     //    Movement move;
     //    HealthScript health;
     //    MeleeAttack melee;
@@ -12,10 +14,13 @@ public class ControllerThing : MonoBehaviour {
     //    public GameObject[] prefabs;
 
     //    public float no = 19;
-      private void Start()
+    private void Awake()
       {
+        FindTarget();
         deathcount = new int[4];
-        }
+
+
+    }
     //    //public void CastJumpRay(Vector3 origin, Vector3 direction, GameObject actor)
     //    //{
     //    //    move = actor.GetComponent<Movement>();
@@ -161,5 +166,36 @@ public class ControllerThing : MonoBehaviour {
     {
         deathcount[playerID] = deaths;
         print(deathcount);
+    }
+    void FindTarget()
+    {
+        Collider[] hitColliders = Physics.OverlapSphere(transform.position, 100, 1 << 8);
+        targets = hitColliders;
+        sendIDs();
+    }
+    public void sendIDs()
+    {
+        for (int i = 0; i < targets.Length; i++)
+        {
+            GameObject currentTar = targets[i].gameObject;
+           PlayerID ID = currentTar.GetComponent<PlayerID>();
+            //ID.assignSlot(i);
+            if (targets[i].gameObject.name == "Tank Character")
+            {
+                ID.assignID(0);
+            }
+            else if (targets[i].gameObject.name == "Melee Character")
+            {
+                ID.assignID(2);
+            }
+           else if (targets[i].gameObject.name == "Healer Character")
+            {
+                ID.assignID(1);
+            }
+            else if (targets[i].gameObject.name == "Ranged Character")
+            {
+                ID.assignID(3);
+            }
+        }
     }
 }
