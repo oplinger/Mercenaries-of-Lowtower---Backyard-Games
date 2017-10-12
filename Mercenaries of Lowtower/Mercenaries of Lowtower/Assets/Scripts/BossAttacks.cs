@@ -116,7 +116,7 @@ public class BossAttacks : MonoBehaviour {
         Debug.Log("Prepare Slam!");
 
         float dist = Vector3.Distance(targetedPlayer.position, transform.position);
-        print("Distance to other: " + dist);
+        //print("Distance to other: " + dist);
 
         if (dist >= 8)
         {

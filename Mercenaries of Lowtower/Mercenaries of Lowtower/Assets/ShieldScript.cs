@@ -30,7 +30,7 @@ public class ShieldScript : MonoBehaviour {
     {
         if (other.tag == "Player" && Input.GetButton("DropShield"))
         {
-            transform.position += new Vector3(Input.GetAxis("Horizontal")*.15f, 0, Input.GetAxis("Vertical")*.15f);
+            transform.position += new Vector3(Input.GetAxis("TankHorizontal")*.15f, 0, Input.GetAxis("TankVertical")*.15f);
         }
     }
 }

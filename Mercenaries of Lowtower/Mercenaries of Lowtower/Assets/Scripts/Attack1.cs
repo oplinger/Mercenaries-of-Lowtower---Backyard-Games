@@ -20,9 +20,9 @@ public class Attack1 : MonoBehaviour {
     // Update is called once per frame
     void Update () {
         timer += Time.deltaTime;
-        if (Input.GetButtonDown("P2Attack"))
+        if (Input.GetAxis("RangedAttack")==1)
         {
-
+            //Attack move
             abilities.executeAttack(2, targetslot, gameObject);
 
             //RaycastHit hit;
@@ -36,6 +36,7 @@ public class Attack1 : MonoBehaviour {
             //}
 
         }
+        //Utility move
         if (Input.GetButtonDown("P2Attack1"))
         {
             abilities.executeAttack(3, targetslot, gameObject);

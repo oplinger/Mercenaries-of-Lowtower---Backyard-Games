@@ -24,6 +24,8 @@ GameObject:
   - component: {fileID: 23324989569569516}
   - component: {fileID: 143341252291276538}
   - component: {fileID: 114098676171055878}
+  - component: {fileID: 54761416838306298}
+  - component: {fileID: 114388212832829338}
   m_Layer: 0
   m_Name: Capsule-ControllerComponent
   m_TagString: Player
@@ -38,7 +40,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1961925206739816}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 4.14, z: 0}
+  m_LocalPosition: {x: 306.5339, y: 1.877, z: -162.83452}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -83,13 +85,28 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1961925206739816}
   m_Mesh: {fileID: 10208, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!54 &54761416838306298
+Rigidbody:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1961925206739816}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 1
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 112
+  m_CollisionDetection: 0
 --- !u!114 &114098676171055878
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1961925206739816}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 19e33e7050c70044189a265f23370130, type: 3}
   m_Name: 
@@ -101,6 +118,24 @@ MonoBehaviour:
   isDashing: 0
   dashLength: 20
   tempDashLength: 0
+--- !u!114 &114388212832829338
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1961925206739816}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c0a5bf947ad955c4e982975b5d142f61, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  player: {fileID: 1961925206739816}
+  walkspeed: 15
+  playermovement: {x: 0, y: 0, z: 0}
+  isGrounded: 0
+  isWalled: 0
+  jumpspeed: 7
+  wall: {fileID: 0}
 --- !u!136 &136229380557225540
 CapsuleCollider:
   m_ObjectHideFlags: 1
@@ -122,7 +157,7 @@ CharacterController:
   m_GameObject: {fileID: 1961925206739816}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 2
   m_Height: 2
   m_Radius: 0.5
