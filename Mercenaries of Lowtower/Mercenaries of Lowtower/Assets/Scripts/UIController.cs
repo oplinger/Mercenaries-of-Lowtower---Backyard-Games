@@ -4,12 +4,10 @@ using UnityEngine;
 using UnityEngine.UI;
 
 public class UIController : MonoBehaviour {
-    public GameObject player1;
-    public GameObject player2;
-    public GameObject player3;
-    public GameObject player4;
+    public GameObject[] players;
     public GameObject boss;
-    public GameObject controller;
+    public GameObject controllerThing;
+    ControllerThing controller;
     PlayerCDController playerCooldowns;
 
     public float timer = 600;
@@ -17,22 +15,36 @@ public class UIController : MonoBehaviour {
     public Text[] texts;
     public Image[] healthBars;
 
-    Health player1Health;
-    Health player2Health;
-    Health player3Health;
-    Health player4Health;
+
+    Health[] playerHealth;
+    //Health player1Health;
+    //Health player2Health;
+    //Health player3Health;
+    //Health player4Health;
     Health bossHealth;
 
     float imagewidth;
     // Use this for initialization
-    void Awake () {
+    void Start () {
+        controller = controllerThing.GetComponent<ControllerThing>();
+        players = new GameObject[4];
+        playerHealth = new Health[4];
+
+        for (int i = 0; i < controller.IDs.Length; i++)
+        {
+            players[i] = controller.IDs[i].gameObject;
+            playerHealth[i] = players[i].GetComponent<Health>();
+            
+        }
+
+
         texts = GetComponentsInChildren<Text>();
         healthBars = GetComponentsInChildren<Image>();
         timer = 600;
-        player1Health = player1.GetComponent<Health>();
-        player2Health = player2.GetComponent<Health>();
-        player3Health = player3.GetComponent<Health>();
-        player4Health = player4.GetComponent<Health>();
+        //player1Health = player1.GetComponent<Health>();
+        //player2Health = player2.GetComponent<Health>();
+        //player3Health = player3.GetComponent<Health>();
+        //player4Health = player4.GetComponent<Health>();
         bossHealth = boss.GetComponent<Health>();
 
         playerCooldowns = controller.GetComponent<PlayerCDController>();

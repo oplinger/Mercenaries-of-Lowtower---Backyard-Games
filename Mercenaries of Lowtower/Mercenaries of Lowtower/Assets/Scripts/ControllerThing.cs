@@ -6,6 +6,7 @@ using UnityEngine.SceneManagement;
 public class ControllerThing : MonoBehaviour {
     public int[] deathcount;
     public Collider[] targets;
+    public Collider[] IDs;
 
     //    Movement move;
     //    HealthScript health;
@@ -16,8 +17,11 @@ public class ControllerThing : MonoBehaviour {
     //    public float no = 19;
     private void Awake()
       {
+        IDs = new Collider[4];
+
         FindTarget();
         deathcount = new int[4];
+        AssignIDsToArray();
 
 
     }
@@ -183,19 +187,32 @@ public class ControllerThing : MonoBehaviour {
             if (targets[i].gameObject.name == "Tank Character")
             {
                 ID.assignID(0);
+                IDs[0] = targets[i];
             }
             else if (targets[i].gameObject.name == "Melee Character")
             {
                 ID.assignID(2);
+                IDs[2] = targets[i];
+
             }
-           else if (targets[i].gameObject.name == "Healer Character")
+            else if (targets[i].gameObject.name == "Healer Character")
             {
                 ID.assignID(1);
+                IDs[1] = targets[i];
+
             }
             else if (targets[i].gameObject.name == "Ranged Character")
             {
                 ID.assignID(3);
+                IDs[3] = targets[i];
+
             }
         }
+        AssignIDsToArray();
+
+    }
+    public void AssignIDsToArray()
+    {
+        targets = IDs;
     }
 }
