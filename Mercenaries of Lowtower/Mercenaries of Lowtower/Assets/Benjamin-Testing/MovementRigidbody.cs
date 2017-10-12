@@ -9,6 +9,7 @@ public class MovementRigidbody : MonoBehaviour
     public float walkspeed;
     public Vector3 playermovement;
     PlayerID ID;
+    public float jumpForce;
 
     ControllerThing controller;
 
@@ -123,6 +124,29 @@ public class MovementRigidbody : MonoBehaviour
             //}
         }*/
 
+    }
+
+    private void FixedUpdate()
+    {
+        if (ID.playerID == 0 && Input.GetButton("TankJump") && isGrounded)
+        {
+            playerbody.AddForce(0, jumpForce, 0, ForceMode.Impulse);
+        }
+
+        //if (ID.playerID == 1 && Input.GetButton("HealerJump") && isGrounded)
+        //{
+        //    playerbody.AddForce(0, jumpForce, 0, ForceMode.Impulse);
+        //}
+
+        if (ID.playerID == 2 && Input.GetButton("MeleeJump") && isGrounded)
+        {
+            playerbody.AddForce(0, jumpForce, 0, ForceMode.Impulse);
+        }
+
+        //if (ID.playerID == 3 && Input.GetButton("RangedJump") && isGrounded)
+        //{
+        //    playerbody.AddForce(0, jumpForce, 0, ForceMode.Impulse);
+        //}
     }
 
     private void OnTriggerStay(Collider other)

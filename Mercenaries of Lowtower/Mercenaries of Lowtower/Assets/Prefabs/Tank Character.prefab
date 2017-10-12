@@ -24,7 +24,6 @@ GameObject:
   - component: {fileID: 23874474596911554}
   - component: {fileID: 54874198170059874}
   - component: {fileID: 136724534958675584}
-  - component: {fileID: 114660014742575418}
   - component: {fileID: 114238987079419078}
   - component: {fileID: 114095192669031346}
   - component: {fileID: 114680544022388050}
@@ -145,31 +144,13 @@ MonoBehaviour:
   player: {fileID: 0}
   walkspeed: 0
   playermovement: {x: 0, y: 0, z: 0}
+  jumpForce: 0
   isGrounded: 0
   isWalled: 0
   jumpspeed: 0
   wall: {fileID: 0}
   isDead: 0
   wallJumpForce: 0
---- !u!114 &114660014742575418
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1373311421524532}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e99bd52f5fb6dbd4dbc9c99bb9379cfc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  playerbody: {fileID: 0}
-  player: {fileID: 1373311421524532}
-  walkspeed: 15
-  playermovement: {x: 0, y: 0, z: 0}
-  isGrounded: 0
-  isWalled: 0
-  jumpspeed: 7
-  wall: {fileID: 0}
 --- !u!114 &114680544022388050
 MonoBehaviour:
   m_ObjectHideFlags: 1
