@@ -27,29 +27,19 @@ public class Attack : MonoBehaviour {
             if (Physics.Raycast(transform.position, -Vector3.forward, out hit, 1<<9))
             {
                 GameObject target = hit.collider.gameObject;
-                //print(target);
 
-                abilities.executeAttack(1, targetslot, target);
+                abilities.MeleeStrike(targetslot, target);
             }
 
         }
-
+        if (Input.GetAxis("RangedAttack") == 1)
+        {
+            abilities.RangedBolt(targetslot, gameObject);
+        }
+        //Utility move
+        if (Input.GetButtonDown("P2Attack1"))
+        {
+            abilities.RangedRopeBolt(targetslot, gameObject);
+        }
     }
-
-    // This method controls the damage done, it chooses a target, finds their health script, and applies damage as well as sends their ID.
-    //public void doAttack()
-    //{
- 
-
-    //   abilities.executeAttack(0);
-
-    //}
-
-    public void triggerCooldown(int AttackID, float cooldown)
-    {
-
-    }
-
-    // This just assigns the ID to the character. This is explained more in the BossTargetingAI script.
-
 }

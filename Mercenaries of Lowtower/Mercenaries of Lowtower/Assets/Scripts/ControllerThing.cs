@@ -169,7 +169,6 @@ public class ControllerThing : MonoBehaviour {
     public void DeathCount( int deaths, int playerID)
     {
         deathcount[playerID] = deaths;
-        print(deathcount);
     }
     void FindTarget()
     {

@@ -21,57 +21,38 @@ public class PlayerAbilityController : MonoBehaviour {
     void Update () {
     }
 
-   public void executeAttack(int attackID, int playerID, GameObject target)
+   //public void executeAttack(int attackID, int playerID, GameObject target)
+   // {
+
+
+   // }
+    public void MeleeStrike(int playerID, GameObject target)
     {
-        //Melee attack
-        //do attack thing based on attack ID
-        if (attackID == 0 && playerID == 2)
+        float damage = 5;
+        cooldown.triggerCooldown(6, cooldown.abilityCooldowns[6]);
+        Health health = target.GetComponent<Health>();
+        health.modifyHealth(damage, 2);
+    }
+    public void RangedBolt(int playerID, GameObject target)
+    {
+        if (cooldown.activeCooldowns[9] <= 0)
         {
-            if (cooldown.activeCooldowns[attackID] <= 0)
-            {
+            GameObject clone = Instantiate(bolt, P2BoltSpawn.transform.position, controller.targets[3].gameObject.transform.rotation);
+            Destroy(clone, 3);
 
-                float damage = 5;
-                cooldown.triggerCooldown(0, cooldown.abilityCooldowns[attackID]);
-                Health health = target.GetComponent<Health>();
-                health.modifyHealth(damage, 2);
-            }
+            cooldown.triggerCooldown(9, cooldown.abilityCooldowns[9]);
         }
-
-        if (attackID == 1)
+    }
+    public void RangedRopeBolt(int playerID, GameObject target)
+    {
+        if (cooldown.activeCooldowns[10] <= 0)
         {
-            if (cooldown.activeCooldowns[attackID] <= 0)
-            {
+            GameObject clone;
+            clone = Instantiate(Resources.Load("RopeBolt", typeof(GameObject)), controller.targets[0].gameObject.transform.position + (Vector3.forward * 2), Quaternion.identity) as GameObject;
+            Destroy(clone, 3);
+            cooldown.triggerCooldown(10, cooldown.abilityCooldowns[10]);
 
-                
-            }
+
         }
-
-        //Ranged attack
-        if (attackID == 2)
-        {
-            if (cooldown.activeCooldowns[9] <= 0)
-            {
-                GameObject clone = Instantiate(bolt, P2BoltSpawn.transform.position, controller.targets[3].gameObject.transform.rotation);
-                Destroy(clone, 3);
-                    
-                cooldown.triggerCooldown(9, 5);
-            }
-        }
-
-        //Ranged utility
-        if (attackID == 3)
-        {
-            if (cooldown.activeCooldowns[10] <= 0)
-            {
-                GameObject clone;
-                clone = Instantiate(Resources.Load("RopeBolt", typeof(GameObject)), controller.targets[0].gameObject.transform.position + (Vector3.forward*2), Quaternion.identity) as GameObject;
-                Destroy(clone, 3);
-                cooldown.triggerCooldown(10, 5);
-                Debug.DrawRay(controller.targets[0].gameObject.transform.position, Vector3.forward * 1000, Color.white, 1);
-                
-
-            }
-        }
-
     }
 }
