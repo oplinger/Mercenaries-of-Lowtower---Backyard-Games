@@ -8,6 +8,8 @@ public class MovementRigidbody : MonoBehaviour
     public GameObject player;
     public float walkspeed;
     public Vector3 playermovement;
+    PlayerID ID;
+    public float jumpForce;
 
     ControllerThing controller;
 
@@ -24,9 +26,12 @@ public class MovementRigidbody : MonoBehaviour
 
     public bool isDead;
 
+    public float wallJumpForce;
+
     // Use this for initialization
     void Start()
     {
+        ID = GetComponent<PlayerID>();
         playerbody = GetComponent<Rigidbody>();
         controller = GameObject.FindGameObjectWithTag("Controller").GetComponent<ControllerThing>();
         player = this.gameObject;
@@ -49,12 +54,52 @@ public class MovementRigidbody : MonoBehaviour
         if (isGrounded && jumpDir == Vector3.zero)
         {
             //controller.CastRay(gameObject, transform.up * -10, 0, 1, "Jump");
-            print("anything");
         }
         if (!climbing && !isDead)
         {
-            playermovement = new Vector3(Input.GetAxis("Horizontal") * walkspeed * Time.deltaTime, 0, Input.GetAxis("Vertical") * walkspeed * Time.deltaTime);
-            transform.Translate(playermovement);
+            if (ID.playerID == 0)
+            {
+                playermovement = new Vector3(Input.GetAxis("TankHorizontal"), 0, Input.GetAxis("TankVertical"));
+                //Vector3 relpos = playermovement - transform.position;
+                if (playermovement != Vector3.zero)
+                {
+                    transform.rotation = Quaternion.LookRotation(playermovement);
+                    transform.Translate(playermovement * walkspeed * Time.deltaTime, Space.World);
+                }
+            }
+
+            if (ID.playerID == 1)
+            {
+                playermovement = new Vector3(Input.GetAxis("HealerHorizontal"), 0, Input.GetAxis("HealerVertical"));
+                //Vector3 relpos = playermovement - transform.position;
+                if (playermovement != Vector3.zero)
+                {
+                    transform.rotation = Quaternion.LookRotation(playermovement);
+                    transform.Translate(playermovement * walkspeed * Time.deltaTime, Space.World);
+                }
+            }
+
+            if (ID.playerID == 2)
+            {
+                playermovement = new Vector3(Input.GetAxis("MeleeHorizontal"), 0, Input.GetAxis("MeleeVertical"));
+                //Vector3 relpos = playermovement - transform.position;
+                if (playermovement != Vector3.zero)
+                {
+                    transform.rotation = Quaternion.LookRotation(playermovement);
+                    transform.Translate(playermovement * walkspeed * Time.deltaTime, Space.World);
+                }
+            }
+
+            if (ID.playerID == 3)
+            {
+                playermovement = new Vector3(Input.GetAxis("RangedHorizontal"), 0, Input.GetAxis("RangedVertical"));
+                //Vector3 relpos = playermovement - transform.position;
+                if (playermovement != Vector3.zero)
+                {
+                    transform.rotation = Quaternion.LookRotation(playermovement);
+                    transform.Translate(playermovement * walkspeed * Time.deltaTime, Space.World);
+                }
+            }
 
         }
         if (climbing)
@@ -67,6 +112,7 @@ public class MovementRigidbody : MonoBehaviour
         if (isDead)
         {
             playermovement = new Vector3(0, 0, 0);
+            controller.DeathCount(1,0);
         }
 
 
@@ -82,6 +128,46 @@ public class MovementRigidbody : MonoBehaviour
         }*/
 
     }
+
+    private void FixedUpdate()
+    {
+        //J U M P I N G
+        if (ID.playerID == 0 && Input.GetButton("TankJump") && isGrounded)
+        {
+            playerbody.AddForce(0, jumpForce, 0, ForceMode.Impulse);
+        }
+
+        if (ID.playerID == 1 && Input.GetButton("HealerJump") && isGrounded)
+        {
+            playerbody.AddForce(0, jumpForce, 0, ForceMode.Impulse);
+        }
+
+        if (ID.playerID == 2 && Input.GetButton("MeleeJump") && isGrounded)
+        {
+            playerbody.AddForce(0, jumpForce, 0, ForceMode.Impulse);
+        }
+
+        if (ID.playerID == 3 && Input.GetButton("RangedJump") && isGrounded)
+        {
+            playerbody.AddForce(0, jumpForce, 0, ForceMode.Impulse);
+        }
+    }
+
+    private void OnTriggerStay(Collider other)
+    {
+
+        if (other.tag == "Wall" && jumpcount < 1 && Input.GetButton("MeleeJump"))
+        {
+            isWalled = true;
+
+            //hey maybe this lets you wall jump in an inputted direction
+            playerbody.AddForce(Input.GetAxis("MeleeHorizontal") * wallJumpForce, 10, Input.GetAxis("MeleeVertical") * wallJumpForce, ForceMode.Impulse);
+
+            // controller.CastRay(gameObject, other.transform.position - transform.position, 0, 1, "Jump");
+            //controller.CastRay(gameObject, other.transform.position - transform.position, 0, 1, "Jump");
+
+        }
+    }
     private void OnTriggerEnter(Collider other)
     {
 
@@ -96,14 +182,6 @@ public class MovementRigidbody : MonoBehaviour
             isGrounded = true;
             jumpcount = 0;
             //controller.CastRay(gameObject, transform.up * -10, 0, 1, "Jump");
-        }
-        if (other.tag == "Wall" && jumpcount < 1)
-        {
-            isWalled = true;
-            // controller.CastRay(gameObject, other.transform.position - transform.position, 0, 1, "Jump");
-
-            //controller.CastRay(gameObject, other.transform.position - transform.position, 0, 1, "Jump");
-
         }
 
     }

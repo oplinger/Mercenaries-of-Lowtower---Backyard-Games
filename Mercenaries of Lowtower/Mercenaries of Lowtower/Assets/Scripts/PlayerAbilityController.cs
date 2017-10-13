@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class PlayerAbilityController : MonoBehaviour {
+    ControllerThing controller;
    public BossTargetingAI bossTargets;
     Attack playerAttack;
     PlayerCDController cooldown;
@@ -11,7 +12,8 @@ public class PlayerAbilityController : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
        cooldown = GetComponent<PlayerCDController>();
-        
+        controller = GetComponent<ControllerThing>();
+
 
     }
 
@@ -21,6 +23,7 @@ public class PlayerAbilityController : MonoBehaviour {
 
    public void executeAttack(int attackID, int playerID, GameObject target)
     {
+        //Melee attack
         //do attack thing based on attack ID
         if (attackID == 0 && playerID == 2)
         {
@@ -43,26 +46,28 @@ public class PlayerAbilityController : MonoBehaviour {
             }
         }
 
+        //Ranged attack
         if (attackID == 2)
         {
-            if (cooldown.activeCooldowns[attackID] <= 0)
+            if (cooldown.activeCooldowns[9] <= 0)
             {
-                GameObject clone = Instantiate(bolt, P2BoltSpawn.transform.position, bossTargets.targets[0].gameObject.transform.rotation);
+                GameObject clone = Instantiate(bolt, P2BoltSpawn.transform.position, controller.targets[3].gameObject.transform.rotation);
                 Destroy(clone, 3);
                     
-                cooldown.triggerCooldown(attackID, 3);
+                cooldown.triggerCooldown(9, 5);
             }
         }
 
+        //Ranged utility
         if (attackID == 3)
         {
-            if (cooldown.activeCooldowns[attackID] <= 0)
+            if (cooldown.activeCooldowns[10] <= 0)
             {
                 GameObject clone;
-                clone = Instantiate(Resources.Load("RopeBolt", typeof(GameObject)), bossTargets.targets[0].gameObject.transform.position + (Vector3.forward*2), Quaternion.identity) as GameObject;
+                clone = Instantiate(Resources.Load("RopeBolt", typeof(GameObject)), controller.targets[0].gameObject.transform.position + (Vector3.forward*2), Quaternion.identity) as GameObject;
                 Destroy(clone, 3);
-                cooldown.triggerCooldown(attackID, 5);
-                Debug.DrawRay(bossTargets.targets[0].gameObject.transform.position, Vector3.forward * 1000, Color.white, 1);
+                cooldown.triggerCooldown(10, 5);
+                Debug.DrawRay(controller.targets[0].gameObject.transform.position, Vector3.forward * 1000, Color.white, 1);
                 
 
             }

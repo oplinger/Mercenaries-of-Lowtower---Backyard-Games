@@ -51,8 +51,5 @@ public class Attack : MonoBehaviour {
     }
 
     // This just assigns the ID to the character. This is explained more in the BossTargetingAI script.
-   public void assignSlot(int slotNum)
-    {
-        targetslot = slotNum;
-    }
+
 }
