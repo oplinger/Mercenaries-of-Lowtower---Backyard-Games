@@ -26,8 +26,16 @@ public class Health : MonoBehaviour {
         }
         else if(health <= 0)
         {
-            Debug.Log("Player is dead.");
-            GetComponent<DeathScript>().PlayerDeath();
+            if(gameObject.tag == "Player")
+            {
+                //Debug.Log("Player is dead.");
+                GetComponent<DeathScript>().PlayerDeath();
+            }
+            else if (gameObject.tag == "Enemy")
+            {
+                //Debug.Log("Player is dead.");
+                GetComponent<DeathScript>().EnemyDeath();
+            }
         }
        
         // If the target is an enemy, it will convert any damage done to it to threat, for targeting purposes.
@@ -43,6 +51,7 @@ public class Health : MonoBehaviour {
         playerMoveScript.playermovement = new Vector3(0, 0, 0);
     }*/
 
+    /*
     private void Update()
     {
         if (health<=0)
@@ -52,5 +61,6 @@ public class Health : MonoBehaviour {
             playerMoveScript.isDead = true;
         }
     }
+    */
 }
 
