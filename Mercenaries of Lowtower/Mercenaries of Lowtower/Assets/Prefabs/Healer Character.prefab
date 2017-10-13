@@ -29,6 +29,7 @@ GameObject:
   - component: {fileID: 114922919597154420}
   - component: {fileID: 114628627087103018}
   - component: {fileID: 114916286981083900}
+  - component: {fileID: 114743498405922374}
   m_Layer: 8
   m_Name: Healer Character
   m_TagString: Player
@@ -62,7 +63,7 @@ MeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_Materials:
-  - {fileID: 2100000, guid: d3ccdc2c9accca14ebe692968dd34169, type: 2}
+  - {fileID: 2100000, guid: c4a85a0acf9387145a077ee9fc7fc807, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -153,6 +154,17 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   teammateScript: {fileID: 0}
+--- !u!114 &114743498405922374
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1422591790236696}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3fe1bee0ccfa75443b8785d0722928ac, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &114916286981083900
 MonoBehaviour:
   m_ObjectHideFlags: 1

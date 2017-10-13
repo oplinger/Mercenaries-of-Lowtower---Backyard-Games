@@ -30,6 +30,7 @@ GameObject:
   - component: {fileID: 114396380275749548}
   - component: {fileID: 114146144129018498}
   - component: {fileID: 114290312053027574}
+  - component: {fileID: 114275521130487414}
   m_Layer: 8
   m_Name: Tank Character
   m_TagString: Player
@@ -63,7 +64,7 @@ MeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_Materials:
-  - {fileID: 2100000, guid: ef4a2815757ff3d4eb048785b47810e1, type: 2}
+  - {fileID: 2100000, guid: c73434d5432881348b55ebdcbd9919ce, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -147,6 +148,17 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   shield: {fileID: 1306766431146696, guid: 9cc84ff41e9e28b4ea4bef9b22851bd6, type: 2}
   shieldUp: 0
+--- !u!114 &114275521130487414
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1373311421524532}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3fe1bee0ccfa75443b8785d0722928ac, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &114290312053027574
 MonoBehaviour:
   m_ObjectHideFlags: 1

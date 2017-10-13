@@ -30,6 +30,7 @@ GameObject:
   - component: {fileID: 114939983714505922}
   - component: {fileID: 114834173686442382}
   - component: {fileID: 114917294000037514}
+  - component: {fileID: 114722852140195880}
   m_Layer: 8
   m_Name: Ranged Character
   m_TagString: Player
@@ -92,7 +93,7 @@ MeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_Materials:
-  - {fileID: 2100000, guid: d3ccdc2c9accca14ebe692968dd34169, type: 2}
+  - {fileID: 2100000, guid: 0e79b350c4e0eb84998390e64f44a52e, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -167,6 +168,17 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   teammateScript: {fileID: 0}
+--- !u!114 &114722852140195880
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1422591790236696}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3fe1bee0ccfa75443b8785d0722928ac, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &114834173686442382
 MonoBehaviour:
   m_ObjectHideFlags: 1

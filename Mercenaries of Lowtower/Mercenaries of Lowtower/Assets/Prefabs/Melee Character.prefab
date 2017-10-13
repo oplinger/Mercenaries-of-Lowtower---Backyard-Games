@@ -30,6 +30,7 @@ GameObject:
   - component: {fileID: 114470908421051250}
   - component: {fileID: 114630267864839936}
   - component: {fileID: 114824276392957760}
+  - component: {fileID: 114390484755823532}
   m_Layer: 8
   m_Name: Melee Character
   m_TagString: Player
@@ -119,13 +120,24 @@ MonoBehaviour:
   player: {fileID: 1422591790236696}
   walkspeed: 15
   playermovement: {x: 0, y: 0, z: 0}
-  jumpForce: 20
+  jumpForce: 15
   isGrounded: 0
   isWalled: 0
   jumpspeed: 0
   wall: {fileID: 0}
   isDead: 0
   wallJumpForce: 15
+--- !u!114 &114390484755823532
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1422591790236696}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3fe1bee0ccfa75443b8785d0722928ac, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &114470908421051250
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -137,12 +149,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b9f2649c259fea24a851573578dc97f8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 12
+  speed: 3
   dashSpeed: 0
   jumpSpeed: 16
   gravity: 0
   isDashing: 0
-  dashLength: 20
+  dashLength: 1
   tempDashLength: 0
   tempDashSpeed: 0
 --- !u!114 &114630267864839936
