@@ -3,8 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class BossMovementAI : MonoBehaviour {
-    BossTargetingAI targeting;
-    GameObject currentTarget;
+   public BossTargetingAI targeting;
+     public GameObject currentTarget;
     public float targetDistance;
    public bool inRange;
 
@@ -28,10 +28,10 @@ public class BossMovementAI : MonoBehaviour {
         {
             currentTarget = targeting.currentTarget;
         }
-
+        currentTarget = targeting.currentTarget;
         targetDistance = Vector3.Distance(currentTarget.transform.position, transform.position);
 
-        if (targetDistance > 10)
+        if (targetDistance > 30)
         {
             inRange = false;
             transform.position = Vector3.MoveTowards(transform.position, new Vector3(currentTarget.transform.position.x, transform.position.y, currentTarget.transform.position.z), speed);

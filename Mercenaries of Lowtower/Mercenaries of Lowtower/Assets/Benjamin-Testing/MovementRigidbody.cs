@@ -22,11 +22,17 @@ public class MovementRigidbody : MonoBehaviour
     Vector3 wallDir;
     Vector3 jumpDir;
 
+    public float rayLength;
+
     public GameObject wall;
 
     public bool isDead;
 
     public float wallJumpForce;
+
+    RaycastHit hit;
+    Ray ray;
+
 
     // Use this for initialization
     void Start()
@@ -39,21 +45,23 @@ public class MovementRigidbody : MonoBehaviour
         isDead = false;
 
         jumpDir = Vector3.up*- 1;
+
+        ray = new Ray(transform.position, Vector3.up);
     }
 
     // Update is called once per frame
     void Update()
     {
-        //Debug.DrawRay(gameObject.transform.position, transform.up * -10, Color.green);
+        Debug.DrawRay(gameObject.transform.position, transform.up * -10, Color.green);
 
         if (isGrounded)
         {
             isWalled = false;
-            playerbody.velocity = new Vector3(0,0,0);
+            //playerbody.velocity = new Vector3(0, 0, 0);
         }
         if (isGrounded && jumpDir == Vector3.zero)
         {
-            //controller.CastRay(gameObject, transform.up * -10, 0, 1, "Jump");
+            Physics.Raycast(transform.position, transform.up * -10, 0, 1);
         }
         if (!climbing && !isDead)
         {
@@ -112,21 +120,31 @@ public class MovementRigidbody : MonoBehaviour
         if (isDead)
         {
             playermovement = new Vector3(0, 0, 0);
-            controller.DeathCount(1,0);
+            controller.DeathCount(1, 0);
         }
 
-
-        // playermovement.y -= gravity * Time.deltaTime;
-        /*if (Input.GetButton("Jump"))
+        if (Physics.Raycast(transform.position, Vector3.up *-1,  out hit, rayLength))
         {
-            PlayerJump(jumpDir);
+           
+            isGrounded = true;
+        }
+        else
+        {
+            isGrounded = false;
+        }
 
-            //if (isGrounded || isWalled)
-            //{
-            //    PlayerJump(jumpDir);
-            //}
-        }*/
+            // playermovement.y -= gravity * Time.deltaTime;
+            /*if (Input.GetButton("Jump"))
+            {
+                PlayerJump(jumpDir);
 
+                //if (isGrounded || isWalled)
+                //{
+                //    PlayerJump(jumpDir);
+                //}
+            }*/
+
+        
     }
 
     private void FixedUpdate()
@@ -177,12 +195,12 @@ public class MovementRigidbody : MonoBehaviour
             climbing = true;
             playerbody.useGravity = false;
         }
-        if (other.tag == "Ground")
+        /*if (other.tag == "Ground")
         {
             isGrounded = true;
             jumpcount = 0;
             //controller.CastRay(gameObject, transform.up * -10, 0, 1, "Jump");
-        }
+        }*/
 
     }
     private void OnTriggerExit(Collider other)
@@ -192,11 +210,11 @@ public class MovementRigidbody : MonoBehaviour
             climbing = false;
             playerbody.useGravity = true;
         }
-        if (other.tag == "Ground")
+        /*if (other.tag == "Ground")
         {
             isGrounded = false;
             jumpDir = Vector3.up;
-        }
+        }*/
         if (other.tag == "Wall")
         {
             isWalled = false;

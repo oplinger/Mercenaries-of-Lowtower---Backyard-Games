@@ -27,7 +27,6 @@ GameObject:
   - component: {fileID: 136840180632680702}
   - component: {fileID: 114719024204275684}
   - component: {fileID: 114922919597154420}
-  - component: {fileID: 114939983714505922}
   - component: {fileID: 114834173686442382}
   - component: {fileID: 114917294000037514}
   - component: {fileID: 114722852140195880}
@@ -185,7 +184,7 @@ MonoBehaviour:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1422591790236696}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fc61e863f34c60c46bff21c54d5750d2, type: 3}
   m_Name: 
@@ -222,22 +221,6 @@ MonoBehaviour:
   health: 0
   player: {fileID: 0}
   playerMoveScript: {fileID: 0}
---- !u!114 &114939983714505922
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1422591790236696}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2c15146926a08574ba965240c22b3235, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  targetslot: 0
-  controller: {fileID: 0}
-  abilities: {fileID: 0}
-  cooldowns: {fileID: 0}
-  layer: 0
 --- !u!136 &136840180632680702
 CapsuleCollider:
   m_ObjectHideFlags: 1

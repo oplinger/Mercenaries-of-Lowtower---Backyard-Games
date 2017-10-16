@@ -122,20 +122,21 @@ public class BossAttackAI : MonoBehaviour {
     //THE ATTACKS ARE IN ORDER OF PRIORITY. VERY IMPORTANT.
     void checkAttacks()
     {
-        //if (attackCDs[0] <= 0 && range.inRange)
-        //{
-        //    Storm(targeting.currentTarget);
+        if (attackCDs[0] <= 0 && range.inRange)
+        {
+            Storm(targeting.currentTarget);
 
-        //} else if (attackCDs[1] <= 0 && range.inRange)
-        //{
-        //    Slam(targeting.currentTarget);
-        //}
-        // else if (attackCDs[2] <= 0 && range.inRange)
-        //{
-        //    Swipe(targeting.currentTarget);
-        //}
-        // else 
-        if (attackCDs[3] <= 0 && range.inRange)
+        }
+        else if (attackCDs[1] <= 0 && range.inRange)
+        {
+            Slam(targeting.currentTarget);
+        }
+        else if (attackCDs[2] <= 0 && range.inRange)
+        {
+            Swipe(targeting.currentTarget);
+        }
+        else
+       if (attackCDs[3] <= 0 && range.inRange)
         {
             Punch(targeting.currentTarget);
         }
