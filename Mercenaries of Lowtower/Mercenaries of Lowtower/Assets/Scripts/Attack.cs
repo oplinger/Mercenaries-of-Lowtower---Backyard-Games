@@ -9,17 +9,21 @@ public class Attack : MonoBehaviour {
     public GameObject controller;
     public PlayerAbilityController abilities;
     public PlayerCDController cooldowns;
+    public PlayerID ID;
     public int layer;
 
      void Start()
     {
         abilities = controller.GetComponent<PlayerAbilityController>();
         cooldowns = controller.GetComponent<PlayerCDController>();
+        ID = GetComponent<PlayerID>();
 
     }
     // Update is called once per frame
     void Update () {
         timer += Time.deltaTime;
+        targetslot = ID.playerID;
+
         if (Input.GetButtonDown("Attack"))
         {
             RaycastHit hit;
@@ -32,14 +36,15 @@ public class Attack : MonoBehaviour {
             }
 
         }
-        if (Input.GetAxis("RangedAttack") == 1)
+        if (ID.playerID == 3 && Input.GetAxis("RangedAttack") == 1)
         {
             abilities.RangedBolt(targetslot, gameObject);
         }
         //Utility move
-        if (Input.GetButtonDown("P2Attack1"))
+        if (ID.playerID == 3 && Input.GetButtonDown("P2Attack1"))
         {
             abilities.RangedRopeBolt(targetslot, gameObject);
+            print(targetslot);
         }
     }
 }

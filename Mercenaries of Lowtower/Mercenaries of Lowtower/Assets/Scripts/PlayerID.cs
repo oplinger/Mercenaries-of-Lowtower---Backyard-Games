@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class PlayerID : MonoBehaviour {
-    public float playerID;
+    public int playerID;
     public ControllerThing controller;
 	// Use this for initialization
 	void Start () {

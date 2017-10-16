@@ -134,6 +134,7 @@ MonoBehaviour:
   controller: {fileID: 0}
   abilities: {fileID: 0}
   cooldowns: {fileID: 0}
+  ID: {fileID: 0}
   layer: 0
 --- !u!114 &114238987079419078
 MonoBehaviour:
@@ -191,6 +192,7 @@ MonoBehaviour:
   isGrounded: 0
   isWalled: 0
   jumpspeed: 0
+  rayLength: 0
   wall: {fileID: 0}
   isDead: 0
   wallJumpForce: 0

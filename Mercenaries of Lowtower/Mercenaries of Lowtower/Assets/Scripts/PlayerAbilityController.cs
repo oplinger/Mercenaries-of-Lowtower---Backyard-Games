@@ -37,9 +37,8 @@ public class PlayerAbilityController : MonoBehaviour {
     {
         if (cooldown.activeCooldowns[9] <= 0)
         {
-            GameObject clone = Instantiate(bolt, P2BoltSpawn.transform.position, controller.targets[3].gameObject.transform.rotation);
+            GameObject clone = Instantiate(bolt, controller.targets[playerID].gameObject.transform.position + (Vector3.forward * 2), controller.targets[playerID].gameObject.transform.rotation);
             Destroy(clone, 3);
-
             cooldown.triggerCooldown(9, cooldown.abilityCooldowns[9]);
         }
     }
@@ -48,7 +47,7 @@ public class PlayerAbilityController : MonoBehaviour {
         if (cooldown.activeCooldowns[10] <= 0)
         {
             GameObject clone;
-            clone = Instantiate(Resources.Load("RopeBolt", typeof(GameObject)), controller.targets[0].gameObject.transform.position + (Vector3.forward * 2), Quaternion.identity) as GameObject;
+            clone = Instantiate(Resources.Load("RopeBolt", typeof(GameObject)), controller.targets[playerID].gameObject.transform.position + (Vector3.forward * 2), Quaternion.identity) as GameObject;
             Destroy(clone, 3);
             cooldown.triggerCooldown(10, cooldown.abilityCooldowns[10]);
 

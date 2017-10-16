@@ -120,10 +120,11 @@ MonoBehaviour:
   player: {fileID: 1422591790236696}
   walkspeed: 15
   playermovement: {x: 0, y: 0, z: 0}
-  jumpForce: 15
+  jumpForce: 31.48
   isGrounded: 0
   isWalled: 0
   jumpspeed: 0
+  rayLength: 1.5
   wall: {fileID: 0}
   isDead: 0
   wallJumpForce: 15
@@ -172,6 +173,7 @@ MonoBehaviour:
   controller: {fileID: 0}
   abilities: {fileID: 0}
   cooldowns: {fileID: 0}
+  ID: {fileID: 0}
   layer: 0
 --- !u!114 &114719024204275684
 MonoBehaviour:

@@ -27,9 +27,9 @@ public class DeathScript : MonoBehaviour {
         playerMoveScript.isDead = true;
     }
 
-    public void EnemyDeath()
+    public void EnemyDeath(GameObject target)
     {
         Debug.Log("Enemy is dead.");
-        Destroy(gameObject);
+        Destroy(target);
     }
 }
