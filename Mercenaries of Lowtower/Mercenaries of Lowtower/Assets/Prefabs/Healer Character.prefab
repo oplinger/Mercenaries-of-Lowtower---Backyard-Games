@@ -27,9 +27,9 @@ GameObject:
   - component: {fileID: 136840180632680702}
   - component: {fileID: 114719024204275684}
   - component: {fileID: 114922919597154420}
-  - component: {fileID: 114628627087103018}
   - component: {fileID: 114916286981083900}
   - component: {fileID: 114743498405922374}
+  - component: {fileID: 114581045820997226}
   m_Layer: 8
   m_Name: Healer Character
   m_TagString: Player
@@ -127,7 +127,7 @@ MonoBehaviour:
   wall: {fileID: 0}
   isDead: 0
   wallJumpForce: 15
---- !u!114 &114628627087103018
+--- !u!114 &114581045820997226
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}

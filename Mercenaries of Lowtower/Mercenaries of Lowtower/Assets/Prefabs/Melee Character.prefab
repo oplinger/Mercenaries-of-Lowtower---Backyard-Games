@@ -28,9 +28,9 @@ GameObject:
   - component: {fileID: 114719024204275684}
   - component: {fileID: 114922919597154420}
   - component: {fileID: 114470908421051250}
-  - component: {fileID: 114630267864839936}
   - component: {fileID: 114824276392957760}
   - component: {fileID: 114390484755823532}
+  - component: {fileID: 114582553735466988}
   m_Layer: 8
   m_Name: Melee Character
   m_TagString: Player
@@ -158,7 +158,7 @@ MonoBehaviour:
   dashLength: 1
   tempDashLength: 0
   tempDashSpeed: 0
---- !u!114 &114630267864839936
+--- !u!114 &114582553735466988
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
