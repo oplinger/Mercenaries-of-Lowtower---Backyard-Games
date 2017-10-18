@@ -38,11 +38,13 @@ public class TankController : MonoBehaviour
         if (CTRLID != 0 && Input.GetKeyDown("joystick " + CTRLID + " button 1"))
         {
 
+            abilities.TankMagnet();
 
         }
         if (CTRLID != 0 && Input.GetKeyDown("joystick " + CTRLID + " button 2"))
         {
 
+            abilities.TankShield(gameObject);
 
         }
 

@@ -32,18 +32,18 @@ public class Attack : MonoBehaviour {
             {
                 GameObject target = hit.collider.gameObject;
 
-                abilities.MeleeStrike(targetslot, target);
+                //abilities.MeleeStrike(targetslot);
             }
 
         }
         if (ID.playerID == 3 && Input.GetAxis("RangedAttack") == 1)
         {
-            abilities.RangedBolt(targetslot, gameObject);
+           // abilities.RangedBolt(targetslot, gameObject);
         }
         //Utility move
         if (ID.playerID == 3 && Input.GetButtonDown("P2Attack1"))
         {
-            abilities.RangedRopeBolt(targetslot, gameObject);
+           // abilities.RangedRopeBolt(targetslot, gameObject);
             print(targetslot);
         }
     }

@@ -40,23 +40,17 @@ public class MeleeController : MonoBehaviour {
 
         if (CTRLID != 0 && Input.GetKeyDown("joystick " + CTRLID + " button 1"))
         {
-            if (timer > 5)
-            {
+            
+            
                 abilities.MeleeDash(System.Array.IndexOf(controller.targets, "Melee Character"), gameObject);
-                timer = 0;
-            }
+            
 
         }
         if (CTRLID != 0 && Input.GetKeyDown("joystick " + CTRLID + " button 2"))
         {
 
-            RaycastHit hit;
-            if (Physics.Raycast(transform.position, Vector3.forward, out hit))
-            {
-                GameObject target = hit.collider.gameObject;
-
-                abilities.MeleeStrike(System.Array.IndexOf(controller.targets, "Melee Character"), target);
-            }
+                abilities.MeleeStrike(System.Array.IndexOf(controller.targets, "Melee Character"), gameObject);
+            
 
         }
 
