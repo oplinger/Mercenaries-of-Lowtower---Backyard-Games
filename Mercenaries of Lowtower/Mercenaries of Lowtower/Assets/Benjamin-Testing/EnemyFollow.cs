@@ -10,11 +10,25 @@ public class EnemyFollow : MonoBehaviour
     public Transform player;
     public float teleportDistance;
 
+    public float smolDamage;
+    public float bigDamage;
+    public float damage;
+
 
     // Use this for initialization
     void Start()
     {
 
+        if (gameObject.name == "big boi")
+        {
+            damage = bigDamage;
+            Debug.Log("" + damage);
+        }
+        if (gameObject.name == "smol boi")
+        {
+            damage = smolDamage;
+            Debug.Log("" + damage);
+        }
 
     }
 
@@ -31,7 +45,7 @@ public class EnemyFollow : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
-        if (gameObject.name == "Big Cylinder" && other.tag == "Bolt")
+        if (gameObject.name == "big boi" && other.tag == "Bolt")
         {
             teleportDistance = Random.Range(-25, 25);
 
@@ -39,7 +53,7 @@ public class EnemyFollow : MonoBehaviour
             // transform.position += transform.forward *-1 * 10 * Time.deltaTime;
             transform.position += new Vector3(teleportDistance, 0, teleportDistance);
         }
-        if (gameObject.name == "Cylinder")
+        if (gameObject.name == "smol boi")
         {
             if (other.tag == "Player" || other.tag == "Bolt")
             {
@@ -57,5 +71,20 @@ public class EnemyFollow : MonoBehaviour
         }
         
     }
+
+    //private void OnTriggerStay(Collider other)
+    //{
+
+    //    if (gameObject.name == "big boi")
+    //    {
+    //        damage = bigDamage;
+    //        Debug.Log("" + damage);
+    //    }
+    //    if (gameObject.name == "smol boi")
+    //    {
+    //        damage = smolDamage;
+    //        Debug.Log("" + damage);
+    //    }
+    //}
 
 }
