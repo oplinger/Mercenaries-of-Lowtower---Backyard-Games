@@ -670,6 +670,16 @@ Prefab:
       propertyPath: baseHealth
       value: 300
       objectReference: {fileID: 0}
+    - target: {fileID: 114250873556642524, guid: 5f1c9eaf39ca5e2438cdc944861e4663,
+        type: 2}
+      propertyPath: beingDamagedMaterial
+      value: 
+      objectReference: {fileID: 2100000, guid: 7ea7f875355081540b4e8f396a1c0962, type: 2}
+    - target: {fileID: 114250873556642524, guid: 5f1c9eaf39ca5e2438cdc944861e4663,
+        type: 2}
+      propertyPath: deadMaterial
+      value: 
+      objectReference: {fileID: 2100000, guid: 6f07c3904857ea64ea1d5d815737cefe, type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 5f1c9eaf39ca5e2438cdc944861e4663, type: 2}
   m_IsPrefabParent: 0
@@ -910,6 +920,10 @@ Prefab:
     - target: {fileID: 1102472805820244, guid: e116e053888fb9644a31ee5f200cdbd9, type: 2}
       propertyPath: m_IsActive
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1553179643596348, guid: e116e053888fb9644a31ee5f200cdbd9, type: 2}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: e116e053888fb9644a31ee5f200cdbd9, type: 2}

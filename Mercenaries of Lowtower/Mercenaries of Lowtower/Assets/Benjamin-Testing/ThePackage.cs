@@ -15,6 +15,10 @@ public class ThePackage : MonoBehaviour
 
     EnemyFollow enemyScript;
 
+    public Material beingDamagedMaterial;
+    public Material deadMaterial;
+    public Material originalMaterial;
+
     // Use this for initialization
     void Start()
     {
@@ -24,6 +28,7 @@ public class ThePackage : MonoBehaviour
 
         player = this.gameObject;
 
+        originalMaterial = rend.material;
     }
 
     // Update is called once per frame
@@ -34,6 +39,7 @@ public class ThePackage : MonoBehaviour
         if (baseHealth <= 0)
         {
             speed=0;
+            rend.material = deadMaterial;
         }
     }
 
@@ -42,20 +48,26 @@ public class ThePackage : MonoBehaviour
         if (other.tag == "Enemy")
         {
             enemyScript = other.GetComponent<EnemyFollow>();
-            rend.material.color = Color.red;
+            //rend.material.color = Color.red;
+            rend.material = beingDamagedMaterial;
             modifyHealth();
         }
-    }
-
-    private void OnTriggerExit(Collider other)
-    {
-
-
-        if (other.tag == "Enemy")
+        else
         {
-            rend.material.color = Color.white;
+
+            rend.material = originalMaterial;
         }
     }
+
+    //private void OnTriggerExit(Collider other)
+    //{
+
+
+    //    if (other.tag == "Enemy")
+    //    {
+    //        rend.material = originalMaterial;
+    //    }
+    //}
 
     public void modifyHealth()
     {
