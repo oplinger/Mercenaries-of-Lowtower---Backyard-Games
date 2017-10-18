@@ -29,7 +29,6 @@ public class JoystickPollingScript : MonoBehaviour {
 
         for (int i = 1; i < 5; i++)
         {
-            int joy = i + 1;
             if (Input.GetKeyDown("joystick " + i + " button 7"))
             {
 

@@ -9,7 +9,6 @@ public class BossTargetingAI : MonoBehaviour {
     public float[] damageThreat;
     public float[] distanceThreat;
     public float[] combinedThreat;
-    Attack ID;
     float distance;
     float threatVal;
     int myID;

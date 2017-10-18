@@ -2,7 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class MeleeController : MonoBehaviour {
+public class HealerController : MonoBehaviour
+{
     public GameObject controllerThing;
     public Vector3 playermovement;
     public float walkspeed;
@@ -22,11 +23,12 @@ public class MeleeController : MonoBehaviour {
     }
 
     // Update is called once per frame
-    void Update () {
-        timer += Time.deltaTime;
-        if (walkspeed>= 0 && CTRLID != 0)
+    void Update()
+    {
+        Debug.DrawRay(transform.position, Vector3.forward * 50);
+        if (walkspeed >= 0)
         {
-            playermovement = new Vector3(Input.GetAxis("J"+ CTRLID + "Horizontal"), 0, Input.GetAxis("J"+CTRLID+"Vertical"));
+            playermovement = new Vector3(Input.GetAxis("J" + CTRLID + "Horizontal"), 0, Input.GetAxis("J" + CTRLID + "Vertical"));
             //Vector3 relpos = playermovement - transform.position;
             if (playermovement != Vector3.zero)
             {
@@ -35,30 +37,25 @@ public class MeleeController : MonoBehaviour {
             }
         }
 
-
-
-
         if (CTRLID != 0 && Input.GetKeyDown("joystick " + CTRLID + " button 1"))
         {
-            if (timer > 5)
+            if (timer > 10)
             {
-                abilities.MeleeDash(System.Array.IndexOf(controller.targets, "Melee Character"), gameObject);
-                timer = 0;
+
             }
 
         }
         if (CTRLID != 0 && Input.GetKeyDown("joystick " + CTRLID + " button 2"))
         {
 
-            RaycastHit hit;
-            if (Physics.Raycast(transform.position, Vector3.forward, out hit))
+            if (timer > 10)
             {
-                GameObject target = hit.collider.gameObject;
 
-                abilities.MeleeStrike(System.Array.IndexOf(controller.targets, "Melee Character"), target);
             }
 
         }
+
+
 
     }
 }

@@ -2,7 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class MeleeController : MonoBehaviour {
+public class RangedController : MonoBehaviour
+{
     public GameObject controllerThing;
     public Vector3 playermovement;
     public float walkspeed;
@@ -10,7 +11,6 @@ public class MeleeController : MonoBehaviour {
     public int CTRLID;
     public PlayerAbilityController abilities;
     public PlayerCDController cooldowns;
-    float timer;
 
 
     // Use this for initialization
@@ -22,11 +22,12 @@ public class MeleeController : MonoBehaviour {
     }
 
     // Update is called once per frame
-    void Update () {
-        timer += Time.deltaTime;
-        if (walkspeed>= 0 && CTRLID != 0)
+    void Update()
+    {
+
+        if (walkspeed >= 0 && CTRLID!=0)
         {
-            playermovement = new Vector3(Input.GetAxis("J"+ CTRLID + "Horizontal"), 0, Input.GetAxis("J"+CTRLID+"Vertical"));
+            playermovement = new Vector3(Input.GetAxis("J" + CTRLID + "Horizontal"), 0, Input.GetAxis("J" + CTRLID + "Vertical"));
             //Vector3 relpos = playermovement - transform.position;
             if (playermovement != Vector3.zero)
             {
@@ -34,31 +35,19 @@ public class MeleeController : MonoBehaviour {
                 transform.Translate(playermovement * walkspeed * Time.deltaTime, Space.World);
             }
         }
-
-
-
-
         if (CTRLID != 0 && Input.GetKeyDown("joystick " + CTRLID + " button 1"))
         {
-            if (timer > 5)
-            {
-                abilities.MeleeDash(System.Array.IndexOf(controller.targets, "Melee Character"), gameObject);
-                timer = 0;
-            }
+                        
+            abilities.RangedRopeBolt(System.Array.IndexOf(controller.targets, "Ranged Character"), gameObject);
 
         }
         if (CTRLID != 0 && Input.GetKeyDown("joystick " + CTRLID + " button 2"))
         {
 
-            RaycastHit hit;
-            if (Physics.Raycast(transform.position, Vector3.forward, out hit))
-            {
-                GameObject target = hit.collider.gameObject;
-
-                abilities.MeleeStrike(System.Array.IndexOf(controller.targets, "Melee Character"), target);
-            }
+            abilities.RangedBolt(System.Array.IndexOf(controller.targets, "Ranged Character"), gameObject);
 
         }
+
 
     }
 }

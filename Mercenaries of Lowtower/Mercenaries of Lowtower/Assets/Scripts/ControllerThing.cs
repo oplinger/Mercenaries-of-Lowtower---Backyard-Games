@@ -9,6 +9,12 @@ public class ControllerThing : MonoBehaviour {
     public Collider[] IDs;
     public List<GameObject> Player;
     public List<int> PID;
+    public MeleeController meleecontroller;
+    public TankController tankcontroller;
+    public HealerController healercontroller;
+    public RangedController rangedcontroller;
+
+
 
 
     //    Movement move;
@@ -170,12 +176,220 @@ public class ControllerThing : MonoBehaviour {
               }
         }
 
-        if(Input.GetKeyDown("joystick 1 button 7") && Player[0]==null)
+        if(/*Input.GetKeyDown("joystick 1 button 7")*/ PID.Contains(1))
         {
-            Player.Insert(0,IDs[2].gameObject);
-            Player.RemoveAt(Player.Count-1);
+            if (Player[PID.IndexOf(1)] == null)
+            {
+                if (Input.GetKeyDown("joystick " + PID[PID.IndexOf(1)] + " button 0"))
+                {
+                    if (!Player.Contains(IDs[0].gameObject))
+                    {
+                        Player.Insert(PID.IndexOf(1), IDs[0].gameObject);
+                        // Player.RemoveAt(Player.Count - 1);
+                        Player.Remove(null);
+                        tankcontroller = GameObject.Find("Tank Character").GetComponent<TankController>();
+                        tankcontroller.CTRLID = 1;
+                    }
+                }
+                else if (Input.GetKeyDown("joystick " + PID[PID.IndexOf(1)] + " button 1"))
+                {
+                    if (!Player.Contains(IDs[1].gameObject))
+                    {
+                        Player.Insert(PID.IndexOf(1), IDs[1].gameObject);
+                        // Player.RemoveAt(Player.Count - 1);
+                        Player.Remove(null);
+                        healercontroller = GameObject.Find("Healer Character").GetComponent<HealerController>();
+                        healercontroller.CTRLID = 1;
+                    }
+                }
+                else if (Input.GetKeyDown("joystick " + PID[PID.IndexOf(1)] + " button 2"))
+                {
+                    if (!Player.Contains(IDs[2].gameObject))
+                    {
+                        Player.Insert(PID.IndexOf(1), IDs[2].gameObject);
+                        // Player.RemoveAt(Player.Count - 1);
+                        Player.Remove(null);
+                        meleecontroller = GameObject.Find("Melee Character").GetComponent<MeleeController>();
+                        meleecontroller.CTRLID = 1;
+                    }
+                }
+                else if (Input.GetKeyDown("joystick " + PID[PID.IndexOf(1)] + " button 3"))
+                {
+                    if (!Player.Contains(IDs[3].gameObject))
+                    {
+                        Player.Insert(PID.IndexOf(1), IDs[3].gameObject);
+                        // Player.RemoveAt(Player.Count - 1);
+                        Player.Remove(null);
+                        rangedcontroller = GameObject.Find("Ranged Character").GetComponent<RangedController>();
+                        rangedcontroller.CTRLID = 1;
+                    }
+                }
+                else
+                {
+                }
+            }
         }
-        
+        if (/*Input.GetKeyDown("joystick 1 button 7")*/ PID.Contains(2))
+        {
+            if (Player[PID.IndexOf(2)] == null)
+            {
+                if (Input.GetKeyDown("joystick " + PID[PID.IndexOf(2)] + " button 0"))
+                {
+                    if (!Player.Contains(IDs[0].gameObject))
+                    {
+                        Player.Insert(PID.IndexOf(2), IDs[0].gameObject);
+                        // Player.RemoveAt(Player.Count - 1);
+                        Player.Remove(null);
+                        tankcontroller = GameObject.Find("Tank Character").GetComponent<TankController>();
+                        tankcontroller.CTRLID = 2;
+                    }
+                }
+                else if (Input.GetKeyDown("joystick " + PID[PID.IndexOf(2)] + " button 1"))
+                {
+                    if (!Player.Contains(IDs[1].gameObject))
+                    {
+                        Player.Insert(PID.IndexOf(2), IDs[1].gameObject);
+                        // Player.RemoveAt(Player.Count - 1);
+                        Player.Remove(null);
+                        healercontroller = GameObject.Find("Healer Character").GetComponent<HealerController>();
+                        healercontroller.CTRLID = 2;
+                    }
+                }
+                else if (Input.GetKeyDown("joystick " + PID[PID.IndexOf(2)] + " button 2"))
+                {
+                    if (!Player.Contains(IDs[2].gameObject))
+                    {
+                        Player.Insert(PID.IndexOf(2), IDs[2].gameObject);
+                        // Player.RemoveAt(Player.Count - 1);
+                        Player.Remove(null);
+                        meleecontroller = GameObject.Find("Melee Character").GetComponent<MeleeController>();
+                        meleecontroller.CTRLID = 2;
+                    }
+                }
+                else if (Input.GetKeyDown("joystick " + PID[PID.IndexOf(2)] + " button 3"))
+                {
+                    if (!Player.Contains(IDs[3].gameObject))
+                    {
+                        Player.Insert(PID.IndexOf(2), IDs[3].gameObject);
+                        // Player.RemoveAt(Player.Count - 1);
+                        Player.Remove(null);
+                        rangedcontroller = GameObject.Find("Ranged Character").GetComponent<RangedController>();
+                        rangedcontroller.CTRLID = 2;
+                    }
+                }
+                else
+                {
+                }
+            }
+        }
+        if (/*Input.GetKeyDown("joystick 1 button 7")*/ PID.Contains(3))
+        {
+            if (Player[PID.IndexOf(3)] == null)
+            {
+                if (Input.GetKeyDown("joystick " + PID[PID.IndexOf(3)] + " button 0"))
+                {
+                    if (!Player.Contains(IDs[0].gameObject))
+                    {
+                        Player.Insert(PID.IndexOf(3), IDs[0].gameObject);
+                        // Player.RemoveAt(Player.Count - 1);
+                        Player.Remove(null);
+                        tankcontroller = GameObject.Find("Tank Character").GetComponent<TankController>();
+                        tankcontroller.CTRLID = 3;
+
+                    }
+                }
+                else if (Input.GetKeyDown("joystick " + PID[PID.IndexOf(3)] + " button 1"))
+                {
+                    if (!Player.Contains(IDs[1].gameObject))
+                    {
+                        Player.Insert(PID.IndexOf(3), IDs[1].gameObject);
+                        // Player.RemoveAt(Player.Count - 1);
+                        Player.Remove(null);
+                        healercontroller = GameObject.Find("Healer Character").GetComponent<HealerController>();
+                        healercontroller.CTRLID = 3;
+                    }
+                }
+                else if (Input.GetKeyDown("joystick " + PID[PID.IndexOf(3)] + " button 2"))
+                {
+                    if (!Player.Contains(IDs[2].gameObject))
+                    {
+                        Player.Insert(PID.IndexOf(3), IDs[2].gameObject);
+                        // Player.RemoveAt(Player.Count - 1);
+                        Player.Remove(null);
+                        meleecontroller = GameObject.Find("Melee Character").GetComponent<MeleeController>();
+                        meleecontroller.CTRLID = 3;
+                    }
+                }
+                else if (Input.GetKeyDown("joystick " + PID[PID.IndexOf(3)] + " button 3"))
+                {
+                    if (!Player.Contains(IDs[3].gameObject))
+                    {
+                        Player.Insert(PID.IndexOf(3), IDs[3].gameObject);
+                        // Player.RemoveAt(Player.Count - 1);
+                        Player.Remove(null);
+                        rangedcontroller = GameObject.Find("Ranged Character").GetComponent<RangedController>();
+                        rangedcontroller.CTRLID = 3;
+                    }
+                }
+                else
+                {
+                }
+            }
+        }
+        if (/*Input.GetKeyDown("joystick 1 button 7")*/ PID.Contains(4))
+        {
+            if (Player[PID.IndexOf(4)] == null)
+            {
+                if (Input.GetKeyDown("joystick " + PID[PID.IndexOf(4)] + " button 0"))
+                {
+                    if (!Player.Contains(IDs[0].gameObject))
+                    {
+                        Player.Insert(PID.IndexOf(4), IDs[0].gameObject);
+                        // Player.RemoveAt(Player.Count - 1);
+                        Player.Remove(null);
+                        tankcontroller = GameObject.Find("Tank Character").GetComponent<TankController>();
+                        tankcontroller.CTRLID = 4;
+                    }
+                }
+                else if (Input.GetKeyDown("joystick " + PID[PID.IndexOf(4)] + " button 1"))
+                {
+                    if (!Player.Contains(IDs[1].gameObject))
+                    {
+                        Player.Insert(PID.IndexOf(4), IDs[1].gameObject);
+                        // Player.RemoveAt(Player.Count - 1);
+                        Player.Remove(null);
+                        healercontroller = GameObject.Find("Healer Character").GetComponent<HealerController>();
+                        healercontroller.CTRLID = 4;
+                    }
+                }
+                else if (Input.GetKeyDown("joystick " + PID[PID.IndexOf(4)] + " button 2"))
+                {
+                    if (!Player.Contains(IDs[2].gameObject))
+                    {
+                        Player.Insert(PID.IndexOf(4), IDs[2].gameObject);
+                        // Player.RemoveAt(Player.Count - 1);
+                        Player.Remove(null);
+                        meleecontroller = GameObject.Find("Melee Character").GetComponent<MeleeController>();
+                        meleecontroller.CTRLID = 4;
+                    }
+                }
+                else if (Input.GetKeyDown("joystick " + PID[PID.IndexOf(4)] + " button 3"))
+                {
+                    if (!Player.Contains(IDs[3].gameObject))
+                    {
+                        Player.Insert(PID.IndexOf(4), IDs[3].gameObject);
+                        // Player.RemoveAt(Player.Count - 1);
+                        Player.Remove(null);
+                        rangedcontroller = GameObject.Find("Ranged Character").GetComponent<RangedController>();
+                        rangedcontroller.CTRLID = 4;
+                    }
+                }
+                else
+                {
+                }
+            }
+        }
+
     }
     public void RestartLevel()
     {
