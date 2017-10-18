@@ -7,6 +7,9 @@ public class ControllerThing : MonoBehaviour {
     public int[] deathcount;
     public Collider[] targets;
     public Collider[] IDs;
+    public List<GameObject> Player;
+    public List<int> PID;
+
 
     //    Movement move;
     //    HealthScript health;
@@ -21,7 +24,13 @@ public class ControllerThing : MonoBehaviour {
 
         FindTarget();
         deathcount = new int[4];
-        AssignIDsToArray();
+        // AssignIDsToArray();
+        for(int i=0; i<4; i++)
+        {
+            Player.Add(null);
+            PID.Add(9);
+        }
+
 
 
     }
@@ -160,6 +169,12 @@ public class ControllerThing : MonoBehaviour {
             RestartLevel();
               }
         }
+
+        if(Input.GetKeyDown("joystick 1 button 7") && Player[0]==null)
+        {
+            Player.Insert(0,IDs[2].gameObject);
+            Player.RemoveAt(Player.Count-1);
+        }
         
     }
     public void RestartLevel()
@@ -207,11 +222,26 @@ public class ControllerThing : MonoBehaviour {
 
             }
         }
-        AssignIDsToArray();
+        //AssignIDsToArray();
 
     }
-    public void AssignIDsToArray()
+    public void AssignIDsToArray(int ID)
     {
-        targets = IDs;
+        //targets = IDs;
+        for ( int i=0; i<4; i++)
+        {
+            if (PID[i] == ID)
+            {
+                break;
+            }
+            if (PID[i] == 9 )
+            {
+                PID.Insert(i, ID);
+                PID.RemoveAt(PID.Count - 1);
+
+                break;
+            }
+        }
+        //PID.Add(ID);
     }
 }

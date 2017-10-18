@@ -22,7 +22,7 @@ GameObject:
   - component: {fileID: 33165618873381770}
   - component: {fileID: 65107534980065006}
   - component: {fileID: 23419399280531822}
-  - component: {fileID: 114987696458352276}
+  - component: {fileID: 114798757214440544}
   m_Layer: 0
   m_Name: BluePanel
   m_TagString: Untagged
@@ -94,7 +94,7 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 3.0325637, z: 1}
   m_Center: {x: 0, y: 1.0162822, z: 0}
---- !u!114 &114987696458352276
+--- !u!114 &114798757214440544
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -102,7 +102,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 1966199687681068}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 236675e28b4a7eb4f835525507f89906, type: 3}
+  m_Script: {fileID: 11500000, guid: e9648c201359f474cb3f2403f346fa0b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  door: {fileID: 0}
+  trigger: 1
+  moveDir: {x: 0, y: 0, z: 0}
+  target: {fileID: 0}
