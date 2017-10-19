@@ -35,6 +35,11 @@ public class Health : MonoBehaviour {
         //        GetComponent<DeathScript>().EnemyDeath(gameObject);
         //    }
         //}
+
+        if (health<=0)
+        {
+            isDead = true;
+        }
     }
     // This method takes passed in data and manipulates the health value. Damage is the amount of health lost or gained (negative values are healing) 
     //and the ID is the character ID that is doing the damage. These are assigned to players by the boss on start.

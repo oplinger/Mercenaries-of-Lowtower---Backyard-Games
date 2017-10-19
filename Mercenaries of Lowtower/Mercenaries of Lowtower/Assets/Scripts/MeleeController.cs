@@ -30,7 +30,7 @@ public class MeleeController : MonoBehaviour {
 
 
 
-        if (walkspeed>= 0 && CTRLID != 0 && healthScript.health > 0)
+        if (walkspeed>= 0 && CTRLID != 0 && !healthScript.isDead)
         {
             playermovement = new Vector3(Input.GetAxis("J"+ CTRLID + "Horizontal"), 0, Input.GetAxis("J"+CTRLID+"Vertical"));
             //Vector3 relpos = playermovement - transform.position;
@@ -40,7 +40,7 @@ public class MeleeController : MonoBehaviour {
                 transform.Translate(playermovement * walkspeed * Time.deltaTime, Space.World);
             }
 
-            if (healthScript.health<=0)
+            if (healthScript.isDead)
             {
                 playermovement = new Vector3 (0,0,0);
             }
