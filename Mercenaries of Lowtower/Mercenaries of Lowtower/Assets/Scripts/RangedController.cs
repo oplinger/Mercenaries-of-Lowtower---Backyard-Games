@@ -13,6 +13,9 @@ public class RangedController : MonoBehaviour
     public PlayerCDController cooldowns;
 
 
+    Health healthScript;
+
+
     // Use this for initialization
     void Start()
     {
@@ -21,7 +24,9 @@ public class RangedController : MonoBehaviour
         cooldowns = controllerThing.GetComponent<PlayerCDController>();
         LineOfFireVisual line = GetComponent<LineOfFireVisual>();
         line.DrawLine(GameObject.Find("Ranged Character"));
-        
+
+        healthScript = GetComponent<Health>();
+
     }
 
     // Update is called once per frame
@@ -29,7 +34,7 @@ public class RangedController : MonoBehaviour
     {
 
 
-        if (walkspeed >= 0 && CTRLID!=0)
+        if (walkspeed >= 0 && CTRLID!=0 && healthScript.health > 0)
         {
             playermovement = new Vector3(Input.GetAxis("J" + CTRLID + "Horizontal"), 0, Input.GetAxis("J" + CTRLID + "Vertical"));
             //Vector3 relpos = playermovement - transform.position;
@@ -57,6 +62,11 @@ public class RangedController : MonoBehaviour
 
             abilities.RangedBolt(gameObject);
 
+        }
+
+        if (healthScript.health <= 0)
+        {
+            playermovement = new Vector3(0, 0, 0);
         }
 
 
