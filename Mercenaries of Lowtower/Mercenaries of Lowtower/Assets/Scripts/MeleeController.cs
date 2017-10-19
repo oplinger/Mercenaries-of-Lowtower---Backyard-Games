@@ -12,6 +12,7 @@ public class MeleeController : MonoBehaviour {
     public PlayerCDController cooldowns;
     float timer;
 
+    Health healthScript;
 
     // Use this for initialization
     void Start()
@@ -19,12 +20,17 @@ public class MeleeController : MonoBehaviour {
         controller = controllerThing.GetComponent<ControllerThing>();
         abilities = controllerThing.GetComponent<PlayerAbilityController>();
         cooldowns = controllerThing.GetComponent<PlayerCDController>();
+
+        healthScript = GetComponent<Health>();
     }
 
     // Update is called once per frame
     void Update () {
         timer += Time.deltaTime;
-        if (walkspeed>= 0 && CTRLID != 0)
+
+
+
+        if (walkspeed>= 0 && CTRLID != 0 && healthScript.health > 0)
         {
             playermovement = new Vector3(Input.GetAxis("J"+ CTRLID + "Horizontal"), 0, Input.GetAxis("J"+CTRLID+"Vertical"));
             //Vector3 relpos = playermovement - transform.position;
@@ -32,6 +38,11 @@ public class MeleeController : MonoBehaviour {
             {
                 transform.rotation = Quaternion.LookRotation(playermovement);
                 transform.Translate(playermovement * walkspeed * Time.deltaTime, Space.World);
+            }
+
+            if (healthScript.health<=0)
+            {
+                playermovement = new Vector3 (0,0,0);
             }
         }
 

@@ -9,8 +9,12 @@ public class PlayerAbilityController : MonoBehaviour {
     PlayerCDController cooldown;
     public GameObject bolt;
     public GameObject P2BoltSpawn;
-	// Use this for initialization
-	void Start () {
+    
+    public int overlapSphereRadius;
+
+
+    // Use this for initialization
+    void Start () {
        cooldown = GetComponent<PlayerCDController>();
         controller = GetComponent<ControllerThing>();
 
@@ -21,28 +25,57 @@ public class PlayerAbilityController : MonoBehaviour {
     void Update () {
     }
 
-   //public void executeAttack(int attackID, int playerID, GameObject target)
-   // {
+    //public void executeAttack(int attackID, int playerID, GameObject target)
+    // {
 
 
-   // }
+    // }
     public void MeleeStrike(int playerID, GameObject me)
     {
         float damage = 5;
         RaycastHit hit;
-        if (Physics.Raycast(me.transform.position, me.transform.forward * 30, out hit))
-        {
-            if(hit.collider.gameObject.tag == "Enemy")
-            {
-                GameObject target = hit.collider.gameObject;
-                Health health = target.GetComponent<Health>();
-                health.modifyHealth(damage, 2);
+        
 
-            }
-        }
+        Debug.DrawRay(me.transform.position, me.transform.forward * 30, Color.blue);
+
+        if (Physics.Raycast(me.transform.position, me.transform.forward * 30, out hit))
+           {
+
+               if (hit.collider.gameObject.tag == "Enemy")
+               {
+                   GameObject target = hit.collider.gameObject;
+                   Health health = target.GetComponent<Health>();
+                   print("got em" + target);
+                   health.modifyHealth(damage, 2);
+
+               }
+           }
+
+
+        //////////////////////////////////////////
+        //overlap sphere works to an extent
+        /////////////////////////////////////////
+        //Collider[] hitColliders = Physics.OverlapSphere(transform.position+new Vector3 (0,0,1.4f), overlapSphereRadius);
+
+        //for (int i = 0; i < hitColliders.Length; i++)
+        //{
+        //    GameObject target = hitColliders[i].gameObject;
+        //    Health health = target.GetComponent<Health>();
+        //    print("got em" + target);
+        //    //health.modifyHealth(damage, 2);
+        //    if (target.tag=="Enemy")
+        //    {
+        //        health.health -= damage;
+        //    }
+        //}
+
+
+
+
         cooldown.triggerCooldown(6, cooldown.abilityCooldowns[6]);
 
 
+        
     }
     public void MeleeDash(int playerID, GameObject target)
     {
@@ -111,4 +144,14 @@ public class PlayerAbilityController : MonoBehaviour {
         }
 
     }
+
+    ////////////////////////////////////
+    //trying to visualize the overlap sphere
+    ///////////////////////////////////
+    //private void OnDrawGizmos()
+    //{
+    //    Gizmos.color = Color.red;
+    // //Use the same vars you use to draw your Overlap SPhere to draw your Wire Sphere.
+    // Gizmos.DrawWireSphere(transform.position + new Vector3(0, 0, 1.4f), overlapSphereRadius);
+    //}
 }
