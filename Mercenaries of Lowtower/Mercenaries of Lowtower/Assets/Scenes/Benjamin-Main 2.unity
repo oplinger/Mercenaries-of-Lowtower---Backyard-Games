@@ -623,6 +623,11 @@ Prefab:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 114922919597154420, guid: 0a8ef360e810a5d4aa75b19254f94d59,
+        type: 2}
+      propertyPath: health
+      value: 100
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 0a8ef360e810a5d4aa75b19254f94d59, type: 2}
   m_IsPrefabParent: 0
@@ -842,7 +847,8 @@ Prefab:
       propertyPath: target
       value: 
       objectReference: {fileID: 2086352322}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 114936817265569340, guid: 6086bb916396d694e868bf9fa1262c1a, type: 2}
   m_ParentPrefab: {fileID: 100100000, guid: 6086bb916396d694e868bf9fa1262c1a, type: 2}
   m_IsPrefabParent: 0
 --- !u!1 &729116011
@@ -1390,6 +1396,11 @@ Prefab:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 114922919597154420, guid: 6e23237eb7cae2348a55080a71753862,
+        type: 2}
+      propertyPath: health
+      value: 100
+      objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 114390484755823532, guid: 6e23237eb7cae2348a55080a71753862, type: 2}
   m_ParentPrefab: {fileID: 100100000, guid: 6e23237eb7cae2348a55080a71753862, type: 2}
@@ -1546,6 +1557,10 @@ Prefab:
       propertyPath: meleeHitbox
       value: 
       objectReference: {fileID: 308346701}
+    - target: {fileID: 1298155444842294, guid: 2d650737647de4c4793ef69af2ec3f56, type: 2}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 2d650737647de4c4793ef69af2ec3f56, type: 2}
   m_IsPrefabParent: 0

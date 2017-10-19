@@ -14,6 +14,9 @@ public class EnemyFollow : MonoBehaviour
     public float bigDamage;
     public float damage;
 
+    Health healthScript;
+
+    float baseHealth;
 
     // Use this for initialization
     void Start()
@@ -30,6 +33,10 @@ public class EnemyFollow : MonoBehaviour
             Debug.Log("" + damage);
         }
 
+        healthScript = GetComponent<Health>();
+
+        baseHealth = healthScript.health;
+
     }
 
     // Update is called once per frame
@@ -40,6 +47,16 @@ public class EnemyFollow : MonoBehaviour
 
         
             transform.position += transform.forward * speed * Time.deltaTime;
+
+        if (healthScript.health<=0)
+        {
+
+            teleportDistance = Random.Range(-25, 25);
+
+            transform.position += new Vector3(teleportDistance, 0, teleportDistance);
+
+            healthScript.health = baseHealth;
+        }
         
     }
 
