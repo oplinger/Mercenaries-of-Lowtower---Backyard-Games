@@ -26,6 +26,15 @@ public class PlayerAbilityController : MonoBehaviour {
 
 
    // }
+
+        public void Jump(int PlayerID, GameObject player)
+    {
+        
+           
+                player.GetComponent<Rigidbody>().AddForce(0, 20, 0, ForceMode.Impulse);
+        
+    }
+
     public void MeleeStrike(int playerID, GameObject me)
     {
         float damage = 5;

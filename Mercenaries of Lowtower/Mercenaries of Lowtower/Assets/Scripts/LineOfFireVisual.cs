@@ -11,13 +11,14 @@ public class LineOfFireVisual : MonoBehaviour {
 	void Start () {
         ranged = GameObject.Find("Bolt Spawn");
         DrawLine(ranged);
+        Destroy(Line.GetComponent<MeshCollider>());
         Line.transform.Rotate(90, 0, 0);
         Line.transform.localScale += new Vector3(-.9f, 29, 0);
         Line.transform.position = ranged.transform.position + new Vector3(0, 0, 15);
         Line.transform.parent = ranged.transform;
 
 
-        Destroy(Line.GetComponent<MeshCollider>());
+        
 
     }
 

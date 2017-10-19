@@ -48,7 +48,6 @@ GameObject:
   m_Component:
   - component: {fileID: 4931189202636410}
   - component: {fileID: 33561627911015648}
-  - component: {fileID: 65451184571423808}
   - component: {fileID: 23564775872499858}
   m_Layer: 8
   m_Name: Cube
@@ -177,18 +176,6 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 112
   m_CollisionDetection: 0
---- !u!65 &65451184571423808
-BoxCollider:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1422816512713874}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &114205180825065630
 MonoBehaviour:
   m_ObjectHideFlags: 1
