@@ -105,4 +105,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e9648c201359f474cb3f2403f346fa0b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  door: {fileID: 0}
+  trigger: 1
+  moveDir: {x: 0, y: 0, z: 0}
+  target: {fileID: 0}

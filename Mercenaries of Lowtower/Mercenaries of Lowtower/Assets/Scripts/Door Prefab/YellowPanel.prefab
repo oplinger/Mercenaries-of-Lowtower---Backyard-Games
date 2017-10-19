@@ -22,7 +22,7 @@ GameObject:
   - component: {fileID: 33262486778670652}
   - component: {fileID: 65199996111505188}
   - component: {fileID: 23958359940234390}
-  - component: {fileID: 114328525357708576}
+  - component: {fileID: 114912986632926462}
   m_Layer: 0
   m_Name: YellowPanel
   m_TagString: Untagged
@@ -94,7 +94,7 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 3.1924155, z: 1}
   m_Center: {x: 0, y: 1.0962079, z: 0}
---- !u!114 &114328525357708576
+--- !u!114 &114912986632926462
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -102,7 +102,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 1714619513319578}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 646d5d1ecb6c4ae45bde3d0a1ff2a8e7, type: 3}
+  m_Script: {fileID: 11500000, guid: e9648c201359f474cb3f2403f346fa0b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  door: {fileID: 0}
+  trigger: 1
+  moveDir: {x: 0, y: 0, z: 0}
+  target: {fileID: 0}

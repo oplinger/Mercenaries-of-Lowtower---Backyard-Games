@@ -28,9 +28,9 @@ public class ShieldScript : MonoBehaviour {
 
     private void OnTriggerStay(Collider other)
     {
-        if (other.tag == "Player" && Input.GetButton("DropShield"))
-        {
-            transform.position += new Vector3(Input.GetAxis("TankHorizontal")*.15f, 0, Input.GetAxis("TankVertical")*.15f);
-        }
+        //if (other.tag == "Player" && Input.GetButton("DropShield"))
+        //{
+        //    transform.position += new Vector3(Input.GetAxis("TankHorizontal")*.15f, 0, Input.GetAxis("TankVertical")*.15f);
+        //}
     }
 }

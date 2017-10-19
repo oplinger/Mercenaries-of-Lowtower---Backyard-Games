@@ -31,6 +31,7 @@ GameObject:
   - component: {fileID: 114290312053027574}
   - component: {fileID: 114275521130487414}
   - component: {fileID: 114647769804334902}
+  - component: {fileID: 114146362518832712}
   m_Layer: 8
   m_Name: Tank Character
   m_TagString: Player
@@ -119,13 +120,31 @@ MonoBehaviour:
   health: 100
   player: {fileID: 0}
   playerMoveScript: {fileID: 0}
---- !u!114 &114238987079419078
+--- !u!114 &114146362518832712
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1373311421524532}
   m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f9b01e3b584311e4dac6d65337d3dffc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  controllerThing: {fileID: 0}
+  playermovement: {x: 0, y: 0, z: 0}
+  walkspeed: 10
+  controller: {fileID: 0}
+  CTRLID: 0
+  abilities: {fileID: 0}
+  cooldowns: {fileID: 0}
+--- !u!114 &114238987079419078
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1373311421524532}
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 213ec7a7f5ab79e44b43398bd13da970, type: 3}
   m_Name: 
@@ -162,7 +181,7 @@ MonoBehaviour:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1373311421524532}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: c0a5bf947ad955c4e982975b5d142f61, type: 3}
   m_Name: 

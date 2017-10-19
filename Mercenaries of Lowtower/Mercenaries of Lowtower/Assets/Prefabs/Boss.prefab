@@ -121,9 +121,9 @@ GameObject:
   - component: {fileID: 114160688909750412}
   - component: {fileID: 114310086984430496}
   - component: {fileID: 114045479491861722}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Boss
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -861,6 +861,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a8674ed4aac036d4a9d4fb5a968142dc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  targeting: {fileID: 0}
+  currentTarget: {fileID: 0}
   targetDistance: 0
   inRange: 0
   speed: 0

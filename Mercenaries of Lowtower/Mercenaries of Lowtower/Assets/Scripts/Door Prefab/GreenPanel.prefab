@@ -22,7 +22,7 @@ GameObject:
   - component: {fileID: 33821089712092746}
   - component: {fileID: 65642235072519784}
   - component: {fileID: 23876056108143478}
-  - component: {fileID: 114120920366910836}
+  - component: {fileID: 114170217861580622}
   m_Layer: 0
   m_Name: GreenPanel
   m_TagString: Untagged
@@ -94,7 +94,7 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1.0815206, y: 2.0511315, z: 1.0985904}
   m_Center: {x: -0.0063168793, y: 0.5255658, z: -0.018577833}
---- !u!114 &114120920366910836
+--- !u!114 &114170217861580622
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -102,7 +102,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 1072907628525872}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: fc97182b8fa8d98439b30f3db6e7353b, type: 3}
+  m_Script: {fileID: 11500000, guid: e9648c201359f474cb3f2403f346fa0b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  door: {fileID: 0}
+  trigger: 1
+  moveDir: {x: 0, y: 0, z: 0}
+  target: {fileID: 0}
