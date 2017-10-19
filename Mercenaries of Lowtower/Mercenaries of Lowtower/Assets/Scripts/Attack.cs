@@ -31,6 +31,7 @@ public class Attack : MonoBehaviour {
             if (Physics.Raycast(transform.position, -Vector3.forward, out hit, 1<<9))
             {
                 GameObject target = hit.collider.gameObject;
+                print("got em");
 
                 //abilities.MeleeStrike(targetslot);
             }
