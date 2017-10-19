@@ -9,8 +9,15 @@ public class LineOfFireVisual : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-        ranged = GameObject.Find("Ranged Character");
+        ranged = GameObject.Find("Bolt Spawn");
+        DrawLine(ranged);
+        Line.transform.Rotate(90, 0, 0);
         Line.transform.localScale += new Vector3(-.9f, 29, 0);
+        Line.transform.position = ranged.transform.position + new Vector3(0, 0, 15);
+        Line.transform.parent = ranged.transform;
+
+
+        Destroy(Line.GetComponent<MeshCollider>());
 
     }
 
@@ -29,8 +36,6 @@ public class LineOfFireVisual : MonoBehaviour {
         if (on)
         {
             Line.SetActive(true);
-            transform.position = ranged.transform.position;
-            Line.transform.rotation = ranged.transform.rotation;
 
         }
         else
@@ -39,9 +44,9 @@ public class LineOfFireVisual : MonoBehaviour {
 
         }
     }
-    public void OnBool()
+    public void OnBool(bool thing)
     {
-        if (Input.GetKey("k"))
+        if (thing)
         {
             on = true;
         } else
