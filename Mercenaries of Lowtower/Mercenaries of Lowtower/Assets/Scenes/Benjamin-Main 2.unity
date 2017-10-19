@@ -108,6 +108,34 @@ NavMeshSettings:
     tileSize: 256
     accuratePlacement: 0
   m_NavMeshData: {fileID: 0}
+--- !u!1 &103566315 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 1422591790236696, guid: 6e23237eb7cae2348a55080a71753862,
+    type: 2}
+  m_PrefabInternal: {fileID: 1490189405}
+--- !u!114 &103566323
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 103566315}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c8841918513ecf64782ea53e8344fb96, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  playerbody: {fileID: 0}
+  player: {fileID: 0}
+  walkspeed: 15
+  playermovement: {x: 0, y: 0, z: 0}
+  jumpForce: 30
+  isGrounded: 0
+  isWalled: 0
+  jumpspeed: 0
+  rayLength: 1.5
+  wall: {fileID: 0}
+  isDead: 0
+  wallJumpForce: 0
 --- !u!1001 &135868018
 Prefab:
   m_ObjectHideFlags: 0
@@ -447,10 +475,9 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 541438004}
-  - component: {fileID: 541438003}
   - component: {fileID: 541438002}
   m_Layer: 0
-  m_Name: GameController
+  m_Name: ControllerThing
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -464,49 +491,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 541438001}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 932cf9797a7696d418c0dd9cd9c81250, type: 3}
+  m_Script: {fileID: 11500000, guid: 49211042d7644fe46ad9eb65815d440e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  activeCooldowns:
-  - 0
-  - 0
-  - 0
-  - 0
-  - 0
-  - 0
-  - 0
-  - 0
-  - 0
-  - 0
-  - 0
-  - 0
-  abilityCooldowns:
-  - 0
-  - 0
-  - 0
-  - 0
-  - 0
-  - 0
-  - 0
-  - 0
-  - 0
-  - 0
-  - 0
-  - 0
---- !u!114 &541438003
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 541438001}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: be057ff609c9fa34ca28c33ab01692c2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  bossTargets: {fileID: 595378102}
-  bolt: {fileID: 1763097931417544, guid: 9f7b486c0cc55ae48bd1b7935bd6caa6, type: 2}
-  P2BoltSpawn: {fileID: 0}
+  deathcount: 
+  targets: []
+  IDs: []
 --- !u!4 &541438004
 Transform:
   m_ObjectHideFlags: 0
@@ -1098,7 +1088,17 @@ Prefab:
       propertyPath: m_RootOrder
       value: 2
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    - target: {fileID: 114824276392957760, guid: 6e23237eb7cae2348a55080a71753862,
+        type: 2}
+      propertyPath: controller
+      value: 
+      objectReference: {fileID: 541438002}
+    - target: {fileID: 1422591790236696, guid: 6e23237eb7cae2348a55080a71753862, type: 2}
+      propertyPath: m_Name
+      value: Proto Melee Character
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 114205180825065630, guid: 6e23237eb7cae2348a55080a71753862, type: 2}
   m_ParentPrefab: {fileID: 100100000, guid: 6e23237eb7cae2348a55080a71753862, type: 2}
   m_IsPrefabParent: 0
 --- !u!4 &1575071824 stripped
