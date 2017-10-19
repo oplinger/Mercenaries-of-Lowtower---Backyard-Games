@@ -31,6 +31,7 @@ GameObject:
   - component: {fileID: 114722852140195880}
   - component: {fileID: 114810651857386376}
   - component: {fileID: 114112630919456742}
+  - component: {fileID: 114313786020944736}
   m_Layer: 8
   m_Name: Ranged Character
   m_TagString: Player
@@ -175,6 +176,18 @@ MonoBehaviour:
   wall: {fileID: 0}
   isDead: 0
   wallJumpForce: 15
+--- !u!114 &114313786020944736
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1422591790236696}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f77e82f873cfbc64387783c6d61ca2c1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  on: 0
 --- !u!114 &114719024204275684
 MonoBehaviour:
   m_ObjectHideFlags: 1

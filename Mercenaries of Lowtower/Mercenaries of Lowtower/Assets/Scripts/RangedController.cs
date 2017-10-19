@@ -19,11 +19,16 @@ public class RangedController : MonoBehaviour
         controller = controllerThing.GetComponent<ControllerThing>();
         abilities = controllerThing.GetComponent<PlayerAbilityController>();
         cooldowns = controllerThing.GetComponent<PlayerCDController>();
+        LineOfFireVisual line = GetComponent<LineOfFireVisual>();
+        line.DrawLine(GameObject.Find("Ranged Character"));
+        
     }
 
     // Update is called once per frame
     void Update()
     {
+
+
         if (walkspeed >= 0 && CTRLID!=0)
         {
             playermovement = new Vector3(Input.GetAxis("J" + CTRLID + "Horizontal"), 0, Input.GetAxis("J" + CTRLID + "Vertical"));
@@ -40,7 +45,14 @@ public class RangedController : MonoBehaviour
             abilities.RangedRopeBolt(gameObject);
 
         }
-        if (CTRLID != 0 && Input.GetKeyDown("joystick " + CTRLID + " button 2"))
+        if (CTRLID != 0 && Input.GetKey("joystick " + CTRLID + " button 2"))
+        {
+
+            GetComponent<LineOfFireVisual>().OnBool();
+
+
+        }
+        if (CTRLID != 0 && Input.GetKeyUp("joystick " + CTRLID + " button 2"))
         {
 
             abilities.RangedBolt(gameObject);
