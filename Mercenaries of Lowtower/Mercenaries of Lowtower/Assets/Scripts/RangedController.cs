@@ -11,7 +11,7 @@ public class RangedController : MonoBehaviour
     public int CTRLID;
     public PlayerAbilityController abilities;
     public PlayerCDController cooldowns;
-    public bool wat;
+    public bool visual;
     Health health;
 
 
@@ -30,7 +30,6 @@ public class RangedController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        print(wat);
 
 
         if (walkspeed >= 0 && CTRLID != 0)
@@ -58,16 +57,16 @@ public class RangedController : MonoBehaviour
 
         if (CTRLID != 0 && Input.GetKeyDown("joystick " + CTRLID + " button 2"))
         {
-            wat = true;
-            GetComponent<LineOfFireVisual>().OnBool(wat);
+            visual = true;
+            GetComponent<LineOfFireVisual>().OnBool(visual);
 
         }
 
         if (CTRLID != 0 && Input.GetKeyUp("joystick " + CTRLID + " button 2"))
         {
 
-            wat = false;
-            GetComponent<LineOfFireVisual>().OnBool(wat);
+            visual = false;
+            GetComponent<LineOfFireVisual>().OnBool(visual);
 
             abilities.RangedBolt(gameObject);
 

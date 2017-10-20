@@ -8,7 +8,9 @@ public class EnemyFollow : MonoBehaviour
     public float speed;
     public Transform target;
     public Transform player;
-    public float teleportDistance;
+    public float teleportDistancex;
+    public float teleportDistancez;
+
 
     public float smolDamage;
     public float bigDamage;
@@ -51,9 +53,10 @@ public class EnemyFollow : MonoBehaviour
         if (healthScript.health<=0)
         {
 
-            teleportDistance = Random.Range(-25, 25);
+            teleportDistancex = Random.Range(-25, 25);
+            teleportDistancez = Random.Range(-25, 25);
 
-            transform.position += new Vector3(teleportDistance, 0, teleportDistance);
+            transform.position += new Vector3(teleportDistancex, 0, teleportDistancez);
 
             healthScript.health = baseHealth;
         }
@@ -64,11 +67,12 @@ public class EnemyFollow : MonoBehaviour
     {
         if (gameObject.name == "big boi" && other.tag == "Bolt")
         {
-            teleportDistance = Random.Range(-25, 25);
+            teleportDistancex = Random.Range(-25, 25);
+            teleportDistancez = Random.Range(-25, 25);
 
             //transform.LookAt(player);
             // transform.position += transform.forward *-1 * 10 * Time.deltaTime;
-            transform.position += new Vector3(teleportDistance, 0, teleportDistance);
+            transform.position += new Vector3(teleportDistancex, 0, teleportDistancez);
         }
         //if (gameObject.name == "smol boi")
         //{

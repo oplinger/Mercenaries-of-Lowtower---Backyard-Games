@@ -88,6 +88,7 @@ public class PlayerAbilityController : MonoBehaviour {
             GameObject clone = Instantiate(bolt, GameObject.Find("Bolt Spawn").transform.position, controller.IDs[3].gameObject.transform.rotation);
             Destroy(clone, 3);
             cooldown.triggerCooldown(9, cooldown.abilityCooldowns[9]);
+
         }
     }
     public void RangedRopeBolt(GameObject target)

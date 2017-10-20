@@ -10,6 +10,8 @@ public class MeleeController : MonoBehaviour {
     public int CTRLID;
     public PlayerAbilityController abilities;
     public PlayerCDController cooldowns;
+    public bool visual;
+
     float timer;
 
     Health healthScript;
@@ -60,8 +62,19 @@ public class MeleeController : MonoBehaviour {
         if (CTRLID != 0 && Input.GetKeyDown("joystick " + CTRLID + " button 2"))
         {
 
-                abilities.MeleeStrike(System.Array.IndexOf(controller.targets, "Melee Character"), gameObject);
-            
+            visual = true;
+            GetComponent<MeleeVisualization>().OnBool(visual);
+
+
+        }
+        if (CTRLID != 0 && Input.GetKeyUp("joystick " + CTRLID + " button 2"))
+        {
+
+            visual = false;
+            GetComponent<MeleeVisualization>().OnBool(visual);
+
+            abilities.MeleeStrike(System.Array.IndexOf(controller.targets, "Melee Character"), gameObject);
+
 
         }
 
