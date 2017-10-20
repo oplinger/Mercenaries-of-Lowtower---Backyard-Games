@@ -402,7 +402,7 @@ public class ControllerThing : MonoBehaviour {
     }
     void FindTarget()
     {
-        Collider[] hitColliders = Physics.OverlapSphere(transform.position, 100, 1 << 8, QueryTriggerInteraction.Ignore);
+        Collider[] hitColliders = Physics.OverlapSphere(transform.position, 1000, 1 << 8, QueryTriggerInteraction.Ignore);
         targets = hitColliders;
         sendIDs();
     }
