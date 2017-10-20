@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class EnemyFollow : MonoBehaviour
 {
-    
+
     public float speed;
     public Transform target;
     public Transform player;
@@ -47,33 +47,59 @@ public class EnemyFollow : MonoBehaviour
 
         transform.LookAt(target);
 
-        
-            transform.position += transform.forward * speed * Time.deltaTime;
 
-        if (healthScript.health<=0)
+        transform.position += transform.forward * speed * Time.deltaTime;
+
+        if (healthScript.health <= 0)
         {
+            teleportDistancex = Random.Range(-40, 40);
 
-            teleportDistancex = Random.Range(-25, 25);
-            teleportDistancez = Random.Range(-25, 25);
+            teleportDistancez = Random.Range(-40, 40);
+            //transform.position = new Vector3(GameObject.Find("Payload").transform.position.x + teleportDistancex, 0, teleportDistancez);
+            //healthScript.health = baseHealth;
 
-            transform.position += new Vector3(teleportDistancex, 0, teleportDistancez);
+            for (int i = 0; i < 50; i++)
+            {
+                if ((target.position.x + teleportDistancex) >= (target.position.x - 20) && (target.position.x + teleportDistancex) <= (target.position.x + 20))
+                {
+                    teleportDistancex = Random.Range(-40, 40);
+                }
+                else
+                {
+                    break;
+                }
+            }
+            
+            for (int i = 0; i < 50; i++)
+            {
+                if ((target.position.z + teleportDistancez) >= (target.position.z -20) && (target.position.z + teleportDistancez) <= (target.position.z +20))
+                {
+                    teleportDistancez = Random.Range(-40, 40);
+                }
+                else
+                {
+                    break;
+                }
+            }
+            print(teleportDistancex + " , " + teleportDistancez);
+            transform.position = new Vector3(target.position.x + teleportDistancex, 1, target.position.z + teleportDistancez);
 
             healthScript.health = baseHealth;
         }
-        
+
     }
 
     private void OnTriggerEnter(Collider other)
     {
-        if (gameObject.name == "big boi" && other.tag == "Bolt")
-        {
-            teleportDistancex = Random.Range(-25, 25);
-            teleportDistancez = Random.Range(-25, 25);
+        //if (gameObject.name == "big boi" && other.tag == "Bolt")
+        //{
+        //    teleportDistancex = Random.Range(-25, 25);
+        //    teleportDistancez = Random.Range(-25, 25);
 
-            //transform.LookAt(player);
-            // transform.position += transform.forward *-1 * 10 * Time.deltaTime;
-            transform.position += new Vector3(teleportDistancex, 0, teleportDistancez);
-        }
+        //    //transform.LookAt(player);
+        //    // transform.position += transform.forward *-1 * 10 * Time.deltaTime;
+        //    transform.position += new Vector3(teleportDistancex, 0, teleportDistancez);
+        //}
         //if (gameObject.name == "smol boi")
         //{
         //    if (other.tag == "Player" || other.tag == "Bolt")
@@ -90,7 +116,7 @@ public class EnemyFollow : MonoBehaviour
         //{
         //    speed = 0;
         //}
-        
+
     }
 
     private void OnTriggerStay(Collider other)
@@ -98,7 +124,7 @@ public class EnemyFollow : MonoBehaviour
 
         if (gameObject.name == "big boi" && other.tag == "Player")
         {
-            other.GetComponent<Health>().health-=bigDamage;
+            other.GetComponent<Health>().health -= bigDamage;
         }
         if (gameObject.name == "smol boi" && other.tag == "Player")
         {

@@ -19,8 +19,8 @@ public class BoltDamage : MonoBehaviour {
         if (other.tag == "Enemy")
         {
             print("HIT BOSS");
-            health = other.GetComponent<Collider>().GetComponent<Health>();
-            health.modifyHealth(100, 3);
+            health = other.GetComponent<Health>();
+            health.modifyHealth(10, 3);
         }
     }
 }
