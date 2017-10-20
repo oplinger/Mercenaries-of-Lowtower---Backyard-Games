@@ -628,6 +628,15 @@ Prefab:
       propertyPath: health
       value: 100
       objectReference: {fileID: 0}
+    - target: {fileID: 114313786020944736, guid: 0a8ef360e810a5d4aa75b19254f94d59,
+        type: 2}
+      propertyPath: ranged
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 1946268549105544, guid: 0a8ef360e810a5d4aa75b19254f94d59, type: 2}
+      propertyPath: m_Name
+      value: Bolt Spawn
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 0a8ef360e810a5d4aa75b19254f94d59, type: 2}
   m_IsPrefabParent: 0
@@ -1560,6 +1569,11 @@ Prefab:
     - target: {fileID: 1298155444842294, guid: 2d650737647de4c4793ef69af2ec3f56, type: 2}
       propertyPath: m_IsActive
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114771674348287820, guid: 2d650737647de4c4793ef69af2ec3f56,
+        type: 2}
+      propertyPath: abilityCooldowns.Array.data[9]
+      value: 3
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 2d650737647de4c4793ef69af2ec3f56, type: 2}
