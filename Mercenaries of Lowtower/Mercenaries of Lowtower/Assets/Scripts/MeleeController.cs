@@ -44,7 +44,7 @@ public class MeleeController : MonoBehaviour {
 
             if (healthScript.isDead)
             {
-                playermovement = new Vector3 (0,0,0);
+               // playermovement = new Vector3 (0,0,0);
             }
         }
 

@@ -10,7 +10,13 @@ public class PlayerAbilityController : MonoBehaviour {
     public GameObject bolt;
     public GameObject P2BoltSpawn;
     public Collider[] colliderss;
-    
+    public int L1 = 1<<0;
+    public int L2 = 1<<3;
+    public int L3;
+    public LayerMask Lall;
+
+
+
     public int overlapSphereRadius;
 
 
@@ -24,6 +30,8 @@ public class PlayerAbilityController : MonoBehaviour {
 
     // Update is called once per frame
     void Update () {
+        print(LayerMask.LayerToName(Lall));
+
     }
 
     //public void executeAttack(int attackID, int playerID, GameObject target)
@@ -33,7 +41,7 @@ public class PlayerAbilityController : MonoBehaviour {
     // }
     public void MeleeStrike(int playerID, GameObject me)
     {
-        float damage = 5;
+        float damage = 10;
         //RaycastHit hit;
 
 
@@ -56,17 +64,21 @@ public class PlayerAbilityController : MonoBehaviour {
         ////////////////////////////////////////////
         ////overlap sphere works to an extent
         ///////////////////////////////////////////
-        Collider[] hitColliders = Physics.OverlapBox(me.transform.position + new Vector3(0, 0, 1.4f), Vector3.one, Quaternion.identity, LayerMask.NameToLayer("Enemies"));
+        Collider[] hitColliders = Physics.OverlapBox(me.transform.position + new Vector3(0, 0, 1.4f), new Vector3(2, 1, 5), Quaternion.identity, Lall);
+        
         colliderss = hitColliders;
         for (int i = 0; i < hitColliders.Length; i++)
         {
             GameObject target = hitColliders[i].gameObject;
             Health health = target.GetComponent<Health>();
-            print("got em" + target.name);
             //health.modifyHealth(damage, 2);
-            if (target.tag == "Enemy")
+            if (target.name == "smol boi")
             {
                 health.health -= damage;
+            }
+            if (target.name == "big boi")
+            {
+               
             }
         }
 
