@@ -9,6 +9,7 @@ public class PlayerAbilityController : MonoBehaviour {
     PlayerCDController cooldown;
     public GameObject bolt;
     public GameObject P2BoltSpawn;
+    public Collider[] colliderss;
     
     public int overlapSphereRadius;
 
@@ -33,41 +34,41 @@ public class PlayerAbilityController : MonoBehaviour {
     public void MeleeStrike(int playerID, GameObject me)
     {
         float damage = 5;
-        RaycastHit hit;
-        
-
-        Debug.DrawRay(me.transform.position, me.transform.forward * 30, Color.blue);
-
-        if (Physics.Raycast(me.transform.position, me.transform.forward * 30, out hit))
-           {
-
-               if (hit.collider.gameObject.tag == "Enemy")
-               {
-                   GameObject target = hit.collider.gameObject;
-                   Health health = target.GetComponent<Health>();
-                   print("got em" + target);
-                   health.modifyHealth(damage, 2);
-
-               }
-           }
+        //RaycastHit hit;
 
 
-        //////////////////////////////////////////
-        //overlap sphere works to an extent
-        /////////////////////////////////////////
-        //Collider[] hitColliders = Physics.OverlapSphere(transform.position+new Vector3 (0,0,1.4f), overlapSphereRadius);
+        //Debug.DrawRay(me.transform.position, me.transform.forward * 30, Color.blue);
 
-        //for (int i = 0; i < hitColliders.Length; i++)
-        //{
-        //    GameObject target = hitColliders[i].gameObject;
-        //    Health health = target.GetComponent<Health>();
-        //    print("got em" + target);
-        //    //health.modifyHealth(damage, 2);
-        //    if (target.tag=="Enemy")
-        //    {
-        //        health.health -= damage;
-        //    }
-        //}
+        //if (Physics.Raycast(me.transform.position, me.transform.forward * 30, out hit))
+        //   {
+
+        //       if (hit.collider.gameObject.tag == "Enemy")
+        //       {
+        //           GameObject target = hit.collider.gameObject;
+        //           Health health = target.GetComponent<Health>();
+        //           print("got em" + target);
+        //           health.modifyHealth(damage, 2);
+
+        //       }
+        //   }
+
+
+        ////////////////////////////////////////////
+        ////overlap sphere works to an extent
+        ///////////////////////////////////////////
+        Collider[] hitColliders = Physics.OverlapBox(me.transform.position + new Vector3(0, 0, 1.4f), Vector3.one, Quaternion.identity, LayerMask.NameToLayer("Enemies"));
+        colliderss = hitColliders;
+        for (int i = 0; i < hitColliders.Length; i++)
+        {
+            GameObject target = hitColliders[i].gameObject;
+            Health health = target.GetComponent<Health>();
+            print("got em" + target.name);
+            //health.modifyHealth(damage, 2);
+            if (target.tag == "Enemy")
+            {
+                health.health -= damage;
+            }
+        }
 
 
 
