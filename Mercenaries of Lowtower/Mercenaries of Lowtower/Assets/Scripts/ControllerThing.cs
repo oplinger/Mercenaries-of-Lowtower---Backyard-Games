@@ -394,7 +394,7 @@ public class ControllerThing : MonoBehaviour {
     }
     public void RestartLevel()
     {
-        SceneManager.LoadScene("Prototype Level", LoadSceneMode.Single);
+        SceneManager.LoadScene("Benjamin-Main 2", LoadSceneMode.Single);
     }
     public void DeathCount( int deaths, int playerID)
     {
