@@ -27,12 +27,12 @@ public class EnemyFollow : MonoBehaviour
         if (gameObject.name == "big boi")
         {
             damage = bigDamage;
-            Debug.Log("" + damage);
+            //Debug.Log("" + damage);
         }
         if (gameObject.name == "smol boi")
         {
             damage = smolDamage;
-            Debug.Log("" + damage);
+           // Debug.Log("" + damage);
         }
 
         healthScript = GetComponent<Health>();
@@ -81,7 +81,7 @@ public class EnemyFollow : MonoBehaviour
                     break;
                 }
             }
-            print(teleportDistancex + " , " + teleportDistancez);
+            //print(teleportDistancex + " , " + teleportDistancez);
             transform.position = new Vector3(target.position.x + teleportDistancex, 1, target.position.z + teleportDistancez);
 
             healthScript.health = baseHealth;

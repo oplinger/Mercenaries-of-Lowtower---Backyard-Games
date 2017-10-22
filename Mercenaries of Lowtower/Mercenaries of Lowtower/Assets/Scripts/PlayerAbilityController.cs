@@ -30,7 +30,7 @@ public class PlayerAbilityController : MonoBehaviour {
 
     // Update is called once per frame
     void Update () {
-        print(LayerMask.LayerToName(Lall));
+        //print(LayerMask.LayerToName(Lall));
 
     }
 
@@ -41,7 +41,7 @@ public class PlayerAbilityController : MonoBehaviour {
     // }
     public void MeleeStrike(int playerID, GameObject me)
     {
-        float damage = 10;
+        float damage = 100;
         //RaycastHit hit;
 
 
@@ -64,7 +64,7 @@ public class PlayerAbilityController : MonoBehaviour {
         ////////////////////////////////////////////
         ////overlap sphere works to an extent
         ///////////////////////////////////////////
-        Collider[] hitColliders = Physics.OverlapBox(me.transform.position + new Vector3(0, 0, 1.4f), new Vector3(2, 1, 5), Quaternion.identity, Lall);
+        Collider[] hitColliders = Physics.OverlapBox(GameObject.Find("MeleeFront").transform.position + new Vector3(0, 0, 2), new Vector3(2, 1, 4), me.transform.rotation, Lall);
         
         colliderss = hitColliders;
         for (int i = 0; i < hitColliders.Length; i++)
