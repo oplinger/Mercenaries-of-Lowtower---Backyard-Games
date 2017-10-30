@@ -5,6 +5,8 @@ using UnityEngine;
 public class RangedController : MonoBehaviour
 {
     public GameObject controllerThing;
+    public Rigidbody playerbody;
+    public float jumpForce;
     public Vector3 playermovement;
     public float walkspeed;
     public ControllerThing controller;
@@ -12,7 +14,13 @@ public class RangedController : MonoBehaviour
     public PlayerAbilityController abilities;
     public PlayerCDController cooldowns;
     public bool visual;
+
+    public LayerMask lMask;
+    public Collider[] colliders;
+
     Health health;
+
+  
 
 
     // Use this for initialization
@@ -22,6 +30,8 @@ public class RangedController : MonoBehaviour
         abilities = controllerThing.GetComponent<PlayerAbilityController>();
         cooldowns = controllerThing.GetComponent<PlayerCDController>();
         LineOfFireVisual line = GetComponent<LineOfFireVisual>();
+        playerbody = GetComponent<Rigidbody>();
+
         health = GetComponent<Health>();
         //line.DrawLine(GameObject.Find("Ranged Character"));
 
@@ -30,7 +40,7 @@ public class RangedController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-
+        colliders = Physics.OverlapCapsule(transform.position, transform.position-(Vector3.up*2), .25f, lMask, QueryTriggerInteraction.Ignore);
 
         if (walkspeed >= 0 && CTRLID != 0)
         {
@@ -42,6 +52,16 @@ public class RangedController : MonoBehaviour
                 transform.Translate(playermovement * walkspeed * Time.deltaTime, Space.World);
             }
         }
+
+        if (CTRLID != 0 && colliders.Length>0 && Input.GetKeyDown("joystick " + CTRLID + " button 0"))
+        {
+
+            print("something happened");
+            playerbody.AddForce(0, jumpForce, 0, ForceMode.Impulse);
+
+
+        }
+
         if (CTRLID != 0 && Input.GetKeyDown("joystick " + CTRLID + " button 1"))
         {
 

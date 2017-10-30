@@ -353,12 +353,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   controllerThing: {fileID: 0}
+  playerbody: {fileID: 0}
+  jumpForce: 30
   playermovement: {x: 0, y: 0, z: 0}
   walkspeed: 10
   controller: {fileID: 0}
   CTRLID: 0
   abilities: {fileID: 0}
   cooldowns: {fileID: 0}
+  lMask:
+    serializedVersion: 2
+    m_Bits: 1
+  colliders: []
   visual: 0
 --- !u!114 &114922919597154420
 MonoBehaviour:

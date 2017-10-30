@@ -4,12 +4,16 @@ using UnityEngine;
 
 public class MeleeController : MonoBehaviour {
     public GameObject controllerThing;
+    public Rigidbody playerbody;
+    public float jumpForce;
     public Vector3 playermovement;
     public float walkspeed;
     public ControllerThing controller;
     public int CTRLID;
     public PlayerAbilityController abilities;
     public PlayerCDController cooldowns;
+    public LayerMask lMask;
+    public Collider[] colliders;
     public bool visual;
 
     float timer;
@@ -22,6 +26,8 @@ public class MeleeController : MonoBehaviour {
         controller = controllerThing.GetComponent<ControllerThing>();
         abilities = controllerThing.GetComponent<PlayerAbilityController>();
         cooldowns = controllerThing.GetComponent<PlayerCDController>();
+        playerbody = GetComponent<Rigidbody>();
+
 
         healthScript = GetComponent<Health>();
     }
@@ -30,6 +36,7 @@ public class MeleeController : MonoBehaviour {
     void Update () {
         timer += Time.deltaTime;
 
+        colliders = Physics.OverlapCapsule(transform.position, transform.position - (Vector3.up * 2), .25f, lMask, QueryTriggerInteraction.Ignore);
 
 
         if (walkspeed>= 0 && CTRLID != 0 && !healthScript.isDead)
@@ -48,7 +55,14 @@ public class MeleeController : MonoBehaviour {
             }
         }
 
+        if (CTRLID != 0 && colliders.Length > 0 && Input.GetKeyDown("joystick " + CTRLID + " button 0"))
+        {
 
+            print("something happened");
+            playerbody.AddForce(0, jumpForce, 0, ForceMode.Impulse);
+
+
+        }
 
 
         if (CTRLID != 0 && Input.GetKeyDown("joystick " + CTRLID + " button 1"))
