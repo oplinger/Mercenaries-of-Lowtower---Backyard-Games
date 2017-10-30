@@ -5,12 +5,16 @@ using UnityEngine;
 public class TankController : MonoBehaviour
 {
     public GameObject controllerThing;
+    public Rigidbody playerbody;
+    public float jumpForce;
     public Vector3 playermovement;
     public float walkspeed;
     public ControllerThing controller;
     public int CTRLID;
     public PlayerAbilityController abilities;
     public PlayerCDController cooldowns;
+    public LayerMask lMask;
+    public Collider[] colliders;
 
 
     // Use this for initialization
@@ -19,11 +23,15 @@ public class TankController : MonoBehaviour
         controller = controllerThing.GetComponent<ControllerThing>();
         abilities = controllerThing.GetComponent<PlayerAbilityController>();
         cooldowns = controllerThing.GetComponent<PlayerCDController>();
+        playerbody = GetComponent<Rigidbody>();
+
     }
 
     // Update is called once per frame
     void Update()
     {
+        colliders = Physics.OverlapCapsule(transform.position, transform.position - (Vector3.up * 2), .25f, lMask, QueryTriggerInteraction.Ignore);
+
 
         if (walkspeed >= 0 && CTRLID != 0)
         {
@@ -45,6 +53,15 @@ public class TankController : MonoBehaviour
         {
 
             abilities.TankShield(gameObject);
+
+        }
+
+        if (CTRLID != 0 && colliders.Length > 0 && Input.GetKeyDown("joystick " + CTRLID + " button 0"))
+        {
+
+            print("something happened");
+            playerbody.AddForce(0, jumpForce, 0, ForceMode.Impulse);
+
 
         }
 

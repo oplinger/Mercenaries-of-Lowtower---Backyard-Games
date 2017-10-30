@@ -2,21 +2,25 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ReviveHalf : MonoBehaviour {
+public class ReviveHalf : MonoBehaviour
+{
 
     bool nearFallen;        //true if player is near a fallen teammate
-    public MovementRigidbody teammateScript;
+    //public MeleeController meleeTeammateScript;
+    //public RangedController rangedTeammateScript;
 
     // Use this for initialization
-    void Start () {
+    void Start()
+    {
 
-		
-	}
-	
-	// Update is called once per frame
-	void Update () {
-		
-	}
+
+    }
+
+    // Update is called once per frame
+    void Update()
+    {
+
+    }
 
     void ReviveHalfHealth()
     {
@@ -26,28 +30,23 @@ public class ReviveHalf : MonoBehaviour {
     private void OnTriggerStay(Collider other)                     //players should have some kind of proximity trigger to see whether teammates are nearby
     {
         //this is probably pretty stressful and should be improved
-        if (other.tag=="Player")
-            {
 
-            teammateScript = other.gameObject.GetComponent<MovementRigidbody>();
+        Health teammateHealth = other.gameObject.GetComponent<Health>();
 
-            if (teammateScript.isDead==true && Input.GetButton("Revive"))
-            {
-                Health teammateHealth = other.gameObject.GetComponent<Health>();
+        if (teammateHealth.isDead == true && Input.GetButton("Revive"))
+        {
 
-                teammateHealth.health = 50;
-                teammateScript.isDead = false;
-            }
-
-
-            nearFallen = true;
+            teammateHealth.health = 50;
+            teammateHealth.isDead = false;
         }
 
-        
+        nearFallen = true;
     }
+
 
     private void OnTriggerExit(Collider other)
     {
         nearFallen = false;
     }
 }
+

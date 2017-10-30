@@ -394,7 +394,7 @@ public class ControllerThing : MonoBehaviour {
     }
     public void RestartLevel()
     {
-        SceneManager.LoadScene("Prototype Level", LoadSceneMode.Single);
+        SceneManager.LoadScene("Benjamin-Main 2", LoadSceneMode.Single);
     }
     public void DeathCount( int deaths, int playerID)
     {
@@ -402,7 +402,7 @@ public class ControllerThing : MonoBehaviour {
     }
     void FindTarget()
     {
-        Collider[] hitColliders = Physics.OverlapSphere(transform.position, 100, 1 << 8, QueryTriggerInteraction.Ignore);
+        Collider[] hitColliders = Physics.OverlapSphere(transform.position, 1000, 1 << 8, QueryTriggerInteraction.Ignore);
         targets = hitColliders;
         sendIDs();
     }

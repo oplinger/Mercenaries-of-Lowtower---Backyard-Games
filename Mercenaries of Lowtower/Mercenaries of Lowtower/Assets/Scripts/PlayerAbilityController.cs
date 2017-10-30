@@ -9,8 +9,19 @@ public class PlayerAbilityController : MonoBehaviour {
     PlayerCDController cooldown;
     public GameObject bolt;
     public GameObject P2BoltSpawn;
-	// Use this for initialization
-	void Start () {
+    public Collider[] colliderss;
+    public int L1 = 1<<0;
+    public int L2 = 1<<3;
+    public int L3;
+    public LayerMask Lall;
+
+
+
+    public int overlapSphereRadius;
+
+
+    // Use this for initialization
+    void Start () {
        cooldown = GetComponent<PlayerCDController>();
         controller = GetComponent<ControllerThing>();
 
@@ -19,30 +30,65 @@ public class PlayerAbilityController : MonoBehaviour {
 
     // Update is called once per frame
     void Update () {
+        //print(LayerMask.LayerToName(Lall));
+
     }
 
-   //public void executeAttack(int attackID, int playerID, GameObject target)
-   // {
+    //public void executeAttack(int attackID, int playerID, GameObject target)
+    // {
 
 
-   // }
+    // }
     public void MeleeStrike(int playerID, GameObject me)
     {
-        float damage = 5;
-        RaycastHit hit;
-        if (Physics.Raycast(me.transform.position, me.transform.forward * 30, out hit))
-        {
-            if(hit.collider.gameObject.tag == "Enemy")
-            {
-                GameObject target = hit.collider.gameObject;
-                Health health = target.GetComponent<Health>();
-                health.modifyHealth(damage, 2);
+        float damage = 100;
+        //RaycastHit hit;
 
+
+        //Debug.DrawRay(me.transform.position, me.transform.forward * 30, Color.blue);
+
+        //if (Physics.Raycast(me.transform.position, me.transform.forward * 30, out hit))
+        //   {
+
+        //       if (hit.collider.gameObject.tag == "Enemy")
+        //       {
+        //           GameObject target = hit.collider.gameObject;
+        //           Health health = target.GetComponent<Health>();
+        //           print("got em" + target);
+        //           health.modifyHealth(damage, 2);
+
+        //       }
+        //   }
+
+
+        ////////////////////////////////////////////
+        ////overlap sphere works to an extent
+        ///////////////////////////////////////////
+        Collider[] hitColliders = Physics.OverlapBox(GameObject.Find("MeleeFront").transform.position + new Vector3(0, 0, 2), new Vector3(2, 1, 4), me.transform.rotation, Lall);
+        
+        colliderss = hitColliders;
+        for (int i = 0; i < hitColliders.Length; i++)
+        {
+            GameObject target = hitColliders[i].gameObject;
+            Health health = target.GetComponent<Health>();
+            //health.modifyHealth(damage, 2);
+            if (target.name == "smol boi")
+            {
+                health.health -= damage;
+            }
+            if (target.name == "big boi")
+            {
+               
             }
         }
+
+
+
+
         cooldown.triggerCooldown(6, cooldown.abilityCooldowns[6]);
 
 
+        
     }
     public void MeleeDash(int playerID, GameObject target)
     {
@@ -50,11 +96,13 @@ public class PlayerAbilityController : MonoBehaviour {
     }
     public void RangedBolt(GameObject target)
     {
-
-            GameObject clone = Instantiate(bolt, controller.IDs[3].gameObject.transform.position + (Vector3.forward * 2), controller.IDs[3].gameObject.transform.rotation);
+        if (cooldown.activeCooldowns[9]<=0)
+        {
+            GameObject clone = Instantiate(bolt, GameObject.Find("Bolt Spawn").transform.position, controller.IDs[3].gameObject.transform.rotation);
             Destroy(clone, 3);
             cooldown.triggerCooldown(9, cooldown.abilityCooldowns[9]);
-        
+
+        }
     }
     public void RangedRopeBolt(GameObject target)
     {
@@ -111,4 +159,14 @@ public class PlayerAbilityController : MonoBehaviour {
         }
 
     }
+
+    ////////////////////////////////////
+    //trying to visualize the overlap sphere
+    ///////////////////////////////////
+    //private void OnDrawGizmos()
+    //{
+    //    Gizmos.color = Color.red;
+    // //Use the same vars you use to draw your Overlap SPhere to draw your Wire Sphere.
+    // Gizmos.DrawWireSphere(transform.position + new Vector3(0, 0, 1.4f), overlapSphereRadius);
+    //}
 }

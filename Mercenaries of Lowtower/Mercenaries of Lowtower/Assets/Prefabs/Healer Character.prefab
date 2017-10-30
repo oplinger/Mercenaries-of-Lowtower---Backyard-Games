@@ -156,7 +156,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c1830fbcaf1c1d2429a29547dbabe501, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  teammateScript: {fileID: 0}
 --- !u!114 &114743498405922374
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -180,12 +179,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   controllerThing: {fileID: 0}
+  playerbody: {fileID: 0}
+  jumpForce: 30
   playermovement: {x: 0, y: 0, z: 0}
   walkspeed: 10
   controller: {fileID: 0}
   CTRLID: 0
   abilities: {fileID: 0}
   cooldowns: {fileID: 0}
+  lMask:
+    serializedVersion: 2
+    m_Bits: 1
+  colliders: []
 --- !u!114 &114916286981083900
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -212,7 +217,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   health: 0
   player: {fileID: 0}
-  playerMoveScript: {fileID: 0}
+  isDead: 0
 --- !u!136 &136840180632680702
 CapsuleCollider:
   m_ObjectHideFlags: 1

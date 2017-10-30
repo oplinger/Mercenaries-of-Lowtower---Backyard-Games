@@ -12,6 +12,7 @@ public class Attack : MonoBehaviour {
     public PlayerID ID;
     public int layer;
 
+
      void Start()
     {
         abilities = controller.GetComponent<PlayerAbilityController>();
@@ -26,16 +27,17 @@ public class Attack : MonoBehaviour {
 
         if (Input.GetButtonDown("Attack"))
         {
-            RaycastHit hit;
+                //RaycastHit hit;
 
-            if (Physics.Raycast(transform.position, -Vector3.forward, out hit, 1<<9))
-            {
-                GameObject target = hit.collider.gameObject;
+
+                //if (Physics.Raycast(transform.position, -Vector3.forward, out hit, 1<<9))
+                // {
+                //  GameObject target = hit.collider.gameObject;
 
                 //abilities.MeleeStrike(targetslot);
-            }
+                // }
 
-        }
+            }
         if (ID.playerID == 3 && Input.GetAxis("RangedAttack") == 1)
         {
            // abilities.RangedBolt(targetslot, gameObject);
