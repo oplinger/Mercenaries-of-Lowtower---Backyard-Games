@@ -4,8 +4,6 @@ using UnityEngine;
 
 public class MeleeController : MonoBehaviour {
     public GameObject controllerThing;
-    public Rigidbody playerbody;
-    public float jumpForce;
     public Vector3 playermovement;
     public float walkspeed;
     public ControllerThing controller;
@@ -26,7 +24,6 @@ public class MeleeController : MonoBehaviour {
         controller = controllerThing.GetComponent<ControllerThing>();
         abilities = controllerThing.GetComponent<PlayerAbilityController>();
         cooldowns = controllerThing.GetComponent<PlayerCDController>();
-        playerbody = GetComponent<Rigidbody>();
 
 
         healthScript = GetComponent<Health>();
@@ -38,8 +35,9 @@ public class MeleeController : MonoBehaviour {
 
         colliders = Physics.OverlapCapsule(transform.position, transform.position - (Vector3.up * 2), .25f, lMask, QueryTriggerInteraction.Ignore);
 
+       
 
-        if (walkspeed>= 0 && CTRLID != 0 && !healthScript.isDead)
+        if (walkspeed>= 0 && CTRLID != 0)
         {
             playermovement = new Vector3(Input.GetAxis("J"+ CTRLID + "Horizontal"), 0, Input.GetAxis("J"+CTRLID+"Vertical"));
             //Vector3 relpos = playermovement - transform.position;
@@ -59,7 +57,7 @@ public class MeleeController : MonoBehaviour {
         {
 
             print("something happened");
-            playerbody.AddForce(0, jumpForce, 0, ForceMode.Impulse);
+            abilities.Jump(CTRLID, gameObject);
 
 
         }
@@ -69,7 +67,7 @@ public class MeleeController : MonoBehaviour {
         {
             
             
-                abilities.MeleeDash(System.Array.IndexOf(controller.targets, "Melee Character"), gameObject);
+                abilities.MeleeDash(System.Array.IndexOf(controller.targets, GameObject.Find("Melee Character").GetComponent<Collider>()), gameObject);
             
 
         }
@@ -87,10 +85,11 @@ public class MeleeController : MonoBehaviour {
             visual = false;
             GetComponent<MeleeVisualization>().OnBool(visual);
 
-            abilities.MeleeStrike(System.Array.IndexOf(controller.targets, "Melee Character"), gameObject);
+            abilities.MeleeStrike(System.Array.IndexOf(controller.targets, GameObject.Find("Melee Character").GetComponent<Collider>()), gameObject);
 
 
         }
+        print(System.Array.IndexOf(controller.targets, GameObject.Find("Melee Character").GetComponent<Collider>()));
 
     }
 }

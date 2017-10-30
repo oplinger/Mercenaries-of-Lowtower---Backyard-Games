@@ -405,6 +405,7 @@ public class ControllerThing : MonoBehaviour {
         Collider[] hitColliders = Physics.OverlapSphere(transform.position, 1000, 1 << 8, QueryTriggerInteraction.Ignore);
         targets = hitColliders;
         sendIDs();
+       
     }
     public void sendIDs()
     {
@@ -438,7 +439,6 @@ public class ControllerThing : MonoBehaviour {
             }
         }
         //AssignIDsToArray();
-
     }
     public void AssignIDsToArray(int ID)
     {

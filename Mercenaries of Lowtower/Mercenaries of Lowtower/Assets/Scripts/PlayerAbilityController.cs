@@ -45,7 +45,7 @@ public class PlayerAbilityController : MonoBehaviour {
             {
                 GameObject target = hit.collider.gameObject;
                 Health health = target.GetComponent<Health>();
-                health.modifyHealth(damage, 2);
+                health.modifyHealth(damage, playerID);
 
             }
         }
@@ -100,7 +100,7 @@ public class PlayerAbilityController : MonoBehaviour {
         for (int i = 0; i < hitColliders.Length; i++)
         {
             Health health = hitColliders[i].gameObject.GetComponent<Health>();
-            health.modifyHealth(-20, System.Array.IndexOf(controller.targets, "Healer Character"));
+            health.modifyHealth(-20, System.Array.IndexOf(controller.targets, GameObject.Find("Healer Character").GetComponent<Collider>()));
         }
     }
     public void HealerAbsorb()
@@ -111,12 +111,12 @@ public class PlayerAbilityController : MonoBehaviour {
         for (int i = 0; i < hitColliders.Length; i++)
         {
             Health health = hitColliders[i].gameObject.GetComponent<Health>();
-            health.modifyHealth(-dam / hitColliders.Length, System.Array.IndexOf(controller.targets, "Healer Character"));
+            health.modifyHealth(-dam / hitColliders.Length, System.Array.IndexOf(controller.targets, GameObject.Find("Healer Character").GetComponent<Collider>()));
         }
         for (int i = 0; i < EnemyColliders.Length; i++)
         {
             Health health = EnemyColliders[i].gameObject.GetComponent<Health>();
-            health.modifyHealth(dam, System.Array.IndexOf(controller.targets, "Healer Character"));
+            health.modifyHealth(dam, System.Array.IndexOf(controller.targets, GameObject.Find("Healer Character").GetComponent<Collider>()));
         }
 
     }

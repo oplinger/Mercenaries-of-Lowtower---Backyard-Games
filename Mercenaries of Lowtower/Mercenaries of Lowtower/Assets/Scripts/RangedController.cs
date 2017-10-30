@@ -11,7 +11,14 @@ public class RangedController : MonoBehaviour
     public int CTRLID;
     public PlayerAbilityController abilities;
     public PlayerCDController cooldowns;
-    public bool wat;
+    public bool visual;
+
+    public LayerMask lMask;
+    public Collider[] colliders;
+
+    Health health;
+
+  
 
 
     // Use this for initialization
@@ -21,17 +28,18 @@ public class RangedController : MonoBehaviour
         abilities = controllerThing.GetComponent<PlayerAbilityController>();
         cooldowns = controllerThing.GetComponent<PlayerCDController>();
         LineOfFireVisual line = GetComponent<LineOfFireVisual>();
+
+        health = GetComponent<Health>();
         //line.DrawLine(GameObject.Find("Ranged Character"));
-        
+
     }
 
     // Update is called once per frame
     void Update()
     {
-        print(wat);
+        colliders = Physics.OverlapCapsule(transform.position, transform.position-(Vector3.up*2), .25f, lMask, QueryTriggerInteraction.Ignore);
 
-
-        if (walkspeed >= 0 && CTRLID!=0)
+        if (walkspeed >= 0 && CTRLID != 0)
         {
             playermovement = new Vector3(Input.GetAxis("J" + CTRLID + "Horizontal"), 0, Input.GetAxis("J" + CTRLID + "Vertical"));
             //Vector3 relpos = playermovement - transform.position;
@@ -41,9 +49,19 @@ public class RangedController : MonoBehaviour
                 transform.Translate(playermovement * walkspeed * Time.deltaTime, Space.World);
             }
         }
+
+        if (CTRLID != 0 && colliders.Length>0 && Input.GetKeyDown("joystick " + CTRLID + " button 0"))
+        {
+
+            print("something happened");
+            abilities.Jump(CTRLID, gameObject);
+
+
+        }
+
         if (CTRLID != 0 && Input.GetKeyDown("joystick " + CTRLID + " button 1"))
         {
-                        
+
             abilities.RangedRopeBolt(gameObject);
 
         }
@@ -56,19 +74,24 @@ public class RangedController : MonoBehaviour
 
         if (CTRLID != 0 && Input.GetKeyDown("joystick " + CTRLID + " button 2"))
         {
-            wat = true;
-            GetComponent<LineOfFireVisual>().OnBool(wat);
+            visual = true;
+            GetComponent<LineOfFireVisual>().OnBool(visual);
 
         }
 
         if (CTRLID != 0 && Input.GetKeyUp("joystick " + CTRLID + " button 2"))
         {
 
-            wat = false;
-            GetComponent<LineOfFireVisual>().OnBool(wat);
+            visual = false;
+            GetComponent<LineOfFireVisual>().OnBool(visual);
 
             abilities.RangedBolt(gameObject);
 
+        }
+
+        if (health.isDead)
+        {
+            playermovement = new Vector3(0, 0, 0);
         }
 
 

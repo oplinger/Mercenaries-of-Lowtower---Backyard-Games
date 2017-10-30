@@ -5,8 +5,6 @@ using UnityEngine;
 public class TankController : MonoBehaviour
 {
     public GameObject controllerThing;
-    public Rigidbody playerbody;
-    public float jumpForce;
     public Vector3 playermovement;
     public float walkspeed;
     public ControllerThing controller;
@@ -23,7 +21,6 @@ public class TankController : MonoBehaviour
         controller = controllerThing.GetComponent<ControllerThing>();
         abilities = controllerThing.GetComponent<PlayerAbilityController>();
         cooldowns = controllerThing.GetComponent<PlayerCDController>();
-        playerbody = GetComponent<Rigidbody>();
 
     }
 
@@ -60,7 +57,7 @@ public class TankController : MonoBehaviour
         {
 
             print("something happened");
-            playerbody.AddForce(0, jumpForce, 0, ForceMode.Impulse);
+            abilities.Jump(CTRLID, gameObject);
 
 
         }
