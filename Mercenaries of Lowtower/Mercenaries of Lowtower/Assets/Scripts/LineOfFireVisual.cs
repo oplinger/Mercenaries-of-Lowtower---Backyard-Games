@@ -2,15 +2,13 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class LineOfFireVisual : MonoBehaviour
-{
+public class LineOfFireVisual : MonoBehaviour {
     GameObject Line;
     public bool on;
     public GameObject ranged;
 
-    // Use this for initialization
-    void Start()
-    {
+	// Use this for initialization
+	void Start () {
         ranged = GameObject.Find("Bolt Spawn");
         DrawLine(ranged);
         Destroy(Line.GetComponent<MeshCollider>());
@@ -20,16 +18,15 @@ public class LineOfFireVisual : MonoBehaviour
         Line.transform.parent = ranged.transform;
 
 
-
+        
 
     }
 
     // Update is called once per frame
-    void Update()
-    {
+    void Update () {
 
         LineOn();
-    }
+	}
     public void DrawLine(GameObject origin)
     {
         Line = GameObject.CreatePrimitive(PrimitiveType.Quad);
@@ -53,11 +50,10 @@ public class LineOfFireVisual : MonoBehaviour
         if (thing)
         {
             on = true;
-        }
-        else
+        } else
         {
             on = false;
         }
     }
-
+     
 }

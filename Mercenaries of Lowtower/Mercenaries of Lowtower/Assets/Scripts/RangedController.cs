@@ -5,22 +5,13 @@ using UnityEngine;
 public class RangedController : MonoBehaviour
 {
     public GameObject controllerThing;
-    public Rigidbody playerbody;
-    public float jumpForce;
     public Vector3 playermovement;
     public float walkspeed;
     public ControllerThing controller;
     public int CTRLID;
     public PlayerAbilityController abilities;
     public PlayerCDController cooldowns;
-    public bool visual;
-
-    public LayerMask lMask;
-    public Collider[] colliders;
-
-    Health health;
-
-  
+    public bool wat;
 
 
     // Use this for initialization
@@ -30,19 +21,17 @@ public class RangedController : MonoBehaviour
         abilities = controllerThing.GetComponent<PlayerAbilityController>();
         cooldowns = controllerThing.GetComponent<PlayerCDController>();
         LineOfFireVisual line = GetComponent<LineOfFireVisual>();
-        playerbody = GetComponent<Rigidbody>();
-
-        health = GetComponent<Health>();
         //line.DrawLine(GameObject.Find("Ranged Character"));
-
+        
     }
 
     // Update is called once per frame
     void Update()
     {
-        colliders = Physics.OverlapCapsule(transform.position, transform.position-(Vector3.up*2), .25f, lMask, QueryTriggerInteraction.Ignore);
+        print(wat);
 
-        if (walkspeed >= 0 && CTRLID != 0)
+
+        if (walkspeed >= 0 && CTRLID!=0)
         {
             playermovement = new Vector3(Input.GetAxis("J" + CTRLID + "Horizontal"), 0, Input.GetAxis("J" + CTRLID + "Vertical"));
             //Vector3 relpos = playermovement - transform.position;
@@ -52,19 +41,9 @@ public class RangedController : MonoBehaviour
                 transform.Translate(playermovement * walkspeed * Time.deltaTime, Space.World);
             }
         }
-
-        if (CTRLID != 0 && colliders.Length>0 && Input.GetKeyDown("joystick " + CTRLID + " button 0"))
-        {
-
-            print("something happened");
-            playerbody.AddForce(0, jumpForce, 0, ForceMode.Impulse);
-
-
-        }
-
         if (CTRLID != 0 && Input.GetKeyDown("joystick " + CTRLID + " button 1"))
         {
-
+                        
             abilities.RangedRopeBolt(gameObject);
 
         }
@@ -77,24 +56,19 @@ public class RangedController : MonoBehaviour
 
         if (CTRLID != 0 && Input.GetKeyDown("joystick " + CTRLID + " button 2"))
         {
-            visual = true;
-            GetComponent<LineOfFireVisual>().OnBool(visual);
+            wat = true;
+            GetComponent<LineOfFireVisual>().OnBool(wat);
 
         }
 
         if (CTRLID != 0 && Input.GetKeyUp("joystick " + CTRLID + " button 2"))
         {
 
-            visual = false;
-            GetComponent<LineOfFireVisual>().OnBool(visual);
+            wat = false;
+            GetComponent<LineOfFireVisual>().OnBool(wat);
 
             abilities.RangedBolt(gameObject);
 
-        }
-
-        if (health.isDead)
-        {
-            playermovement = new Vector3(0, 0, 0);
         }
 
 
