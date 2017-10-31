@@ -49,18 +49,18 @@ public class MeleeController : MonoBehaviour {
             abilities.Jump(CTRLID, gameObject);
         }
 
-        if (CTRLID != 0 && Input.GetKeyDown("joystick " + CTRLID + " button 1"))
+        if (CTRLID != 0 && Input.GetKeyDown("joystick " + CTRLID + " button 1") && cooldowns.activeCooldowns[7] <= 0)
         {           
                 abilities.MeleeDash(2, gameObject);
         }
 
-        if (CTRLID != 0 && Input.GetKeyDown("joystick " + CTRLID + " button 2"))
+        if (CTRLID != 0 && Input.GetKeyDown("joystick " + CTRLID + " button 2") && cooldowns.activeCooldowns[6] <= 0)
         {
             visual = true;
             GetComponent<MeleeVisualization>().OnBool(visual);
         }
 
-        if (CTRLID != 0 && Input.GetKeyUp("joystick " + CTRLID + " button 2"))
+        if (CTRLID != 0 && Input.GetKeyUp("joystick " + CTRLID + " button 2") && cooldowns.activeCooldowns[6] <= 0)
         {
             visual = false;
             GetComponent<MeleeVisualization>().OnBool(visual);

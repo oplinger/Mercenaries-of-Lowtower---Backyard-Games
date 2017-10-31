@@ -57,7 +57,7 @@ public class RangedController : MonoBehaviour
 
         }
 
-        if (CTRLID != 0 && Input.GetKeyDown("joystick " + CTRLID + " button 1"))
+        if (CTRLID != 0 && Input.GetKeyDown("joystick " + CTRLID + " button 1") && cooldowns.activeCooldowns[10] <= 0)
         {
 
             abilities.RangedRopeBolt(3, gameObject);
@@ -70,14 +70,14 @@ public class RangedController : MonoBehaviour
 
         }
 
-        if (CTRLID != 0 && Input.GetKeyDown("joystick " + CTRLID + " button 2"))
+        if (CTRLID != 0 && Input.GetKeyDown("joystick " + CTRLID + " button 2") && cooldowns.activeCooldowns[9] <= 0)
         {
             visual = true;
             GetComponent<LineOfFireVisual>().OnBool(visual);
 
         }
 
-        if (CTRLID != 0 && Input.GetKeyUp("joystick " + CTRLID + " button 2"))
+        if (CTRLID != 0 && Input.GetKeyUp("joystick " + CTRLID + " button 2") && cooldowns.activeCooldowns[9] <= 0)
         {
 
             visual = false;

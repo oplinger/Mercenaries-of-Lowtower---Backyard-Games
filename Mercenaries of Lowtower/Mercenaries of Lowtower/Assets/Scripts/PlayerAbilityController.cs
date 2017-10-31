@@ -61,6 +61,8 @@ public class PlayerAbilityController : MonoBehaviour {
 
         }
         bossTargets.addThreat(20, 1);
+        cooldown.triggerCooldown(3, cooldown.abilityCooldowns[3]);
+
     }
 
     // Creates 2 spheres, one for finding players one for finding enemies, loops through both to add damage to both.
@@ -71,8 +73,11 @@ public class PlayerAbilityController : MonoBehaviour {
         Collider[] EnemyColliders = Physics.OverlapSphere(transform.position, 100, enemyMask, QueryTriggerInteraction.Ignore);
         for (int i = 0; i < hitColliders.Length; i++)
         {
+            
             Health health = hitColliders[i].gameObject.GetComponent<Health>();
-            health.modifyHealth(-dam/hitColliders.Length / hitColliders.Length, 1);
+            print(health.health);
+            health.modifyHealth(-dam / hitColliders.Length, 1);
+            print(health.health);
         }
         for (int i = 0; i < EnemyColliders.Length; i++)
         {
@@ -80,6 +85,8 @@ public class PlayerAbilityController : MonoBehaviour {
             print(EnemyColliders[i]);
             health.modifyHealth(dam, 1);
         }
+        cooldown.triggerCooldown(4, cooldown.abilityCooldowns[4]);
+
 
     }
     #endregion
@@ -105,6 +112,8 @@ public class PlayerAbilityController : MonoBehaviour {
     public void MeleeDash(int playerID, GameObject target)
     {
         target.transform.position = Vector3.MoveTowards(target.transform.position, target.transform.position + (target.transform.forward * 100), 1000 * Time.deltaTime);
+        cooldown.triggerCooldown(7, cooldown.abilityCooldowns[7]);
+
     }
     #endregion
     #region Ranged Abilities

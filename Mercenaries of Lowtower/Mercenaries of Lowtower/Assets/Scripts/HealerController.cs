@@ -82,7 +82,7 @@ public class HealerController : MonoBehaviour
 
         }
 
-        if (CTRLID != 0 && Input.GetKeyDown("joystick " + CTRLID + " button 1"))
+        if (CTRLID != 0 && Input.GetKeyDown("joystick " + CTRLID + " button 1") && cooldowns.activeCooldowns[4] <= 0)
         {
 
             abilities.HealerAbsorb();
@@ -97,7 +97,7 @@ public class HealerController : MonoBehaviour
 
 
 
-        if (CTRLID != 0 && Input.GetKeyDown("joystick " + CTRLID + " button 2"))
+        if (CTRLID != 0 && Input.GetKeyDown("joystick " + CTRLID + " button 2") && cooldowns.activeCooldowns[3] <= 0)
         {
 
             abilities.HealerHeal();
