@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class RangedController : MonoBehaviour
 {
+    #region Variables
     public GameObject controllerThing;
     public Vector3 playermovement;
     public float walkspeed;
@@ -17,10 +18,7 @@ public class RangedController : MonoBehaviour
     public Collider[] colliders;
 
     Health health;
-
-  
-
-
+    #endregion
     // Use this for initialization
     void Start()
     {
@@ -28,21 +26,19 @@ public class RangedController : MonoBehaviour
         abilities = controllerThing.GetComponent<PlayerAbilityController>();
         cooldowns = controllerThing.GetComponent<PlayerCDController>();
         LineOfFireVisual line = GetComponent<LineOfFireVisual>();
-
         health = GetComponent<Health>();
-        //line.DrawLine(GameObject.Find("Ranged Character"));
-
     }
 
     // Update is called once per frame
     void Update()
     {
-        colliders = Physics.OverlapCapsule(transform.position, transform.position-(Vector3.up*2), .25f, lMask, QueryTriggerInteraction.Ignore);
+        // colliders is for grounding the player, for jumping purposes.
 
+        colliders = Physics.OverlapCapsule(transform.position, transform.position-(Vector3.up*2), .25f, lMask, QueryTriggerInteraction.Ignore);
+        #region Controls
         if (walkspeed >= 0 && CTRLID != 0)
         {
             playermovement = new Vector3(Input.GetAxis("J" + CTRLID + "Horizontal"), 0, Input.GetAxis("J" + CTRLID + "Vertical"));
-            //Vector3 relpos = playermovement - transform.position;
             if (playermovement != Vector3.zero)
             {
                 transform.rotation = Quaternion.LookRotation(playermovement);
@@ -88,12 +84,13 @@ public class RangedController : MonoBehaviour
             abilities.RangedBolt(3, gameObject);
 
         }
-
+        #endregion
+        #region Health and Death
         if (health.isDead)
         {
             playermovement = new Vector3(0, 0, 0);
         }
 
-
+#endregion
     }
 }

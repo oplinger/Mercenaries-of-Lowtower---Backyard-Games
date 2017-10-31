@@ -5,33 +5,36 @@ using UnityEngine.UI;
 
 public class UIController : MonoBehaviour
 {
+    #region Variables
     public GameObject[] players;
     public GameObject boss;
     public GameObject controllerThing;
     ControllerThing controller;
     PlayerCDController playerCooldowns;
-
     public float timer = 600;
-
     public Text[] texts;
     public Image[] healthBars;
-
-
     Health[] playerHealth;
-    //Health player1Health;
-    //Health player2Health;
-    //Health player3Health;
-    //Health player4Health;
     Health bossHealth;
-
     float imagewidth;
+#endregion
+
     // Use this for initialization
     void Start()
     {
         controller = controllerThing.GetComponent<ControllerThing>();
         players = new GameObject[4];
         playerHealth = new Health[4];
+        texts = GetComponentsInChildren<Text>();
+        healthBars = GetComponentsInChildren<Image>();
+        timer = 600;
+        bossHealth = boss.GetComponent<Health>();
+        playerCooldowns = controller.GetComponent<PlayerCDController>();
+        imagewidth = healthBars[9].rectTransform.rect.width;
 
+        // Assigns players to slots based on IDs, for use with UI placement.
+        //IE: Tank is in the top left, always.
+        //This might be changed to player positions. So P1 is in the top left, P2 top right, etc
         for (int i = 0; i < controller.IDs.Length; i++)
         {
             players[i] = controller.IDs[i].gameObject;
@@ -39,29 +42,22 @@ public class UIController : MonoBehaviour
 
         }
 
-
-        texts = GetComponentsInChildren<Text>();
-        healthBars = GetComponentsInChildren<Image>();
-        timer = 600;
-        //player1Health = player1.GetComponent<Health>();
-        //player2Health = player2.GetComponent<Health>();
-        //player3Health = player3.GetComponent<Health>();
-        //player4Health = player4.GetComponent<Health>();
-        bossHealth = boss.GetComponent<Health>();
-
-        playerCooldowns = controller.GetComponent<PlayerCDController>();
-
-        //Image bossHealthBar = healthBars[9];
-
-        imagewidth = healthBars[9].rectTransform.rect.width;
     }
 
     // Update is called once per frame
     void Update()
     {
+        #region Timers
         timer -= Time.deltaTime;
         texts[5].text = timer.ToString();
         texts[4].text = bossHealth.health.ToString();
+#endregion
+
+        #region Cooldown Icons
+
+        //Fades from one textures into another. Visualization of the CD rather than a timer.
+
+        //FIND WAY TO SEPARATE FROM HEALTH BAR ARRAY.
 
         healthBars[3].material.SetFloat("_Tween", playerCooldowns.activeCooldowns[0] / playerCooldowns.abilityCooldowns[0]);
         healthBars[4].material.SetFloat("_Tween", playerCooldowns.activeCooldowns[1] / playerCooldowns.abilityCooldowns[1]);
@@ -78,9 +74,10 @@ public class UIController : MonoBehaviour
         healthBars[21].material.SetFloat("_Tween", playerCooldowns.activeCooldowns[9] / playerCooldowns.abilityCooldowns[9]);
         healthBars[22].material.SetFloat("_Tween", playerCooldowns.activeCooldowns[10] / playerCooldowns.abilityCooldowns[10]);
         healthBars[23].material.SetFloat("_Tween", playerCooldowns.activeCooldowns[11] / playerCooldowns.abilityCooldowns[11]);
+#endregion
 
-
-
+        #region Health Bars
+        //Health bars. Also changes the size of the health bars based on current health vs max health.
         healthBars[1].rectTransform.sizeDelta = new Vector2(100 * (playerHealth[0].health / 100), 20);
         healthBars[7].rectTransform.sizeDelta = new Vector2(100 * (playerHealth[1].health / 100), 20);
         healthBars[13].rectTransform.sizeDelta = new Vector2(100 * (playerHealth[2].health / 100), 20);
@@ -88,7 +85,7 @@ public class UIController : MonoBehaviour
 
         healthBars[25].rectTransform.sizeDelta = new Vector2(300 * (bossHealth.health / 100), 25);
 
-
+#endregion
 
 
     }

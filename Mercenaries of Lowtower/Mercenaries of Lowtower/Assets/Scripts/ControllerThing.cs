@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 
 public class ControllerThing : MonoBehaviour {
+    #region Variables
     public int[] deathcount;
     public Collider[] targets;
     public Collider[] IDs;
@@ -13,17 +14,7 @@ public class ControllerThing : MonoBehaviour {
     public TankController tankcontroller;
     public HealerController healercontroller;
     public RangedController rangedcontroller;
-
-
-
-
-    //    Movement move;
-    //    HealthScript health;
-    //    MeleeAttack melee;
-    //    Attraction attractBeam;
-    //    public GameObject[] prefabs;
-
-    //    public float no = 19;
+    #endregion
     private void Awake()
       {
         IDs = new Collider[4];
@@ -40,143 +31,37 @@ public class ControllerThing : MonoBehaviour {
 
 
     }
-    //    //public void CastJumpRay(Vector3 origin, Vector3 direction, GameObject actor)
-    //    //{
-    //    //    move = actor.GetComponent<Movement>();
-    //    //    RaycastHit hit;
-    //    //    Ray ray = new Ray(origin, direction);
-    //    //    if (Physics.Raycast(ray, out hit))
-    //    //    {
-    //    //        Vector3 incomingVec = hit.point - origin;
-    //    //        Vector3 reflectVec = Vector3.Reflect(incomingVec, hit.normal);
-
-    //    //        move.SetDirection(reflectVec);
-
-    //    //        print(reflectVec);
-    //    //    }
-    //    //}
-    //    public void ModifyHealth(int modifier, GameObject target)
-    //    {
-
-    //        health = target.GetComponent<HealthScript>();
-    //        health.ChangeHealth(modifier);
-
-    //    }
-
-    //    //public void CastAttackRay(Vector3 origin, Vector3 direction, int damage, float range, string indicator)
-    //    //{
-    //    //    if (indicator == "Attack")
-    //    //    {
-    //    //        GameObject target;
-    //    //        RaycastHit hit;
-    //    //        Ray ray = new Ray(origin, direction);
-    //    //        if (Physics.Raycast(ray, out hit, range))
-    //    //        {
-    //    //            target = hit.collider.gameObject;
-    //    //            ModifyHealth(damage, target);
-
-    //    //        }
-    //    //    }
-    //    //}
-    //    public void SpawnRope(GameObject rope, Vector3 hit)
-    //    {
-    //        GameObject clone;
-    //        clone = Instantiate(rope, hit, Quaternion.identity);
-    //    }
-    //    //public void CastRopeRay (Vector3 origin, Vector3 direction, float range)
-    //    //{
-    //    //    Debug.DrawRay(origin, direction*range, Color.white, 3);
-    //    //    RaycastHit hit;
-    //    //    Ray ray = new Ray(origin, direction);
-    //    //    f (Physics.Raycast(ray, out hit, range))
-    //    //    {
-    //    //        SpawnRope(prefabs[1], hit.point);
-    //    //    }
-    //    //}
-    //    //public void CastAttractRay(GameObject origin, Vector3 direction, float range)
-    //    //{
-    //    //    GameObject target;
-    //    //    RaycastHit hit;
-    //    //    Ray ray = new Ray(origin.transform.position, direction);
-    //    //    if (Physics.Raycast(ray, out hit, range))
-    //    //    {
-    //    //        attractBeam = origin.GetComponent<Attraction>();
-    //    //        target = hit.collider.gameObject;
-    //    //        attractBeam.Attract(target, 5*Time.deltaTime);
 
 
-    //    //    }
-    //    //}
-    //    public void CastRay(GameObject origin, Vector3 direction, int damage, float range, string indicator)
-    //    {
-    //        if (indicator == "Attack")
-    //        {
-    //            GameObject target;
-    //            RaycastHit hit;
-    //            Ray ray = new Ray(origin.transform.position, direction);
-    //            if (Physics.Raycast(ray, out hit, range))
-    //            {
-    //                target = hit.collider.gameObject;
-    //                ModifyHealth(damage, target);
-
-    //            }
-    //        }
-    //        if (indicator == "Attract")
-    //        {
-    //            GameObject target;
-    //            RaycastHit hit;
-    //            Ray ray = new Ray(origin.transform.position, direction);
-    //            if (Physics.Raycast(ray, out hit, range))
-    //            {
-    //                attractBeam = origin.GetComponent<Attraction>();
-    //                target = hit.collider.gameObject;
-    //                attractBeam.Attract(target, 5 * Time.deltaTime);
-
-
-    //            }
-    //        }
-    //        if (indicator == "Rope")
-    //        {
-    //            Debug.DrawRay(origin.transform.position, direction * range, Color.white, 3);
-    //            RaycastHit hit;
-    //            Ray ray = new Ray(origin.transform.position, direction);
-    //            if (Physics.Raycast(ray, out hit, range))
-    //            {
-    //                SpawnRope(prefabs[1], hit.point);
-    //            }
-    //        }
-    //        if (indicator == "Jump")
-    //        {
-    //            move = origin.GetComponent<Movement>();
-    //            RaycastHit hit;
-    //            Ray ray = new Ray(origin.transform.position, direction);
-    //            if (Physics.Raycast(ray, out hit))
-    //            {
-    //                Vector3 incomingVec = hit.point - origin.transform.position;
-    //                Vector3 reflectVec = Vector3.Reflect(incomingVec, hit.normal);
-
-    //                move.SetDirection(reflectVec);
-
-    //                print(reflectVec);
-    //            }
-    //        }
-    //    }
     private void Update()
     {
+
+        //press q to restart the level
         if (Input.GetKeyDown("q"))
         {
             RestartLevel();
         }
-
-        for(int i=0; i < deathcount.Length; i++)
+        //if you all die, level restarts
+        for (int i = 0; i < deathcount.Length; i++)
         {
-            if(deathcount[0] == 1 && deathcount[1] == 1 && deathcount[2] == 1 && deathcount[3] == 1)
-             {
-            RestartLevel();
-              }
+            if (deathcount[0] == 1 && deathcount[1] == 1 && deathcount[2] == 1 && deathcount[3] == 1)
+            {
+                RestartLevel();
+            }
         }
 
-        if(/*Input.GetKeyDown("joystick 1 button 7")*/ PID.Contains(1))
+        #region PlayerIDStuff
+        #region CharacterAssignment
+
+        /*Checks a bunch of arrays that hold IDs and GameObjects to eventually assign an unassigned character to a controller ID, this is the basis of our character selection method.
+STEP BY STEP:
+-checks if the index contains the player ID given by the Joystick Polling Script
+-Checks if that index value is null
+-if so it loops through the buttons pressed by the joystick assigned that index value
+-if the specified button is pressed, it checks to see if the array contains that character already
+-if not, it assigns the character to that controller ID.
+ */
+        if (/*Input.GetKeyDown("joystick 1 button 7")*/ PID.Contains(1))
         {
             if (Player[PID.IndexOf(1)] == null)
             {
@@ -389,30 +274,18 @@ public class ControllerThing : MonoBehaviour {
                 }
             }
         }
+    }
+    #endregion
 
 
-    }
-    public void RestartLevel()
-    {
-        SceneManager.LoadScene("Benjamin-Main 2", LoadSceneMode.Single);
-    }
-    public void DeathCount( int deaths, int playerID)
-    {
-        deathcount[playerID] = deaths;
-    }
-    void FindTarget()
-    {
-        Collider[] hitColliders = Physics.OverlapSphere(transform.position, 1000, 1 << 8, QueryTriggerInteraction.Ignore);
-        targets = hitColliders;
-        sendIDs();
-       
-    }
+    // Rearranges the Target IDs into a static array, so the characters always have the same ID numbers for use in the threat system. possibly other applications. 
+    //IE: Tank will always ALWAYS be 0, healer will ALWAYS be 1, etc
     public void sendIDs()
     {
         for (int i = 0; i < targets.Length; i++)
         {
             GameObject currentTar = targets[i].gameObject;
-           PlayerID ID = currentTar.GetComponent<PlayerID>();
+            PlayerID ID = currentTar.GetComponent<PlayerID>();
             //ID.assignSlot(i);
             if (targets[i].gameObject.name == "Tank Character")
             {
@@ -438,18 +311,20 @@ public class ControllerThing : MonoBehaviour {
 
             }
         }
-        //AssignIDsToArray();
     }
+
+    //Takes in the controller ID from the polling script, assigns that to the PID array
+    // IE: if controller 1 pressed start 3rd, he is player 3.
     public void AssignIDsToArray(int ID)
     {
         //targets = IDs;
-        for ( int i=0; i<4; i++)
+        for (int i = 0; i < 4; i++)
         {
             if (PID[i] == ID)
             {
                 break;
             }
-            if (PID[i] == 9 )
+            if (PID[i] == 9)
             {
                 PID.Insert(i, ID);
                 PID.RemoveAt(PID.Count - 1);
@@ -459,4 +334,27 @@ public class ControllerThing : MonoBehaviour {
         }
         //PID.Add(ID);
     }
+    #endregion
+
+    public void RestartLevel()
+    {
+        SceneManager.LoadScene("Prototype Level", LoadSceneMode.Single);
+    }
+
+    // tracks which player is currently dead
+    public void DeathCount( int deaths, int playerID)
+    {
+        deathcount[playerID] = deaths;
+    }
+
+    // finds all players in the level, adds them to an array, and then sends out IDs
+    void FindTarget()
+    {
+        Collider[] hitColliders = Physics.OverlapSphere(transform.position, 1000, 1 << 8, QueryTriggerInteraction.Ignore);
+        targets = hitColliders;
+        sendIDs();
+       
+    }
+    
+    
 }

@@ -6,7 +6,11 @@ public class DeathScript : MonoBehaviour {
 
     MovementRigidbody playerMoveScript;
 
-    // Use this for initialization
+
+    /*MERGE SCRIPT WITH CHARACTER CONTROLLERS*/
+    
+        
+        // Use this for initialization
     void Start () {
         playerMoveScript = GetComponent<MovementRigidbody>();
     }

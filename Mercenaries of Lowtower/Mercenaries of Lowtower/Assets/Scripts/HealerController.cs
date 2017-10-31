@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class HealerController : MonoBehaviour
 {
+    #region Variables
     public GameObject controllerThing;
 
     public Vector3 playermovement;
@@ -22,7 +23,7 @@ public class HealerController : MonoBehaviour
 
     Animator anim;
 
-
+#endregion
 
 
     // Use this for initialization
@@ -40,9 +41,10 @@ public class HealerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        // colliders is for grounding the player, for jumping purposes.
         colliders = Physics.OverlapCapsule(transform.position, transform.position - (Vector3.up * 2), .25f, lMask, QueryTriggerInteraction.Ignore);
         h1 = health.health;
-        Debug.DrawRay(transform.position, Vector3.forward * 50);
+        #region Controls
         if (walkspeed >= 0 && CTRLID != 0)
         {
             playermovement = new Vector3(Input.GetAxis("J" + CTRLID + "Horizontal"), 0, Input.GetAxis("J" + CTRLID + "Vertical"));
@@ -105,7 +107,8 @@ public class HealerController : MonoBehaviour
             anim.SetInteger("Attack", 0);
 
         }
-
+        #endregion
+        #region Health and Death
         if (h1 < h2)
         {
             print("Healer Taking Damage!");
@@ -128,6 +131,6 @@ public class HealerController : MonoBehaviour
             anim.SetInteger("Death", 0);
 
         }
-
+#endregion
     }
 }

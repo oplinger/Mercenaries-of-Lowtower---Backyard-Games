@@ -7,8 +7,10 @@ public class LineOfFireVisual : MonoBehaviour {
     public bool on;
     public GameObject ranged;
 
-	// Use this for initialization
+	// This creates a quad to visualize the direction of travel of the ranged projectiles.
 	void Start () {
+
+        // Finds the spawn game object for bolts, creates a quad, orients the quad, shapes the quad, parents it to the bolt spawn.
         ranged = GameObject.Find("Bolt Spawn");
         DrawLine(ranged);
         Destroy(Line.GetComponent<MeshCollider>());
@@ -32,6 +34,8 @@ public class LineOfFireVisual : MonoBehaviour {
         Line = GameObject.CreatePrimitive(PrimitiveType.Quad);
 
     }
+
+    // bool for turning the visualization on or off.
     public void LineOn()
     {
         if (on)
@@ -45,6 +49,8 @@ public class LineOfFireVisual : MonoBehaviour {
 
         }
     }
+
+    // Works with the above.
     public void OnBool(bool thing)
     {
         if (thing)

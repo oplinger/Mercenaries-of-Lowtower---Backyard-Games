@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class TankController : MonoBehaviour
 {
+    #region Variables
     public GameObject controllerThing;
     public Vector3 playermovement;
     public float walkspeed;
@@ -13,7 +14,8 @@ public class TankController : MonoBehaviour
     public PlayerCDController cooldowns;
     public LayerMask lMask;
     public Collider[] colliders;
-
+    Health health;
+#endregion
 
     // Use this for initialization
     void Start()
@@ -21,15 +23,16 @@ public class TankController : MonoBehaviour
         controller = controllerThing.GetComponent<ControllerThing>();
         abilities = controllerThing.GetComponent<PlayerAbilityController>();
         cooldowns = controllerThing.GetComponent<PlayerCDController>();
+        health = GetComponent<Health>();
 
     }
 
     // Update is called once per frame
     void Update()
     {
+        // colliders is for grounding the player, for jumping purposes.
         colliders = Physics.OverlapCapsule(transform.position, transform.position - (Vector3.up * 2), .25f, lMask, QueryTriggerInteraction.Ignore);
-
-
+        #region Controls
         if (walkspeed >= 0 && CTRLID != 0)
         {
             playermovement = new Vector3(Input.GetAxis("J" + CTRLID + "Horizontal"), 0, Input.GetAxis("J" + CTRLID + "Vertical"));
@@ -40,27 +43,28 @@ public class TankController : MonoBehaviour
                 transform.Translate(playermovement * walkspeed * Time.deltaTime, Space.World);
             }
         }
+
         if (CTRLID != 0 && Input.GetKeyDown("joystick " + CTRLID + " button 1"))
         {
-
-            abilities.TankMagnet();
-
+            abilities.TankMagnet(0, gameObject);
         }
+
         if (CTRLID != 0 && Input.GetKeyDown("joystick " + CTRLID + " button 2"))
         {
-
             abilities.TankShield(gameObject);
-
         }
 
         if (CTRLID != 0 && colliders.Length > 0 && Input.GetKeyDown("joystick " + CTRLID + " button 0"))
         {
-
             print("something happened");
             abilities.Jump(CTRLID, gameObject);
-
-
         }
-
+        #endregion
+        #region Health and Death
+        if (health.isDead)
+        {
+            playermovement = new Vector3(0, 0, 0);
+        }
+        #endregion
     }
 }
