@@ -80,7 +80,13 @@ public class UIController : MonoBehaviour
 
 
         icons[0].material.SetFloat("_Tween", playerCooldowns.activeCooldowns[0] / playerCooldowns.abilityCooldowns[0]);
+        icons[0].material.SetTexture ("_MainTex", Resources.Load("Textures/Magnet") as Texture);
+        icons[0].material.SetTexture("_SecondTex", Resources.Load("Textures/MagnetBW") as Texture);
+
         icons[1].material.SetFloat("_Tween", playerCooldowns.activeCooldowns[1] / playerCooldowns.abilityCooldowns[1]);
+        icons[1].material.SetTexture("_MainTex", Resources.Load("Textures/Shield") as Texture);
+        icons[1].material.SetTexture("_SecondTex", Resources.Load("Textures/ShieldBW") as Texture);
+
         icons[2].material.SetFloat("_Tween", playerCooldowns.activeCooldowns[2] / playerCooldowns.abilityCooldowns[2]);
 
         icons[3].material.SetFloat("_Tween", playerCooldowns.activeCooldowns[3] / playerCooldowns.abilityCooldowns[3]);

@@ -31,6 +31,7 @@ public class PlayerAbilityController : MonoBehaviour {
     public void TankShield(GameObject me)
     {
         Instantiate(Resources.Load("shield"), me.transform.position, me.transform.rotation);
+        cooldown.triggerCooldown(1, cooldown.abilityCooldowns[1]);
     }
     public void TankMagnet(int playerID, GameObject me)
     {
@@ -42,7 +43,10 @@ public class PlayerAbilityController : MonoBehaviour {
             GameObject target = hit.collider.gameObject;
             target.transform.position = Vector3.MoveTowards(target.transform.position, me.transform.position, 5);
             bossTargets.addThreat(1, playerID);
+
         }
+        cooldown.triggerCooldown(0, cooldown.abilityCooldowns[0]);
+
     }
     #endregion
     #region Healer Abilities

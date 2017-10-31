@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class DeathScript : MonoBehaviour {
 
-    MovementRigidbody playerMoveScript;
 
 
     /*MERGE SCRIPT WITH CHARACTER CONTROLLERS*/
@@ -12,7 +11,6 @@ public class DeathScript : MonoBehaviour {
         
         // Use this for initialization
     void Start () {
-        playerMoveScript = GetComponent<MovementRigidbody>();
     }
 	
 	// Update is called once per frame
@@ -28,7 +26,6 @@ public class DeathScript : MonoBehaviour {
     public void PlayerDeath()
     {
         Debug.Log("Player is dead.");
-        playerMoveScript.isDead = true;
     }
 
     public void EnemyDeath(GameObject target)
