@@ -29,6 +29,8 @@ public class HealerController : MonoBehaviour
     // Use this for initialization
     void Start()
     {
+        controllerThing = GameObject.Find("Controller Thing");
+
         controller = controllerThing.GetComponent<ControllerThing>();
         abilities = controllerThing.GetComponent<PlayerAbilityController>();
         cooldowns = controllerThing.GetComponent<PlayerCDController>();

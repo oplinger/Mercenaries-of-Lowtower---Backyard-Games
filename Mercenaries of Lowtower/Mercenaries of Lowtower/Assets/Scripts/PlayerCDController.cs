@@ -18,6 +18,7 @@ public class PlayerCDController : MonoBehaviour {
         6-8 Melee abilities
         9-11 Ranged abilities
 
+        These numbers also correspond to the icons in the UI.
 
         Ability Cooldowns are the static CD value of the ability. Active cooldowns are the current cooldown that ticks down after use.
          

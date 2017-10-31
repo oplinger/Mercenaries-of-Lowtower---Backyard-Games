@@ -5,10 +5,11 @@ using UnityEngine.SceneManagement;
 
 public class JoystickPollingScript : MonoBehaviour {
 
-    public GameObject controller;
+    public GameObject controllerThing;
 
     // Use this for initialization
     void Start () {
+        controllerThing = GameObject.Find("Controller Thing");
 
     }
 
@@ -21,7 +22,7 @@ public class JoystickPollingScript : MonoBehaviour {
             {
 
                 print("joystick " + i + " button 7");
-               ControllerThing CT = controller.GetComponent<ControllerThing>();
+               ControllerThing CT = controllerThing.GetComponent<ControllerThing>();
                 CT.AssignIDsToArray(i);
 
 
