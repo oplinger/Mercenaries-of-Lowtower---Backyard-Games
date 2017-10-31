@@ -54,7 +54,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 220da5c96fdcb5549948a73f6624ef75, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  controller: {fileID: 1298155444842294}
+  controllerThing: {fileID: 0}
 --- !u!114 &114279180997460120
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -69,6 +69,9 @@ MonoBehaviour:
   bossTargets: {fileID: 0}
   bolt: {fileID: 1763097931417544, guid: 9f7b486c0cc55ae48bd1b7935bd6caa6, type: 2}
   P2BoltSpawn: {fileID: 0}
+  enemyMask:
+    serializedVersion: 2
+    m_Bits: 512
 --- !u!114 &114771674348287820
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -94,18 +97,18 @@ MonoBehaviour:
   - 0
   - 0
   abilityCooldowns:
+  - 3
+  - 10
+  - 1
+  - 10
+  - 3
+  - 1
+  - 1
+  - 3
+  - 1
   - 5
   - 5
-  - 5
-  - 5
-  - 5
-  - 5
-  - 5
-  - 5
-  - 5
-  - 5
-  - 5
-  - 5
+  - 1
 --- !u!114 &114794242692764202
 MonoBehaviour:
   m_ObjectHideFlags: 1

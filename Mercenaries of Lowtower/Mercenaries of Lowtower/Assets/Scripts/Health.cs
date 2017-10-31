@@ -13,29 +13,14 @@ public class Health : MonoBehaviour {
 
 	// Initializes the gameObject with 100 health. Can be tweaked with If statements or a health Method.
 	void Start () {
-        //health = 100;
+        health = 100;
         player = this.gameObject;
         //playerMoveScript = GetComponent<MovementRigidbody>();
 
         isDead = false;
 	}
     private void Update()
-    {   //////////////////////////////////////////////death script does not work with "Class Controller" scripts
-        //if (health <= 0)
-        //{
-        //    if (gameObject.tag == "Player")
-        //    {
-        //        //Debug.Log("Player is dead.");
-        //        GetComponent<DeathScript>().PlayerDeath();
-        //        isDead = true;
-        //    }
-        //    if (gameObject.tag == "Enemy")
-        //    {
-        //        //Debug.Log("Player is dead.");
-        //        GetComponent<DeathScript>().EnemyDeath(gameObject);
-        //    }
-        //}
-
+    {  
         if (health<=0)
         {
             isDead = true;
@@ -49,32 +34,15 @@ public class Health : MonoBehaviour {
         {
             health -= dam;
         }
-        
-        
-       
+
+
+
         // If the target is an enemy, it will convert any damage done to it to threat, for targeting purposes.
-        //if (gameObject.tag == "Enemy")
-        //{
-        //   //BossTargetingAI threat = GetComponent<BossTargetingAI>();
-        //   // threat.addThreat(dam, ID);
-        //}
-    }
-
-    /*public void playerDead ()
-    {
-        playerMoveScript.playermovement = new Vector3(0, 0, 0);
-    }*/
-
-    /*
-    private void Update()
-    {
-        if (health<=0)
+        if (gameObject.tag == "Enemy")
         {
-
-            playerMoveScript = GetComponent<MovementRigidbody>();
-            playerMoveScript.isDead = true;
+            BossTargetingAI threat = GetComponent<BossTargetingAI>();
+            threat.addThreat(dam, ID);
         }
     }
-    */
 }
 

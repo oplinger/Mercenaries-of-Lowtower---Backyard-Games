@@ -2,15 +2,15 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class LineOfFireVisual : MonoBehaviour
-{
+public class LineOfFireVisual : MonoBehaviour {
     GameObject Line;
     public bool on;
     public GameObject ranged;
 
-    // Use this for initialization
-    void Start()
-    {
+	// This creates a quad to visualize the direction of travel of the ranged projectiles.
+	void Start () {
+
+        // Finds the spawn game object for bolts, creates a quad, orients the quad, shapes the quad, parents it to the bolt spawn.
         ranged = GameObject.Find("Bolt Spawn");
         DrawLine(ranged);
         Destroy(Line.GetComponent<MeshCollider>());
@@ -20,21 +20,22 @@ public class LineOfFireVisual : MonoBehaviour
         Line.transform.parent = ranged.transform;
 
 
-
+        
 
     }
 
     // Update is called once per frame
-    void Update()
-    {
+    void Update () {
 
         LineOn();
-    }
+	}
     public void DrawLine(GameObject origin)
     {
         Line = GameObject.CreatePrimitive(PrimitiveType.Quad);
 
     }
+
+    // bool for turning the visualization on or off.
     public void LineOn()
     {
         if (on)
@@ -48,16 +49,17 @@ public class LineOfFireVisual : MonoBehaviour
 
         }
     }
+
+    // Works with the above.
     public void OnBool(bool thing)
     {
         if (thing)
         {
             on = true;
-        }
-        else
+        } else
         {
             on = false;
         }
     }
-
+     
 }

@@ -5,27 +5,16 @@ using UnityEngine.SceneManagement;
 
 public class JoystickPollingScript : MonoBehaviour {
 
-    public GameObject controller;
+    public GameObject controllerThing;
 
     // Use this for initialization
     void Start () {
-        //for (int i = 0; i < Input.GetJoystickNames().Length; i++)
-        //{
-        //    print(Input.GetJoystickNames()[i]);
-        //}
+        controllerThing = GameObject.Find("Controller Thing");
 
     }
 
     // Update is called once per frame
     void Update () {
-
-        //for (int i = 0; i < 20; i++)
-        //{
-        //    if (Input.GetKeyDown("joystick 1 button " + i))
-        //    {
-        //        print("joystick 1 button " + i);
-        //    }
-        //}
 
         for (int i = 1; i < 5; i++)
         {
@@ -33,7 +22,7 @@ public class JoystickPollingScript : MonoBehaviour {
             {
 
                 print("joystick " + i + " button 7");
-               ControllerThing CT = controller.GetComponent<ControllerThing>();
+               ControllerThing CT = controllerThing.GetComponent<ControllerThing>();
                 CT.AssignIDsToArray(i);
 
 

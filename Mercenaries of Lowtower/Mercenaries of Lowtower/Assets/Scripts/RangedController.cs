@@ -4,9 +4,8 @@ using UnityEngine;
 
 public class RangedController : MonoBehaviour
 {
+    #region Variables
     public GameObject controllerThing;
-    public Rigidbody playerbody;
-    public float jumpForce;
     public Vector3 playermovement;
     public float walkspeed;
     public ControllerThing controller;
@@ -19,33 +18,29 @@ public class RangedController : MonoBehaviour
     public Collider[] colliders;
 
     Health health;
-
-  
-
-
+    #endregion
     // Use this for initialization
     void Start()
     {
+        controllerThing = GameObject.Find("Controller Thing");
+
         controller = controllerThing.GetComponent<ControllerThing>();
         abilities = controllerThing.GetComponent<PlayerAbilityController>();
         cooldowns = controllerThing.GetComponent<PlayerCDController>();
         LineOfFireVisual line = GetComponent<LineOfFireVisual>();
-        playerbody = GetComponent<Rigidbody>();
-
         health = GetComponent<Health>();
-        //line.DrawLine(GameObject.Find("Ranged Character"));
-
     }
 
     // Update is called once per frame
     void Update()
     {
-        colliders = Physics.OverlapCapsule(transform.position, transform.position-(Vector3.up*2), .25f, lMask, QueryTriggerInteraction.Ignore);
+        // colliders is for grounding the player, for jumping purposes.
 
+        colliders = Physics.OverlapCapsule(transform.position, transform.position-(Vector3.up*2), .25f, lMask, QueryTriggerInteraction.Ignore);
+        #region Controls
         if (walkspeed >= 0 && CTRLID != 0)
         {
             playermovement = new Vector3(Input.GetAxis("J" + CTRLID + "Horizontal"), 0, Input.GetAxis("J" + CTRLID + "Vertical"));
-            //Vector3 relpos = playermovement - transform.position;
             if (playermovement != Vector3.zero)
             {
                 transform.rotation = Quaternion.LookRotation(playermovement);
@@ -57,15 +52,15 @@ public class RangedController : MonoBehaviour
         {
 
             print("something happened");
-            playerbody.AddForce(0, jumpForce, 0, ForceMode.Impulse);
+            abilities.Jump(CTRLID, gameObject);
 
 
         }
 
-        if (CTRLID != 0 && Input.GetKeyDown("joystick " + CTRLID + " button 1"))
+        if (CTRLID != 0 && Input.GetKeyDown("joystick " + CTRLID + " button 1") && cooldowns.activeCooldowns[10] <= 0)
         {
 
-            abilities.RangedRopeBolt(gameObject);
+            abilities.RangedRopeBolt(3, gameObject);
 
         }
         if (CTRLID != 0 && Input.GetKey("joystick " + CTRLID + " button 2"))
@@ -75,28 +70,29 @@ public class RangedController : MonoBehaviour
 
         }
 
-        if (CTRLID != 0 && Input.GetKeyDown("joystick " + CTRLID + " button 2"))
+        if (CTRLID != 0 && Input.GetKeyDown("joystick " + CTRLID + " button 2") && cooldowns.activeCooldowns[9] <= 0)
         {
             visual = true;
             GetComponent<LineOfFireVisual>().OnBool(visual);
 
         }
 
-        if (CTRLID != 0 && Input.GetKeyUp("joystick " + CTRLID + " button 2"))
+        if (CTRLID != 0 && Input.GetKeyUp("joystick " + CTRLID + " button 2") && cooldowns.activeCooldowns[9] <= 0)
         {
 
             visual = false;
             GetComponent<LineOfFireVisual>().OnBool(visual);
 
-            abilities.RangedBolt(gameObject);
+            abilities.RangedBolt(3, gameObject);
 
         }
-
+        #endregion
+        #region Health and Death
         if (health.isDead)
         {
             playermovement = new Vector3(0, 0, 0);
         }
 
-
+#endregion
     }
 }
