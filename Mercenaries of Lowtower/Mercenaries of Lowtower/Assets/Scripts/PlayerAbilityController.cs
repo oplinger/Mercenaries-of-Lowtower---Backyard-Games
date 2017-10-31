@@ -9,10 +9,13 @@ public class PlayerAbilityController : MonoBehaviour {
     PlayerCDController cooldown;
     public GameObject bolt;
     public GameObject P2BoltSpawn;
+    public LayerMask enemyMask;
+
 	// Use this for initialization
 	void Start () {
        cooldown = GetComponent<PlayerCDController>();
         controller = GetComponent<ControllerThing>();
+        bossTargets = GameObject.Find("Boss").GetComponent<BossTargetingAI>();
 
 
     }
@@ -57,7 +60,7 @@ public class PlayerAbilityController : MonoBehaviour {
     {
         target.transform.position = Vector3.MoveTowards(target.transform.position, target.transform.position + (target.transform.forward * 100), 1000 * Time.deltaTime);
     }
-    public void RangedBolt(GameObject target)
+    public void RangedBolt(int playerID , GameObject target)
     {
 
             GameObject clone = Instantiate(bolt, controller.IDs[3].gameObject.transform.position + (Vector3.forward * 2), controller.IDs[3].gameObject.transform.rotation);
@@ -65,7 +68,7 @@ public class PlayerAbilityController : MonoBehaviour {
             cooldown.triggerCooldown(9, cooldown.abilityCooldowns[9]);
         
     }
-    public void RangedRopeBolt(GameObject target)
+    public void RangedRopeBolt(int playerID, GameObject target)
     {
         if (cooldown.activeCooldowns[10] <= 0)
         {
@@ -100,23 +103,27 @@ public class PlayerAbilityController : MonoBehaviour {
         for (int i = 0; i < hitColliders.Length; i++)
         {
             Health health = hitColliders[i].gameObject.GetComponent<Health>();
-            health.modifyHealth(-20, System.Array.IndexOf(controller.targets, GameObject.Find("Healer Character").GetComponent<Collider>()));
+            health.modifyHealth(-20, 1);
+            
+
         }
+        bossTargets.addThreat(20, 1);
     }
     public void HealerAbsorb()
     {
         int dam = 10;
         Collider[] hitColliders = Physics.OverlapSphere(transform.position, 100, 1 << 8, QueryTriggerInteraction.Ignore);
-        Collider[] EnemyColliders = Physics.OverlapSphere(transform.position, 100, 1 << 7, QueryTriggerInteraction.Ignore);
+        Collider[] EnemyColliders = Physics.OverlapSphere(transform.position, 100, enemyMask, QueryTriggerInteraction.Ignore);
         for (int i = 0; i < hitColliders.Length; i++)
         {
             Health health = hitColliders[i].gameObject.GetComponent<Health>();
-            health.modifyHealth(-dam / hitColliders.Length, System.Array.IndexOf(controller.targets, GameObject.Find("Healer Character").GetComponent<Collider>()));
+            health.modifyHealth(-dam / hitColliders.Length, 1);
         }
         for (int i = 0; i < EnemyColliders.Length; i++)
         {
             Health health = EnemyColliders[i].gameObject.GetComponent<Health>();
-            health.modifyHealth(dam, System.Array.IndexOf(controller.targets, GameObject.Find("Healer Character").GetComponent<Collider>()));
+            print(EnemyColliders[i]);
+            health.modifyHealth(dam, 1);
         }
 
     }

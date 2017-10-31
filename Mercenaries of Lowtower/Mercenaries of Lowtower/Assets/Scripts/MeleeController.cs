@@ -67,7 +67,7 @@ public class MeleeController : MonoBehaviour {
         {
             
             
-                abilities.MeleeDash(System.Array.IndexOf(controller.targets, GameObject.Find("Melee Character").GetComponent<Collider>()), gameObject);
+                abilities.MeleeDash(2, gameObject);
             
 
         }
@@ -85,11 +85,10 @@ public class MeleeController : MonoBehaviour {
             visual = false;
             GetComponent<MeleeVisualization>().OnBool(visual);
 
-            abilities.MeleeStrike(System.Array.IndexOf(controller.targets, GameObject.Find("Melee Character").GetComponent<Collider>()), gameObject);
+            abilities.MeleeStrike(2, gameObject);
 
 
         }
-        print(System.Array.IndexOf(controller.targets, GameObject.Find("Melee Character").GetComponent<Collider>()));
 
     }
 }

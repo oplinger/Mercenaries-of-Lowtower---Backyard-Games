@@ -39,7 +39,7 @@ public class BossTargetingAI : MonoBehaviour {
     {
         for (int i = 0; i < controller.targets.Length; i++)
         {
-           distance = 100 - Vector3.Distance(transform.position, controller.targets[i].transform.position);
+           distance = 100 - Vector3.Distance(transform.position, controller.IDs[i].transform.position);
             distanceThreat[i] = distance;          
         }
     }
@@ -75,7 +75,7 @@ public class BossTargetingAI : MonoBehaviour {
             if (combinedThreat[i] > highestThreat)
             {
                 highestThreat = combinedThreat[i];
-                currentTarget = controller.targets[i].gameObject;
+                currentTarget = controller.IDs[i].gameObject;
             }
 
         }

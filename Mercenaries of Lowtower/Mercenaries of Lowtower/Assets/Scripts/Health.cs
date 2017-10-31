@@ -13,7 +13,7 @@ public class Health : MonoBehaviour {
 
 	// Initializes the gameObject with 100 health. Can be tweaked with If statements or a health Method.
 	void Start () {
-        //health = 100;
+        health = 100;
         player = this.gameObject;
         //playerMoveScript = GetComponent<MovementRigidbody>();
 

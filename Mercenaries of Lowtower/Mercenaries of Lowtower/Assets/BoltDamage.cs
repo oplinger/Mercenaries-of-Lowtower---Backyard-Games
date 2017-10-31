@@ -19,12 +19,9 @@ public class BoltDamage : MonoBehaviour {
 
         if (other.tag == "Enemy")
         {
-            print("HIT BOSS");
             health = other.GetComponent<Health>();
             ControllerThing CT = controller.GetComponent<ControllerThing>();
-            int TID = System.Array.IndexOf(CT.targets, GameObject.Find("Ranged Character").GetComponent<Collider>());
-            print(TID);
-            health.modifyHealth(10, TID);
+            health.modifyHealth(10, 3);
         }
     }
 }

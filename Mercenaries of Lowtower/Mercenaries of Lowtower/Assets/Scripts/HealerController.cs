@@ -16,6 +16,14 @@ public class HealerController : MonoBehaviour
     public Collider[] colliders;
     float timer;
 
+    Health health;
+    float h1;
+    float h2;
+
+    Animator anim;
+
+
+
 
     // Use this for initialization
     void Start()
@@ -23,6 +31,9 @@ public class HealerController : MonoBehaviour
         controller = controllerThing.GetComponent<ControllerThing>();
         abilities = controllerThing.GetComponent<PlayerAbilityController>();
         cooldowns = controllerThing.GetComponent<PlayerCDController>();
+        health = GetComponent<Health>();
+        anim = GetComponent<Animator>();
+        h2 = health.health;
 
     }
 
@@ -30,7 +41,7 @@ public class HealerController : MonoBehaviour
     void Update()
     {
         colliders = Physics.OverlapCapsule(transform.position, transform.position - (Vector3.up * 2), .25f, lMask, QueryTriggerInteraction.Ignore);
-
+        h1 = health.health;
         Debug.DrawRay(transform.position, Vector3.forward * 50);
         if (walkspeed >= 0 && CTRLID != 0)
         {
@@ -40,6 +51,15 @@ public class HealerController : MonoBehaviour
             {
                 transform.rotation = Quaternion.LookRotation(playermovement);
                 transform.Translate(playermovement * walkspeed * Time.deltaTime, Space.World);
+                anim.SetInteger("Idle", 0);
+                anim.SetInteger("Walk", 1);
+
+            } else
+            {
+                anim.SetInteger("Idle", 1);
+                anim.SetInteger("Walk", 0);
+
+
             }
         }
 
@@ -48,7 +68,13 @@ public class HealerController : MonoBehaviour
 
             print("something happened");
             abilities.Jump(CTRLID, gameObject);
+            anim.SetInteger("Jump", 1);
 
+
+
+        } else
+        {
+            anim.SetInteger("Jump", 0);
 
         }
 
@@ -56,16 +82,52 @@ public class HealerController : MonoBehaviour
         {
 
             abilities.HealerAbsorb();
+            anim.SetInteger("Attack", 1);
+
+
+        } else
+        {
+            anim.SetInteger("Attack", 0);
 
         }
+
+
+
         if (CTRLID != 0 && Input.GetKeyDown("joystick " + CTRLID + " button 2"))
         {
 
             abilities.HealerHeal();
+            anim.SetInteger("Attack", 1);
+
+
+        } else
+        {
+            anim.SetInteger("Attack", 0);
 
         }
 
+        if (h1 < h2)
+        {
+            print("Healer Taking Damage!");
+            anim.SetInteger("GetHurt", 1);
+            h2 = h1;
 
+        } else
+        {
+            anim.SetInteger("GetHurt", 0);
+
+        }
+
+        if (h1 <= 0)
+        {
+            anim.SetInteger("Death", 1);
+            walkspeed = 0;
+
+        } else
+        {
+            anim.SetInteger("Death", 0);
+
+        }
 
     }
 }

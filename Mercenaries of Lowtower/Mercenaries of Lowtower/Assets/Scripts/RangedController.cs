@@ -62,7 +62,7 @@ public class RangedController : MonoBehaviour
         if (CTRLID != 0 && Input.GetKeyDown("joystick " + CTRLID + " button 1"))
         {
 
-            abilities.RangedRopeBolt(gameObject);
+            abilities.RangedRopeBolt(3, gameObject);
 
         }
         if (CTRLID != 0 && Input.GetKey("joystick " + CTRLID + " button 2"))
@@ -85,7 +85,7 @@ public class RangedController : MonoBehaviour
             visual = false;
             GetComponent<LineOfFireVisual>().OnBool(visual);
 
-            abilities.RangedBolt(gameObject);
+            abilities.RangedBolt(3, gameObject);
 
         }
 
