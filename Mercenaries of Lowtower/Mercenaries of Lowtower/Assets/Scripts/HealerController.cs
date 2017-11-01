@@ -70,7 +70,6 @@ public class HealerController : MonoBehaviour
         if (CTRLID != 0 && colliders.Length > 0 && Input.GetKeyDown("joystick " + CTRLID + " button 0"))
         {
 
-            print("something happened");
             abilities.Jump(CTRLID, gameObject);
             anim.SetInteger("Jump", 1);
 
@@ -113,7 +112,6 @@ public class HealerController : MonoBehaviour
         #region Health and Death
         if (h1 < h2)
         {
-            print("Healer Taking Damage!");
             anim.SetInteger("GetHurt", 1);
             h2 = h1;
 
