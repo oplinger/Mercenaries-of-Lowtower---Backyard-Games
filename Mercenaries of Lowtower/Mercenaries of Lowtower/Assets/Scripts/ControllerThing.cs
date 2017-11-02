@@ -14,9 +14,12 @@ public class ControllerThing : MonoBehaviour {
     public TankController tankcontroller;
     public HealerController healercontroller;
     public RangedController rangedcontroller;
+
     #endregion
     private void Awake()
       {
+
+        DontDestroyOnLoad(transform.gameObject);
         IDs = new Collider[4];
 
         FindTarget();
@@ -28,6 +31,7 @@ public class ControllerThing : MonoBehaviour {
             PID.Add(9);
         }
 
+        SceneManager.sceneLoaded += OnSceneLoaded;
 
 
     }
@@ -277,6 +281,22 @@ STEP BY STEP:
     }
     #endregion
 
+    void OnSceneLoaded(Scene scene, LoadSceneMode mode)
+    {
+        print("Scene Loaded");
+
+        for(int i = 0; i<IDs.Length; i++)
+        {
+            if(GameObject.Find("P" + i + "Spawn") == null)
+            {
+
+            } else
+            {
+                IDs[i].gameObject.transform.position = GameObject.Find("P" + i + "Spawn").transform.position;
+
+            }
+        }
+    }
 
     // Rearranges the Target IDs into a static array, so the characters always have the same ID numbers for use in the threat system. possibly other applications. 
     //IE: Tank will always ALWAYS be 0, healer will ALWAYS be 1, etc
@@ -335,7 +355,7 @@ STEP BY STEP:
         //PID.Add(ID);
     }
     #endregion
-
+    
     public void RestartLevel()
     {
         SceneManager.LoadScene("Prototype Level", LoadSceneMode.Single);

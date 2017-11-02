@@ -2,7 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class MeleeController : MonoBehaviour {
+public class MeleeController : MonoBehaviour
+{
     #region Variables
     public GameObject controllerThing;
     public Vector3 playermovement;
@@ -23,6 +24,8 @@ public class MeleeController : MonoBehaviour {
     // Use this for initialization
     void Start()
     {
+        DontDestroyOnLoad(transform.gameObject);
+
         if (controllerThing == null)
         {
             controllerThing = GameObject.Find("Controller Thing");
@@ -37,57 +40,55 @@ public class MeleeController : MonoBehaviour {
 
     }
 
-    // Update is called once per frame
-    void Update () {
+    /*
+     AnimStates
+     0 = idle
+     1 = Walk
+     2 = Attack
+     3= Jump
+     4 = GetHurt
+     5= Death
+         */
+    void Update()
+    {
+        anim.SetInteger("AnimState", 0);
+
         // colliders is for grounding the player, for jumping purposes.
         colliders = Physics.OverlapCapsule(transform.position, transform.position - (Vector3.up * 2), .25f, lMask, QueryTriggerInteraction.Ignore);
         h1 = health.health;
         #region Controls
-        if (walkspeed>= 0 && CTRLID != 0)
+        if (walkspeed >= 0 && CTRLID != 0)
         {
-            playermovement = new Vector3(Input.GetAxis("J"+ CTRLID + "Horizontal"), 0, Input.GetAxis("J"+CTRLID+"Vertical"));
+            playermovement = new Vector3(Input.GetAxis("J" + CTRLID + "Horizontal"), 0, Input.GetAxis("J" + CTRLID + "Vertical"));
             if (playermovement != Vector3.zero)
             {
                 transform.rotation = Quaternion.LookRotation(playermovement);
                 transform.Translate(playermovement * walkspeed * Time.deltaTime, Space.World);
-                anim.SetInteger("Walk", 1);
-                anim.SetInteger("Idle", 0);
-
+                anim.SetInteger("AnimState", 1);
             }
             else
             {
-                anim.SetInteger("Idle", 1);
-                anim.SetInteger("Walk", 0);
-
-
             }
         }
 
         if (CTRLID != 0 && colliders.Length > 0 && Input.GetKeyDown("joystick " + CTRLID + " button 0"))
         {
             abilities.Jump(CTRLID, gameObject);
-            anim.SetInteger("Jump", 1);
-
-
+            anim.SetInteger("AnimState", 3);
         }
         else
         {
-            anim.SetInteger("Jump", 0);
-
-
         }
 
         if (CTRLID != 0 && Input.GetKeyDown("joystick " + CTRLID + " button 1") && cooldowns.activeCooldowns[7] <= 0)
-        {           
+        {
             abilities.MeleeDash(2, gameObject);
-
         }
 
         if (CTRLID != 0 && Input.GetKeyDown("joystick " + CTRLID + " button 2") && cooldowns.activeCooldowns[6] <= 0)
         {
             visual = true;
             GetComponent<MeleeVisualization>().OnBool(visual);
-
         }
 
         if (CTRLID != 0 && Input.GetKeyUp("joystick " + CTRLID + " button 2") && cooldowns.activeCooldowns[6] <= 0)
@@ -95,39 +96,30 @@ public class MeleeController : MonoBehaviour {
             visual = false;
             GetComponent<MeleeVisualization>().OnBool(visual);
             abilities.MeleeStrike(2, gameObject);
-            anim.SetInteger("Attack", 1);
-
-
-        } else
+            anim.SetInteger("AnimState", 2);
+        }
+        else
         {
-            anim.SetInteger("Attack", 0);
-
         }
 
         #endregion
         #region Health and Death
         if (h1 < h2)
         {
-            anim.SetInteger("GetHurt", 1);
+            anim.SetInteger("AnimState", 4);
             h2 = h1;
-
         }
         else
         {
-            anim.SetInteger("GetHurt", 0);
-
         }
 
         if (h1 <= 0)
         {
-            anim.SetInteger("Death", 1);
+            anim.SetInteger("AnimState", 5);
             walkspeed = 0;
-
         }
         else
         {
-            anim.SetInteger("Death", 0);
-
         }
         #endregion
     }

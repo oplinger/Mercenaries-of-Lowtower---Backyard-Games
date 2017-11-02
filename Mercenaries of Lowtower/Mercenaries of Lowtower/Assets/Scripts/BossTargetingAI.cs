@@ -4,7 +4,10 @@ using UnityEngine;
 
 public class BossTargetingAI : MonoBehaviour {
 
+    public GameObject controllerThing;
     public ControllerThing controller;
+ 
+
 
     public float[] damageThreat;
     public float[] distanceThreat;
@@ -17,7 +20,12 @@ public class BossTargetingAI : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-            
+        if (controllerThing == null)
+        {
+            controllerThing = GameObject.Find("Controller Thing");
+        }
+
+        controller = controllerThing.GetComponent<ControllerThing>();
         // At start the boss finds targets in the arena.
         // damageThreat is the threat from damage
         // distanceThreat is the threat from distance
@@ -32,6 +40,7 @@ public class BossTargetingAI : MonoBehaviour {
         targetDistance();
         combineThreat();
         findCurrentTarget();
+        print(controller.IDs[3]);
     }
 
     // Finds the distance to all found targets and adds the threat value from that distance to the distance threat array

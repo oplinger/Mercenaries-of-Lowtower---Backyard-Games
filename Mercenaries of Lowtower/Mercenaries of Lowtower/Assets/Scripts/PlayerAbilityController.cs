@@ -16,7 +16,14 @@ public class PlayerAbilityController : MonoBehaviour {
     void Start () {
        cooldown = GetComponent<PlayerCDController>();
         controller = GetComponent<ControllerThing>();
-        bossTargets = GameObject.Find("Boss").GetComponent<BossTargetingAI>();
+        if(GameObject.Find("Boss") == null)
+        {
+            
+        } else
+        {
+            bossTargets = GameObject.Find("Boss").GetComponent<BossTargetingAI>();
+
+        }
 
 
     }

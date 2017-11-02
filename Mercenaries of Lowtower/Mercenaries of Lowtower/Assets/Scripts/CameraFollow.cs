@@ -14,6 +14,7 @@ public class CameraFollow : MonoBehaviour {
     float minY = 100;
     float maxZ = -100;
     float minZ = 100;
+    public GameObject camTarget;
 
 
     // Use this for initialization
@@ -111,10 +112,12 @@ public class CameraFollow : MonoBehaviour {
         Vector3 centerpos = new Vector3((currminX + currmaxX) / 2, (currminY + currmaxY) / 2, (currminZ + currmaxZ) / 2);
         transform.position = centerpos;
         transform.position += new Vector3(0, Mathf.Clamp(furthestTarget2 * 1.5f, 25, 500), -15);
-        transform.LookAt(marker.transform.position);
         Vector3 angles = new Vector3(Mathf.Clamp(transform.eulerAngles.x, 60, 90), Mathf.Clamp(transform.eulerAngles.x, 0, 0), transform.eulerAngles.z);
         transform.eulerAngles = angles;
         marker.transform.position = centerpos;
+        camTarget = marker;
+        transform.LookAt(camTarget.transform);
+
     }
 
 }
