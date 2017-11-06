@@ -99,14 +99,25 @@ public class RangedController : MonoBehaviour
         {
         }
 
-        if (CTRLID != 0 && Input.GetKeyDown("joystick " + CTRLID + " button 1") && cooldowns.activeCooldowns[10] <= 0)
+        if (CTRLID != 0 && Input.GetKeyDown("joystick " + CTRLID + " button 1") && cooldowns.activeCooldowns[10] <= 0 && altBuild)
         {
-            abilities.RangedRopeBolt(3, gameObject);
+            abilities.BluntTipArrow(3, 3, gameObject, smokeBomb2CD);
             anim.SetInteger("AnimState", 2);
         }
         else
         {
         }
+
+        if (CTRLID != 0 && Input.GetKeyDown("joystick " + CTRLID + " button 1") && cooldowns.activeCooldowns[10] <= 0)
+        {
+            abilities.SmokeBomb(0, 3, gameObject, smokeBombCD);
+            anim.SetInteger("AnimState", 2);
+        }
+        else
+        {
+        }
+
+
 
         if (CTRLID != 0 && Input.GetKey("joystick " + CTRLID + " button 2" ) && altBuild)
         {

@@ -50,7 +50,7 @@ public class PlayerAbilityController : MonoBehaviour {
         {
             GameObject target = hit.collider.gameObject;
             target.transform.position = Vector3.MoveTowards(target.transform.position, me.transform.position, 5);
-            bossTargets.addThreat(1, playerID);
+            bossTargets.addThreat(1, playerID, false);
 
         }
         cooldown.triggerCooldown(0, cooldown.abilityCooldowns[0]);
@@ -68,7 +68,7 @@ public class PlayerAbilityController : MonoBehaviour {
 
 
         }
-        bossTargets.addThreat(20, 1);
+        bossTargets.addThreat(20, 1, false);
         cooldown.triggerCooldown(3, cooldown.abilityCooldowns[3]);
 
     }
@@ -205,7 +205,6 @@ public class PlayerAbilityController : MonoBehaviour {
         GameObject clone = Instantiate(bolt, controller.IDs[3].gameObject.transform.position + (Vector3.forward * 2), controller.IDs[3].gameObject.transform.rotation);
         Destroy(clone, 3);
         cooldown.triggerCooldown(9,CD);
-        print(damage);
 
     }
     //public void RangedRopeBolt(int playerID, GameObject target)
@@ -221,9 +220,28 @@ public class PlayerAbilityController : MonoBehaviour {
     //    }
     //}
 
-    public void SmokeBomb()
+    public void SmokeBomb(float damage, int playerID, GameObject me, float CD)
     {
+        Collider[] col = Physics.OverlapSphere(me.transform.position, 3, enemyMask, QueryTriggerInteraction.Ignore);
+        for(int i = 0; i < col.Length; i++)
+        {
+            col[i].GetComponent<BossTargetingAI>().addThreat(-col[i].GetComponent<BossTargetingAI>().combinedThreat[playerID], playerID, true);
+        }
+      
+    }
 
+    public void BluntTipArrow(float damage, int playerID, GameObject me, float CD)
+    {
+        Quaternion rotation;
+        rotation = controller.IDs[3].gameObject.transform.rotation;
+        
+        GameObject clone = Instantiate(Resources.Load("BluntArrow") as GameObject, /*controller.IDs[3].gameObject.transform.position + (Vector3.forward * 2)*/ GameObject.Find("Bolt Spawn").transform.position, rotation /*controller.IDs[3].gameObject.transform.rotation*/);
+        GameObject clone1 = Instantiate(Resources.Load("BluntArrow") as GameObject, /*controller.IDs[3].gameObject.transform.position + (Vector3.forward * 2)*/ GameObject.Find("Bolt Spawn").transform.position, rotation /*controller.IDs[3].gameObject.transform.rotation*/);
+        clone1.transform.Rotate(0, 5, 0);
+        GameObject clone2 = Instantiate(Resources.Load("BluntArrow") as GameObject, /*controller.IDs[3].gameObject.transform.position + (Vector3.forward * 2)*/ GameObject.Find("Bolt Spawn").transform.position, rotation /*controller.IDs[3].gameObject.transform.rotation*/);
+        clone2.transform.Rotate(0, -5, 0);
+
+        Destroy(clone, 3);
     }
     #endregion
 

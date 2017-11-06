@@ -16,6 +16,7 @@ public class BossTargetingAI : MonoBehaviour {
     float threatVal;
     int myID;
     public GameObject currentTarget;
+    float timer;
     
 
 	// Use this for initialization
@@ -40,7 +41,7 @@ public class BossTargetingAI : MonoBehaviour {
         targetDistance();
         combineThreat();
         findCurrentTarget();
-        print(controller.IDs[3]);
+
     }
 
     // Finds the distance to all found targets and adds the threat value from that distance to the distance threat array
@@ -55,13 +56,13 @@ public class BossTargetingAI : MonoBehaviour {
 
     // This method adds the damage threat to a target. It converts any negative values to positive values, so healing applies properly to the threat table.
     //Can be called outside of damage, so any abilities that do not do damage, can still create threat
-    public void addThreat(float threat, int ID)
+    public void addThreat(float threat, int ID, bool drop)
     {
-        if (threat < 0)
+        if (threat < 0 && !drop)
         {
             threat *= -1;
         }
-        damageThreat[ID] += threat;
+        damageThreat[ID] = Mathf.Clamp(damageThreat[ID]+threat, 0, 9999999);
         
        
     }
@@ -71,7 +72,7 @@ public class BossTargetingAI : MonoBehaviour {
     {
         for (int i = 0; i < controller.targets.Length; i++)
         {
-            combinedThreat[i] = damageThreat[i] + distanceThreat[i];
+            combinedThreat[i] = Mathf.Clamp(damageThreat[i] + distanceThreat[i], 0, 9999999);
         }
     }
 
