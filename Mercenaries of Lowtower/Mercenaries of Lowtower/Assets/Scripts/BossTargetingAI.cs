@@ -4,7 +4,10 @@ using UnityEngine;
 
 public class BossTargetingAI : MonoBehaviour {
 
+    public GameObject controllerThing;
     public ControllerThing controller;
+ 
+
 
     public float[] damageThreat;
     public float[] distanceThreat;
@@ -13,11 +16,17 @@ public class BossTargetingAI : MonoBehaviour {
     float threatVal;
     int myID;
     public GameObject currentTarget;
+    float timer;
     
 
 	// Use this for initialization
 	void Start () {
-            
+        if (controllerThing == null)
+        {
+            controllerThing = GameObject.Find("Controller Thing");
+        }
+
+        controller = controllerThing.GetComponent<ControllerThing>();
         // At start the boss finds targets in the arena.
         // damageThreat is the threat from damage
         // distanceThreat is the threat from distance
@@ -32,6 +41,7 @@ public class BossTargetingAI : MonoBehaviour {
         targetDistance();
         combineThreat();
         findCurrentTarget();
+
     }
 
     // Finds the distance to all found targets and adds the threat value from that distance to the distance threat array
@@ -46,13 +56,13 @@ public class BossTargetingAI : MonoBehaviour {
 
     // This method adds the damage threat to a target. It converts any negative values to positive values, so healing applies properly to the threat table.
     //Can be called outside of damage, so any abilities that do not do damage, can still create threat
-    public void addThreat(float threat, int ID)
+    public void addThreat(float threat, int ID, bool drop)
     {
-        if (threat < 0)
+        if (threat < 0 && !drop)
         {
             threat *= -1;
         }
-        damageThreat[ID] += threat;
+        damageThreat[ID] = Mathf.Clamp(damageThreat[ID]+threat, 0, 9999999);
         
        
     }
@@ -62,7 +72,7 @@ public class BossTargetingAI : MonoBehaviour {
     {
         for (int i = 0; i < controller.targets.Length; i++)
         {
-            combinedThreat[i] = damageThreat[i] + distanceThreat[i];
+            combinedThreat[i] = Mathf.Clamp(damageThreat[i] + distanceThreat[i], 0, 9999999);
         }
     }
 

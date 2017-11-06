@@ -41,7 +41,7 @@ public class Health : MonoBehaviour {
         if (gameObject.tag == "Enemy")
         {
             BossTargetingAI threat = GetComponent<BossTargetingAI>();
-            threat.addThreat(dam, ID);
+            threat.addThreat(dam, ID, false);
         }
     }
 }

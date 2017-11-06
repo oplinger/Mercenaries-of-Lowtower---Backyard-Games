@@ -14,12 +14,15 @@ public class ControllerThing : MonoBehaviour {
     public TankController tankcontroller;
     public HealerController healercontroller;
     public RangedController rangedcontroller;
+
     #endregion
     private void Awake()
       {
+
+        DontDestroyOnLoad(transform.gameObject);
         IDs = new Collider[4];
 
-        FindTarget();
+        //FindTarget();
         deathcount = new int[4];
         // AssignIDsToArray();
         for(int i=0; i<4; i++)
@@ -28,6 +31,7 @@ public class ControllerThing : MonoBehaviour {
             PID.Add(9);
         }
 
+        SceneManager.sceneLoaded += OnSceneLoaded;
 
 
     }
@@ -72,8 +76,10 @@ STEP BY STEP:
                         Player.Insert(PID.IndexOf(1), IDs[0].gameObject);
                         // Player.RemoveAt(Player.Count - 1);
                         Player.Remove(null);
-                        tankcontroller = GameObject.Find("Tank Character").GetComponent<TankController>();
+                        tankcontroller = GameObject.Find("Tank Character(Clone)").GetComponent<TankController>();
                         tankcontroller.CTRLID = 1;
+                        IDs[0].gameObject.transform.position = GameObject.Find("P0Select").transform.position;
+
                     }
                 }
                 else if (Input.GetKeyDown("joystick " + PID[PID.IndexOf(1)] + " button 1"))
@@ -83,8 +89,10 @@ STEP BY STEP:
                         Player.Insert(PID.IndexOf(1), IDs[1].gameObject);
                         // Player.RemoveAt(Player.Count - 1);
                         Player.Remove(null);
-                        healercontroller = GameObject.Find("Healer Character").GetComponent<HealerController>();
+                        healercontroller = GameObject.Find("Healer Character(Clone)").GetComponent<HealerController>();
                         healercontroller.CTRLID = 1;
+                        IDs[1].gameObject.transform.position = GameObject.Find("P0Select").transform.position;
+
                     }
                 }
                 else if (Input.GetKeyDown("joystick " + PID[PID.IndexOf(1)] + " button 2"))
@@ -94,8 +102,10 @@ STEP BY STEP:
                         Player.Insert(PID.IndexOf(1), IDs[2].gameObject);
                         // Player.RemoveAt(Player.Count - 1);
                         Player.Remove(null);
-                        meleecontroller = GameObject.Find("Melee Character").GetComponent<MeleeController>();
+                        meleecontroller = GameObject.Find("Melee Character(Clone)").GetComponent<MeleeController>();
                         meleecontroller.CTRLID = 1;
+                        IDs[2].gameObject.transform.position = GameObject.Find("P0Select").transform.position;
+
                     }
                 }
                 else if (Input.GetKeyDown("joystick " + PID[PID.IndexOf(1)] + " button 3"))
@@ -105,8 +115,10 @@ STEP BY STEP:
                         Player.Insert(PID.IndexOf(1), IDs[3].gameObject);
                         // Player.RemoveAt(Player.Count - 1);
                         Player.Remove(null);
-                        rangedcontroller = GameObject.Find("Ranged Character").GetComponent<RangedController>();
+                        rangedcontroller = GameObject.Find("Ranged Character(Clone)").GetComponent<RangedController>();
                         rangedcontroller.CTRLID = 1;
+                        IDs[3].gameObject.transform.position = GameObject.Find("P0Select").transform.position;
+
                     }
                 }
                 else
@@ -125,7 +137,7 @@ STEP BY STEP:
                         Player.Insert(PID.IndexOf(2), IDs[0].gameObject);
                         // Player.RemoveAt(Player.Count - 1);
                         Player.Remove(null);
-                        tankcontroller = GameObject.Find("Tank Character").GetComponent<TankController>();
+                        tankcontroller = GameObject.Find("Tank Character(Clone)").GetComponent<TankController>();
                         tankcontroller.CTRLID = 2;
                     }
                 }
@@ -136,7 +148,7 @@ STEP BY STEP:
                         Player.Insert(PID.IndexOf(2), IDs[1].gameObject);
                         // Player.RemoveAt(Player.Count - 1);
                         Player.Remove(null);
-                        healercontroller = GameObject.Find("Healer Character").GetComponent<HealerController>();
+                        healercontroller = GameObject.Find("Healer Character(Clone)").GetComponent<HealerController>();
                         healercontroller.CTRLID = 2;
                     }
                 }
@@ -147,7 +159,7 @@ STEP BY STEP:
                         Player.Insert(PID.IndexOf(2), IDs[2].gameObject);
                         // Player.RemoveAt(Player.Count - 1);
                         Player.Remove(null);
-                        meleecontroller = GameObject.Find("Melee Character").GetComponent<MeleeController>();
+                        meleecontroller = GameObject.Find("Melee Character(Clone)").GetComponent<MeleeController>();
                         meleecontroller.CTRLID = 2;
                     }
                 }
@@ -158,7 +170,7 @@ STEP BY STEP:
                         Player.Insert(PID.IndexOf(2), IDs[3].gameObject);
                         // Player.RemoveAt(Player.Count - 1);
                         Player.Remove(null);
-                        rangedcontroller = GameObject.Find("Ranged Character").GetComponent<RangedController>();
+                        rangedcontroller = GameObject.Find("Ranged Character(Clone)").GetComponent<RangedController>();
                         rangedcontroller.CTRLID = 2;
                     }
                 }
@@ -178,7 +190,7 @@ STEP BY STEP:
                         Player.Insert(PID.IndexOf(3), IDs[0].gameObject);
                         // Player.RemoveAt(Player.Count - 1);
                         Player.Remove(null);
-                        tankcontroller = GameObject.Find("Tank Character").GetComponent<TankController>();
+                        tankcontroller = GameObject.Find("Tank Character(Clone)").GetComponent<TankController>();
                         tankcontroller.CTRLID = 3;
 
                     }
@@ -190,7 +202,7 @@ STEP BY STEP:
                         Player.Insert(PID.IndexOf(3), IDs[1].gameObject);
                         // Player.RemoveAt(Player.Count - 1);
                         Player.Remove(null);
-                        healercontroller = GameObject.Find("Healer Character").GetComponent<HealerController>();
+                        healercontroller = GameObject.Find("Healer Character(Clone)").GetComponent<HealerController>();
                         healercontroller.CTRLID = 3;
                     }
                 }
@@ -201,7 +213,7 @@ STEP BY STEP:
                         Player.Insert(PID.IndexOf(3), IDs[2].gameObject);
                         // Player.RemoveAt(Player.Count - 1);
                         Player.Remove(null);
-                        meleecontroller = GameObject.Find("Melee Character").GetComponent<MeleeController>();
+                        meleecontroller = GameObject.Find("Melee Character(Clone)").GetComponent<MeleeController>();
                         meleecontroller.CTRLID = 3;
                     }
                 }
@@ -212,7 +224,7 @@ STEP BY STEP:
                         Player.Insert(PID.IndexOf(3), IDs[3].gameObject);
                         // Player.RemoveAt(Player.Count - 1);
                         Player.Remove(null);
-                        rangedcontroller = GameObject.Find("Ranged Character").GetComponent<RangedController>();
+                        rangedcontroller = GameObject.Find("Ranged Character(Clone)").GetComponent<RangedController>();
                         rangedcontroller.CTRLID = 3;
                     }
                 }
@@ -232,7 +244,7 @@ STEP BY STEP:
                         Player.Insert(PID.IndexOf(4), IDs[0].gameObject);
                         // Player.RemoveAt(Player.Count - 1);
                         Player.Remove(null);
-                        tankcontroller = GameObject.Find("Tank Character").GetComponent<TankController>();
+                        tankcontroller = GameObject.Find("Tank Character(Clone)").GetComponent<TankController>();
                         tankcontroller.CTRLID = 4;
                     }
                 }
@@ -243,7 +255,7 @@ STEP BY STEP:
                         Player.Insert(PID.IndexOf(4), IDs[1].gameObject);
                         // Player.RemoveAt(Player.Count - 1);
                         Player.Remove(null);
-                        healercontroller = GameObject.Find("Healer Character").GetComponent<HealerController>();
+                        healercontroller = GameObject.Find("Healer Character(Clone)").GetComponent<HealerController>();
                         healercontroller.CTRLID = 4;
                     }
                 }
@@ -254,7 +266,7 @@ STEP BY STEP:
                         Player.Insert(PID.IndexOf(4), IDs[2].gameObject);
                         // Player.RemoveAt(Player.Count - 1);
                         Player.Remove(null);
-                        meleecontroller = GameObject.Find("Melee Character").GetComponent<MeleeController>();
+                        meleecontroller = GameObject.Find("Melee Character(Clone)").GetComponent<MeleeController>();
                         meleecontroller.CTRLID = 4;
                     }
                 }
@@ -265,7 +277,7 @@ STEP BY STEP:
                         Player.Insert(PID.IndexOf(4), IDs[3].gameObject);
                         // Player.RemoveAt(Player.Count - 1);
                         Player.Remove(null);
-                        rangedcontroller = GameObject.Find("Ranged Character").GetComponent<RangedController>();
+                        rangedcontroller = GameObject.Find("Ranged Character(Clone)").GetComponent<RangedController>();
                         rangedcontroller.CTRLID = 4;
                     }
                 }
@@ -277,6 +289,31 @@ STEP BY STEP:
     }
     #endregion
 
+    void OnSceneLoaded(Scene scene, LoadSceneMode mode)
+    {
+        print("Scene Loaded");
+
+        //Instantiate(Resources.Load("Healer Character"));
+        //Instantiate(Resources.Load("Melee Character"));
+        //Instantiate(Resources.Load("Tank Character"));
+        //Instantiate(Resources.Load("Ranged Character"));
+
+        //System.Array.Clear(targets, 0, targets.Length);
+        FindTarget();
+
+        for (int i = 0; i<IDs.Length; i++)
+        {
+            if(GameObject.Find("P" + i + "Spawn") == null)
+            {
+
+            } else
+            {
+                IDs[i].gameObject.transform.position = GameObject.Find("P" + i + "Spawn").transform.position;
+
+            }
+        }
+
+    }
 
     // Rearranges the Target IDs into a static array, so the characters always have the same ID numbers for use in the threat system. possibly other applications. 
     //IE: Tank will always ALWAYS be 0, healer will ALWAYS be 1, etc
@@ -287,24 +324,24 @@ STEP BY STEP:
             GameObject currentTar = targets[i].gameObject;
             PlayerID ID = currentTar.GetComponent<PlayerID>();
             //ID.assignSlot(i);
-            if (targets[i].gameObject.name == "Tank Character")
+            if (targets[i].gameObject.name == "Tank Character(Clone)")
             {
                 ID.assignID(0);
                 IDs[0] = targets[i];
             }
-            else if (targets[i].gameObject.name == "Melee Character")
+            else if (targets[i].gameObject.name == "Melee Character(Clone)")
             {
                 ID.assignID(2);
                 IDs[2] = targets[i];
 
             }
-            else if (targets[i].gameObject.name == "Healer Character")
+            else if (targets[i].gameObject.name == "Healer Character(Clone)")
             {
                 ID.assignID(1);
                 IDs[1] = targets[i];
 
             }
-            else if (targets[i].gameObject.name == "Ranged Character")
+            else if (targets[i].gameObject.name == "Ranged Character(Clone)")
             {
                 ID.assignID(3);
                 IDs[3] = targets[i];
@@ -335,7 +372,7 @@ STEP BY STEP:
         //PID.Add(ID);
     }
     #endregion
-
+    
     public void RestartLevel()
     {
         SceneManager.LoadScene("Prototype Level", LoadSceneMode.Single);

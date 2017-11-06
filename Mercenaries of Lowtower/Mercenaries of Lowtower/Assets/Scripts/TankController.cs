@@ -14,25 +14,42 @@ public class TankController : MonoBehaviour
     public PlayerCDController cooldowns;
     public LayerMask lMask;
     public Collider[] colliders;
+    Animator anim;
     Health health;
-#endregion
+    float h1;
+    float h2;
+    #endregion
 
     // Use this for initialization
     void Start()
     {
+        DontDestroyOnLoad(transform.gameObject);
+
         controllerThing = GameObject.Find("Controller Thing");
         controller = controllerThing.GetComponent<ControllerThing>();
         abilities = controllerThing.GetComponent<PlayerAbilityController>();
         cooldowns = controllerThing.GetComponent<PlayerCDController>();
         health = GetComponent<Health>();
-
+        anim = GetComponent<Animator>();
+        h2 = health.health;
     }
 
-    // Update is called once per frame
+    /*
+     AnimStates
+     0 = idle
+     1 = Walk
+     2 = Attack
+     3= Jump
+     4 = GetHurt
+     5= Death
+         */
     void Update()
     {
+        anim.SetInteger("AnimState", 0);
+
         // colliders is for grounding the player, for jumping purposes.
         colliders = Physics.OverlapCapsule(transform.position, transform.position - (Vector3.up * 2), .25f, lMask, QueryTriggerInteraction.Ignore);
+        h1 = health.health;
         #region Controls
         if (walkspeed >= 0 && CTRLID != 0)
         {
@@ -42,30 +59,58 @@ public class TankController : MonoBehaviour
             {
                 transform.rotation = Quaternion.LookRotation(playermovement);
                 transform.Translate(playermovement * walkspeed * Time.deltaTime, Space.World);
+                anim.SetInteger("AnimState", 1);
+            }
+            else
+            {
+
             }
         }
 
         if (CTRLID != 0 && Input.GetKeyDown("joystick " + CTRLID + " button 1") && cooldowns.activeCooldowns[0]<=0)
         {
             abilities.TankMagnet(0, gameObject);
+            anim.SetInteger("AnimState", 2);
+        }
+        else
+        {
         }
 
         if (CTRLID != 0 && Input.GetKeyDown("joystick " + CTRLID + " button 2") && cooldowns.activeCooldowns[1] <= 0)
         {
             abilities.TankShield(gameObject);
+            anim.SetInteger("AnimState", 2);
+
         }
 
         if (CTRLID != 0 && colliders.Length > 0 && Input.GetKeyDown("joystick " + CTRLID + " button 0"))
         {
-            print("something happened");
             abilities.Jump(CTRLID, gameObject);
+            anim.SetInteger("AnimState", 3);
+        }
+        else
+        {
         }
         #endregion
         #region Health and Death
-        if (health.isDead)
+        if (h1 < h2)
         {
-            playermovement = new Vector3(0, 0, 0);
+            anim.SetInteger("AnimState", 4);
+            h2 = h1;
         }
+        else
+        {
+        }
+
+        if (h1 <= 0)
+        {
+            anim.SetInteger("AnimState", 5);
+            walkspeed = 0;
+        }
+        else
+        {
+        }
+
         #endregion
     }
 }

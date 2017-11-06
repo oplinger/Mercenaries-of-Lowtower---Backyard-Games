@@ -11,7 +11,7 @@ public class MeleeVisualization : MonoBehaviour
     void Start()
     {
         // Finds melee character, creates a quad, orients the quad, shapes the quad, parents it to the character.
-        melee = GameObject.Find("Melee Character");
+        melee = GameObject.Find("Melee Character(Clone)");
         DrawLine(melee);
         Destroy(Line.GetComponent<MeshCollider>());
         Line.transform.Rotate(90, 0, 0);
