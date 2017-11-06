@@ -16,6 +16,7 @@ public class PlayerAbilityController : MonoBehaviour {
     void Start () {
        cooldown = GetComponent<PlayerCDController>();
         controller = GetComponent<ControllerThing>();
+
         if(GameObject.Find("Boss") == null)
         {
             
@@ -98,51 +99,131 @@ public class PlayerAbilityController : MonoBehaviour {
     }
     #endregion
     #region Melee Abilities
-    public void MeleeStrike(int playerID, GameObject me)
+    public void MeleeStrikeBerserker(float damage, int playerID, GameObject me, List<Collider> mtar, int attacknum, float CD)
     {
-        float damage = 5;
-        RaycastHit hit;
-        if (Physics.Raycast(me.transform.position, me.transform.forward * 30, out hit))
+        
+        
+        for(int i = 0; i<mtar.Count; i++)
         {
-            if(/*hit.collider.gameObject.tag == "Enemy"*/ hit.collider.gameObject.layer == 9)
-            {
-                GameObject target = hit.collider.gameObject;
-                Health health = target.GetComponent<Health>();
-                health.modifyHealth(damage, playerID);
+            Health health = mtar[i].GetComponent<Health>();
+            health.modifyHealth(damage, playerID);
+        }
 
+        cooldown.triggerCooldown(6, cooldown.abilityCooldowns[6]-(.05f*attacknum));
+
+    }
+    public void MeleeStrikeRogue(float damage, int playerID, GameObject me, List<Collider> mtar, int attacknum, float CD)
+    {
+
+        for (int i = 0; i < mtar.Count; i++)
+        {
+            Health health = mtar[i].GetComponent<Health>();
+            health.modifyHealth(damage, playerID);
+        }
+
+        cooldown.triggerCooldown(6, cooldown.abilityCooldowns[6]);
+    }
+
+    public void Whirlwind(float damage, int playerID, GameObject me, float CD)
+    {
+        if(Physics.OverlapSphere(me.transform.position, 3, enemyMask, QueryTriggerInteraction.Ignore).Length > 0){
+            StartCoroutine(WWAttack(damage, playerID, me, CD, 1f));
+            cooldown.triggerCooldown(6, CD);
+        }
+    }
+    public void MeleeLunge(float damage, int playerID, GameObject me, float CD)
+    {
+        RaycastHit hit;
+
+        if(Physics.Raycast(me.transform.position, me.transform.forward * 20, out hit))
+        {
+            me.transform.position = Vector3.MoveTowards(me.transform.position, hit.point, 1000*Time.deltaTime);
+           Health health = hit.collider.gameObject.GetComponent<Health>();
+            health.modifyHealth(damage, playerID);
+            if (health.health == 0)
+            {
+                CD = 0;
             }
         }
-        cooldown.triggerCooldown(6, cooldown.abilityCooldowns[6]);
-
+        //me.transform.position = Vector3.MoveTowards(me.transform.position, me.transform.position + (me.transform.forward * 100), 1000 * Time.deltaTime);
+        cooldown.triggerCooldown(7, CD);
 
     }
-    public void MeleeDash(int playerID, GameObject target)
+    IEnumerator WWAttack(float damage, int playerID, GameObject me, float CD, float StrikeInterval)
     {
-        target.transform.position = Vector3.MoveTowards(target.transform.position, target.transform.position + (target.transform.forward * 100), 1000 * Time.deltaTime);
-        cooldown.triggerCooldown(7, cooldown.abilityCooldowns[7]);
+        Collider[] col = Physics.OverlapSphere(me.transform.position, 3, enemyMask, QueryTriggerInteraction.Ignore);
+        for (int i = 0; i < col.Length; i++)
+        {
+            Health health = col[i].GetComponent<Health>();
+           health.modifyHealth(damage, playerID);
+        }
+        print("WW1");
+        yield return new WaitForSeconds(StrikeInterval);
+        Collider[] col1 = Physics.OverlapSphere(me.transform.position, 3, enemyMask, QueryTriggerInteraction.Ignore);
+        for (int i = 0; i < col1.Length; i++)
+        {
+            Health health = col[i].GetComponent<Health>();
+            health.modifyHealth(damage, playerID);
+        }
+        print("WW2");
+        yield return new WaitForSeconds(StrikeInterval);
+        Collider[] col2 = Physics.OverlapSphere(me.transform.position, 3, enemyMask, QueryTriggerInteraction.Ignore);
 
+        for (int i = 0; i < col2.Length; i++)
+        {
+            Health health = col[i].GetComponent<Health>();
+            health.modifyHealth(damage, playerID);
+        }
+        print("WW3");
+        yield return new WaitForSeconds(StrikeInterval);
     }
+    // IEnumerator WW(float damage, int playerID, GameObject me, float CD)
+    //{
+    //    Collider[] col = Physics.OverlapSphere(me.transform.position, 3);
+    //    for (int i = 0; i < col.Length; i++)
+    //    {
+    //        Health health = col[i].GetComponent<Health>();
+    //        health.modifyHealth(damage, playerID);
+    //    }
+        
+    //    yield return new WaitForSeconds(1);
+    //}
     #endregion
     #region Ranged Abilities
-    public void RangedBolt(int playerID , GameObject target)
+    public void RangedBolt(float damage, int playerID, GameObject me, float CD)
     {
 
             GameObject clone = Instantiate(bolt, controller.IDs[3].gameObject.transform.position + (Vector3.forward * 2), controller.IDs[3].gameObject.transform.rotation);
             Destroy(clone, 3);
-            cooldown.triggerCooldown(9, cooldown.abilityCooldowns[9]);
+            cooldown.triggerCooldown(9, CD);
         
     }
-    public void RangedRopeBolt(int playerID, GameObject target)
+    public void RangedArrow(float damage, int playerID, GameObject me, float CD)
     {
-        if (cooldown.activeCooldowns[10] <= 0)
-        {
-            GameObject clone;
-            clone = Instantiate(Resources.Load("RopeBolt", typeof(GameObject)), controller.IDs[3].gameObject.transform.position + (Vector3.forward * 2), Quaternion.identity) as GameObject;
-            Destroy(clone, 3);
-            cooldown.triggerCooldown(10, cooldown.abilityCooldowns[10]);
+        
+
+        GameObject clone = Instantiate(bolt, controller.IDs[3].gameObject.transform.position + (Vector3.forward * 2), controller.IDs[3].gameObject.transform.rotation);
+        Destroy(clone, 3);
+        cooldown.triggerCooldown(9,CD);
+        print(damage);
+
+    }
+    //public void RangedRopeBolt(int playerID, GameObject target)
+    //{
+    //    if (cooldown.activeCooldowns[10] <= 0)
+    //    {
+    //        GameObject clone;
+    //        clone = Instantiate(Resources.Load("RopeBolt", typeof(GameObject)), controller.IDs[3].gameObject.transform.position + (Vector3.forward * 2), Quaternion.identity) as GameObject;
+    //        Destroy(clone, 3);
+    //        cooldown.triggerCooldown(10, cooldown.abilityCooldowns[10]);
 
 
-        }
+    //    }
+    //}
+
+    public void SmokeBomb()
+    {
+
     }
     #endregion
 

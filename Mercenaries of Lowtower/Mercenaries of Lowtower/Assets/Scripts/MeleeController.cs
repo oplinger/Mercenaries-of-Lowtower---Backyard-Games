@@ -5,16 +5,32 @@ using UnityEngine;
 public class MeleeController : MonoBehaviour
 {
     #region Variables
-    public GameObject controllerThing;
-    public Vector3 playermovement;
+    GameObject controllerThing;
+    Vector3 playermovement;
     public float walkspeed;
-    public ControllerThing controller;
+    ControllerThing controller;
     public int CTRLID;
-    public PlayerAbilityController abilities;
-    public PlayerCDController cooldowns;
-    public LayerMask lMask;
-    public Collider[] colliders;
-    public bool visual;
+    PlayerAbilityController abilities;
+    PlayerCDController cooldowns;
+    LayerMask lMask;
+    Collider[] colliders;
+    bool visual;
+    GameObject hitbox;
+    MeleeTargetList mTarList;
+    int attacknum;
+    float timer;
+    bool altBuild;
+    [Space(10)]
+    [Header("Cooldowns")]
+    [Range(0,10)]
+    public float berserkerMeleeAttackCD;
+    [Range(0, 10)]
+    public float rogueMeleeAttackCD;
+    [Range(0, 10)]
+    public float lungeCD;
+    [Range(0, 10)]
+    public float CycloneCD;
+
     Animator anim;
     Health health;
     float h1;
@@ -37,6 +53,7 @@ public class MeleeController : MonoBehaviour
         health = GetComponent<Health>();
         anim = GetComponent<Animator>();
         h2 = health.health;
+        hitbox = GameObject.Find("Cone");
 
     }
 
@@ -52,6 +69,12 @@ public class MeleeController : MonoBehaviour
     void Update()
     {
         anim.SetInteger("AnimState", 0);
+        timer += Time.deltaTime;
+        if (timer > 2)
+        {
+            attacknum = 0;
+            
+        }
 
         // colliders is for grounding the player, for jumping purposes.
         colliders = Physics.OverlapCapsule(transform.position, transform.position - (Vector3.up * 2), .25f, lMask, QueryTriggerInteraction.Ignore);
@@ -80,9 +103,14 @@ public class MeleeController : MonoBehaviour
         {
         }
 
+        if (CTRLID != 0 && Input.GetKeyDown("joystick " + CTRLID + " button 1") && cooldowns.activeCooldowns[7] <= 0 && altBuild)
+        {
+            abilities.MeleeLunge(5, 2, gameObject, lungeCD);
+        }
+
         if (CTRLID != 0 && Input.GetKeyDown("joystick " + CTRLID + " button 1") && cooldowns.activeCooldowns[7] <= 0)
         {
-            abilities.MeleeDash(2, gameObject);
+            abilities.Whirlwind(5, 2, gameObject, lungeCD);
         }
 
         if (CTRLID != 0 && Input.GetKeyDown("joystick " + CTRLID + " button 2") && cooldowns.activeCooldowns[6] <= 0)
@@ -93,13 +121,41 @@ public class MeleeController : MonoBehaviour
 
         if (CTRLID != 0 && Input.GetKeyUp("joystick " + CTRLID + " button 2") && cooldowns.activeCooldowns[6] <= 0)
         {
+
             visual = false;
             GetComponent<MeleeVisualization>().OnBool(visual);
-            abilities.MeleeStrike(2, gameObject);
+            attacknum++;
+            if (hitbox.GetComponent<MeleeTargetList>().mTar.Count > 0)
+            {
+                timer = 0;
+            }
+            abilities.MeleeStrikeBerserker(5, 2, gameObject, hitbox.GetComponent<MeleeTargetList>().mTar, attacknum, berserkerMeleeAttackCD);
             anim.SetInteger("AnimState", 2);
         }
         else
         {
+        }
+
+        if (CTRLID != 0 && Input.GetKeyUp("joystick " + CTRLID + " button 2") && cooldowns.activeCooldowns[6] <= 0 && altBuild)
+        {
+
+            visual = false;
+            GetComponent<MeleeVisualization>().OnBool(visual);
+            attacknum++;
+            if (hitbox.GetComponent<MeleeTargetList>().mTar.Count > 0)
+            {
+                timer = 0;
+            }
+            abilities.MeleeStrikeRogue(5, 2, gameObject, hitbox.GetComponent<MeleeTargetList>().mTar, attacknum, rogueMeleeAttackCD);
+            anim.SetInteger("AnimState", 2);
+        }
+        else
+        {
+        }
+
+        if (CTRLID != 0 && Input.GetKeyDown("joystick " + CTRLID + " button 5"))
+        {
+            altBuild = !altBuild;
         }
 
         #endregion
