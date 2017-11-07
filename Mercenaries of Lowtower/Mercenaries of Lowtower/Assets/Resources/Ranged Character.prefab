@@ -20,11 +20,11 @@ GameObject:
   m_Component:
   - component: {fileID: 4136698859568760}
   - component: {fileID: 95279587547567740}
+  - component: {fileID: 114733641604896904}
   - component: {fileID: 54042382264997066}
   - component: {fileID: 136711447091232866}
   - component: {fileID: 136701169940483378}
   - component: {fileID: 114878381352017456}
-  - component: {fileID: 114733641604896904}
   - component: {fileID: 114769152096286996}
   - component: {fileID: 114440455597977686}
   - component: {fileID: 114267525934560966}
@@ -1279,7 +1279,7 @@ MonoBehaviour:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1011025319418690}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: c1830fbcaf1c1d2429a29547dbabe501, type: 3}
   m_Name: 
@@ -1322,18 +1322,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: dc9d2f1ddf4ff474cb424816ad01f962, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  controllerThing: {fileID: 0}
-  playermovement: {x: 0, y: 0, z: 0}
-  walkspeed: 10
-  controller: {fileID: 0}
   CTRLID: 0
-  abilities: {fileID: 0}
-  cooldowns: {fileID: 0}
-  visual: 0
-  lMask:
+  walkspeed: 10
+  groundMask:
     serializedVersion: 2
     m_Bits: 1
-  colliders: []
+  enemyMask:
+    serializedVersion: 2
+    m_Bits: 512
+  damageMultCap: 3
+  arrowDamage: 5
+  boltDamage: 25
+  sniperAttackCD: 4
+  archerAttackCD: 0.5
+  smokeBombCD: 0
+  smokeBomb2CD: 0
 --- !u!114 &114769152096286996
 MonoBehaviour:
   m_ObjectHideFlags: 1

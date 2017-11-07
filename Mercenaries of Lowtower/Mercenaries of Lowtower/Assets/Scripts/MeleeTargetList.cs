@@ -5,9 +5,15 @@ using UnityEngine;
 public class MeleeTargetList : MonoBehaviour {
     public List<Collider> mTar;
 
+    private Mesh m_mesh;
+
 	// Use this for initialization
 	void Start () {
-		
+        MeshFilter filter = GetComponentInChildren<MeshFilter>();
+        if ( null != filter )
+        {
+            m_mesh = filter.mesh;
+        }
 	}
 	
 	// Update is called once per frame
@@ -28,5 +34,14 @@ public class MeleeTargetList : MonoBehaviour {
     private void OnTriggerExit(Collider other)
     {
         mTar.Remove(other);
+    }
+
+    private void OnDrawGizmos()
+    {
+        Gizmos.color = Color.red;
+        Matrix4x4 matrix = Gizmos.matrix;
+        Gizmos.matrix = this.transform.localToWorldMatrix;
+        Gizmos.DrawWireMesh(m_mesh);
+        Gizmos.matrix = matrix;
     }
 }

@@ -36,12 +36,25 @@ public class PlayerAbilityController : MonoBehaviour {
     }
 #endregion
     #region Tank Abilities
-    public void TankShield(GameObject me)
+    public void TankShield(float damage, int playerID, GameObject me, float CD)
     {
-        Instantiate(Resources.Load("shield"), me.transform.position, me.transform.rotation);
-        cooldown.triggerCooldown(1, cooldown.abilityCooldowns[1]);
+        GameObject clone;
+        clone = Instantiate(Resources.Load("shield"), me.transform.position, me.transform.rotation) as GameObject;
+        Destroy(clone, 30);
+        cooldown.triggerCooldown(1, CD);
+
     }
-    public void TankMagnet(int playerID, GameObject me)
+
+    public void TankPerfectShield(float damage, int playerID, GameObject me, float CD)
+    {
+        GameObject clone;
+        clone = Instantiate(Resources.Load("shield"), me.transform.position, me.transform.rotation) as GameObject;
+        clone.transform.localScale = new Vector3(5f, 5f, 5f);
+        Destroy(clone, 1);
+        cooldown.triggerCooldown(1, CD);
+
+    }
+    public void TankMagnet(float damage, int playerID, GameObject me, float CD)
     {
 
         RaycastHit hit;
@@ -50,31 +63,73 @@ public class PlayerAbilityController : MonoBehaviour {
         {
             GameObject target = hit.collider.gameObject;
             target.transform.position = Vector3.MoveTowards(target.transform.position, me.transform.position, 5);
-            bossTargets.addThreat(1, playerID, false);
+            bossTargets.addThreat(damage, playerID, false);
 
         }
-        cooldown.triggerCooldown(0, cooldown.abilityCooldowns[0]);
+        cooldown.triggerCooldown(0, CD);
 
+    }
+
+    public void TankReflect(float damage, int playerID, GameObject me, float CD, bool reflect, float health1, float health2)
+    {
+        if (reflect)
+        {
+            if (health1 < health2)
+            {
+                damage = (health2 - health1) * 2;
+              Collider[] col = Physics.OverlapCapsule(me.transform.position, me.transform.forward * 20, .5f, enemyMask, QueryTriggerInteraction.Ignore);
+                for (int i=0; i<col.Length; i++)
+                {
+                    col[i].GetComponent<Health>().health -= damage;
+                }
+            }
+        } else
+        {
+
+        }
     }
     #endregion
     #region Healer Abilities
-    public void HealerHeal()
+    public void HealerHeal(float damage, int playerID, GameObject me, float CD)
     {
+        print("ff");
         Collider[] hitColliders = Physics.OverlapSphere(transform.position, 100, 1 << 8, QueryTriggerInteraction.Ignore);
         for (int i = 0; i < hitColliders.Length; i++)
         {
             Health health = hitColliders[i].gameObject.GetComponent<Health>();
-            health.modifyHealth(-20, 1);
+            health.modifyHealth(damage, 1);
 
 
         }
-        bossTargets.addThreat(20, 1, false);
-        cooldown.triggerCooldown(3, cooldown.abilityCooldowns[3]);
+
+        cooldown.triggerCooldown(3, CD);
 
     }
 
+    public void Healaport(float damage, int playerID, GameObject me, float CD)
+    {
+        RaycastHit hit;
+        Debug.DrawRay(me.transform.position, me.transform.forward * 10);
+        if (Physics.Raycast(me.transform.position, me.transform.forward, out hit, 20, 1 << 8,QueryTriggerInteraction.Ignore))
+        {
+            me.transform.position = hit.point;
+        }
+        cooldown.triggerCooldown(4, CD);
+
+    }
+
+    public void HealerCC(float damage, int playerID, GameObject me, float CD)
+    {
+        //fear
+        Collider[] EnemyColliders = Physics.OverlapSphere(transform.position, 100, enemyMask, QueryTriggerInteraction.Ignore);
+        for(int i = 0; i<EnemyColliders.Length; i++)
+        {
+            EnemyColliders[i].gameObject.transform.Translate((EnemyColliders[i].gameObject.transform.position - me.transform.position) * 3);
+        }
+    }
+
     // Creates 2 spheres, one for finding players one for finding enemies, loops through both to add damage to both.
-    public void HealerAbsorb()
+    public void HealerAbsorb(float damage, int playerID, GameObject me, float CD)
     {
         int dam = 10;
         Collider[] hitColliders = Physics.OverlapSphere(transform.position, 100, 1 << 8, QueryTriggerInteraction.Ignore);
@@ -140,7 +195,7 @@ public class PlayerAbilityController : MonoBehaviour {
             me.transform.position = Vector3.MoveTowards(me.transform.position, hit.point, 1000*Time.deltaTime);
            Health health = hit.collider.gameObject.GetComponent<Health>();
             health.modifyHealth(damage, playerID);
-            if (health.health == 0)
+            if (health.health <= 0)
             {
                 CD = 0;
             }

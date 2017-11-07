@@ -5,21 +5,24 @@ using UnityEngine;
 public class RangedController : MonoBehaviour
 {
     #region Variables
-     GameObject controllerThing;
-     Vector3 playermovement;
-    public float walkspeed;
-     ControllerThing controller;
+    [HideInInspector]    
     public int CTRLID;
-     PlayerAbilityController abilities;
-     PlayerCDController cooldowns;
-     bool visual;
-    public LayerMask lMask;
-     Collider[] colliders;
-     float damageMult = 1;
-
-
-
+    GameObject controllerThing;
+    Vector3 playermovement;
+    ControllerThing controller;
+    PlayerAbilityController abilities;
+    PlayerCDController cooldowns;
+    bool visual;    
+    Collider[] colliders;
+    float damageMult = 1;
     bool altBuild;
+
+    [Header("General")]
+    [Range(1,50)]
+    public float walkspeed;
+    public LayerMask groundMask;
+    public LayerMask enemyMask;
+
 
     [Space(10)]
     [Header("Damage")]
@@ -72,7 +75,7 @@ public class RangedController : MonoBehaviour
         anim.SetInteger("AnimState", 0);
 
         // colliders is for grounding the player, for jumping purposes.
-        colliders = Physics.OverlapCapsule(transform.position, transform.position-(Vector3.up*2), .25f, lMask, QueryTriggerInteraction.Ignore);
+        colliders = Physics.OverlapCapsule(transform.position, transform.position-(Vector3.up*2), .25f, groundMask, QueryTriggerInteraction.Ignore);
         h1 = health.health;
         #region Controls
         if (walkspeed >= 0 && CTRLID != 0)
@@ -108,7 +111,7 @@ public class RangedController : MonoBehaviour
         {
         }
 
-        if (CTRLID != 0 && Input.GetKeyDown("joystick " + CTRLID + " button 1") && cooldowns.activeCooldowns[10] <= 0)
+        if (CTRLID != 0 && Input.GetKeyDown("joystick " + CTRLID + " button 1") && cooldowns.activeCooldowns[10] <= 0 && !altBuild)
         {
             abilities.SmokeBomb(0, 3, gameObject, smokeBombCD);
             anim.SetInteger("AnimState", 2);
@@ -117,7 +120,12 @@ public class RangedController : MonoBehaviour
         {
         }
 
+        if (CTRLID != 0 && Input.GetKeyDown("joystick " + CTRLID + " button 2") && cooldowns.activeCooldowns[9] <= 0)
+        {
+            visual = true;
+            GetComponent<LineOfFireVisual>().OnBool(visual);
 
+        }
 
         if (CTRLID != 0 && Input.GetKey("joystick " + CTRLID + " button 2" ) && altBuild)
         {
@@ -128,12 +136,7 @@ public class RangedController : MonoBehaviour
 
 
 
-        if (CTRLID != 0 && Input.GetKeyDown("joystick " + CTRLID + " button 2") && cooldowns.activeCooldowns[9] <= 0)
-        {
-            visual = true;
-            GetComponent<LineOfFireVisual>().OnBool(visual);
 
-        }
 
         if (CTRLID != 0 && Input.GetKeyUp("joystick " + CTRLID + " button 2") && cooldowns.activeCooldowns[9] <= 0 && altBuild)
         {
@@ -147,7 +150,7 @@ public class RangedController : MonoBehaviour
         {
         }
 
-        if (CTRLID != 0 && Input.GetKeyUp("joystick " + CTRLID + " button 2") && cooldowns.activeCooldowns[9] <= 0)
+        if (CTRLID != 0 && Input.GetKeyUp("joystick " + CTRLID + " button 2") && cooldowns.activeCooldowns[9] <= 0 && !altBuild)
         {
             visual = false;
             GetComponent<LineOfFireVisual>().OnBool(visual);

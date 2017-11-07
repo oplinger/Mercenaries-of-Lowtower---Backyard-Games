@@ -5,26 +5,49 @@ using UnityEngine;
 public class HealerController : MonoBehaviour
 {
     #region Variables
-    public GameObject controllerThing;
-
-    public Vector3 playermovement;
-    public float walkspeed;
-    public ControllerThing controller;
+    [HideInInspector]
     public int CTRLID;
-    public PlayerAbilityController abilities;
-    public PlayerCDController cooldowns;
-    public LayerMask lMask;
-    public Collider[] colliders;
-    float timer;
 
+    GameObject controllerThing;
+    Vector3 playermovement;
+    ControllerThing controller;    
+    PlayerAbilityController abilities;
+    PlayerCDController cooldowns;
+    Collider[] colliders;
+    float timer;
     Health health;
     float h1;
     float h2;
-
     Animator anim;
+    bool altBuild;
 
+    [Header("Genral")]
+    [Range(1, 50)]
+    public float walkspeed;
+    public LayerMask groundMask;
+    public LayerMask enemyMask;
+
+
+    [Space(10)]
+    [Header("Damage")]
+    public float absorbDamage;
+    public float healAmount;
+
+
+    [Space(10)]
+    [Header("Cooldowns")]
+    [Range(0, 10)]
+    public float absorbCooldown;
+    [Range(0, 10)]
+    public float fearCooldown;
+    [Range(0, 10)]
+    public float teleportCooldown;
+    [Range(0, 10)]
+    public float healCooldown;
+    [Range(0, 10)]
+    public float healInterval;
 #endregion
-
+    
 
     // Use this for initialization
     void Start()
@@ -55,7 +78,7 @@ public class HealerController : MonoBehaviour
     {
         anim.SetInteger("AnimState", 0);
         // colliders is for grounding the player, for jumping purposes.
-        colliders = Physics.OverlapCapsule(transform.position, transform.position - (Vector3.up * 2), .25f, lMask, QueryTriggerInteraction.Ignore);
+        colliders = Physics.OverlapCapsule(transform.position, transform.position - (Vector3.up * 2), .25f, groundMask, QueryTriggerInteraction.Ignore);
         h1 = health.health;
         #region Controls
         if (walkspeed >= 0 && CTRLID != 0)
@@ -81,25 +104,48 @@ public class HealerController : MonoBehaviour
         {
         }
 
-        if (CTRLID != 0 && Input.GetKeyDown("joystick " + CTRLID + " button 1") && cooldowns.activeCooldowns[4] <= 0)
+        //if (CTRLID != 0 && Input.GetKeyDown("joystick " + CTRLID + " button 1") && cooldowns.activeCooldowns[4] <= 0 && altBuild)
+        //{
+        //    abilities.HealerAbsorb(absorbDamage, 1, gameObject, absorbCooldown);
+        //    anim.SetInteger("AnimState", 2);
+        //}
+        //else
+        //{
+        //}
+
+        if (CTRLID != 0 && Input.GetKeyDown("joystick " + CTRLID + " button 1") && cooldowns.activeCooldowns[4] <= 0 && altBuild)
         {
-            abilities.HealerAbsorb();
+            abilities.HealerCC(0, 1, gameObject, fearCooldown);
             anim.SetInteger("AnimState", 2);
         }
         else
         {
         }
 
-
-
-        if (CTRLID != 0 && Input.GetKeyDown("joystick " + CTRLID + " button 2") && cooldowns.activeCooldowns[3] <= 0)
+        if (CTRLID != 0 && Input.GetKey("joystick " + CTRLID + " button 2") && cooldowns.activeCooldowns[3] <= 0)
         {
-            abilities.HealerHeal();
+            timer += Time.deltaTime;
+            if (timer >= healInterval)
+            {
+                abilities.HealerHeal(healAmount, 1, gameObject, healCooldown);
+                timer = 0;
+            }
             anim.SetInteger("AnimState", 2);
 
         }
         else
         {
+        }
+
+        if (CTRLID != 0 && Input.GetKey("joystick " + CTRLID + " button 1") && cooldowns.activeCooldowns[4] <= 0 && !altBuild)
+        {
+            abilities.Healaport(0, 1, gameObject, teleportCooldown);
+        }
+
+
+        if (CTRLID != 0 && Input.GetKeyDown("joystick " + CTRLID + " button 5"))
+        {
+            altBuild = !altBuild;
         }
 
         #endregion

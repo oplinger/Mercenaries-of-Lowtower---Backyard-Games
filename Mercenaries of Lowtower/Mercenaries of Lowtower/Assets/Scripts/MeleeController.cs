@@ -5,14 +5,13 @@ using UnityEngine;
 public class MeleeController : MonoBehaviour
 {
     #region Variables
-    GameObject controllerThing;
-    Vector3 playermovement;
-    public float walkspeed;
-    ControllerThing controller;
+    [HideInInspector]
     public int CTRLID;
+    GameObject controllerThing;
+    Vector3 playermovement;    
+    ControllerThing controller;
     PlayerAbilityController abilities;
     PlayerCDController cooldowns;
-    LayerMask lMask;
     Collider[] colliders;
     bool visual;
     GameObject hitbox;
@@ -20,6 +19,20 @@ public class MeleeController : MonoBehaviour
     int attacknum;
     float timer;
     bool altBuild;
+
+    [Header("General")]
+    [Range(1, 50)]
+    public float walkspeed;
+    public LayerMask groundMask;
+    public LayerMask enemyMask;
+
+    [Space(10)]
+    [Header("Damage")]
+    public float rogueMeleeDamage;
+    public float berserkerMeleeDamage;
+    public float lungeDamage;
+    public float whirlwindDamage;
+
     [Space(10)]
     [Header("Cooldowns")]
     [Range(0,10)]
@@ -77,7 +90,7 @@ public class MeleeController : MonoBehaviour
         }
 
         // colliders is for grounding the player, for jumping purposes.
-        colliders = Physics.OverlapCapsule(transform.position, transform.position - (Vector3.up * 2), .25f, lMask, QueryTriggerInteraction.Ignore);
+        colliders = Physics.OverlapCapsule(transform.position, transform.position - (Vector3.up * 2), .25f, groundMask, QueryTriggerInteraction.Ignore);
         h1 = health.health;
         #region Controls
         if (walkspeed >= 0 && CTRLID != 0)
@@ -105,12 +118,12 @@ public class MeleeController : MonoBehaviour
 
         if (CTRLID != 0 && Input.GetKeyDown("joystick " + CTRLID + " button 1") && cooldowns.activeCooldowns[7] <= 0 && altBuild)
         {
-            abilities.MeleeLunge(5, 2, gameObject, lungeCD);
+            abilities.MeleeLunge(lungeDamage, 2, gameObject, lungeCD);
         }
 
-        if (CTRLID != 0 && Input.GetKeyDown("joystick " + CTRLID + " button 1") && cooldowns.activeCooldowns[7] <= 0)
+        if (CTRLID != 0 && Input.GetKeyDown("joystick " + CTRLID + " button 1") && cooldowns.activeCooldowns[7] <= 0 && !altBuild)
         {
-            abilities.Whirlwind(5, 2, gameObject, lungeCD);
+            abilities.Whirlwind(whirlwindDamage, 2, gameObject, lungeCD);
         }
 
         if (CTRLID != 0 && Input.GetKeyDown("joystick " + CTRLID + " button 2") && cooldowns.activeCooldowns[6] <= 0)
@@ -119,7 +132,7 @@ public class MeleeController : MonoBehaviour
             GetComponent<MeleeVisualization>().OnBool(visual);
         }
 
-        if (CTRLID != 0 && Input.GetKeyUp("joystick " + CTRLID + " button 2") && cooldowns.activeCooldowns[6] <= 0)
+        if (CTRLID != 0 && Input.GetKeyUp("joystick " + CTRLID + " button 2") && cooldowns.activeCooldowns[6] <= 0 && !altBuild)
         {
 
             visual = false;
@@ -129,7 +142,7 @@ public class MeleeController : MonoBehaviour
             {
                 timer = 0;
             }
-            abilities.MeleeStrikeBerserker(5, 2, gameObject, hitbox.GetComponent<MeleeTargetList>().mTar, attacknum, berserkerMeleeAttackCD);
+            abilities.MeleeStrikeBerserker(berserkerMeleeDamage, 2, gameObject, hitbox.GetComponent<MeleeTargetList>().mTar, attacknum, berserkerMeleeAttackCD);
             anim.SetInteger("AnimState", 2);
         }
         else
@@ -146,7 +159,7 @@ public class MeleeController : MonoBehaviour
             {
                 timer = 0;
             }
-            abilities.MeleeStrikeRogue(5, 2, gameObject, hitbox.GetComponent<MeleeTargetList>().mTar, attacknum, rogueMeleeAttackCD);
+            abilities.MeleeStrikeRogue(rogueMeleeDamage, 2, gameObject, hitbox.GetComponent<MeleeTargetList>().mTar, attacknum, rogueMeleeAttackCD);
             anim.SetInteger("AnimState", 2);
         }
         else
