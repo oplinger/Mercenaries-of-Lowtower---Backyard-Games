@@ -5,6 +5,7 @@ using UnityEngine;
 public class Health : MonoBehaviour {
    public float health;
     public GameObject player;
+    public bool shielded;
     //public MovementRigidbody playerMoveScript;
 
     //public float dam;
@@ -30,7 +31,12 @@ public class Health : MonoBehaviour {
     //and the ID is the character ID that is doing the damage. These are assigned to players by the boss on start.
     public void modifyHealth( float dam, int ID)
     {
-        if(health > 0)
+        if(health > 0 && shielded)
+        {
+            dam *= 0;
+            health -= dam;
+        }
+        else
         {
             health -= dam;
         }

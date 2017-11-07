@@ -18,16 +18,21 @@ public class ShieldScript : MonoBehaviour {
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.tag=="Enemy")
-        {
-            other.transform.position += new Vector3(Random.Range(-25, 25), 0, Random.Range(-25, 25));
-        }
+        //if (other.tag=="Enemy")
+        //{
+        //    other.transform.position += new Vector3(Random.Range(-25, 25), 0, Random.Range(-25, 25));
+        //}
 
         
     }
 
     private void OnTriggerStay(Collider other)
     {
+        if(other.tag== "Player")
+        {
+            other.GetComponent<Health>().shielded = true;
+        }
+
         //if (other.tag == "Player" && Input.GetButton("DropShield"))
         //{
         //    transform.position += new Vector3(Input.GetAxis("TankHorizontal")*.15f, 0, Input.GetAxis("TankVertical")*.15f);

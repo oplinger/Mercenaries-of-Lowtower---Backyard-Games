@@ -175,10 +175,10 @@ GameObject:
   m_Component:
   - component: {fileID: 4013550893604126}
   - component: {fileID: 95441956991010420}
+  - component: {fileID: 114763032175709166}
   - component: {fileID: 54670766163165700}
   - component: {fileID: 136708665416243032}
   - component: {fileID: 136544734566680112}
-  - component: {fileID: 114763032175709166}
   - component: {fileID: 114150109719717686}
   - component: {fileID: 114277517348848416}
   - component: {fileID: 114914160539663620}
@@ -646,7 +646,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1179733966427392}
   m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -25.53686, y: 1, z: -48.918327}
+  m_LocalPosition: {x: 24.06, y: 0, z: -193.29}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4702114782767970}
@@ -1320,17 +1320,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d8b90e726ba54174c81b3be9bf3d2bf5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  controllerThing: {fileID: 0}
-  playermovement: {x: 0, y: 0, z: 0}
-  walkspeed: 10
-  controller: {fileID: 0}
   CTRLID: 0
-  abilities: {fileID: 0}
-  cooldowns: {fileID: 0}
-  lMask:
+  walkspeed: 10
+  groundMask:
     serializedVersion: 2
     m_Bits: 1
-  colliders: []
+  enemyMask:
+    serializedVersion: 2
+    m_Bits: 512
+  absorbDamage: 0
+  healAmount: 0
+  absorbCooldown: 0
+  healCooldown: 0
 --- !u!114 &114914160539663620
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1351,7 +1352,7 @@ MonoBehaviour:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1179733966427392}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: c1830fbcaf1c1d2429a29547dbabe501, type: 3}
   m_Name: 
