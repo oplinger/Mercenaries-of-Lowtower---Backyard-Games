@@ -8,6 +8,9 @@ public class BossAttackAI : MonoBehaviour {
     BossMovementAI range;
    public float currentGCD;
     float maxGCD;
+    public GameObject shockwaveObj;
+    public GameObject tsunamiObj;
+
 
     //Reference to the animator for the boss
     Animator anim;
@@ -112,6 +115,57 @@ public class BossAttackAI : MonoBehaviour {
  
 
     }
+
+    void Shockwave(float speed, float range, Vector3 position)
+    {
+        shockwaveObj.transform.position = position;
+        shockwaveObj.transform.localScale += new Vector3(1 * speed, 0, 1 * speed) * Time.deltaTime;
+        Destroy(gameObject, range);
+        attackCDs[2] = 5;
+        triggerGCD(2);
+    }
+
+    void Hurricane()
+    {
+        bool hurricane = true;
+       Collider[] col = Physics.OverlapSphere(transform.position, 1000, 1 << 8, QueryTriggerInteraction.Ignore);
+        if (hurricane == true)
+        {
+            for (int i = 0; i < col.Length; i++)
+            {
+                col[i].gameObject.GetComponent<Health>().health -= 2;
+            }
+        }
+        attackCDs[2] = 5;
+        triggerGCD(2);
+    }
+
+    void Tsunami(float speed, Vector3 position)
+    {
+        tsunamiObj.SetActive(true);
+        tsunamiObj.transform.position = position;
+
+
+        attackCDs[2] = 5;
+        triggerGCD(2);
+    }
+
+    void Thunderstorm()
+    {
+       GameObject lightning= new GameObject("LightningBolt");
+        RaycastHit hit;
+        lightning.transform.position = new Vector3(transform.position.x + Random.Range(-50, 50), 100, transform.position.z + Random.Range(-50, 50));
+        Physics.Raycast(lightning.transform.position, Vector3.down * 120, out hit);
+        lightning.transform.position = hit.point;
+        Collider[] col = Physics.OverlapSphere(lightning.transform.position, 10, 1<<8,QueryTriggerInteraction.Ignore);
+        for (int i = 0; i < col.Length; i++)
+        {
+            col[i].GetComponent<Health>().modifyHealth(10, 9);
+        }
+        attackCDs[2] = 5;
+        triggerGCD(2);
+    }
+
     //THE ATTACKS ARE IN ORDER OF PRIORITY. VERY IMPORTANT.
     //THE ATTACKS ARE IN ORDER OF PRIORITY. VERY IMPORTANT.
     // Method that loops through each attack and checks if they are on cooldown. //THE ATTACKS ARE IN ORDER OF PRIORITY. VERY IMPORTANT.
