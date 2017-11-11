@@ -14,7 +14,7 @@ public class CreatorScriptEditor : Editor {
     public Vector3 loopOffset;
     public Vector3 duplicateOffset;
     public Vector3 duplicateRotation;
-
+    public bool local;
     public Object duplicateThis;
 
 
@@ -34,7 +34,7 @@ public class CreatorScriptEditor : Editor {
 
         creationPosition = EditorGUILayout.Vector3Field("Creation Position", creationPosition);
         GUILayout.Space(10);
-        loop = EditorGUILayout.Toggle("loop?", loop);
+        loop = EditorGUILayout.Toggle("Loop", loop);
         loopInterval = EditorGUILayout.IntField("Loop Interval", loopInterval);
         loopOffset = EditorGUILayout.Vector3Field("Loop Offset", loopOffset);
 

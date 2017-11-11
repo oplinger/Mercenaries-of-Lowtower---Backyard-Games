@@ -16,8 +16,11 @@ public class ShockwaveScript : MonoBehaviour {
 
     private void OnTriggerEnter(Collider other)
     {
-        other.GetComponent<Health>().health -= 10;
-        other.GetComponent<Rigidbody>().AddForce((other.transform.position - transform.position) * 100);
+        if (other.transform.position.y < transform.position.y + 5 && other.tag=="Player")
+        {
+            other.GetComponent<Health>().modifyHealth(10, 9);
+            other.GetComponent<Rigidbody>().AddForce((other.transform.position - transform.position) * 20);
+        }
     }
 
     void Shockwave(float speed, float range, Vector3 position)

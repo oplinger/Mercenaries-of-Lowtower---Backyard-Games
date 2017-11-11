@@ -4,12 +4,23 @@ using UnityEngine;
 
 public class BossAttackAI : MonoBehaviour {
     public float[] attackCDs;
+    public float[] specialAttackCDs;
     BossTargetingAI targeting;
     BossMovementAI range;
+    Health health;
    public float currentGCD;
     float maxGCD;
+    float range1;
     public GameObject shockwaveObj;
     public GameObject tsunamiObj;
+    public bool shockwave;
+    public bool tsunami;
+    public bool hurricane;
+    public bool lightningStorm;
+   public GameObject[] tsunamiSpawns;
+    public LayerMask theground;
+
+    
 
 
     //Reference to the animator for the boss
@@ -31,6 +42,8 @@ public class BossAttackAI : MonoBehaviour {
     // Hardcoded coodlown values for testing. Change or make variables (see below)
     void Start () {
         attackCDs = new float[4];
+        specialAttackCDs = new float[4];
+
         targeting = GetComponent<BossTargetingAI>();
         range = GetComponent<BossMovementAI>();
         anim = GetComponent<Animator>();
@@ -39,16 +52,80 @@ public class BossAttackAI : MonoBehaviour {
         attackCDs[1] = 8;
         attackCDs[2] = 5;
         attackCDs[3] = 2;
+        specialAttackCDs[0] = 10;
+        specialAttackCDs[1] = 15;
+        specialAttackCDs[2] = 10;
+        specialAttackCDs[3] = .5f;
+
+
+        health = GetComponent<Health>();
     }
 
     // Each CD ticks down every frame.
     void Update () {
         currentGCD += Time.deltaTime;
 
+        if (health.health < 25)
+        {
+            tsunami = true;
+        }
+        else if (health.health < 50)
+        {
+            lightningStorm = true;
+
+        }
+        else if (health.health < 75)
+        {
+            hurricane = true;
+        }
+        else
+        {
+
+        }
+
+        if (shockwave)
+        {
+            specialAttackCDs[0] += Time.deltaTime;
+            if (specialAttackCDs[0] >= 10)
+            {
+                Shockwave(200, 1.5f, new Vector3(transform.position.x, 0, transform.position.z));
+            }
+
+        }
+        if (tsunami)
+        {
+            specialAttackCDs[1] += Time.deltaTime;
+            if (specialAttackCDs[1] >= 15)
+            {
+                int r = Random.Range(0, 4);
+                Tsunami(15, tsunamiSpawns[r].transform.position, tsunamiSpawns[r].transform.rotation);
+                print(tsunamiSpawns[r].transform.rotation.eulerAngles);
+
+                specialAttackCDs[1] = 0;
+            }
+        
+        }
+        if (hurricane)
+        {
+            Hurricane();
+        }
+        if (lightningStorm)
+        {
+            specialAttackCDs[3] += Time.deltaTime;
+            if (specialAttackCDs[3] >= .5f)
+            {
+                Lightningstorm();
+                specialAttackCDs[3] = 0;
+            }
+
+        }
+
         for (int i = 0; i < attackCDs.Length; i++)
         {
             attackCDs[i] -= Time.deltaTime;
         }
+
+
 
 
         // If the Global Cool Down (GCD) is finished, boss loops through attack priority
@@ -118,50 +195,78 @@ public class BossAttackAI : MonoBehaviour {
 
     void Shockwave(float speed, float range, Vector3 position)
     {
+        
         shockwaveObj.transform.position = position;
         shockwaveObj.transform.localScale += new Vector3(1 * speed, 0, 1 * speed) * Time.deltaTime;
-        Destroy(gameObject, range);
-        attackCDs[2] = 5;
-        triggerGCD(2);
+
+        if (specialAttackCDs[0] >= 10+range)
+        {
+            shockwaveObj.transform.position = new Vector3(0, -100, 0);
+            shockwaveObj.transform.localScale = new Vector3(.001f, .25f, .001f);
+            specialAttackCDs[0] = 0;
+
+        }
+        //attackCDs[2] = 5;
+        //triggerGCD(2);
     }
 
     void Hurricane()
     {
-        bool hurricane = true;
-       Collider[] col = Physics.OverlapSphere(transform.position, 1000, 1 << 8, QueryTriggerInteraction.Ignore);
         if (hurricane == true)
         {
+            Collider[] col = Physics.OverlapSphere(transform.position, 1000, 1<<8);
+
             for (int i = 0; i < col.Length; i++)
             {
-                col[i].gameObject.GetComponent<Health>().health -= 2;
+                print(col[i].name);
+                col[i].GetComponent<Health>().modifyHealth(1*Time.deltaTime,9);
             }
         }
         attackCDs[2] = 5;
         triggerGCD(2);
     }
 
-    void Tsunami(float speed, Vector3 position)
+    void Tsunami(float speed, Vector3 position, Quaternion rotation)
     {
         tsunamiObj.SetActive(true);
         tsunamiObj.transform.position = position;
+        tsunamiObj.transform.rotation = rotation;
+        tsunamiObj.GetComponent<TsunamiScript>().SetTsunamiSpeed(speed);
 
 
         attackCDs[2] = 5;
         triggerGCD(2);
     }
 
-    void Thunderstorm()
+    void Lightningstorm()
     {
-       GameObject lightning= new GameObject("LightningBolt");
+
+
+        //GameObject lightning= new GameObject("LightningBolt");
         RaycastHit hit;
-        lightning.transform.position = new Vector3(transform.position.x + Random.Range(-50, 50), 100, transform.position.z + Random.Range(-50, 50));
-        Physics.Raycast(lightning.transform.position, Vector3.down * 120, out hit);
-        lightning.transform.position = hit.point;
-        Collider[] col = Physics.OverlapSphere(lightning.transform.position, 10, 1<<8,QueryTriggerInteraction.Ignore);
-        for (int i = 0; i < col.Length; i++)
+        //lightning.transform.position = new Vector3(transform.position.x + Random.Range(-50, 50), 100, transform.position.z + Random.Range(-50, 50));
+        do
         {
-            col[i].GetComponent<Health>().modifyHealth(10, 9);
+            Physics.Raycast(new Vector3(Random.Range(-50, 50), 100, Random.Range(-50, 50)), Vector3.down, out hit, 120, 1, QueryTriggerInteraction.Ignore);
+
+        } while ((Physics.Raycast(new Vector3(Random.Range(-50, 50), 100,Random.Range(-50, 50)), Vector3.down, out hit, 120, 1, QueryTriggerInteraction.Ignore) == false));
+
+        if (Physics.Raycast(new Vector3(Random.Range(-50, 50), 100, Random.Range(-50, 50)), Vector3.down, out hit, 120, 1, QueryTriggerInteraction.Ignore) == true)
+        {
+            //GameObject sphere = GameObject.CreatePrimitive(PrimitiveType.Sphere);
+            //sphere.transform.position = hit.point;
+            //sphere.transform.localScale = new Vector3(15, 15, 15);
+            Collider[] col = Physics.OverlapSphere(hit.point, 15, 1 << 8, QueryTriggerInteraction.Ignore);
+            for (int i = 0; i < col.Length; i++)
+            {
+                col[i].GetComponent<Health>().modifyHealth(10, 9);
+            }
         }
+
+
+        // lightning.transform.position = hit.point;
+
+
         attackCDs[2] = 5;
         triggerGCD(2);
     }
