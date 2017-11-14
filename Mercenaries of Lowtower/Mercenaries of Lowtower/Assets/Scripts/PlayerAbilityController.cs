@@ -40,7 +40,6 @@ public class PlayerAbilityController : MonoBehaviour {
     {
         GameObject clone;
         clone = Instantiate(Resources.Load("shield"), me.transform.position, me.transform.rotation) as GameObject;
-        print("noshield");
 
         Destroy(clone, duration);
         cooldown.triggerCooldown(1, CD);
@@ -52,7 +51,7 @@ public class PlayerAbilityController : MonoBehaviour {
         GameObject clone;
         clone = Instantiate(Resources.Load("shield"), me.transform.position, me.transform.rotation) as GameObject;
         clone.transform.localScale = new Vector3(5f, 5f, 5f);
-        Destroy(clone, 1);
+        Destroy(clone, 3);
         cooldown.triggerCooldown(1, CD);
 
     }

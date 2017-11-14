@@ -217,8 +217,7 @@ public class BossAttackAI : MonoBehaviour {
             specialAttackCDs[0] = 0;
 
         }
-        //attackCDs[2] = 5;
-        //triggerGCD(2);
+
     }
 
     void Hurricane()
@@ -240,8 +239,7 @@ public class BossAttackAI : MonoBehaviour {
         {
 
         }
-        attackCDs[2] = 5;
-        triggerGCD(2);
+
     }
 
     void Tsunami(float speed, Vector3 position, Quaternion rotation)
@@ -252,8 +250,7 @@ public class BossAttackAI : MonoBehaviour {
         tsunamiObj.GetComponent<TsunamiScript>().SetTsunamiSpeed(speed);
 
 
-        attackCDs[2] = 5;
-        triggerGCD(2);
+
     }
 
     void Lightningstorm()

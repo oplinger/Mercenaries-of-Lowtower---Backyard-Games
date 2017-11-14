@@ -100,7 +100,14 @@ public class TankController : MonoBehaviour
             //Vector3 relpos = playermovement - transform.position;
             if (playermovement != Vector3.zero)
             {
-                transform.rotation = Quaternion.LookRotation(playermovement);
+                if (Input.GetKey("joystick " + CTRLID + " button 1") && cooldowns.activeCooldowns[0] <= 0 && !altBuild)
+                {
+                    transform.rotation = Quaternion.identity;
+                } else
+                {
+                    transform.rotation = Quaternion.LookRotation(playermovement);
+
+                }
                 transform.Translate(playermovement * walkspeed * Time.deltaTime, Space.World);
                 anim.SetInteger("AnimState", 1);
             }
