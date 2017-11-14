@@ -10,7 +10,8 @@ public class HealerController : MonoBehaviour
     
     GameObject controllerThing;
     Vector3 playermovement;
-    ControllerThing controller;    
+    ControllerThing controller;
+    GameObject healVisual;
     PlayerAbilityController abilities;
     PlayerCDController cooldowns;
     Collider[] colliders;
@@ -54,7 +55,9 @@ public class HealerController : MonoBehaviour
     void Start()
     {
         DontDestroyOnLoad(transform.gameObject);
-
+        healVisual = GameObject.CreatePrimitive(PrimitiveType.Cylinder);
+        healVisual.SetActive(false);
+        healVisual.GetComponent<Renderer>().material.color = Color.green;
         controllerThing = GameObject.Find("Controller Thing");
 
         controller = controllerThing.GetComponent<ControllerThing>();
@@ -136,10 +139,11 @@ public class HealerController : MonoBehaviour
 
         if (CTRLID != 0 && Input.GetKey("joystick " + CTRLID + " button 2") && cooldowns.activeCooldowns[3] <= 0)
         {
+            healVisual.SetActive(true);
             timer += Time.deltaTime;
             if (timer >= healInterval)
             {
-                abilities.HealerHeal(healAmount, 1, gameObject, healCooldown);
+                abilities.HealerHeal(healAmount, 1, gameObject, healCooldown, healVisual);
                 timer = 0;
             }
             anim.SetInteger("AnimState", 2);
@@ -147,6 +151,7 @@ public class HealerController : MonoBehaviour
         }
         else
         {
+            healVisual.SetActive(false);
         }
 
         if (CTRLID != 0 && Input.GetKey("joystick " + CTRLID + " button 1") && cooldowns.activeCooldowns[4] <= 0 && !altBuild)

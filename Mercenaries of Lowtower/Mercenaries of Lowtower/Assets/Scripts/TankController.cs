@@ -18,6 +18,8 @@ public class TankController : MonoBehaviour
     float h1;
     float h2;
     bool altBuild;
+    float timer;
+    float reflectDamage;
 
     [Header("Genral")]
     [Range(1, 50)]
@@ -25,7 +27,6 @@ public class TankController : MonoBehaviour
     public LayerMask groundMask;
     public LayerMask enemyMask;
     public Material tankMat;
-    public GameObject model;
 
 
 
@@ -40,6 +41,8 @@ public class TankController : MonoBehaviour
     [Header("Cooldowns")]
     [Range(0, 10)]
     public float magnetCooldown;
+    [Range(0, 10)]
+    public float shieldDuration;
     [Range(0, 10)]
     public float shieldCooldown;
     [Range(0, 10)]
@@ -107,13 +110,17 @@ public class TankController : MonoBehaviour
             }
         }
 
-        if (CTRLID != 0 && Input.GetKeyDown("joystick " + CTRLID + " button 1") && cooldowns.activeCooldowns[0]<=0 && !altBuild)
+        if (CTRLID != 0 && Input.GetKey("joystick " + CTRLID + " button 1") && cooldowns.activeCooldowns[0]<=0 && !altBuild)
         {
             abilities.TankMagnet(magnetThreat, 0, gameObject, magnetCooldown);
             anim.SetInteger("AnimState", 2);
+            tankMat.SetColor("_EmissionColor", Color.HSVToRGB(1, 1, 1));
+
         }
         else
         {
+            tankMat.SetColor("_EmissionColor", Color.HSVToRGB(1, 1, 0));
+
         }
 
         if (CTRLID != 0 && Input.GetKeyDown("joystick " + CTRLID + " button 2") && cooldowns.activeCooldowns[1] <= 0 && altBuild)
@@ -125,7 +132,7 @@ public class TankController : MonoBehaviour
 
         if (CTRLID != 0 && Input.GetKeyDown("joystick " + CTRLID + " button 2") && cooldowns.activeCooldowns[1] <= 0 && !altBuild)
         {
-            abilities.TankShield(shieldAmount, 0, gameObject, shieldCooldown);
+            abilities.TankShield(shieldAmount, 0, gameObject, shieldCooldown, shieldDuration);
             anim.SetInteger("AnimState", 2);
 
         }
@@ -141,14 +148,22 @@ public class TankController : MonoBehaviour
 
         if (CTRLID != 0 && Input.GetKey("joystick " + CTRLID + " button 1") && cooldowns.activeCooldowns[0] <= 0 && altBuild)
         {
-            abilities.TankReflect(0, 0, gameObject, reflectCooldown, true, h1, h2);
-            model.GetComponent<Renderer>().material.SetColor("_EmissionColor", Color.cyan);
+            //timer += Time.deltaTime;
+            //reflectDamage += (h2 - h1) * 2;
+            abilities.TankReflect(reflectDamage,0, gameObject, reflectCooldown, true, h1, h2, timer);
+            tankMat.SetColor("_EmissionColor", Color.HSVToRGB(.5f,1,1));
+            //if (timer > 2)
+            //{
+            //    timer = 0;
+            //    reflectDamage = 0;
+            //}
             
         }
         if (CTRLID != 0 && Input.GetKeyUp("joystick " + CTRLID + " button 1") && cooldowns.activeCooldowns[0] <= 0 && altBuild)
         {
-            model.GetComponent<Renderer>().material.SetColor("_EmissionColor", Color.black);
-            tankMat.color = Color.HSVToRGB(.613f, .537f, .95f);
+            tankMat.SetColor("_EmissionColor", Color.HSVToRGB(.5f, 1, 0));
+            //timer = 0;
+            //reflectDamage = 0;
 
 
         }

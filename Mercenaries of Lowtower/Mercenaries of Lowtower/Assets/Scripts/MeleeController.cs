@@ -136,7 +136,7 @@ public class MeleeController : MonoBehaviour
 
         if (CTRLID != 0 && Input.GetKeyDown("joystick " + CTRLID + " button 1") && cooldowns.activeCooldowns[7] <= 0 && !altBuild)
         {
-            abilities.Whirlwind(whirlwindDamage, 2, gameObject, lungeCD);
+            abilities.Whirlwind(whirlwindDamage, 2, gameObject, CycloneCD);
         }
 
         if (CTRLID != 0 && Input.GetKeyDown("joystick " + CTRLID + " button 2") && cooldowns.activeCooldowns[6] <= 0)

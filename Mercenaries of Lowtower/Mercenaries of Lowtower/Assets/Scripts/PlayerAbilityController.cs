@@ -36,11 +36,11 @@ public class PlayerAbilityController : MonoBehaviour {
     }
 #endregion
     #region Tank Abilities
-    public void TankShield(float damage, int playerID, GameObject me, float CD)
+    public void TankShield(float damage, int playerID, GameObject me, float CD, float duration)
     {
         GameObject clone;
         clone = Instantiate(Resources.Load("shield"), me.transform.position, me.transform.rotation) as GameObject;
-        Destroy(clone, 30);
+        Destroy(clone, duration);
         cooldown.triggerCooldown(1, CD);
 
     }
@@ -62,26 +62,42 @@ public class PlayerAbilityController : MonoBehaviour {
         if (Physics.Raycast(ray, out hit, 30))
         {
             GameObject target = hit.collider.gameObject;
-            target.transform.position = Vector3.MoveTowards(target.transform.position, me.transform.position, 5);
-            bossTargets.addThreat(damage, playerID, false);
+            if(Vector3.Distance(target.transform.position, me.transform.position)>3)
+            {
+                target.transform.position = Vector3.MoveTowards(target.transform.position, me.transform.position, .25f);
+                bossTargets.addThreat(damage, playerID, false);
+            }
+
 
         }
         cooldown.triggerCooldown(0, CD);
 
     }
 
-    public void TankReflect(float damage, int playerID, GameObject me, float CD, bool reflect, float health1, float health2)
+    public void TankReflect(float damage, int playerID, GameObject me, float CD, bool reflect, float health1, float health2, float timer)
     {
+        
         if (reflect)
-        {
+        { 
             if (health1 < health2)
             {
                 damage = (health2 - health1) * 2;
-              Collider[] col = Physics.OverlapCapsule(me.transform.position, me.transform.forward * 20, .5f, enemyMask, QueryTriggerInteraction.Ignore);
-                for (int i=0; i<col.Length; i++)
-                {
-                    col[i].GetComponent<Health>().health -= damage;
-                }
+                //if (timer > 2)
+                //{
+                    Collider[] col = Physics.OverlapCapsule(me.transform.position, me.transform.forward * 20, .5f, enemyMask, QueryTriggerInteraction.Ignore);
+                    GameObject cap = GameObject.CreatePrimitive(PrimitiveType.Capsule);
+                    Destroy(cap.GetComponent<CapsuleCollider>());
+                cap.transform.position = me.transform.position + me.transform.forward * 10;
+                    cap.transform.rotation = me.transform.rotation*Quaternion.Euler(90, 0, 0);
+                    cap.transform.localScale = new Vector3(1, 10, 1);
+                cap.transform.parent = me.transform;
+                Destroy(cap, 1);
+                    for (int i = 0; i < col.Length; i++)
+                    {
+                        col[i].GetComponent<Health>().health -= damage;
+                    }
+                    
+                //}
             }
         } else
         {
@@ -90,10 +106,16 @@ public class PlayerAbilityController : MonoBehaviour {
     }
     #endregion
     #region Healer Abilities
-    public void HealerHeal(float damage, int playerID, GameObject me, float CD)
+    public void HealerHeal(float damage, int playerID, GameObject me, float CD, GameObject beepboop)
     {
         print("ff");
         Collider[] hitColliders = Physics.OverlapSphere(transform.position, 100, 1 << 8, QueryTriggerInteraction.Ignore);
+
+        Destroy(beepboop.GetComponent<CapsuleCollider>());
+        beepboop.transform.position = me.transform.position-new Vector3(0,1,0);
+        beepboop.transform.localScale = new Vector3(100, 1, 100);
+        beepboop.transform.parent = me.transform;
+
         for (int i = 0; i < hitColliders.Length; i++)
         {
             Health health = hitColliders[i].gameObject.GetComponent<Health>();
@@ -181,10 +203,19 @@ public class PlayerAbilityController : MonoBehaviour {
 
     public void Whirlwind(float damage, int playerID, GameObject me, float CD)
     {
-        if(Physics.OverlapSphere(me.transform.position, 3, enemyMask, QueryTriggerInteraction.Ignore).Length > 0){
+        //Physics.OverlapSphere(me.transform.position, 3, enemyMask, QueryTriggerInteraction.Ignore);
+
             StartCoroutine(WWAttack(damage, playerID, me, CD, 1f));
             cooldown.triggerCooldown(6, CD);
-        }
+        //} else
+        //{
+        //    GameObject wwcyl = GameObject.CreatePrimitive(PrimitiveType.Cylinder);
+        //    Destroy(wwcyl.GetComponent<CapsuleCollider>());
+        //    wwcyl.transform.position = me.transform.position - new Vector3(0, 1, 0);
+        //    wwcyl.transform.localScale = new Vector3(3, .5f, 3);
+        //    wwcyl.transform.parent = me.transform;
+        //    Destroy(wwcyl, 3f);
+        //}
     }
     public void MeleeLunge(float damage, int playerID, GameObject me, float CD)
     {
@@ -199,6 +230,10 @@ public class PlayerAbilityController : MonoBehaviour {
             {
                 CD = 0;
             }
+        } else
+        {
+            me.transform.position = Vector3.MoveTowards(me.transform.position, me.transform.position + (me.transform.forward * 100), 1000 * Time.deltaTime);
+
         }
         //me.transform.position = Vector3.MoveTowards(me.transform.position, me.transform.position + (me.transform.forward * 100), 1000 * Time.deltaTime);
         cooldown.triggerCooldown(7, CD);
@@ -207,6 +242,12 @@ public class PlayerAbilityController : MonoBehaviour {
     IEnumerator WWAttack(float damage, int playerID, GameObject me, float CD, float StrikeInterval)
     {
         Collider[] col = Physics.OverlapSphere(me.transform.position, 3, enemyMask, QueryTriggerInteraction.Ignore);
+        me.GetComponent<MeleeController>().walkspeed = 15;
+        GameObject wwcyl = GameObject.CreatePrimitive(PrimitiveType.Cylinder);
+        Destroy(wwcyl.GetComponent<CapsuleCollider>());
+        wwcyl.transform.position = me.transform.position - new Vector3 (0,1,0);
+        wwcyl.transform.localScale = new Vector3(3, .5f, 3);
+        wwcyl.transform.parent = me.transform;
         for (int i = 0; i < col.Length; i++)
         {
             Health health = col[i].GetComponent<Health>();
@@ -230,6 +271,9 @@ public class PlayerAbilityController : MonoBehaviour {
             health.modifyHealth(damage, playerID);
         }
         print("WW3");
+        me.GetComponent<MeleeController>().walkspeed = 10;
+
+        Destroy(wwcyl);
         yield return new WaitForSeconds(StrikeInterval);
     }
     // IEnumerator WW(float damage, int playerID, GameObject me, float CD)
