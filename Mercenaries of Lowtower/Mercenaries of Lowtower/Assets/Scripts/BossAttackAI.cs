@@ -44,10 +44,35 @@ public class BossAttackAI : MonoBehaviour {
     void Start () {
         attackCDs = new float[4];
         specialAttackCDs = new float[4];
+        tsunamiSpawns = new GameObject[4];
 
         targeting = GetComponent<BossTargetingAI>();
         range = GetComponent<BossMovementAI>();
         anim = GetComponent<Animator>();
+
+        tsunamiObj = GameObject.Find("Mako Tsunami");
+        shockwaveObj = GameObject.Find("Adobe Shockwave");
+
+        tsunamiSpawns[0] = new GameObject("Tsunami Spawn");
+        tsunamiSpawns[0].transform.position = new Vector3(100, 0, 0);
+        tsunamiSpawns[0].transform.rotation = Quaternion.Euler(0, -90, 0);
+
+
+        tsunamiSpawns[1] = new GameObject("Tsunami Spawn");
+        tsunamiSpawns[1].transform.position = new Vector3(-100, 0, 0);
+        tsunamiSpawns[1].transform.rotation = Quaternion.Euler(0, 90, 0);
+
+
+        tsunamiSpawns[2] = new GameObject("Tsunami Spawn");
+        tsunamiSpawns[2].transform.position = new Vector3(0, 0, 100);
+        tsunamiSpawns[2].transform.rotation = Quaternion.Euler(0, 180, 0);
+
+
+        tsunamiSpawns[3] = new GameObject("Tsunami Spawn");
+        tsunamiSpawns[3].transform.position = new Vector3(0, 0, -100);
+
+
+
 
         attackCDs[0] = 10;
         attackCDs[1] = 8;
