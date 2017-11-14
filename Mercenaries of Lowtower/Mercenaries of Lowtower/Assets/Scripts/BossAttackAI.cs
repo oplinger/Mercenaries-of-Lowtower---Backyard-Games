@@ -19,8 +19,9 @@ public class BossAttackAI : MonoBehaviour {
     public bool lightningStorm;
    public GameObject[] tsunamiSpawns;
     public LayerMask theground;
+    GameObject scenelight;
 
-    
+
 
 
     //Reference to the animator for the boss
@@ -57,6 +58,7 @@ public class BossAttackAI : MonoBehaviour {
         specialAttackCDs[2] = 10;
         specialAttackCDs[3] = .5f;
 
+        scenelight = GameObject.Find("Directional Light");
 
         health = GetComponent<Health>();
     }
@@ -108,11 +110,15 @@ public class BossAttackAI : MonoBehaviour {
         if (hurricane)
         {
             Hurricane();
+        } else
+        {
+            scenelight.GetComponent<Light>().color = Vector4.one;
+            scenelight.GetComponent<Light>().intensity = 1;
         }
         if (lightningStorm)
         {
             specialAttackCDs[3] += Time.deltaTime;
-            if (specialAttackCDs[3] >= .5f)
+            if (specialAttackCDs[3] >= 2)
             {
                 Lightningstorm();
                 specialAttackCDs[3] = 0;
@@ -212,8 +218,12 @@ public class BossAttackAI : MonoBehaviour {
 
     void Hurricane()
     {
+        
+
         if (hurricane == true)
         {
+            scenelight.GetComponent<Light>().color = new Vector4(1f, .8f, .8f, 1);
+            scenelight.GetComponent<Light>().intensity = .9f;
             Collider[] col = Physics.OverlapSphere(transform.position, 1000, 1<<8);
 
             for (int i = 0; i < col.Length; i++)
@@ -221,6 +231,9 @@ public class BossAttackAI : MonoBehaviour {
                 print(col[i].name);
                 col[i].GetComponent<Health>().modifyHealth(1*Time.deltaTime,9);
             }
+        } else
+        {
+
         }
         attackCDs[2] = 5;
         triggerGCD(2);
@@ -253,10 +266,12 @@ public class BossAttackAI : MonoBehaviour {
 
         if (Physics.Raycast(new Vector3(Random.Range(-50, 50), 100, Random.Range(-50, 50)), Vector3.down, out hit, 120, 1, QueryTriggerInteraction.Ignore) == true)
         {
-            //GameObject sphere = GameObject.CreatePrimitive(PrimitiveType.Sphere);
-            //sphere.transform.position = hit.point;
-            //sphere.transform.localScale = new Vector3(15, 15, 15);
-            Collider[] col = Physics.OverlapSphere(hit.point, 15, 1 << 8, QueryTriggerInteraction.Ignore);
+            GameObject sphere = GameObject.CreatePrimitive(PrimitiveType.Sphere);
+            Destroy(sphere.GetComponent<SphereCollider>());
+            sphere.transform.position = hit.point;
+            sphere.transform.localScale = new Vector3(25, 25, 25);
+            Destroy(sphere, 2);
+            Collider[] col = Physics.OverlapSphere(hit.point, 25, 1 << 8, QueryTriggerInteraction.Ignore);
             for (int i = 0; i < col.Length; i++)
             {
                 col[i].GetComponent<Health>().modifyHealth(10, 9);
@@ -281,21 +296,20 @@ public class BossAttackAI : MonoBehaviour {
     //THE ATTACKS ARE IN ORDER OF PRIORITY. VERY IMPORTANT.
     void checkAttacks()
     {
-        if (attackCDs[0] <= 0 && range.inRange)
-        {
-            Storm(targeting.currentTarget);
+        //if (attackCDs[0] <= 0 && range.inRange)
+        //{
+        //    Storm(targeting.currentTarget);
 
-        }
-        else if (attackCDs[1] <= 0 && range.inRange)
+        //}
+        /*else*/ if (attackCDs[1] <= 0 && range.inRange)
         {
             Slam(targeting.currentTarget);
         }
-        else if (attackCDs[2] <= 0 && range.inRange)
-        {
-            Swipe(targeting.currentTarget);
-        }
-        else
-       if (attackCDs[3] <= 0 && range.inRange)
+        //else if (attackCDs[2] <= 0 && range.inRange)
+        //{
+        //    Swipe(targeting.currentTarget);
+        //}
+        else if (attackCDs[3] <= 0 && range.inRange)
         {
             Punch(targeting.currentTarget);
         }

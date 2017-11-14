@@ -7,7 +7,7 @@ public class HealerController : MonoBehaviour
     #region Variables
     [HideInInspector]
     public int CTRLID;
-
+    
     GameObject controllerThing;
     Vector3 playermovement;
     ControllerThing controller;    
@@ -26,6 +26,7 @@ public class HealerController : MonoBehaviour
     public float walkspeed;
     public LayerMask groundMask;
     public LayerMask enemyMask;
+    public Material healerMat;
 
 
     [Space(10)]
@@ -76,6 +77,17 @@ public class HealerController : MonoBehaviour
          */ 
     void Update()
     {
+
+        if (altBuild)
+        {
+            healerMat.color = Color.HSVToRGB(.75f, .396f, .5f);
+            
+
+        } else
+        {
+            healerMat.color = Color.HSVToRGB(.75f, .396f, .95f);
+
+        }
         anim.SetInteger("AnimState", 0);
         // colliders is for grounding the player, for jumping purposes.
         colliders = Physics.OverlapCapsule(transform.position, transform.position - (Vector3.up * 2), .25f, groundMask, QueryTriggerInteraction.Ignore);
