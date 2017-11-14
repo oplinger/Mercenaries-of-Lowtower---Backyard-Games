@@ -40,6 +40,8 @@ public class PlayerAbilityController : MonoBehaviour {
     {
         GameObject clone;
         clone = Instantiate(Resources.Load("shield"), me.transform.position, me.transform.rotation) as GameObject;
+        print("noshield");
+
         Destroy(clone, duration);
         cooldown.triggerCooldown(1, CD);
 
@@ -321,8 +323,14 @@ public class PlayerAbilityController : MonoBehaviour {
 
     public void SmokeBomb(float damage, int playerID, GameObject me, float CD)
     {
-        Collider[] col = Physics.OverlapSphere(me.transform.position, 3, enemyMask, QueryTriggerInteraction.Ignore);
-        for(int i = 0; i < col.Length; i++)
+        Collider[] col = Physics.OverlapSphere(me.transform.position, 10, enemyMask, QueryTriggerInteraction.Ignore);
+        GameObject smoke = GameObject.CreatePrimitive(PrimitiveType.Sphere);
+        Destroy(smoke.GetComponent<SphereCollider>());
+        smoke.transform.localScale = new Vector3(10, 10, 10);
+        smoke.transform.position = me.transform.position;
+        smoke.GetComponent<Renderer>().material.SetColor("_Color", new Vector4(.5f, .5f, .5f, .6f));
+        Destroy(smoke, 5);
+        for (int i = 0; i < col.Length; i++)
         {
             col[i].GetComponent<BossTargetingAI>().addThreat(-col[i].GetComponent<BossTargetingAI>().combinedThreat[playerID], playerID, true);
         }

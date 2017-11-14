@@ -65,6 +65,11 @@ public class BossAttackAI : MonoBehaviour {
 
     // Each CD ticks down every frame.
     void Update () {
+
+        if (scenelight == null)
+        {
+            scenelight = GameObject.Find("Directional Light");
+        }
         currentGCD += Time.deltaTime;
 
         if (health.health < 25)

@@ -57,6 +57,8 @@ public class HealerController : MonoBehaviour
         DontDestroyOnLoad(transform.gameObject);
         healVisual = GameObject.CreatePrimitive(PrimitiveType.Cylinder);
         healVisual.SetActive(false);
+        DontDestroyOnLoad(healVisual);
+
         healVisual.GetComponent<Renderer>().material.color = Color.green;
         controllerThing = GameObject.Find("Controller Thing");
 

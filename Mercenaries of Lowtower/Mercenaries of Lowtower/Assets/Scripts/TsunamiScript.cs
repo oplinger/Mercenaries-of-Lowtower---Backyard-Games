@@ -7,7 +7,7 @@ public class TsunamiScript : MonoBehaviour {
     float timer;
 	// Use this for initialization
 	void Start () {
-		
+        DontDestroyOnLoad(this);
 	}
 	
 	// Update is called once per frame

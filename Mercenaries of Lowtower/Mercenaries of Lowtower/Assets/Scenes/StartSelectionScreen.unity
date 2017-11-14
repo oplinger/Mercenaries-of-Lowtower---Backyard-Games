@@ -371,7 +371,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &417900578
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -490,11 +490,6 @@ Prefab:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 114050299489096748, guid: 9b019403ca0f5db4fbe90678c8459dda,
-        type: 2}
-      propertyPath: tsunamiSpawns.Array.size
-      value: 4
-      objectReference: {fileID: 0}
     - target: {fileID: 4346849846935230, guid: 9b019403ca0f5db4fbe90678c8459dda, type: 2}
       propertyPath: m_LocalPosition.x
       value: -11.532445
@@ -527,11 +522,16 @@ Prefab:
       propertyPath: m_RootOrder
       value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 114752299657823772, guid: 9b019403ca0f5db4fbe90678c8459dda,
+    - target: {fileID: 114050299489096748, guid: 9b019403ca0f5db4fbe90678c8459dda,
         type: 2}
-      propertyPath: m_Enabled
-      value: 0
-      objectReference: {fileID: 0}
+      propertyPath: shockwaveObj
+      value: 
+      objectReference: {fileID: 196458009}
+    - target: {fileID: 114050299489096748, guid: 9b019403ca0f5db4fbe90678c8459dda,
+        type: 2}
+      propertyPath: tsunamiObj
+      value: 
+      objectReference: {fileID: 1476010988}
     - target: {fileID: 114050299489096748, guid: 9b019403ca0f5db4fbe90678c8459dda,
         type: 2}
       propertyPath: tsunamiSpawns.Array.data[0]
@@ -552,36 +552,6 @@ Prefab:
       propertyPath: tsunamiSpawns.Array.data[3]
       value: 
       objectReference: {fileID: 1570837101}
-    - target: {fileID: 114050299489096748, guid: 9b019403ca0f5db4fbe90678c8459dda,
-        type: 2}
-      propertyPath: shockwaveObj
-      value: 
-      objectReference: {fileID: 196458009}
-    - target: {fileID: 114050299489096748, guid: 9b019403ca0f5db4fbe90678c8459dda,
-        type: 2}
-      propertyPath: tsunamiObj
-      value: 
-      objectReference: {fileID: 1476010988}
-    - target: {fileID: 114050299489096748, guid: 9b019403ca0f5db4fbe90678c8459dda,
-        type: 2}
-      propertyPath: shockwave
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 114050299489096748, guid: 9b019403ca0f5db4fbe90678c8459dda,
-        type: 2}
-      propertyPath: theground.m_Bits
-      value: 256
-      objectReference: {fileID: 0}
-    - target: {fileID: 114050299489096748, guid: 9b019403ca0f5db4fbe90678c8459dda,
-        type: 2}
-      propertyPath: lightningStorm
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 114050299489096748, guid: 9b019403ca0f5db4fbe90678c8459dda,
-        type: 2}
-      propertyPath: tsunami
-      value: 0
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 9b019403ca0f5db4fbe90678c8459dda, type: 2}
   m_IsPrefabParent: 0
@@ -752,7 +722,7 @@ MeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_Materials:
-  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: 83a422ac84812904ab3dca289969f200, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
