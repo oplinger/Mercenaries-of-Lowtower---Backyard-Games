@@ -55,21 +55,23 @@ public class BossAttackAI : MonoBehaviour {
 
         tsunamiSpawns[0] = new GameObject("Tsunami Spawn");
         tsunamiSpawns[0].transform.position = new Vector3(100, 0, 0);
-        tsunamiSpawns[0].transform.rotation = Quaternion.Euler(0, -90, 0);
+        tsunamiSpawns[0].transform.rotation = Quaternion.Euler(0, -90, -90);
 
 
         tsunamiSpawns[1] = new GameObject("Tsunami Spawn");
         tsunamiSpawns[1].transform.position = new Vector3(-100, 0, 0);
-        tsunamiSpawns[1].transform.rotation = Quaternion.Euler(0, 90, 0);
+        tsunamiSpawns[1].transform.rotation = Quaternion.Euler(0, 90, -90);
 
 
         tsunamiSpawns[2] = new GameObject("Tsunami Spawn");
         tsunamiSpawns[2].transform.position = new Vector3(0, 0, 100);
-        tsunamiSpawns[2].transform.rotation = Quaternion.Euler(0, 180, 0);
+        tsunamiSpawns[2].transform.rotation = Quaternion.Euler(0, 180, -90);
 
 
         tsunamiSpawns[3] = new GameObject("Tsunami Spawn");
         tsunamiSpawns[3].transform.position = new Vector3(0, 0, -100);
+        tsunamiSpawns[3].transform.rotation = Quaternion.Euler(0, 0, -90);
+
 
 
 

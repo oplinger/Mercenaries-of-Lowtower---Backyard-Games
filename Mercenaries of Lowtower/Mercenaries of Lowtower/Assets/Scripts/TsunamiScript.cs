@@ -8,10 +8,11 @@ public class TsunamiScript : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
         DontDestroyOnLoad(this);
-	}
-	
-	// Update is called once per frame
-	void Update () {
+
+    }
+
+    // Update is called once per frame
+    void Update () {
         timer += Time.deltaTime;
 
         transform.Translate((Vector3.forward * speed) * Time.deltaTime);
@@ -21,7 +22,6 @@ public class TsunamiScript : MonoBehaviour {
             speed = 0;
             transform.position = new Vector3(0, -100, 0);
             timer = 0;
-            gameObject.SetActive(false);
 
         }
     }
