@@ -504,25 +504,10 @@ Prefab:
       propertyPath: tsunamiObj
       value: 
       objectReference: {fileID: 1476010988}
-    - target: {fileID: 114050299489096748, guid: 9b019403ca0f5db4fbe90678c8459dda,
+    - target: {fileID: 114752299657823772, guid: 9b019403ca0f5db4fbe90678c8459dda,
         type: 2}
-      propertyPath: tsunamiSpawns.Array.data[0]
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 114050299489096748, guid: 9b019403ca0f5db4fbe90678c8459dda,
-        type: 2}
-      propertyPath: tsunamiSpawns.Array.data[1]
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 114050299489096748, guid: 9b019403ca0f5db4fbe90678c8459dda,
-        type: 2}
-      propertyPath: tsunamiSpawns.Array.data[2]
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 114050299489096748, guid: 9b019403ca0f5db4fbe90678c8459dda,
-        type: 2}
-      propertyPath: tsunamiSpawns.Array.data[3]
-      value: 
+      propertyPath: m_Enabled
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 9b019403ca0f5db4fbe90678c8459dda, type: 2}
@@ -1622,7 +1607,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4348010481037272, guid: e3f3de95b76f56846ba086f9f9c266fe, type: 2}
       propertyPath: m_LocalPosition.y
-      value: 9.67
+      value: -104.2
       objectReference: {fileID: 0}
     - target: {fileID: 4348010481037272, guid: e3f3de95b76f56846ba086f9f9c266fe, type: 2}
       propertyPath: m_LocalPosition.z
@@ -1647,6 +1632,10 @@ Prefab:
     - target: {fileID: 4348010481037272, guid: e3f3de95b76f56846ba086f9f9c266fe, type: 2}
       propertyPath: m_RootOrder
       value: 17
+      objectReference: {fileID: 0}
+    - target: {fileID: 1955877344891030, guid: e3f3de95b76f56846ba086f9f9c266fe, type: 2}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: e3f3de95b76f56846ba086f9f9c266fe, type: 2}
