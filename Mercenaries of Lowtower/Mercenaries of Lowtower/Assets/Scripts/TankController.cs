@@ -18,12 +18,17 @@ public class TankController : MonoBehaviour
     float h1;
     float h2;
     bool altBuild;
+    float timer;
+    float reflectDamage;
 
     [Header("Genral")]
     [Range(1, 50)]
     public float walkspeed;
     public LayerMask groundMask;
     public LayerMask enemyMask;
+    public Material tankMat;
+
+
 
 
     [Space(10)]
@@ -37,6 +42,8 @@ public class TankController : MonoBehaviour
     [Range(0, 10)]
     public float magnetCooldown;
     [Range(0, 10)]
+    public float shieldDuration;
+    [Range(0, 10)]
     public float shieldCooldown;
     [Range(0, 10)]
     public float perfectShieldCooldown;
@@ -47,6 +54,7 @@ public class TankController : MonoBehaviour
     // Use this for initialization
     void Start()
     {
+
         DontDestroyOnLoad(transform.gameObject);
 
         controllerThing = GameObject.Find("Controller Thing");
@@ -69,6 +77,17 @@ public class TankController : MonoBehaviour
          */
     void Update()
     {
+        if (altBuild)
+        {
+            tankMat.color = Color.HSVToRGB(.613f, .537f, .5f);
+
+
+        }
+        else if (!altBuild)
+        {
+            tankMat.color = Color.HSVToRGB(.613f, .537f, .95f);
+
+        }
         anim.SetInteger("AnimState", 0);
 
         // colliders is for grounding the player, for jumping purposes.
@@ -81,7 +100,14 @@ public class TankController : MonoBehaviour
             //Vector3 relpos = playermovement - transform.position;
             if (playermovement != Vector3.zero)
             {
-                transform.rotation = Quaternion.LookRotation(playermovement);
+                if (Input.GetKey("joystick " + CTRLID + " button 1") && cooldowns.activeCooldowns[0] <= 0 && !altBuild)
+                {
+                    transform.rotation = Quaternion.identity;
+                } else
+                {
+                    transform.rotation = Quaternion.LookRotation(playermovement);
+
+                }
                 transform.Translate(playermovement * walkspeed * Time.deltaTime, Space.World);
                 anim.SetInteger("AnimState", 1);
             }
@@ -91,13 +117,17 @@ public class TankController : MonoBehaviour
             }
         }
 
-        if (CTRLID != 0 && Input.GetKeyDown("joystick " + CTRLID + " button 1") && cooldowns.activeCooldowns[0]<=0 && !altBuild)
+        if (CTRLID != 0 && Input.GetKey("joystick " + CTRLID + " button 1") && cooldowns.activeCooldowns[0]<=0 && !altBuild)
         {
             abilities.TankMagnet(magnetThreat, 0, gameObject, magnetCooldown);
             anim.SetInteger("AnimState", 2);
+            tankMat.SetColor("_EmissionColor", Color.HSVToRGB(1, 1, 1));
+
         }
         else
         {
+            tankMat.SetColor("_EmissionColor", Color.HSVToRGB(1, 1, 0));
+
         }
 
         if (CTRLID != 0 && Input.GetKeyDown("joystick " + CTRLID + " button 2") && cooldowns.activeCooldowns[1] <= 0 && altBuild)
@@ -109,7 +139,7 @@ public class TankController : MonoBehaviour
 
         if (CTRLID != 0 && Input.GetKeyDown("joystick " + CTRLID + " button 2") && cooldowns.activeCooldowns[1] <= 0 && !altBuild)
         {
-            abilities.TankShield(shieldAmount, 0, gameObject, shieldCooldown);
+            abilities.TankShield(shieldAmount, 0, gameObject, shieldCooldown, shieldDuration);
             anim.SetInteger("AnimState", 2);
 
         }
@@ -125,8 +155,27 @@ public class TankController : MonoBehaviour
 
         if (CTRLID != 0 && Input.GetKey("joystick " + CTRLID + " button 1") && cooldowns.activeCooldowns[0] <= 0 && altBuild)
         {
-            abilities.TankReflect(0, 0, gameObject, reflectCooldown, true, h1, h2);
+            //timer += Time.deltaTime;
+            //reflectDamage += (h2 - h1) * 2;
+            abilities.TankReflect(reflectDamage,0, gameObject, reflectCooldown, true, h1, h2, timer);
+            tankMat.SetColor("_EmissionColor", Color.HSVToRGB(.5f,1,1));
+            //if (timer > 2)
+            //{
+            //    timer = 0;
+            //    reflectDamage = 0;
+            //}
+            
         }
+        if (CTRLID != 0 && Input.GetKeyUp("joystick " + CTRLID + " button 1") && cooldowns.activeCooldowns[0] <= 0 && altBuild)
+        {
+            tankMat.SetColor("_EmissionColor", Color.HSVToRGB(.5f, 1, 0));
+            //timer = 0;
+            //reflectDamage = 0;
+
+
+        }
+
+
 
 
         if (CTRLID != 0 && Input.GetKeyDown("joystick " + CTRLID + " button 5"))

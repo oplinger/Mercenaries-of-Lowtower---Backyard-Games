@@ -250,7 +250,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1669068641029250}
   m_LocalRotation: {x: 0, y: 1, z: 0, w: 0}
-  m_LocalPosition: {x: -20.07754, y: 18.5, z: 17.549004}
+  m_LocalPosition: {x: -11.532445, y: 13, z: 42.3}
   m_LocalScale: {x: 5, y: 5, z: 5}
   m_Children:
   - {fileID: 4268014405758700}
@@ -726,7 +726,22 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   attackCDs: []
+  specialAttackCDs: []
   currentGCD: 0
+  shockwaveObj: {fileID: 0}
+  tsunamiObj: {fileID: 0}
+  shockwave: 0
+  tsunami: 0
+  hurricane: 0
+  lightningStorm: 0
+  tsunamiSpawns:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  theground:
+    serializedVersion: 2
+    m_Bits: 256
   bossPhase: 0
 --- !u!114 &114160688909750412
 MonoBehaviour:
@@ -758,6 +773,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   health: 100
   player: {fileID: 0}
+  shielded: 0
   isDead: 0
 --- !u!114 &114752299657823772
 MonoBehaviour:

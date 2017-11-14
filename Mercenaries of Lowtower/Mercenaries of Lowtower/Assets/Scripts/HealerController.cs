@@ -7,10 +7,11 @@ public class HealerController : MonoBehaviour
     #region Variables
     [HideInInspector]
     public int CTRLID;
-
+    
     GameObject controllerThing;
     Vector3 playermovement;
-    ControllerThing controller;    
+    ControllerThing controller;
+    GameObject healVisual;
     PlayerAbilityController abilities;
     PlayerCDController cooldowns;
     Collider[] colliders;
@@ -26,6 +27,7 @@ public class HealerController : MonoBehaviour
     public float walkspeed;
     public LayerMask groundMask;
     public LayerMask enemyMask;
+    public Material healerMat;
 
 
     [Space(10)]
@@ -53,7 +55,11 @@ public class HealerController : MonoBehaviour
     void Start()
     {
         DontDestroyOnLoad(transform.gameObject);
+        healVisual = GameObject.CreatePrimitive(PrimitiveType.Cylinder);
+        healVisual.SetActive(false);
+        DontDestroyOnLoad(healVisual);
 
+        healVisual.GetComponent<Renderer>().material.color = Color.green;
         controllerThing = GameObject.Find("Controller Thing");
 
         controller = controllerThing.GetComponent<ControllerThing>();
@@ -76,6 +82,17 @@ public class HealerController : MonoBehaviour
          */ 
     void Update()
     {
+
+        if (altBuild)
+        {
+            healerMat.color = Color.HSVToRGB(.75f, .396f, .5f);
+            
+
+        } else
+        {
+            healerMat.color = Color.HSVToRGB(.75f, .396f, .95f);
+
+        }
         anim.SetInteger("AnimState", 0);
         // colliders is for grounding the player, for jumping purposes.
         colliders = Physics.OverlapCapsule(transform.position, transform.position - (Vector3.up * 2), .25f, groundMask, QueryTriggerInteraction.Ignore);
@@ -124,10 +141,11 @@ public class HealerController : MonoBehaviour
 
         if (CTRLID != 0 && Input.GetKey("joystick " + CTRLID + " button 2") && cooldowns.activeCooldowns[3] <= 0)
         {
+            healVisual.SetActive(true);
             timer += Time.deltaTime;
             if (timer >= healInterval)
             {
-                abilities.HealerHeal(healAmount, 1, gameObject, healCooldown);
+                abilities.HealerHeal(healAmount, 1, gameObject, healCooldown, healVisual);
                 timer = 0;
             }
             anim.SetInteger("AnimState", 2);
@@ -135,6 +153,7 @@ public class HealerController : MonoBehaviour
         }
         else
         {
+            healVisual.SetActive(false);
         }
 
         if (CTRLID != 0 && Input.GetKey("joystick " + CTRLID + " button 1") && cooldowns.activeCooldowns[4] <= 0 && !altBuild)

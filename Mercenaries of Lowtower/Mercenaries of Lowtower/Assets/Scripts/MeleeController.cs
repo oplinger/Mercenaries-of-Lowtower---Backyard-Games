@@ -25,6 +25,8 @@ public class MeleeController : MonoBehaviour
     public float walkspeed;
     public LayerMask groundMask;
     public LayerMask enemyMask;
+    public Material meleeMat;
+
 
     [Space(10)]
     [Header("Damage")]
@@ -81,6 +83,17 @@ public class MeleeController : MonoBehaviour
          */
     void Update()
     {
+        if (altBuild)
+        {
+            meleeMat.color = Color.HSVToRGB(.016f, .788f, .5f);
+
+
+        }
+        else
+        {
+            meleeMat.color = Color.HSVToRGB(.016f, .788f, .95f);
+
+        }
         anim.SetInteger("AnimState", 0);
         timer += Time.deltaTime;
         if (timer > 2)
@@ -123,7 +136,7 @@ public class MeleeController : MonoBehaviour
 
         if (CTRLID != 0 && Input.GetKeyDown("joystick " + CTRLID + " button 1") && cooldowns.activeCooldowns[7] <= 0 && !altBuild)
         {
-            abilities.Whirlwind(whirlwindDamage, 2, gameObject, lungeCD);
+            abilities.Whirlwind(whirlwindDamage, 2, gameObject, CycloneCD);
         }
 
         if (CTRLID != 0 && Input.GetKeyDown("joystick " + CTRLID + " button 2") && cooldowns.activeCooldowns[6] <= 0)

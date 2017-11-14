@@ -22,6 +22,8 @@ public class RangedController : MonoBehaviour
     public float walkspeed;
     public LayerMask groundMask;
     public LayerMask enemyMask;
+    public Material rangedMat;
+
 
 
     [Space(10)]
@@ -72,6 +74,17 @@ public class RangedController : MonoBehaviour
          */
     void Update()
     {
+        if (altBuild)
+        {
+            rangedMat.color = Color.HSVToRGB(.216f, .517f, .5f);
+
+
+        }
+        else
+        {
+            rangedMat.color = Color.HSVToRGB(.216f, .517f, .95f);
+
+        }
         anim.SetInteger("AnimState", 0);
 
         // colliders is for grounding the player, for jumping purposes.
