@@ -54,12 +54,13 @@ public class PlayerAbilityController : MonoBehaviour {
         cooldown.triggerCooldown(1, CD);
 
     }
-    public void TankMagnet(float damage, int playerID, GameObject me, float CD)
+    public void TankMagnet(float damage, int playerID, GameObject me, float CD, LayerMask lMask)
     {
 
         RaycastHit hit;
-        Ray ray = new Ray(me.transform.position, me.transform.forward * 30);
-        if (Physics.Raycast(ray, out hit, 30))
+        //Ray ray = new Ray(me.transform.position, me.transform.forward * 30);
+        //if (Physics.Raycast(ray, out hit, 30))
+        if(Physics.Raycast(me.transform.position, me.transform.forward, out hit, 30, lMask, QueryTriggerInteraction.Ignore))           
         {
             GameObject target = hit.collider.gameObject;
             if(Vector3.Distance(target.transform.position, me.transform.position)>3)

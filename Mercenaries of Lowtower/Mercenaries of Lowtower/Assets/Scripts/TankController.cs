@@ -25,7 +25,7 @@ public class TankController : MonoBehaviour
     [Range(1, 50)]
     public float walkspeed;
     public LayerMask groundMask;
-    public LayerMask enemyMask;
+    public LayerMask magnetMask;
     public Material tankMat;
 
 
@@ -102,7 +102,7 @@ public class TankController : MonoBehaviour
             {
                 if (Input.GetKey("joystick " + CTRLID + " button 1") && cooldowns.activeCooldowns[0] <= 0 && !altBuild)
                 {
-                    transform.rotation = Quaternion.identity;
+                    transform.rotation = transform.rotation;
                 } else
                 {
                     transform.rotation = Quaternion.LookRotation(playermovement);
@@ -119,7 +119,7 @@ public class TankController : MonoBehaviour
 
         if (CTRLID != 0 && Input.GetKey("joystick " + CTRLID + " button 1") && cooldowns.activeCooldowns[0]<=0 && !altBuild && !health.isDead)
         {
-            abilities.TankMagnet(magnetThreat, 0, gameObject, magnetCooldown);
+            abilities.TankMagnet(magnetThreat, 0, gameObject, magnetCooldown, magnetMask);
             anim.SetInteger("AnimState", 2);
             tankMat.SetColor("_EmissionColor", Color.HSVToRGB(1, 1, 1));
 

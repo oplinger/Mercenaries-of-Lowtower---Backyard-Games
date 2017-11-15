@@ -320,6 +320,11 @@ Prefab:
       propertyPath: abilityCooldowns.Array.data[11]
       value: 1000
       objectReference: {fileID: 0}
+    - target: {fileID: 114279180997460120, guid: 2d650737647de4c4793ef69af2ec3f56,
+        type: 2}
+      propertyPath: enemyMask.m_Bits
+      value: 512
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 2d650737647de4c4793ef69af2ec3f56, type: 2}
   m_IsPrefabParent: 0
@@ -1606,6 +1611,16 @@ Prefab:
         type: 2}
       propertyPath: shieldDuration
       value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 114782003998301322, guid: dd9de9996069bb54fb61c0bd063feb4f,
+        type: 2}
+      propertyPath: enemyMask.m_Bits
+      value: 769
+      objectReference: {fileID: 0}
+    - target: {fileID: 114782003998301322, guid: dd9de9996069bb54fb61c0bd063feb4f,
+        type: 2}
+      propertyPath: magnetMask.m_Bits
+      value: 769
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: dd9de9996069bb54fb61c0bd063feb4f, type: 2}
