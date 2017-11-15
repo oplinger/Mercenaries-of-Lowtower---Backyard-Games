@@ -358,6 +358,7 @@ MonoBehaviour:
   health: 0
   player: {fileID: 0}
   shielded: 0
+  foundShield: {fileID: 0}
   isDead: 0
 --- !u!23 &417900579
 MeshRenderer:
@@ -1600,6 +1601,11 @@ Prefab:
     - target: {fileID: 1239915997541124, guid: dd9de9996069bb54fb61c0bd063feb4f, type: 2}
       propertyPath: m_Name
       value: Tank Character(Clone)
+      objectReference: {fileID: 0}
+    - target: {fileID: 114782003998301322, guid: dd9de9996069bb54fb61c0bd063feb4f,
+        type: 2}
+      propertyPath: shieldDuration
+      value: 10
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: dd9de9996069bb54fb61c0bd063feb4f, type: 2}

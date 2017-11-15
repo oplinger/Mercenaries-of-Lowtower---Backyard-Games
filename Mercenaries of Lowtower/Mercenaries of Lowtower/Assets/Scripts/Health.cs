@@ -6,6 +6,7 @@ public class Health : MonoBehaviour {
    public float health;
     public GameObject player;
     public bool shielded;
+    public GameObject foundShield;
     //public MovementRigidbody playerMoveScript;
 
     //public float dam;
@@ -15,6 +16,10 @@ public class Health : MonoBehaviour {
 	// Initializes the gameObject with 100 health. Can be tweaked with If statements or a health Method.
 	void Start () {
         health = 100;
+        if (gameObject.tag == "Shield")
+        {
+            health = 100;
+        }
         player = this.gameObject;
         //playerMoveScript = GetComponent<MovementRigidbody>();
 
@@ -27,10 +32,11 @@ public class Health : MonoBehaviour {
         {
             isDead = true;
         }
-        if(isDead && gameObject.tag == "Enemy")
+        if(isDead && (gameObject.tag == "Enemy" || gameObject.tag=="Shield"))
         {
             Destroy(gameObject);
         }
+        
     }
     // This method takes passed in data and manipulates the health value. Damage is the amount of health lost or gained (negative values are healing) 
     //and the ID is the character ID that is doing the damage. These are assigned to players by the boss on start.
@@ -38,8 +44,16 @@ public class Health : MonoBehaviour {
     {
         if(health > 0 && shielded)
         {
-            dam *= 0;
-            health -= dam;
+            if (gameObject.tag == "Player")
+            {
+                //dam *= 0;
+                foundShield = GameObject.FindGameObjectWithTag("Shield");
+                foundShield.GetComponent<Health>().health -= dam;
+            } 
+            //if (gameObject.tag == "Shield")
+            //{
+            //    health -=dam*GetComponent<ShieldScript>().playersInShield.Length;
+            //}
         }
         else
         {
