@@ -98,9 +98,9 @@ public class HealerController : MonoBehaviour
         colliders = Physics.OverlapCapsule(transform.position, transform.position - (Vector3.up * 2), .25f, groundMask, QueryTriggerInteraction.Ignore);
         h1 = health.health;
         #region Controls
-        if (walkspeed >= 0 && CTRLID != 0)
+        if (walkspeed >= 0 && CTRLID != 0 && !health.isDead)
         {
-            playermovement = new Vector3(Input.GetAxis("J" + CTRLID + "Horizontal"), 0, Input.GetAxis("J" + CTRLID + "Vertical"));
+            playermovement = new Vector3(Input.GetAxis("J" + CTRLID + "Horizontal"), 0, Input.GetAxis("J" + CTRLID + "Vertical") && !health.isDead);
             //Vector3 relpos = playermovement - transform.position;
             if (playermovement != Vector3.zero)
             {
@@ -112,7 +112,7 @@ public class HealerController : MonoBehaviour
             }
         }
 
-        if (CTRLID != 0 && colliders.Length > 0 && Input.GetKeyDown("joystick " + CTRLID + " button 0"))
+        if (CTRLID != 0 && colliders.Length > 0 && Input.GetKeyDown("joystick " + CTRLID + " button 0") && !health.isDead)
         {
             abilities.Jump(CTRLID, gameObject);
             anim.SetInteger("AnimState", 3);
@@ -130,7 +130,7 @@ public class HealerController : MonoBehaviour
         //{
         //}
 
-        if (CTRLID != 0 && Input.GetKeyDown("joystick " + CTRLID + " button 1") && cooldowns.activeCooldowns[4] <= 0 && altBuild)
+        if (CTRLID != 0 && Input.GetKeyDown("joystick " + CTRLID + " button 1") && cooldowns.activeCooldowns[4] <= 0 && altBuild && !health.isDead)
         {
             abilities.HealerCC(0, 1, gameObject, fearCooldown);
             anim.SetInteger("AnimState", 2);
@@ -139,7 +139,7 @@ public class HealerController : MonoBehaviour
         {
         }
 
-        if (/*CTRLID != 0 && Input.GetKey("joystick " + CTRLID + " button 2")*/ Input.GetKey("h") && cooldowns.activeCooldowns[3] <= 0)
+        if (/*CTRLID != 0 && Input.GetKey("joystick " + CTRLID + " button 2")*/ Input.GetKey("h") && cooldowns.activeCooldowns[3] <= 0 && !health.isDead)
         {
             healVisual.SetActive(true);
             timer += Time.deltaTime;
@@ -156,7 +156,7 @@ public class HealerController : MonoBehaviour
             healVisual.SetActive(false);
         }
 
-        if (CTRLID != 0 && Input.GetKey("joystick " + CTRLID + " button 1") && cooldowns.activeCooldowns[4] <= 0 && !altBuild)
+        if (CTRLID != 0 && Input.GetKey("joystick " + CTRLID + " button 1") && cooldowns.activeCooldowns[4] <= 0 && !altBuild && !health.isDead)
         {
             abilities.Healaport(0, 1, gameObject, teleportCooldown);
         }
@@ -177,10 +177,11 @@ public class HealerController : MonoBehaviour
         {
         }
 
-        if (h1 <= 0)
+        if (health.isDead)
         {
             anim.SetInteger("AnimState", 5);
             walkspeed = 0;
+            playermovement *= 0;
         } else
         {
         }
