@@ -233,13 +233,37 @@ public class PlayerAbilityController : MonoBehaviour {
             }
         } else
         {
-            me.transform.position = Vector3.MoveTowards(me.transform.position, me.transform.position + (me.transform.forward * 100), 1000 * Time.deltaTime);
+            //me.transform.position = Vector3.Lerp(me.transform.position, me.transform.position + (me.transform.forward * 10), 1);
+            StartCoroutine(Dash(me));
 
         }
         //me.transform.position = Vector3.MoveTowards(me.transform.position, me.transform.position + (me.transform.forward * 100), 1000 * Time.deltaTime);
         cooldown.triggerCooldown(7, CD);
 
     }
+
+    IEnumerator Dash(GameObject me)
+    {
+        me.transform.position = Vector3.Lerp(me.transform.position, me.transform.position + (me.transform.forward * 1), 1);
+        yield return new WaitForSeconds(.01f);
+        me.transform.position = Vector3.Lerp(me.transform.position, me.transform.position + (me.transform.forward * 2), 1);
+        yield return new WaitForSeconds(.01f);
+        me.transform.position = Vector3.Lerp(me.transform.position, me.transform.position + (me.transform.forward * 4), 1);
+        yield return new WaitForSeconds(.01f);
+        me.transform.position = Vector3.Lerp(me.transform.position, me.transform.position + (me.transform.forward * 6), 1);
+        yield return new WaitForSeconds(.01f);
+        me.transform.position = Vector3.Lerp(me.transform.position, me.transform.position + (me.transform.forward * 6), 1);
+        yield return new WaitForSeconds(.01f);
+        me.transform.position = Vector3.Lerp(me.transform.position, me.transform.position + (me.transform.forward * 6), 1);
+        yield return new WaitForSeconds(.01f);
+        me.transform.position = Vector3.Lerp(me.transform.position, me.transform.position + (me.transform.forward * 4), 1);
+        yield return new WaitForSeconds(.01f);
+        me.transform.position = Vector3.Lerp(me.transform.position, me.transform.position + (me.transform.forward * 2), 1);
+        yield return new WaitForSeconds(.1f);
+        me.transform.position = Vector3.Lerp(me.transform.position, me.transform.position + (me.transform.forward * 1), 1);
+        yield return new WaitForSeconds(.1f);
+    }
+
     IEnumerator WWAttack(float damage, int playerID, GameObject me, float CD, float StrikeInterval)
     {
         Collider[] col = Physics.OverlapSphere(me.transform.position, 3, enemyMask, QueryTriggerInteraction.Ignore);

@@ -100,7 +100,7 @@ public class HealerController : MonoBehaviour
         #region Controls
         if (walkspeed >= 0 && CTRLID != 0 && !health.isDead)
         {
-            playermovement = new Vector3(Input.GetAxis("J" + CTRLID + "Horizontal"), 0, Input.GetAxis("J" + CTRLID + "Vertical") && !health.isDead);
+            playermovement = new Vector3(Input.GetAxis("J" + CTRLID + "Horizontal"), 0, Input.GetAxis("J" + CTRLID + "Vertical"));
             //Vector3 relpos = playermovement - transform.position;
             if (playermovement != Vector3.zero)
             {
