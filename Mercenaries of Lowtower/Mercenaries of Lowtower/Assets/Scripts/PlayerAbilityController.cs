@@ -110,7 +110,7 @@ public class PlayerAbilityController : MonoBehaviour {
     public void HealerHeal(float damage, int playerID, GameObject me, float CD, GameObject beepboop)
     {
         print("ff");
-        Collider[] hitColliders = Physics.OverlapSphere(transform.position, 100, 1 << 8, QueryTriggerInteraction.Ignore);
+        Collider[] hitColliders = Physics.OverlapSphere(me.transform.position, 100, 1 << 8, QueryTriggerInteraction.Ignore);
 
         Destroy(beepboop.GetComponent<CapsuleCollider>());
         beepboop.transform.position = me.transform.position-new Vector3(0,1,0);
@@ -222,7 +222,7 @@ public class PlayerAbilityController : MonoBehaviour {
     {
         RaycastHit hit;
 
-        if(Physics.Raycast(me.transform.position, me.transform.forward * 20, out hit))
+        if(Physics.Raycast(me.transform.position, me.transform.forward, out hit, 20, enemyMask, QueryTriggerInteraction.Ignore))
         {
             me.transform.position = Vector3.MoveTowards(me.transform.position, hit.point, 1000*Time.deltaTime);
            Health health = hit.collider.gameObject.GetComponent<Health>();
@@ -333,7 +333,7 @@ public class PlayerAbilityController : MonoBehaviour {
         {
             col[i].GetComponent<BossTargetingAI>().addThreat(-col[i].GetComponent<BossTargetingAI>().combinedThreat[playerID], playerID, true);
         }
-      
+        cooldown.triggerCooldown(10, CD);
     }
 
     public void BluntTipArrow(float damage, int playerID, GameObject me, float CD)

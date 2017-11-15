@@ -747,6 +747,16 @@ Prefab:
       propertyPath: m_Name
       value: Healer Character(Clone)
       objectReference: {fileID: 0}
+    - target: {fileID: 114763032175709166, guid: c8fc4b41195663843b1a76e878cbfbed,
+        type: 2}
+      propertyPath: healAmount
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 114763032175709166, guid: c8fc4b41195663843b1a76e878cbfbed,
+        type: 2}
+      propertyPath: healInterval
+      value: 0.25
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: c8fc4b41195663843b1a76e878cbfbed, type: 2}
   m_IsPrefabParent: 0
@@ -1366,7 +1376,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4421778261411960, guid: b7df22f4992e96442b24ba1ab4331141, type: 2}
       propertyPath: m_LocalPosition.y
-      value: 0.24
+      value: -1.919
       objectReference: {fileID: 0}
     - target: {fileID: 4421778261411960, guid: b7df22f4992e96442b24ba1ab4331141, type: 2}
       propertyPath: m_LocalPosition.z

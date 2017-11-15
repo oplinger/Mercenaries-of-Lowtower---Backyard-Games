@@ -139,13 +139,13 @@ public class HealerController : MonoBehaviour
         {
         }
 
-        if (CTRLID != 0 && Input.GetKey("joystick " + CTRLID + " button 2") && cooldowns.activeCooldowns[3] <= 0)
+        if (/*CTRLID != 0 && Input.GetKey("joystick " + CTRLID + " button 2")*/ Input.GetKey("h") && cooldowns.activeCooldowns[3] <= 0)
         {
             healVisual.SetActive(true);
             timer += Time.deltaTime;
             if (timer >= healInterval)
             {
-                abilities.HealerHeal(healAmount, 1, gameObject, healCooldown, healVisual);
+                abilities.HealerHeal(-healAmount, 1, gameObject, healCooldown, healVisual);
                 timer = 0;
             }
             anim.SetInteger("AnimState", 2);
