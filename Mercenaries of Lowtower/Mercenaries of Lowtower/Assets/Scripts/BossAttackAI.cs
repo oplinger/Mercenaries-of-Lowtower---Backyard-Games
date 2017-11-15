@@ -311,8 +311,7 @@ public class BossAttackAI : MonoBehaviour {
         // lightning.transform.position = hit.point;
 
 
-        attackCDs[2] = 5;
-        triggerGCD(2);
+
     }
 
     //THE ATTACKS ARE IN ORDER OF PRIORITY. VERY IMPORTANT.
