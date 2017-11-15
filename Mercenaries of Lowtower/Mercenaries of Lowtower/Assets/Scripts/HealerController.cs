@@ -139,7 +139,7 @@ public class HealerController : MonoBehaviour
         {
         }
 
-        if (/*CTRLID != 0 && Input.GetKey("joystick " + CTRLID + " button 2")*/ Input.GetKey("h") && cooldowns.activeCooldowns[3] <= 0 && !health.isDead)
+        if (CTRLID != 0 && Input.GetKey("joystick " + CTRLID + " button 2") && cooldowns.activeCooldowns[3] <= 0 && !health.isDead)
         {
             healVisual.SetActive(true);
             timer += Time.deltaTime;

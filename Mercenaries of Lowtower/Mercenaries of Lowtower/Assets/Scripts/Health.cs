@@ -21,7 +21,8 @@ public class Health : MonoBehaviour {
         isDead = false;
 	}
     private void Update()
-    {  
+    {
+        health = Mathf.Clamp(health, 0, 100);
         if (health<=0)
         {
             isDead = true;
