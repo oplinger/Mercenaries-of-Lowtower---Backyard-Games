@@ -340,6 +340,7 @@ public class BossAttackAI : MonoBehaviour
         {
             GameObject cyl = GameObject.CreatePrimitive(PrimitiveType.Cylinder);
             Destroy(cyl.GetComponent<CapsuleCollider>());
+            cyl.GetComponent<Renderer>().material.color = Color.red;
             cyl.transform.position = hit.point;
             cyl.transform.localScale = new Vector3(25, 1, 25);
             Destroy(cyl, 3.5f);
@@ -347,13 +348,15 @@ public class BossAttackAI : MonoBehaviour
 
             GameObject sphere = GameObject.CreatePrimitive(PrimitiveType.Sphere);
             Destroy(sphere.GetComponent<SphereCollider>());
+            sphere.GetComponent<Renderer>().material.color = Color.yellow;
+
             sphere.transform.position = hit.point;
             sphere.transform.localScale = new Vector3(25, 25, 25);
             Destroy(sphere, 1);
             Collider[] col = Physics.OverlapSphere(hit.point, 25, 1 << 8, QueryTriggerInteraction.Ignore);
             for (int i = 0; i < col.Length; i++)
             {
-                col[i].GetComponent<Health>().modifyHealth(10, 9);
+                col[i].GetComponent<Health>().modifyHealth(lightningstormDamage, 9);
             }
         }
         yield return new WaitForSeconds(.001f);
