@@ -43,8 +43,11 @@ public class TankController : MonoBehaviour
     public float magnetCooldown;
     [Range(0, 10)]
     public float shieldDuration;
+    public bool InfiniteShield;
     [Range(0, 10)]
     public float shieldCooldown;
+    [Range(0, 10)]
+    public float perfectShieldDuration;
     [Range(0, 10)]
     public float perfectShieldCooldown;
     [Range(0, 10)]
@@ -132,14 +135,14 @@ public class TankController : MonoBehaviour
 
         if (CTRLID != 0 && Input.GetKeyDown("joystick " + CTRLID + " button 2") && cooldowns.activeCooldowns[1] <= 0 && altBuild && !health.isDead)
         {
-            abilities.TankPerfectShield(shieldAmount, 0, gameObject, perfectShieldCooldown);
+            abilities.TankPerfectShield(shieldAmount, 0, gameObject, perfectShieldCooldown, perfectShieldDuration);
             anim.SetInteger("AnimState", 2);
 
         }
 
         if (CTRLID != 0 && Input.GetKeyDown("joystick " + CTRLID + " button 2") && cooldowns.activeCooldowns[1] <= 0 && !altBuild && !health.isDead)
         {
-            abilities.TankShield(shieldAmount, 0, gameObject, shieldCooldown, shieldDuration);
+            abilities.TankShield(shieldAmount, 0, gameObject, shieldCooldown, shieldDuration, InfiniteShield);
             anim.SetInteger("AnimState", 2);
 
         }

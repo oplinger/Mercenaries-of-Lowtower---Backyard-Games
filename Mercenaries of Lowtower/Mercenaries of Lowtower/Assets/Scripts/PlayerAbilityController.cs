@@ -36,21 +36,25 @@ public class PlayerAbilityController : MonoBehaviour {
     }
 #endregion
     #region Tank Abilities
-    public void TankShield(float damage, int playerID, GameObject me, float CD, float duration)
+    public void TankShield(float damage, int playerID, GameObject me, float CD, float duration, bool infiniteshield)
     {
         GameObject clone;
         clone = Instantiate(Resources.Load("shield"), me.transform.position, me.transform.rotation) as GameObject;
-        Destroy(clone, duration);
+        if (!infiniteshield)
+        {
+            Destroy(clone, duration);
+
+        }
         cooldown.triggerCooldown(1, CD);
 
     }
 
-    public void TankPerfectShield(float damage, int playerID, GameObject me, float CD)
+    public void TankPerfectShield(float damage, int playerID, GameObject me, float CD, float duration)
     {
         GameObject clone;
         clone = Instantiate(Resources.Load("shield"), me.transform.position, me.transform.rotation) as GameObject;
         clone.transform.localScale = new Vector3(5f, 5f, 5f);
-        Destroy(clone, 3);
+        Destroy(clone, duration);
         cooldown.triggerCooldown(1, CD);
 
     }
@@ -171,7 +175,7 @@ public class PlayerAbilityController : MonoBehaviour {
             print(EnemyColliders[i]);
             health.modifyHealth(dam, 1);
         }
-        cooldown.triggerCooldown(4, cooldown.abilityCooldowns[4]);
+        cooldown.triggerCooldown(4, CD);
 
 
     }
@@ -187,7 +191,7 @@ public class PlayerAbilityController : MonoBehaviour {
             health.modifyHealth(damage, playerID);
         }
 
-        cooldown.triggerCooldown(6, cooldown.abilityCooldowns[6]-(.05f*attacknum));
+        cooldown.triggerCooldown(6, CD-(.05f*attacknum));
 
     }
     public void MeleeStrikeRogue(float damage, int playerID, GameObject me, List<Collider> mtar, int attacknum, float CD)
@@ -199,7 +203,7 @@ public class PlayerAbilityController : MonoBehaviour {
             health.modifyHealth(damage, playerID);
         }
 
-        cooldown.triggerCooldown(6, cooldown.abilityCooldowns[6]);
+        cooldown.triggerCooldown(6, CD);
     }
 
     public void Whirlwind(float damage, int playerID, GameObject me, float CD)
@@ -372,6 +376,9 @@ public class PlayerAbilityController : MonoBehaviour {
         clone2.transform.Rotate(0, -5, 0);
 
         Destroy(clone, 3);
+
+        cooldown.triggerCooldown(10, CD);
+
     }
     #endregion
 

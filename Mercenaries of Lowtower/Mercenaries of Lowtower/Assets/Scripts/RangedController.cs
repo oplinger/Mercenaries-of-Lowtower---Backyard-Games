@@ -41,7 +41,7 @@ public class RangedController : MonoBehaviour
     [Range(0, 10)]
     public float smokeBombCD;
     [Range(0, 10)]
-    public float smokeBomb2CD;
+    public float KnockbackCD;
 
     Animator anim;
     Health health;
@@ -117,7 +117,7 @@ public class RangedController : MonoBehaviour
 
         if (CTRLID != 0 && Input.GetKeyDown("joystick " + CTRLID + " button 1") && cooldowns.activeCooldowns[10] <= 0 && altBuild && !health.isDead)
         {
-            abilities.BluntTipArrow(3, 3, gameObject, smokeBomb2CD);
+            abilities.BluntTipArrow(3, 3, gameObject, KnockbackCD);
             anim.SetInteger("AnimState", 2);
         }
         else
