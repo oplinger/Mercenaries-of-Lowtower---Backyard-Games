@@ -150,9 +150,9 @@ public class BossAttackAI : MonoBehaviour {
         if (lightningStorm)
         {
             specialAttackCDs[3] += Time.deltaTime;
-            if (specialAttackCDs[3] >= 2)
+            if (specialAttackCDs[3] >= 3)
             {
-                Lightningstorm();
+                StartCoroutine(LightningStormRoutine());
                 specialAttackCDs[3] = 0;
             }
 
@@ -312,6 +312,37 @@ public class BossAttackAI : MonoBehaviour {
 
 
 
+    }
+
+    IEnumerator LightningStormRoutine()
+    {
+        RaycastHit hit;
+        do
+        {
+            Physics.Raycast(new Vector3(Random.Range(-50, 50), 100, Random.Range(-50, 50)), Vector3.down, out hit, 120, 1, QueryTriggerInteraction.Ignore);
+
+        } while ((Physics.Raycast(new Vector3(Random.Range(-50, 50), 100, Random.Range(-50, 50)), Vector3.down, out hit, 120, 1, QueryTriggerInteraction.Ignore) == false));
+        if (Physics.Raycast(new Vector3(Random.Range(-50, 50), 100, Random.Range(-50, 50)), Vector3.down, out hit, 120, 1, QueryTriggerInteraction.Ignore) == true)
+        {
+            GameObject cyl = GameObject.CreatePrimitive(PrimitiveType.Cylinder);
+            Destroy(cyl.GetComponent<CapsuleCollider>());
+            cyl.transform.position = hit.point;
+            cyl.transform.localScale = new Vector3(25, 1, 25);
+            Destroy(cyl, 3.5f);
+            yield return new WaitForSeconds(4);
+
+            GameObject sphere = GameObject.CreatePrimitive(PrimitiveType.Sphere);
+            Destroy(sphere.GetComponent<SphereCollider>());
+            sphere.transform.position = hit.point;
+            sphere.transform.localScale = new Vector3(25, 25, 25);
+            Destroy(sphere, 1);
+            Collider[] col = Physics.OverlapSphere(hit.point, 25, 1 << 8, QueryTriggerInteraction.Ignore);
+            for (int i = 0; i < col.Length; i++)
+            {
+                col[i].GetComponent<Health>().modifyHealth(10, 9);
+            }
+        }
+        yield return new WaitForSeconds(.001f);
     }
 
     //THE ATTACKS ARE IN ORDER OF PRIORITY. VERY IMPORTANT.
