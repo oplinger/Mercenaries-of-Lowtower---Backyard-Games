@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class ShieldScript : MonoBehaviour {
     Collider[] cols;
+    public Collider[] playersInShield;
 	// Use this for initialization
 	void Start () {
 		
@@ -11,19 +12,20 @@ public class ShieldScript : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
+       //playersInShield = Physics.OverlapSphere(transform.position, 10, 1 << 8, QueryTriggerInteraction.Ignore);
 
-       //cols = Physics.OverlapSphere(transform.position, 10, 1<<8, QueryTriggerInteraction.Ignore);
-       // for (int i = 0; i<cols.Length; i++)
-       // {
-       //     if(Vector3.Distance(cols[i].transform.position, transform.position) < 10){
-       //         cols[i].GetComponent<Health>().shielded = true;
+        //cols = Physics.OverlapSphere(transform.position, 10, 1<<8, QueryTriggerInteraction.Ignore);
+        // for (int i = 0; i<cols.Length; i++)
+        // {
+        //     if(Vector3.Distance(cols[i].transform.position, transform.position) < 10){
+        //         cols[i].GetComponent<Health>().shielded = true;
 
-       //     } else
-       //     {
-       //         cols[i].GetComponent<Health>().shielded = false;
+        //     } else
+        //     {
+        //         cols[i].GetComponent<Health>().shielded = false;
 
-       //     }
-       // }
+        //     }
+        // }
     }
 
     private void OnTriggerEnter(Collider other)

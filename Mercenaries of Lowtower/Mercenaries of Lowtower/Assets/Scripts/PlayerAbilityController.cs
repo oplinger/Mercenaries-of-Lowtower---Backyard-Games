@@ -2,10 +2,11 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerAbilityController : MonoBehaviour {
+public class PlayerAbilityController : MonoBehaviour
+{
     #region Variables
     ControllerThing controller;
-   public BossTargetingAI bossTargets;
+    public BossTargetingAI bossTargets;
     PlayerCDController cooldown;
     public GameObject bolt;
     public GameObject P2BoltSpawn;
@@ -13,14 +14,16 @@ public class PlayerAbilityController : MonoBehaviour {
     #endregion
 
     // Use this for initialization
-    void Start () {
-       cooldown = GetComponent<PlayerCDController>();
+    void Start()
+    {
+        cooldown = GetComponent<PlayerCDController>();
         controller = GetComponent<ControllerThing>();
 
-        if(GameObject.Find("Boss") == null)
+        if (GameObject.Find("Boss") == null)
         {
-            
-        } else
+
+        }
+        else
         {
             bossTargets = GameObject.Find("Boss").GetComponent<BossTargetingAI>();
 
@@ -31,39 +34,45 @@ public class PlayerAbilityController : MonoBehaviour {
 
     #region General Abilities
     public void Jump(int PlayerID, GameObject player)
-    {           
-                player.GetComponent<Rigidbody>().AddForce(0, 20, 0, ForceMode.Impulse);
+    {
+        player.GetComponent<Rigidbody>().AddForce(0, 20, 0, ForceMode.Impulse);
     }
-#endregion
+    #endregion
     #region Tank Abilities
-    public void TankShield(float damage, int playerID, GameObject me, float CD, float duration)
+    public void TankShield(float damage, int playerID, GameObject me, float CD, float duration, bool infiniteshield)
     {
         GameObject clone;
-        clone = Instantiate(Resources.Load("shield"), me.transform.position, me.transform.rotation) as GameObject;
+        clone = Instantiate(Resources.Load("Shield_Magnetable"), me.transform.position, me.transform.rotation) as GameObject;
 
-        Destroy(clone, duration);
+        if (!infiniteshield)
+        {
+            Destroy(clone, duration);
+
+        }
+        cooldown.abilityCooldowns[1] = CD;
         cooldown.triggerCooldown(1, CD);
 
     }
 
-    public void TankPerfectShield(float damage, int playerID, GameObject me, float CD)
+    public void TankPerfectShield(float damage, int playerID, GameObject me, float CD, float duration)
     {
         GameObject clone;
         clone = Instantiate(Resources.Load("shield"), me.transform.position, me.transform.rotation) as GameObject;
         clone.transform.localScale = new Vector3(5f, 5f, 5f);
-        Destroy(clone, 3);
+        Destroy(clone, duration);
         cooldown.triggerCooldown(1, CD);
 
     }
-    public void TankMagnet(float damage, int playerID, GameObject me, float CD)
+    public void TankMagnet(float damage, int playerID, GameObject me, float CD, LayerMask lMask)
     {
 
         RaycastHit hit;
-        Ray ray = new Ray(me.transform.position, me.transform.forward * 30);
-        if (Physics.Raycast(ray, out hit, 30))
+        //Ray ray = new Ray(me.transform.position, me.transform.forward * 30);
+        //if (Physics.Raycast(ray, out hit, 30))
+        if (Physics.Raycast(me.transform.position, me.transform.forward, out hit, 30, lMask))
         {
             GameObject target = hit.collider.gameObject;
-            if(Vector3.Distance(target.transform.position, me.transform.position)>3)
+            if (Vector3.Distance(target.transform.position, me.transform.position) > 3)
             {
                 target.transform.position = Vector3.MoveTowards(target.transform.position, me.transform.position, .25f);
                 bossTargets.addThreat(damage, playerID, false);
@@ -77,43 +86,45 @@ public class PlayerAbilityController : MonoBehaviour {
 
     public void TankReflect(float damage, int playerID, GameObject me, float CD, bool reflect, float health1, float health2, float timer)
     {
-        
+
         if (reflect)
-        { 
+        {
             if (health1 < health2)
             {
                 damage = (health2 - health1) * 2;
                 //if (timer > 2)
                 //{
-                    Collider[] col = Physics.OverlapCapsule(me.transform.position, me.transform.forward * 20, .5f, enemyMask, QueryTriggerInteraction.Ignore);
-                    GameObject cap = GameObject.CreatePrimitive(PrimitiveType.Capsule);
-                    Destroy(cap.GetComponent<CapsuleCollider>());
+                Collider[] col = Physics.OverlapCapsule(me.transform.position, me.transform.forward * 20, .5f, enemyMask, QueryTriggerInteraction.Ignore);
+                GameObject cap = GameObject.CreatePrimitive(PrimitiveType.Capsule);
+                Destroy(cap.GetComponent<CapsuleCollider>());
                 cap.transform.position = me.transform.position + me.transform.forward * 10;
-                    cap.transform.rotation = me.transform.rotation*Quaternion.Euler(90, 0, 0);
-                    cap.transform.localScale = new Vector3(1, 10, 1);
+                cap.transform.rotation = me.transform.rotation * Quaternion.Euler(90, 0, 0);
+                cap.transform.localScale = new Vector3(1, 10, 1);
                 cap.transform.parent = me.transform;
                 Destroy(cap, 1);
-                    for (int i = 0; i < col.Length; i++)
-                    {
-                        col[i].GetComponent<Health>().health -= damage;
-                    }
-                    
+                for (int i = 0; i < col.Length; i++)
+                {
+                    col[i].GetComponent<Health>().health -= damage;
+                }
+
                 //}
             }
-        } else
+            cooldown.abilityCooldowns[2] = CD;
+            cooldown.triggerCooldown(2, CD);
+        }
+        else
         {
 
         }
     }
     #endregion
     #region Healer Abilities
-    public void HealerHeal(float damage, int playerID, GameObject me, float CD, GameObject beepboop)
+    public void HealerHeal(float damage, int playerID, GameObject me, float CD, GameObject beepboop, float range)
     {
-        print("ff");
-        Collider[] hitColliders = Physics.OverlapSphere(transform.position, 100, 1 << 8, QueryTriggerInteraction.Ignore);
+        Collider[] hitColliders = Physics.OverlapSphere(me.transform.position, 100, 1 << 8, QueryTriggerInteraction.Ignore);
 
         Destroy(beepboop.GetComponent<CapsuleCollider>());
-        beepboop.transform.position = me.transform.position-new Vector3(0,1,0);
+        beepboop.transform.position = me.transform.position - new Vector3(0, 1, 0);
         beepboop.transform.localScale = new Vector3(100, 1, 100);
         beepboop.transform.parent = me.transform;
 
@@ -133,7 +144,7 @@ public class PlayerAbilityController : MonoBehaviour {
     {
         RaycastHit hit;
         Debug.DrawRay(me.transform.position, me.transform.forward * 10);
-        if (Physics.Raycast(me.transform.position, me.transform.forward, out hit, 20, 1 << 8,QueryTriggerInteraction.Ignore))
+        if (Physics.Raycast(me.transform.position, me.transform.forward, out hit, 20, 1 << 8, QueryTriggerInteraction.Ignore))
         {
             me.transform.position = hit.point;
         }
@@ -145,10 +156,12 @@ public class PlayerAbilityController : MonoBehaviour {
     {
         //fear
         Collider[] EnemyColliders = Physics.OverlapSphere(transform.position, 100, enemyMask, QueryTriggerInteraction.Ignore);
-        for(int i = 0; i<EnemyColliders.Length; i++)
+        for (int i = 0; i < EnemyColliders.Length; i++)
         {
             EnemyColliders[i].gameObject.transform.Translate((EnemyColliders[i].gameObject.transform.position - me.transform.position) * 3);
         }
+
+        cooldown.triggerCooldown(5, CD);
     }
 
     // Creates 2 spheres, one for finding players one for finding enemies, loops through both to add damage to both.
@@ -159,7 +172,7 @@ public class PlayerAbilityController : MonoBehaviour {
         Collider[] EnemyColliders = Physics.OverlapSphere(transform.position, 100, enemyMask, QueryTriggerInteraction.Ignore);
         for (int i = 0; i < hitColliders.Length; i++)
         {
-            
+
             Health health = hitColliders[i].gameObject.GetComponent<Health>();
             print(health.health);
             health.modifyHealth(-dam / hitColliders.Length, 1);
@@ -171,23 +184,23 @@ public class PlayerAbilityController : MonoBehaviour {
             print(EnemyColliders[i]);
             health.modifyHealth(dam, 1);
         }
-        cooldown.triggerCooldown(4, cooldown.abilityCooldowns[4]);
+        cooldown.triggerCooldown(4, CD);
 
 
     }
     #endregion
     #region Melee Abilities
-    public void MeleeStrikeBerserker(float damage, int playerID, GameObject me, List<Collider> mtar, int attacknum, float CD)
+    public void MeleeStrikeBerserker(float damage, int playerID, GameObject me, List<Collider> mtar, int attacknum, float CD, int attacknummax, float speedinterval)
     {
-        
-        
-        for(int i = 0; i<mtar.Count; i++)
+
+
+        for (int i = 0; i < mtar.Count; i++)
         {
             Health health = mtar[i].GetComponent<Health>();
             health.modifyHealth(damage, playerID);
         }
 
-        cooldown.triggerCooldown(6, cooldown.abilityCooldowns[6]-(.05f*attacknum));
+        cooldown.triggerCooldown(6, CD - (speedinterval * Mathf.Clamp(attacknum, 0, attacknummax)));
 
     }
     public void MeleeStrikeRogue(float damage, int playerID, GameObject me, List<Collider> mtar, int attacknum, float CD)
@@ -199,15 +212,15 @@ public class PlayerAbilityController : MonoBehaviour {
             health.modifyHealth(damage, playerID);
         }
 
-        cooldown.triggerCooldown(6, cooldown.abilityCooldowns[6]);
+        cooldown.triggerCooldown(6, CD);
     }
 
     public void Whirlwind(float damage, int playerID, GameObject me, float CD)
     {
         //Physics.OverlapSphere(me.transform.position, 3, enemyMask, QueryTriggerInteraction.Ignore);
 
-            StartCoroutine(WWAttack(damage, playerID, me, CD, 1f));
-            cooldown.triggerCooldown(6, CD);
+        StartCoroutine(WWAttack(damage, playerID, me, CD, 1f));
+        cooldown.triggerCooldown(7, CD);
         //} else
         //{
         //    GameObject wwcyl = GameObject.CreatePrimitive(PrimitiveType.Cylinder);
@@ -222,37 +235,125 @@ public class PlayerAbilityController : MonoBehaviour {
     {
         RaycastHit hit;
 
-        if(Physics.Raycast(me.transform.position, me.transform.forward * 20, out hit))
+        if (Physics.Raycast(me.transform.position, me.transform.forward, out hit, 20, enemyMask, QueryTriggerInteraction.Ignore))
         {
-            me.transform.position = Vector3.MoveTowards(me.transform.position, hit.point, 1000*Time.deltaTime);
-           Health health = hit.collider.gameObject.GetComponent<Health>();
+            me.transform.position = Vector3.MoveTowards(me.transform.position, hit.point, 1000 * Time.deltaTime);
+            Health health = hit.collider.gameObject.GetComponent<Health>();
             health.modifyHealth(damage, playerID);
             if (health.health <= 0)
             {
                 CD = 0;
             }
-        } else
+        }
+        else
         {
-            me.transform.position = Vector3.MoveTowards(me.transform.position, me.transform.position + (me.transform.forward * 100), 1000 * Time.deltaTime);
+            //me.transform.position = Vector3.Lerp(me.transform.position, me.transform.position + (me.transform.forward * 10), 1);
+            StartCoroutine(Dash(me));
 
         }
         //me.transform.position = Vector3.MoveTowards(me.transform.position, me.transform.position + (me.transform.forward * 100), 1000 * Time.deltaTime);
-        cooldown.triggerCooldown(7, CD);
+        cooldown.triggerCooldown(8, CD);
 
     }
+
+    IEnumerator Dash(GameObject me)
+    {
+        if (Physics.Raycast(me.transform.position, me.transform.forward, 1) == false)
+        {
+            me.transform.position = Vector3.Lerp(me.transform.position, me.transform.position + (me.transform.forward * 1), 1);
+            yield return new WaitForSeconds(.01f);
+        }
+        else
+        {
+            yield break;
+        }
+        if (Physics.Raycast(me.transform.position, me.transform.forward, 2) == false)
+        {
+            me.transform.position = Vector3.Lerp(me.transform.position, me.transform.position + (me.transform.forward * 2), 1);
+            yield return new WaitForSeconds(.01f);
+        }
+        else
+        {
+            yield break;
+        }
+        if (Physics.Raycast(me.transform.position, me.transform.forward, 4) == false)
+        {
+            me.transform.position = Vector3.Lerp(me.transform.position, me.transform.position + (me.transform.forward * 4), 1);
+            yield return new WaitForSeconds(.01f);
+        }
+        else
+        {
+            yield break;
+        }
+        if (Physics.Raycast(me.transform.position, me.transform.forward, 6) == false)
+        {
+            me.transform.position = Vector3.Lerp(me.transform.position, me.transform.position + (me.transform.forward * 6), 1);
+            yield return new WaitForSeconds(.01f);
+        }
+        else
+        {
+            yield break;
+        }
+        if (Physics.Raycast(me.transform.position, me.transform.forward, 6) == false)
+        {
+            me.transform.position = Vector3.Lerp(me.transform.position, me.transform.position + (me.transform.forward * 6), 1);
+            yield return new WaitForSeconds(.01f);
+        }
+        else
+        {
+            yield break;
+        }
+        if (Physics.Raycast(me.transform.position, me.transform.forward, 6) == false)
+        {
+            me.transform.position = Vector3.Lerp(me.transform.position, me.transform.position + (me.transform.forward * 6), 1);
+            yield return new WaitForSeconds(.01f);
+        }
+        else
+        {
+            yield break;
+        }
+        if (Physics.Raycast(me.transform.position, me.transform.forward, 4) == false)
+        {
+            me.transform.position = Vector3.Lerp(me.transform.position, me.transform.position + (me.transform.forward * 4), 1);
+            yield return new WaitForSeconds(.01f);
+        }
+        else
+        {
+            yield break;
+        }
+        if (Physics.Raycast(me.transform.position, me.transform.forward, 2) == false)
+        {
+            me.transform.position = Vector3.Lerp(me.transform.position, me.transform.position + (me.transform.forward * 2), 1);
+            yield return new WaitForSeconds(.1f);
+        }
+        else
+        {
+            yield break;
+        }
+        if (Physics.Raycast(me.transform.position, me.transform.forward, 1) == false)
+        {
+            me.transform.position = Vector3.Lerp(me.transform.position, me.transform.position + (me.transform.forward * 1), 1);
+            yield return new WaitForSeconds(.1f);
+        }
+        else
+        {
+            yield break;
+        }
+    }
+
     IEnumerator WWAttack(float damage, int playerID, GameObject me, float CD, float StrikeInterval)
     {
         Collider[] col = Physics.OverlapSphere(me.transform.position, 3, enemyMask, QueryTriggerInteraction.Ignore);
         me.GetComponent<MeleeController>().walkspeed = 15;
         GameObject wwcyl = GameObject.CreatePrimitive(PrimitiveType.Cylinder);
         Destroy(wwcyl.GetComponent<CapsuleCollider>());
-        wwcyl.transform.position = me.transform.position - new Vector3 (0,1,0);
+        wwcyl.transform.position = me.transform.position - new Vector3(0, 1, 0);
         wwcyl.transform.localScale = new Vector3(3, .5f, 3);
         wwcyl.transform.parent = me.transform;
         for (int i = 0; i < col.Length; i++)
         {
             Health health = col[i].GetComponent<Health>();
-           health.modifyHealth(damage, playerID);
+            health.modifyHealth(damage, playerID);
         }
         print("WW1");
         yield return new WaitForSeconds(StrikeInterval);
@@ -285,7 +386,7 @@ public class PlayerAbilityController : MonoBehaviour {
     //        Health health = col[i].GetComponent<Health>();
     //        health.modifyHealth(damage, playerID);
     //    }
-        
+
     //    yield return new WaitForSeconds(1);
     //}
     #endregion
@@ -293,18 +394,18 @@ public class PlayerAbilityController : MonoBehaviour {
     public void RangedBolt(float damage, int playerID, GameObject me, float CD)
     {
 
-            GameObject clone = Instantiate(bolt, controller.IDs[3].gameObject.transform.position + (Vector3.forward * 2), controller.IDs[3].gameObject.transform.rotation);
-            Destroy(clone, 3);
-            cooldown.triggerCooldown(9, CD);
-        
+        GameObject clone = Instantiate(bolt, controller.IDs[3].gameObject.transform.position + (Vector3.forward * 2), controller.IDs[3].gameObject.transform.rotation);
+        Destroy(clone, 3);
+        cooldown.triggerCooldown(9, CD);
+
     }
     public void RangedArrow(float damage, int playerID, GameObject me, float CD)
     {
-        
+
 
         GameObject clone = Instantiate(bolt, controller.IDs[3].gameObject.transform.position + (Vector3.forward * 2), controller.IDs[3].gameObject.transform.rotation);
         Destroy(clone, 3);
-        cooldown.triggerCooldown(9,CD);
+        cooldown.triggerCooldown(9, CD);
 
     }
     //public void RangedRopeBolt(int playerID, GameObject target)
@@ -333,14 +434,14 @@ public class PlayerAbilityController : MonoBehaviour {
         {
             col[i].GetComponent<BossTargetingAI>().addThreat(-col[i].GetComponent<BossTargetingAI>().combinedThreat[playerID], playerID, true);
         }
-      
+        cooldown.triggerCooldown(10, CD);
     }
 
     public void BluntTipArrow(float damage, int playerID, GameObject me, float CD)
     {
         Quaternion rotation;
         rotation = controller.IDs[3].gameObject.transform.rotation;
-        
+
         GameObject clone = Instantiate(Resources.Load("BluntArrow") as GameObject, /*controller.IDs[3].gameObject.transform.position + (Vector3.forward * 2)*/ GameObject.Find("Bolt Spawn").transform.position, rotation /*controller.IDs[3].gameObject.transform.rotation*/);
         GameObject clone1 = Instantiate(Resources.Load("BluntArrow") as GameObject, /*controller.IDs[3].gameObject.transform.position + (Vector3.forward * 2)*/ GameObject.Find("Bolt Spawn").transform.position, rotation /*controller.IDs[3].gameObject.transform.rotation*/);
         clone1.transform.Rotate(0, 5, 0);
@@ -348,6 +449,9 @@ public class PlayerAbilityController : MonoBehaviour {
         clone2.transform.Rotate(0, -5, 0);
 
         Destroy(clone, 3);
+
+        cooldown.triggerCooldown(11, CD);
+
     }
     #endregion
 

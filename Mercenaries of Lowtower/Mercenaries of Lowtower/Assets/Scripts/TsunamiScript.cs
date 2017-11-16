@@ -3,10 +3,14 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class TsunamiScript : MonoBehaviour {
-    public float speed;
+    float speed;
+    float duration;
     float timer;
-	// Use this for initialization
-	void Start () {
+    
+    public float tsunamiDamage;
+
+    // Use this for initialization
+    void Start () {
         DontDestroyOnLoad(this);
 
     }
@@ -17,7 +21,7 @@ public class TsunamiScript : MonoBehaviour {
 
         transform.Translate((Vector3.forward * speed) * Time.deltaTime);
 
-        if (timer >= 5)
+        if (timer >= duration)
         {
             speed = 0;
             transform.position = new Vector3(0, -100, 0);
@@ -34,5 +38,9 @@ public class TsunamiScript : MonoBehaviour {
     public void SetTsunamiSpeed(float speed1)
     {
         speed = speed1;
+    }
+    public void SetTsunamiDuration(float tdur)
+    {
+        duration = tdur;
     }
 }

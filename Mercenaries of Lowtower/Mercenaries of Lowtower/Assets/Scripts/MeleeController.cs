@@ -39,6 +39,9 @@ public class MeleeController : MonoBehaviour
     [Header("Cooldowns")]
     [Range(0,10)]
     public float berserkerMeleeAttackCD;
+    public int attackNumMax;
+    [Tooltip("CD - (SpeedInterval*attacknum)")]
+    public float speedInterval;
     [Range(0, 10)]
     public float rogueMeleeAttackCD;
     [Range(0, 10)]
@@ -83,6 +86,8 @@ public class MeleeController : MonoBehaviour
          */
     void Update()
     {
+attacknum = Mathf.Clamp(attacknum, 0, attackNumMax);
+
         if (altBuild)
         {
             meleeMat.color = Color.HSVToRGB(.016f, .788f, .5f);
@@ -106,7 +111,7 @@ public class MeleeController : MonoBehaviour
         colliders = Physics.OverlapCapsule(transform.position, transform.position - (Vector3.up * 2), .25f, groundMask, QueryTriggerInteraction.Ignore);
         h1 = health.health;
         #region Controls
-        if (walkspeed >= 0 && CTRLID != 0)
+        if (walkspeed >= 0 && CTRLID != 0 && !health.isDead)
         {
             playermovement = new Vector3(Input.GetAxis("J" + CTRLID + "Horizontal"), 0, Input.GetAxis("J" + CTRLID + "Vertical"));
             if (playermovement != Vector3.zero)
@@ -120,7 +125,7 @@ public class MeleeController : MonoBehaviour
             }
         }
 
-        if (CTRLID != 0 && colliders.Length > 0 && Input.GetKeyDown("joystick " + CTRLID + " button 0"))
+        if (CTRLID != 0 && colliders.Length > 0 && Input.GetKeyDown("joystick " + CTRLID + " button 0") && !health.isDead)
         {
             abilities.Jump(CTRLID, gameObject);
             anim.SetInteger("AnimState", 3);
@@ -129,23 +134,23 @@ public class MeleeController : MonoBehaviour
         {
         }
 
-        if (CTRLID != 0 && Input.GetKeyDown("joystick " + CTRLID + " button 1") && cooldowns.activeCooldowns[7] <= 0 && altBuild)
+        if (CTRLID != 0 && Input.GetKeyDown("joystick " + CTRLID + " button 1") && cooldowns.activeCooldowns[7] <= 0 && altBuild && !health.isDead)
         {
             abilities.MeleeLunge(lungeDamage, 2, gameObject, lungeCD);
         }
 
-        if (CTRLID != 0 && Input.GetKeyDown("joystick " + CTRLID + " button 1") && cooldowns.activeCooldowns[7] <= 0 && !altBuild)
+        if (CTRLID != 0 && Input.GetKeyDown("joystick " + CTRLID + " button 1") && cooldowns.activeCooldowns[7] <= 0 && !altBuild && !health.isDead)
         {
             abilities.Whirlwind(whirlwindDamage, 2, gameObject, CycloneCD);
         }
 
-        if (CTRLID != 0 && Input.GetKeyDown("joystick " + CTRLID + " button 2") && cooldowns.activeCooldowns[6] <= 0)
+        if (CTRLID != 0 && Input.GetKeyDown("joystick " + CTRLID + " button 2") && cooldowns.activeCooldowns[6] <= 0 && !health.isDead)
         {
             visual = true;
             GetComponent<MeleeVisualization>().OnBool(visual);
         }
 
-        if (CTRLID != 0 && Input.GetKeyUp("joystick " + CTRLID + " button 2") && cooldowns.activeCooldowns[6] <= 0 && !altBuild)
+        if (CTRLID != 0 && Input.GetKeyUp("joystick " + CTRLID + " button 2") && cooldowns.activeCooldowns[6] <= 0 && !altBuild && !health.isDead)
         {
 
             visual = false;
@@ -155,19 +160,19 @@ public class MeleeController : MonoBehaviour
             {
                 timer = 0;
             }
-            abilities.MeleeStrikeBerserker(berserkerMeleeDamage, 2, gameObject, hitbox.GetComponent<MeleeTargetList>().mTar, attacknum, berserkerMeleeAttackCD);
+            abilities.MeleeStrikeBerserker(berserkerMeleeDamage, 2, gameObject, hitbox.GetComponent<MeleeTargetList>().mTar, attacknum, berserkerMeleeAttackCD, attackNumMax, speedInterval);
             anim.SetInteger("AnimState", 2);
         }
         else
         {
         }
 
-        if (CTRLID != 0 && Input.GetKeyUp("joystick " + CTRLID + " button 2") && cooldowns.activeCooldowns[6] <= 0 && altBuild)
+        if (CTRLID != 0 && Input.GetKeyUp("joystick " + CTRLID + " button 2") && cooldowns.activeCooldowns[6] <= 0 && altBuild && !health.isDead)
         {
 
             visual = false;
             GetComponent<MeleeVisualization>().OnBool(visual);
-            attacknum++;
+            //attacknum++;
             if (hitbox.GetComponent<MeleeTargetList>().mTar.Count > 0)
             {
                 timer = 0;
@@ -195,10 +200,11 @@ public class MeleeController : MonoBehaviour
         {
         }
 
-        if (h1 <= 0)
+        if (health.isDead)
         {
             anim.SetInteger("AnimState", 5);
             walkspeed = 0;
+            playermovement *= 0;
         }
         else
         {

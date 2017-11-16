@@ -309,6 +309,7 @@ STEP BY STEP:
             } else
             {
                 IDs[i].gameObject.transform.position = GameObject.Find("P" + i + "Spawn").transform.position;
+                IDs[i].GetComponent<Health>().health = IDs[i].GetComponent<Health>().maxHealth;
 
             }
         }
