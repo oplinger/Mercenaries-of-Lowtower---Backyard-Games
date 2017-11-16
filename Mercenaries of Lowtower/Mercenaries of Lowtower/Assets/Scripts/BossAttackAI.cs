@@ -121,16 +121,16 @@ public class BossAttackAI : MonoBehaviour
         }
         currentGCD += Time.deltaTime;
 
-        if (health.health < 25)
+        if (health.health/health.maxHealth < .25f)
         {
             tsunami = true;
         }
-        else if (health.health < 50)
+        else if (health.health / health.maxHealth < .5f)
         {
             lightningStorm = true;
 
         }
-        else if (health.health < 75)
+        else if (health.health / health.maxHealth < .75f)
         {
             hurricane = true;
         }
