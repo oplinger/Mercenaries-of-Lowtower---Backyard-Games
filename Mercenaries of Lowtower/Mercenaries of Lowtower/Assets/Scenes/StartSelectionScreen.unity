@@ -613,6 +613,11 @@ Prefab:
       propertyPath: smokeBombCD
       value: 5
       objectReference: {fileID: 0}
+    - target: {fileID: 114267525934560966, guid: f05e432990a5ae241acc47700a49aacd,
+        type: 2}
+      propertyPath: health
+      value: 100
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: f05e432990a5ae241acc47700a49aacd, type: 2}
   m_IsPrefabParent: 0
@@ -856,6 +861,11 @@ Prefab:
         type: 2}
       propertyPath: healInterval
       value: 0.25
+      objectReference: {fileID: 0}
+    - target: {fileID: 114914160539663620, guid: c8fc4b41195663843b1a76e878cbfbed,
+        type: 2}
+      propertyPath: health
+      value: 100
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: c8fc4b41195663843b1a76e878cbfbed, type: 2}
@@ -1514,6 +1524,16 @@ Prefab:
     - target: {fileID: 114439197600683316, guid: b2e6eb9305a8c7b49985daca1f8a1094,
         type: 2}
       propertyPath: lungeCD
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114890624369375240, guid: b2e6eb9305a8c7b49985daca1f8a1094,
+        type: 2}
+      propertyPath: health
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 114439197600683316, guid: b2e6eb9305a8c7b49985daca1f8a1094,
+        type: 2}
+      propertyPath: berserkerMeleeAttackCD
       value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []

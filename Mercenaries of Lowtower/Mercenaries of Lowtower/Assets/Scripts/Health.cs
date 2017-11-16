@@ -17,10 +17,10 @@ public class Health : MonoBehaviour {
 	// Initializes the gameObject with 100 health. Can be tweaked with If statements or a health Method.
 	void Start () {
 
-        if (gameObject.tag == "Player")
-        {
-            health = 100;
-        }
+        //if (gameObject.tag == "Player")
+        //{
+        //    health = 100;
+        //}
 
         if (gameObject.tag == "Shield")
         {

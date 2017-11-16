@@ -2,13 +2,14 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BossAttackAI : MonoBehaviour {
+public class BossAttackAI : MonoBehaviour
+{
     public float[] attackCDs;
     public float[] specialAttackCDs;
     BossTargetingAI targeting;
     BossMovementAI range;
     Health health;
-   public float currentGCD;
+    public float currentGCD;
     float maxGCD;
     float range1;
     public GameObject shockwaveObj;
@@ -17,11 +18,17 @@ public class BossAttackAI : MonoBehaviour {
     public bool tsunami;
     public bool hurricane;
     public bool lightningStorm;
-   public GameObject[] tsunamiSpawns;
+    public GameObject[] tsunamiSpawns;
     public LayerMask theground;
     GameObject scenelight;
 
+    public float stormDamage;
+    public float slamDamage;
+    public float swipeDamage;
+    public float punchDamage;
 
+    public float hurricaneDamage;
+    public float lightningstormDamage;
 
 
     //Reference to the animator for the boss
@@ -41,7 +48,8 @@ public class BossAttackAI : MonoBehaviour {
     // At the start, initializes an array for each attack to have their own Cooldowns(CDs)
     // Also pulls targeting and movement information.
     // Hardcoded coodlown values for testing. Change or make variables (see below)
-    void Start () {
+    void Start()
+    {
         attackCDs = new float[4];
         specialAttackCDs = new float[4];
         tsunamiSpawns = new GameObject[4];
@@ -91,7 +99,8 @@ public class BossAttackAI : MonoBehaviour {
     }
 
     // Each CD ticks down every frame.
-    void Update () {
+    void Update()
+    {
 
         if (scenelight == null)
         {
@@ -137,16 +146,18 @@ public class BossAttackAI : MonoBehaviour {
 
                 specialAttackCDs[1] = 0;
             }
-        
+
         }
         if (hurricane)
         {
             Hurricane();
-        } else
+        }
+        else
         {
             scenelight.GetComponent<Light>().color = Vector4.one;
             scenelight.GetComponent<Light>().intensity = 1;
         }
+
         if (lightningStorm)
         {
             specialAttackCDs[3] += Time.deltaTime;
@@ -157,6 +168,8 @@ public class BossAttackAI : MonoBehaviour {
             }
 
         }
+
+
 
         for (int i = 0; i < attackCDs.Length; i++)
         {
@@ -170,7 +183,7 @@ public class BossAttackAI : MonoBehaviour {
         if (currentGCD >= maxGCD)
         {
             checkAttacks();
-            
+
         }
 
         // Sets the boss phase parameter in the animator equal to the bossPhase integer
@@ -182,7 +195,7 @@ public class BossAttackAI : MonoBehaviour {
     void Storm(GameObject target)
     {
         Health health = target.GetComponent<Health>();
-        health.modifyHealth(20, 9);
+        health.modifyHealth(stormDamage, 9);
         attackCDs[0] = 10;
         triggerGCD(2);
     }
@@ -190,7 +203,7 @@ public class BossAttackAI : MonoBehaviour {
     void Slam(GameObject target)
     {
         Health health = target.GetComponent<Health>();
-        health.modifyHealth(10, 9);
+        health.modifyHealth(slamDamage, 9);
         attackCDs[1] = 8;
         triggerGCD(2);
     }
@@ -198,15 +211,15 @@ public class BossAttackAI : MonoBehaviour {
     void Swipe(GameObject target)
     {
         Health health = target.GetComponent<Health>();
-        health.modifyHealth(5, 9);
+        health.modifyHealth(swipeDamage, 9);
         attackCDs[2] = 5;
         triggerGCD(2);
     }
-    
+
     void Punch(GameObject target)
     {
         Health health = target.GetComponent<Health>();
-        health.modifyHealth(1, 9);
+        health.modifyHealth(punchDamage, 9);
         attackCDs[3] = 1;
         triggerGCD(1);
 
@@ -217,7 +230,7 @@ public class BossAttackAI : MonoBehaviour {
          It takes a while because once it is in range it starts in phase 2. It also is in the "punch" method, so it is only called when punch is (the CD). Swapped the stack and adjusted the CDs.
          */
 
-               // If the player is out of range, the boss will go into the preparing to punch animation
+        // If the player is out of range, the boss will go into the preparing to punch animation
         if (range.inRange && bossPhase != 1)
         {
             bossPhase = 1;
@@ -227,17 +240,17 @@ public class BossAttackAI : MonoBehaviour {
         {
             bossPhase = 2;
         }
- 
+
 
     }
 
     void Shockwave(float speed, float range, Vector3 position)
     {
-        
+
         shockwaveObj.transform.position = position;
         shockwaveObj.transform.localScale += new Vector3(1 * speed, 0, 1 * speed) * Time.deltaTime;
 
-        if (specialAttackCDs[0] >= 10+range)
+        if (specialAttackCDs[0] >= 10 + range)
         {
             shockwaveObj.transform.position = new Vector3(0, -100, 0);
             shockwaveObj.transform.localScale = new Vector3(.001f, .25f, .001f);
@@ -249,20 +262,21 @@ public class BossAttackAI : MonoBehaviour {
 
     void Hurricane()
     {
-        
+
 
         if (hurricane == true)
         {
             scenelight.GetComponent<Light>().color = new Vector4(1f, .8f, .8f, 1);
             scenelight.GetComponent<Light>().intensity = .9f;
-            Collider[] col = Physics.OverlapSphere(transform.position, 1000, 1<<8);
+            Collider[] col = Physics.OverlapSphere(transform.position, 1000, 1 << 8);
 
             for (int i = 0; i < col.Length; i++)
             {
                 print(col[i].name);
-                col[i].GetComponent<Health>().modifyHealth(1*Time.deltaTime,9);
+                col[i].GetComponent<Health>().modifyHealth(hurricaneDamage * Time.deltaTime, 9);
             }
-        } else
+        }
+        else
         {
 
         }
@@ -276,7 +290,7 @@ public class BossAttackAI : MonoBehaviour {
         tsunamiObj.transform.rotation = rotation;
         tsunamiObj.GetComponent<TsunamiScript>().SetTsunamiSpeed(speed);
 
-
+        //tsunami damage is in the "TsunamiScript" script
 
     }
 
@@ -291,7 +305,7 @@ public class BossAttackAI : MonoBehaviour {
         {
             Physics.Raycast(new Vector3(Random.Range(-50, 50), 100, Random.Range(-50, 50)), Vector3.down, out hit, 120, 1, QueryTriggerInteraction.Ignore);
 
-        } while ((Physics.Raycast(new Vector3(Random.Range(-50, 50), 100,Random.Range(-50, 50)), Vector3.down, out hit, 120, 1, QueryTriggerInteraction.Ignore) == false));
+        } while ((Physics.Raycast(new Vector3(Random.Range(-50, 50), 100, Random.Range(-50, 50)), Vector3.down, out hit, 120, 1, QueryTriggerInteraction.Ignore) == false));
 
         if (Physics.Raycast(new Vector3(Random.Range(-50, 50), 100, Random.Range(-50, 50)), Vector3.down, out hit, 120, 1, QueryTriggerInteraction.Ignore) == true)
         {
@@ -303,7 +317,7 @@ public class BossAttackAI : MonoBehaviour {
             Collider[] col = Physics.OverlapSphere(hit.point, 25, 1 << 8, QueryTriggerInteraction.Ignore);
             for (int i = 0; i < col.Length; i++)
             {
-                col[i].GetComponent<Health>().modifyHealth(10, 9);
+                col[i].GetComponent<Health>().modifyHealth(lightningstormDamage, 9);
             }
         }
 
@@ -345,6 +359,7 @@ public class BossAttackAI : MonoBehaviour {
         yield return new WaitForSeconds(.001f);
     }
 
+
     //THE ATTACKS ARE IN ORDER OF PRIORITY. VERY IMPORTANT.
     //THE ATTACKS ARE IN ORDER OF PRIORITY. VERY IMPORTANT.
     // Method that loops through each attack and checks if they are on cooldown. //THE ATTACKS ARE IN ORDER OF PRIORITY. VERY IMPORTANT.
@@ -360,7 +375,8 @@ public class BossAttackAI : MonoBehaviour {
         //    Storm(targeting.currentTarget);
 
         //}
-        /*else*/ if (attackCDs[1] <= 0 && range.inRange)
+        /*else*/
+        if (attackCDs[1] <= 0 && range.inRange)
         {
             Slam(targeting.currentTarget);
         }
@@ -380,4 +396,3 @@ public class BossAttackAI : MonoBehaviour {
         maxGCD = cooldownTime;
     }
 }
-

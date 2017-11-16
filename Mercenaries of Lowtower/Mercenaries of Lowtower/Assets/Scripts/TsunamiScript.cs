@@ -5,8 +5,11 @@ using UnityEngine;
 public class TsunamiScript : MonoBehaviour {
     public float speed;
     float timer;
-	// Use this for initialization
-	void Start () {
+    
+    public float tsunamiDamage;
+
+    // Use this for initialization
+    void Start () {
         DontDestroyOnLoad(this);
 
     }
