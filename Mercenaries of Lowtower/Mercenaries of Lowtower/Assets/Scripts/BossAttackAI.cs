@@ -30,17 +30,32 @@ public class BossAttackAI : MonoBehaviour
 
     [Space(10)]
     [Header("Damages")]
-    public float stormDamage;
+    //public float stormDamage;
     public float slamDamage;
-    public float swipeDamage;
+    //public float swipeDamage;
     public float punchDamage;
-    public float hurricaneDamage;
     
     [Header("Lightning Storm Settings")]
     public float lightningstormDamage;
     public float lightningWarningDuration;
     public float lightningSphereDuration;
     public float timeBetweenWarningAndDamage;
+
+    [Header("Shockwave Settings")]
+    public float shockwaveSpeed;
+    public float shockwaveDuration;
+
+    [Header("Tsunami Settings")]
+    public float tsunamiSpeed;
+    public float tsunamiDuration;
+
+    [Header("Hurricane Settings")]
+    public float hurricaneDamage;
+    public float hurricaneInterval;
+
+
+
+
 
 
 
@@ -144,7 +159,7 @@ public class BossAttackAI : MonoBehaviour
             specialAttackCDs[0] += Time.deltaTime;
             if (specialAttackCDs[0] >= 10)
             {
-                Shockwave(200, 1.5f, new Vector3(transform.position.x, 0, transform.position.z));
+                Shockwave(shockwaveSpeed, shockwaveDuration, new Vector3(transform.position.x, 0, transform.position.z));
             }
 
         }
@@ -155,7 +170,8 @@ public class BossAttackAI : MonoBehaviour
             {
                 int r = Random.Range(0, 4);
                 Tsunami(15, tsunamiSpawns[r].transform.position, tsunamiSpawns[r].transform.rotation);
-                print(tsunamiSpawns[r].transform.rotation.eulerAngles);
+                tsunamiObj.GetComponent<TsunamiScript>().SetTsunamiSpeed(tsunamiSpeed);
+                tsunamiObj.GetComponent<TsunamiScript>().SetTsunamiDuration(tsunamiDuration);
 
                 specialAttackCDs[1] = 0;
             }
@@ -208,7 +224,7 @@ public class BossAttackAI : MonoBehaviour
     void Storm(GameObject target)
     {
         Health health = target.GetComponent<Health>();
-        health.modifyHealth(stormDamage, 9);
+        //health.modifyHealth(stormDamage, 9);
         attackCDs[0] = 10;
         triggerGCD(2);
     }
@@ -224,7 +240,7 @@ public class BossAttackAI : MonoBehaviour
     void Swipe(GameObject target)
     {
         Health health = target.GetComponent<Health>();
-        health.modifyHealth(swipeDamage, 9);
+        //health.modifyHealth(swipeDamage, 9);
         attackCDs[2] = 5;
         triggerGCD(2);
     }
@@ -279,14 +295,18 @@ public class BossAttackAI : MonoBehaviour
 
         if (hurricane == true)
         {
+            specialAttackCDs[2] += Time.deltaTime;
             scenelight.GetComponent<Light>().color = new Vector4(1f, .8f, .8f, 1);
             scenelight.GetComponent<Light>().intensity = .9f;
-            Collider[] col = Physics.OverlapSphere(transform.position, 1000, 1 << 8);
+            Collider[] col = Physics.OverlapSphere(transform.position, 1000, 1 << 8, QueryTriggerInteraction.Ignore);
 
-            for (int i = 0; i < col.Length; i++)
+            if (specialAttackCDs[2] >= hurricaneInterval)
             {
-                print(col[i].name);
-                col[i].GetComponent<Health>().modifyHealth(hurricaneDamage * Time.deltaTime, 9);
+                for (int i = 0; i < col.Length; i++)
+                {
+                    col[i].GetComponent<Health>().modifyHealth(hurricaneDamage , 9);
+                }
+                specialAttackCDs[2] = 0;
             }
         }
         else

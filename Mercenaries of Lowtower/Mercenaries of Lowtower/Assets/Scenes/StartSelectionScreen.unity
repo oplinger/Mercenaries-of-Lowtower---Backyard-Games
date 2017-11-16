@@ -561,6 +561,36 @@ Prefab:
       propertyPath: m_RootOrder
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 114050299489096748, guid: 9b019403ca0f5db4fbe90678c8459dda,
+        type: 2}
+      propertyPath: hurricaneDamage
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114050299489096748, guid: 9b019403ca0f5db4fbe90678c8459dda,
+        type: 2}
+      propertyPath: hurricaneInterval
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114050299489096748, guid: 9b019403ca0f5db4fbe90678c8459dda,
+        type: 2}
+      propertyPath: shockwaveDuration
+      value: 1.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 114050299489096748, guid: 9b019403ca0f5db4fbe90678c8459dda,
+        type: 2}
+      propertyPath: shockwaveSpeed
+      value: 200
+      objectReference: {fileID: 0}
+    - target: {fileID: 114050299489096748, guid: 9b019403ca0f5db4fbe90678c8459dda,
+        type: 2}
+      propertyPath: tsunamiSpeed
+      value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 114050299489096748, guid: 9b019403ca0f5db4fbe90678c8459dda,
+        type: 2}
+      propertyPath: tsunamiDuration
+      value: 10
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 9b019403ca0f5db4fbe90678c8459dda, type: 2}
   m_IsPrefabParent: 0
