@@ -113,7 +113,6 @@ public class PlayerAbilityController : MonoBehaviour {
     #region Healer Abilities
     public void HealerHeal(float damage, int playerID, GameObject me, float CD, GameObject beepboop)
     {
-        print("ff");
         Collider[] hitColliders = Physics.OverlapSphere(me.transform.position, 100, 1 << 8, QueryTriggerInteraction.Ignore);
 
         Destroy(beepboop.GetComponent<CapsuleCollider>());
@@ -153,6 +152,8 @@ public class PlayerAbilityController : MonoBehaviour {
         {
             EnemyColliders[i].gameObject.transform.Translate((EnemyColliders[i].gameObject.transform.position - me.transform.position) * 3);
         }
+
+        cooldown.triggerCooldown(5, CD);
     }
 
     // Creates 2 spheres, one for finding players one for finding enemies, loops through both to add damage to both.
@@ -211,7 +212,7 @@ public class PlayerAbilityController : MonoBehaviour {
         //Physics.OverlapSphere(me.transform.position, 3, enemyMask, QueryTriggerInteraction.Ignore);
 
             StartCoroutine(WWAttack(damage, playerID, me, CD, 1f));
-            cooldown.triggerCooldown(6, CD);
+            cooldown.triggerCooldown(7, CD);
         //} else
         //{
         //    GameObject wwcyl = GameObject.CreatePrimitive(PrimitiveType.Cylinder);
@@ -242,7 +243,7 @@ public class PlayerAbilityController : MonoBehaviour {
 
         }
         //me.transform.position = Vector3.MoveTowards(me.transform.position, me.transform.position + (me.transform.forward * 100), 1000 * Time.deltaTime);
-        cooldown.triggerCooldown(7, CD);
+        cooldown.triggerCooldown(8, CD);
 
     }
 

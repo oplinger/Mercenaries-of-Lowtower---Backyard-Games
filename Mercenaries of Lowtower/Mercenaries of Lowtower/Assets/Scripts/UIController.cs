@@ -80,27 +80,53 @@ public class UIController : MonoBehaviour
 
 
         icons[0].material.SetFloat("_Tween", playerCooldowns.activeCooldowns[0] / playerCooldowns.abilityCooldowns[0]);
-        icons[0].material.SetTexture ("_MainTex", Resources.Load("Textures/Magnet") as Texture);
-        icons[0].material.SetTexture("_SecondTex", Resources.Load("Textures/MagnetBW") as Texture);
+        icons[0].material.SetTexture ("_MainTex", Resources.Load("Textures/MagnetPull") as Texture);
+        icons[0].material.SetTexture("_SecondTex", Resources.Load("Textures/MagnetPullBlack") as Texture);
 
         icons[1].material.SetFloat("_Tween", playerCooldowns.activeCooldowns[1] / playerCooldowns.abilityCooldowns[1]);
-        icons[1].material.SetTexture("_MainTex", Resources.Load("Textures/Shield") as Texture);
-        icons[1].material.SetTexture("_SecondTex", Resources.Load("Textures/ShieldBW") as Texture);
+        icons[1].material.SetTexture("_MainTex", Resources.Load("Textures/BubbleShield") as Texture);
+        icons[1].material.SetTexture("_SecondTex", Resources.Load("Textures/BubbleShieldBW") as Texture);
 
         icons[2].material.SetFloat("_Tween", playerCooldowns.activeCooldowns[2] / playerCooldowns.abilityCooldowns[2]);
+        icons[2].material.SetTexture("_MainTex", Resources.Load("Textures/ReflectionAttack") as Texture);
+        icons[2].material.SetTexture("_SecondTex", Resources.Load("Textures/ReflectionAttackBlack") as Texture);
 
         icons[3].material.SetFloat("_Tween", playerCooldowns.activeCooldowns[3] / playerCooldowns.abilityCooldowns[3]);
+        icons[3].material.SetTexture("_MainTex", Resources.Load("Textures/HealEffect") as Texture);
+        icons[3].material.SetTexture("_SecondTex", Resources.Load("Textures/HealEffectBlack") as Texture);
+
         icons[4].material.SetFloat("_Tween", playerCooldowns.activeCooldowns[4] / playerCooldowns.abilityCooldowns[4]);
+        icons[4].material.SetTexture("_MainTex", Resources.Load("Textures/Teleport") as Texture);
+        icons[4].material.SetTexture("_SecondTex", Resources.Load("Textures/TeleportBlack") as Texture);
+
         icons[5].material.SetFloat("_Tween", playerCooldowns.activeCooldowns[5] / playerCooldowns.abilityCooldowns[5]);
+        icons[5].material.SetTexture("_MainTex", Resources.Load("Textures/FearEffect") as Texture);
+        icons[5].material.SetTexture("_SecondTex", Resources.Load("Textures/GearEffectBlack") as Texture);
 
         icons[6].material.SetFloat("_Tween", playerCooldowns.activeCooldowns[6] / playerCooldowns.abilityCooldowns[6]);
+        icons[6].material.SetTexture("_MainTex", Resources.Load("Textures/MeleeStrike") as Texture);
+        icons[6].material.SetTexture("_SecondTex", Resources.Load("Textures/MeleeStrikeBlack") as Texture);
+
         icons[7].material.SetFloat("_Tween", playerCooldowns.activeCooldowns[7] / playerCooldowns.abilityCooldowns[7]);
+        icons[7].material.SetTexture("_MainTex", Resources.Load("Textures/MeleeCyclone1") as Texture);
+        icons[7].material.SetTexture("_SecondTex", Resources.Load("Textures/MeleeCycloneBlack1") as Texture);
+
         icons[8].material.SetFloat("_Tween", playerCooldowns.activeCooldowns[8] / playerCooldowns.abilityCooldowns[8]);
+        icons[8].material.SetTexture("_MainTex", Resources.Load("Textures/MeleeLuge") as Texture);
+        icons[8].material.SetTexture("_SecondTex", Resources.Load("Textures/MeleeLugeBlack") as Texture);
 
         icons[9].material.SetFloat("_Tween", playerCooldowns.activeCooldowns[9] / playerCooldowns.abilityCooldowns[9]);
+        icons[9].material.SetTexture("_MainTex", Resources.Load("Textures/RangedArrowShot") as Texture);
+        icons[9].material.SetTexture("_SecondTex", Resources.Load("Textures/RangedArrowShotBlack") as Texture);
+
         icons[10].material.SetFloat("_Tween", playerCooldowns.activeCooldowns[10] / playerCooldowns.abilityCooldowns[10]);
+        icons[10].material.SetTexture("_MainTex", Resources.Load("Textures/SmokeBomb") as Texture);
+        icons[10].material.SetTexture("_SecondTex", Resources.Load("Textures/SmokeBombBlack") as Texture);
+
         icons[11].material.SetFloat("_Tween", playerCooldowns.activeCooldowns[11] / playerCooldowns.abilityCooldowns[11]);
-#endregion
+        icons[11].material.SetTexture("_MainTex", Resources.Load("Textures/BluntTipped") as Texture);
+        icons[11].material.SetTexture("_SecondTex", Resources.Load("Textures/BluntTippedBlack") as Texture);
+        #endregion
 
         #region Health Bars
         //Health bars. Also changes the size of the health bars based on current health vs max health.
