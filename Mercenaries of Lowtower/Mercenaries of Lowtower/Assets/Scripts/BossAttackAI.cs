@@ -4,31 +4,44 @@ using UnityEngine;
 
 public class BossAttackAI : MonoBehaviour
 {
-    public float[] attackCDs;
-    public float[] specialAttackCDs;
+    #region Variables
     BossTargetingAI targeting;
     BossMovementAI range;
     Health health;
-    public float currentGCD;
+     float currentGCD;
     float maxGCD;
     float range1;
-    public GameObject shockwaveObj;
-    public GameObject tsunamiObj;
+     GameObject shockwaveObj;
+     GameObject tsunamiObj;
+
+    GameObject[] tsunamiSpawns;
+    LayerMask theground;
+    GameObject scenelight;
+    [Header("Attack Bools")]
     public bool shockwave;
     public bool tsunami;
     public bool hurricane;
     public bool lightningStorm;
-    public GameObject[] tsunamiSpawns;
-    public LayerMask theground;
-    GameObject scenelight;
 
+    [Space(10)]
+    [Header("Cooldowns")]
+    public float[] attackCDs;
+    public float[] specialAttackCDs;
+
+    [Space(10)]
+    [Header("Damages")]
     public float stormDamage;
     public float slamDamage;
     public float swipeDamage;
     public float punchDamage;
-
     public float hurricaneDamage;
+    
+    [Header("Lightning Storm Settings")]
     public float lightningstormDamage;
+    public float lightningWarningDuration;
+    public float lightningSphereDuration;
+    public float timeBetweenWarningAndDamage;
+
 
 
     //Reference to the animator for the boss
@@ -42,9 +55,9 @@ public class BossAttackAI : MonoBehaviour
     // bossPhase = 4 is the ReleaseSpin phase
     // bossPhase = 5 is the prepSlam phase
     // bossPhase = 6 is the ReleaseSlam phase
-    public int bossPhase;
+     int bossPhase;
 
-
+#endregion
     // At the start, initializes an array for each attack to have their own Cooldowns(CDs)
     // Also pulls targeting and movement information.
     // Hardcoded coodlown values for testing. Change or make variables (see below)
@@ -343,8 +356,8 @@ public class BossAttackAI : MonoBehaviour
             cyl.GetComponent<Renderer>().material.color = Color.red;
             cyl.transform.position = hit.point;
             cyl.transform.localScale = new Vector3(25, 1, 25);
-            Destroy(cyl, 3.5f);
-            yield return new WaitForSeconds(4);
+            Destroy(cyl, lightningWarningDuration);
+            yield return new WaitForSeconds(timeBetweenWarningAndDamage);
 
             GameObject sphere = GameObject.CreatePrimitive(PrimitiveType.Sphere);
             Destroy(sphere.GetComponent<SphereCollider>());
@@ -352,7 +365,7 @@ public class BossAttackAI : MonoBehaviour
 
             sphere.transform.position = hit.point;
             sphere.transform.localScale = new Vector3(25, 25, 25);
-            Destroy(sphere, 1);
+            Destroy(sphere, lightningSphereDuration);
             Collider[] col = Physics.OverlapSphere(hit.point, 25, 1 << 8, QueryTriggerInteraction.Ignore);
             for (int i = 0; i < col.Length; i++)
             {
