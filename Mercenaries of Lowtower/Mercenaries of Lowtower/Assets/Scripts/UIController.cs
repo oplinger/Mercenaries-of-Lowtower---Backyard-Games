@@ -104,12 +104,12 @@ public class UIController : MonoBehaviour
 
         #region Health Bars
         //Health bars. Also changes the size of the health bars based on current health vs max health.
-        healthBars[0].rectTransform.sizeDelta = new Vector2(100 * (playerHealth[0].health / 100), 20);
-        healthBars[1].rectTransform.sizeDelta = new Vector2(100 * (playerHealth[1].health / 100), 20);
-        healthBars[2].rectTransform.sizeDelta = new Vector2(100 * (playerHealth[2].health / 100), 20);
-        healthBars[3].rectTransform.sizeDelta = new Vector2(100 * (playerHealth[3].health / 100), 20);
+        healthBars[0].rectTransform.sizeDelta = new Vector2(100 * (playerHealth[0].health / playerHealth[0].maxHealth), 20);
+        healthBars[1].rectTransform.sizeDelta = new Vector2(100 * (playerHealth[1].health / playerHealth[1].maxHealth), 20);
+        healthBars[2].rectTransform.sizeDelta = new Vector2(100 * (playerHealth[2].health / playerHealth[2].maxHealth), 20);
+        healthBars[3].rectTransform.sizeDelta = new Vector2(100 * (playerHealth[3].health / playerHealth[3].maxHealth), 20);
 
-        healthBars[4].rectTransform.sizeDelta = new Vector2(300 * (bossHealth.health / 100), 25);
+        healthBars[4].rectTransform.sizeDelta = new Vector2(300 * (bossHealth.health / bossHealth.maxHealth), 25);
 
 #endregion
 

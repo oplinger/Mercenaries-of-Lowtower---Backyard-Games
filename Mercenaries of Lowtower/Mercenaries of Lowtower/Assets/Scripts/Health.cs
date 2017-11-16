@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Health : MonoBehaviour {
    public float health;
+    public float maxHealth;
     public GameObject player;
     public bool shielded;
     public GameObject foundShield;
@@ -15,7 +16,12 @@ public class Health : MonoBehaviour {
 
 	// Initializes the gameObject with 100 health. Can be tweaked with If statements or a health Method.
 	void Start () {
-        health = 100;
+
+        if (gameObject.tag == "Player")
+        {
+            health = 100;
+        }
+
         if (gameObject.tag == "Shield")
         {
             health = 100;
@@ -24,10 +30,12 @@ public class Health : MonoBehaviour {
         //playerMoveScript = GetComponent<MovementRigidbody>();
 
         isDead = false;
+
+        maxHealth = health;
 	}
     private void Update()
     {
-        health = Mathf.Clamp(health, 0, 100);
+        health = Mathf.Clamp(health, 0, maxHealth);
         if (health<=0)
         {
             isDead = true;

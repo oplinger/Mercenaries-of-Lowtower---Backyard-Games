@@ -561,6 +561,16 @@ Prefab:
       propertyPath: m_Name
       value: Ranged Character(Clone)
       objectReference: {fileID: 0}
+    - target: {fileID: 114733641604896904, guid: f05e432990a5ae241acc47700a49aacd,
+        type: 2}
+      propertyPath: sniperAttackCD
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 114733641604896904, guid: f05e432990a5ae241acc47700a49aacd,
+        type: 2}
+      propertyPath: smokeBombCD
+      value: 5
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: f05e432990a5ae241acc47700a49aacd, type: 2}
   m_IsPrefabParent: 0
@@ -1408,6 +1418,21 @@ Prefab:
       propertyPath: m_Name
       value: Melee Character(Clone)
       objectReference: {fileID: 0}
+    - target: {fileID: 114439197600683316, guid: b2e6eb9305a8c7b49985daca1f8a1094,
+        type: 2}
+      propertyPath: rogueMeleeAttackCD
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 114439197600683316, guid: b2e6eb9305a8c7b49985daca1f8a1094,
+        type: 2}
+      propertyPath: lungeDamage
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 114439197600683316, guid: b2e6eb9305a8c7b49985daca1f8a1094,
+        type: 2}
+      propertyPath: lungeCD
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: b2e6eb9305a8c7b49985daca1f8a1094, type: 2}
   m_IsPrefabParent: 0
@@ -1663,6 +1688,16 @@ Prefab:
         type: 2}
       propertyPath: magnetMask.m_Bits
       value: 2048
+      objectReference: {fileID: 0}
+    - target: {fileID: 114782003998301322, guid: dd9de9996069bb54fb61c0bd063feb4f,
+        type: 2}
+      propertyPath: shieldCooldown
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 114782003998301322, guid: dd9de9996069bb54fb61c0bd063feb4f,
+        type: 2}
+      propertyPath: perfectShieldCooldown
+      value: 5
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: dd9de9996069bb54fb61c0bd063feb4f, type: 2}
