@@ -248,24 +248,87 @@ public class PlayerAbilityController : MonoBehaviour {
 
     IEnumerator Dash(GameObject me)
     {
-        me.transform.position = Vector3.Lerp(me.transform.position, me.transform.position + (me.transform.forward * 1), 1);
-        yield return new WaitForSeconds(.01f);
-        me.transform.position = Vector3.Lerp(me.transform.position, me.transform.position + (me.transform.forward * 2), 1);
-        yield return new WaitForSeconds(.01f);
-        me.transform.position = Vector3.Lerp(me.transform.position, me.transform.position + (me.transform.forward * 4), 1);
-        yield return new WaitForSeconds(.01f);
-        me.transform.position = Vector3.Lerp(me.transform.position, me.transform.position + (me.transform.forward * 6), 1);
-        yield return new WaitForSeconds(.01f);
-        me.transform.position = Vector3.Lerp(me.transform.position, me.transform.position + (me.transform.forward * 6), 1);
-        yield return new WaitForSeconds(.01f);
-        me.transform.position = Vector3.Lerp(me.transform.position, me.transform.position + (me.transform.forward * 6), 1);
-        yield return new WaitForSeconds(.01f);
-        me.transform.position = Vector3.Lerp(me.transform.position, me.transform.position + (me.transform.forward * 4), 1);
-        yield return new WaitForSeconds(.01f);
-        me.transform.position = Vector3.Lerp(me.transform.position, me.transform.position + (me.transform.forward * 2), 1);
-        yield return new WaitForSeconds(.1f);
-        me.transform.position = Vector3.Lerp(me.transform.position, me.transform.position + (me.transform.forward * 1), 1);
-        yield return new WaitForSeconds(.1f);
+        if (Physics.Raycast(me.transform.position, me.transform.forward , 1) == false)
+        {
+            me.transform.position = Vector3.Lerp(me.transform.position, me.transform.position + (me.transform.forward * 1), 1);
+            yield return new WaitForSeconds(.01f);
+        }
+        else
+        {
+            yield break;
+        }
+        if (Physics.Raycast(me.transform.position, me.transform.forward , 2) == false)
+        {
+            me.transform.position = Vector3.Lerp(me.transform.position, me.transform.position + (me.transform.forward * 2), 1);
+            yield return new WaitForSeconds(.01f);
+        }
+        else
+        {
+            yield break;
+        }
+        if (Physics.Raycast(me.transform.position, me.transform.forward , 4) == false)
+        {
+            me.transform.position = Vector3.Lerp(me.transform.position, me.transform.position + (me.transform.forward * 4), 1);
+            yield return new WaitForSeconds(.01f);
+        }
+        else
+        {
+            yield break;
+        }
+        if (Physics.Raycast(me.transform.position, me.transform.forward , 6) == false)
+        {
+            me.transform.position = Vector3.Lerp(me.transform.position, me.transform.position + (me.transform.forward * 6), 1);
+            yield return new WaitForSeconds(.01f);
+        }
+        else
+        {
+            yield break;
+        }
+        if (Physics.Raycast(me.transform.position, me.transform.forward , 6) == false)
+        {
+            me.transform.position = Vector3.Lerp(me.transform.position, me.transform.position + (me.transform.forward * 6), 1);
+            yield return new WaitForSeconds(.01f);
+        }
+        else
+        {
+            yield break;
+        }
+        if (Physics.Raycast(me.transform.position, me.transform.forward , 6) == false)
+        {
+            me.transform.position = Vector3.Lerp(me.transform.position, me.transform.position + (me.transform.forward * 6), 1);
+            yield return new WaitForSeconds(.01f);
+        }
+        else
+        {
+            yield break;
+        }
+        if (Physics.Raycast(me.transform.position, me.transform.forward, 4) == false)
+        {
+            me.transform.position = Vector3.Lerp(me.transform.position, me.transform.position + (me.transform.forward * 4), 1);
+            yield return new WaitForSeconds(.01f);
+        }
+        else
+        {
+            yield break;
+        }
+        if (Physics.Raycast(me.transform.position, me.transform.forward , 2) == false)
+        {
+            me.transform.position = Vector3.Lerp(me.transform.position, me.transform.position + (me.transform.forward * 2), 1);
+            yield return new WaitForSeconds(.1f);
+        }
+        else
+        {
+            yield break;
+        }
+        if (Physics.Raycast(me.transform.position, me.transform.forward , 1) == false)
+        {
+            me.transform.position = Vector3.Lerp(me.transform.position, me.transform.position + (me.transform.forward * 1), 1);
+            yield return new WaitForSeconds(.1f);
+        }
+        else
+        {
+            yield break;
+        }
     }
 
     IEnumerator WWAttack(float damage, int playerID, GameObject me, float CD, float StrikeInterval)
