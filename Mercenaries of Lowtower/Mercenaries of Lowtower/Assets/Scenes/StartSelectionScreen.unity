@@ -557,6 +557,10 @@ Prefab:
       propertyPath: m_Enabled
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4268014405758700, guid: 9b019403ca0f5db4fbe90678c8459dda, type: 2}
+      propertyPath: m_RootOrder
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 9b019403ca0f5db4fbe90678c8459dda, type: 2}
   m_IsPrefabParent: 0
@@ -616,7 +620,7 @@ Prefab:
     - target: {fileID: 114267525934560966, guid: f05e432990a5ae241acc47700a49aacd,
         type: 2}
       propertyPath: health
-      value: 100
+      value: 150
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: f05e432990a5ae241acc47700a49aacd, type: 2}
@@ -865,6 +869,11 @@ Prefab:
     - target: {fileID: 114914160539663620, guid: c8fc4b41195663843b1a76e878cbfbed,
         type: 2}
       propertyPath: health
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 114763032175709166, guid: c8fc4b41195663843b1a76e878cbfbed,
+        type: 2}
+      propertyPath: healRange
       value: 100
       objectReference: {fileID: 0}
     m_RemovedComponents: []
@@ -1842,6 +1851,16 @@ Prefab:
         type: 2}
       propertyPath: perfectShieldCooldown
       value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 114782003998301322, guid: dd9de9996069bb54fb61c0bd063feb4f,
+        type: 2}
+      propertyPath: perfectShieldDuration
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 114024317959924302, guid: dd9de9996069bb54fb61c0bd063feb4f,
+        type: 2}
+      propertyPath: health
+      value: 200
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: dd9de9996069bb54fb61c0bd063feb4f, type: 2}

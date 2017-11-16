@@ -48,8 +48,10 @@ public class HealerController : MonoBehaviour
     public float healCooldown;
     [Range(0, 10)]
     public float healInterval;
-#endregion
-    
+    [Range(0, 100)]
+    public float healRange;
+    #endregion
+
 
     // Use this for initialization
     void Start()
@@ -145,7 +147,7 @@ public class HealerController : MonoBehaviour
             timer += Time.deltaTime;
             if (timer >= healInterval)
             {
-                abilities.HealerHeal(-healAmount, 1, gameObject, healCooldown, healVisual);
+                abilities.HealerHeal(-healAmount, 1, gameObject, healCooldown, healVisual, healRange);
                 timer = 0;
             }
             anim.SetInteger("AnimState", 2);

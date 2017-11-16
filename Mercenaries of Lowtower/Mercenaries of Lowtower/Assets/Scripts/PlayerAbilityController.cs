@@ -39,7 +39,7 @@ public class PlayerAbilityController : MonoBehaviour {
     public void TankShield(float damage, int playerID, GameObject me, float CD, float duration, bool infiniteshield)
     {
         GameObject clone;
-        clone = Instantiate(Resources.Load("shield"), me.transform.position, me.transform.rotation) as GameObject;
+        clone = Instantiate(Resources.Load("Shield_Magnetable"), me.transform.position, me.transform.rotation) as GameObject;
         if (!infiniteshield)
         {
             Destroy(clone, duration);
@@ -64,7 +64,7 @@ public class PlayerAbilityController : MonoBehaviour {
         RaycastHit hit;
         //Ray ray = new Ray(me.transform.position, me.transform.forward * 30);
         //if (Physics.Raycast(ray, out hit, 30))
-        if(Physics.Raycast(me.transform.position, me.transform.forward, out hit, 30, lMask, QueryTriggerInteraction.Ignore))           
+        if(Physics.Raycast(me.transform.position, me.transform.forward, out hit, 30, lMask/*, QueryTriggerInteraction.Ignore*/))           
         {
             GameObject target = hit.collider.gameObject;
             if(Vector3.Distance(target.transform.position, me.transform.position)>3)
@@ -111,7 +111,7 @@ public class PlayerAbilityController : MonoBehaviour {
     }
     #endregion
     #region Healer Abilities
-    public void HealerHeal(float damage, int playerID, GameObject me, float CD, GameObject beepboop)
+    public void HealerHeal(float damage, int playerID, GameObject me, float CD, GameObject beepboop, float range)
     {
         Collider[] hitColliders = Physics.OverlapSphere(me.transform.position, 100, 1 << 8, QueryTriggerInteraction.Ignore);
 
