@@ -19,6 +19,8 @@ public class TankController : MonoBehaviour
     float h2;
     bool altBuild;
     float timer;
+    float timer1;
+
     float reflectDamage;
 
     [Header("Genral")]
@@ -27,6 +29,8 @@ public class TankController : MonoBehaviour
     public LayerMask groundMask;
     public LayerMask magnetMask;
     public Material tankMat;
+    public float reviveRadius;
+
 
 
 
@@ -52,6 +56,8 @@ public class TankController : MonoBehaviour
     public float perfectShieldCooldown;
     [Range(0, 10)]
     public float reflectCooldown;
+    public float reviveCastTime;
+
     #endregion
 
     // Use this for initialization
@@ -120,6 +126,29 @@ public class TankController : MonoBehaviour
             }
         }
 
+        if (CTRLID != 0 && colliders.Length > 0 && Input.GetKeyDown("joystick " + CTRLID + " button 0"))
+        {
+            abilities.Jump(CTRLID, gameObject);
+            anim.SetInteger("AnimState", 3);
+        }
+        else
+        {
+        }
+
+        if (CTRLID != 0 && Input.GetKey("joystick " + CTRLID + " button 3") && !health.isDead)
+        {
+            timer1 += Time.deltaTime;
+            if (timer1 > reviveCastTime)
+            {
+                abilities.Revive(1, gameObject, reviveRadius);
+
+            }
+        }
+        if (CTRLID != 0 && Input.GetKeyUp("joystick " + CTRLID + " button 3") && !health.isDead)
+        {
+            reviveCastTime = 0;
+        }
+
         if (CTRLID != 0 && Input.GetKey("joystick " + CTRLID + " button 1") && cooldowns.activeCooldowns[0]<=0 && !altBuild && !health.isDead)
         {
             abilities.TankMagnet(magnetThreat, 0, gameObject, magnetCooldown, magnetMask);
@@ -130,6 +159,12 @@ public class TankController : MonoBehaviour
         else
         {
             tankMat.SetColor("_EmissionColor", Color.HSVToRGB(1, 1, 0));
+
+        }
+        if (CTRLID != 0 && Input.GetKeyUp("joystick " + CTRLID + " button 1") && !altBuild && !health.isDead)
+        {
+
+            cooldowns.triggerCooldown(0, magnetCooldown);
 
         }
 
@@ -147,14 +182,7 @@ public class TankController : MonoBehaviour
 
         }
 
-        if (CTRLID != 0 && colliders.Length > 0 && Input.GetKeyDown("joystick " + CTRLID + " button 0"))
-        {
-            abilities.Jump(CTRLID, gameObject);
-            anim.SetInteger("AnimState", 3);
-        }
-        else
-        {
-        }
+
 
         if (CTRLID != 0 && Input.GetKey("joystick " + CTRLID + " button 1") && cooldowns.activeCooldowns[0] <= 0 && altBuild && !health.isDead)
         {
@@ -172,6 +200,8 @@ public class TankController : MonoBehaviour
         if (CTRLID != 0 && Input.GetKeyUp("joystick " + CTRLID + " button 1") && cooldowns.activeCooldowns[0] <= 0 && altBuild && !health.isDead)
         {
             tankMat.SetColor("_EmissionColor", Color.HSVToRGB(.5f, 1, 0));
+            cooldowns.triggerCooldown(0, reflectCooldown);
+
             //timer = 0;
             //reflectDamage = 0;
 

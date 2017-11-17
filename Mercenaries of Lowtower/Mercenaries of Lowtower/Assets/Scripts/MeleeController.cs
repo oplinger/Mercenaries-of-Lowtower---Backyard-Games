@@ -18,6 +18,8 @@ public class MeleeController : MonoBehaviour
     MeleeTargetList mTarList;
     int attacknum;
     float timer;
+    float timer1;
+
     bool altBuild;
 
     [Header("General")]
@@ -26,6 +28,8 @@ public class MeleeController : MonoBehaviour
     public LayerMask groundMask;
     public LayerMask enemyMask;
     public Material meleeMat;
+    public float reviveRadius;
+
 
 
     [Space(10)]
@@ -48,6 +52,8 @@ public class MeleeController : MonoBehaviour
     public float lungeCD;
     [Range(0, 10)]
     public float CycloneCD;
+    public float reviveCastTime;
+
 
     Animator anim;
     Health health;
@@ -132,6 +138,20 @@ attacknum = Mathf.Clamp(attacknum, 0, attackNumMax);
         }
         else
         {
+        }
+
+        if (CTRLID != 0 && Input.GetKey("joystick " + CTRLID + " button 3") && !health.isDead)
+        {
+            timer1 += Time.deltaTime;
+            if (timer1 > reviveCastTime)
+            {
+                abilities.Revive(1, gameObject, reviveRadius);
+
+            }
+        }
+        if (CTRLID != 0 && Input.GetKeyUp("joystick " + CTRLID + " button 3") && !health.isDead)
+        {
+            reviveCastTime = 0;
         }
 
         if (CTRLID != 0 && Input.GetKeyDown("joystick " + CTRLID + " button 1") && cooldowns.activeCooldowns[7] <= 0 && altBuild && !health.isDead)

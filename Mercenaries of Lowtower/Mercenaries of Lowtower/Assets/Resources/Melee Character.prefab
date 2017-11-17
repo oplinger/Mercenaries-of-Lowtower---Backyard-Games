@@ -436,7 +436,6 @@ GameObject:
   - component: {fileID: 54522409768148974}
   - component: {fileID: 136162221231187850}
   - component: {fileID: 136654387264467528}
-  - component: {fileID: 114775181442849430}
   - component: {fileID: 114061441901655580}
   - component: {fileID: 114890624369375240}
   - component: {fileID: 114333331101407518}
@@ -1405,14 +1404,18 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 512
   meleeMat: {fileID: 2100000, guid: f69e86a2abdfc124db86cdbf7e40309b, type: 2}
+  reviveRadius: 2
   rogueMeleeDamage: 3
   berserkerMeleeDamage: 5
-  lungeDamage: 15
+  lungeDamage: 5
   whirlwindDamage: 10
-  berserkerMeleeAttackCD: 0
-  rogueMeleeAttackCD: 0
-  lungeCD: 0
-  CycloneCD: 0
+  berserkerMeleeAttackCD: 1
+  attackNumMax: 5
+  speedInterval: 0.1
+  rogueMeleeAttackCD: 1
+  lungeCD: 2
+  CycloneCD: 5
+  reviveCastTime: 4
 --- !u!114 &114696878433776016
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1425,17 +1428,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   mTar: []
---- !u!114 &114775181442849430
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1633046841644568}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3fe1bee0ccfa75443b8785d0722928ac, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &114890624369375240
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1447,9 +1439,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ac398f0ea74f4a649b1e2adb4a6b927b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 0
+  health: 100
+  maxHealth: 0
   player: {fileID: 0}
   shielded: 0
+  foundShield: {fileID: 0}
   isDead: 0
 --- !u!136 &136162221231187850
 CapsuleCollider:

@@ -16,6 +16,8 @@ public class HealerController : MonoBehaviour
     PlayerCDController cooldowns;
     Collider[] colliders;
     float timer;
+    float timer1;
+
     Health health;
     float h1;
     float h2;
@@ -28,6 +30,8 @@ public class HealerController : MonoBehaviour
     public LayerMask groundMask;
     public LayerMask enemyMask;
     public Material healerMat;
+
+    public float reviveRadius;
 
 
     [Space(10)]
@@ -50,6 +54,7 @@ public class HealerController : MonoBehaviour
     public float healInterval;
     [Range(0, 100)]
     public float healRange;
+    public float reviveCastTime;
     #endregion
 
 
@@ -122,6 +127,21 @@ public class HealerController : MonoBehaviour
         else
         {
         }
+
+        if (CTRLID != 0 && Input.GetKey("joystick " + CTRLID + " button 3") && !health.isDead)
+        {
+            timer1 += Time.deltaTime;
+            if (timer1 > reviveCastTime)
+            {
+                abilities.Revive(1, gameObject, reviveRadius);
+
+            }
+        }
+        if (CTRLID != 0 && Input.GetKeyUp("joystick " + CTRLID + " button 3") && !health.isDead)
+        {
+            reviveCastTime = 0;
+        }
+
 
         //if (CTRLID != 0 && Input.GetKeyDown("joystick " + CTRLID + " button 1") && cooldowns.activeCooldowns[4] <= 0 && altBuild)
         //{

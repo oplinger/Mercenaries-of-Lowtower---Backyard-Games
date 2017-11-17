@@ -179,7 +179,6 @@ GameObject:
   - component: {fileID: 54670766163165700}
   - component: {fileID: 136708665416243032}
   - component: {fileID: 136544734566680112}
-  - component: {fileID: 114150109719717686}
   - component: {fileID: 114277517348848416}
   - component: {fileID: 114914160539663620}
   - component: {fileID: 114919370827188344}
@@ -1285,17 +1284,6 @@ Animator:
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
---- !u!114 &114150109719717686
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1179733966427392}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3fe1bee0ccfa75443b8785d0722928ac, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &114277517348848416
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1329,13 +1317,16 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 512
   healerMat: {fileID: 2100000, guid: 20445a8076845ba49a80ec7da13afd13, type: 2}
+  reviveRadius: 2
   absorbDamage: 0
-  healAmount: 0
+  healAmount: 10
   absorbCooldown: 0
-  fearCooldown: 0
-  teleportCooldown: 0
+  fearCooldown: 10
+  teleportCooldown: 5
   healCooldown: 0
-  healInterval: 0
+  healInterval: 0.25
+  healRange: 50
+  reviveCastTime: 2
 --- !u!114 &114914160539663620
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1347,9 +1338,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ac398f0ea74f4a649b1e2adb4a6b927b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 0
+  health: 100
+  maxHealth: 0
   player: {fileID: 0}
   shielded: 0
+  foundShield: {fileID: 0}
   isDead: 0
 --- !u!114 &114919370827188344
 MonoBehaviour:

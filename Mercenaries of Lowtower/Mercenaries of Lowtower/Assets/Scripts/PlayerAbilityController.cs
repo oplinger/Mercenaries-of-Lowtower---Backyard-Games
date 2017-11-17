@@ -11,6 +11,7 @@ public class PlayerAbilityController : MonoBehaviour
     public GameObject bolt;
     public GameObject P2BoltSpawn;
     public LayerMask enemyMask;
+    int reviveCounter;
     #endregion
 
     // Use this for initialization
@@ -36,6 +37,36 @@ public class PlayerAbilityController : MonoBehaviour
     public void Jump(int PlayerID, GameObject player)
     {
         player.GetComponent<Rigidbody>().AddForce(0, 20, 0, ForceMode.Impulse);
+    }
+
+    public void Revive(int playerID, GameObject me, float reviveradius)
+    {
+        Collider[] col = Physics.OverlapSphere(me.transform.position, reviveradius, 1<<8, QueryTriggerInteraction.Ignore);
+        for(int i = 0; i<col.Length; i++)
+        {
+            print(col[i]);
+        }
+        Health colhealth = col[0].GetComponent<Health>();
+
+        if (playerID != 1 && colhealth.isDead)
+        {
+            colhealth.health = colhealth.maxHealth / 2;
+            colhealth.isDead = false;
+
+
+        }
+        else if (playerID==1 && colhealth.isDead)
+        {
+            colhealth.health = colhealth.maxHealth;
+            colhealth.isDead = false;
+
+        }
+
+
+
+
+
+
     }
     #endregion
     #region Tank Abilities
@@ -80,7 +111,7 @@ public class PlayerAbilityController : MonoBehaviour
 
 
         }
-        cooldown.triggerCooldown(0, CD);
+        
 
     }
 
@@ -109,8 +140,6 @@ public class PlayerAbilityController : MonoBehaviour
 
                 //}
             }
-            cooldown.abilityCooldowns[2] = CD;
-            cooldown.triggerCooldown(2, CD);
         }
         else
         {
@@ -121,22 +150,23 @@ public class PlayerAbilityController : MonoBehaviour
     #region Healer Abilities
     public void HealerHeal(float damage, int playerID, GameObject me, float CD, GameObject beepboop, float range)
     {
-        Collider[] hitColliders = Physics.OverlapSphere(me.transform.position, 100, 1 << 8, QueryTriggerInteraction.Ignore);
+        Collider[] hitColliders = Physics.OverlapSphere(me.transform.position, range, 1 << 8, QueryTriggerInteraction.Ignore);
 
         Destroy(beepboop.GetComponent<CapsuleCollider>());
         beepboop.transform.position = me.transform.position - new Vector3(0, 1, 0);
-        beepboop.transform.localScale = new Vector3(100, 1, 100);
+        beepboop.transform.localScale = new Vector3(range, 1, range);
         beepboop.transform.parent = me.transform;
 
         for (int i = 0; i < hitColliders.Length; i++)
         {
             Health health = hitColliders[i].gameObject.GetComponent<Health>();
+            if(!health.isDead)
             health.modifyHealth(damage, 1);
 
 
         }
 
-        cooldown.triggerCooldown(3, CD);
+        
 
     }
 
@@ -147,18 +177,21 @@ public class PlayerAbilityController : MonoBehaviour
         if (Physics.Raycast(me.transform.position, me.transform.forward, out hit, 20, 1 << 8, QueryTriggerInteraction.Ignore))
         {
             me.transform.position = hit.point;
+            cooldown.triggerCooldown(4, CD);
+
         }
-        cooldown.triggerCooldown(4, CD);
 
     }
 
     public void HealerCC(float damage, int playerID, GameObject me, float CD)
     {
         //fear
-        Collider[] EnemyColliders = Physics.OverlapSphere(transform.position, 100, enemyMask, QueryTriggerInteraction.Ignore);
+        Collider[] EnemyColliders = Physics.OverlapSphere(me.transform.position, 10, enemyMask, QueryTriggerInteraction.Ignore);
         for (int i = 0; i < EnemyColliders.Length; i++)
         {
-            EnemyColliders[i].gameObject.transform.Translate((EnemyColliders[i].gameObject.transform.position - me.transform.position) * 3);
+            //EnemyColliders[i].gameObject.transform.Translate((EnemyColliders[i].gameObject.transform.position - me.transform.position) * 3);            
+           EnemyColliders[i].gameObject.GetComponent<FearScript>().Fear(me);
+
         }
 
         cooldown.triggerCooldown(5, CD);

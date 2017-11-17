@@ -16,6 +16,8 @@ public class RangedController : MonoBehaviour
     Collider[] colliders;
     float damageMult = 1;
     bool altBuild;
+    float timer1;
+
 
     [Header("General")]
     [Range(1,50)]
@@ -23,6 +25,8 @@ public class RangedController : MonoBehaviour
     public LayerMask groundMask;
     public LayerMask enemyMask;
     public Material rangedMat;
+    public float reviveRadius;
+
 
 
 
@@ -42,6 +46,8 @@ public class RangedController : MonoBehaviour
     public float smokeBombCD;
     [Range(0, 10)]
     public float KnockbackCD;
+    public float reviveCastTime;
+
 
     Animator anim;
     Health health;
@@ -113,6 +119,20 @@ public class RangedController : MonoBehaviour
         }
         else
         {
+        }
+
+        if (CTRLID != 0 && Input.GetKey("joystick " + CTRLID + " button 3") && !health.isDead)
+        {
+            timer1 += Time.deltaTime;
+            if (timer1 > reviveCastTime)
+            {
+                abilities.Revive(1, gameObject, reviveRadius);
+
+            }
+        }
+        if (CTRLID != 0 && Input.GetKeyUp("joystick " + CTRLID + " button 3") && !health.isDead)
+        {
+            reviveCastTime = 0;
         }
 
         if (CTRLID != 0 && Input.GetKeyDown("joystick " + CTRLID + " button 1") && cooldowns.activeCooldowns[10] <= 0 && altBuild && !health.isDead)
@@ -194,7 +214,7 @@ public class RangedController : MonoBehaviour
 
         if (health.isDead)
         {
-            anim.SetInteger("AnimState", 1);
+            anim.SetInteger("AnimState", 5);
             walkspeed = 0;
             playermovement *= 0;
         }
