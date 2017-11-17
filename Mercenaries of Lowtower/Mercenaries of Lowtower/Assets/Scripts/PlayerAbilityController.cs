@@ -82,7 +82,8 @@ public class PlayerAbilityController : MonoBehaviour
 
         }
         cooldown.abilityCooldowns[1] = CD;
-        cooldown.triggerCooldown(1, CD);
+        //cooldown.triggerCooldown(1, CD);
+
 
     }
 
