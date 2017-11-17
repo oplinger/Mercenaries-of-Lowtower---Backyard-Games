@@ -59,6 +59,7 @@ public class PlayerAbilityController : MonoBehaviour
         {
             colhealth.health = colhealth.maxHealth;
             colhealth.isDead = false;
+            
 
         }
 
@@ -77,7 +78,7 @@ public class PlayerAbilityController : MonoBehaviour
 
         if (!infiniteshield)
         {
-            Destroy(clone, duration);
+            Destroy(clone, duration+1);
 
         }
         cooldown.abilityCooldowns[1] = CD;
@@ -137,7 +138,7 @@ public class PlayerAbilityController : MonoBehaviour
                 {
                     col[i].GetComponent<Health>().health -= damage;
                 }
-
+                reflect = false;
                 //}
             }
         }

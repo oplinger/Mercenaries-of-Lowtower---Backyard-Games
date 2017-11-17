@@ -154,7 +154,7 @@ attacknum = Mathf.Clamp(attacknum, 0, attackNumMax);
             reviveCastTime = 0;
         }
 
-        if (CTRLID != 0 && Input.GetKeyDown("joystick " + CTRLID + " button 1") && cooldowns.activeCooldowns[7] <= 0 && altBuild && !health.isDead)
+        if (CTRLID != 0 && Input.GetKeyDown("joystick " + CTRLID + " button 1") && cooldowns.activeCooldowns[8] <= 0 && altBuild && !health.isDead)
         {
             abilities.MeleeLunge(lungeDamage, 2, gameObject, lungeCD);
         }
@@ -228,6 +228,8 @@ attacknum = Mathf.Clamp(attacknum, 0, attackNumMax);
         }
         else
         {
+            walkspeed = 10;
+
         }
         #endregion
     }

@@ -114,7 +114,6 @@ GameObject:
   - component: {fileID: 114752299657823772}
   - component: {fileID: 114160688909750412}
   - component: {fileID: 114310086984430496}
-  - component: {fileID: 114045479491861722}
   - component: {fileID: 136187015263703356}
   - component: {fileID: 136562437640970784}
   m_Layer: 9
@@ -703,17 +702,6 @@ Animator:
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
---- !u!114 &114045479491861722
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1669068641029250}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3fe1bee0ccfa75443b8785d0722928ac, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &114050299489096748
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -725,30 +713,24 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 325b50516b48fe84086f3115984f9b41, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  attackCDs: []
-  specialAttackCDs: []
-  currentGCD: 0
-  shockwaveObj: {fileID: 0}
-  tsunamiObj: {fileID: 0}
   shockwave: 0
   tsunami: 0
   hurricane: 0
   lightningStorm: 0
-  tsunamiSpawns:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  theground:
-    serializedVersion: 2
-    m_Bits: 256
-  stormDamage: 0
+  attackCDs: []
+  specialAttackCDs: []
   slamDamage: 0
-  swipeDamage: 0
   punchDamage: 12
-  hurricaneDamage: 0.5
-  lightningstormDamage: 0
-  bossPhase: 0
+  lightningstormDamage: 10
+  lightningWarningDuration: 3.5
+  lightningSphereDuration: 1
+  timeBetweenWarningAndDamage: 4
+  shockwaveSpeed: 200
+  shockwaveDuration: 1.5
+  tsunamiSpeed: 15
+  tsunamiDuration: 10
+  hurricaneDamage: 1
+  hurricaneInterval: 1
 --- !u!114 &114160688909750412
 MonoBehaviour:
   m_ObjectHideFlags: 1

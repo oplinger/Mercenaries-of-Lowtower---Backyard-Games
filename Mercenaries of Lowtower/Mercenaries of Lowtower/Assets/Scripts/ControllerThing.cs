@@ -139,6 +139,8 @@ STEP BY STEP:
                         Player.Remove(null);
                         tankcontroller = GameObject.Find("Tank Character(Clone)").GetComponent<TankController>();
                         tankcontroller.CTRLID = 2;
+                        IDs[0].gameObject.transform.position = GameObject.Find("P1Select").transform.position;
+
                     }
                 }
                 else if (Input.GetKeyDown("joystick " + PID[PID.IndexOf(2)] + " button 1"))
@@ -150,6 +152,8 @@ STEP BY STEP:
                         Player.Remove(null);
                         healercontroller = GameObject.Find("Healer Character(Clone)").GetComponent<HealerController>();
                         healercontroller.CTRLID = 2;
+                        IDs[1].gameObject.transform.position = GameObject.Find("P1Select").transform.position;
+
                     }
                 }
                 else if (Input.GetKeyDown("joystick " + PID[PID.IndexOf(2)] + " button 2"))
@@ -161,6 +165,8 @@ STEP BY STEP:
                         Player.Remove(null);
                         meleecontroller = GameObject.Find("Melee Character(Clone)").GetComponent<MeleeController>();
                         meleecontroller.CTRLID = 2;
+                        IDs[2].gameObject.transform.position = GameObject.Find("P1Select").transform.position;
+
                     }
                 }
                 else if (Input.GetKeyDown("joystick " + PID[PID.IndexOf(2)] + " button 3"))
@@ -172,6 +178,8 @@ STEP BY STEP:
                         Player.Remove(null);
                         rangedcontroller = GameObject.Find("Ranged Character(Clone)").GetComponent<RangedController>();
                         rangedcontroller.CTRLID = 2;
+                        IDs[3].gameObject.transform.position = GameObject.Find("P1Select").transform.position;
+
                     }
                 }
                 else
@@ -192,6 +200,8 @@ STEP BY STEP:
                         Player.Remove(null);
                         tankcontroller = GameObject.Find("Tank Character(Clone)").GetComponent<TankController>();
                         tankcontroller.CTRLID = 3;
+                        IDs[0].gameObject.transform.position = GameObject.Find("P2Select").transform.position;
+
 
                     }
                 }
@@ -204,6 +214,8 @@ STEP BY STEP:
                         Player.Remove(null);
                         healercontroller = GameObject.Find("Healer Character(Clone)").GetComponent<HealerController>();
                         healercontroller.CTRLID = 3;
+                        IDs[1].gameObject.transform.position = GameObject.Find("P2Select").transform.position;
+
                     }
                 }
                 else if (Input.GetKeyDown("joystick " + PID[PID.IndexOf(3)] + " button 2"))
@@ -215,6 +227,8 @@ STEP BY STEP:
                         Player.Remove(null);
                         meleecontroller = GameObject.Find("Melee Character(Clone)").GetComponent<MeleeController>();
                         meleecontroller.CTRLID = 3;
+                        IDs[2].gameObject.transform.position = GameObject.Find("P2Select").transform.position;
+
                     }
                 }
                 else if (Input.GetKeyDown("joystick " + PID[PID.IndexOf(3)] + " button 3"))
@@ -226,6 +240,8 @@ STEP BY STEP:
                         Player.Remove(null);
                         rangedcontroller = GameObject.Find("Ranged Character(Clone)").GetComponent<RangedController>();
                         rangedcontroller.CTRLID = 3;
+                        IDs[3].gameObject.transform.position = GameObject.Find("P2Select").transform.position;
+
                     }
                 }
                 else
@@ -246,6 +262,8 @@ STEP BY STEP:
                         Player.Remove(null);
                         tankcontroller = GameObject.Find("Tank Character(Clone)").GetComponent<TankController>();
                         tankcontroller.CTRLID = 4;
+                        IDs[0].gameObject.transform.position = GameObject.Find("P3Select").transform.position;
+
                     }
                 }
                 else if (Input.GetKeyDown("joystick " + PID[PID.IndexOf(4)] + " button 1"))
@@ -257,6 +275,8 @@ STEP BY STEP:
                         Player.Remove(null);
                         healercontroller = GameObject.Find("Healer Character(Clone)").GetComponent<HealerController>();
                         healercontroller.CTRLID = 4;
+                        IDs[1].gameObject.transform.position = GameObject.Find("P3Select").transform.position;
+
                     }
                 }
                 else if (Input.GetKeyDown("joystick " + PID[PID.IndexOf(4)] + " button 2"))
@@ -268,6 +288,8 @@ STEP BY STEP:
                         Player.Remove(null);
                         meleecontroller = GameObject.Find("Melee Character(Clone)").GetComponent<MeleeController>();
                         meleecontroller.CTRLID = 4;
+                        IDs[2].gameObject.transform.position = GameObject.Find("P3Select").transform.position;
+
                     }
                 }
                 else if (Input.GetKeyDown("joystick " + PID[PID.IndexOf(4)] + " button 3"))
@@ -279,6 +301,8 @@ STEP BY STEP:
                         Player.Remove(null);
                         rangedcontroller = GameObject.Find("Ranged Character(Clone)").GetComponent<RangedController>();
                         rangedcontroller.CTRLID = 4;
+                        IDs[3].gameObject.transform.position = GameObject.Find("P3Select").transform.position;
+
                     }
                 }
                 else
@@ -361,8 +385,7 @@ STEP BY STEP:
             if (PID[i] == ID)
             {
                 break;
-            }
-            if (PID[i] == 9)
+            }else if (PID[i] == 9)
             {
                 PID.Insert(i, ID);
                 PID.RemoveAt(PID.Count - 1);

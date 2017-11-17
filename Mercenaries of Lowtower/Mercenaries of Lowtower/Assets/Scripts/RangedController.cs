@@ -135,7 +135,7 @@ public class RangedController : MonoBehaviour
             reviveCastTime = 0;
         }
 
-        if (CTRLID != 0 && Input.GetKeyDown("joystick " + CTRLID + " button 1") && cooldowns.activeCooldowns[10] <= 0 && altBuild && !health.isDead)
+        if (CTRLID != 0 && Input.GetKeyDown("joystick " + CTRLID + " button 1") && cooldowns.activeCooldowns[11] <= 0 && altBuild && !health.isDead)
         {
             abilities.BluntTipArrow(3, 3, gameObject, KnockbackCD);
             anim.SetInteger("AnimState", 2);
@@ -220,6 +220,8 @@ public class RangedController : MonoBehaviour
         }
         else
         {
+            walkspeed = 10;
+
         }
         #endregion
     }

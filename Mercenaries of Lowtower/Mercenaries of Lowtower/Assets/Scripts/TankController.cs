@@ -50,6 +50,7 @@ public class TankController : MonoBehaviour
     public bool InfiniteShield;
     [Range(0, 10)]
     public float shieldCooldown;
+    public float shieldHealth;
     [Range(0, 10)]
     public float perfectShieldDuration;
     [Range(0, 10)]
@@ -234,6 +235,7 @@ public class TankController : MonoBehaviour
         }
         else
         {
+            walkspeed = 10;
         }
 
         #endregion

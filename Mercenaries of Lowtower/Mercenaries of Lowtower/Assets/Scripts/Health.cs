@@ -24,7 +24,8 @@ public class Health : MonoBehaviour {
 
         if (gameObject.tag == "Shield")
         {
-            health = 100;
+            float shieldhealth = GameObject.Find("Tank Character(Clone)").GetComponent<TankController>().shieldHealth;
+            health = shieldhealth;
         }
         player = this.gameObject;
         //playerMoveScript = GetComponent<MovementRigidbody>();
@@ -40,8 +41,14 @@ public class Health : MonoBehaviour {
         {
             isDead = true;
         }
-        if(isDead && (gameObject.tag == "Enemy" || gameObject.tag=="Shield"))
+        if(isDead && (gameObject.tag == "Enemy"))
         {
+            Destroy(gameObject);
+        }
+        if (isDead && gameObject.tag == "Shield")
+        {
+            Destroy(gameObject.transform.parent.gameObject);
+
             Destroy(gameObject);
         }
         

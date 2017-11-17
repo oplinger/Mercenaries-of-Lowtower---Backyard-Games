@@ -159,7 +159,7 @@ public class BossAttackAI : MonoBehaviour
             specialAttackCDs[0] += Time.deltaTime;
             if (specialAttackCDs[0] >= 10)
             {
-                Shockwave(shockwaveSpeed, shockwaveDuration, new Vector3(transform.position.x, 0, transform.position.z));
+                Shockwave(shockwaveSpeed, shockwaveDuration, new Vector3(transform.position.x, 1, transform.position.z));
             }
 
         }
@@ -363,14 +363,18 @@ public class BossAttackAI : MonoBehaviour
 
     IEnumerator LightningStormRoutine()
     {
+
         RaycastHit hit;
         do
         {
             Physics.Raycast(new Vector3(Random.Range(-50, 50), 100, Random.Range(-50, 50)), Vector3.down, out hit, 120, 1, QueryTriggerInteraction.Ignore);
 
         } while ((Physics.Raycast(new Vector3(Random.Range(-50, 50), 100, Random.Range(-50, 50)), Vector3.down, out hit, 120, 1, QueryTriggerInteraction.Ignore) == false));
+
         if (Physics.Raycast(new Vector3(Random.Range(-50, 50), 100, Random.Range(-50, 50)), Vector3.down, out hit, 120, 1, QueryTriggerInteraction.Ignore) == true)
         {
+            print("ewrgerg");
+
             GameObject cyl = GameObject.CreatePrimitive(PrimitiveType.Cylinder);
             Destroy(cyl.GetComponent<CapsuleCollider>());
             cyl.GetComponent<Renderer>().material.color = Color.red;

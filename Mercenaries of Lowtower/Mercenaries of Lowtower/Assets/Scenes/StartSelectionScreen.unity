@@ -223,11 +223,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 21
   m_LocalEulerAnglesHint: {x: 0, y: 90, z: 0}
---- !u!1 &196458009 stripped
-GameObject:
-  m_PrefabParentObject: {fileID: 1832462978319720, guid: b7df22f4992e96442b24ba1ab4331141,
-    type: 2}
-  m_PrefabInternal: {fileID: 1867820416}
 --- !u!1 &248939412
 GameObject:
   m_ObjectHideFlags: 0
@@ -565,57 +560,12 @@ Prefab:
       propertyPath: m_RootOrder
       value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 114050299489096748, guid: 9b019403ca0f5db4fbe90678c8459dda,
-        type: 2}
-      propertyPath: shockwaveObj
-      value: 
-      objectReference: {fileID: 196458009}
-    - target: {fileID: 114050299489096748, guid: 9b019403ca0f5db4fbe90678c8459dda,
-        type: 2}
-      propertyPath: tsunamiObj
-      value: 
-      objectReference: {fileID: 1476010988}
     - target: {fileID: 114752299657823772, guid: 9b019403ca0f5db4fbe90678c8459dda,
         type: 2}
       propertyPath: m_Enabled
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 4268014405758700, guid: 9b019403ca0f5db4fbe90678c8459dda, type: 2}
-      propertyPath: m_RootOrder
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 114050299489096748, guid: 9b019403ca0f5db4fbe90678c8459dda,
-        type: 2}
-      propertyPath: hurricaneDamage
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 114050299489096748, guid: 9b019403ca0f5db4fbe90678c8459dda,
-        type: 2}
-      propertyPath: hurricaneInterval
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 114050299489096748, guid: 9b019403ca0f5db4fbe90678c8459dda,
-        type: 2}
-      propertyPath: shockwaveDuration
-      value: 1.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 114050299489096748, guid: 9b019403ca0f5db4fbe90678c8459dda,
-        type: 2}
-      propertyPath: shockwaveSpeed
-      value: 200
-      objectReference: {fileID: 0}
-    - target: {fileID: 114050299489096748, guid: 9b019403ca0f5db4fbe90678c8459dda,
-        type: 2}
-      propertyPath: tsunamiSpeed
-      value: 15
-      objectReference: {fileID: 0}
-    - target: {fileID: 114050299489096748, guid: 9b019403ca0f5db4fbe90678c8459dda,
-        type: 2}
-      propertyPath: tsunamiDuration
-      value: 10
-      objectReference: {fileID: 0}
-    m_RemovedComponents:
-    - {fileID: 114045479491861722, guid: 9b019403ca0f5db4fbe90678c8459dda, type: 2}
+    m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 9b019403ca0f5db4fbe90678c8459dda, type: 2}
   m_IsPrefabParent: 0
 --- !u!1001 &575585114
@@ -1121,11 +1071,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 12
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &1476010988 stripped
-GameObject:
-  m_PrefabParentObject: {fileID: 1955877344891030, guid: e3f3de95b76f56846ba086f9f9c266fe,
-    type: 2}
-  m_PrefabInternal: {fileID: 2018228493}
 --- !u!1 &1543814138
 GameObject:
   m_ObjectHideFlags: 0
@@ -1830,6 +1775,21 @@ Prefab:
         type: 2}
       propertyPath: magnetThreat
       value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 114782003998301322, guid: dd9de9996069bb54fb61c0bd063feb4f,
+        type: 2}
+      propertyPath: shieldHealth
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 114782003998301322, guid: dd9de9996069bb54fb61c0bd063feb4f,
+        type: 2}
+      propertyPath: shieldDuration
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 114782003998301322, guid: dd9de9996069bb54fb61c0bd063feb4f,
+        type: 2}
+      propertyPath: InfiniteShield
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: dd9de9996069bb54fb61c0bd063feb4f, type: 2}

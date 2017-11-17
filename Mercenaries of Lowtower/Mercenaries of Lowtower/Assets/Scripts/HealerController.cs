@@ -206,6 +206,8 @@ public class HealerController : MonoBehaviour
             playermovement *= 0;
         } else
         {
+            walkspeed = 10;
+
         }
         #endregion
     }

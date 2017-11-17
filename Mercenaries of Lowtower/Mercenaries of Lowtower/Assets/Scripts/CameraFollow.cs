@@ -5,15 +5,16 @@ using UnityEngine;
 public class CameraFollow : MonoBehaviour {
 
     GameObject[] objects;
+    public GameObject[] labels;
     GameObject marker;
     float furthestTarget;
     float furthestTarget2;
-    float maxX = -1000;
-    float maxY = -1000;
-    float minX = 1000;
-    float minY = 1000;
-    float maxZ = -1000;
-    float minZ = 1000;
+    float maxX;
+    float maxY;
+    float minX;
+    float minY;
+    float maxZ;
+    float minZ;
     public GameObject camTarget;
 
 
@@ -21,18 +22,34 @@ public class CameraFollow : MonoBehaviour {
     void Start () {
         objects = GameObject.FindGameObjectsWithTag("Player");
         marker = GameObject.CreatePrimitive(PrimitiveType.Cube);
+        marker.transform.position = new Vector3(0, 2, -150);
+
+         //maxX = -1000;
+         //maxY = -1000;
+         //minX = 1000;
+         //minY = 1000;
+         //maxZ = -1000;
+         //minZ = 1000;
+
+        transform.position = new Vector3(0, 17, -150);
         
 	}
 	
 	// Update is called once per frame
 	void Update () {
         FindPositions();
+
+            for (int i = 0; i<labels.Length; i++)
+            {
+            labels[i].transform.position = Vector3.Lerp(transform.position, objects[i].transform.position, .5f);
+            }
+        
     }
 
     void FindPositions()
     {
         //Vector3 averagePos = new Vector3();
-        furthestTarget2 = Vector3.Distance(marker.transform.position, objects[2].transform.position);
+        //furthestTarget2 = Vector3.Distance(marker.transform.position, objects[2].transform.position);
 
         for (int i = 0; i < objects.Length; i++)
         {
@@ -111,7 +128,7 @@ public class CameraFollow : MonoBehaviour {
         maxZ = -1000;
         Vector3 centerpos = new Vector3((currminX + currmaxX) / 2, (currminY + currmaxY) / 2, (currminZ + currmaxZ) / 2);
         transform.position = centerpos;
-        transform.position += new Vector3(0, Mathf.Clamp(furthestTarget2 * 1.5f, 25, 500), -15);
+        transform.position += new Vector3(0, Mathf.Clamp(furthestTarget * 2f, 25, 500), -15);
         Vector3 angles = new Vector3(Mathf.Clamp(transform.eulerAngles.x, 60, 90), Mathf.Clamp(transform.eulerAngles.x, 0, 0), transform.eulerAngles.z);
         transform.eulerAngles = angles;
         marker.transform.position = centerpos;
