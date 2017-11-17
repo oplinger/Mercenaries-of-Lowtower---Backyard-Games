@@ -611,6 +611,16 @@ Prefab:
       propertyPath: m_Name
       value: Ranged Character(Clone)
       objectReference: {fileID: 0}
+    - target: {fileID: 114733641604896904, guid: f05e432990a5ae241acc47700a49aacd,
+        type: 2}
+      propertyPath: sniperAttackCD
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 114733641604896904, guid: f05e432990a5ae241acc47700a49aacd,
+        type: 2}
+      propertyPath: archerAttackCD
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: f05e432990a5ae241acc47700a49aacd, type: 2}
   m_IsPrefabParent: 0
@@ -1765,31 +1775,6 @@ Prefab:
     - target: {fileID: 1239915997541124, guid: dd9de9996069bb54fb61c0bd063feb4f, type: 2}
       propertyPath: m_Name
       value: Tank Character(Clone)
-      objectReference: {fileID: 0}
-    - target: {fileID: 114782003998301322, guid: dd9de9996069bb54fb61c0bd063feb4f,
-        type: 2}
-      propertyPath: magnetMask.m_Bits
-      value: 2560
-      objectReference: {fileID: 0}
-    - target: {fileID: 114782003998301322, guid: dd9de9996069bb54fb61c0bd063feb4f,
-        type: 2}
-      propertyPath: magnetThreat
-      value: 10
-      objectReference: {fileID: 0}
-    - target: {fileID: 114782003998301322, guid: dd9de9996069bb54fb61c0bd063feb4f,
-        type: 2}
-      propertyPath: shieldHealth
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 114782003998301322, guid: dd9de9996069bb54fb61c0bd063feb4f,
-        type: 2}
-      propertyPath: shieldDuration
-      value: 5
-      objectReference: {fileID: 0}
-    - target: {fileID: 114782003998301322, guid: dd9de9996069bb54fb61c0bd063feb4f,
-        type: 2}
-      propertyPath: InfiniteShield
-      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: dd9de9996069bb54fb61c0bd063feb4f, type: 2}
