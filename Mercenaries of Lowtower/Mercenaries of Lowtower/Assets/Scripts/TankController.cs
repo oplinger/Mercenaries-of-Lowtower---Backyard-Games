@@ -26,38 +26,48 @@ public class TankController : MonoBehaviour
     [Header("Genral")]
     [Range(1, 50)]
     public float walkspeed;
+    [Range(0,50)]
+    public float jumpHeight;
     public LayerMask groundMask;
     public LayerMask magnetMask;
     public Material tankMat;
     public float reviveRadius;
+    public float reviveCastTime;
 
-
-
-
-
-    [Space(10)]
-    [Header("Damage")]
-    public float magnetThreat;
-    float shieldAmount;
-
-
-    [Space(10)]
-    [Header("Cooldowns")]
+    [Header("Magnet Settings")]
     [Range(0, 10)]
     public float magnetCooldown;
+    [Range(0, 100)]
+    public float magnetDistance;
+    [Range(0, 10)]
+    public float pullSpeed;
+    public float magnetThreat;
+    
+    [Header("Shield Settings")]
+    public bool InfiniteShield;
     [Range(0, 10)]
     public float shieldDuration;
-    public bool InfiniteShield;
     [Range(0, 10)]
     public float shieldCooldown;
     public float shieldHealth;
+    [Range(0, 50)]
+    public float shieldSize;
+    [Header("Perfect Dodge Settings")]
     [Range(0, 10)]
     public float perfectShieldDuration;
     [Range(0, 10)]
     public float perfectShieldCooldown;
+    [Range(0, 50)]
+    public float dodgeRadius;
+    [Header("Reflection Settings")]
     [Range(0, 10)]
     public float reflectCooldown;
-    public float reviveCastTime;
+    [Range(0,50)]
+    public float reflectDistance;
+    [Range(0, 2)]
+    public float beamWidth;
+    [Range(0, 10)]
+    public float damageMultiplier;
 
     #endregion
 
@@ -129,7 +139,7 @@ public class TankController : MonoBehaviour
 
         if (CTRLID != 0 && colliders.Length > 0 && Input.GetKeyDown("joystick " + CTRLID + " button 0"))
         {
-            abilities.Jump(CTRLID, gameObject);
+            abilities.Jump(CTRLID, gameObject, jumpHeight);
             anim.SetInteger("AnimState", 3);
         }
         else
@@ -152,7 +162,7 @@ public class TankController : MonoBehaviour
 
         if (CTRLID != 0 && Input.GetKey("joystick " + CTRLID + " button 1") && cooldowns.activeCooldowns[0]<=0 && !altBuild && !health.isDead)
         {
-            abilities.TankMagnet(magnetThreat, 0, gameObject, magnetCooldown, magnetMask);
+            abilities.TankMagnet(magnetThreat, 0, gameObject, magnetCooldown, magnetMask, magnetDistance, pullSpeed);
             anim.SetInteger("AnimState", 2);
             tankMat.SetColor("_EmissionColor", Color.HSVToRGB(1, 1, 1));
 
@@ -171,14 +181,14 @@ public class TankController : MonoBehaviour
 
         if (CTRLID != 0 && Input.GetKeyDown("joystick " + CTRLID + " button 2") && cooldowns.activeCooldowns[1] <= 0 && altBuild && !health.isDead)
         {
-            abilities.TankPerfectShield(shieldAmount, 0, gameObject, perfectShieldCooldown, perfectShieldDuration);
+            abilities.TankPerfectShield(shieldHealth, 0, gameObject, perfectShieldCooldown, perfectShieldDuration, dodgeRadius);
             anim.SetInteger("AnimState", 2);
 
         }
 
         if (CTRLID != 0 && Input.GetKeyDown("joystick " + CTRLID + " button 2") && cooldowns.activeCooldowns[1] <= 0 && !altBuild && !health.isDead)
         {
-            abilities.TankShield(shieldAmount, 0, gameObject, shieldCooldown, shieldDuration, InfiniteShield);
+            abilities.TankShield(shieldHealth, 0, gameObject, shieldCooldown, shieldDuration, InfiniteShield, shieldSize);
             anim.SetInteger("AnimState", 2);
 
         }
@@ -189,7 +199,7 @@ public class TankController : MonoBehaviour
         {
             //timer += Time.deltaTime;
             //reflectDamage += (h2 - h1) * 2;
-            abilities.TankReflect(reflectDamage,0, gameObject, reflectCooldown, true, h1, h2, timer);
+            abilities.TankReflect(reflectDamage,0, gameObject, reflectCooldown, true, h1, h2, timer, reflectDistance, beamWidth, damageMultiplier);
             tankMat.SetColor("_EmissionColor", Color.HSVToRGB(.5f,1,1));
             //if (timer > 2)
             //{

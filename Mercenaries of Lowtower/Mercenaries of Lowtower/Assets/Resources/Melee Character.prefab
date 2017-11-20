@@ -1397,6 +1397,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   CTRLID: 0
   walkspeed: 10
+  jumpHeight: 20
   groundMask:
     serializedVersion: 2
     m_Bits: 1
@@ -1405,17 +1406,20 @@ MonoBehaviour:
     m_Bits: 512
   meleeMat: {fileID: 2100000, guid: f69e86a2abdfc124db86cdbf7e40309b, type: 2}
   reviveRadius: 2
-  rogueMeleeDamage: 3
+  reviveCastTime: 4
   berserkerMeleeDamage: 5
-  lungeDamage: 5
-  whirlwindDamage: 10
   berserkerMeleeAttackCD: 1
   attackNumMax: 5
   speedInterval: 0.1
+  speedReset: 2
+  rogueMeleeDamage: 3
   rogueMeleeAttackCD: 1
+  whirlwindDamage: 10
+  cycloneCD: 5
+  strikeInterval: 1
+  lungeDamage: 5
+  lungeDistance: 20
   lungeCD: 2
-  CycloneCD: 5
-  reviveCastTime: 4
 --- !u!114 &114696878433776016
 MonoBehaviour:
   m_ObjectHideFlags: 1

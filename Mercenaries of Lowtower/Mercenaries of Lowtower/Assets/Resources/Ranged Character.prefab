@@ -1326,6 +1326,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   CTRLID: 0
   walkspeed: 10
+  jumpHeight: 20
   groundMask:
     serializedVersion: 2
     m_Bits: 1
@@ -1334,14 +1335,21 @@ MonoBehaviour:
     m_Bits: 512
   rangedMat: {fileID: 2100000, guid: 04d384d69e1b12e459ddf2a9f7213152, type: 2}
   reviveRadius: 2
-  damageMultCap: 3
-  arrowDamage: 5
-  boltDamage: 25
-  sniperAttackCD: 2
-  archerAttackCD: 0.5
-  smokeBombCD: 5
-  KnockbackCD: 3
   reviveCastTime: 4
+  boltDamage: 25
+  sniperAttackCD: 3
+  boltRange: 3
+  arrowDamage: 5
+  damageMultCap: 3
+  archerAttackCD: 1
+  arrowRange: 3
+  smokeBombCD: 5
+  cloudSize: 10
+  smokeDuration: 10
+  dissipationRate: 0.5
+  KnockbackCD: 3
+  knockbackArrowRange: 3
+  knockbackSpread: 5
 --- !u!114 &114878381352017456
 MonoBehaviour:
   m_ObjectHideFlags: 1

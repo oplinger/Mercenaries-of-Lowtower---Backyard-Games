@@ -17,6 +17,7 @@ public class HealerController : MonoBehaviour
     Collider[] colliders;
     float timer;
     float timer1;
+    float timer2;
 
     Health health;
     float h1;
@@ -27,34 +28,43 @@ public class HealerController : MonoBehaviour
     [Header("Genral")]
     [Range(1, 50)]
     public float walkspeed;
+    [Range(0, 50)]
+    public float jumpHeight;
     public LayerMask groundMask;
     public LayerMask enemyMask;
     public Material healerMat;
-
     public float reviveRadius;
+    public float reviveCastTime;
 
+   // public float absorbDamage;
+    //[Range(0, 10)]
+   // public float absorbCooldown;
 
-    [Space(10)]
-    [Header("Damage")]
-    public float absorbDamage;
+    [Header("Heal Settings")]
     public float healAmount;
-
-
-    [Space(10)]
-    [Header("Cooldowns")]
-    [Range(0, 10)]
-    public float absorbCooldown;
-    [Range(0, 10)]
-    public float fearCooldown;
-    [Range(0, 10)]
-    public float teleportCooldown;
     [Range(0, 10)]
     public float healCooldown;
     [Range(0, 10)]
     public float healInterval;
     [Range(0, 100)]
     public float healRange;
-    public float reviveCastTime;
+    [Header("Teleport Settings")]
+    [Range(0, 10)]
+    public float teleportCooldown;
+    [Range(0, 50)]
+    public float teleportRange;
+    [Range(0, 10)]
+    public float teleportDelay;
+    [Header("Fear Settings")]
+    [Range(0, 10)]
+    public float fearCooldown;
+    [Range(0, 50)]
+    public float fearRange;
+    [Range(0, 10)]
+    public float fearRunSpeed;
+    [Range(0, 10)]
+    public float fearDuration;
+
     #endregion
 
 
@@ -121,7 +131,7 @@ public class HealerController : MonoBehaviour
 
         if (CTRLID != 0 && colliders.Length > 0 && Input.GetKeyDown("joystick " + CTRLID + " button 0") && !health.isDead)
         {
-            abilities.Jump(CTRLID, gameObject);
+            abilities.Jump(CTRLID, gameObject, jumpHeight);
             anim.SetInteger("AnimState", 3);
         }
         else
@@ -154,7 +164,7 @@ public class HealerController : MonoBehaviour
 
         if (CTRLID != 0 && Input.GetKeyDown("joystick " + CTRLID + " button 1") && cooldowns.activeCooldowns[4] <= 0 && altBuild && !health.isDead)
         {
-            abilities.HealerCC(0, 1, gameObject, fearCooldown);
+            abilities.HealerCC(0, 1, gameObject, fearCooldown, fearRange, fearRunSpeed, fearDuration);
             anim.SetInteger("AnimState", 2);
         }
         else
@@ -180,7 +190,11 @@ public class HealerController : MonoBehaviour
 
         if (CTRLID != 0 && Input.GetKey("joystick " + CTRLID + " button 1") && cooldowns.activeCooldowns[4] <= 0 && !altBuild && !health.isDead)
         {
-            abilities.Healaport(0, 1, gameObject, teleportCooldown);
+            teleportDelay += Time.deltaTime;
+
+            timer2 += Time.deltaTime;
+            if(timer2>=teleportDelay)
+            abilities.Healaport(0, 1, gameObject, teleportCooldown, teleportRange);
         }
 
 

@@ -44,6 +44,9 @@ public class BossAttackAI : MonoBehaviour
     [Header("Shockwave Settings")]
     public float shockwaveSpeed;
     public float shockwaveDuration;
+    public float shockwaveStrength;
+    public float shockwaveDamage;
+    Vector3 shockwaveLocation;
 
     [Header("Tsunami Settings")]
     public float tsunamiSpeed;
@@ -159,7 +162,7 @@ public class BossAttackAI : MonoBehaviour
             specialAttackCDs[0] += Time.deltaTime;
             if (specialAttackCDs[0] >= 10)
             {
-                Shockwave(shockwaveSpeed, shockwaveDuration, new Vector3(transform.position.x, 1, transform.position.z));
+                Shockwave(shockwaveSpeed, shockwaveDuration, shockwaveLocation);
             }
 
         }
@@ -231,8 +234,15 @@ public class BossAttackAI : MonoBehaviour
 
     void Slam(GameObject target)
     {
-        Health health = target.GetComponent<Health>();
-        health.modifyHealth(slamDamage, 9);
+        Collider[] col = Physics.OverlapSphere(new Vector3(transform.position.x + transform.forward.x * range.targetDistance, 0, transform.position.z + transform.forward.z * range.targetDistance), 10, 1 << 8, QueryTriggerInteraction.Ignore);
+
+        for (int i = 0; i < col.Length; i++)
+        {
+            Health health = col[i].GetComponent<Health>();
+            health.modifyHealth(slamDamage, 9);
+        }
+        shockwaveLocation = new Vector3(transform.position.x + transform.forward.x * range.targetDistance, 0, transform.position.z + transform.forward.z * range.targetDistance);
+        shockwave = true;
         attackCDs[1] = 8;
         triggerGCD(2);
     }
@@ -247,9 +257,26 @@ public class BossAttackAI : MonoBehaviour
 
     void Punch(GameObject target)
     {
-        Health health = target.GetComponent<Health>();
-        health.modifyHealth(punchDamage, 9);
-        attackCDs[3] = 1;
+        Vector3 zeroY = new Vector3(1, 0, 1);
+        //Collider[] col = Physics.OverlapSphere(((transform.position+((transform.forward.*range.targetDistance)-transform.forward))),2, 1<<8, QueryTriggerInteraction.Ignore);
+        Collider[] col = Physics.OverlapSphere(new Vector3(transform.position.x+transform.forward.x * range.targetDistance, 0, transform.position.z+transform.forward.z * range.targetDistance), 2, 1 << 8, QueryTriggerInteraction.Ignore);
+
+
+        GameObject markersphere = GameObject.CreatePrimitive(PrimitiveType.Sphere);
+        Destroy(markersphere.GetComponent < SphereCollider>());
+        markersphere.transform.position = new Vector3((transform.position.x + transform.forward.x * range.targetDistance)-transform.forward.x, 0, (transform.position.z + transform.forward.z * range.targetDistance)-transform.forward.z);
+        markersphere.transform.localScale = new Vector3(2, 2, 2);
+        //markersphere.transform.position = new Vector3(markersphere.transform.position.x, 0, markersphere.transform.position.z);
+        Destroy(markersphere, 1);
+
+        for (int i = 0; i < col.Length; i++)
+        {
+            Health health = col[i].GetComponent<Health>();
+            health.modifyHealth(punchDamage, 9);
+        }
+        print(col.Length);
+
+        attackCDs[3] = 3;
         triggerGCD(1);
 
         /*
@@ -275,7 +302,7 @@ public class BossAttackAI : MonoBehaviour
 
     void Shockwave(float speed, float range, Vector3 position)
     {
-
+        shockwaveObj.GetComponent<ShockwaveScript>().ShockwaveStats(shockwaveStrength, shockwaveDamage);
         shockwaveObj.transform.position = position;
         shockwaveObj.transform.localScale += new Vector3(1 * speed, 0, 1 * speed) * Time.deltaTime;
 
@@ -426,7 +453,7 @@ public class BossAttackAI : MonoBehaviour
         //}
         else if (attackCDs[3] <= 0 && range.inRange)
         {
-            Punch(targeting.currentTarget);
+            //Punch(targeting.currentTarget);
         }
     }
     // triggers the GCD, this method can be triggered with any value to wait for animations or anything else.

@@ -1296,6 +1296,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   CTRLID: 0
   walkspeed: 10
+  jumpHeight: 20
   groundMask:
     serializedVersion: 2
     m_Bits: 1
@@ -1304,16 +1305,23 @@ MonoBehaviour:
     m_Bits: 2560
   tankMat: {fileID: 2100000, guid: 7fba6cba576548f4d90b6753d8fae3e1, type: 2}
   reviveRadius: 2
-  magnetThreat: 20000
+  reviveCastTime: 4
   magnetCooldown: 1
-  shieldDuration: 8
+  magnetDistance: 30
+  pullSpeed: 0.25
+  magnetThreat: 2000
   InfiniteShield: 0
+  shieldDuration: 8
   shieldCooldown: 10
   shieldHealth: 25
+  shieldSize: 20
   perfectShieldDuration: 0.5
   perfectShieldCooldown: 3
+  dodgeRadius: 3
   reflectCooldown: 1
-  reviveCastTime: 4
+  reflectDistance: 30
+  beamWidth: 0.5
+  damageMultiplier: 2
 --- !u!114 &114875075784667654
 MonoBehaviour:
   m_ObjectHideFlags: 1

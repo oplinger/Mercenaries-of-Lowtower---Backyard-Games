@@ -563,7 +563,17 @@ Prefab:
     - target: {fileID: 114752299657823772, guid: 9b019403ca0f5db4fbe90678c8459dda,
         type: 2}
       propertyPath: m_Enabled
-      value: 0
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114050299489096748, guid: 9b019403ca0f5db4fbe90678c8459dda,
+        type: 2}
+      propertyPath: shockwaveStrength
+      value: 500
+      objectReference: {fileID: 0}
+    - target: {fileID: 114050299489096748, guid: 9b019403ca0f5db4fbe90678c8459dda,
+        type: 2}
+      propertyPath: shockwaveDamage
+      value: 10
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 9b019403ca0f5db4fbe90678c8459dda, type: 2}
@@ -610,16 +620,6 @@ Prefab:
     - target: {fileID: 1011025319418690, guid: f05e432990a5ae241acc47700a49aacd, type: 2}
       propertyPath: m_Name
       value: Ranged Character(Clone)
-      objectReference: {fileID: 0}
-    - target: {fileID: 114733641604896904, guid: f05e432990a5ae241acc47700a49aacd,
-        type: 2}
-      propertyPath: sniperAttackCD
-      value: 3
-      objectReference: {fileID: 0}
-    - target: {fileID: 114733641604896904, guid: f05e432990a5ae241acc47700a49aacd,
-        type: 2}
-      propertyPath: archerAttackCD
-      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: f05e432990a5ae241acc47700a49aacd, type: 2}

@@ -1310,6 +1310,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   CTRLID: 0
   walkspeed: 10
+  jumpHeight: 20
   groundMask:
     serializedVersion: 2
     m_Bits: 1
@@ -1318,15 +1319,18 @@ MonoBehaviour:
     m_Bits: 512
   healerMat: {fileID: 2100000, guid: 20445a8076845ba49a80ec7da13afd13, type: 2}
   reviveRadius: 2
-  absorbDamage: 0
+  reviveCastTime: 2
   healAmount: 10
-  absorbCooldown: 0
-  fearCooldown: 10
-  teleportCooldown: 5
   healCooldown: 0
   healInterval: 0.25
   healRange: 50
-  reviveCastTime: 2
+  teleportCooldown: 5
+  teleportRange: 50
+  teleportDelay: 1
+  fearCooldown: 10
+  fearRange: 50
+  fearRunSpeed: 1
+  fearDuration: 3
 --- !u!114 &114914160539663620
 MonoBehaviour:
   m_ObjectHideFlags: 1
