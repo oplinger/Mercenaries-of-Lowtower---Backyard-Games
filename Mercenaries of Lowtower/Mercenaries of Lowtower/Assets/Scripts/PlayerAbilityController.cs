@@ -392,7 +392,8 @@ public class PlayerAbilityController : MonoBehaviour
         Collider[] col1 = Physics.OverlapSphere(me.transform.position, 3, enemyMask, QueryTriggerInteraction.Ignore);
         for (int i = 0; i < col1.Length; i++)
         {
-            Health health = col[i].GetComponent<Health>();
+            print(col1.Length);
+            Health health = col1[i].GetComponent<Health>();
             health.modifyHealth(damage, playerID);
         }
         print("WW2");
@@ -401,7 +402,7 @@ public class PlayerAbilityController : MonoBehaviour
 
         for (int i = 0; i < col2.Length; i++)
         {
-            Health health = col[i].GetComponent<Health>();
+            Health health = col2[i].GetComponent<Health>();
             health.modifyHealth(damage, playerID);
         }
         print("WW3");
