@@ -68,6 +68,6 @@ public class ShieldScript : MonoBehaviour {
             allcol[i].GetComponent<Health>().shielded = false;
 
         }
-        controllerThing.GetComponent<PlayerCDController>().triggerCooldown(1, controllerThing.GetComponent<PlayerCDController>().abilityCooldowns[1]);
+        //controllerThing.GetComponent<PlayerCDController>().triggerCooldown(1, controllerThing.GetComponent<PlayerCDController>().abilityCooldowns[1]);
     }
 }

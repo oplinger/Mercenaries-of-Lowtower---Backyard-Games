@@ -81,7 +81,7 @@ public class PlayerAbilityController : MonoBehaviour
 
         }
         cooldown.abilityCooldowns[1] = CD;
-        //cooldown.triggerCooldown(1, CD);
+        cooldown.triggerCooldown(1, CD);
 
 
     }
@@ -106,7 +106,7 @@ public class PlayerAbilityController : MonoBehaviour
             GameObject target = hit.collider.gameObject;
             if (Vector3.Distance(target.transform.position, me.transform.position) > 3)
             {
-                target.transform.position = Vector3.MoveTowards(new Vector3(target.transform.position.x, 0, target.transform.position.z), new Vector3(me.transform.position.x, 0, me.transform.position.z), pullspeed);
+                target.transform.position = Vector3.MoveTowards(new Vector3(target.transform.position.x, target.transform.position.y, target.transform.position.z), new Vector3(me.transform.position.x, target.transform.position.y, me.transform.position.z), pullspeed);
                 bossTargets.addThreat(damage, playerID, false);
             }
 

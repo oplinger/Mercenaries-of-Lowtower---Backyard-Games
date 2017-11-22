@@ -25,7 +25,7 @@ public class ControllerThing : MonoBehaviour {
         //FindTarget();
         deathcount = new int[4];
         // AssignIDsToArray();
-        for(int i=0; i<4; i++)
+        for (int i = 0; i < 4; i++)
         {
             Player.Add(null);
             PID.Add(9);
@@ -332,8 +332,15 @@ STEP BY STEP:
 
             } else
             {
-                IDs[i].gameObject.transform.position = GameObject.Find("P" + i + "Spawn").transform.position;
-                IDs[i].GetComponent<Health>().health = IDs[i].GetComponent<Health>().maxHealth;
+                //IDs[i].gameObject.transform.position = GameObject.Find("P" + i + "Spawn").transform.position;
+                //IDs[i].GetComponent<Health>().health = IDs[i].GetComponent<Health>().maxHealth;
+
+                IDs[0].transform.position = GameObject.Find("P0Spawn").transform.position;
+                IDs[1].transform.position = GameObject.Find("P1Spawn").transform.position;
+                IDs[2].transform.position = GameObject.Find("P2Spawn").transform.position;
+                IDs[3].transform.position = GameObject.Find("P3Spawn").transform.position;
+
+
 
             }
         }
@@ -387,6 +394,9 @@ STEP BY STEP:
                 break;
             }else if (PID[i] == 9)
             {
+                // Andrew says look here for input bug
+                //PID[i] = ID;
+
                 PID.Insert(i, ID);
                 PID.RemoveAt(PID.Count - 1);
 

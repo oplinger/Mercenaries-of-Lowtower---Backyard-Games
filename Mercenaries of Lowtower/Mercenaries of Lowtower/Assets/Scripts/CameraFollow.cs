@@ -20,7 +20,14 @@ public class CameraFollow : MonoBehaviour {
 
     // Use this for initialization
     void Start () {
-        objects = GameObject.FindGameObjectsWithTag("Player");
+        //objects = GameObject.FindGameObjectsWithTag("Player");
+        objects = new GameObject[4];
+        objects[0] = GameObject.Find("Tank Character(Clone)");
+        objects[1] = GameObject.Find("Healer Character(Clone)");
+        objects[2] = GameObject.Find("Melee Character(Clone)");
+        objects[3] = GameObject.Find("Ranged Character(Clone)");
+
+
         marker = GameObject.CreatePrimitive(PrimitiveType.Cube);
         marker.transform.position = new Vector3(0, 2, -150);
 
