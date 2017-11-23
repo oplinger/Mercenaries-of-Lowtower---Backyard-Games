@@ -47,6 +47,7 @@ public class CameraFollow : MonoBehaviour {
         }
 
             marker = GameObject.CreatePrimitive(PrimitiveType.Cube);
+        Destroy(marker.GetComponent<BoxCollider>());
         marker.transform.position = new Vector3(0, 2, -150);
 
          //maxX = -1000;
