@@ -4,14 +4,15 @@ using UnityEngine;
 
 public class BossTargetingAI : MonoBehaviour {
 
-    public GameObject controllerThing;
-    public ControllerThing controller;
+     GameObject controllerThing;
+     ControllerThing controller;
  
 
 
-    public float[] damageThreat;
-    public float[] distanceThreat;
-    public float[] combinedThreat;
+     float[] damageThreat;
+     float[] distanceThreat;
+    [HideInInspector]
+     public float[] combinedThreat;
     float distance;
     float threatVal;
     int myID;
