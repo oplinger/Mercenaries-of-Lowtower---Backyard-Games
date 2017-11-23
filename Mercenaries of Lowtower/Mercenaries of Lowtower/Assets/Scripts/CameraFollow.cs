@@ -7,8 +7,8 @@ public class CameraFollow : MonoBehaviour {
     GameObject[] objects;
     public GameObject[] labels;
     public Health[] playerhealths;
-    public float[] healths1;
-    public float[] healths2;
+    float[] healths1;
+    float[] healths2;
     GameObject marker;
     float furthestTarget;
     float furthestTarget2;

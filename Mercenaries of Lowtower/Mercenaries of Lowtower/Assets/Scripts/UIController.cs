@@ -18,6 +18,10 @@ public class UIController : MonoBehaviour
     public List<Image> icons;
     public List<Image> portraits;
 
+    float[] healths1;
+    float[] healths2;
+
+
 
     Health[] playerHealth;
     Health bossHealth;
@@ -35,6 +39,9 @@ public class UIController : MonoBehaviour
         timer = 600;
         bossHealth = boss.GetComponent<Health>();
         playerCooldowns = controller.GetComponent<PlayerCDController>();
+        healths1 = new float[4];
+
+        healths2 = new float[4];
 
         // Assigns players to slots based on IDs, for use with UI placement.
         //IE: Tank is in the top left, always.
@@ -43,6 +50,7 @@ public class UIController : MonoBehaviour
         {
             players[i] = controller.IDs[i].gameObject;
             playerHealth[i] = players[i].GetComponent<Health>();
+            healths2[i] = playerHealth[i].health;
 
         }
 
@@ -67,9 +75,14 @@ public class UIController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+
+
         
-        #region Timers
-        timer -= Time.deltaTime;
+
+
+
+            #region Timers
+            timer -= Time.deltaTime;
         texts[5].text = timer.ToString();
         texts[4].text = bossHealth.health.ToString();
         #endregion
@@ -122,6 +135,7 @@ public class UIController : MonoBehaviour
         {
             icons[2].enabled = true;
             icons[0].enabled = false;
+            if(healths2[0]==healths1[0])
             portraits[0].GetComponent<Image>().color = Color.HSVToRGB(.613f, .537f, .4f);
 
         }
@@ -129,7 +143,8 @@ public class UIController : MonoBehaviour
         {
             icons[0].enabled = true;
             icons[2].enabled = false;
-            portraits[0].GetComponent<Image>().color = Color.HSVToRGB(.613f, .537f, .82f);
+            if (healths2[0] == healths1[0])
+                portraits[0].GetComponent<Image>().color = Color.HSVToRGB(.613f, .537f, .82f);
 
 
         }
@@ -177,7 +192,8 @@ public class UIController : MonoBehaviour
         {
             icons[5].enabled = true;
             icons[4].enabled = false;
-            portraits[1].GetComponent<Image>().color = Color.HSVToRGB(.2f, .89f, .5f);
+            if (healths2[1] == healths1[1])
+                portraits[1].GetComponent<Image>().color = Color.HSVToRGB(.2f, .89f, .5f);
 
 
         }
@@ -185,7 +201,8 @@ public class UIController : MonoBehaviour
         {
             icons[4].enabled = true;
             icons[5].enabled = false;
-            portraits[1].GetComponent<Image>().color = Color.HSVToRGB(.2f, .89f, .95f);
+            if (healths2[1] == healths1[1])
+                portraits[1].GetComponent<Image>().color = Color.HSVToRGB(.2f, .89f, .95f);
 
 
         }
@@ -233,7 +250,8 @@ public class UIController : MonoBehaviour
         {
             icons[8].enabled = true;
             icons[7].enabled = false;
-            portraits[2].GetComponent<Image>().color = Color.HSVToRGB(.016f, .788f, .5f);
+            if (healths2[2] == healths1[2])
+                portraits[2].GetComponent<Image>().color = Color.HSVToRGB(.016f, .788f, .5f);
 
 
         }
@@ -241,7 +259,8 @@ public class UIController : MonoBehaviour
         {
             icons[7].enabled = true;
             icons[8].enabled = false;
-            portraits[2].GetComponent<Image>().color = Color.HSVToRGB(.016f, .788f, .95f);
+            if (healths2[2] == healths1[2])
+                portraits[2].GetComponent<Image>().color = Color.HSVToRGB(.016f, .788f, .95f);
 
 
         }
@@ -289,7 +308,8 @@ public class UIController : MonoBehaviour
         {
             icons[11].enabled = true;
             icons[10].enabled = false;
-            portraits[3].GetComponent<Image>().color = Color.HSVToRGB(.216f, .6f, .2f);
+            if (healths2[3] == healths1[3])
+                portraits[3].GetComponent<Image>().color = Color.HSVToRGB(.216f, .6f, .2f);
 
 
         }
@@ -297,9 +317,22 @@ public class UIController : MonoBehaviour
         {
             icons[10].enabled = true;
             icons[11].enabled = false;
-            portraits[3].GetComponent<Image>().color = Color.HSVToRGB(.216f, .6f, .48f);
+            if (healths2[3] == healths1[3])
+                portraits[3].GetComponent<Image>().color = Color.HSVToRGB(.216f, .6f, .48f);
 
 
+        }
+
+        for (int i = 0; i < healths1.Length; i++)
+        {
+            healths1[i] = playerHealth[i].health;
+
+            if (healths2[i] > healths1[i])
+            {
+                print("okop");
+                portraits[i].GetComponent<Image>().color = Color.red;
+                healths2[i] = healths1[i];
+            }
         }
         #endregion
 
