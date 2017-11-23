@@ -124,7 +124,7 @@ attacknum = Mathf.Clamp(attacknum, 0, attackNumMax);
         }
 
         // colliders is for grounding the player, for jumping purposes.
-        colliders = Physics.OverlapCapsule(transform.position, transform.position - (Vector3.up * 2), .25f, groundMask, QueryTriggerInteraction.Ignore);
+        colliders = Physics.OverlapCapsule(transform.position, transform.position - (Vector3.up * .01f), .25f, groundMask, QueryTriggerInteraction.Ignore);
         h1 = health.health;
         #region Controls
         if (walkspeed >= 0 && CTRLID != 0 && !health.isDead)
