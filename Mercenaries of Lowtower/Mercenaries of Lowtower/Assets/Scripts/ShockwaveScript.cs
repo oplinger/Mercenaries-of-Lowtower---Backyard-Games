@@ -5,6 +5,9 @@ using UnityEngine;
 public class ShockwaveScript : MonoBehaviour {
     float shockwaveStrength;
     float shockwaveDamage;
+    Vector3 Position;
+    float Range;
+    float Speed;
 	// Use this for initialization
 	void Start () {
         DontDestroyOnLoad(this);
@@ -13,8 +16,9 @@ public class ShockwaveScript : MonoBehaviour {
 
     // Update is called once per frame
     void Update () {
-
-	}
+        transform.position = Position;
+        transform.localScale += new Vector3(1 * Speed, 0, 1 * Speed) * Time.deltaTime;
+    }
 
     private void OnTriggerEnter(Collider other)
     {
@@ -32,7 +36,15 @@ public class ShockwaveScript : MonoBehaviour {
 
    public void ShockwaveStats(float shockwavestrength, float shockwavedamage )
     {
+
+    }
+
+    public void Shockwave(float speed, float range, Vector3 position, float shockwavestrength, float shockwavedamage)
+    {
         shockwaveDamage = shockwavedamage;
         shockwaveStrength = shockwavestrength;
+        Range = range;
+        Speed = speed;
+        Position = position;
     }
 }

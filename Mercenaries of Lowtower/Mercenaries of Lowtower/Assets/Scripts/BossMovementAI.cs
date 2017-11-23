@@ -7,9 +7,9 @@ public class BossMovementAI : MonoBehaviour {
      GameObject currentTarget;
     
     public float targetDistance;
-    [HideInInspector]
     public bool inRange;
     public float minimumDistance;
+    public float maxDistance;
 
     //Variable to hold the current speed of the boss
     public float speed;
@@ -34,21 +34,30 @@ public class BossMovementAI : MonoBehaviour {
         currentTarget = targeting.currentTarget;
         targetDistance = Vector3.Distance(currentTarget.transform.position, transform.position);
 
-        if (targetDistance > minimumDistance)
+        if (targetDistance < maxDistance)
         {
-            inRange = false;
-            transform.position = Vector3.MoveTowards(transform.position, new Vector3(currentTarget.transform.position.x, transform.position.y, currentTarget.transform.position.z), speed*Time.deltaTime);
-            // .01f was in place of "speed"
-
-            //Orients the boss towards the player
             Vector3 dir = currentTarget.transform.position - transform.position;
             Quaternion rotation = Quaternion.LookRotation(dir);
             transform.rotation = Quaternion.Lerp(transform.rotation, rotation, rotateSpeed * Time.deltaTime);
 
+            if (targetDistance > minimumDistance)
+            {
+                inRange = false;
+                transform.position = Vector3.MoveTowards(transform.position, new Vector3(currentTarget.transform.position.x, transform.position.y, currentTarget.transform.position.z), speed * Time.deltaTime);
+                // .01f was in place of "speed"
+
+                //Orients the boss towards the player
+               
+
+            }
+            else
+            {
+                inRange = true;
+            }
         }
         else
         {
-            inRange = true;
+
         }
 	}
 }

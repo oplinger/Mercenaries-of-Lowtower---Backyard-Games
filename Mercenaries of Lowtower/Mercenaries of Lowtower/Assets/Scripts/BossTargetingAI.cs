@@ -80,7 +80,7 @@ public class BossTargetingAI : MonoBehaviour {
     // After Threat is found, it loops through targetThreat3 and finds the highest threat value, the character assigned that ID now becomes the bosses current target.
     void findCurrentTarget()
     {
-        float highestThreat = 0;
+        float highestThreat = -1000;
         for (int i = 0; i < controller.targets.Length; i++)
         {
             if (combinedThreat[i] > highestThreat)

@@ -202,7 +202,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1822833010907774}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 1.55}
+  m_LocalPosition: {x: 0.6, y: 0, z: 0.519}
   m_LocalScale: {x: 0.50000024, y: 0.5, z: 0.50000024}
   m_Children: []
   m_Father: {fileID: 4268014405758700}
@@ -215,7 +215,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1106663162012924}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0.8750002}
+  m_LocalPosition: {x: 0.08, y: 0, z: 0.856}
   m_LocalScale: {x: 0.20000012, y: 0.2, z: 0.20000012}
   m_Children: []
   m_Father: {fileID: 4268014405758700}
@@ -249,7 +249,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1669068641029250}
   m_LocalRotation: {x: 0, y: 1, z: 0, w: 0}
-  m_LocalPosition: {x: -11.532445, y: 13, z: 42.3}
+  m_LocalPosition: {x: -11.532445, y: 13, z: 41.4}
   m_LocalScale: {x: 5, y: 5, z: 5}
   m_Children:
   - {fileID: 4268014405758700}
@@ -263,7 +263,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1158689515595320}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: -0.8750002}
+  m_LocalPosition: {x: 0.08, y: 0, z: -0.856}
   m_LocalScale: {x: 0.20000012, y: 0.2, z: 0.20000012}
   m_Children: []
   m_Father: {fileID: 4268014405758700}
@@ -276,7 +276,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1625341537862242}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: -1.125}
+  m_LocalPosition: {x: 0.272, y: 0, z: -0.693}
   m_LocalScale: {x: 0.20000012, y: 0.2, z: 0.20000012}
   m_Children: []
   m_Father: {fileID: 4268014405758700}
@@ -302,7 +302,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1691449071057186}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 1.125}
+  m_LocalPosition: {x: 0.272, y: 0, z: 0.693}
   m_LocalScale: {x: 0.20000012, y: 0.2, z: 0.20000012}
   m_Children: []
   m_Father: {fileID: 4268014405758700}
@@ -315,7 +315,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1874846875842692}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: -1.55}
+  m_LocalPosition: {x: 0.6, y: 0, z: -0.519}
   m_LocalScale: {x: 0.50000024, y: 0.5, z: 0.50000024}
   m_Children: []
   m_Father: {fileID: 4268014405758700}
@@ -713,20 +713,31 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 325b50516b48fe84086f3115984f9b41, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  torso: {fileID: 1881613860628548}
   shockwave: 0
   tsunami: 0
   hurricane: 0
   lightningStorm: 0
-  attackCDs: []
-  specialAttackCDs: []
+  attackCDs:
+  - -40.07591
+  - -42.0759
+  - -45.075916
+  - -48.07588
+  specialAttackCDs:
+  - 10
+  - 15
+  - 10
+  - 0.5
   slamDamage: 0
   punchDamage: 12
   lightningstormDamage: 10
   lightningWarningDuration: 3.5
   lightningSphereDuration: 1
   timeBetweenWarningAndDamage: 4
-  shockwaveSpeed: 200
-  shockwaveDuration: 1.5
+  shockwaveSpeed: 40
+  shockwaveDuration: 3
+  shockwaveStrength: 500
+  shockwaveDamage: 10
   tsunamiSpeed: 15
   tsunamiDuration: 10
   hurricaneDamage: 1
@@ -742,11 +753,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 70d28a2544a5cb842964d2f6d1580f56, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  controllerThing: {fileID: 0}
-  controller: {fileID: 0}
-  damageThreat: []
-  distanceThreat: []
-  combinedThreat: []
+  combinedThreat:
+  - 33.3469
+  - 31.007004
+  - 27.691849
+  - 21.236382
   currentTarget: {fileID: 0}
 --- !u!114 &114310086984430496
 MonoBehaviour:
@@ -759,9 +770,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ac398f0ea74f4a649b1e2adb4a6b927b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 100
-  maxHealth: 0
-  player: {fileID: 0}
+  health: 500
+  maxHealth: 500
+  player: {fileID: 1669068641029250}
   shielded: 0
   foundShield: {fileID: 0}
   isDead: 0
@@ -776,11 +787,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a8674ed4aac036d4a9d4fb5a968142dc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  targeting: {fileID: 0}
-  currentTarget: {fileID: 0}
-  targetDistance: 0
+  targetDistance: 66.6531
   inRange: 0
-  speed: 0.45
+  minimumDistance: 30
+  maxDistance: 100
+  speed: 4
   rotateSpeed: 4
 --- !u!135 &135078199796575946
 SphereCollider:

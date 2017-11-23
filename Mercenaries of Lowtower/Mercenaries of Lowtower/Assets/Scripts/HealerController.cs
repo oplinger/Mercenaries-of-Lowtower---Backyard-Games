@@ -192,7 +192,7 @@ public class HealerController : MonoBehaviour
             //Vector3 relpos = playermovement - transform.position;
             if (playermovement != Vector3.zero)
             {
-                if (Input.GetKey("joystick " + CTRLID + " button 2"))
+                if (Input.GetKey("joystick " + CTRLID + " button 2") && !altBuild)
                 {
                     stop = true;
                     if(cooldowns.activeCooldowns[3]>0 && stopTimer==0)

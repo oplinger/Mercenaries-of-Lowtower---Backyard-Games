@@ -120,7 +120,7 @@ public class BossAttackAI : MonoBehaviour
 
 
 
-        attackCDs[0] = 10;
+        attackCDs[0] = 20;
         attackCDs[1] = 8;
         attackCDs[2] = 5;
         attackCDs[3] = 2;
@@ -140,7 +140,7 @@ public class BossAttackAI : MonoBehaviour
     // Each CD ticks down every frame.
     void Update()
     {
-
+        print(Vector3.Dot(transform.forward, (targeting.currentTarget.transform.position-transform.position).normalized));
         if (scenelight == null)
         {
             scenelight = GameObject.Find("Directional Light");
@@ -183,7 +183,6 @@ public class BossAttackAI : MonoBehaviour
         }
          else if (h2 == h1)
         {
-            print("oij");
             if (torso.GetComponent<Renderer>().material.color != Color.white)
             {
                 foreach (Transform child in transform)
@@ -197,14 +196,21 @@ public class BossAttackAI : MonoBehaviour
             }
 
         }
+        if (attackCDs[1] <= shockwaveDuration)
+        {
+            shockwaveObj.GetComponent<ShockwaveScript>().Shockwave(0, shockwaveDuration, new Vector3(0,-100,0), shockwaveStrength, shockwaveDamage);
+            shockwaveObj.transform.localScale = new Vector3(.001f, .25f, .001f);
 
+
+        }
 
         if (shockwave)
         {
             specialAttackCDs[0] += Time.deltaTime;
+
             if (specialAttackCDs[0] >= 10)
             {
-                Shockwave(shockwaveSpeed, shockwaveDuration, shockwaveLocation);
+
             }
 
         }
@@ -283,10 +289,15 @@ public class BossAttackAI : MonoBehaviour
             Health health = col[i].GetComponent<Health>();
             health.modifyHealth(slamDamage, 9);
         }
-        shockwaveLocation = new Vector3(transform.position.x + transform.forward.x * range.targetDistance, 0, transform.position.z + transform.forward.z * range.targetDistance);
-        shockwave = true;
-        attackCDs[1] = 8;
+
+
+
+        shockwaveLocation = new Vector3(targeting.currentTarget.transform.position.x, 1, targeting.currentTarget.transform.position.z);
+        Shockwave();
+        attackCDs[1] = 20;
+
         triggerGCD(2);
+        bossPhase = 5;
     }
 
     void Swipe(GameObject target)
@@ -301,8 +312,8 @@ public class BossAttackAI : MonoBehaviour
     {
         Vector3 zeroY = new Vector3(1, 0, 1);
         //Collider[] col = Physics.OverlapSphere(((transform.position+((transform.forward.*range.targetDistance)-transform.forward))),2, 1<<8, QueryTriggerInteraction.Ignore);
-        Collider[] col = Physics.OverlapSphere(new Vector3(transform.position.x+transform.forward.x * range.targetDistance, 0, transform.position.z+transform.forward.z * range.targetDistance), 2, 1 << 8, QueryTriggerInteraction.Ignore);
-
+        //Collider[] col = Physics.OverlapSphere(new Vector3(transform.position.x+transform.forward.x * range.targetDistance, 0, transform.position.z+transform.forward.z * range.targetDistance), 5, 1 << 8, QueryTriggerInteraction.Ignore);
+        Collider[] col = Physics.OverlapSphere(targeting.currentTarget.transform.position, 5, 1 << 8, QueryTriggerInteraction.Ignore);
 
         GameObject markersphere = GameObject.CreatePrimitive(PrimitiveType.Sphere);
         Destroy(markersphere.GetComponent < SphereCollider>());
@@ -310,13 +321,25 @@ public class BossAttackAI : MonoBehaviour
         markersphere.transform.localScale = new Vector3(2, 2, 2);
         //markersphere.transform.position = new Vector3(markersphere.transform.position.x, 0, markersphere.transform.position.z);
         Destroy(markersphere, 1);
-
-        for (int i = 0; i < col.Length; i++)
+        if (Vector3.Dot(transform.forward, (targeting.currentTarget.transform.position - transform.position).normalized) > .8f)
         {
-            Health health = col[i].GetComponent<Health>();
-            health.modifyHealth(punchDamage, 9);
+            for (int i = 0; i < col.Length; i++)
+            {
+                Health health = col[i].GetComponent<Health>();
+                health.modifyHealth(punchDamage, 9);
+            }
+
+            if (range.inRange && bossPhase != 1)
+            {
+                bossPhase = 1;
+            }
+            // If the player is within range, the punch animation will be triggered
+            else if (range.inRange && bossPhase != 2)
+            {
+                bossPhase = 2;
+            }
         }
-        print(col.Length);
+
 
         attackCDs[3] = 3;
         triggerGCD(1);
@@ -329,30 +352,24 @@ public class BossAttackAI : MonoBehaviour
          */
 
         // If the player is out of range, the boss will go into the preparing to punch animation
-        if (range.inRange && bossPhase != 1)
-        {
-            bossPhase = 1;
-        }
-        // If the player is within range, the punch animation will be triggered
-        else if (range.inRange && bossPhase != 2)
-        {
-            bossPhase = 2;
-        }
+        
 
 
     }
 
-    void Shockwave(float speed, float range, Vector3 position)
+    void Shockwave()
     {
-        shockwaveObj.GetComponent<ShockwaveScript>().ShockwaveStats(shockwaveStrength, shockwaveDamage);
-        shockwaveObj.transform.position = position;
-        shockwaveObj.transform.localScale += new Vector3(1 * speed, 0, 1 * speed) * Time.deltaTime;
+        shockwaveObj.GetComponent<ShockwaveScript>().Shockwave(shockwaveSpeed, shockwaveDuration, shockwaveLocation,shockwaveStrength, shockwaveDamage);
+        //shockwaveObj.transform.position = position;
+        //shockwaveObj.transform.localScale += new Vector3(1 * speed, 0, 1 * speed) * Time.deltaTime;
 
-        if (specialAttackCDs[0] >= 10 + range)
+        if (attackCDs[1] >= 5)
         {
-            shockwaveObj.transform.position = new Vector3(0, -100, 0);
-            shockwaveObj.transform.localScale = new Vector3(.001f, .25f, .001f);
-            specialAttackCDs[0] = 0;
+           // shockwaveObj.GetComponent<ShockwaveScript>().Shockwave(0, shockwaveDuration, new Vector3(0,-100,0), shockwaveStrength, shockwaveDamage);
+
+            //shockwaveObj.transform.position = new Vector3(0, -100, 0);
+            //shockwaveObj.transform.localScale = new Vector3(.001f, .25f, .001f);
+            //specialAttackCDs[0] = 0;
 
         }
 
@@ -495,7 +512,7 @@ public class BossAttackAI : MonoBehaviour
         //}
         else if (attackCDs[3] <= 0 && range.inRange)
         {
-            //Punch(targeting.currentTarget);
+            Punch(targeting.currentTarget);
         }
     }
     // triggers the GCD, this method can be triggered with any value to wait for animations or anything else.
