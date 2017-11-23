@@ -16,40 +16,63 @@ public class HealerController : MonoBehaviour
     PlayerCDController cooldowns;
     Collider[] colliders;
     float timer;
+    float timer1;
+    float timer2;
+    GameObject healObject;
     Health health;
     float h1;
     float h2;
     Animator anim;
-    bool altBuild;
+    bool stop;
+    float stopTimer;
 
     [Header("Genral")]
+    public bool altBuild;
+
     [Range(1, 50)]
     public float walkspeed;
+    [Range(0, 50)]
+    public float jumpHeight;
     public LayerMask groundMask;
     public LayerMask enemyMask;
     public Material healerMat;
+    public float reviveRadius;
+    public float reviveCastTime;
 
+   // public float absorbDamage;
+    //[Range(0, 10)]
+   // public float absorbCooldown;
 
-    [Space(10)]
-    [Header("Damage")]
-    public float absorbDamage;
+    [Header("Heal Settings")]
     public float healAmount;
-
-
-    [Space(10)]
-    [Header("Cooldowns")]
-    [Range(0, 10)]
-    public float absorbCooldown;
-    [Range(0, 10)]
-    public float fearCooldown;
-    [Range(0, 10)]
-    public float teleportCooldown;
     [Range(0, 10)]
     public float healCooldown;
     [Range(0, 10)]
     public float healInterval;
     [Range(0, 100)]
     public float healRange;
+
+    public float orbCooldown;
+    public float orbSpeed;
+    [Header("Teleport Settings")]
+    [Range(0, 10)]
+    public float teleportCooldown;
+    [Range(0, 50)]
+    public float teleportRange;
+    [Range(0, 10)]
+    public float teleportDelay;
+    [Header("Fear Settings")]
+    [Range(0, 10)]
+    public float fearCooldown;
+    [Range(0, 50)]
+    public float fearRange;
+    [Range(0, 10)]
+    public float fearRunSpeed;
+    [Range(0, 10)]
+    public float fearDuration;
+
+    
+
     #endregion
 
 
@@ -87,17 +110,80 @@ public class HealerController : MonoBehaviour
 
         if (altBuild)
         {
-            healerMat.color = Color.HSVToRGB(.75f, .396f, .5f);
+            healerMat.color = Color.HSVToRGB(.2f, .89f, .5f);
             
 
         } else
         {
-            healerMat.color = Color.HSVToRGB(.75f, .396f, .95f);
+            healerMat.color = Color.HSVToRGB(.2f, .89f, .95f);
 
         }
+
+        if (!altBuild && CTRLID != 0 && Input.GetKey("joystick " + CTRLID + " button 2"))
+        {
+
+            if (Input.GetAxis("J" + CTRLID + "Horizontal") > -1 && Input.GetAxis("J" + CTRLID + "Horizontal") < 0)
+            {
+                if (Input.GetAxis("J" + CTRLID + "Vertical") > 0 && Input.GetAxis("J" + CTRLID + "Vertical") < 1)
+                {
+                    healObject = controller.IDs[0].gameObject;
+                    // transform.rotation = Quaternion.LookRotation(controller.IDs[0].gameObject.transform.position);
+                    transform.LookAt(controller.IDs[0].gameObject.transform);
+
+                    print(healObject);
+                }
+
+            }
+            if (Input.GetAxis("J" + CTRLID + "Horizontal") > 0 && Input.GetAxis("J" + CTRLID + "Horizontal") < 1)
+            {
+                if (Input.GetAxis("J" + CTRLID + "Vertical") > 0 && Input.GetAxis("J" + CTRLID + "Vertical") < 1)
+                {
+                    healObject = controller.IDs[1].gameObject;
+                    //transform.rotation = Quaternion.LookRotation(controller.IDs[1].gameObject.transform.position);
+                    transform.LookAt(controller.IDs[1].gameObject.transform);
+
+
+                    print(healObject);
+                }
+
+            }
+            if (Input.GetAxis("J" + CTRLID + "Horizontal") > -1 && Input.GetAxis("J" + CTRLID + "Horizontal") < 0)
+            {
+                if (Input.GetAxis("J" + CTRLID + "Vertical") < 0 && Input.GetAxis("J" + CTRLID + "Vertical") > -1)
+                {
+                    healObject = controller.IDs[2].gameObject;
+                    //transform.rotation = Quaternion.LookRotation(controller.IDs[2].gameObject.transform.position);
+                    transform.LookAt(controller.IDs[2].gameObject.transform);
+
+
+                    print(healObject);
+                }
+
+            }
+            if (Input.GetAxis("J" + CTRLID + "Horizontal") > 0 && Input.GetAxis("J" + CTRLID + "Horizontal") < 1)
+            {
+                if (Input.GetAxis("J" + CTRLID + "Vertical") < 0 && Input.GetAxis("J" + CTRLID + "Vertical") > -1)
+                {
+                    healObject = controller.IDs[3].gameObject;
+                    //transform.rotation = Quaternion.LookRotation(controller.IDs[3].gameObject.transform.position);
+                    transform.LookAt(controller.IDs[3].gameObject.transform);
+
+
+                    print(healObject);
+                }
+
+            }
+
+        }
+        if(CTRLID != 0 && Input.GetKeyUp("joystick " + CTRLID + " button 2") && cooldowns.activeCooldowns[3] <= 0 && !health.isDead && !altBuild)
+        {
+            abilities.TargetedHeal(20, 1, gameObject, orbCooldown, healObject, orbSpeed);
+            stopTimer = 0;
+        }
+
         anim.SetInteger("AnimState", 0);
         // colliders is for grounding the player, for jumping purposes.
-        colliders = Physics.OverlapCapsule(transform.position, transform.position - (Vector3.up * 2), .25f, groundMask, QueryTriggerInteraction.Ignore);
+        colliders = Physics.OverlapCapsule(transform.position, transform.position - (Vector3.up * .01f), .25f, groundMask, QueryTriggerInteraction.Ignore);
         h1 = health.health;
         #region Controls
         if (walkspeed >= 0 && CTRLID != 0 && !health.isDead)
@@ -106,22 +192,50 @@ public class HealerController : MonoBehaviour
             //Vector3 relpos = playermovement - transform.position;
             if (playermovement != Vector3.zero)
             {
-                transform.rotation = Quaternion.LookRotation(playermovement);
-                transform.Translate(playermovement * walkspeed * Time.deltaTime, Space.World);
-                anim.SetInteger("AnimState", 1);
+                if (Input.GetKey("joystick " + CTRLID + " button 2"))
+                {
+                    stop = true;
+                    if(cooldowns.activeCooldowns[3]>0 && stopTimer==0)
+                    stopTimer = .5f;
+
+
+                }
+
+                if (!stop)
+                {
+                    transform.rotation = Quaternion.LookRotation(playermovement);
+                    walkspeed = 10;
+                    transform.Translate(playermovement * walkspeed * Time.deltaTime, Space.World);
+                    anim.SetInteger("AnimState", 1);
+                }
             } else
             {
+
             }
         }
-
         if (CTRLID != 0 && colliders.Length > 0 && Input.GetKeyDown("joystick " + CTRLID + " button 0") && !health.isDead)
         {
-            abilities.Jump(CTRLID, gameObject);
+            abilities.Jump(CTRLID, gameObject, jumpHeight);
             anim.SetInteger("AnimState", 3);
         }
         else
         {
         }
+
+        if (CTRLID != 0 && Input.GetKey("joystick " + CTRLID + " button 3") && !health.isDead)
+        {
+            timer1 += Time.deltaTime;
+            if (timer1 > reviveCastTime)
+            {
+                abilities.Revive(1, gameObject, reviveRadius);
+
+            }
+        }
+        if (CTRLID != 0 && Input.GetKeyUp("joystick " + CTRLID + " button 3") && !health.isDead)
+        {
+            reviveCastTime = 0;
+        }
+
 
         //if (CTRLID != 0 && Input.GetKeyDown("joystick " + CTRLID + " button 1") && cooldowns.activeCooldowns[4] <= 0 && altBuild)
         //{
@@ -134,14 +248,14 @@ public class HealerController : MonoBehaviour
 
         if (CTRLID != 0 && Input.GetKeyDown("joystick " + CTRLID + " button 1") && cooldowns.activeCooldowns[4] <= 0 && altBuild && !health.isDead)
         {
-            abilities.HealerCC(0, 1, gameObject, fearCooldown);
+            abilities.HealerCC(0, 1, gameObject, fearCooldown, fearRange, fearRunSpeed, fearDuration);
             anim.SetInteger("AnimState", 2);
         }
         else
         {
         }
 
-        if (CTRLID != 0 && Input.GetKey("joystick " + CTRLID + " button 2") && cooldowns.activeCooldowns[3] <= 0 && !health.isDead)
+        if (CTRLID != 0 && Input.GetKey("joystick " + CTRLID + " button 2") && cooldowns.activeCooldowns[3] <= 0 && !health.isDead && altBuild)
         {
             healVisual.SetActive(true);
             timer += Time.deltaTime;
@@ -160,7 +274,11 @@ public class HealerController : MonoBehaviour
 
         if (CTRLID != 0 && Input.GetKey("joystick " + CTRLID + " button 1") && cooldowns.activeCooldowns[4] <= 0 && !altBuild && !health.isDead)
         {
-            abilities.Healaport(0, 1, gameObject, teleportCooldown);
+            //teleportDelay += Time.deltaTime;
+
+            timer2 += Time.deltaTime;
+            if(timer2>=teleportDelay)
+            abilities.Healaport(0, 1, gameObject, teleportCooldown, teleportRange);
         }
 
 
@@ -169,14 +287,34 @@ public class HealerController : MonoBehaviour
             altBuild = !altBuild;
         }
 
+        if (stop)
+        {
+            stopTimer += Time.deltaTime;
+            if (stopTimer > .5f)
+            {
+                stop = false;
+                stopTimer = 0;
+            }
+            transform.rotation = transform.rotation;
+            walkspeed = 0;
+
+        } else
+        {
+            walkspeed = 10;
+        }
+
         #endregion
         #region Health and Death
         if (h1 < h2)
         {
+            healerMat.SetColor("_EmissionColor", Color.HSVToRGB(1f, 1, 1));
+
             anim.SetInteger("AnimState", 4);
             h2 = h1;
         } else
         {
+            healerMat.SetColor("_EmissionColor", Color.HSVToRGB(1f, 1, 0));
+
         }
 
         if (health.isDead)
@@ -186,6 +324,7 @@ public class HealerController : MonoBehaviour
             playermovement *= 0;
         } else
         {
+            walkspeed = 10;
         }
         #endregion
     }

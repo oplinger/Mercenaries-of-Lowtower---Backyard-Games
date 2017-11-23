@@ -18,6 +18,10 @@ public class UIController : MonoBehaviour
     public List<Image> icons;
     public List<Image> portraits;
 
+    float[] healths1;
+    float[] healths2;
+
+
 
     Health[] playerHealth;
     Health bossHealth;
@@ -35,6 +39,9 @@ public class UIController : MonoBehaviour
         timer = 600;
         bossHealth = boss.GetComponent<Health>();
         playerCooldowns = controller.GetComponent<PlayerCDController>();
+        healths1 = new float[4];
+
+        healths2 = new float[4];
 
         // Assigns players to slots based on IDs, for use with UI placement.
         //IE: Tank is in the top left, always.
@@ -43,6 +50,7 @@ public class UIController : MonoBehaviour
         {
             players[i] = controller.IDs[i].gameObject;
             playerHealth[i] = players[i].GetComponent<Health>();
+            healths2[i] = playerHealth[i].health;
 
         }
 
@@ -67,12 +75,17 @@ public class UIController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+
+
         
-        #region Timers
-        timer -= Time.deltaTime;
+
+
+
+            #region Timers
+            timer -= Time.deltaTime;
         texts[5].text = timer.ToString();
         texts[4].text = bossHealth.health.ToString();
-#endregion
+        #endregion
 
         #region Cooldown Icons
 
@@ -118,6 +131,24 @@ public class UIController : MonoBehaviour
 
         }
 
+        if (players[0].GetComponent<TankController>().altBuild)
+        {
+            icons[2].enabled = true;
+            icons[0].enabled = false;
+            if(healths2[0]==healths1[0])
+            portraits[0].GetComponent<Image>().color = Color.HSVToRGB(.613f, .537f, .4f);
+
+        }
+        else
+        {
+            icons[0].enabled = true;
+            icons[2].enabled = false;
+            if (healths2[0] == healths1[0])
+                portraits[0].GetComponent<Image>().color = Color.HSVToRGB(.613f, .537f, .82f);
+
+
+        }
+
         icons[3].material.SetFloat("_Tween", playerCooldowns.activeCooldowns[3] / playerCooldowns.abilityCooldowns[3]);
         icons[3].material.SetTexture("_MainTex", Resources.Load("Textures/HealEffect") as Texture);
         icons[3].material.SetTexture("_SecondTex", Resources.Load("Textures/HealEffectBlack") as Texture);
@@ -154,6 +185,25 @@ public class UIController : MonoBehaviour
         else
         {
             icons[5].rectTransform.localScale = new Vector3(1, 1, 1);
+
+        }
+
+        if (players[1].GetComponent<HealerController>().altBuild)
+        {
+            icons[5].enabled = true;
+            icons[4].enabled = false;
+            if (healths2[1] == healths1[1])
+                portraits[1].GetComponent<Image>().color = Color.HSVToRGB(.2f, .89f, .5f);
+
+
+        }
+        else
+        {
+            icons[4].enabled = true;
+            icons[5].enabled = false;
+            if (healths2[1] == healths1[1])
+                portraits[1].GetComponent<Image>().color = Color.HSVToRGB(.2f, .89f, .95f);
+
 
         }
 
@@ -196,6 +246,25 @@ public class UIController : MonoBehaviour
 
         }
 
+        if (players[2].GetComponent<MeleeController>().altBuild)
+        {
+            icons[8].enabled = true;
+            icons[7].enabled = false;
+            if (healths2[2] == healths1[2])
+                portraits[2].GetComponent<Image>().color = Color.HSVToRGB(.016f, .788f, .5f);
+
+
+        }
+        else
+        {
+            icons[7].enabled = true;
+            icons[8].enabled = false;
+            if (healths2[2] == healths1[2])
+                portraits[2].GetComponent<Image>().color = Color.HSVToRGB(.016f, .788f, .95f);
+
+
+        }
+
         icons[9].material.SetFloat("_Tween", playerCooldowns.activeCooldowns[9] / playerCooldowns.abilityCooldowns[9]);
         icons[9].material.SetTexture("_MainTex", Resources.Load("Textures/RangedArrowShot") as Texture);
         icons[9].material.SetTexture("_SecondTex", Resources.Load("Textures/RangedArrowShotBlack") as Texture);
@@ -233,6 +302,37 @@ public class UIController : MonoBehaviour
         {
             icons[11].rectTransform.localScale = new Vector3(1, 1, 1);
 
+        }
+
+        if (players[3].GetComponent<RangedController>().altBuild)
+        {
+            icons[11].enabled = true;
+            icons[10].enabled = false;
+            if (healths2[3] == healths1[3])
+                portraits[3].GetComponent<Image>().color = Color.HSVToRGB(.216f, .6f, .2f);
+
+
+        }
+        else
+        {
+            icons[10].enabled = true;
+            icons[11].enabled = false;
+            if (healths2[3] == healths1[3])
+                portraits[3].GetComponent<Image>().color = Color.HSVToRGB(.216f, .6f, .48f);
+
+
+        }
+
+        for (int i = 0; i < healths1.Length; i++)
+        {
+            healths1[i] = playerHealth[i].health;
+
+            if (healths2[i] > healths1[i])
+            {
+                print("okop");
+                portraits[i].GetComponent<Image>().color = Color.red;
+                healths2[i] = healths1[i];
+            }
         }
         #endregion
 

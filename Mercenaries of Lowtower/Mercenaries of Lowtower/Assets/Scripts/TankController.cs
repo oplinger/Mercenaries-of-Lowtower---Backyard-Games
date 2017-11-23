@@ -17,41 +17,60 @@ public class TankController : MonoBehaviour
     Health health;
     float h1;
     float h2;
-    bool altBuild;
     float timer;
+    float timer1;
+    bool visual;
+
     float reflectDamage;
 
     [Header("Genral")]
+    public bool altBuild;
+
     [Range(1, 50)]
     public float walkspeed;
+    [Range(0,50)]
+    public float jumpHeight;
     public LayerMask groundMask;
     public LayerMask magnetMask;
     public Material tankMat;
+    public float reviveRadius;
+    public float reviveCastTime;
 
-
-
-
-    [Space(10)]
-    [Header("Damage")]
-    public float magnetThreat;
-    float shieldAmount;
-
-
-    [Space(10)]
-    [Header("Cooldowns")]
+    [Header("Magnet Settings")]
     [Range(0, 10)]
     public float magnetCooldown;
+    [Range(0, 100)]
+    public float magnetDistance;
     [Range(0, 10)]
-    public float shieldDuration;
+    public float pullSpeed;
+    public float magnetThreat;
+    
+    [Header("Shield Settings")]
     public bool InfiniteShield;
     [Range(0, 10)]
+    public float shieldDuration;
+    [Range(0, 10)]
     public float shieldCooldown;
+    public float shieldHealth;
+    [Range(0, 50)]
+    public float shieldSize;
+    [Header("Perfect Dodge Settings")]
     [Range(0, 10)]
     public float perfectShieldDuration;
     [Range(0, 10)]
     public float perfectShieldCooldown;
+    [Range(0, 50)]
+    public float dodgeRadius;
+    [Header("Reflection Settings")]
     [Range(0, 10)]
     public float reflectCooldown;
+    [Range(0,50)]
+    public float reflectDistance;
+    [Range(0, 2)]
+    public float beamWidth;
+    [Range(0, 10)]
+    public float damageMultiplier;
+
     #endregion
 
     // Use this for initialization
@@ -82,19 +101,19 @@ public class TankController : MonoBehaviour
     {
         if (altBuild)
         {
-            tankMat.color = Color.HSVToRGB(.613f, .537f, .5f);
+            tankMat.color = Color.HSVToRGB(.613f, .537f, .4f);
 
 
         }
         else if (!altBuild)
         {
-            tankMat.color = Color.HSVToRGB(.613f, .537f, .95f);
+            tankMat.color = Color.HSVToRGB(.613f, .537f, .82f);
 
         }
         anim.SetInteger("AnimState", 0);
 
         // colliders is for grounding the player, for jumping purposes.
-        colliders = Physics.OverlapCapsule(transform.position, transform.position - (Vector3.up * 2), .25f, groundMask, QueryTriggerInteraction.Ignore);
+        colliders = Physics.OverlapCapsule(transform.position, transform.position - (Vector3.up * .1f), .25f, groundMask, QueryTriggerInteraction.Ignore);
         h1 = health.health;
         #region Controls
         if (walkspeed >= 0 && CTRLID != 0 && !health.isDead)
@@ -120,47 +139,81 @@ public class TankController : MonoBehaviour
             }
         }
 
-        if (CTRLID != 0 && Input.GetKey("joystick " + CTRLID + " button 1") && cooldowns.activeCooldowns[0]<=0 && !altBuild && !health.isDead)
-        {
-            abilities.TankMagnet(magnetThreat, 0, gameObject, magnetCooldown, magnetMask);
-            anim.SetInteger("AnimState", 2);
-            tankMat.SetColor("_EmissionColor", Color.HSVToRGB(1, 1, 1));
-
-        }
-        else
-        {
-            tankMat.SetColor("_EmissionColor", Color.HSVToRGB(1, 1, 0));
-
-        }
-
-        if (CTRLID != 0 && Input.GetKeyDown("joystick " + CTRLID + " button 2") && cooldowns.activeCooldowns[1] <= 0 && altBuild && !health.isDead)
-        {
-            abilities.TankPerfectShield(shieldAmount, 0, gameObject, perfectShieldCooldown, perfectShieldDuration);
-            anim.SetInteger("AnimState", 2);
-
-        }
-
-        if (CTRLID != 0 && Input.GetKeyDown("joystick " + CTRLID + " button 2") && cooldowns.activeCooldowns[1] <= 0 && !altBuild && !health.isDead)
-        {
-            abilities.TankShield(shieldAmount, 0, gameObject, shieldCooldown, shieldDuration, InfiniteShield);
-            anim.SetInteger("AnimState", 2);
-
-        }
-
         if (CTRLID != 0 && colliders.Length > 0 && Input.GetKeyDown("joystick " + CTRLID + " button 0"))
         {
-            abilities.Jump(CTRLID, gameObject);
+            abilities.Jump(CTRLID, gameObject, jumpHeight);
             anim.SetInteger("AnimState", 3);
         }
         else
         {
         }
 
+        if (CTRLID != 0 && Input.GetKey("joystick " + CTRLID + " button 3") && !health.isDead)
+        {
+            timer1 += Time.deltaTime;
+            if (timer1 > reviveCastTime)
+            {
+                abilities.Revive(1, gameObject, reviveRadius);
+
+            }
+        }
+        if (CTRLID != 0 && Input.GetKeyUp("joystick " + CTRLID + " button 3") && !health.isDead)
+        {
+            reviveCastTime = 0;
+        }
+
+        if (CTRLID != 0 && Input.GetKey("joystick " + CTRLID + " button 1") && cooldowns.activeCooldowns[0]<=0 && !altBuild && !health.isDead)
+        {
+
+
+                GameObject cap = GameObject.CreatePrimitive(PrimitiveType.Capsule);
+                Destroy(cap.GetComponent<CapsuleCollider>());
+                cap.transform.position = transform.position + transform.forward * 10;
+                cap.transform.rotation = transform.rotation * Quaternion.Euler(90, 0, 0);
+                cap.transform.localScale = new Vector3(1, 10, 1);
+                cap.transform.parent = transform;
+            Destroy(cap, Time.deltaTime+.002f);
+            
+
+            abilities.TankMagnet(magnetThreat, 0, gameObject, magnetCooldown, magnetMask, magnetDistance, pullSpeed);
+            anim.SetInteger("AnimState", 2);
+            tankMat.SetColor("_EmissionColor", Color.HSVToRGB(.7f, 1, 1));
+
+        }
+        else
+        {
+            tankMat.SetColor("_EmissionColor", Color.HSVToRGB(.7f, 1, 0));
+            
+
+        }
+        if (CTRLID != 0 && Input.GetKeyUp("joystick " + CTRLID + " button 1") && !altBuild && !health.isDead)
+        {
+
+            cooldowns.triggerCooldown(0, magnetCooldown);
+
+        }
+
+        if (CTRLID != 0 && Input.GetKeyDown("joystick " + CTRLID + " button 2") && cooldowns.activeCooldowns[1] <= 0 && altBuild && !health.isDead)
+        {
+            abilities.TankPerfectShield(shieldHealth, 0, gameObject, perfectShieldCooldown, perfectShieldDuration, dodgeRadius);
+            anim.SetInteger("AnimState", 2);
+
+        }
+
+        if (CTRLID != 0 && Input.GetKeyDown("joystick " + CTRLID + " button 2") && cooldowns.activeCooldowns[1] <= 0 && !altBuild && !health.isDead)
+        {
+            abilities.TankShield(shieldHealth, 0, gameObject, shieldCooldown, shieldDuration, InfiniteShield, shieldSize);
+            anim.SetInteger("AnimState", 2);
+
+        }
+
+
+
         if (CTRLID != 0 && Input.GetKey("joystick " + CTRLID + " button 1") && cooldowns.activeCooldowns[0] <= 0 && altBuild && !health.isDead)
         {
             //timer += Time.deltaTime;
             //reflectDamage += (h2 - h1) * 2;
-            abilities.TankReflect(reflectDamage,0, gameObject, reflectCooldown, true, h1, h2, timer);
+            abilities.TankReflect(reflectDamage,0, gameObject, reflectCooldown, true, h1, h2, timer, reflectDistance, beamWidth, damageMultiplier);
             tankMat.SetColor("_EmissionColor", Color.HSVToRGB(.5f,1,1));
             //if (timer > 2)
             //{
@@ -172,6 +225,8 @@ public class TankController : MonoBehaviour
         if (CTRLID != 0 && Input.GetKeyUp("joystick " + CTRLID + " button 1") && cooldowns.activeCooldowns[0] <= 0 && altBuild && !health.isDead)
         {
             tankMat.SetColor("_EmissionColor", Color.HSVToRGB(.5f, 1, 0));
+            cooldowns.triggerCooldown(0, reflectCooldown);
+
             //timer = 0;
             //reflectDamage = 0;
 
@@ -189,11 +244,14 @@ public class TankController : MonoBehaviour
         #region Health and Death
         if (h1 < h2)
         {
+            tankMat.SetColor("_EmissionColor", Color.HSVToRGB(1, 1, 1));
             anim.SetInteger("AnimState", 4);
             h2 = h1;
         }
-        else
+        else if (tankMat.GetColor("_EmissionColor") != Color.HSVToRGB(1, 1, 0) && !Input.GetKey("joystick " + CTRLID + " button 1"))
         {
+            tankMat.SetColor("_EmissionColor", Color.HSVToRGB(1, 1, 0));
+
         }
 
         if (health.isDead)
@@ -204,6 +262,7 @@ public class TankController : MonoBehaviour
         }
         else
         {
+            walkspeed = 10;
         }
 
         #endregion

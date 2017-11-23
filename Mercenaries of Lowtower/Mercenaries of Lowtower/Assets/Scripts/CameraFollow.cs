@@ -5,34 +5,77 @@ using UnityEngine;
 public class CameraFollow : MonoBehaviour {
 
     GameObject[] objects;
+    public GameObject[] labels;
+    public Health[] playerhealths;
+    float[] healths1;
+    float[] healths2;
     GameObject marker;
     float furthestTarget;
     float furthestTarget2;
-    float maxX = -1000;
-    float maxY = -1000;
-    float minX = 1000;
-    float minY = 1000;
-    float maxZ = -1000;
-    float minZ = 1000;
+    float maxX;
+    float maxY;
+    float minX;
+    float minY;
+    float maxZ;
+    float minZ;
     public GameObject camTarget;
 
 
     // Use this for initialization
     void Start () {
-        objects = GameObject.FindGameObjectsWithTag("Player");
-        marker = GameObject.CreatePrimitive(PrimitiveType.Cube);
+        //objects = GameObject.FindGameObjectsWithTag("Player");
+        objects = new GameObject[4];
+        objects[0] = GameObject.Find("Tank Character(Clone)");
+        objects[1] = GameObject.Find("Healer Character(Clone)");
+        objects[2] = GameObject.Find("Melee Character(Clone)");
+        objects[3] = GameObject.Find("Ranged Character(Clone)");
+
+        playerhealths = new Health[4];
+        healths1 = new float[4];
+
+        healths2 = new float[4];
+
+
+        for (int i = 0; i < objects.Length; i++)
+        {
+            playerhealths[i] = objects[i].GetComponent<Health>();
+        }
+
+        for (int i = 0; i < playerhealths.Length; i++)
+        {
+            healths2[i] = playerhealths[i].health;
+        }
+
+            marker = GameObject.CreatePrimitive(PrimitiveType.Cube);
+        marker.transform.position = new Vector3(0, 2, -150);
+
+         //maxX = -1000;
+         //maxY = -1000;
+         //minX = 1000;
+         //minY = 1000;
+         //maxZ = -1000;
+         //minZ = 1000;
+
+        transform.position = new Vector3(0, 17, -150);
         
 	}
 	
 	// Update is called once per frame
 	void Update () {
         FindPositions();
+        GetHealths();
+        FlashOnDamage();
+            for (int i = 0; i<labels.Length; i++)
+            {
+            labels[i].transform.position = Vector3.Lerp(transform.position, objects[i].transform.position, .5f);
+            }
+        
     }
 
     void FindPositions()
     {
         //Vector3 averagePos = new Vector3();
-        furthestTarget2 = Vector3.Distance(marker.transform.position, objects[2].transform.position);
+        //furthestTarget2 = Vector3.Distance(marker.transform.position, objects[2].transform.position);
 
         for (int i = 0; i < objects.Length; i++)
         {
@@ -111,7 +154,7 @@ public class CameraFollow : MonoBehaviour {
         maxZ = -1000;
         Vector3 centerpos = new Vector3((currminX + currmaxX) / 2, (currminY + currmaxY) / 2, (currminZ + currmaxZ) / 2);
         transform.position = centerpos;
-        transform.position += new Vector3(0, Mathf.Clamp(furthestTarget2 * 1.5f, 25, 500), -15);
+        transform.position += new Vector3(0, Mathf.Clamp(furthestTarget * 2f, 25, 500), -15);
         Vector3 angles = new Vector3(Mathf.Clamp(transform.eulerAngles.x, 60, 90), Mathf.Clamp(transform.eulerAngles.x, 0, 0), transform.eulerAngles.z);
         transform.eulerAngles = angles;
         marker.transform.position = centerpos;
@@ -119,5 +162,27 @@ public class CameraFollow : MonoBehaviour {
         transform.LookAt(camTarget.transform);
 
     }
+    void GetHealths()
+    {
+        for (int i = 0; i < healths2.Length; i++)
+        {
+            healths1[i] = playerhealths[i].health;
+        }
+    }
 
+    void FlashOnDamage()
+    {
+        for (int i = 0; i < healths2.Length; i++)
+        {
+            if (healths2[i] > healths1[i])
+            {
+                labels[i].GetComponent<TextMesh>().color = Color.red;
+                healths2[i] = healths1[i];
+            } else
+            {
+                labels[i].GetComponent<TextMesh>().color = Color.white;
+            }
+        }
+
+    }
 }

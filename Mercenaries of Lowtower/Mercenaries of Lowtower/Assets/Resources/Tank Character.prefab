@@ -195,7 +195,6 @@ GameObject:
   - component: {fileID: 114024317959924302}
   - component: {fileID: 114271399285263074}
   - component: {fileID: 114875075784667654}
-  - component: {fileID: 114542883317360338}
   m_Layer: 8
   m_Name: Tank Character
   m_TagString: Player
@@ -1267,9 +1266,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ac398f0ea74f4a649b1e2adb4a6b927b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 100
+  health: 200
+  maxHealth: 0
   player: {fileID: 0}
   shielded: 0
+  foundShield: {fileID: 0}
   isDead: 0
 --- !u!114 &114271399285263074
 MonoBehaviour:
@@ -1280,17 +1281,6 @@ MonoBehaviour:
   m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: c1830fbcaf1c1d2429a29547dbabe501, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &114542883317360338
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1239915997541124}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3fe1bee0ccfa75443b8785d0722928ac, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!114 &114782003998301322
@@ -1306,19 +1296,32 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   CTRLID: 0
   walkspeed: 10
+  jumpHeight: 20
   groundMask:
     serializedVersion: 2
     m_Bits: 1
-  enemyMask:
+  magnetMask:
     serializedVersion: 2
-    m_Bits: 512
+    m_Bits: 2560
   tankMat: {fileID: 2100000, guid: 7fba6cba576548f4d90b6753d8fae3e1, type: 2}
-  magnetThreat: 0
-  magnetCooldown: 0
-  shieldDuration: 10
-  shieldCooldown: 0
-  perfectShieldCooldown: 0
-  reflectCooldown: 0
+  reviveRadius: 2
+  reviveCastTime: 4
+  magnetCooldown: 1
+  magnetDistance: 30
+  pullSpeed: 0.25
+  magnetThreat: 2000
+  InfiniteShield: 0
+  shieldDuration: 8
+  shieldCooldown: 10
+  shieldHealth: 25
+  shieldSize: 20
+  perfectShieldDuration: 0.5
+  perfectShieldCooldown: 3
+  dodgeRadius: 3
+  reflectCooldown: 1
+  reflectDistance: 30
+  beamWidth: 0.5
+  damageMultiplier: 2
 --- !u!114 &114875075784667654
 MonoBehaviour:
   m_ObjectHideFlags: 1

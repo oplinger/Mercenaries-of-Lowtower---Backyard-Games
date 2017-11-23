@@ -5,13 +5,15 @@ using UnityEngine;
 public class ShieldScript : MonoBehaviour {
     Collider[] cols;
     public Collider[] playersInShield;
-	// Use this for initialization
-	void Start () {
-		
-	}
-	
-	// Update is called once per frame
-	void Update () {
+    GameObject controllerThing;
+
+    // Use this for initialization
+    void Start () {
+        controllerThing = GameObject.Find("Controller Thing");
+    }
+
+    // Update is called once per frame
+    void Update () {
        //playersInShield = Physics.OverlapSphere(transform.position, 10, 1 << 8, QueryTriggerInteraction.Ignore);
 
         //cols = Physics.OverlapSphere(transform.position, 10, 1<<8, QueryTriggerInteraction.Ignore);
@@ -64,7 +66,8 @@ public class ShieldScript : MonoBehaviour {
         for(int i = 0; i < allcol.Length; i++)
         {
             allcol[i].GetComponent<Health>().shielded = false;
-        }
 
+        }
+        //controllerThing.GetComponent<PlayerCDController>().triggerCooldown(1, controllerThing.GetComponent<PlayerCDController>().abilityCooldowns[1]);
     }
 }

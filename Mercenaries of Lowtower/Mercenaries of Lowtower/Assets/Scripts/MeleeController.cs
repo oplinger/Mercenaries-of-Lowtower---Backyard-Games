@@ -18,36 +18,52 @@ public class MeleeController : MonoBehaviour
     MeleeTargetList mTarList;
     int attacknum;
     float timer;
-    bool altBuild;
+    float timer1;
+
 
     [Header("General")]
+    public bool altBuild;
+
     [Range(1, 50)]
     public float walkspeed;
+    [Range(0, 50)]
+    public float jumpHeight;
     public LayerMask groundMask;
     public LayerMask enemyMask;
     public Material meleeMat;
+    public float reviveRadius;
+    public float reviveCastTime;
 
-
-    [Space(10)]
-    [Header("Damage")]
-    public float rogueMeleeDamage;
+    [Header("Berserker Melee Settings")]
     public float berserkerMeleeDamage;
-    public float lungeDamage;
-    public float whirlwindDamage;
-
-    [Space(10)]
-    [Header("Cooldowns")]
-    [Range(0,10)]
+    [Range(0, 10)]
     public float berserkerMeleeAttackCD;
     public int attackNumMax;
     [Tooltip("CD - (SpeedInterval*attacknum)")]
+    [Range(0, 1)]
     public float speedInterval;
     [Range(0, 10)]
+    public float speedReset;
+
+    [Header("Rogue Melee Settings")]
+    public float rogueMeleeDamage;
+    [Range(0, 10)]
     public float rogueMeleeAttackCD;
+
+    [Header("Whirlwind Settings")]
+    public float whirlwindDamage;
+    [Range(0, 10)]
+    public float cycloneCD;
+    public float strikeInterval;
+
+    [Header("Lunge Settings")]
+    public float lungeDamage;
+    public float lungeDistance;
     [Range(0, 10)]
     public float lungeCD;
-    [Range(0, 10)]
-    public float CycloneCD;
+
+
+
 
     Animator anim;
     Health health;
@@ -101,14 +117,14 @@ attacknum = Mathf.Clamp(attacknum, 0, attackNumMax);
         }
         anim.SetInteger("AnimState", 0);
         timer += Time.deltaTime;
-        if (timer > 2)
+        if (timer > speedReset)
         {
             attacknum = 0;
             
         }
 
         // colliders is for grounding the player, for jumping purposes.
-        colliders = Physics.OverlapCapsule(transform.position, transform.position - (Vector3.up * 2), .25f, groundMask, QueryTriggerInteraction.Ignore);
+        colliders = Physics.OverlapCapsule(transform.position, transform.position - (Vector3.up * .01f), .25f, groundMask, QueryTriggerInteraction.Ignore);
         h1 = health.health;
         #region Controls
         if (walkspeed >= 0 && CTRLID != 0 && !health.isDead)
@@ -127,21 +143,35 @@ attacknum = Mathf.Clamp(attacknum, 0, attackNumMax);
 
         if (CTRLID != 0 && colliders.Length > 0 && Input.GetKeyDown("joystick " + CTRLID + " button 0") && !health.isDead)
         {
-            abilities.Jump(CTRLID, gameObject);
+            abilities.Jump(CTRLID, gameObject, jumpHeight);
             anim.SetInteger("AnimState", 3);
         }
         else
         {
         }
 
-        if (CTRLID != 0 && Input.GetKeyDown("joystick " + CTRLID + " button 1") && cooldowns.activeCooldowns[7] <= 0 && altBuild && !health.isDead)
+        if (CTRLID != 0 && Input.GetKey("joystick " + CTRLID + " button 3") && !health.isDead)
         {
-            abilities.MeleeLunge(lungeDamage, 2, gameObject, lungeCD);
+            timer1 += Time.deltaTime;
+            if (timer1 > reviveCastTime)
+            {
+                abilities.Revive(1, gameObject, reviveRadius);
+
+            }
+        }
+        if (CTRLID != 0 && Input.GetKeyUp("joystick " + CTRLID + " button 3") && !health.isDead)
+        {
+            reviveCastTime = 0;
+        }
+
+        if (CTRLID != 0 && Input.GetKeyDown("joystick " + CTRLID + " button 1") && cooldowns.activeCooldowns[8] <= 0 && altBuild && !health.isDead)
+        {
+            abilities.MeleeLunge(lungeDamage, 2, gameObject, lungeCD, lungeDistance);
         }
 
         if (CTRLID != 0 && Input.GetKeyDown("joystick " + CTRLID + " button 1") && cooldowns.activeCooldowns[7] <= 0 && !altBuild && !health.isDead)
         {
-            abilities.Whirlwind(whirlwindDamage, 2, gameObject, CycloneCD);
+            abilities.Whirlwind(whirlwindDamage, 2, gameObject, cycloneCD, strikeInterval);
         }
 
         if (CTRLID != 0 && Input.GetKeyDown("joystick " + CTRLID + " button 2") && cooldowns.activeCooldowns[6] <= 0 && !health.isDead)
@@ -193,11 +223,15 @@ attacknum = Mathf.Clamp(attacknum, 0, attackNumMax);
         #region Health and Death
         if (h1 < h2)
         {
+            meleeMat.SetColor("_EmissionColor", Color.HSVToRGB(1f, 1, 1));
+
             anim.SetInteger("AnimState", 4);
             h2 = h1;
         }
         else
         {
+            meleeMat.SetColor("_EmissionColor", Color.HSVToRGB(1f, 1, 0));
+
         }
 
         if (health.isDead)
@@ -208,6 +242,8 @@ attacknum = Mathf.Clamp(attacknum, 0, attackNumMax);
         }
         else
         {
+            walkspeed = 10;
+
         }
         #endregion
     }

@@ -15,33 +15,46 @@ public class RangedController : MonoBehaviour
     bool visual;    
     Collider[] colliders;
     float damageMult = 1;
-    bool altBuild;
+    float timer1;
+
 
     [Header("General")]
+    public bool altBuild;
+
     [Range(1,50)]
     public float walkspeed;
+    [Range(0, 50)]
+    public float jumpHeight;
     public LayerMask groundMask;
     public LayerMask enemyMask;
     public Material rangedMat;
+    public float reviveRadius;
+    public float reviveCastTime;
 
-
-
-    [Space(10)]
-    [Header("Damage")]
-    public float damageMultCap =3;
-    public float arrowDamage = 5;
+    [Header("Bolt Settings")]
     public float boltDamage = 25;
-
-    [Space(10)]
-    [Header("Cooldowns")]
     [Range(0, 10)]
     public float sniperAttackCD;
+    public float boltRange;
+    [Header("Arrow Settings")]
+    public float arrowDamage = 5;
+    public float damageMultCap = 3;
     [Range(0, 10)]
     public float archerAttackCD;
+    public float arrowRange;
+    [Header("Smoke Bomb Settings")]
     [Range(0, 10)]
     public float smokeBombCD;
+    public float cloudSize;
+    public float smokeDuration;
+    public float dissipationRate;
+    [Header("Knockback Settings")]
     [Range(0, 10)]
     public float KnockbackCD;
+    public float knockbackArrowRange;
+    public float knockbackSpread;
+
+
 
     Animator anim;
     Health health;
@@ -76,19 +89,19 @@ public class RangedController : MonoBehaviour
     {
         if (altBuild)
         {
-            rangedMat.color = Color.HSVToRGB(.216f, .517f, .5f);
+            rangedMat.color = Color.HSVToRGB(.216f, .6f, .2f);
 
 
         }
         else
         {
-            rangedMat.color = Color.HSVToRGB(.216f, .517f, .95f);
+            rangedMat.color = Color.HSVToRGB(.216f, .6f, .48f);
             
         }
         anim.SetInteger("AnimState", 0);
 
         // colliders is for grounding the player, for jumping purposes.
-        colliders = Physics.OverlapCapsule(transform.position, transform.position-(Vector3.up*2), .25f, groundMask, QueryTriggerInteraction.Ignore);
+        colliders = Physics.OverlapCapsule(transform.position, transform.position-(Vector3.up*.1f), .25f, groundMask, QueryTriggerInteraction.Ignore);
         h1 = health.health;
         #region Controls
         if (walkspeed >= 0 && CTRLID != 0 && !health.isDead)
@@ -108,16 +121,30 @@ public class RangedController : MonoBehaviour
 
         if (CTRLID != 0 && colliders.Length>0 && Input.GetKeyDown("joystick " + CTRLID + " button 0") && !health.isDead)
         {
-            abilities.Jump(CTRLID, gameObject);
+            abilities.Jump(CTRLID, gameObject, jumpHeight);
             anim.SetInteger("AnimState", 3);
         }
         else
         {
         }
 
-        if (CTRLID != 0 && Input.GetKeyDown("joystick " + CTRLID + " button 1") && cooldowns.activeCooldowns[10] <= 0 && altBuild && !health.isDead)
+        if (CTRLID != 0 && Input.GetKey("joystick " + CTRLID + " button 3") && !health.isDead)
         {
-            abilities.BluntTipArrow(3, 3, gameObject, KnockbackCD);
+            timer1 += Time.deltaTime;
+            if (timer1 > reviveCastTime)
+            {
+                abilities.Revive(1, gameObject, reviveRadius);
+
+            }
+        }
+        if (CTRLID != 0 && Input.GetKeyUp("joystick " + CTRLID + " button 3") && !health.isDead)
+        {
+            reviveCastTime = 0;
+        }
+
+        if (CTRLID != 0 && Input.GetKeyDown("joystick " + CTRLID + " button 1") && cooldowns.activeCooldowns[11] <= 0 && altBuild && !health.isDead)
+        {
+            abilities.BluntTipArrow(3, 3, gameObject, KnockbackCD, knockbackArrowRange, knockbackSpread);
             anim.SetInteger("AnimState", 2);
         }
         else
@@ -126,7 +153,7 @@ public class RangedController : MonoBehaviour
 
         if (CTRLID != 0 && Input.GetKeyDown("joystick " + CTRLID + " button 1") && cooldowns.activeCooldowns[10] <= 0 && !altBuild && !health.isDead)
         {
-            abilities.SmokeBomb(0, 3, gameObject, smokeBombCD);
+            abilities.SmokeBomb(0, 3, gameObject, smokeBombCD, cloudSize, smokeDuration, dissipationRate);
             anim.SetInteger("AnimState", 2);
         }
         else
@@ -155,7 +182,7 @@ public class RangedController : MonoBehaviour
         {
             visual = false;
             GetComponent<LineOfFireVisual>().OnBool(visual);
-            abilities.RangedArrow(5 * damageMult, 3, gameObject, archerAttackCD);
+            abilities.RangedArrow(5 * damageMult, 3, gameObject, archerAttackCD, arrowRange);
             anim.SetInteger("AnimState", 2);
             damageMult = 1;
         }
@@ -167,7 +194,7 @@ public class RangedController : MonoBehaviour
         {
             visual = false;
             GetComponent<LineOfFireVisual>().OnBool(visual);
-            abilities.RangedBolt(25, 3, gameObject, sniperAttackCD);
+            abilities.RangedBolt(25, 3, gameObject, sniperAttackCD, boltRange);
             anim.SetInteger("AnimState", 2);
         }
         else
@@ -185,21 +212,27 @@ public class RangedController : MonoBehaviour
 
         if (h1 < h2)
         {
+            rangedMat.SetColor("_EmissionColor", Color.HSVToRGB(1f, 1, 1));
+
             anim.SetInteger("AnimState", 1);
             h2 = h1;
         }
         else
         {
+            rangedMat.SetColor("_EmissionColor", Color.HSVToRGB(1f, 1, 0));
+
         }
 
         if (health.isDead)
         {
-            anim.SetInteger("AnimState", 1);
+            anim.SetInteger("AnimState", 5);
             walkspeed = 0;
             playermovement *= 0;
         }
         else
         {
+            walkspeed = 10;
+
         }
         #endregion
     }

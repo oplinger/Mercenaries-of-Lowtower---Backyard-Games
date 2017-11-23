@@ -25,7 +25,6 @@ GameObject:
   - component: {fileID: 136711447091232866}
   - component: {fileID: 136701169940483378}
   - component: {fileID: 114878381352017456}
-  - component: {fileID: 114769152096286996}
   - component: {fileID: 114440455597977686}
   - component: {fileID: 114267525934560966}
   - component: {fileID: 114152692773933368}
@@ -1295,9 +1294,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ac398f0ea74f4a649b1e2adb4a6b927b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 0
+  health: 150
+  maxHealth: 0
   player: {fileID: 0}
   shielded: 0
+  foundShield: {fileID: 0}
   isDead: 0
 --- !u!114 &114440455597977686
 MonoBehaviour:
@@ -1325,6 +1326,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   CTRLID: 0
   walkspeed: 10
+  jumpHeight: 20
   groundMask:
     serializedVersion: 2
     m_Bits: 1
@@ -1332,24 +1334,22 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 512
   rangedMat: {fileID: 2100000, guid: 04d384d69e1b12e459ddf2a9f7213152, type: 2}
-  damageMultCap: 3
-  arrowDamage: 5
+  reviveRadius: 2
+  reviveCastTime: 4
   boltDamage: 25
-  sniperAttackCD: 4
-  archerAttackCD: 0.5
-  smokeBombCD: 0
-  smokeBomb2CD: 0
---- !u!114 &114769152096286996
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1011025319418690}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3fe1bee0ccfa75443b8785d0722928ac, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
+  sniperAttackCD: 3
+  boltRange: 3
+  arrowDamage: 5
+  damageMultCap: 3
+  archerAttackCD: 1
+  arrowRange: 3
+  smokeBombCD: 5
+  cloudSize: 10
+  smokeDuration: 10
+  dissipationRate: 0.5
+  KnockbackCD: 3
+  knockbackArrowRange: 3
+  knockbackSpread: 5
 --- !u!114 &114878381352017456
 MonoBehaviour:
   m_ObjectHideFlags: 1

@@ -3,10 +3,13 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class BossMovementAI : MonoBehaviour {
-   public BossTargetingAI targeting;
-     public GameObject currentTarget;
+    BossTargetingAI targeting;
+     GameObject currentTarget;
+    
     public float targetDistance;
-   public bool inRange;
+    [HideInInspector]
+    public bool inRange;
+    public float minimumDistance;
 
     //Variable to hold the current speed of the boss
     public float speed;
@@ -31,10 +34,10 @@ public class BossMovementAI : MonoBehaviour {
         currentTarget = targeting.currentTarget;
         targetDistance = Vector3.Distance(currentTarget.transform.position, transform.position);
 
-        if (targetDistance > 30)
+        if (targetDistance > minimumDistance)
         {
             inRange = false;
-            transform.position = Vector3.MoveTowards(transform.position, new Vector3(currentTarget.transform.position.x, transform.position.y, currentTarget.transform.position.z), speed);
+            transform.position = Vector3.MoveTowards(transform.position, new Vector3(currentTarget.transform.position.x, transform.position.y, currentTarget.transform.position.z), speed*Time.deltaTime);
             // .01f was in place of "speed"
 
             //Orients the boss towards the player
