@@ -575,6 +575,11 @@ Prefab:
       propertyPath: shockwaveDamage
       value: 10
       objectReference: {fileID: 0}
+    - target: {fileID: 114050299489096748, guid: 9b019403ca0f5db4fbe90678c8459dda,
+        type: 2}
+      propertyPath: torso
+      value: 
+      objectReference: {fileID: 673867006}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 9b019403ca0f5db4fbe90678c8459dda, type: 2}
   m_IsPrefabParent: 0
@@ -636,6 +641,11 @@ Prefab:
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: f05e432990a5ae241acc47700a49aacd, type: 2}
   m_IsPrefabParent: 0
+--- !u!1 &673867006 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 1881613860628548, guid: 9b019403ca0f5db4fbe90678c8459dda,
+    type: 2}
+  m_PrefabInternal: {fileID: 477374943}
 --- !u!1 &681806786
 GameObject:
   m_ObjectHideFlags: 0
@@ -878,6 +888,26 @@ Prefab:
     - target: {fileID: 4013550893604126, guid: c8fc4b41195663843b1a76e878cbfbed, type: 2}
       propertyPath: m_LocalScale.z
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114763032175709166, guid: c8fc4b41195663843b1a76e878cbfbed,
+        type: 2}
+      propertyPath: orbSpeed
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 114763032175709166, guid: c8fc4b41195663843b1a76e878cbfbed,
+        type: 2}
+      propertyPath: teleportDelay
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 114763032175709166, guid: c8fc4b41195663843b1a76e878cbfbed,
+        type: 2}
+      propertyPath: healCooldown
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 114763032175709166, guid: c8fc4b41195663843b1a76e878cbfbed,
+        type: 2}
+      propertyPath: orbCooldown
+      value: 2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: c8fc4b41195663843b1a76e878cbfbed, type: 2}

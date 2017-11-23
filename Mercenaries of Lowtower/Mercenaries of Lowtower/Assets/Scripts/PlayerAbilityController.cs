@@ -102,6 +102,9 @@ public class PlayerAbilityController : MonoBehaviour
         RaycastHit hit;
         //Ray ray = new Ray(me.transform.position, me.transform.forward * 30);
         //if (Physics.Raycast(ray, out hit, 30))
+
+
+
         if (Physics.Raycast(me.transform.position, me.transform.forward, out hit, magnetdistance, lMask))
         {
             GameObject target = hit.collider.gameObject;

@@ -6,6 +6,9 @@ public class CameraFollow : MonoBehaviour {
 
     GameObject[] objects;
     public GameObject[] labels;
+    public Health[] playerhealths;
+    public float[] healths1;
+    public float[] healths2;
     GameObject marker;
     float furthestTarget;
     float furthestTarget2;
@@ -27,8 +30,23 @@ public class CameraFollow : MonoBehaviour {
         objects[2] = GameObject.Find("Melee Character(Clone)");
         objects[3] = GameObject.Find("Ranged Character(Clone)");
 
+        playerhealths = new Health[4];
+        healths1 = new float[4];
 
-        marker = GameObject.CreatePrimitive(PrimitiveType.Cube);
+        healths2 = new float[4];
+
+
+        for (int i = 0; i < objects.Length; i++)
+        {
+            playerhealths[i] = objects[i].GetComponent<Health>();
+        }
+
+        for (int i = 0; i < playerhealths.Length; i++)
+        {
+            healths2[i] = playerhealths[i].health;
+        }
+
+            marker = GameObject.CreatePrimitive(PrimitiveType.Cube);
         marker.transform.position = new Vector3(0, 2, -150);
 
          //maxX = -1000;
@@ -45,7 +63,8 @@ public class CameraFollow : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
         FindPositions();
-
+        GetHealths();
+        FlashOnDamage();
             for (int i = 0; i<labels.Length; i++)
             {
             labels[i].transform.position = Vector3.Lerp(transform.position, objects[i].transform.position, .5f);
@@ -143,5 +162,27 @@ public class CameraFollow : MonoBehaviour {
         transform.LookAt(camTarget.transform);
 
     }
+    void GetHealths()
+    {
+        for (int i = 0; i < healths2.Length; i++)
+        {
+            healths1[i] = playerhealths[i].health;
+        }
+    }
 
+    void FlashOnDamage()
+    {
+        for (int i = 0; i < healths2.Length; i++)
+        {
+            if (healths2[i] > healths1[i])
+            {
+                labels[i].GetComponent<TextMesh>().color = Color.red;
+                healths2[i] = healths1[i];
+            } else
+            {
+                labels[i].GetComponent<TextMesh>().color = Color.white;
+            }
+        }
+
+    }
 }

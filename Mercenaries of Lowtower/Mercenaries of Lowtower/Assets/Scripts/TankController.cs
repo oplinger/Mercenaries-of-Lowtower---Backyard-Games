@@ -19,6 +19,7 @@ public class TankController : MonoBehaviour
     float h2;
     float timer;
     float timer1;
+    bool visual;
 
     float reflectDamage;
 
@@ -163,14 +164,26 @@ public class TankController : MonoBehaviour
 
         if (CTRLID != 0 && Input.GetKey("joystick " + CTRLID + " button 1") && cooldowns.activeCooldowns[0]<=0 && !altBuild && !health.isDead)
         {
+
+
+                GameObject cap = GameObject.CreatePrimitive(PrimitiveType.Capsule);
+                Destroy(cap.GetComponent<CapsuleCollider>());
+                cap.transform.position = transform.position + transform.forward * 10;
+                cap.transform.rotation = transform.rotation * Quaternion.Euler(90, 0, 0);
+                cap.transform.localScale = new Vector3(1, 10, 1);
+                cap.transform.parent = transform;
+            Destroy(cap, Time.deltaTime+.002f);
+            
+
             abilities.TankMagnet(magnetThreat, 0, gameObject, magnetCooldown, magnetMask, magnetDistance, pullSpeed);
             anim.SetInteger("AnimState", 2);
-            tankMat.SetColor("_EmissionColor", Color.HSVToRGB(1, 1, 1));
+            tankMat.SetColor("_EmissionColor", Color.HSVToRGB(.7f, 1, 1));
 
         }
         else
         {
-            tankMat.SetColor("_EmissionColor", Color.HSVToRGB(1, 1, 0));
+            tankMat.SetColor("_EmissionColor", Color.HSVToRGB(.7f, 1, 0));
+            
 
         }
         if (CTRLID != 0 && Input.GetKeyUp("joystick " + CTRLID + " button 1") && !altBuild && !health.isDead)
@@ -231,11 +244,14 @@ public class TankController : MonoBehaviour
         #region Health and Death
         if (h1 < h2)
         {
+            tankMat.SetColor("_EmissionColor", Color.HSVToRGB(1, 1, 1));
             anim.SetInteger("AnimState", 4);
             h2 = h1;
         }
         else
         {
+            tankMat.SetColor("_EmissionColor", Color.HSVToRGB(1f, 1, 0));
+
         }
 
         if (health.isDead)

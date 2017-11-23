@@ -212,11 +212,15 @@ public class RangedController : MonoBehaviour
 
         if (h1 < h2)
         {
+            rangedMat.SetColor("_EmissionColor", Color.HSVToRGB(1f, 1, 1));
+
             anim.SetInteger("AnimState", 1);
             h2 = h1;
         }
         else
         {
+            rangedMat.SetColor("_EmissionColor", Color.HSVToRGB(1f, 1, 1));
+
         }
 
         if (health.isDead)

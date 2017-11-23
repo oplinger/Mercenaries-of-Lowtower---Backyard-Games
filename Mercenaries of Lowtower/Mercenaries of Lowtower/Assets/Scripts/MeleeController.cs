@@ -223,11 +223,15 @@ attacknum = Mathf.Clamp(attacknum, 0, attackNumMax);
         #region Health and Death
         if (h1 < h2)
         {
+            meleeMat.SetColor("_EmissionColor", Color.HSVToRGB(1f, 1, 1));
+
             anim.SetInteger("AnimState", 4);
             h2 = h1;
         }
         else
         {
+            meleeMat.SetColor("_EmissionColor", Color.HSVToRGB(1f, 1, 0));
+
         }
 
         if (health.isDead)

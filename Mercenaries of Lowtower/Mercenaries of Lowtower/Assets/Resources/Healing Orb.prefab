@@ -22,6 +22,7 @@ GameObject:
   - component: {fileID: 33828075517895062}
   - component: {fileID: 135612884720787758}
   - component: {fileID: 23669091447858906}
+  - component: {fileID: 114518329255025884}
   m_Layer: 0
   m_Name: Healing Orb
   m_TagString: Untagged
@@ -81,6 +82,17 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1197924622831584}
   m_Mesh: {fileID: 10207, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &114518329255025884
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1197924622831584}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c734caf024be42648b21e5e184e69498, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!135 &135612884720787758
 SphereCollider:
   m_ObjectHideFlags: 1
@@ -88,7 +100,7 @@ SphereCollider:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1197924622831584}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
   m_Radius: 0.5

@@ -8,11 +8,14 @@ public class BossAttackAI : MonoBehaviour
     BossTargetingAI targeting;
     BossMovementAI range;
     Health health;
+    float h1;
+    float h2;
      float currentGCD;
     float maxGCD;
     float range1;
      GameObject shockwaveObj;
      GameObject tsunamiObj;
+    public GameObject torso;
 
     GameObject[] tsunamiSpawns;
     LayerMask theground;
@@ -89,6 +92,8 @@ public class BossAttackAI : MonoBehaviour
         range = GetComponent<BossMovementAI>();
         anim = GetComponent<Animator>();
 
+        torso = GameObject.Find("Torso");
+
         tsunamiObj = GameObject.Find("Mako Tsunami");
         shockwaveObj = GameObject.Find("Adobe Shockwave");
 
@@ -127,6 +132,9 @@ public class BossAttackAI : MonoBehaviour
         scenelight = GameObject.Find("Directional Light");
 
         health = GetComponent<Health>();
+
+        h2 = health.health;
+
     }
 
     // Each CD ticks down every frame.
@@ -156,6 +164,40 @@ public class BossAttackAI : MonoBehaviour
         {
 
         }
+
+        h1 = health.health;
+
+
+        if (h1 < h2)
+        {
+            foreach(Transform child in transform)
+            {
+                child.GetComponent<Renderer>().material.color = Color.red;
+            }
+            foreach (Transform child in torso.transform)
+            {
+                child.GetComponent<Renderer>().material.color = Color.red;
+            }
+            //GetComponent<Renderer>().material.color = new Color(1, 0, 0, 1);
+            h2 = h1;
+        }
+         else if (h2 == h1)
+        {
+            print("oij");
+            if (torso.GetComponent<Renderer>().material.color != Color.white)
+            {
+                foreach (Transform child in transform)
+                {
+                    child.GetComponent<Renderer>().material.color = Color.white;
+                }
+                foreach (Transform child in torso.transform)
+                {
+                    child.GetComponent<Renderer>().material.color = Color.white;
+                }
+            }
+
+        }
+
 
         if (shockwave)
         {
