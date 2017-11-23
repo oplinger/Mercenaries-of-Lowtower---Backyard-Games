@@ -110,12 +110,12 @@ public class HealerController : MonoBehaviour
 
         if (altBuild)
         {
-            healerMat.color = Color.HSVToRGB(.75f, .396f, .5f);
+            healerMat.color = Color.HSVToRGB(.2f, .89f, .5f);
             
 
         } else
         {
-            healerMat.color = Color.HSVToRGB(.75f, .396f, .95f);
+            healerMat.color = Color.HSVToRGB(.2f, .89f, .95f);
 
         }
 

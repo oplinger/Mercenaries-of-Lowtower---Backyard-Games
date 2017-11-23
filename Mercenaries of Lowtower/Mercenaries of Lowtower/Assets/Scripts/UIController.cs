@@ -122,12 +122,15 @@ public class UIController : MonoBehaviour
         {
             icons[2].enabled = true;
             icons[0].enabled = false;
+            portraits[0].GetComponent<Image>().color = Color.HSVToRGB(.613f, .537f, .4f);
 
         }
         else
         {
             icons[0].enabled = true;
             icons[2].enabled = false;
+            portraits[0].GetComponent<Image>().color = Color.HSVToRGB(.613f, .537f, .82f);
+
 
         }
 
@@ -174,12 +177,16 @@ public class UIController : MonoBehaviour
         {
             icons[5].enabled = true;
             icons[4].enabled = false;
+            portraits[1].GetComponent<Image>().color = Color.HSVToRGB(.2f, .89f, .5f);
+
 
         }
         else
         {
             icons[4].enabled = true;
             icons[5].enabled = false;
+            portraits[1].GetComponent<Image>().color = Color.HSVToRGB(.2f, .89f, .95f);
+
 
         }
 
@@ -226,12 +233,16 @@ public class UIController : MonoBehaviour
         {
             icons[8].enabled = true;
             icons[7].enabled = false;
+            portraits[2].GetComponent<Image>().color = Color.HSVToRGB(.016f, .788f, .5f);
+
 
         }
         else
         {
             icons[7].enabled = true;
             icons[8].enabled = false;
+            portraits[2].GetComponent<Image>().color = Color.HSVToRGB(.016f, .788f, .95f);
+
 
         }
 
@@ -278,12 +289,16 @@ public class UIController : MonoBehaviour
         {
             icons[11].enabled = true;
             icons[10].enabled = false;
+            portraits[3].GetComponent<Image>().color = Color.HSVToRGB(.216f, .6f, .2f);
+
 
         }
         else
         {
             icons[10].enabled = true;
             icons[11].enabled = false;
+            portraits[3].GetComponent<Image>().color = Color.HSVToRGB(.216f, .6f, .48f);
+
 
         }
         #endregion

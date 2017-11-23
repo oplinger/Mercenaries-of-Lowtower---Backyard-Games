@@ -89,13 +89,13 @@ public class RangedController : MonoBehaviour
     {
         if (altBuild)
         {
-            rangedMat.color = Color.HSVToRGB(.216f, .517f, .5f);
+            rangedMat.color = Color.HSVToRGB(.216f, .6f, .2f);
 
 
         }
         else
         {
-            rangedMat.color = Color.HSVToRGB(.216f, .517f, .95f);
+            rangedMat.color = Color.HSVToRGB(.216f, .6f, .48f);
             
         }
         anim.SetInteger("AnimState", 0);
@@ -219,7 +219,7 @@ public class RangedController : MonoBehaviour
         }
         else
         {
-            rangedMat.SetColor("_EmissionColor", Color.HSVToRGB(1f, 1, 1));
+            rangedMat.SetColor("_EmissionColor", Color.HSVToRGB(1f, 1, 0));
 
         }
 

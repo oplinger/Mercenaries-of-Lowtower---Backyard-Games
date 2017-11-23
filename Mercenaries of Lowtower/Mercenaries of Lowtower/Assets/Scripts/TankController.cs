@@ -101,13 +101,13 @@ public class TankController : MonoBehaviour
     {
         if (altBuild)
         {
-            tankMat.color = Color.HSVToRGB(.613f, .537f, .5f);
+            tankMat.color = Color.HSVToRGB(.613f, .537f, .4f);
 
 
         }
         else if (!altBuild)
         {
-            tankMat.color = Color.HSVToRGB(.613f, .537f, .95f);
+            tankMat.color = Color.HSVToRGB(.613f, .537f, .82f);
 
         }
         anim.SetInteger("AnimState", 0);
@@ -248,9 +248,9 @@ public class TankController : MonoBehaviour
             anim.SetInteger("AnimState", 4);
             h2 = h1;
         }
-        else
+        else if (tankMat.GetColor("_EmissionColor") != Color.HSVToRGB(1, 1, 0) && !Input.GetKey("joystick " + CTRLID + " button 1"))
         {
-            tankMat.SetColor("_EmissionColor", Color.HSVToRGB(1f, 1, 0));
+            tankMat.SetColor("_EmissionColor", Color.HSVToRGB(1, 1, 0));
 
         }
 
