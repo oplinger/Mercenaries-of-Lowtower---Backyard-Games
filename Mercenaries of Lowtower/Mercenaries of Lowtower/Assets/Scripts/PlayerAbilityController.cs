@@ -49,6 +49,7 @@ public class PlayerAbilityController : MonoBehaviour
         {
             colhealth.health = colhealth.maxHealth / 2;
             colhealth.isDead = false;
+            
 
 
         }
@@ -201,7 +202,6 @@ public class PlayerAbilityController : MonoBehaviour
     // Creates 2 spheres, one for finding players one for finding enemies, loops through both to add damage to both.
     public void HealerAbsorb(float damage, int playerID, GameObject me, float CD)
     {
-        int dam = 10;
         Collider[] hitColliders = Physics.OverlapSphere(transform.position, 100, 1 << 8, QueryTriggerInteraction.Ignore);
         Collider[] EnemyColliders = Physics.OverlapSphere(transform.position, 100, enemyMask, QueryTriggerInteraction.Ignore);
         for (int i = 0; i < hitColliders.Length; i++)
@@ -209,17 +209,28 @@ public class PlayerAbilityController : MonoBehaviour
 
             Health health = hitColliders[i].gameObject.GetComponent<Health>();
             print(health.health);
-            health.modifyHealth(-dam / hitColliders.Length, 1);
+            health.modifyHealth(-damage / hitColliders.Length, 1);
             print(health.health);
         }
         for (int i = 0; i < EnemyColliders.Length; i++)
         {
             Health health = EnemyColliders[i].gameObject.GetComponent<Health>();
             print(EnemyColliders[i]);
-            health.modifyHealth(dam, 1);
+            health.modifyHealth(damage, 1);
         }
         cooldown.triggerCooldown(4, CD);
 
+
+    }
+
+    public void TargetedHeal(float damage, int playerID, GameObject me, float CD, GameObject target, float orbspeed)
+    {
+
+        GameObject Horb = Resources.Load("Healing Orb") as GameObject;
+        GameObject clone = Instantiate(Horb,me.transform.position, Quaternion.identity);
+        
+        clone.GetComponent<Orbscript>().OrbBehavior(me, target, damage, orbspeed, playerID);
+        cooldown.triggerCooldown(3, CD);
 
     }
     #endregion
