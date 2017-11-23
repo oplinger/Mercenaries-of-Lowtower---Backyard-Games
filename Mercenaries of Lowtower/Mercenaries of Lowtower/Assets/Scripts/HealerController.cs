@@ -23,9 +23,10 @@ public class HealerController : MonoBehaviour
     float h1;
     float h2;
     Animator anim;
-    bool altBuild;
 
     [Header("Genral")]
+    public bool altBuild;
+
     [Range(1, 50)]
     public float walkspeed;
     [Range(0, 50)]

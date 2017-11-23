@@ -17,13 +17,14 @@ public class TankController : MonoBehaviour
     Health health;
     float h1;
     float h2;
-    bool altBuild;
     float timer;
     float timer1;
 
     float reflectDamage;
 
     [Header("Genral")]
+    public bool altBuild;
+
     [Range(1, 50)]
     public float walkspeed;
     [Range(0,50)]

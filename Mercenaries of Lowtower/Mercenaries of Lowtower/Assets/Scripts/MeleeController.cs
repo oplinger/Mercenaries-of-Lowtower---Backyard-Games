@@ -20,9 +20,10 @@ public class MeleeController : MonoBehaviour
     float timer;
     float timer1;
 
-    bool altBuild;
 
     [Header("General")]
+    public bool altBuild;
+
     [Range(1, 50)]
     public float walkspeed;
     [Range(0, 50)]

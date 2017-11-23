@@ -15,11 +15,12 @@ public class RangedController : MonoBehaviour
     bool visual;    
     Collider[] colliders;
     float damageMult = 1;
-    bool altBuild;
     float timer1;
 
 
     [Header("General")]
+    public bool altBuild;
+
     [Range(1,50)]
     public float walkspeed;
     [Range(0, 50)]

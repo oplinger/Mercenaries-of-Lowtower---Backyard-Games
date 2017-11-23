@@ -72,7 +72,7 @@ public class UIController : MonoBehaviour
         timer -= Time.deltaTime;
         texts[5].text = timer.ToString();
         texts[4].text = bossHealth.health.ToString();
-#endregion
+        #endregion
 
         #region Cooldown Icons
 
@@ -118,6 +118,19 @@ public class UIController : MonoBehaviour
 
         }
 
+        if (players[0].GetComponent<TankController>().altBuild)
+        {
+            icons[2].enabled = true;
+            icons[0].enabled = false;
+
+        }
+        else
+        {
+            icons[0].enabled = true;
+            icons[2].enabled = false;
+
+        }
+
         icons[3].material.SetFloat("_Tween", playerCooldowns.activeCooldowns[3] / playerCooldowns.abilityCooldowns[3]);
         icons[3].material.SetTexture("_MainTex", Resources.Load("Textures/HealEffect") as Texture);
         icons[3].material.SetTexture("_SecondTex", Resources.Load("Textures/HealEffectBlack") as Texture);
@@ -154,6 +167,19 @@ public class UIController : MonoBehaviour
         else
         {
             icons[5].rectTransform.localScale = new Vector3(1, 1, 1);
+
+        }
+
+        if (players[1].GetComponent<HealerController>().altBuild)
+        {
+            icons[5].enabled = true;
+            icons[4].enabled = false;
+
+        }
+        else
+        {
+            icons[4].enabled = true;
+            icons[5].enabled = false;
 
         }
 
@@ -196,6 +222,19 @@ public class UIController : MonoBehaviour
 
         }
 
+        if (players[2].GetComponent<MeleeController>().altBuild)
+        {
+            icons[8].enabled = true;
+            icons[7].enabled = false;
+
+        }
+        else
+        {
+            icons[7].enabled = true;
+            icons[8].enabled = false;
+
+        }
+
         icons[9].material.SetFloat("_Tween", playerCooldowns.activeCooldowns[9] / playerCooldowns.abilityCooldowns[9]);
         icons[9].material.SetTexture("_MainTex", Resources.Load("Textures/RangedArrowShot") as Texture);
         icons[9].material.SetTexture("_SecondTex", Resources.Load("Textures/RangedArrowShotBlack") as Texture);
@@ -232,6 +271,19 @@ public class UIController : MonoBehaviour
         else
         {
             icons[11].rectTransform.localScale = new Vector3(1, 1, 1);
+
+        }
+
+        if (players[3].GetComponent<RangedController>().altBuild)
+        {
+            icons[11].enabled = true;
+            icons[10].enabled = false;
+
+        }
+        else
+        {
+            icons[10].enabled = true;
+            icons[11].enabled = false;
 
         }
         #endregion
