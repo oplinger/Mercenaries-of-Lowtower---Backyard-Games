@@ -16,6 +16,7 @@ public class BreakableObject : MonoBehaviour {
 
         healthScript = GetComponent<Health>();
         h2 = healthScript.health;
+        breakableMat = this.gameObject.GetComponent<Renderer>().material;
 		
 	}
 	
@@ -30,6 +31,7 @@ public class BreakableObject : MonoBehaviour {
                 breakableMat.SetColor("_EmissionColor", Color.HSVToRGB(1f, 1, 1));
                 
                 h2 = h1;
+            //print(h2);
             }
             else
             {
