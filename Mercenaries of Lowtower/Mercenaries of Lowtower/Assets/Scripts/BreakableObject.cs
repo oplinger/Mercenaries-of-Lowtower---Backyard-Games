@@ -38,6 +38,8 @@ public class BreakableObject : MonoBehaviour {
                 breakableMat.SetColor("_EmissionColor", Color.HSVToRGB(1f, 1, 0));
 
             }
+
+      
     }
 
 }
