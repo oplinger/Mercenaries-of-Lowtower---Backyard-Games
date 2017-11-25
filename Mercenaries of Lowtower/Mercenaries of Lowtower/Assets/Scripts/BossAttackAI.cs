@@ -140,7 +140,7 @@ public class BossAttackAI : MonoBehaviour
     // Each CD ticks down every frame.
     void Update()
     {
-        print(Vector3.Dot(transform.forward, (targeting.currentTarget.transform.position-transform.position).normalized));
+       // print(Vector3.Dot(transform.forward, (targeting.currentTarget.transform.position-transform.position).normalized));
         if (scenelight == null)
         {
             scenelight = GameObject.Find("Directional Light");
