@@ -22,7 +22,7 @@ public class SpawnRock : MonoBehaviour {
         //{
             timer += 1;
 
-            if (timer>=300)
+            if (timer>=900)
             {
                 Instantiate(rock, transform.position, transform.rotation);
                 //rockSpawned = true;
