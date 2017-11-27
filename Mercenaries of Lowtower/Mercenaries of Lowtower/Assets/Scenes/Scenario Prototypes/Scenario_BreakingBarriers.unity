@@ -296,9 +296,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b0786f42674f93d4f84e55ef54012bea, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rock: {fileID: 1850732001530696, guid: 1502c46dc0dced84da5815a99100c112, type: 2}
-  rockSpawned: 0
+  blockBreakable: {fileID: 1850732001530696, guid: 1502c46dc0dced84da5815a99100c112,
+    type: 2}
+  blockMagnetic: {fileID: 1850009845473402, guid: 99c4e6b74b887404397c913caba85d7c,
+    type: 2}
   timer: 0
+  breakable: 0
 --- !u!1 &76012665
 GameObject:
   m_ObjectHideFlags: 0
@@ -341,9 +344,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b0786f42674f93d4f84e55ef54012bea, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rock: {fileID: 1850732001530696, guid: 1502c46dc0dced84da5815a99100c112, type: 2}
-  rockSpawned: 0
+  blockBreakable: {fileID: 1850732001530696, guid: 1502c46dc0dced84da5815a99100c112,
+    type: 2}
+  blockMagnetic: {fileID: 1850009845473402, guid: 99c4e6b74b887404397c913caba85d7c,
+    type: 2}
   timer: 0
+  breakable: 0
 --- !u!1 &85961346
 GameObject:
   m_ObjectHideFlags: 0
@@ -386,9 +392,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b0786f42674f93d4f84e55ef54012bea, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rock: {fileID: 1850732001530696, guid: 1502c46dc0dced84da5815a99100c112, type: 2}
-  rockSpawned: 0
+  blockBreakable: {fileID: 1850732001530696, guid: 1502c46dc0dced84da5815a99100c112,
+    type: 2}
+  blockMagnetic: {fileID: 1850009845473402, guid: 99c4e6b74b887404397c913caba85d7c,
+    type: 2}
   timer: 0
+  breakable: 0
 --- !u!1 &100885111
 GameObject:
   m_ObjectHideFlags: 0
@@ -568,9 +577,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b0786f42674f93d4f84e55ef54012bea, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rock: {fileID: 1850732001530696, guid: 1502c46dc0dced84da5815a99100c112, type: 2}
-  rockSpawned: 0
+  blockBreakable: {fileID: 1850732001530696, guid: 1502c46dc0dced84da5815a99100c112,
+    type: 2}
+  blockMagnetic: {fileID: 1850009845473402, guid: 99c4e6b74b887404397c913caba85d7c,
+    type: 2}
   timer: 0
+  breakable: 0
 --- !u!1 &119760569
 GameObject:
   m_ObjectHideFlags: 0
@@ -644,9 +656,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b0786f42674f93d4f84e55ef54012bea, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rock: {fileID: 1850732001530696, guid: 1502c46dc0dced84da5815a99100c112, type: 2}
-  rockSpawned: 0
+  blockBreakable: {fileID: 1850732001530696, guid: 1502c46dc0dced84da5815a99100c112,
+    type: 2}
+  blockMagnetic: {fileID: 1850009845473402, guid: 99c4e6b74b887404397c913caba85d7c,
+    type: 2}
   timer: 0
+  breakable: 0
 --- !u!1 &138054949
 GameObject:
   m_ObjectHideFlags: 0
@@ -689,9 +704,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b0786f42674f93d4f84e55ef54012bea, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rock: {fileID: 1850732001530696, guid: 1502c46dc0dced84da5815a99100c112, type: 2}
-  rockSpawned: 0
+  blockBreakable: {fileID: 1850732001530696, guid: 1502c46dc0dced84da5815a99100c112,
+    type: 2}
+  blockMagnetic: {fileID: 1850009845473402, guid: 99c4e6b74b887404397c913caba85d7c,
+    type: 2}
   timer: 0
+  breakable: 0
 --- !u!1 &141179935
 GameObject:
   m_ObjectHideFlags: 0
@@ -871,9 +889,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b0786f42674f93d4f84e55ef54012bea, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rock: {fileID: 1850732001530696, guid: 1502c46dc0dced84da5815a99100c112, type: 2}
-  rockSpawned: 0
+  blockBreakable: {fileID: 1850732001530696, guid: 1502c46dc0dced84da5815a99100c112,
+    type: 2}
+  blockMagnetic: {fileID: 1850009845473402, guid: 99c4e6b74b887404397c913caba85d7c,
+    type: 2}
   timer: 0
+  breakable: 0
 --- !u!1 &184219065
 GameObject:
   m_ObjectHideFlags: 0
@@ -947,9 +968,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b0786f42674f93d4f84e55ef54012bea, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rock: {fileID: 1850732001530696, guid: 1502c46dc0dced84da5815a99100c112, type: 2}
-  rockSpawned: 0
+  blockBreakable: {fileID: 1850732001530696, guid: 1502c46dc0dced84da5815a99100c112,
+    type: 2}
+  blockMagnetic: {fileID: 1850009845473402, guid: 99c4e6b74b887404397c913caba85d7c,
+    type: 2}
   timer: 0
+  breakable: 0
 --- !u!1 &230700981
 GameObject:
   m_ObjectHideFlags: 0
@@ -1097,9 +1121,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b0786f42674f93d4f84e55ef54012bea, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rock: {fileID: 1850732001530696, guid: 1502c46dc0dced84da5815a99100c112, type: 2}
-  rockSpawned: 0
+  blockBreakable: {fileID: 1850732001530696, guid: 1502c46dc0dced84da5815a99100c112,
+    type: 2}
+  blockMagnetic: {fileID: 1850009845473402, guid: 99c4e6b74b887404397c913caba85d7c,
+    type: 2}
   timer: 0
+  breakable: 0
 --- !u!1 &310253312
 GameObject:
   m_ObjectHideFlags: 0
@@ -1341,9 +1368,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b0786f42674f93d4f84e55ef54012bea, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rock: {fileID: 1850732001530696, guid: 1502c46dc0dced84da5815a99100c112, type: 2}
-  rockSpawned: 0
+  blockBreakable: {fileID: 1850732001530696, guid: 1502c46dc0dced84da5815a99100c112,
+    type: 2}
+  blockMagnetic: {fileID: 1850009845473402, guid: 99c4e6b74b887404397c913caba85d7c,
+    type: 2}
   timer: 0
+  breakable: 0
 --- !u!1001 &354788774
 Prefab:
   m_ObjectHideFlags: 0
@@ -1463,9 +1493,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b0786f42674f93d4f84e55ef54012bea, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rock: {fileID: 1850732001530696, guid: 1502c46dc0dced84da5815a99100c112, type: 2}
-  rockSpawned: 0
+  blockBreakable: {fileID: 1850732001530696, guid: 1502c46dc0dced84da5815a99100c112,
+    type: 2}
+  blockMagnetic: {fileID: 1850009845473402, guid: 99c4e6b74b887404397c913caba85d7c,
+    type: 2}
   timer: 0
+  breakable: 0
 --- !u!1 &381299133
 GameObject:
   m_ObjectHideFlags: 0
@@ -1925,9 +1958,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b0786f42674f93d4f84e55ef54012bea, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rock: {fileID: 1850732001530696, guid: 1502c46dc0dced84da5815a99100c112, type: 2}
-  rockSpawned: 0
+  blockBreakable: {fileID: 1850732001530696, guid: 1502c46dc0dced84da5815a99100c112,
+    type: 2}
+  blockMagnetic: {fileID: 1850009845473402, guid: 99c4e6b74b887404397c913caba85d7c,
+    type: 2}
   timer: 0
+  breakable: 0
 --- !u!1 &442289761
 GameObject:
   m_ObjectHideFlags: 0
@@ -2342,9 +2378,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b0786f42674f93d4f84e55ef54012bea, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rock: {fileID: 1850732001530696, guid: 1502c46dc0dced84da5815a99100c112, type: 2}
-  rockSpawned: 0
+  blockBreakable: {fileID: 1850732001530696, guid: 1502c46dc0dced84da5815a99100c112,
+    type: 2}
+  blockMagnetic: {fileID: 1850009845473402, guid: 99c4e6b74b887404397c913caba85d7c,
+    type: 2}
   timer: 0
+  breakable: 0
 --- !u!1 &549355457
 GameObject:
   m_ObjectHideFlags: 0
@@ -2387,9 +2426,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b0786f42674f93d4f84e55ef54012bea, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rock: {fileID: 1850732001530696, guid: 1502c46dc0dced84da5815a99100c112, type: 2}
-  rockSpawned: 0
+  blockBreakable: {fileID: 1850732001530696, guid: 1502c46dc0dced84da5815a99100c112,
+    type: 2}
+  blockMagnetic: {fileID: 1850009845473402, guid: 99c4e6b74b887404397c913caba85d7c,
+    type: 2}
   timer: 0
+  breakable: 0
 --- !u!1 &552337836
 GameObject:
   m_ObjectHideFlags: 0
@@ -2569,9 +2611,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b0786f42674f93d4f84e55ef54012bea, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rock: {fileID: 1850732001530696, guid: 1502c46dc0dced84da5815a99100c112, type: 2}
-  rockSpawned: 0
+  blockBreakable: {fileID: 1850732001530696, guid: 1502c46dc0dced84da5815a99100c112,
+    type: 2}
+  blockMagnetic: {fileID: 1850009845473402, guid: 99c4e6b74b887404397c913caba85d7c,
+    type: 2}
   timer: 0
+  breakable: 0
 --- !u!1001 &575585114
 Prefab:
   m_ObjectHideFlags: 0
@@ -2817,9 +2862,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b0786f42674f93d4f84e55ef54012bea, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rock: {fileID: 1850732001530696, guid: 1502c46dc0dced84da5815a99100c112, type: 2}
-  rockSpawned: 0
+  blockBreakable: {fileID: 1850732001530696, guid: 1502c46dc0dced84da5815a99100c112,
+    type: 2}
+  blockMagnetic: {fileID: 1850009845473402, guid: 99c4e6b74b887404397c913caba85d7c,
+    type: 2}
   timer: 0
+  breakable: 0
 --- !u!1 &610509792
 GameObject:
   m_ObjectHideFlags: 0
@@ -2862,9 +2910,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b0786f42674f93d4f84e55ef54012bea, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rock: {fileID: 1850732001530696, guid: 1502c46dc0dced84da5815a99100c112, type: 2}
-  rockSpawned: 0
+  blockBreakable: {fileID: 1850732001530696, guid: 1502c46dc0dced84da5815a99100c112,
+    type: 2}
+  blockMagnetic: {fileID: 1850009845473402, guid: 99c4e6b74b887404397c913caba85d7c,
+    type: 2}
   timer: 0
+  breakable: 0
 --- !u!1 &681806786
 GameObject:
   m_ObjectHideFlags: 0
@@ -2974,9 +3025,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b0786f42674f93d4f84e55ef54012bea, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rock: {fileID: 1850732001530696, guid: 1502c46dc0dced84da5815a99100c112, type: 2}
-  rockSpawned: 0
+  blockBreakable: {fileID: 1850732001530696, guid: 1502c46dc0dced84da5815a99100c112,
+    type: 2}
+  blockMagnetic: {fileID: 1850009845473402, guid: 99c4e6b74b887404397c913caba85d7c,
+    type: 2}
   timer: 0
+  breakable: 0
 --- !u!1 &732177007
 GameObject:
   m_ObjectHideFlags: 0
@@ -3293,9 +3347,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b0786f42674f93d4f84e55ef54012bea, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rock: {fileID: 1850732001530696, guid: 1502c46dc0dced84da5815a99100c112, type: 2}
-  rockSpawned: 0
+  blockBreakable: {fileID: 1850732001530696, guid: 1502c46dc0dced84da5815a99100c112,
+    type: 2}
+  blockMagnetic: {fileID: 1850009845473402, guid: 99c4e6b74b887404397c913caba85d7c,
+    type: 2}
   timer: 0
+  breakable: 0
 --- !u!1 &807682370
 GameObject:
   m_ObjectHideFlags: 0
@@ -3369,9 +3426,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b0786f42674f93d4f84e55ef54012bea, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rock: {fileID: 1850732001530696, guid: 1502c46dc0dced84da5815a99100c112, type: 2}
-  rockSpawned: 0
+  blockBreakable: {fileID: 1850732001530696, guid: 1502c46dc0dced84da5815a99100c112,
+    type: 2}
+  blockMagnetic: {fileID: 1850009845473402, guid: 99c4e6b74b887404397c913caba85d7c,
+    type: 2}
   timer: 0
+  breakable: 0
 --- !u!1001 &825890276
 Prefab:
   m_ObjectHideFlags: 0
@@ -4101,9 +4161,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b0786f42674f93d4f84e55ef54012bea, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rock: {fileID: 1850732001530696, guid: 1502c46dc0dced84da5815a99100c112, type: 2}
-  rockSpawned: 0
+  blockBreakable: {fileID: 1850732001530696, guid: 1502c46dc0dced84da5815a99100c112,
+    type: 2}
+  blockMagnetic: {fileID: 1850009845473402, guid: 99c4e6b74b887404397c913caba85d7c,
+    type: 2}
   timer: 0
+  breakable: 0
 --- !u!1 &915587006
 GameObject:
   m_ObjectHideFlags: 0
@@ -4146,9 +4209,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b0786f42674f93d4f84e55ef54012bea, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rock: {fileID: 1850732001530696, guid: 1502c46dc0dced84da5815a99100c112, type: 2}
-  rockSpawned: 0
+  blockBreakable: {fileID: 1850732001530696, guid: 1502c46dc0dced84da5815a99100c112,
+    type: 2}
+  blockMagnetic: {fileID: 1850009845473402, guid: 99c4e6b74b887404397c913caba85d7c,
+    type: 2}
   timer: 0
+  breakable: 0
 --- !u!1 &931604188
 GameObject:
   m_ObjectHideFlags: 0
@@ -4253,9 +4319,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b0786f42674f93d4f84e55ef54012bea, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rock: {fileID: 1850732001530696, guid: 1502c46dc0dced84da5815a99100c112, type: 2}
-  rockSpawned: 0
+  blockBreakable: {fileID: 1850732001530696, guid: 1502c46dc0dced84da5815a99100c112,
+    type: 2}
+  blockMagnetic: {fileID: 1850009845473402, guid: 99c4e6b74b887404397c913caba85d7c,
+    type: 2}
   timer: 0
+  breakable: 0
 --- !u!1 &963686057
 GameObject:
   m_ObjectHideFlags: 0
@@ -4298,9 +4367,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b0786f42674f93d4f84e55ef54012bea, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rock: {fileID: 1850732001530696, guid: 1502c46dc0dced84da5815a99100c112, type: 2}
-  rockSpawned: 0
+  blockBreakable: {fileID: 1850732001530696, guid: 1502c46dc0dced84da5815a99100c112,
+    type: 2}
+  blockMagnetic: {fileID: 1850009845473402, guid: 99c4e6b74b887404397c913caba85d7c,
+    type: 2}
   timer: 0
+  breakable: 0
 --- !u!1001 &973667733
 Prefab:
   m_ObjectHideFlags: 0
@@ -4589,9 +4661,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b0786f42674f93d4f84e55ef54012bea, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rock: {fileID: 1850732001530696, guid: 1502c46dc0dced84da5815a99100c112, type: 2}
-  rockSpawned: 0
+  blockBreakable: {fileID: 1850732001530696, guid: 1502c46dc0dced84da5815a99100c112,
+    type: 2}
+  blockMagnetic: {fileID: 1850009845473402, guid: 99c4e6b74b887404397c913caba85d7c,
+    type: 2}
   timer: 0
+  breakable: 0
 --- !u!1 &1029093221 stripped
 GameObject:
   m_PrefabParentObject: {fileID: 1298155444842294, guid: 2d650737647de4c4793ef69af2ec3f56,
@@ -4670,9 +4745,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b0786f42674f93d4f84e55ef54012bea, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rock: {fileID: 1850732001530696, guid: 1502c46dc0dced84da5815a99100c112, type: 2}
-  rockSpawned: 0
+  blockBreakable: {fileID: 1850732001530696, guid: 1502c46dc0dced84da5815a99100c112,
+    type: 2}
+  blockMagnetic: {fileID: 1850009845473402, guid: 99c4e6b74b887404397c913caba85d7c,
+    type: 2}
   timer: 0
+  breakable: 0
 --- !u!1 &1081117785
 GameObject:
   m_ObjectHideFlags: 0
@@ -4715,9 +4793,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b0786f42674f93d4f84e55ef54012bea, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rock: {fileID: 1850732001530696, guid: 1502c46dc0dced84da5815a99100c112, type: 2}
-  rockSpawned: 0
+  blockBreakable: {fileID: 1850732001530696, guid: 1502c46dc0dced84da5815a99100c112,
+    type: 2}
+  blockMagnetic: {fileID: 1850009845473402, guid: 99c4e6b74b887404397c913caba85d7c,
+    type: 2}
   timer: 0
+  breakable: 0
 --- !u!1 &1094889711
 GameObject:
   m_ObjectHideFlags: 0
@@ -4791,9 +4872,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b0786f42674f93d4f84e55ef54012bea, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rock: {fileID: 1850732001530696, guid: 1502c46dc0dced84da5815a99100c112, type: 2}
-  rockSpawned: 0
+  blockBreakable: {fileID: 1850732001530696, guid: 1502c46dc0dced84da5815a99100c112,
+    type: 2}
+  blockMagnetic: {fileID: 1850009845473402, guid: 99c4e6b74b887404397c913caba85d7c,
+    type: 2}
   timer: 0
+  breakable: 0
 --- !u!1 &1115388896
 GameObject:
   m_ObjectHideFlags: 0
@@ -4877,9 +4961,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b0786f42674f93d4f84e55ef54012bea, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rock: {fileID: 1850732001530696, guid: 1502c46dc0dced84da5815a99100c112, type: 2}
-  rockSpawned: 0
+  blockBreakable: {fileID: 1850732001530696, guid: 1502c46dc0dced84da5815a99100c112,
+    type: 2}
+  blockMagnetic: {fileID: 1850009845473402, guid: 99c4e6b74b887404397c913caba85d7c,
+    type: 2}
   timer: 0
+  breakable: 0
 --- !u!1 &1126925519
 GameObject:
   m_ObjectHideFlags: 0
@@ -4922,9 +5009,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b0786f42674f93d4f84e55ef54012bea, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rock: {fileID: 1850732001530696, guid: 1502c46dc0dced84da5815a99100c112, type: 2}
-  rockSpawned: 0
+  blockBreakable: {fileID: 1850732001530696, guid: 1502c46dc0dced84da5815a99100c112,
+    type: 2}
+  blockMagnetic: {fileID: 1850009845473402, guid: 99c4e6b74b887404397c913caba85d7c,
+    type: 2}
   timer: 0
+  breakable: 0
 --- !u!1 &1133581320
 GameObject:
   m_ObjectHideFlags: 0
@@ -4967,9 +5057,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b0786f42674f93d4f84e55ef54012bea, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rock: {fileID: 1850732001530696, guid: 1502c46dc0dced84da5815a99100c112, type: 2}
-  rockSpawned: 0
+  blockBreakable: {fileID: 1850732001530696, guid: 1502c46dc0dced84da5815a99100c112,
+    type: 2}
+  blockMagnetic: {fileID: 1850009845473402, guid: 99c4e6b74b887404397c913caba85d7c,
+    type: 2}
   timer: 0
+  breakable: 0
 --- !u!1 &1136924887
 GameObject:
   m_ObjectHideFlags: 0
@@ -5012,9 +5105,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b0786f42674f93d4f84e55ef54012bea, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rock: {fileID: 1850732001530696, guid: 1502c46dc0dced84da5815a99100c112, type: 2}
-  rockSpawned: 0
+  blockBreakable: {fileID: 1850732001530696, guid: 1502c46dc0dced84da5815a99100c112,
+    type: 2}
+  blockMagnetic: {fileID: 1850009845473402, guid: 99c4e6b74b887404397c913caba85d7c,
+    type: 2}
   timer: 0
+  breakable: 0
 --- !u!1 &1156374093
 GameObject:
   m_ObjectHideFlags: 0
@@ -5057,9 +5153,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b0786f42674f93d4f84e55ef54012bea, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rock: {fileID: 1850732001530696, guid: 1502c46dc0dced84da5815a99100c112, type: 2}
-  rockSpawned: 0
+  blockBreakable: {fileID: 1850732001530696, guid: 1502c46dc0dced84da5815a99100c112,
+    type: 2}
+  blockMagnetic: {fileID: 1850009845473402, guid: 99c4e6b74b887404397c913caba85d7c,
+    type: 2}
   timer: 0
+  breakable: 0
 --- !u!1 &1185081966
 GameObject:
   m_ObjectHideFlags: 0
@@ -5298,9 +5397,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b0786f42674f93d4f84e55ef54012bea, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rock: {fileID: 1850732001530696, guid: 1502c46dc0dced84da5815a99100c112, type: 2}
-  rockSpawned: 0
+  blockBreakable: {fileID: 1850732001530696, guid: 1502c46dc0dced84da5815a99100c112,
+    type: 2}
+  blockMagnetic: {fileID: 1850009845473402, guid: 99c4e6b74b887404397c913caba85d7c,
+    type: 2}
   timer: 0
+  breakable: 0
 --- !u!1 &1273959220
 GameObject:
   m_ObjectHideFlags: 0
@@ -5746,9 +5848,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b0786f42674f93d4f84e55ef54012bea, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rock: {fileID: 1850732001530696, guid: 1502c46dc0dced84da5815a99100c112, type: 2}
-  rockSpawned: 0
+  blockBreakable: {fileID: 1850732001530696, guid: 1502c46dc0dced84da5815a99100c112,
+    type: 2}
+  blockMagnetic: {fileID: 1850009845473402, guid: 99c4e6b74b887404397c913caba85d7c,
+    type: 2}
   timer: 0
+  breakable: 0
 --- !u!1 &1382411523
 GameObject:
   m_ObjectHideFlags: 0
@@ -5791,9 +5896,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b0786f42674f93d4f84e55ef54012bea, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rock: {fileID: 1850732001530696, guid: 1502c46dc0dced84da5815a99100c112, type: 2}
-  rockSpawned: 0
+  blockBreakable: {fileID: 1850732001530696, guid: 1502c46dc0dced84da5815a99100c112,
+    type: 2}
+  blockMagnetic: {fileID: 1850009845473402, guid: 99c4e6b74b887404397c913caba85d7c,
+    type: 2}
   timer: 0
+  breakable: 0
 --- !u!1 &1396038266
 GameObject:
   m_ObjectHideFlags: 0
@@ -5895,9 +6003,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b0786f42674f93d4f84e55ef54012bea, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rock: {fileID: 1850732001530696, guid: 1502c46dc0dced84da5815a99100c112, type: 2}
-  rockSpawned: 0
+  blockBreakable: {fileID: 1850732001530696, guid: 1502c46dc0dced84da5815a99100c112,
+    type: 2}
+  blockMagnetic: {fileID: 1850009845473402, guid: 99c4e6b74b887404397c913caba85d7c,
+    type: 2}
   timer: 0
+  breakable: 0
 --- !u!1 &1426060780
 GameObject:
   m_ObjectHideFlags: 0
@@ -5940,9 +6051,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b0786f42674f93d4f84e55ef54012bea, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rock: {fileID: 1850732001530696, guid: 1502c46dc0dced84da5815a99100c112, type: 2}
-  rockSpawned: 0
+  blockBreakable: {fileID: 1850732001530696, guid: 1502c46dc0dced84da5815a99100c112,
+    type: 2}
+  blockMagnetic: {fileID: 1850009845473402, guid: 99c4e6b74b887404397c913caba85d7c,
+    type: 2}
   timer: 0
+  breakable: 0
 --- !u!1 &1436594452
 GameObject:
   m_ObjectHideFlags: 0
@@ -5985,9 +6099,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b0786f42674f93d4f84e55ef54012bea, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rock: {fileID: 1850732001530696, guid: 1502c46dc0dced84da5815a99100c112, type: 2}
-  rockSpawned: 0
+  blockBreakable: {fileID: 1850732001530696, guid: 1502c46dc0dced84da5815a99100c112,
+    type: 2}
+  blockMagnetic: {fileID: 1850009845473402, guid: 99c4e6b74b887404397c913caba85d7c,
+    type: 2}
   timer: 0
+  breakable: 0
 --- !u!1 &1436803387
 GameObject:
   m_ObjectHideFlags: 0
@@ -6255,7 +6372,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1501191627}
   m_Layer: 0
-  m_Name: Rocks Spawn
+  m_Name: Block Spawn
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -6370,9 +6487,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b0786f42674f93d4f84e55ef54012bea, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rock: {fileID: 1850732001530696, guid: 1502c46dc0dced84da5815a99100c112, type: 2}
-  rockSpawned: 0
+  blockBreakable: {fileID: 1850732001530696, guid: 1502c46dc0dced84da5815a99100c112,
+    type: 2}
+  blockMagnetic: {fileID: 1850009845473402, guid: 99c4e6b74b887404397c913caba85d7c,
+    type: 2}
   timer: 0
+  breakable: 0
 --- !u!1 &1525563837
 GameObject:
   m_ObjectHideFlags: 0
@@ -6552,9 +6672,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b0786f42674f93d4f84e55ef54012bea, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rock: {fileID: 1850732001530696, guid: 1502c46dc0dced84da5815a99100c112, type: 2}
-  rockSpawned: 0
+  blockBreakable: {fileID: 1850732001530696, guid: 1502c46dc0dced84da5815a99100c112,
+    type: 2}
+  blockMagnetic: {fileID: 1850009845473402, guid: 99c4e6b74b887404397c913caba85d7c,
+    type: 2}
   timer: 0
+  breakable: 0
 --- !u!1 &1537843686
 GameObject:
   m_ObjectHideFlags: 0
@@ -6597,9 +6720,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b0786f42674f93d4f84e55ef54012bea, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rock: {fileID: 1850732001530696, guid: 1502c46dc0dced84da5815a99100c112, type: 2}
-  rockSpawned: 0
+  blockBreakable: {fileID: 1850732001530696, guid: 1502c46dc0dced84da5815a99100c112,
+    type: 2}
+  blockMagnetic: {fileID: 1850009845473402, guid: 99c4e6b74b887404397c913caba85d7c,
+    type: 2}
   timer: 0
+  breakable: 0
 --- !u!1 &1539104485
 GameObject:
   m_ObjectHideFlags: 0
@@ -7017,9 +7143,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b0786f42674f93d4f84e55ef54012bea, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rock: {fileID: 1850732001530696, guid: 1502c46dc0dced84da5815a99100c112, type: 2}
-  rockSpawned: 0
+  blockBreakable: {fileID: 1850732001530696, guid: 1502c46dc0dced84da5815a99100c112,
+    type: 2}
+  blockMagnetic: {fileID: 1850009845473402, guid: 99c4e6b74b887404397c913caba85d7c,
+    type: 2}
   timer: 0
+  breakable: 0
 --- !u!1 &1639060066
 GameObject:
   m_ObjectHideFlags: 0
@@ -7621,9 +7750,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b0786f42674f93d4f84e55ef54012bea, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rock: {fileID: 1850732001530696, guid: 1502c46dc0dced84da5815a99100c112, type: 2}
-  rockSpawned: 0
+  blockBreakable: {fileID: 1850732001530696, guid: 1502c46dc0dced84da5815a99100c112,
+    type: 2}
+  blockMagnetic: {fileID: 1850009845473402, guid: 99c4e6b74b887404397c913caba85d7c,
+    type: 2}
   timer: 0
+  breakable: 0
 --- !u!1 &1760218220
 GameObject:
   m_ObjectHideFlags: 0
@@ -7666,9 +7798,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b0786f42674f93d4f84e55ef54012bea, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rock: {fileID: 1850732001530696, guid: 1502c46dc0dced84da5815a99100c112, type: 2}
-  rockSpawned: 0
+  blockBreakable: {fileID: 1850732001530696, guid: 1502c46dc0dced84da5815a99100c112,
+    type: 2}
+  blockMagnetic: {fileID: 1850009845473402, guid: 99c4e6b74b887404397c913caba85d7c,
+    type: 2}
   timer: 0
+  breakable: 0
 --- !u!4 &1767191900 stripped
 Transform:
   m_PrefabParentObject: {fileID: 4615968590702520, guid: 1502c46dc0dced84da5815a99100c112,
@@ -7716,9 +7851,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b0786f42674f93d4f84e55ef54012bea, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rock: {fileID: 1850732001530696, guid: 1502c46dc0dced84da5815a99100c112, type: 2}
-  rockSpawned: 0
+  blockBreakable: {fileID: 1850732001530696, guid: 1502c46dc0dced84da5815a99100c112,
+    type: 2}
+  blockMagnetic: {fileID: 1850009845473402, guid: 99c4e6b74b887404397c913caba85d7c,
+    type: 2}
   timer: 0
+  breakable: 0
 --- !u!1 &1781796721
 GameObject:
   m_ObjectHideFlags: 0
@@ -8066,9 +8204,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b0786f42674f93d4f84e55ef54012bea, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rock: {fileID: 1850732001530696, guid: 1502c46dc0dced84da5815a99100c112, type: 2}
-  rockSpawned: 0
+  blockBreakable: {fileID: 1850732001530696, guid: 1502c46dc0dced84da5815a99100c112,
+    type: 2}
+  blockMagnetic: {fileID: 1850009845473402, guid: 99c4e6b74b887404397c913caba85d7c,
+    type: 2}
   timer: 0
+  breakable: 0
 --- !u!1001 &1867820416
 Prefab:
   m_ObjectHideFlags: 0
@@ -8153,9 +8294,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b0786f42674f93d4f84e55ef54012bea, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rock: {fileID: 1850732001530696, guid: 1502c46dc0dced84da5815a99100c112, type: 2}
-  rockSpawned: 0
+  blockBreakable: {fileID: 1850732001530696, guid: 1502c46dc0dced84da5815a99100c112,
+    type: 2}
+  blockMagnetic: {fileID: 1850009845473402, guid: 99c4e6b74b887404397c913caba85d7c,
+    type: 2}
   timer: 0
+  breakable: 0
 --- !u!1001 &1903491285
 Prefab:
   m_ObjectHideFlags: 0
@@ -8306,9 +8450,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b0786f42674f93d4f84e55ef54012bea, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rock: {fileID: 1850732001530696, guid: 1502c46dc0dced84da5815a99100c112, type: 2}
-  rockSpawned: 0
+  blockBreakable: {fileID: 1850732001530696, guid: 1502c46dc0dced84da5815a99100c112,
+    type: 2}
+  blockMagnetic: {fileID: 1850009845473402, guid: 99c4e6b74b887404397c913caba85d7c,
+    type: 2}
   timer: 0
+  breakable: 0
 --- !u!1 &1948093005
 GameObject:
   m_ObjectHideFlags: 0
@@ -8456,9 +8603,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b0786f42674f93d4f84e55ef54012bea, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rock: {fileID: 1850732001530696, guid: 1502c46dc0dced84da5815a99100c112, type: 2}
-  rockSpawned: 0
+  blockBreakable: {fileID: 1850732001530696, guid: 1502c46dc0dced84da5815a99100c112,
+    type: 2}
+  blockMagnetic: {fileID: 1850009845473402, guid: 99c4e6b74b887404397c913caba85d7c,
+    type: 2}
   timer: 0
+  breakable: 0
 --- !u!1 &1955907663
 GameObject:
   m_ObjectHideFlags: 0
@@ -8724,9 +8874,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b0786f42674f93d4f84e55ef54012bea, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rock: {fileID: 1850732001530696, guid: 1502c46dc0dced84da5815a99100c112, type: 2}
-  rockSpawned: 0
+  blockBreakable: {fileID: 1850732001530696, guid: 1502c46dc0dced84da5815a99100c112,
+    type: 2}
+  blockMagnetic: {fileID: 1850009845473402, guid: 99c4e6b74b887404397c913caba85d7c,
+    type: 2}
   timer: 0
+  breakable: 0
 --- !u!1 &2001002893
 GameObject:
   m_ObjectHideFlags: 0
@@ -9033,9 +9186,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b0786f42674f93d4f84e55ef54012bea, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rock: {fileID: 1850732001530696, guid: 1502c46dc0dced84da5815a99100c112, type: 2}
-  rockSpawned: 0
+  blockBreakable: {fileID: 1850732001530696, guid: 1502c46dc0dced84da5815a99100c112,
+    type: 2}
+  blockMagnetic: {fileID: 1850009845473402, guid: 99c4e6b74b887404397c913caba85d7c,
+    type: 2}
   timer: 0
+  breakable: 0
 --- !u!1 &2085185304
 GameObject:
   m_ObjectHideFlags: 0
@@ -9078,9 +9234,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b0786f42674f93d4f84e55ef54012bea, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rock: {fileID: 1850732001530696, guid: 1502c46dc0dced84da5815a99100c112, type: 2}
-  rockSpawned: 0
+  blockBreakable: {fileID: 1850732001530696, guid: 1502c46dc0dced84da5815a99100c112,
+    type: 2}
+  blockMagnetic: {fileID: 1850009845473402, guid: 99c4e6b74b887404397c913caba85d7c,
+    type: 2}
   timer: 0
+  breakable: 0
 --- !u!1 &2114117089
 GameObject:
   m_ObjectHideFlags: 0
@@ -9123,6 +9282,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b0786f42674f93d4f84e55ef54012bea, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  rock: {fileID: 1850732001530696, guid: 1502c46dc0dced84da5815a99100c112, type: 2}
-  rockSpawned: 0
+  blockBreakable: {fileID: 1850732001530696, guid: 1502c46dc0dced84da5815a99100c112,
+    type: 2}
+  blockMagnetic: {fileID: 1850009845473402, guid: 99c4e6b74b887404397c913caba85d7c,
+    type: 2}
   timer: 0
+  breakable: 0
