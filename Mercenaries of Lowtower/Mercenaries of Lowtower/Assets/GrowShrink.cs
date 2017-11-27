@@ -14,6 +14,9 @@ public class GrowShrink : MonoBehaviour {
     Vector3 platformPosition;
     //GameObject platform;
 
+    public Transform waypointTop;
+    public Transform waypointBottom;
+
     // Use this for initialization
     void Start () {
 
@@ -21,7 +24,7 @@ public class GrowShrink : MonoBehaviour {
 
         //h2 = healthScript.health;
 
-        platformPosition = transform.position;
+        transform.position = waypointBottom.position;
 
     }
 	
@@ -30,32 +33,21 @@ public class GrowShrink : MonoBehaviour {
 
         if (healthScript.health > 1)
         {
+            transform.position = Vector3.MoveTowards(transform.position, waypointTop.position, 2*Time.deltaTime);
             healthScript.health -= .1f;
         }
 
+        if (healthScript.health<=1)
+        {
 
-        transform.position = new Vector3 (platformPosition.x, healthScript.health,platformPosition.z);
+            transform.position = Vector3.MoveTowards(transform.position, waypointBottom.position, 2 * Time.deltaTime);
+        }
+
+
+        //transform.position = new Vector3 (platformPosition.x, healthScript.health*.1f,platformPosition.z);
         print(platformPosition);
 
-        //h1 = healthScript.health;
-
-        ////if health decreased
-        //if (h1 < h2)
-        //{
-        //    transform.position-=new Vector3 (0,1,0);
-
-        //    h2 = h1;
-        //    //print(h2);
-        //}
-
-        ////if health increased
-        //if (h2<h1)
-        //{
-
-        //    transform.position += new Vector3(0, 1, 0);
-
-        //}
-
+    
 
     }
 }
