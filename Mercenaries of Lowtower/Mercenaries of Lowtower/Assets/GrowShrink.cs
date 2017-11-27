@@ -17,6 +17,11 @@ public class GrowShrink : MonoBehaviour {
     public Transform waypointTop;
     public Transform waypointBottom;
 
+    public Material flowersAlive;
+    public Material flowersDead;
+
+    Material flowerMaterial;
+
     // Use this for initialization
     void Start () {
 
@@ -26,6 +31,8 @@ public class GrowShrink : MonoBehaviour {
 
         transform.position = waypointBottom.position;
 
+        //flowerMaterial = GetComponent<Renderer>().material;
+
     }
 	
 	// Update is called once per frame
@@ -33,13 +40,14 @@ public class GrowShrink : MonoBehaviour {
 
         if (healthScript.health > 1)
         {
+            GetComponent<Renderer>().material = flowersAlive;
             transform.position = Vector3.MoveTowards(transform.position, waypointTop.position, 2*Time.deltaTime);
             healthScript.health -= .1f;
         }
 
         if (healthScript.health<=1)
         {
-
+            GetComponent<Renderer>().material = flowersDead;
             transform.position = Vector3.MoveTowards(transform.position, waypointBottom.position, 2 * Time.deltaTime);
         }
 

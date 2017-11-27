@@ -263,7 +263,7 @@ GameObject:
   m_Component:
   - component: {fileID: 81329313}
   m_Layer: 0
-  m_Name: Platform Waypoints
+  m_Name: Platform + Waypoints
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -280,9 +280,10 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 2102731963}
+  - {fileID: 1390288776}
   - {fileID: 594776962}
   m_Father: {fileID: 0}
-  m_RootOrder: 28
+  m_RootOrder: 27
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &100885111
 GameObject:
@@ -2152,11 +2153,11 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 594776961}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: -4.88, z: 0}
+  m_LocalPosition: {x: 0, y: -5.25, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 81329313}
-  m_RootOrder: 1
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &681806786
 GameObject:
@@ -4251,7 +4252,7 @@ GameObject:
   - component: {fileID: 1390288772}
   - component: {fileID: 1390288771}
   m_Layer: 8
-  m_Name: grow this
+  m_Name: Growing Platform
   m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -4270,6 +4271,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   waypointTop: {fileID: 2102731963}
   waypointBottom: {fileID: 594776962}
+  flowersAlive: {fileID: 2100000, guid: cedfd0ac51241304db866d9322c19b6e, type: 2}
+  flowersDead: {fileID: 2100000, guid: 3749feda34d971d47b1948b212068f9b, type: 2}
 --- !u!114 &1390288772
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4300,7 +4303,7 @@ MeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_Materials:
-  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: cedfd0ac51241304db866d9322c19b6e, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -4344,13 +4347,13 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1390288770}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -21.04, y: 26.58, z: -27.3}
+  m_LocalRotation: {x: 0, y: 1, z: 0, w: 0}
+  m_LocalPosition: {x: -0.09000015, y: -4.85, z: 0.19000053}
   m_LocalScale: {x: 6.355622, y: 1, z: 5.5761876}
   m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 27
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_Father: {fileID: 81329313}
+  m_RootOrder: 1
+  m_LocalEulerAnglesHint: {x: 0, y: 180, z: 0}
 --- !u!1 &1396038266
 GameObject:
   m_ObjectHideFlags: 0
@@ -5085,7 +5088,7 @@ MeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_Materials:
-  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  - {fileID: 2100000, guid: ddef3a9accf26e841a8ce5e5ffc0d166, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -5466,7 +5469,7 @@ MeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_Materials:
-  - {fileID: 2100000, guid: 538c703761fd7684c82ad562dd7431de, type: 2}
+  - {fileID: 2100000, guid: 693ec9c6efab8ed48a35a6ffd57dafa7, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
