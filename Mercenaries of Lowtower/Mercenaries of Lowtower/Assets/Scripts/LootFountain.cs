@@ -5,13 +5,19 @@ using UnityEngine;
 public class LootFountain : MonoBehaviour {
     public GameObject[] Loot;
     //public List<GameObject> Lootfountain;
-    public float lootAmount;
-    public float timer;
-    public float timer1;
-    public int lootCount;
+     float timer;
+     float timer1;
+     int lootCount;
+    public float fountainTime;
+    public float spawnTime;
+    public float spawnConeDiameter;
+    public float minUpForce;
+    public float maxUpForce;
+    public float intervalTime;
 
-	// Use this for initialization
-	void Start () {
+
+    // Use this for initialization
+    void Start () {
         Loot = new GameObject[4];
         Loot[0] = GameObject.CreatePrimitive(PrimitiveType.Capsule);
         Loot[0].AddComponent<Rigidbody>();
@@ -31,9 +37,9 @@ public class LootFountain : MonoBehaviour {
     void Update () {
         timer += Time.deltaTime;
         timer1 += Time.deltaTime;
-        if (timer1 < 20)
+        if (timer1 < fountainTime)
         {
-            if (timer > .001f)
+            if (timer > spawnTime)
             {
                 StartCoroutine(_LootFountain());
                 timer = 0;
@@ -45,29 +51,28 @@ public class LootFountain : MonoBehaviour {
     {
         GameObject clone;
         clone = Instantiate(Loot[Random.Range(0, 4)], transform.position, Quaternion.identity);
-        clone.GetComponent<Rigidbody>().AddForce(Random.Range(-1, 1), Random.Range(25, 150), Random.Range(-1, 1), ForceMode.Impulse);
+        clone.GetComponent<Rigidbody>().AddForce(Random.Range(-spawnConeDiameter, spawnConeDiameter), Random.Range(minUpForce, maxUpForce), Random.Range(-spawnConeDiameter, spawnConeDiameter), ForceMode.Impulse);
         lootCount++;
+        yield return new WaitForSeconds(intervalTime);
 
         GameObject clone2;
         clone2 = Instantiate(Loot[Random.Range(0, 4)], transform.position, Quaternion.identity);
-        clone2.GetComponent<Rigidbody>().AddForce(Random.Range(-1, 1), Random.Range(25, 150), Random.Range(-1, 1), ForceMode.Impulse);
+        clone2.GetComponent<Rigidbody>().AddForce(Random.Range(-spawnConeDiameter, spawnConeDiameter), Random.Range(minUpForce, maxUpForce), Random.Range(-spawnConeDiameter, spawnConeDiameter), ForceMode.Impulse);
         lootCount++;
+        yield return new WaitForSeconds(intervalTime);
 
         GameObject clone3;
         clone3 = Instantiate(Loot[Random.Range(0, 4)], transform.position, Quaternion.identity);
-        clone3.GetComponent<Rigidbody>().AddForce(Random.Range(-1, 1), Random.Range(25, 150), Random.Range(-1, 1), ForceMode.Impulse);
+        clone3.GetComponent<Rigidbody>().AddForce(Random.Range(-spawnConeDiameter, spawnConeDiameter), Random.Range(minUpForce, maxUpForce), Random.Range(-spawnConeDiameter, spawnConeDiameter), ForceMode.Impulse);
         lootCount++;
+        yield return new WaitForSeconds(intervalTime);
 
         GameObject clone4;
         clone4 = Instantiate(Loot[Random.Range(0, 4)], transform.position, Quaternion.identity);
-        clone4.GetComponent<Rigidbody>().AddForce(Random.Range(-1, 1), Random.Range(25, 150), Random.Range(-1, 1), ForceMode.Impulse);
+        clone4.GetComponent<Rigidbody>().AddForce(Random.Range(-spawnConeDiameter, spawnConeDiameter), Random.Range(minUpForce, maxUpForce), Random.Range(-spawnConeDiameter, spawnConeDiameter), ForceMode.Impulse);
         lootCount++;
-        //for (int i = 0; i<lootAmount; i++)
-        //{
 
-        //}
-
-        yield return new WaitForSeconds(0);
+        yield return new WaitForSeconds(intervalTime);
 
     }
 }

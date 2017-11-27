@@ -10,6 +10,8 @@ public class BossMovementAI : MonoBehaviour {
     public bool inRange;
     public float minimumDistance;
     public float maxDistance;
+    float stunTimer;
+    public bool stun;
 
     //Variable to hold the current speed of the boss
     public float speed;
@@ -27,6 +29,10 @@ public class BossMovementAI : MonoBehaviour {
     // If the target is further than a minimum distance the boss will move towards the currentTarget, but not in the Y axis.
     // When in range the bool flips to true, and the boss attack AI resumes
     void Update () {
+        if (stun)
+        {
+            Stun(4);
+        }
         if(currentTarget==null)
         {
             currentTarget = targeting.currentTarget;
@@ -60,4 +66,20 @@ public class BossMovementAI : MonoBehaviour {
 
         }
 	}
+
+    public void Stun(float duration)
+    {
+        
+        stunTimer += Time.deltaTime;
+        if (stunTimer < duration)
+        {
+            speed = 0;
+        } else if (stunTimer > duration)
+        {
+            stun = false;
+            speed = 10;
+            stunTimer = 0;
+
+        }
+    }
 }

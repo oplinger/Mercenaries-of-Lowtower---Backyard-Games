@@ -19,10 +19,14 @@ public class MeleeController : MonoBehaviour
     int attacknum;
     float timer;
     float timer1;
+    float warbleTimer;
+    public GameObject model;
 
 
     [Header("General")]
     public bool altBuild;
+    public bool WWarble;
+
 
     [Range(1, 50)]
     public float walkspeed;
@@ -33,6 +37,9 @@ public class MeleeController : MonoBehaviour
     public Material meleeMat;
     public float reviveRadius;
     public float reviveCastTime;
+    public float warbleDistanceMax;
+    public float warbleDistanceMin;
+
 
     [Header("Berserker Melee Settings")]
     public float berserkerMeleeDamage;
@@ -55,6 +62,8 @@ public class MeleeController : MonoBehaviour
     [Range(0, 10)]
     public float cycloneCD;
     public float strikeInterval;
+    public float whirlWindDiameter;
+    public float walkspeedmult;
 
     [Header("Lunge Settings")]
     public float lungeDamage;
@@ -102,8 +111,20 @@ public class MeleeController : MonoBehaviour
          */
     void Update()
     {
-attacknum = Mathf.Clamp(attacknum, 0, attackNumMax);
+    attacknum = Mathf.Clamp(attacknum, 0, attackNumMax);
+        if (WWarble)
+        {
+            warbleTimer += Time.deltaTime;
 
+            model.transform.position = new Vector3(transform.position.x + Mathf.Sin(Time.time * warbleDistanceMax), transform.position.y, transform.position.z + Mathf.Cos(Time.time * warbleDistanceMax));
+            if (warbleTimer > 3)
+            {
+                WWarble = false;
+                warbleTimer = 0;
+            }
+        }
+        else
+            model.transform.position = transform.position;
         if (altBuild)
         {
             meleeMat.color = Color.HSVToRGB(.016f, .788f, .5f);
@@ -171,7 +192,8 @@ attacknum = Mathf.Clamp(attacknum, 0, attackNumMax);
 
         if (CTRLID != 0 && Input.GetKeyDown("joystick " + CTRLID + " button 1") && cooldowns.activeCooldowns[7] <= 0 && !altBuild && !health.isDead)
         {
-            abilities.Whirlwind(whirlwindDamage, 2, gameObject, cycloneCD, strikeInterval);
+            abilities.Whirlwind(whirlwindDamage, 2, gameObject, cycloneCD, strikeInterval, whirlWindDiameter, walkspeedmult, walkspeed);
+            WWarble = true;
         }
 
         if (CTRLID != 0 && Input.GetKeyDown("joystick " + CTRLID + " button 2") && cooldowns.activeCooldowns[6] <= 0 && !health.isDead)
@@ -240,11 +262,7 @@ attacknum = Mathf.Clamp(attacknum, 0, attackNumMax);
             walkspeed = 0;
             playermovement *= 0;
         }
-        else
-        {
-            walkspeed = 10;
 
-        }
         #endregion
     }
 }

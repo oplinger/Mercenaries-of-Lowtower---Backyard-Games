@@ -322,9 +322,6 @@ public class HealerController : MonoBehaviour
             anim.SetInteger("AnimState", 5);
             walkspeed = 0;
             playermovement *= 0;
-        } else
-        {
-            walkspeed = 10;
         }
         #endregion
     }

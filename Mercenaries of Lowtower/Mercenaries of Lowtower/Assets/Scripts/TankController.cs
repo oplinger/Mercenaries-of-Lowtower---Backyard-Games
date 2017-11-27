@@ -44,6 +44,7 @@ public class TankController : MonoBehaviour
     [Range(0, 10)]
     public float pullSpeed;
     public float magnetThreat;
+    public float magnetDiameter;
     
     [Header("Shield Settings")]
     public bool InfiniteShield;
@@ -173,9 +174,9 @@ public class TankController : MonoBehaviour
                 cap.transform.localScale = new Vector3(1, 10, 1);
                 cap.transform.parent = transform;
             Destroy(cap, Time.deltaTime+.002f);
-            
 
-            abilities.TankMagnet(magnetThreat, 0, gameObject, magnetCooldown, magnetMask, magnetDistance, pullSpeed);
+
+            abilities.TankMagnet(magnetThreat, 0, gameObject, magnetCooldown, magnetMask, magnetDistance, pullSpeed, magnetDiameter);
             anim.SetInteger("AnimState", 2);
             tankMat.SetColor("_EmissionColor", Color.HSVToRGB(.7f, 1, 1));
 
@@ -260,10 +261,7 @@ public class TankController : MonoBehaviour
             walkspeed = 0;
             playermovement *= 0;
         }
-        else
-        {
-            walkspeed = 10;
-        }
+
 
         #endregion
     }

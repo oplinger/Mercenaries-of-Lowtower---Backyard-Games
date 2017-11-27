@@ -39,7 +39,7 @@ public class ControllerThing : MonoBehaviour {
 
     private void Update()
     {
-
+       // print(1 / Time.deltaTime);
         //press q to restart the level
         if (Input.GetKeyDown("q"))
         {

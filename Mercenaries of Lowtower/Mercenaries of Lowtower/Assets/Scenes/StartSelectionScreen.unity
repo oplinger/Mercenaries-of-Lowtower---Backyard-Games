@@ -530,7 +530,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4346849846935230, guid: 9b019403ca0f5db4fbe90678c8459dda, type: 2}
       propertyPath: m_LocalPosition.y
-      value: 13
+      value: 11.8
       objectReference: {fileID: 0}
     - target: {fileID: 4346849846935230, guid: 9b019403ca0f5db4fbe90678c8459dda, type: 2}
       propertyPath: m_LocalPosition.z
@@ -555,11 +555,6 @@ Prefab:
     - target: {fileID: 4346849846935230, guid: 9b019403ca0f5db4fbe90678c8459dda, type: 2}
       propertyPath: m_RootOrder
       value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 114752299657823772, guid: 9b019403ca0f5db4fbe90678c8459dda,
-        type: 2}
-      propertyPath: m_Enabled
-      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 9b019403ca0f5db4fbe90678c8459dda, type: 2}
@@ -1543,6 +1538,16 @@ Prefab:
     - target: {fileID: 4666255736657194, guid: b2e6eb9305a8c7b49985daca1f8a1094, type: 2}
       propertyPath: m_LocalScale.z
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114439197600683316, guid: b2e6eb9305a8c7b49985daca1f8a1094,
+        type: 2}
+      propertyPath: whirlWindDiameter
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 114439197600683316, guid: b2e6eb9305a8c7b49985daca1f8a1094,
+        type: 2}
+      propertyPath: walkspeedmult
+      value: 1.5
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: b2e6eb9305a8c7b49985daca1f8a1094, type: 2}

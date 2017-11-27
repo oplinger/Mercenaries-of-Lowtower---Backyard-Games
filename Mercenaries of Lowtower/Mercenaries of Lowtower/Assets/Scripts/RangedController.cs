@@ -229,11 +229,7 @@ public class RangedController : MonoBehaviour
             walkspeed = 0;
             playermovement *= 0;
         }
-        else
-        {
-            walkspeed = 10;
 
-        }
         #endregion
     }
 }

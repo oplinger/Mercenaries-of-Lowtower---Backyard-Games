@@ -32,12 +32,14 @@ public class ShieldScript : MonoBehaviour {
 
     private void OnTriggerEnter(Collider other)
     {
-        //if (other.tag=="Enemy")
-        //{
-        //    other.transform.position += new Vector3(Random.Range(-25, 25), 0, Random.Range(-25, 25));
-        //}
+        if (other.tag == "Enemy")
+        {
+            //DO A STUN THING OR OTHER EFFECT
+            //Create a method on the enemy to call that will stop them for X seconds or whatever we need
+            other.GetComponent<BossMovementAI>().stun = true;
+        }
 
-        
+
     }
 
     private void OnTriggerStay(Collider other)
