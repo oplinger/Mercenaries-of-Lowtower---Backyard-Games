@@ -52,24 +52,31 @@ public class LootFountain : MonoBehaviour {
         GameObject clone;
         clone = Instantiate(Loot[Random.Range(0, 4)], transform.position, Quaternion.identity);
         clone.GetComponent<Rigidbody>().AddForce(Random.Range(-spawnConeDiameter, spawnConeDiameter), Random.Range(minUpForce, maxUpForce), Random.Range(-spawnConeDiameter, spawnConeDiameter), ForceMode.Impulse);
+        clone.GetComponent<Renderer>().material.color = new Color(Random.Range(1, 1), Random.Range(0, 0), Random.Range(0, 0));
         lootCount++;
         yield return new WaitForSeconds(intervalTime);
 
         GameObject clone2;
         clone2 = Instantiate(Loot[Random.Range(0, 4)], transform.position, Quaternion.identity);
         clone2.GetComponent<Rigidbody>().AddForce(Random.Range(-spawnConeDiameter, spawnConeDiameter), Random.Range(minUpForce, maxUpForce), Random.Range(-spawnConeDiameter, spawnConeDiameter), ForceMode.Impulse);
+        clone2.GetComponent<Renderer>().material.color = new Color(Random.Range(0, 0), Random.Range(1, 1), Random.Range(0, 0));
+
         lootCount++;
         yield return new WaitForSeconds(intervalTime);
 
         GameObject clone3;
         clone3 = Instantiate(Loot[Random.Range(0, 4)], transform.position, Quaternion.identity);
         clone3.GetComponent<Rigidbody>().AddForce(Random.Range(-spawnConeDiameter, spawnConeDiameter), Random.Range(minUpForce, maxUpForce), Random.Range(-spawnConeDiameter, spawnConeDiameter), ForceMode.Impulse);
+        clone3.GetComponent<Renderer>().material.color = new Color(Random.Range(0, 0), Random.Range(0f, 0), Random.Range(1, 1));
+
         lootCount++;
         yield return new WaitForSeconds(intervalTime);
 
         GameObject clone4;
         clone4 = Instantiate(Loot[Random.Range(0, 4)], transform.position, Quaternion.identity);
         clone4.GetComponent<Rigidbody>().AddForce(Random.Range(-spawnConeDiameter, spawnConeDiameter), Random.Range(minUpForce, maxUpForce), Random.Range(-spawnConeDiameter, spawnConeDiameter), ForceMode.Impulse);
+        clone4.GetComponent<Renderer>().material.color = new Color(Random.Range(1, 1), Random.Range(1, 1), Random.Range(0, 0));
+
         lootCount++;
 
         yield return new WaitForSeconds(intervalTime);
