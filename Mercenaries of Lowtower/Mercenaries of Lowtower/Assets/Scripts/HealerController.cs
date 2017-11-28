@@ -36,7 +36,9 @@ public class HealerController : MonoBehaviour
     public LayerMask groundMask;
     public LayerMask enemyMask;
     public Material healerMat;
+    [Range(0, 10)]
     public float reviveRadius;
+    [Range(0, 10)]
     public float reviveCastTime;
 
    // public float absorbDamage;
@@ -44,6 +46,7 @@ public class HealerController : MonoBehaviour
    // public float absorbCooldown;
 
     [Header("Heal Settings")]
+    [Range(0, 50)]
     public float healAmount;
     [Range(0, 10)]
     public float healCooldown;
@@ -51,9 +54,11 @@ public class HealerController : MonoBehaviour
     public float healInterval;
     [Range(0, 100)]
     public float healRange;
-
+    [Range(0, 10)]
     public float orbCooldown;
+    [Range(0, 10)]
     public float orbSpeed;
+
     [Header("Teleport Settings")]
     [Range(0, 10)]
     public float teleportCooldown;
@@ -61,6 +66,7 @@ public class HealerController : MonoBehaviour
     public float teleportRange;
     [Range(0, 10)]
     public float teleportDelay;
+
     [Header("Fear Settings")]
     [Range(0, 10)]
     public float fearCooldown;

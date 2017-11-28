@@ -63,7 +63,10 @@ public class Health : MonoBehaviour {
             {
                 //dam *= 0;
                 foundShield = GameObject.FindGameObjectWithTag("Shield");
-                foundShield.GetComponent<Health>().health -= dam;
+                if (null != foundShield)
+                {
+                    foundShield.GetComponent<Health>().health -= dam;
+                }
             } 
             //if (gameObject.tag == "Shield")
             //{

@@ -301,11 +301,11 @@ public class PlayerAbilityController : MonoBehaviour
         cooldown.triggerCooldown(6, CD);
     }
 
-    public void Whirlwind(float damage, int playerID, GameObject me, float CD, float strikeinterval, float WWdiameter, float walkspeedmult, float walkspeed)
+    public void Whirlwind(float damage, int playerID, GameObject me, float CD, float strikeinterval, float WWdiameter, float walkspeedmult, float walkspeed, int WWnumber)
     {
         //Physics.OverlapSphere(me.transform.position, 3, enemyMask, QueryTriggerInteraction.Ignore);
 
-        StartCoroutine(WWAttack(damage, playerID, me, CD, strikeinterval, WWdiameter, walkspeedmult, walkspeed));
+        StartCoroutine(WWAttack(damage, playerID, me, CD, strikeinterval, WWdiameter, walkspeedmult, walkspeed, WWnumber));
         cooldown.triggerCooldown(7, CD);
         //} else
         //{
@@ -427,43 +427,51 @@ public class PlayerAbilityController : MonoBehaviour
         }
     }
 
-    IEnumerator WWAttack(float damage, int playerID, GameObject me, float CD, float strikeinterval, float WWdiameter, float walkspeedMult, float walkSpeed)
+    IEnumerator WWAttack(float damage, int playerID, GameObject me, float CD, float strikeinterval, float WWdiameter, float walkspeedMult, float walkSpeed, int WWnumber)
     {
         float walkspeed1 = walkSpeed;
-        Collider[] col = Physics.OverlapSphere(me.transform.position, WWdiameter, enemyMask, QueryTriggerInteraction.Ignore);
+        //Collider[] col = Physics.OverlapSphere(me.transform.position, WWdiameter, enemyMask, QueryTriggerInteraction.Ignore);
         me.GetComponent<MeleeController>().walkspeed *= walkspeedMult;
         GameObject wwcyl = GameObject.CreatePrimitive(PrimitiveType.Cylinder);
         Destroy(wwcyl.GetComponent<CapsuleCollider>());
         wwcyl.transform.position = me.transform.position - new Vector3(0, 1, 0);
         wwcyl.transform.localScale = new Vector3(WWdiameter, .5f, WWdiameter);
         wwcyl.transform.parent = me.transform;
-        for (int i = 0; i < col.Length; i++)
-        {
-            Health health = col[i].GetComponent<Health>();
-            health.modifyHealth(damage, playerID);
-        }
-        print("WW1");
-        yield return new WaitForSeconds(strikeinterval);
-        Collider[] col1 = Physics.OverlapSphere(me.transform.position, 3, enemyMask, QueryTriggerInteraction.Ignore);
-        for (int i = 0; i < col1.Length; i++)
-        {
-            Health health = col1[i].GetComponent<Health>();
-            health.modifyHealth(damage, playerID);
-        }
-        print("WW2");
-        yield return new WaitForSeconds(strikeinterval);
-        Collider[] col2 = Physics.OverlapSphere(me.transform.position, 3, enemyMask, QueryTriggerInteraction.Ignore);
 
-        for (int i = 0; i < col2.Length; i++)
+        for (int wwIndex = 0; wwIndex < WWnumber; ++wwIndex)
         {
-            Health health = col2[i].GetComponent<Health>();
-            health.modifyHealth(damage, playerID);
+            Collider[] col = Physics.OverlapSphere(me.transform.position, 3, enemyMask, QueryTriggerInteraction.Ignore);
+            for (int i = 0; i < col.Length; i++)
+            {
+                Health health = col[i].GetComponent<Health>();
+                health.modifyHealth(damage, playerID);
+            }
+            print( string.Format( "WW{0}", wwIndex ) );
+            yield return new WaitForSeconds(strikeinterval);
         }
-        print("WW3");
-        yield return new WaitForSeconds(strikeinterval);
+        me.GetComponent<MeleeController>().WWarble = false;
         me.GetComponent<MeleeController>().walkspeed = walkspeed1;
         Destroy(wwcyl);
+
+        //Collider[] col1 = Physics.OverlapSphere(me.transform.position, 3, enemyMask, QueryTriggerInteraction.Ignore);
+        //for (int i = 0; i < col1.Length; i++)
+        //{
+        //    Health health = col1[i].GetComponent<Health>();
+        //    health.modifyHealth(damage, playerID);
+        //}
+        //print("WW2");
+        //yield return new WaitForSeconds(strikeinterval);
+        //Collider[] col2 = Physics.OverlapSphere(me.transform.position, 3, enemyMask, QueryTriggerInteraction.Ignore);
+
+        //for (int i = 0; i < col2.Length; i++)
+        //{
+        //    Health health = col2[i].GetComponent<Health>();
+        //    health.modifyHealth(damage, playerID);
+        //}
+        //print("WW3");
+        //yield return new WaitForSeconds(strikeinterval);
         
+
     }
     // IEnumerator WW(float damage, int playerID, GameObject me, float CD)
     //{

@@ -28,30 +28,42 @@ public class RangedController : MonoBehaviour
     public LayerMask groundMask;
     public LayerMask enemyMask;
     public Material rangedMat;
+    [Range(0, 10)]
     public float reviveRadius;
+    [Range(0, 10)]
     public float reviveCastTime;
 
     [Header("Bolt Settings")]
-    public float boltDamage = 25;
+    [Range(0, 25)]
+    public float boltDamage;
     [Range(0, 10)]
     public float sniperAttackCD;
+    [Range(0, 10)]
     public float boltRange;
     [Header("Arrow Settings")]
-    public float arrowDamage = 5;
-    public float damageMultCap = 3;
+    [Range(0, 10)]
+    public float arrowDamage;
+    [Range(0, 5)]
+    public float damageMultCap;
     [Range(0, 10)]
     public float archerAttackCD;
+    [Range(0, 10)]
     public float arrowRange;
     [Header("Smoke Bomb Settings")]
     [Range(0, 10)]
     public float smokeBombCD;
+    [Range(0, 10)]
     public float cloudSize;
+    [Range(0, 10)]
     public float smokeDuration;
+    [Range(0, 5)]
     public float dissipationRate;
     [Header("Knockback Settings")]
     [Range(0, 10)]
     public float KnockbackCD;
+    [Range(0, 10)]
     public float knockbackArrowRange;
+    [Range(0, 10)]
     public float knockbackSpread;
 
 

@@ -44,6 +44,7 @@ public class TankController : MonoBehaviour
     [Range(0, 10)]
     public float pullSpeed;
     public float magnetThreat;
+    [Range(0, 10)]
     public float magnetDiameter;
     
     [Header("Shield Settings")]
@@ -52,6 +53,7 @@ public class TankController : MonoBehaviour
     public float shieldDuration;
     [Range(0, 10)]
     public float shieldCooldown;
+    [Range(0, 100)]
     public float shieldHealth;
     [Range(0, 50)]
     public float shieldSize;
