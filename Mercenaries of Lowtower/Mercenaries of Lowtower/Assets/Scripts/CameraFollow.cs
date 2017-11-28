@@ -9,7 +9,7 @@ public class CameraFollow : MonoBehaviour {
     float[] yValues;
     float[] zValues;
     float[] distances;
-
+    float bossdistance;
     public GameObject[] labels;
     public Health[] playerhealths;
     float[] healths1;
@@ -23,7 +23,8 @@ public class CameraFollow : MonoBehaviour {
     float minY;
     float maxZ;
     float minZ;
-
+    Vector3 camposition;
+    GameObject boss;
     public GameObject camTarget;
 
 
@@ -35,6 +36,7 @@ public class CameraFollow : MonoBehaviour {
         objects[1] = GameObject.Find("Healer Character(Clone)");
         objects[2] = GameObject.Find("Melee Character(Clone)");
         objects[3] = GameObject.Find("Ranged Character(Clone)");
+        boss = GameObject.Find("Boss");
 
         playerhealths = new Health[4];
         healths1 = new float[4];
@@ -84,8 +86,8 @@ public class CameraFollow : MonoBehaviour {
 
     void FindPositions()
     {
-        print(string.Format("MinXYZ {0},{1},{2}  MaxXYZ: {3},{4},{5}", minX, minY, minZ, maxX, maxY, maxZ));
-
+        //print(string.Format("MinXYZ {0},{1},{2}  MaxXYZ: {3},{4},{5}", minX, minY, minZ, maxX, maxY, maxZ));
+        bossdistance = Vector3.Distance(marker.transform.position, boss.transform.position);
         
         for (int i=0; i<objects.Length; i++)
         {
@@ -112,10 +114,22 @@ public class CameraFollow : MonoBehaviour {
         {
             distances[i] = Vector3.Distance(new Vector3((maxX + minX) / 2, 0, (maxZ + minZ) / 2), objects[i].transform.position);
         }
+        if (bossdistance < 100)
+        {
+            camposition = new Vector3((maxX + minX) / 2, Mathf.Clamp(Mathf.Max(distances[0], distances[1], distances[2], distances[3], bossdistance) *3, 20, 100), ((maxZ + minZ) / 2) - 15);
 
-        transform.rotation = Quaternion.Euler(90, 0, 0);
+        }
+        else
+        {
+            camposition = new Vector3((maxX + minX) / 2, Mathf.Clamp(Mathf.Max(distances) * 2, 20, 100), ((maxZ + minZ) / 2) - 15);
 
-        transform.position = new Vector3((maxX+minX)/2, Mathf.Clamp(Mathf.Max(distances)*2, 20, 100) , (maxZ + minZ)/2);
+        }
+        marker.transform.position = new Vector3(camposition.x, 1, camposition.z+15);
+        transform.position = camposition;
+        camTarget = marker;
+        transform.LookAt(camTarget.transform);
+
+        
 
         
 
