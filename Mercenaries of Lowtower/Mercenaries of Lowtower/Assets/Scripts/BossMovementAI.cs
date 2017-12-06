@@ -1,6 +1,8 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AI;
+
 
 public class BossMovementAI : MonoBehaviour {
     BossTargetingAI targeting;
@@ -12,6 +14,7 @@ public class BossMovementAI : MonoBehaviour {
     public float maxDistance;
     float stunTimer;
     public bool stun;
+    NavMeshAgent _navMeshAgent;
 
     //Variable to hold the current speed of the boss
     public float speed;
@@ -22,6 +25,7 @@ public class BossMovementAI : MonoBehaviour {
     // Gets the targeting information from the BossTargetingAI script
     void Start () {
         targeting = GetComponent<BossTargetingAI>();
+        _navMeshAgent = GetComponent<NavMeshAgent>();
         currentTarget = targeting.currentTarget;
 	}
 
@@ -50,7 +54,8 @@ public class BossMovementAI : MonoBehaviour {
             if (targetDistance > minimumDistance)
             {
                 inRange = false;
-                transform.position = Vector3.MoveTowards(transform.position, new Vector3(currentTarget.transform.position.x, transform.position.y, currentTarget.transform.position.z), speed * Time.deltaTime);
+                _navMeshAgent.SetDestination(currentTarget.transform.position);
+                //transform.position = Vector3.MoveTowards(transform.position, new Vector3(currentTarget.transform.position.x, transform.position.y, currentTarget.transform.position.z), speed * Time.deltaTime);
                 // .01f was in place of "speed"
 
                 //Orients the boss towards the player
