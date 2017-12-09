@@ -45,11 +45,11 @@ public class DelegateControlsTEST : MonoBehaviour {
 
         buttonID.text = buttonAnumber.ToString();
 
-		if(Input.GetKey("joystick 1 button " + buttonAnumber))
+		if(Input.GetKey("joystick 1 button 0"))
         {
             buttonA(0);
         }
-        if (Input.GetKey("joystick 1 button "+ buttonBnumber))
+        if (Input.GetKey("joystick 1 button 1"))
         {
             buttonB(1);
         }
@@ -67,9 +67,14 @@ public class DelegateControlsTEST : MonoBehaviour {
                 {
                     if (Input.GetKey("joystick 1 button " + i))
                     {
-                        buttonAnumber = i;
+                        if (i == 1)
+                        {
+                            buttonA = buttonBfunction;
+                        }
+
+
                         timer = 0;
-                            remap = false;
+                        remap = false;
                     }
                 }
             }
@@ -80,7 +85,7 @@ public class DelegateControlsTEST : MonoBehaviour {
     public void buttonAfunction(int button)
     {
 
-        if (remap == false)
+        if (!remap)
         {
             //buttonID.text = button.ToString();
             buttonAability();
@@ -90,7 +95,10 @@ public class DelegateControlsTEST : MonoBehaviour {
     public void buttonBfunction(int button)
     {
         //buttonID.text = button.ToString();
-        buttonBability("horse");
+        if (!remap)
+        {
+            buttonBability("horse");
+        }
     }
 
     public void Ability1()
