@@ -1,15 +1,23 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
+
 
 public class DelegateControlsTEST : MonoBehaviour {
-    public delegate void ButtonA();
+    public delegate void ButtonA(int button);
     public delegate void ButtonAAbility();
+    public Text buttonID;
+    public Image buttonimage;
+    public int buttonAnumber;
+    public int buttonBnumber;
+
+    bool remap;
 
     ButtonA buttonA;
     ButtonAAbility buttonAability;
 
-    public delegate void ButtonB();
+    public delegate void ButtonB(int button);
     public delegate void ButtonBAbility(string message);
 
     ButtonB buttonB;
@@ -18,9 +26,12 @@ public class DelegateControlsTEST : MonoBehaviour {
     public PersonThingWithAbilitiesScript personthing;
     public GameObject personthingwithabilities;
 
-
+    float timer;
     // Use this for initialization
     void Start () {
+        buttonAnumber = 0;
+        buttonBnumber = 1;
+
         buttonA = buttonAfunction;
         buttonB = buttonBfunction;
         buttonAability = Ability1;
@@ -32,23 +43,53 @@ public class DelegateControlsTEST : MonoBehaviour {
     // Update is called once per frame
     void Update () {
 
-		if(Input.GetKey("joystick 1 button 0"))
+        buttonID.text = buttonAnumber.ToString();
+
+		if(Input.GetKey("joystick 1 button " + buttonAnumber))
         {
-            buttonA();
+            buttonA(0);
         }
-        if (Input.GetKey("joystick 1 button 1"))
+        if (Input.GetKey("joystick 1 button "+ buttonBnumber))
         {
-            buttonB();
+            buttonB(1);
+        }
+        if (Input.GetKey("joystick 1 button 3"))
+        {
+            remap = true;
+        }
+
+        if (remap)
+        {
+           timer += Time.deltaTime;
+            if (timer < 10)
+            {
+                for(int i =0; i<3; i++)
+                {
+                    if (Input.GetKey("joystick 1 button " + i))
+                    {
+                        buttonAnumber = i;
+                        timer = 0;
+                            remap = false;
+                    }
+                }
+            }
+        }
+
+    }
+
+    public void buttonAfunction(int button)
+    {
+
+        if (remap == false)
+        {
+            //buttonID.text = button.ToString();
+            buttonAability();
         }
     }
 
-    public void buttonAfunction()
+    public void buttonBfunction(int button)
     {
-        buttonAability();
-    }
-
-    public void buttonBfunction()
-    {
+        //buttonID.text = button.ToString();
         buttonBability("horse");
     }
 
@@ -64,6 +105,6 @@ public class DelegateControlsTEST : MonoBehaviour {
     }
     public void Ability3()
     {
-        print("Ability3 Fired!");
+        buttonimage.color = new Color(1, 0, 0);
     }
 }
