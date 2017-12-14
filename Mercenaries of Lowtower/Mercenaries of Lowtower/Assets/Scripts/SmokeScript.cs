@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class SmokeScript : MonoBehaviour {
-    float scaleRate;
+    float scaleRate = 1;
 	// Use this for initialization
 	void Start () {
 		
