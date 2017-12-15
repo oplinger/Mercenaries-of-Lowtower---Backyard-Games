@@ -6,8 +6,6 @@ using UnityEngine;
 
 public class MeleeClass : PlayerClass
 {
-    delegate void MeleeLungeDel();
-    delegate void SmokeDel();
 
     [SerializeField]
     int grounded;
@@ -19,6 +17,14 @@ public class MeleeClass : PlayerClass
     [Range(0, 10)]
     public float lungeCD;
     // Use this for initialization
+    private void Awake()
+    {
+        buttonA = buttonAfunction;
+        buttonB = buttonBfunction;
+        buttonX = buttonXfunction;
+        buttonY = buttonYfunction;
+    }
+
     void Start()
     {
 
@@ -33,19 +39,19 @@ public class MeleeClass : PlayerClass
 
         if (Input.GetKeyDown("joystick "+ CTRLID +" button 0"))
         {
-            buttonAfunction();
+            buttonA();
         }
         if (Input.GetKeyDown("joystick " + CTRLID + " button 1"))
         {
-            buttonBfunction();
+            buttonB();
         }
         if (Input.GetKeyDown("joystick " + CTRLID + " button 2"))
         {
-            buttonXfunction();
+            buttonX();
         }
         if (Input.GetKeyDown("joystick " + CTRLID + " button 3"))
         {
-            buttonYfunction();
+            buttonY();
         }
 
 

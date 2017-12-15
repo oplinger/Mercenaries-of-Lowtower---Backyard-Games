@@ -4,55 +4,52 @@ using UnityEngine;
 
 public abstract class PlayerClass : EntityClass
 {
-    public int CTRLID;
-    public GameObject controllerThing;
-    public ControllerThing controller;
-    public PlayerAbilityController abilities;
-    public PlayerCDController cooldowns;
-    public Collider[] colliders;
-    public Animator anim;
+    protected int CTRLID;
+    protected GameObject controllerThing;
+    protected ControllerThing controller;
+    protected PlayerAbilityController abilities;
+    protected PlayerCDController cooldowns;
+    protected Collider[] colliders;
+    protected Animator anim;
 
-    public float walkspeed;
-    public float jumpHeight;
-    public LayerMask groundMask;
-    public LayerMask enemyMask;
-    public Material playerMat;
-    public float reviveRadius;
-    public float reviveCastTime;
+    protected float walkspeed;
+    protected float jumpHeight;
+    protected LayerMask groundMask;
+    protected LayerMask enemyMask;
+    protected Material playerMat;
+    protected float reviveRadius;
+    protected float reviveCastTime;
 
-    delegate void ButtonA();
-    delegate void ButtonB();
-    delegate void ButtonX();
-    delegate void ButtonY();
-    delegate void ButtonRB();
-    delegate void ButtonLB();
-    delegate void ButtonRT();
-    delegate void ButtonLT();
-    delegate void ButtonStart();
-    delegate void ButtonBack();
+   protected delegate void ButtonA();
+    protected delegate void ButtonB();
+    protected delegate void ButtonX();
+    protected delegate void ButtonY();
+    protected delegate void ButtonRB();
+    protected delegate void ButtonLB();
+    protected delegate void ButtonRT();
+    protected delegate void ButtonLT();
+    protected delegate void ButtonStart();
+    protected delegate void ButtonBack();
 
-    public delegate void Ability1();
-    public delegate void Ability2();
-    public delegate void Ability3();
+    protected delegate void Ability1();
+    protected delegate void Ability2();
+    protected delegate void Ability3();
 
-    ButtonA buttonA;
-    ButtonA buttonB;
-    ButtonA buttonX;
-    ButtonA buttonY;
+    protected ButtonA buttonA;
+    protected ButtonB buttonB;
+    protected ButtonX buttonX;
+    protected ButtonY buttonY;
 
-    public Ability1 ability1;
-    public Ability2 ability2;
-    public Ability3 ability3;
+    protected Ability1 ability1;
+    protected Ability2 ability2;
+    protected Ability3 ability3;
 
 
 
 
     // Use this for initialization
     void Start() {
-        buttonA = buttonAfunction;
-        buttonB = buttonBfunction;
-        buttonX = buttonXfunction;
-        buttonY = buttonYfunction;
+
 
 
     }
