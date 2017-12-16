@@ -4,13 +4,15 @@ using UnityEngine;
 
 public abstract class PlayerClass : EntityClass
 {
-    protected int CTRLID;
+    public int CTRLID;
     protected GameObject controllerThing;
     protected ControllerThing controller;
     protected PlayerAbilityController abilities;
     protected PlayerCDController cooldowns;
     protected Collider[] colliders;
     protected Animator anim;
+
+    protected Hashtable buttons;
 
     protected float walkspeed;
     protected float jumpHeight;
@@ -20,7 +22,7 @@ public abstract class PlayerClass : EntityClass
     protected float reviveRadius;
     protected float reviveCastTime;
 
-   protected delegate void ButtonA();
+    protected delegate void ButtonA();
     protected delegate void ButtonB();
     protected delegate void ButtonX();
     protected delegate void ButtonY();
@@ -100,5 +102,10 @@ public abstract class PlayerClass : EntityClass
     public void buttonYfunction()
     {
         Revive();
+    }
+
+    void AssignButtons()
+    {
+
     }
 }

@@ -9,17 +9,25 @@ public class TankClass : PlayerClass
     [SerializeField]
     int grounded;
 
+    
+
 	// Use this for initialization
 	void Start () {
+        buttons = new Hashtable();
+        buttons.Add("Abutton", "joystick " + CTRLID + " button 0");
+
         ability1 = shield;
 	}
 	
 	// Update is called once per frame
 	void Update () {
+        
 
-        if (Input.GetKeyDown("joystick " + CTRLID + " button 0"))
+
+        if (Input.GetKeyDown(buttons["Abutton"] as string))
         {
-            buttonAfunction();
+            //buttonAfunction();
+            print(buttons["Abutton"]);
         }
         if (Input.GetKeyDown("joystick " + CTRLID + " button 1"))
         {

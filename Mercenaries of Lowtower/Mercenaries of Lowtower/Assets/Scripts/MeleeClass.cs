@@ -6,7 +6,7 @@ using UnityEngine;
 
 public class MeleeClass : PlayerClass
 {
-
+    public PlayerAbilityController ability;
     [SerializeField]
     int grounded;
     [Header("Lunge Settings")]
@@ -19,15 +19,17 @@ public class MeleeClass : PlayerClass
     // Use this for initialization
     private void Awake()
     {
+        buttons = new Hashtable();
         buttonA = buttonAfunction;
         buttonB = buttonBfunction;
         buttonX = buttonXfunction;
         buttonY = buttonYfunction;
+
+        buttons.Add("Abutton", 0);
     }
 
     void Start()
     {
-
 
         ability1 = MeleeLunge;
         ability1 += Smoke;
@@ -36,23 +38,23 @@ public class MeleeClass : PlayerClass
     // Update is called once per frame
     void Update()
     {
-
-        if (Input.GetKeyDown("joystick "+ CTRLID +" button 0"))
-        {
-            buttonA();
-        }
-        if (Input.GetKeyDown("joystick " + CTRLID + " button 1"))
-        {
-            buttonB();
-        }
-        if (Input.GetKeyDown("joystick " + CTRLID + " button 2"))
-        {
-            buttonX();
-        }
-        if (Input.GetKeyDown("joystick " + CTRLID + " button 3"))
-        {
-            buttonY();
-        }
+        print("Melee:" + buttons["Abutton"]);
+        //if (Input.GetKeyDown("joystick "+ CTRLID +" button "+ System.Array.IndexOf(buttons, 0)))
+        //{
+        //    buttonA();
+        //}
+        //if (Input.GetKeyDown("joystick " + CTRLID + " button "+ System.Array.IndexOf(buttons, 1)))
+        //{
+        //    buttonB();
+        //}
+        //if (Input.GetKeyDown("joystick " + CTRLID + " button "+ System.Array.IndexOf(buttons, 2)))
+        //{
+        //    buttonX();
+        //}
+        //if (Input.GetKeyDown("joystick " + CTRLID + " button " + System.Array.IndexOf(buttons, 3)))
+        //{
+        //    buttonY();
+        //}
 
 
         //grounded = JumpCheck();
@@ -85,11 +87,12 @@ public class MeleeClass : PlayerClass
         else
         {
             //me.transform.position = Vector3.Lerp(me.transform.position, me.transform.position + (me.transform.forward * 10), 1);
-            StartCoroutine(Dash(gameObject));
+            print("Dashing!");
+            //StartCoroutine(Dash(gameObject));
 
         }
         //me.transform.position = Vector3.MoveTowards(me.transform.position, me.transform.position + (me.transform.forward * 100), 1000 * Time.deltaTime);
-        cooldowns.triggerCooldown(8, lungeCD);
+        //cooldowns.triggerCooldown(8, lungeCD);
 
     }
 
@@ -180,6 +183,6 @@ public class MeleeClass : PlayerClass
 
     void Smoke()
     {
-        Instantiate(Resources.Load("smoke"));
+        Instantiate(Resources.Load("smoke"),transform.position,Quaternion.identity);
     }
 }
