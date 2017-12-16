@@ -17,16 +17,6 @@ public class MeleeClass : PlayerClass
     [Range(0, 10)]
     public float lungeCD;
     // Use this for initialization
-    private void Awake()
-    {
-        buttons = new Hashtable();
-        buttonA = buttonAfunction;
-        buttonB = buttonBfunction;
-        buttonX = buttonXfunction;
-        buttonY = buttonYfunction;
-
-        buttons.Add("Abutton", 0);
-    }
 
     void Start()
     {
@@ -35,19 +25,19 @@ public class MeleeClass : PlayerClass
         ability1 += Smoke;
     }
 
-    // Update is called once per frame
     void Update()
     {
-        print("Melee:" + buttons["Abutton"]);
-        //if (Input.GetKeyDown("joystick "+ CTRLID +" button "+ System.Array.IndexOf(buttons, 0)))
-        //{
-        //    buttonA();
-        //}
-        //if (Input.GetKeyDown("joystick " + CTRLID + " button "+ System.Array.IndexOf(buttons, 1)))
+        print("Tank:" + buttons["Bbutton"]);
+
+        if (Input.GetKeyDown("joystick " + CTRLID + " button " + buttons["Abutton"]))
+        {
+            buttonA();
+        }
+        //if (Input.GetKeyDown("joystick " + CTRLID + " button " + System.Array.IndexOf(buttons, 1)))
         //{
         //    buttonB();
         //}
-        //if (Input.GetKeyDown("joystick " + CTRLID + " button "+ System.Array.IndexOf(buttons, 2)))
+        //if (Input.GetKeyDown("joystick " + CTRLID + " button " + System.Array.IndexOf(buttons, 2)))
         //{
         //    buttonX();
         //}
@@ -57,17 +47,17 @@ public class MeleeClass : PlayerClass
         //}
 
 
-        //grounded = JumpCheck();
+        grounded = JumpCheck();
 
-        //if (grounded > 0)
-        //{
+        if (grounded > 0)
+        {
 
-        //    Jump(5);
-        //}
-        //else
-        //{
-        //    Jump(0);
-        //}
+            Jump(5);
+        }
+        else
+        {
+            Jump(0);
+        }
     }
 
     public void MeleeLunge()
@@ -183,6 +173,6 @@ public class MeleeClass : PlayerClass
 
     void Smoke()
     {
-        Instantiate(Resources.Load("smoke"),transform.position,Quaternion.identity);
+        Instantiate(Resources.Load("smoke"), transform.position, Quaternion.identity);
     }
 }

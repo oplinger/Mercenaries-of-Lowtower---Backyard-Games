@@ -12,7 +12,7 @@ public abstract class PlayerClass : EntityClass
     protected Collider[] colliders;
     protected Animator anim;
 
-    protected Hashtable buttons;
+    public Hashtable buttons;
 
     protected float walkspeed;
     protected float jumpHeight;
@@ -50,9 +50,12 @@ public abstract class PlayerClass : EntityClass
 
 
     // Use this for initialization
-    void Start() {
+    void Awake() {
 
+        buttonA = buttonAfunction;
 
+        buttons = new Hashtable();
+        AssignButtons();
 
     }
 
@@ -104,8 +107,12 @@ public abstract class PlayerClass : EntityClass
         Revive();
     }
 
-    void AssignButtons()
+     public void AssignButtons()
     {
 
+        buttons.Add("Abutton", 0);
+        buttons.Add("Bbutton", 1);
+        buttons.Add("Xbutton", 2);
+        buttons.Add("Ybutton", 3);
     }
 }

@@ -13,21 +13,22 @@ public class TankClass : PlayerClass
 
 	// Use this for initialization
 	void Start () {
-        buttons = new Hashtable();
-        buttons.Add("Abutton", "joystick " + CTRLID + " button 0");
+        //Hashtable tButtons = new Hashtable(buttons);
+        //buttons.Add("Abutton", 0);
 
         ability1 = shield;
 	}
 	
 	// Update is called once per frame
 	void Update () {
-        
+
+        print("Tank:" + buttons["Bbutton"]);
 
 
-        if (Input.GetKeyDown(buttons["Abutton"] as string))
+        if (Input.GetKeyDown("joystick " + CTRLID + " button " + buttons["Abutton"]))
         {
-            //buttonAfunction();
-            print(buttons["Abutton"]);
+            buttonAfunction();
+            
         }
         if (Input.GetKeyDown("joystick " + CTRLID + " button 1"))
         {
