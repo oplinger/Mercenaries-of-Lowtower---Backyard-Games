@@ -7,15 +7,16 @@ public abstract class PlayerClass : EntityClass
     public int CTRLID;
     protected GameObject controllerThing;
     protected ControllerThing controller;
-    protected PlayerAbilityController abilities;
-    protected PlayerCDController cooldowns;
+    //protected PlayerAbilityController abilities;
+    //protected PlayerCDController cooldowns;
     protected Collider[] colliders;
     protected Animator anim;
+    protected Vector3 _movement;
 
-    public Hashtable buttons;
+    protected Hashtable buttons;
 
     protected float walkspeed;
-    protected float jumpHeight;
+    protected float jumpheight;
     protected LayerMask groundMask;
     protected LayerMask enemyMask;
     protected Material playerMat;
@@ -53,7 +54,14 @@ public abstract class PlayerClass : EntityClass
     void Awake() {
 
         buttonA = buttonAfunction;
+        buttonB = buttonBfunction;
+        buttonX = buttonXfunction;
+        buttonY = buttonYfunction;
 
+        walkspeed = 10;
+        //controller = controllerThing.GetComponent<ControllerThing>();
+        //abilities = controllerThing.GetComponent<PlayerAbilityController>();
+        //cooldowns = controllerThing.GetComponent<PlayerCDController>();
         buttons = new Hashtable();
         AssignButtons();
 
@@ -61,7 +69,6 @@ public abstract class PlayerClass : EntityClass
 
     // Update is called once per frame
     void Update() {
-
     }
     public int JumpCheck()
     {
@@ -72,14 +79,26 @@ public abstract class PlayerClass : EntityClass
         return length;
     }
 
-    public void Jump(float jumpheight)
+    public void Jump()
     {
         GetComponent<Rigidbody>().AddForce(0, jumpheight, 0, ForceMode.Impulse);
     }
 
     public void Movement()
     {
-
+        if (walkspeed >= 0 && CTRLID != 0)
+        {
+            _movement = new Vector3(Input.GetAxis("J" + CTRLID + "Horizontal"), 0, Input.GetAxis("J" + CTRLID + "Vertical"));
+            if (_movement != Vector3.zero)
+            {
+                transform.rotation = Quaternion.LookRotation(_movement);
+                transform.Translate(_movement * walkspeed * Time.deltaTime, Space.World);
+                //anim.SetInteger("AnimState", 1);
+            }
+            else
+            {
+            }
+        }
     }
 
     public void Revive()

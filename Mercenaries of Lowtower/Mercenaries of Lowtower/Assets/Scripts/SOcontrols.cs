@@ -2,8 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public interface IJumpable<T>{
+public class SOcontrols : ScriptableObject {
 
-    void Jump(T jumpHeight);
+    string[][] ControlArrays;
 
 }

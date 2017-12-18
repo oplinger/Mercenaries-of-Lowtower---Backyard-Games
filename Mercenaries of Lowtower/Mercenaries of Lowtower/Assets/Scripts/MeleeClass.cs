@@ -3,10 +3,21 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [RequireComponent(typeof(Rigidbody))]
+[RequireComponent(typeof(MeleeAbilities))]
+[RequireComponent(typeof(MeleeCooldowns))]
+
+
+
+
+
 
 public class MeleeClass : PlayerClass
 {
-    public PlayerAbilityController ability;
+    protected GameObject self;
+    //public GameObject smoke;
+     MeleeAbilities abilities;
+     MeleeCooldowns cooldowns;
+
     [SerializeField]
     int grounded;
     [Header("Lunge Settings")]
@@ -20,159 +31,165 @@ public class MeleeClass : PlayerClass
 
     void Start()
     {
+        abilities = GetComponent<MeleeAbilities>();
+        cooldowns = GetComponent<MeleeCooldowns>();
+        CTRLID = 3;
+        //self = gameObject;
+        //smoke = Resources.Load("smoke") as GameObject;
 
-        ability1 = MeleeLunge;
-        ability1 += Smoke;
+        //gameObject.AddComponent<Smoke>();
+        //Smoke smokeability = GetComponent<Smoke>();
+
+        //DOWNCASTING EXAMPLE
+        //MeleeClass mC = new MeleeAbilities();
+        //MeleeAbilities mA;
+        //mA = (MeleeAbilities)mC;
+
+        jumpheight = 5;
+
+        ability1 = Jump;
+        ability2 += abilities.Smoke;
+        ability2 += abilities.MeleeLunge;
     }
 
     void Update()
     {
-        print("Tank:" + buttons["Bbutton"]);
+        grounded = JumpCheck();
 
+        Movement();
         if (Input.GetKeyDown("joystick " + CTRLID + " button " + buttons["Abutton"]))
         {
             buttonA();
         }
-        //if (Input.GetKeyDown("joystick " + CTRLID + " button " + System.Array.IndexOf(buttons, 1)))
-        //{
-        //    buttonB();
-        //}
-        //if (Input.GetKeyDown("joystick " + CTRLID + " button " + System.Array.IndexOf(buttons, 2)))
-        //{
-        //    buttonX();
-        //}
-        //if (Input.GetKeyDown("joystick " + CTRLID + " button " + System.Array.IndexOf(buttons, 3)))
-        //{
-        //    buttonY();
-        //}
-
-
-        grounded = JumpCheck();
-
-        if (grounded > 0)
+        if (Input.GetKeyDown("joystick " + CTRLID + " button " + buttons["Bbutton"]))
         {
-
-            Jump(5);
+            buttonB();
         }
-        else
+        if (Input.GetKeyDown("joystick " + CTRLID + " button " + buttons["Xbutton"]))
         {
-            Jump(0);
+            buttonX();
         }
-    }
-
-    public void MeleeLunge()
-    {
-        RaycastHit hit;
-
-        if (Physics.Raycast(transform.position, transform.forward, out hit, lungeDistance, enemyMask, QueryTriggerInteraction.Ignore))
+        if (Input.GetKeyDown("joystick " + CTRLID + " button " + buttons["Ybutton"]))
         {
-            transform.position = Vector3.MoveTowards(transform.position, hit.point, 1000 * Time.deltaTime);
-            Health health = hit.collider.gameObject.GetComponent<Health>();
-            health.modifyHealth(lungeDamage, CTRLID);
-            if (health.health <= 0)
-            {
-                lungeCD = 0;
-            }
+            buttonY();
         }
-        else
-        {
-            //me.transform.position = Vector3.Lerp(me.transform.position, me.transform.position + (me.transform.forward * 10), 1);
-            print("Dashing!");
-            //StartCoroutine(Dash(gameObject));
 
-        }
-        //me.transform.position = Vector3.MoveTowards(me.transform.position, me.transform.position + (me.transform.forward * 100), 1000 * Time.deltaTime);
-        //cooldowns.triggerCooldown(8, lungeCD);
+
 
     }
 
-    IEnumerator Dash(GameObject me)
-    {
-        if (Physics.Raycast(me.transform.position, me.transform.forward, 1) == false)
-        {
-            me.transform.position = Vector3.Lerp(me.transform.position, me.transform.position + (me.transform.forward * 1), 1);
-            yield return new WaitForSeconds(.01f);
-        }
-        else
-        {
-            yield break;
-        }
-        if (Physics.Raycast(me.transform.position, me.transform.forward, 2) == false)
-        {
-            me.transform.position = Vector3.Lerp(me.transform.position, me.transform.position + (me.transform.forward * 2), 1);
-            yield return new WaitForSeconds(.01f);
-        }
-        else
-        {
-            yield break;
-        }
-        if (Physics.Raycast(me.transform.position, me.transform.forward, 4) == false)
-        {
-            me.transform.position = Vector3.Lerp(me.transform.position, me.transform.position + (me.transform.forward * 4), 1);
-            yield return new WaitForSeconds(.01f);
-        }
-        else
-        {
-            yield break;
-        }
-        if (Physics.Raycast(me.transform.position, me.transform.forward, 6) == false)
-        {
-            me.transform.position = Vector3.Lerp(me.transform.position, me.transform.position + (me.transform.forward * 6), 1);
-            yield return new WaitForSeconds(.01f);
-        }
-        else
-        {
-            yield break;
-        }
-        if (Physics.Raycast(me.transform.position, me.transform.forward, 6) == false)
-        {
-            me.transform.position = Vector3.Lerp(me.transform.position, me.transform.position + (me.transform.forward * 6), 1);
-            yield return new WaitForSeconds(.01f);
-        }
-        else
-        {
-            yield break;
-        }
-        if (Physics.Raycast(me.transform.position, me.transform.forward, 6) == false)
-        {
-            me.transform.position = Vector3.Lerp(me.transform.position, me.transform.position + (me.transform.forward * 6), 1);
-            yield return new WaitForSeconds(.01f);
-        }
-        else
-        {
-            yield break;
-        }
-        if (Physics.Raycast(me.transform.position, me.transform.forward, 4) == false)
-        {
-            me.transform.position = Vector3.Lerp(me.transform.position, me.transform.position + (me.transform.forward * 4), 1);
-            yield return new WaitForSeconds(.01f);
-        }
-        else
-        {
-            yield break;
-        }
-        if (Physics.Raycast(me.transform.position, me.transform.forward, 2) == false)
-        {
-            me.transform.position = Vector3.Lerp(me.transform.position, me.transform.position + (me.transform.forward * 2), 1);
-            yield return new WaitForSeconds(.01f);
-        }
-        else
-        {
-            yield break;
-        }
-        if (Physics.Raycast(me.transform.position, me.transform.forward, 1) == false)
-        {
-            me.transform.position = Vector3.Lerp(me.transform.position, me.transform.position + (me.transform.forward * 1), 1);
-            yield return new WaitForSeconds(.01f);
-        }
-        else
-        {
-            yield break;
-        }
-    }
+    //public void MeleeLunge()
+    //{
+    //    RaycastHit hit;
 
-    void Smoke()
-    {
-        Instantiate(Resources.Load("smoke"), transform.position, Quaternion.identity);
-    }
+    //    if (Physics.Raycast(transform.position, transform.forward, out hit, lungeDistance, enemyMask, QueryTriggerInteraction.Ignore))
+    //    {
+    //        transform.position = Vector3.MoveTowards(transform.position, hit.point, 1000 * Time.deltaTime);
+    //        Health health = hit.collider.gameObject.GetComponent<Health>();
+    //        health.modifyHealth(lungeDamage, CTRLID);
+    //        if (health.health <= 0)
+    //        {
+    //            lungeCD = 0;
+    //        }
+    //    }
+    //    else
+    //    {
+    //        //me.transform.position = Vector3.Lerp(me.transform.position, me.transform.position + (me.transform.forward * 10), 1);
+    //        StartCoroutine(Dash(gameObject));
+
+    //    }
+    //    //me.transform.position = Vector3.MoveTowards(me.transform.position, me.transform.position + (me.transform.forward * 100), 1000 * Time.deltaTime);
+    //    //cooldowns.triggerCooldown(8, lungeCD);
+
+    //}
+
+    //IEnumerator Dash(GameObject me)
+    //{
+    //    if (Physics.Raycast(me.transform.position, me.transform.forward, 1) == false)
+    //    {
+    //        me.transform.position = Vector3.Lerp(me.transform.position, me.transform.position + (me.transform.forward * 1), 1);
+    //        yield return new WaitForSeconds(.01f);
+    //    }
+    //    else
+    //    {
+    //        yield break;
+    //    }
+    //    if (Physics.Raycast(me.transform.position, me.transform.forward, 2) == false)
+    //    {
+    //        me.transform.position = Vector3.Lerp(me.transform.position, me.transform.position + (me.transform.forward * 2), 1);
+    //        yield return new WaitForSeconds(.01f);
+    //    }
+    //    else
+    //    {
+    //        yield break;
+    //    }
+    //    if (Physics.Raycast(me.transform.position, me.transform.forward, 4) == false)
+    //    {
+    //        me.transform.position = Vector3.Lerp(me.transform.position, me.transform.position + (me.transform.forward * 4), 1);
+    //        yield return new WaitForSeconds(.01f);
+    //    }
+    //    else
+    //    {
+    //        yield break;
+    //    }
+    //    if (Physics.Raycast(me.transform.position, me.transform.forward, 6) == false)
+    //    {
+    //        me.transform.position = Vector3.Lerp(me.transform.position, me.transform.position + (me.transform.forward * 6), 1);
+    //        yield return new WaitForSeconds(.01f);
+    //    }
+    //    else
+    //    {
+    //        yield break;
+    //    }
+    //    if (Physics.Raycast(me.transform.position, me.transform.forward, 6) == false)
+    //    {
+    //        me.transform.position = Vector3.Lerp(me.transform.position, me.transform.position + (me.transform.forward * 6), 1);
+    //        yield return new WaitForSeconds(.01f);
+    //    }
+    //    else
+    //    {
+    //        yield break;
+    //    }
+    //    if (Physics.Raycast(me.transform.position, me.transform.forward, 6) == false)
+    //    {
+    //        me.transform.position = Vector3.Lerp(me.transform.position, me.transform.position + (me.transform.forward * 6), 1);
+    //        yield return new WaitForSeconds(.01f);
+    //    }
+    //    else
+    //    {
+    //        yield break;
+    //    }
+    //    if (Physics.Raycast(me.transform.position, me.transform.forward, 4) == false)
+    //    {
+    //        me.transform.position = Vector3.Lerp(me.transform.position, me.transform.position + (me.transform.forward * 4), 1);
+    //        yield return new WaitForSeconds(.01f);
+    //    }
+    //    else
+    //    {
+    //        yield break;
+    //    }
+    //    if (Physics.Raycast(me.transform.position, me.transform.forward, 2) == false)
+    //    {
+    //        me.transform.position = Vector3.Lerp(me.transform.position, me.transform.position + (me.transform.forward * 2), 1);
+    //        yield return new WaitForSeconds(.01f);
+    //    }
+    //    else
+    //    {
+    //        yield break;
+    //    }
+    //    if (Physics.Raycast(me.transform.position, me.transform.forward, 1) == false)
+    //    {
+    //        me.transform.position = Vector3.Lerp(me.transform.position, me.transform.position + (me.transform.forward * 1), 1);
+    //        yield return new WaitForSeconds(.01f);
+    //    }
+    //    else
+    //    {
+    //        yield break;
+    //    }
+    //}
+
+    //void Smoke()
+    //{
+    //    Instantiate(Resources.Load("smoke"), transform.position, Quaternion.identity);
+    //}
 }

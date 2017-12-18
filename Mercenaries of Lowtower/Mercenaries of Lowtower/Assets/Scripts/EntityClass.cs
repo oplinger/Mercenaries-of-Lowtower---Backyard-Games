@@ -4,11 +4,11 @@ using UnityEngine;
 
 public abstract class EntityClass : MonoBehaviour {
 
-    public float maxHealth;
-    public float currentHealth;
-    public float lastFrameHealth;
-    public Vector3 movement;
-    public bool death;
+    protected float maxHealth;
+    protected float currentHealth;
+    protected float lastFrameHealth;
+    protected Vector3 movement;
+    protected bool death;
 
 
     // Use this for initialization

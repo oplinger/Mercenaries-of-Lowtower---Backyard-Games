@@ -15,48 +15,43 @@ public class TankClass : PlayerClass
 	void Start () {
         //Hashtable tButtons = new Hashtable(buttons);
         //buttons.Add("Abutton", 0);
+        jumpheight = 10;
+        ability1 = Jump;
+        ability2 = shield;
 
-        ability1 = shield;
-	}
-	
-	// Update is called once per frame
-	void Update () {
+    }
 
-        print("Tank:" + buttons["Bbutton"]);
+    // Update is called once per frame
+    void Update () {
+        grounded = JumpCheck();
 
+        Movement();
 
         if (Input.GetKeyDown("joystick " + CTRLID + " button " + buttons["Abutton"]))
         {
-            buttonAfunction();
+            buttonA();
             
         }
-        if (Input.GetKeyDown("joystick " + CTRLID + " button 1"))
+        if (Input.GetKeyDown("joystick " + CTRLID + " button " + buttons["Bbutton"]))
         {
-            buttonBfunction();
+            buttonB();
         }
-        if (Input.GetKeyDown("joystick " + CTRLID + " button 2"))
+        if (Input.GetKeyDown("joystick " + CTRLID + " button " + buttons["Xbutton"]))
         {
-            buttonXfunction();
+            buttonX();
         }
-        if (Input.GetKeyDown("joystick " + CTRLID + " button 3"))
+        if (Input.GetKeyDown("joystick " + CTRLID + " button " + buttons["Ybutton"]))
         {
-            buttonYfunction();
+            buttonY();
         }
-        //grounded = JumpCheck();
 
-        //if (grounded > 0)
-        //{
 
-        //    Jump(5);
-        //}
-        //else
-        //{
-        //    Jump(0);
-        //}
     }
 
     void shield()
     {
+        print("TankAbility1");
+
         Instantiate(Resources.Load("shield"));
     }
 }

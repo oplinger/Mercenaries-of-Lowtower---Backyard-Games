@@ -12,9 +12,9 @@ public class PlayerControls : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-        if (PID.Count < 5)
+        if (PID.Contains(9))
         {
-            for (int i = 1; i < 5; i++)
+            for (int i = 1; i < 4; i++)
             {
                 if (Input.GetKeyDown("joystick " + i + " button 7"))
                 {
@@ -36,10 +36,10 @@ public class PlayerControls : MonoBehaviour {
             {
                 break;
             }
-            else 
+            else if (PID[i] == 9)
             {
 
-                PID.Add(i);
+                PID[i] = ID;
                 // Andrew says look here for input bug
                 //PID[i] = ID;
 
@@ -50,4 +50,27 @@ public class PlayerControls : MonoBehaviour {
             }
         }
     }
+
+    //public void AssignIDsToArray(int ID)
+    //{
+    //    //targets = IDs;
+    //    for (int i = 0; i < 4; i++)
+    //    {
+    //        if (PID[i] == ID)
+    //        {
+    //            break;
+    //        }
+    //        else if (PID[i] == 9)
+    //        {
+    //            // Andrew says look here for input bug
+    //            PID[i] = ID;
+
+    //            //PID.Insert(i, ID);
+    //            //PID.RemoveAt(PID.Count - 1);
+
+    //            break;
+    //        }
+    //    }
+    //    //PID.Add(ID);
+    //}
 }
