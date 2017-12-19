@@ -4,10 +4,11 @@ using UnityEngine;
 
 public class PlayerControls : MonoBehaviour {
     public List<int> PID;
+    SOcontrols controls;
+
 
     // Use this for initialization
-    void Start () {
-
+    void Awake () {
     }
 	
 	// Update is called once per frame

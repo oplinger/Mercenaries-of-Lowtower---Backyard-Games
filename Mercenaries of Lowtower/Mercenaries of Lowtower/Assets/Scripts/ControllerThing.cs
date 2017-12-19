@@ -14,6 +14,7 @@ public class ControllerThing : MonoBehaviour {
     public TankController tankcontroller;
     public HealerController healercontroller;
     public RangedController rangedcontroller;
+    SOcontrols controls;
 
     #endregion
     private void Awake()
@@ -21,7 +22,7 @@ public class ControllerThing : MonoBehaviour {
 
         DontDestroyOnLoad(transform.gameObject);
         IDs = new Collider[4];
-
+        controls = GetComponent<SOcontrols>();
         //FindTarget();
         deathcount = new int[4];
         // AssignIDsToArray();

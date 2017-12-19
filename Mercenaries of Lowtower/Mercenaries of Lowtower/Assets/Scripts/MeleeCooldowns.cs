@@ -4,35 +4,44 @@ using UnityEngine;
 
 public class MeleeCooldowns : MonoBehaviour {
 
-    Hashtable cooldowns;
-    float[] CDvalues;
+    public Dictionary<string, float> cooldowns = new Dictionary<string, float>();
     public uint abilitynum;
     public float lungeCD;
-    int[,] intstuff;
-    static int[][] intstuffinintstuff;
-    
+    public float meleeCD;
+    float[] CDvalues;
+    List<string> keys;
+
+
 
     private void Awake()
     {
-        intstuff[1, 1] = 5;
-        intstuff[1, 2] = 4;
-        intstuffinintstuff[1][1] = 12;
-        abilitynum = 1;
+        abilitynum = 4;
         CDvalues = new float[abilitynum];
-        cooldowns = new Hashtable();
-        
-        cooldowns.Add("lungeCD", (float)lungeCD);
-        CDvalues[0] = (float)cooldowns["lungeCD"];
+
+
+        cooldowns.Add("lungeCD", lungeCD);
+        CDvalues[0] = cooldowns["lungeCD"];
+        cooldowns.Add("meleeCD", CDvalues[1]);
+        CDvalues[1] = meleeCD;
+        keys = new List<string>(cooldowns.Keys);
+
+
 
     }
 
     private void Update()
     {
-        for (int i = 0; i<CDvalues.Length; i++)
+
+        foreach (string key in keys)
         {
-            if(CDvalues[i]>=0)
-            CDvalues[i] -= Time.deltaTime;
+            if (cooldowns[key] >= 0)
+            {
+                cooldowns[key] -= Time.deltaTime;
+                print(cooldowns[key]);
+            }
+            
         }
+
     }
 
 }

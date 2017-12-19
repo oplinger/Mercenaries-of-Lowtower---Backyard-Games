@@ -12,13 +12,13 @@ public abstract class PlayerClass : EntityClass
     protected Collider[] colliders;
     protected Animator anim;
     protected Vector3 _movement;
+    protected SOcontrols controls;
 
     protected Hashtable buttons;
 
     protected float walkspeed;
     protected float jumpheight;
     protected LayerMask groundMask;
-    protected LayerMask enemyMask;
     protected Material playerMat;
     protected float reviveRadius;
     protected float reviveCastTime;
@@ -66,10 +66,14 @@ public abstract class PlayerClass : EntityClass
         AssignButtons();
 
     }
+    private void Start()
+    {
+        controls.Init();
+        print(controls.ControlArrays[0, 0]);
+    }
 
     // Update is called once per frame
-    void Update() {
-    }
+
     public int JumpCheck()
     {
         Debug.DrawRay(transform.position, Vector3.up * -1f);

@@ -13,13 +13,13 @@ using UnityEngine;
 
 public class MeleeClass : PlayerClass
 {
-    protected GameObject self;
     //public GameObject smoke;
-     MeleeAbilities abilities;
-     MeleeCooldowns cooldowns;
+     public MeleeAbilities abilities;
+     public MeleeCooldowns abilityCooldowns;
 
     [SerializeField]
     int grounded;
+    public LayerMask enemyMask;
     [Header("Lunge Settings")]
     [Range(0, 10)]
     public float lungeDamage;
@@ -32,8 +32,8 @@ public class MeleeClass : PlayerClass
     void Start()
     {
         abilities = GetComponent<MeleeAbilities>();
-        cooldowns = GetComponent<MeleeCooldowns>();
-        CTRLID = 3;
+        abilityCooldowns = GetComponent<MeleeCooldowns>();
+        CTRLID = 2;
         //self = gameObject;
         //smoke = Resources.Load("smoke") as GameObject;
 

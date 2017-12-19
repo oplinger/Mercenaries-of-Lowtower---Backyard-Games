@@ -4,23 +4,42 @@ using UnityEngine;
 
 public class MeleeAbilities : MonoBehaviour {
 
+    MeleeClass baseClass;
+
+    private void Awake()
+    {
+        baseClass = GetComponent<MeleeClass>();
+    }
+
     public void Smoke()
     {
         Instantiate(Resources.Load("smoke"), transform.position, Quaternion.identity);
+    }
+
+    public void MeleeStrikeRogue(float damage, int playerID, GameObject me, List<Collider> mtar, int attacknum, float CD)
+    {
+
+        for (int i = 0; i < mtar.Count; i++)
+        {
+            Health health = mtar[i].GetComponent<Health>();
+            health.modifyHealth(damage, playerID);
+        }
+
+        baseClass.abilityCooldowns.cooldowns["meleeCD"] = baseClass.abilityCooldowns.meleeCD;
     }
 
     public void MeleeLunge()
     {
         RaycastHit hit;
 
-        if (Physics.Raycast(transform.position, transform.forward, out hit, lungeDistance, enemyMask, QueryTriggerInteraction.Ignore))
+        if (Physics.Raycast(transform.position, transform.forward, out hit, baseClass.lungeDistance, baseClass.enemyMask, QueryTriggerInteraction.Ignore))
         {
             transform.position = Vector3.MoveTowards(transform.position, hit.point, 1000 * Time.deltaTime);
             Health health = hit.collider.gameObject.GetComponent<Health>();
-            health.modifyHealth(lungeDamage, CTRLID);
+            health.modifyHealth(baseClass.lungeDamage, baseClass.CTRLID);
             if (health.health <= 0)
             {
-                lungeCD = 0;
+                baseClass.lungeCD = 0;
             }
         }
         else
@@ -30,7 +49,9 @@ public class MeleeAbilities : MonoBehaviour {
 
         }
         //me.transform.position = Vector3.MoveTowards(me.transform.position, me.transform.position + (me.transform.forward * 100), 1000 * Time.deltaTime);
-        //cooldowns.triggerCooldown(8, lungeCD);
+        baseClass.abilityCooldowns.cooldowns["lungeCD"] = baseClass.abilityCooldowns.lungeCD;
+        //print(baseClass.abilityCooldowns.cooldowns["lungeCD"]);
+
 
     }
 
