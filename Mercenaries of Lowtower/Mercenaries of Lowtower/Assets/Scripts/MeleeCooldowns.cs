@@ -21,7 +21,7 @@ public class MeleeCooldowns : MonoBehaviour {
 
         cooldowns.Add("lungeCD", lungeCD);
         CDvalues[0] = cooldowns["lungeCD"];
-        cooldowns.Add("meleeCD", CDvalues[1]);
+        cooldowns.Add("meleeCD", meleeCD);
         CDvalues[1] = meleeCD;
         keys = new List<string>(cooldowns.Keys);
 

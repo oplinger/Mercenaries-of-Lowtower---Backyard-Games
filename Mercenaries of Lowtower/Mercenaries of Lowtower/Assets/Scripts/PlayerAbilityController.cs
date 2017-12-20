@@ -46,9 +46,6 @@ public class PlayerAbilityController : MonoBehaviour
         Health colhealth = col[0].GetComponent<Health>();
         GameObject coltarget = col[0].gameObject;
 
-
-
-
         if (playerID != 1 && colhealth.isDead)
         {
             colhealth.health = colhealth.maxHealth / 2;

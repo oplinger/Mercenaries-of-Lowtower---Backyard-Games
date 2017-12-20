@@ -33,7 +33,7 @@ public class MeleeClass : PlayerClass
     {
         abilities = GetComponent<MeleeAbilities>();
         abilityCooldowns = GetComponent<MeleeCooldowns>();
-        CTRLID = 2;
+        CTRLID = 1;
         //self = gameObject;
         //smoke = Resources.Load("smoke") as GameObject;
 
@@ -48,8 +48,8 @@ public class MeleeClass : PlayerClass
         jumpheight = 5;
 
         ability1 = Jump;
-        ability2 += abilities.Smoke;
-        ability2 += abilities.MeleeLunge;
+        ability3 = abilities.Smoke;
+        ability2 = abilities.MeleeLunge;
     }
 
     void Update()

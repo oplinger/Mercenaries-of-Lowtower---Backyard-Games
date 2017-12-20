@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.44657898, g: 0.4964133, b: 0.5748178, a: 1}
+  m_IndirectSpecularColor: {r: 0.44657874, g: 0.49641258, b: 0.574817, a: 1}
 --- !u!157 &3
 LightmapSettings:
   m_ObjectHideFlags: 0
@@ -225,7 +225,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: abe7ea1661add9a4880788afe741956a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  CTRLID: 2
+  CTRLID: 1
   abilities: {fileID: 0}
   abilityCooldowns: {fileID: 0}
   grounded: 0
@@ -472,7 +472,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d7fd401e357baee40ac58f0c18396e21, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  CTRLID: 1
+  CTRLID: 2
   grounded: 0
 --- !u!54 &1104309681
 Rigidbody:

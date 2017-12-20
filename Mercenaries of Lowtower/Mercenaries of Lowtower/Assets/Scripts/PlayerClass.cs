@@ -7,8 +7,6 @@ public abstract class PlayerClass : EntityClass
     public int CTRLID;
     protected GameObject controllerThing;
     protected ControllerThing controller;
-    //protected PlayerAbilityController abilities;
-    //protected PlayerCDController cooldowns;
     protected Collider[] colliders;
     protected Animator anim;
     protected Vector3 _movement;
@@ -60,8 +58,6 @@ public abstract class PlayerClass : EntityClass
 
         walkspeed = 10;
         //controller = controllerThing.GetComponent<ControllerThing>();
-        //abilities = controllerThing.GetComponent<PlayerAbilityController>();
-        //cooldowns = controllerThing.GetComponent<PlayerCDController>();
         buttons = new Hashtable();
         AssignButtons();
 
@@ -107,7 +103,57 @@ public abstract class PlayerClass : EntityClass
 
     public void Revive()
     {
+        Collider[] col = Physics.OverlapSphere(transform.position, reviveRadius, 1 << 8, QueryTriggerInteraction.Ignore);
+        for (int i = 0; i < col.Length; i++)
+        {
+            print(col[i]);
+        }
+        Health colhealth = col[0].GetComponent<Health>();
+        GameObject coltarget = col[0].gameObject;
+        //PlayerID needs to change to some sort of classID
+        if (colhealth.isDead)
+        {
+            colhealth.health = colhealth.maxHealth / 2;
+            colhealth.isDead = false;
+            if (coltarget.name == "Tank Character")
+            {
+                coltarget.GetComponent<TankController>().walkspeed = 10;
+            }
+            if (coltarget.name == "Melee Character")
+            {
+                coltarget.GetComponent<MeleeController>().walkspeed = 10;
+            }
+            if (coltarget.name == "Ranged Character")
+            {
+                coltarget.GetComponent<RangedController>().walkspeed = 10;
+            }
+            if (coltarget.name == "Healer Character")
+            {
+                coltarget.GetComponent<HealerController>().walkspeed = 10;
+            }
 
+        }
+        //else if (playerID == 1 && colhealth.isDead)
+        //{
+        //    colhealth.health = colhealth.maxHealth;
+        //    colhealth.isDead = false;
+        //    if (coltarget.name == "Tank Character")
+        //    {
+        //        coltarget.GetComponent<TankController>().walkspeed = 10;
+        //    }
+        //    if (coltarget.name == "Melee Character")
+        //    {
+        //        coltarget.GetComponent<MeleeController>().walkspeed = 10;
+        //    }
+        //    if (coltarget.name == "Ranged Character")
+        //    {
+        //        coltarget.GetComponent<RangedController>().walkspeed = 10;
+        //    }
+        //    if (coltarget.name == "Healer Character")
+        //    {
+        //        coltarget.GetComponent<HealerController>().walkspeed = 10;
+        //    }
+        //}
     }
 
     public void buttonAfunction()
