@@ -16,13 +16,13 @@ public class MeleeAbilities : MonoBehaviour {
         Instantiate(Resources.Load("smoke"), transform.position, Quaternion.identity);
     }
 
-    public void MeleeStrikeRogue(float damage, int playerID, GameObject me, List<Collider> mtar, int attacknum, float CD)
+    public void MeleeStrikeRogue()
     {
-
-        for (int i = 0; i < mtar.Count; i++)
+        //MOVE TARGET LIST INTO CONTROLLER
+        for (int i = 0; i < baseClass.targetList.mTar.Count; i++)
         {
-            Health health = mtar[i].GetComponent<Health>();
-            health.modifyHealth(damage, playerID);
+            Health health = baseClass.targetList.mTar[i].GetComponent<Health>();
+            health.modifyHealth(baseClass.meleeDamage, baseClass.CTRLID);
         }
 
         baseClass.abilityCooldowns.cooldowns["meleeCD"] = baseClass.abilityCooldowns.meleeCD;

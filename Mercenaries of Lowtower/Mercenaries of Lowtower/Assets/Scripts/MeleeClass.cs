@@ -16,10 +16,14 @@ public class MeleeClass : PlayerClass
     //public GameObject smoke;
      public MeleeAbilities abilities;
      public MeleeCooldowns abilityCooldowns;
+    public MeleeTargetList targetList;
 
     [SerializeField]
     int grounded;
     public LayerMask enemyMask;
+    [Header("Melee Settings")]
+    [Range(0, 10)]
+    public float meleeDamage;
     [Header("Lunge Settings")]
     [Range(0, 10)]
     public float lungeDamage;
@@ -33,12 +37,8 @@ public class MeleeClass : PlayerClass
     {
         abilities = GetComponent<MeleeAbilities>();
         abilityCooldowns = GetComponent<MeleeCooldowns>();
+        targetList = GetComponent<MeleeTargetList>();
         CTRLID = 1;
-        //self = gameObject;
-        //smoke = Resources.Load("smoke") as GameObject;
-
-        //gameObject.AddComponent<Smoke>();
-        //Smoke smokeability = GetComponent<Smoke>();
 
         //DOWNCASTING EXAMPLE
         //MeleeClass mC = new MeleeAbilities();
@@ -48,7 +48,7 @@ public class MeleeClass : PlayerClass
         jumpheight = 5;
 
         ability1 = Jump;
-        ability3 = abilities.Smoke;
+        ability3 = abilities.MeleeStrikeRogue;
         ability2 = abilities.MeleeLunge;
     }
 
@@ -78,118 +78,5 @@ public class MeleeClass : PlayerClass
 
     }
 
-    //public void MeleeLunge()
-    //{
-    //    RaycastHit hit;
-
-    //    if (Physics.Raycast(transform.position, transform.forward, out hit, lungeDistance, enemyMask, QueryTriggerInteraction.Ignore))
-    //    {
-    //        transform.position = Vector3.MoveTowards(transform.position, hit.point, 1000 * Time.deltaTime);
-    //        Health health = hit.collider.gameObject.GetComponent<Health>();
-    //        health.modifyHealth(lungeDamage, CTRLID);
-    //        if (health.health <= 0)
-    //        {
-    //            lungeCD = 0;
-    //        }
-    //    }
-    //    else
-    //    {
-    //        //me.transform.position = Vector3.Lerp(me.transform.position, me.transform.position + (me.transform.forward * 10), 1);
-    //        StartCoroutine(Dash(gameObject));
-
-    //    }
-    //    //me.transform.position = Vector3.MoveTowards(me.transform.position, me.transform.position + (me.transform.forward * 100), 1000 * Time.deltaTime);
-    //    //cooldowns.triggerCooldown(8, lungeCD);
-
-    //}
-
-    //IEnumerator Dash(GameObject me)
-    //{
-    //    if (Physics.Raycast(me.transform.position, me.transform.forward, 1) == false)
-    //    {
-    //        me.transform.position = Vector3.Lerp(me.transform.position, me.transform.position + (me.transform.forward * 1), 1);
-    //        yield return new WaitForSeconds(.01f);
-    //    }
-    //    else
-    //    {
-    //        yield break;
-    //    }
-    //    if (Physics.Raycast(me.transform.position, me.transform.forward, 2) == false)
-    //    {
-    //        me.transform.position = Vector3.Lerp(me.transform.position, me.transform.position + (me.transform.forward * 2), 1);
-    //        yield return new WaitForSeconds(.01f);
-    //    }
-    //    else
-    //    {
-    //        yield break;
-    //    }
-    //    if (Physics.Raycast(me.transform.position, me.transform.forward, 4) == false)
-    //    {
-    //        me.transform.position = Vector3.Lerp(me.transform.position, me.transform.position + (me.transform.forward * 4), 1);
-    //        yield return new WaitForSeconds(.01f);
-    //    }
-    //    else
-    //    {
-    //        yield break;
-    //    }
-    //    if (Physics.Raycast(me.transform.position, me.transform.forward, 6) == false)
-    //    {
-    //        me.transform.position = Vector3.Lerp(me.transform.position, me.transform.position + (me.transform.forward * 6), 1);
-    //        yield return new WaitForSeconds(.01f);
-    //    }
-    //    else
-    //    {
-    //        yield break;
-    //    }
-    //    if (Physics.Raycast(me.transform.position, me.transform.forward, 6) == false)
-    //    {
-    //        me.transform.position = Vector3.Lerp(me.transform.position, me.transform.position + (me.transform.forward * 6), 1);
-    //        yield return new WaitForSeconds(.01f);
-    //    }
-    //    else
-    //    {
-    //        yield break;
-    //    }
-    //    if (Physics.Raycast(me.transform.position, me.transform.forward, 6) == false)
-    //    {
-    //        me.transform.position = Vector3.Lerp(me.transform.position, me.transform.position + (me.transform.forward * 6), 1);
-    //        yield return new WaitForSeconds(.01f);
-    //    }
-    //    else
-    //    {
-    //        yield break;
-    //    }
-    //    if (Physics.Raycast(me.transform.position, me.transform.forward, 4) == false)
-    //    {
-    //        me.transform.position = Vector3.Lerp(me.transform.position, me.transform.position + (me.transform.forward * 4), 1);
-    //        yield return new WaitForSeconds(.01f);
-    //    }
-    //    else
-    //    {
-    //        yield break;
-    //    }
-    //    if (Physics.Raycast(me.transform.position, me.transform.forward, 2) == false)
-    //    {
-    //        me.transform.position = Vector3.Lerp(me.transform.position, me.transform.position + (me.transform.forward * 2), 1);
-    //        yield return new WaitForSeconds(.01f);
-    //    }
-    //    else
-    //    {
-    //        yield break;
-    //    }
-    //    if (Physics.Raycast(me.transform.position, me.transform.forward, 1) == false)
-    //    {
-    //        me.transform.position = Vector3.Lerp(me.transform.position, me.transform.position + (me.transform.forward * 1), 1);
-    //        yield return new WaitForSeconds(.01f);
-    //    }
-    //    else
-    //    {
-    //        yield break;
-    //    }
-    //}
-
-    //void Smoke()
-    //{
-    //    Instantiate(Resources.Load("smoke"), transform.position, Quaternion.identity);
-    //}
+    
 }
