@@ -958,6 +958,7 @@ GameObject:
   - component: {fileID: 264719523}
   - component: {fileID: 264719522}
   - component: {fileID: 264719521}
+  - component: {fileID: 264719525}
   m_Layer: 11
   m_Name: arm right magnetic
   m_TagString: Magnetable
@@ -1003,7 +1004,7 @@ MonoBehaviour:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 264719520}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f06d84a61dcc7b349b816d6754324354, type: 3}
   m_Name: 
@@ -1044,6 +1045,27 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 30
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &264719525
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 264719520}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 579b3abc8df957b4e868c1bc156e38b4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  timeUntilSlam: 0
+  waypointTop: {fileID: 1596942970}
+  waypointBottom: {fileID: 1221013828}
+  groundedTime: 0
+  attacking: 0
+  tempTimeUntilSlam: 0
+  tempGroundedTime: 0
+  tempDamageTimer: 0
+  hitbox: {fileID: 0}
+  damageOn: 0
 --- !u!1 &282346536
 GameObject:
   m_ObjectHideFlags: 0
@@ -2398,6 +2420,27 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 126
   m_CollisionDetection: 0
+--- !u!114 &568801825
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 568801816}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 579b3abc8df957b4e868c1bc156e38b4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  timeUntilSlam: 0
+  waypointTop: {fileID: 0}
+  waypointBottom: {fileID: 0}
+  groundedTime: 0
+  attacking: 0
+  tempTimeUntilSlam: 0
+  tempGroundedTime: 0
+  tempDamageTimer: 0
+  hitbox: {fileID: 693617951}
+  damageOn: 0
 --- !u!1001 &575585114
 Prefab:
   m_ObjectHideFlags: 0
@@ -4847,7 +4890,7 @@ Prefab:
     - target: {fileID: 114033016359309088, guid: d898e901d76b1cf479e3e9c76cfcf5ae,
         type: 2}
       propertyPath: m_Enabled
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 114033016359309088, guid: d898e901d76b1cf479e3e9c76cfcf5ae,
         type: 2}
