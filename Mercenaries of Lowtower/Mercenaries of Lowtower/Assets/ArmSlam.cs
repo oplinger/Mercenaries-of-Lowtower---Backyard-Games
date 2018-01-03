@@ -26,6 +26,13 @@ public class ArmSlam : MonoBehaviour {
 
     public bool damageOn;
 
+    Health healthScript;
+
+    float h1;
+    float h2;
+
+    public Material breakableMat;
+
     // Use this for initialization
     void Start () {
 
@@ -39,9 +46,14 @@ public class ArmSlam : MonoBehaviour {
         tempDamageTimer = damageTimer;
 
         //damageOn = false;
-        
 
-	}
+        //RE flashing red when damaged
+        healthScript = GetComponent<Health>();
+        h2 = healthScript.health;
+        //breakableMat = this.gameObject.GetComponent<Renderer>().material;
+
+
+    }
 
     // Update is called once per frame
     void Update() {
@@ -59,10 +71,10 @@ public class ArmSlam : MonoBehaviour {
         }
 
 
-        //if (transform.position.y == waypointBottom.position.y)
+        //if (transform.position.y == waypointTop.position.y)
         //{
         //    //makes the arm flash blue
-        //    armRenderer.material.color = Color.Lerp(Color.white, Color.blue, Mathf.PingPong(Time.time * .5f, .5f));
+        //    //armRenderer.material.color = Color.Lerp(Color.white, Color.blue, Mathf.PingPong(Time.time * .5f, .5f));
         //}
 
 
@@ -92,10 +104,29 @@ public class ArmSlam : MonoBehaviour {
             tempDamageTimer = 30;
         }
 
+        //makes object flash red when it takes damage
+        h1 = healthScript.health;
 
+        if (h1 < h2)
+        {
+            //armRenderer.material.SetColor("_EmissionColor", Color.red);
+            armRenderer.material.color = Color.red;
+
+            h2 = h1;
+            print("H2 = " + h2);
+        }
+        else
+        {
+            //armRenderer.material.SetColor("_EmissionColor", Color.white);
+            //armRenderer.material.color = Color.white;
+
+        }
 
 
     }
+
+
+
     
 
     private void OnTriggerStay(Collider other)
