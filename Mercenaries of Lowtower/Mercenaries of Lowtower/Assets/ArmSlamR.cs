@@ -26,6 +26,11 @@ public class ArmSlamR : MonoBehaviour {
 
     public bool damageOn;
 
+    Health healthScript;
+
+    float h1;
+    float h2;
+
     // Use this for initialization
     void Start () {
 
@@ -38,10 +43,12 @@ public class ArmSlamR : MonoBehaviour {
         damageTimer = 30;
         tempDamageTimer = damageTimer;
 
-        //damageOn = false;
-        
+        //RE flashing red when damaged
+        healthScript = GetComponent<Health>();
+        h2 = healthScript.health;
 
-	}
+
+    }
 
     // Update is called once per frame
     void Update() {
@@ -92,7 +99,17 @@ public class ArmSlamR : MonoBehaviour {
             tempDamageTimer = 30;
         }
 
+        //makes object flash red when it takes damage
+        h1 = healthScript.health;
 
+        if (h1 < h2)
+        {
+            //armRenderer.material.SetColor("_EmissionColor", Color.red);
+            armRenderer.material.color = Color.red;
+
+            h2 = h1;
+            //print("H2 = " + h2);
+        }
 
 
     }

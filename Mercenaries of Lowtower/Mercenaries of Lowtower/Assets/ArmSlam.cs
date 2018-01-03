@@ -50,7 +50,6 @@ public class ArmSlam : MonoBehaviour {
         //RE flashing red when damaged
         healthScript = GetComponent<Health>();
         h2 = healthScript.health;
-        //breakableMat = this.gameObject.GetComponent<Renderer>().material;
 
 
     }
@@ -113,13 +112,7 @@ public class ArmSlam : MonoBehaviour {
             armRenderer.material.color = Color.red;
 
             h2 = h1;
-            print("H2 = " + h2);
-        }
-        else
-        {
-            //armRenderer.material.SetColor("_EmissionColor", Color.white);
-            //armRenderer.material.color = Color.white;
-
+            //print("H2 = " + h2);
         }
 
 
