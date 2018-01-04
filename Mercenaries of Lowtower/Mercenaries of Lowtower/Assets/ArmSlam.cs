@@ -58,30 +58,37 @@ public class ArmSlam : MonoBehaviour {
         tempTimeUntilSlam -= 1;
         float t = 0.2f;
 
-        if (Input.GetKeyDown(KeyCode.S))
+
+        //can't activate / deactivate bools within a key imput read???
+        if (Input.GetKeyDown(KeyCode.E))
         {
-            //can't activate / deactivate bools within a key imput read???
-            transform.position = waypointBottom.position;
-            //transform.position = Vector3.MoveTowards(transform.position, waypointBottom.position, 15 * Time.deltaTime);
-            //tempGroundedTime -= 1;
+            transform.position = new Vector3(transform.position.x, waypointBottom.position.y, transform.position.z);
 
         }
 
-
-        //if (transform.position == waypointTop.position)
-        //{
-        //    damageDealt = false;
-        //    //makes the arm flash blue
-        //    //armRenderer.material.color = Color.Lerp(Color.white, Color.blue, Mathf.PingPong(Time.time * .5f, .5f));
-        //}
-
-        //can't activate / deactivate bools within a key imput read???
-        if (Input.GetKeyDown(KeyCode.W))
+        if (Input.GetKeyDown(KeyCode.R))
         {
-            transform.position = waypointTop.position;
-            //attacking = false;
-            //transform.position = Vector3.MoveTowards(transform.position, waypointTop.position, 2 * Time.deltaTime);
-            //Destroy(this.gameObject);
+            transform.position =new Vector3(transform.position.x, waypointTop.position.y, transform.position.z);
+        }
+
+
+        if (Input.GetKey(KeyCode.S))
+        {
+            transform.Translate(Vector3.forward*-0.2f, Space.World);
+        }
+        
+        if (Input.GetKey(KeyCode.W))
+        {
+            transform.Translate(Vector3.forward * 0.2f, Space.World);
+        }
+        if (Input.GetKey(KeyCode.A))
+        {
+            transform.Translate(Vector3.left * 0.2f, Space.World);
+        }
+
+        if (Input.GetKey(KeyCode.D))
+        {
+            transform.Translate(Vector3.left *- 0.2f, Space.World);
         }
 
 
