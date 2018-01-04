@@ -56,29 +56,36 @@ public class ArmSlamR : MonoBehaviour {
         tempTimeUntilSlam -= 1;
         float t = 0.2f;
 
-        if (Input.GetKeyDown(KeyCode.K))
+        //can't activate / deactivate bools within a key imput read???
+        if (Input.GetKeyDown(KeyCode.U))
         {
-
-            transform.position = waypointBottom.position;
-            //transform.position = Vector3.MoveTowards(transform.position, waypointBottom.position, 15 * Time.deltaTime);
-            //tempGroundedTime -= 1;
+            transform.position = new Vector3(transform.position.x, waypointBottom.position.y, transform.position.z);
 
         }
 
-
-        //if (transform.position.y == waypointBottom.position.y)
-        //{
-        //    //makes the arm flash blue
-        //    armRenderer.material.color = Color.Lerp(Color.white, Color.blue, Mathf.PingPong(Time.time * .5f, .5f));
-        //}
-
-
-        if (Input.GetKeyDown(KeyCode.O))
+        if (Input.GetKeyDown(KeyCode.Y))
         {
-            transform.position = waypointTop.position;
-            //attacking = false;
-            //transform.position = Vector3.MoveTowards(transform.position, waypointTop.position, 2 * Time.deltaTime);
-            //Destroy(this.gameObject);
+            transform.position = new Vector3(transform.position.x, waypointTop.position.y, transform.position.z);
+        }
+
+
+        if (Input.GetKey(KeyCode.K))
+        {
+            transform.Translate(Vector3.forward * -0.2f, Space.World);
+        }
+
+        if (Input.GetKey(KeyCode.I))
+        {
+            transform.Translate(Vector3.forward * 0.2f, Space.World);
+        }
+        if (Input.GetKey(KeyCode.J))
+        {
+            transform.Translate(Vector3.left * 0.2f, Space.World);
+        }
+
+        if (Input.GetKey(KeyCode.L))
+        {
+            transform.Translate(Vector3.left * -0.2f, Space.World);
         }
 
 
