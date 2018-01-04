@@ -31,8 +31,6 @@ public class ArmSlam : MonoBehaviour {
     float h1;
     float h2;
 
-    public Material breakableMat;
-
     // Use this for initialization
     void Start () {
 
@@ -62,7 +60,7 @@ public class ArmSlam : MonoBehaviour {
 
         if (Input.GetKeyDown(KeyCode.S))
         {
-
+            //can't activate / deactivate bools within a key imput read???
             transform.position = waypointBottom.position;
             //transform.position = Vector3.MoveTowards(transform.position, waypointBottom.position, 15 * Time.deltaTime);
             //tempGroundedTime -= 1;
@@ -70,13 +68,14 @@ public class ArmSlam : MonoBehaviour {
         }
 
 
-        //if (transform.position.y == waypointTop.position.y)
+        //if (transform.position == waypointTop.position)
         //{
+        //    damageDealt = false;
         //    //makes the arm flash blue
         //    //armRenderer.material.color = Color.Lerp(Color.white, Color.blue, Mathf.PingPong(Time.time * .5f, .5f));
         //}
 
-
+        //can't activate / deactivate bools within a key imput read???
         if (Input.GetKeyDown(KeyCode.W))
         {
             transform.position = waypointTop.position;
@@ -86,7 +85,7 @@ public class ArmSlam : MonoBehaviour {
         }
 
 
-        if (damageOn)
+        if (damageOn==true)
         {
             hitbox.SetActive(true);
 
@@ -99,6 +98,7 @@ public class ArmSlam : MonoBehaviour {
         if (tempDamageTimer <= 0)
         {
             hitbox.SetActive(false);
+            //only turn this false when the boss' arm raises back up
             damageOn = false;
             tempDamageTimer = 30;
         }
@@ -145,6 +145,7 @@ public class ArmSlam : MonoBehaviour {
 
         }
     }
+    
 
 
 
