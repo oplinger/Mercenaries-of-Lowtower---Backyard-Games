@@ -14,7 +14,7 @@ public class UIControllerPreloaded : MonoBehaviour
     public float timer = 600;
     public Text[] texts;
     public Image[] images;
-    public List<Image> healthBars;
+    //public List<Image> healthBars;
     public List<Image> icons;
     public List<Image> portraits;
 
@@ -27,7 +27,12 @@ public class UIControllerPreloaded : MonoBehaviour
     public GameObject ranged;
 
 
-    public Health[] playerHealth;
+    public Image tankHealthBar;
+    public Image healerHealthBar;
+    public Image meleeHealthBar;
+    public Image rangedHealthBar;
+
+    Health[] playerHealth;
     Health bossHealth;
 
 
@@ -42,26 +47,26 @@ public class UIControllerPreloaded : MonoBehaviour
         //players = new GameObject[4];
         //playerHealth = new Health[4];
         texts = GetComponentsInChildren<Text>();
-        images = GetComponentsInChildren<Image>();
+        //images = GetComponentsInChildren<Image>();
         timer = 600;
-        bossHealth = boss.GetComponent<Health>();
-        playerCooldowns = controller.GetComponent<PlayerCDController>();
-        healths1 = new float[4];
+        //bossHealth = boss.GetComponent<Health>();
+        //playerCooldowns = controller.GetComponent<PlayerCDController>();
+        //healths1 = new float[4];
 
-        healths2 = new float[4];
+        //healths2 = new float[4];
         
-        // Assigns players to slots based on IDs, for use with UI placement.
-        //IE: Tank is in the top left, always.
-        //This might be changed to player positions. So P1 is in the top left, P2 top right, etc
-        for (int i = 0; i < 3; i++)
-        {
+        //// Assigns players to slots based on IDs, for use with UI placement.
+        ////IE: Tank is in the top left, always.
+        ////This might be changed to player positions. So P1 is in the top left, P2 top right, etc
+        //for (int i = 0; i < 3; i++)
+        //{
 
-            print("ugandan knuckles");
-            //players[i] = controller.IDs[i].gameObject;
-            //playerHealth[i] = players[i].GetComponent<Health>();
-            healths2[i] = playerHealth[i].health;
+        //    print("ugandan knuckles");
+        //    players[i] = controller.IDs[i].gameObject;
+        //    playerHealth[i] = players[i].GetComponent<Health>();
+        //    healths2[i] = playerHealth[i].health;
 
-        }
+        //}
 
         //foreach (Image element in images)
         //{
@@ -85,10 +90,57 @@ public class UIControllerPreloaded : MonoBehaviour
     void Update()
     {
 
-        //print(playerHealth[0].health);
-        //print(healthBars[0].rectTransform.sizeDelta);
-        
 
+        tankHealthBar.rectTransform.sizeDelta = new Vector2(100 * (tank.GetComponent<Health>().health / tank.GetComponent<Health>().maxHealth), 20);
+        healerHealthBar.rectTransform.sizeDelta = new Vector2(100 * (healer.GetComponent<Health>().health / healer.GetComponent<Health>().maxHealth), 20);
+        meleeHealthBar.rectTransform.sizeDelta = new Vector2(100 * (melee.GetComponent<Health>().health / melee.GetComponent<Health>().maxHealth), 20);
+        rangedHealthBar.rectTransform.sizeDelta = new Vector2(100 * (ranged.GetComponent<Health>().health / ranged.GetComponent<Health>().maxHealth), 20);
+
+
+        //if (Input.GetKeyDown(KeyCode.G))
+        //{
+        //    // Assigns players to slots based on IDs, for use with UI placement.
+        //    //IE: Tank is in the top left, always.
+        //    //This might be changed to player positions. So P1 is in the top left, P2 top right, etc
+
+
+        //    players = new GameObject[4];
+        //    playerHealth = new Health[4];
+
+
+        //    //bossHealth = boss.GetComponent<Health>();
+        //    playerCooldowns = controller.GetComponent<PlayerCDController>();
+        //    healths1 = new float[4];
+
+        //    healths2 = new float[4];
+
+
+        //    for (int i = 0; i < 3; i++)
+        //    {
+
+        //        //print("ugandan knuckles");
+        //        players[i] = controller.IDs[i].gameObject;
+        //        playerHealth[i] = players[i].GetComponent<Health>();
+        //        healths2[i] = playerHealth[i].health;
+
+        //    }
+
+        //    foreach (Image element in images)
+        //    {
+        //        if (element.tag == "AbilityIcon")
+        //        {
+        //            icons.Add(element);
+        //        }
+        //        if (element.tag == "HealthBar")
+        //        {
+        //            //healthBars.Add(element);
+        //        }
+        //        if (element.tag == "PlayerPortrait")
+        //        {
+        //            portraits.Add(element);
+        //        }
+        //    }
+        //}
 
 
             #region Timers
@@ -346,17 +398,18 @@ public class UIControllerPreloaded : MonoBehaviour
         }
         #endregion
 
+
+
+
         #region Health Bars
-        //Health bars. Also changes the size of the health bars based on current health vs max health.
-        healthBars[0].rectTransform.sizeDelta = new Vector2(100 * (playerHealth[0].health / playerHealth[0].maxHealth), 20);
-        healthBars[1].rectTransform.sizeDelta = new Vector2(100 * (playerHealth[1].health / playerHealth[1].maxHealth), 20);
-        healthBars[2].rectTransform.sizeDelta = new Vector2(100 * (playerHealth[2].health / playerHealth[2].maxHealth), 20);
-        healthBars[3].rectTransform.sizeDelta = new Vector2(100 * (playerHealth[3].health / playerHealth[3].maxHealth), 20);
+        ////Health bars. Also changes the size of the health bars based on current health vs max health.
+        //healthBars[0].rectTransform.sizeDelta = new Vector2(100 * (playerHealth[0].health / playerHealth[0].maxHealth), 20);
+        //healthBars[1].rectTransform.sizeDelta = new Vector2(100 * (playerHealth[1].health / playerHealth[1].maxHealth), 20);
+        //healthBars[2].rectTransform.sizeDelta = new Vector2(100 * (playerHealth[2].health / playerHealth[2].maxHealth), 20);
+        //healthBars[3].rectTransform.sizeDelta = new Vector2(100 * (playerHealth[3].health / playerHealth[3].maxHealth), 20);
 
-        healthBars[4].rectTransform.sizeDelta = new Vector2(300 * (bossHealth.health / bossHealth.maxHealth), 25);
+        //healthBars[4].rectTransform.sizeDelta = new Vector2(300 * (bossHealth.health / bossHealth.maxHealth), 25);
+        #endregion
 
-#endregion
-
-        
     }
 }
