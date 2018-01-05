@@ -4,15 +4,21 @@ using UnityEngine;
 
 public class PlayerControls : MonoBehaviour {
     public List<int> PID;
+    public GameObject[] players; 
     SOcontrols controls;
 
 
     // Use this for initialization
     void Awake () {
+        players[0] = GameObject.Find("Tank Character (clone)");
+        players[1] = GameObject.Find("Healer Character (clone)");
+        players[2] = GameObject.Find("Melee Character (clone)");
+        players[3] = GameObject.Find("Ranged Character (clone)");
+
     }
-	
-	// Update is called once per frame
-	void Update () {
+
+    // Update is called once per frame
+    void Update () {
         if (PID.Contains(9))
         {
             for (int i = 1; i < 4; i++)

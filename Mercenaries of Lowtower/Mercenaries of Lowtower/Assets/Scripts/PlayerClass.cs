@@ -6,7 +6,7 @@ public abstract class PlayerClass : EntityClass
 {
     public int CTRLID;
     protected GameObject controllerThing;
-    protected ControllerThing controller;
+    public PlayerControls controller;
     protected Collider[] colliders;
     protected Animator anim;
     protected Vector3 _movement;
@@ -57,7 +57,7 @@ public abstract class PlayerClass : EntityClass
         buttonY = buttonYfunction;
 
         walkspeed = 10;
-        //controller = controllerThing.GetComponent<ControllerThing>();
+        controller = controllerThing.GetComponent<PlayerControls>();
         buttons = new Hashtable();
         AssignButtons();
 
