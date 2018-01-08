@@ -30,7 +30,7 @@ public class SpawnBlock : MonoBehaviour {
         //{
         timer += 1;
 
-        if (timer >= 900 && breakable)
+        if (timer >= 300 && breakable)
         {
 
             Instantiate(blockBreakable, transform.position, transform.rotation);
@@ -39,7 +39,7 @@ public class SpawnBlock : MonoBehaviour {
             timer = 0;
         }
 
-        if (timer >= 900 && !breakable)
+        if (timer >= 300 && !breakable)
         {
             Instantiate(blockMagnetic, transform.position, transform.rotation);
             breakable = true;
