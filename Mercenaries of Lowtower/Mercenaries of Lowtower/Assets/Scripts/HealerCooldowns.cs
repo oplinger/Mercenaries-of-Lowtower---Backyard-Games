@@ -38,7 +38,7 @@ public class HealerCooldowns : MonoBehaviour
             if (cooldowns[key] >= 0)
             {
                 cooldowns[key] -= Time.deltaTime;
-                print(cooldowns[key]);
+               // print(cooldowns[key]);
             }
 
         }

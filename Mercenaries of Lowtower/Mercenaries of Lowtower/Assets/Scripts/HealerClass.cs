@@ -37,7 +37,7 @@ public class HealerClass : PlayerClass
     {
         abilities = GetComponent<HealerAbilities>();
         abilityCooldowns = GetComponent<HealerCooldowns>();
-        CTRLID = 1;
+        CTRLID = 2;
 
         //DOWNCASTING EXAMPLE
         //MeleeClass mC = new MeleeAbilities();

@@ -3,8 +3,8 @@ using System.Collections.Generic;
 using UnityEngine;
 
 [RequireComponent(typeof(Rigidbody))]
-[RequireComponent(typeof(MeleeAbilities))]
-[RequireComponent(typeof(MeleeCooldowns))]
+[RequireComponent(typeof(RangedAbilities))]
+[RequireComponent(typeof(RangedCooldowns))]
 
 
 
@@ -37,7 +37,7 @@ public class RangedClass : PlayerClass
     {
         abilities = GetComponent<RangedAbilities>();
         abilityCooldowns = GetComponent<RangedCooldowns>();
-        CTRLID = 2;
+        CTRLID = 4;
 
         //DOWNCASTING EXAMPLE
         //MeleeClass mC = new MeleeAbilities();

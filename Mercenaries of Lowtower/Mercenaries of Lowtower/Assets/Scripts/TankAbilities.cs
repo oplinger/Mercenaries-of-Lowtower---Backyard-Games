@@ -4,9 +4,14 @@ using UnityEngine;
 
 public class TankAbilities : MonoBehaviour
 {
-    TankClass baseClass;
+    protected TankClass baseClass;
 
 
+
+    private void Awake()
+    {
+        baseClass = GetComponent<TankClass>();
+    }
     #region Tank Abilities
     public void TankShield()
     {

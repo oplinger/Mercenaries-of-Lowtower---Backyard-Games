@@ -22,7 +22,7 @@ public class ControllerThing : MonoBehaviour {
 
         DontDestroyOnLoad(transform.gameObject);
         IDs = new Collider[4];
-        controls = GetComponent<SOcontrols>();
+        //controls = GetComponent<SOcontrols>();
         //FindTarget();
         deathcount = new int[4];
         // AssignIDsToArray();

@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public abstract class EntityClass : MonoBehaviour {
+public abstract class EntityClass : MonoBehaviour, IDamageable<float> {
 
     protected float maxHealth;
     protected float currentHealth;
@@ -26,8 +26,8 @@ public abstract class EntityClass : MonoBehaviour {
 
     }
 
-    public void DoDamage()
+    public void TakeDamage(float damageTaken)
     {
-
+        currentHealth -= damageTaken;
     }
 }

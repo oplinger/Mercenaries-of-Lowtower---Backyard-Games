@@ -203,10 +203,10 @@ GameObject:
   - component: {fileID: 481810380}
   - component: {fileID: 481810379}
   - component: {fileID: 481810378}
-  - component: {fileID: 481810377}
-  - component: {fileID: 481810376}
   - component: {fileID: 481810383}
   - component: {fileID: 481810382}
+  - component: {fileID: 481810377}
+  - component: {fileID: 481810376}
   m_Layer: 8
   m_Name: Cube (1)
   m_TagString: Untagged
@@ -225,7 +225,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: abe7ea1661add9a4880788afe741956a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  CTRLID: 1
+  CTRLID: 0
   controller: {fileID: 0}
   abilities: {fileID: 0}
   abilityCooldowns: {fileID: 0}
@@ -325,12 +325,9 @@ MonoBehaviour:
   m_GameObject: {fileID: 481810375}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 76673ecbf3dac3e4faf5d1ce9f60261a, type: 3}
+  m_Script: {fileID: 11500000, guid: 9935cf03a7fdb8446a1ce8921b7a8340, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  abilitynum: 1
-  lungeCD: 5
-  meleeCD: 0
 --- !u!114 &481810383
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -339,9 +336,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 481810375}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9935cf03a7fdb8446a1ce8921b7a8340, type: 3}
+  m_Script: {fileID: 11500000, guid: 76673ecbf3dac3e4faf5d1ce9f60261a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  abilitynum: 0
+  lungeCD: 0
+  meleeCD: 0
 --- !u!1 &686738357
 GameObject:
   m_ObjectHideFlags: 0
@@ -478,7 +478,20 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   CTRLID: 2
   controller: {fileID: 0}
+  abilities: {fileID: 0}
+  abilityCooldowns: {fileID: 0}
   grounded: 0
+  enemyMask:
+    serializedVersion: 2
+    m_Bits: 0
+  lMask:
+    serializedVersion: 2
+    m_Bits: 0
+  shieldSize: 0
+  shieldDuration: 0
+  magnetDistance: 0
+  magnetDiameter: 0
+  pullSpeed: 0
 --- !u!54 &1104309681
 Rigidbody:
   m_ObjectHideFlags: 0

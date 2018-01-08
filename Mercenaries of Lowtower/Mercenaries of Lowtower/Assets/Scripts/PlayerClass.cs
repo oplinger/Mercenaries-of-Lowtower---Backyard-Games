@@ -57,7 +57,7 @@ public abstract class PlayerClass : EntityClass
         buttonY = buttonYfunction;
 
         walkspeed = 10;
-        controller = controllerThing.GetComponent<PlayerControls>();
+        controller = GameObject.Find("Controller Thing").GetComponent<PlayerControls>();
         buttons = new Hashtable();
         AssignButtons();
 

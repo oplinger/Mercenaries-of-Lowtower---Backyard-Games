@@ -10,10 +10,10 @@ public class PlayerControls : MonoBehaviour {
 
     // Use this for initialization
     void Awake () {
-        players[0] = GameObject.Find("Tank Character (clone)");
-        players[1] = GameObject.Find("Healer Character (clone)");
-        players[2] = GameObject.Find("Melee Character (clone)");
-        players[3] = GameObject.Find("Ranged Character (clone)");
+        players[0] = GameObject.Find("Tank Character(Clone)");
+        players[1] = GameObject.Find("Healer Character(Clone)");
+        players[2] = GameObject.Find("Melee Character(Clone)");
+        players[3] = GameObject.Find("Ranged Character(Clone)");
 
     }
 

@@ -38,7 +38,7 @@ public class MeleeClass : PlayerClass
         abilities = GetComponent<MeleeAbilities>();
         abilityCooldowns = GetComponent<MeleeCooldowns>();
         targetList = GetComponent<MeleeTargetList>();
-        CTRLID = 2;
+        CTRLID = 3;
 
         //DOWNCASTING EXAMPLE
         //MeleeClass mC = new MeleeAbilities();

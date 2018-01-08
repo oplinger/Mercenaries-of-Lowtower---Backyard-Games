@@ -73,8 +73,9 @@ public class HealerAbilities : MonoBehaviour
         }
         if (Input.GetKeyUp("joystick " + baseClass.CTRLID + " button 2") && baseClass.abilityCooldowns.cooldowns["healCD"] <= 0)
         {
-            baseClass.abilities.TargetedHeal();
             baseClass.healTarget = baseClass.healObject;
+
+            baseClass.abilities.TargetedHeal();
             baseClass.stopTimer = 0;
         }
     }

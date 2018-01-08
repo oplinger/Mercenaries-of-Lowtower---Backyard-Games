@@ -6,7 +6,10 @@ public class RangedAbilities : MonoBehaviour {
 
     RangedClass baseClass;
 
-
+    private void Awake()
+    {
+        baseClass = GetComponent<RangedClass>();
+    }
     #region Ranged Abilities
     public void RangedBolt()
     {

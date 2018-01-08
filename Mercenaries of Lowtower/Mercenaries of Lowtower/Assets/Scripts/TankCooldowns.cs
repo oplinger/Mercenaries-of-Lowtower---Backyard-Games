@@ -21,7 +21,7 @@ public class TankCooldowns : MonoBehaviour
 
 
         cooldowns.Add("shieldCD", shieldCD);
-        CDvalues[0] = cooldowns["boltCD"];
+        CDvalues[0] = cooldowns["shieldCD"];
         cooldowns.Add("magnetCD", magnetCD);
         CDvalues[1] = cooldowns["magnetCD"];
         keys = new List<string>(cooldowns.Keys);
@@ -38,7 +38,7 @@ public class TankCooldowns : MonoBehaviour
             if (cooldowns[key] >= 0)
             {
                 cooldowns[key] -= Time.deltaTime;
-                print(cooldowns[key]);
+                //print(cooldowns[key]);
             }
 
         }
