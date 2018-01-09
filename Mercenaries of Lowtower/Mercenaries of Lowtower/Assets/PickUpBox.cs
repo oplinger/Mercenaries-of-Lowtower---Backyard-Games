@@ -47,7 +47,7 @@ public class PickUpBox : MonoBehaviour
         {
             //Debug.Log("Box picked up!");
             //holdingObject = true;
-            triggerObject = other.transform.root.gameObject;
+            triggerObject = other.gameObject;
             //triggerObject.transform.position= new Vector3(transform.position.x, transform.position.y+3, transform.position.z);
             //heldObject.gameObject.GetComponent<SphereCollider>().enabled = false;
         }

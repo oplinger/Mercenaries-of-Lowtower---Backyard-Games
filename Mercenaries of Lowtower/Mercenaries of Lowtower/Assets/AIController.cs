@@ -25,7 +25,7 @@ public class AIController : MonoBehaviour
         if (Vector3.Distance(transform.position, Player.position) >= MinDist)
         {
 
-            transform.position += (transform.forward * MoveSpeed * Time.deltaTime)/2;
+            transform.position += transform.forward * MoveSpeed * Time.deltaTime;
 
 
             if (Vector3.Distance(transform.position, Player.position) <= MaxDist)
