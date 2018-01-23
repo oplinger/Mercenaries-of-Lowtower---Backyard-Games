@@ -36,6 +36,8 @@ public class PlayerAbilityController : MonoBehaviour
         player.GetComponent<Rigidbody>().AddForce(0, jumpheight, 0, ForceMode.Impulse);
     }
 
+
+    //Returns 1 for playerID no matter what the character; therefore all players revive 100% of teammates' health
     public void Revive(int playerID, GameObject me, float reviveradius)
     {
         Collider[] col = Physics.OverlapSphere(me.transform.position, reviveradius, 1 << 8, QueryTriggerInteraction.Ignore);

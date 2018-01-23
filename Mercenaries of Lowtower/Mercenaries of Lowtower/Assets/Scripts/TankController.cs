@@ -156,7 +156,7 @@ public class TankController : MonoBehaviour
             timer1 += Time.deltaTime;
             if (timer1 > reviveCastTime)
             {
-                abilities.Revive(1, gameObject, reviveRadius);
+                abilities.Revive(0, gameObject, reviveRadius);
 
             }
         }

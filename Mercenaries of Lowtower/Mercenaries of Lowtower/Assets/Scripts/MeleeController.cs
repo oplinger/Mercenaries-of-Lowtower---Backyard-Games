@@ -159,7 +159,7 @@ attacknum = Mathf.Clamp(attacknum, 0, attackNumMax);
             timer1 += Time.deltaTime;
             if (timer1 > reviveCastTime)
             {
-                abilities.Revive(1, gameObject, reviveRadius);
+                abilities.Revive(2, gameObject, reviveRadius);
 
             }
         }

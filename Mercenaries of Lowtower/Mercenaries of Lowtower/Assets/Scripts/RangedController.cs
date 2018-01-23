@@ -137,7 +137,7 @@ public class RangedController : MonoBehaviour
             timer1 += Time.deltaTime;
             if (timer1 > reviveCastTime)
             {
-                abilities.Revive(1, gameObject, reviveRadius);
+                abilities.Revive(3, gameObject, reviveRadius);
 
             }
         }
