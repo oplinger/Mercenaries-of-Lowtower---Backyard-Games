@@ -47,6 +47,7 @@ public class PlayerAbilityController : MonoBehaviour
 
         if (playerID != 1 && colhealth.isDead)
         {
+            print(playerID);
             colhealth.health = colhealth.maxHealth / 2;
             colhealth.isDead = false;
             
@@ -55,6 +56,7 @@ public class PlayerAbilityController : MonoBehaviour
         }
         else if (playerID == 1 && colhealth.isDead)
         {
+            print(playerID);
             colhealth.health = colhealth.maxHealth;
             colhealth.isDead = false;
 

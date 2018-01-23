@@ -71,7 +71,8 @@ public class HealerController : MonoBehaviour
     [Range(0, 10)]
     public float fearDuration;
 
-    
+    //get the cannonball holder object
+    public PickUpBox ballHolderScript;
 
     #endregion
 
@@ -175,7 +176,7 @@ public class HealerController : MonoBehaviour
             }
 
         }
-        if(CTRLID != 0 && Input.GetKeyUp("joystick " + CTRLID + " button 2") && cooldowns.activeCooldowns[3] <= 0 && !health.isDead && !altBuild)
+        if(CTRLID != 0 && Input.GetKeyUp("joystick " + CTRLID + " button 2") && cooldowns.activeCooldowns[3] <= 0 && !health.isDead && !altBuild && !ballHolderScript.holdingObject)
         {
             abilities.TargetedHeal(20, 1, gameObject, orbCooldown, healObject, orbSpeed);
             stopTimer = 0;
@@ -246,7 +247,7 @@ public class HealerController : MonoBehaviour
         //{
         //}
 
-        if (CTRLID != 0 && Input.GetKeyDown("joystick " + CTRLID + " button 1") && cooldowns.activeCooldowns[4] <= 0 && altBuild && !health.isDead)
+        if (CTRLID != 0 && Input.GetKeyDown("joystick " + CTRLID + " button 1") && cooldowns.activeCooldowns[4] <= 0 && altBuild && !health.isDead && !ballHolderScript.holdingObject)
         {
             abilities.HealerCC(0, 1, gameObject, fearCooldown, fearRange, fearRunSpeed, fearDuration);
             anim.SetInteger("AnimState", 2);
@@ -255,7 +256,7 @@ public class HealerController : MonoBehaviour
         {
         }
 
-        if (CTRLID != 0 && Input.GetKey("joystick " + CTRLID + " button 2") && cooldowns.activeCooldowns[3] <= 0 && !health.isDead && altBuild)
+        if (CTRLID != 0 && Input.GetKey("joystick " + CTRLID + " button 2") && cooldowns.activeCooldowns[3] <= 0 && !health.isDead && altBuild && !ballHolderScript.holdingObject)
         {
             healVisual.SetActive(true);
             timer += Time.deltaTime;
@@ -272,7 +273,7 @@ public class HealerController : MonoBehaviour
             healVisual.SetActive(false);
         }
 
-        if (CTRLID != 0 && Input.GetKey("joystick " + CTRLID + " button 1") && cooldowns.activeCooldowns[4] <= 0 && !altBuild && !health.isDead)
+        if (CTRLID != 0 && Input.GetKey("joystick " + CTRLID + " button 1") && cooldowns.activeCooldowns[4] <= 0 && !altBuild && !health.isDead && !ballHolderScript.holdingObject)
         {
             //teleportDelay += Time.deltaTime;
 
@@ -282,10 +283,10 @@ public class HealerController : MonoBehaviour
         }
 
 
-        if (CTRLID != 0 && Input.GetKeyDown("joystick " + CTRLID + " button 5"))
-        {
-            altBuild = !altBuild;
-        }
+        //if (CTRLID != 0 && Input.GetKeyDown("joystick " + CTRLID + " button 5"))
+        //{
+        //    altBuild = !altBuild;
+        //}
 
         if (stop)
         {

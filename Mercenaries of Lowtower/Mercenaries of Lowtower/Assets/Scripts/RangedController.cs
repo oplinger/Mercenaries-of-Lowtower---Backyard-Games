@@ -60,6 +60,10 @@ public class RangedController : MonoBehaviour
     Health health;
     float h1;
     float h2;
+
+    //get the cannonball holder object
+    public PickUpBox ballHolderScript;
+
     #endregion
     // Use this for initialization
     void Start()
@@ -142,7 +146,7 @@ public class RangedController : MonoBehaviour
             reviveCastTime = 0;
         }
 
-        if (CTRLID != 0 && Input.GetKeyDown("joystick " + CTRLID + " button 1") && cooldowns.activeCooldowns[11] <= 0 && altBuild && !health.isDead)
+        if (CTRLID != 0 && Input.GetKeyDown("joystick " + CTRLID + " button 1") && cooldowns.activeCooldowns[11] <= 0 && altBuild && !health.isDead && !ballHolderScript.holdingObject)
         {
             abilities.BluntTipArrow(3, 3, gameObject, KnockbackCD, knockbackArrowRange, knockbackSpread);
             anim.SetInteger("AnimState", 2);
@@ -160,7 +164,7 @@ public class RangedController : MonoBehaviour
         {
         }
 
-        if (CTRLID != 0 && Input.GetKeyDown("joystick " + CTRLID + " button 2") && cooldowns.activeCooldowns[9] <= 0 && !health.isDead)
+        if (CTRLID != 0 && Input.GetKeyDown("joystick " + CTRLID + " button 2") && cooldowns.activeCooldowns[9] <= 0 && !health.isDead && !ballHolderScript.holdingObject)
         {
             visual = true;
             GetComponent<LineOfFireVisual>().OnBool(visual);
@@ -178,7 +182,7 @@ public class RangedController : MonoBehaviour
 
 
 
-        if (CTRLID != 0 && Input.GetKeyUp("joystick " + CTRLID + " button 2") && cooldowns.activeCooldowns[9] <= 0 && altBuild && !health.isDead)
+        if (CTRLID != 0 && Input.GetKeyUp("joystick " + CTRLID + " button 2") && cooldowns.activeCooldowns[9] <= 0 && altBuild && !health.isDead && !ballHolderScript.holdingObject)
         {
             visual = false;
             GetComponent<LineOfFireVisual>().OnBool(visual);
@@ -190,7 +194,7 @@ public class RangedController : MonoBehaviour
         {
         }
 
-        if (CTRLID != 0 && Input.GetKeyUp("joystick " + CTRLID + " button 2") && cooldowns.activeCooldowns[9] <= 0 && !altBuild && !health.isDead)
+        if (CTRLID != 0 && Input.GetKeyUp("joystick " + CTRLID + " button 2") && cooldowns.activeCooldowns[9] <= 0 && !altBuild && !health.isDead && !ballHolderScript.holdingObject)
         {
             visual = false;
             GetComponent<LineOfFireVisual>().OnBool(visual);
@@ -203,10 +207,10 @@ public class RangedController : MonoBehaviour
 
 
 
-        if (CTRLID != 0 && Input.GetKeyDown("joystick " + CTRLID + " button 5"))
-        {
-            altBuild = !altBuild;
-        }
+        //if (CTRLID != 0 && Input.GetKeyDown("joystick " + CTRLID + " button 5"))
+        //{
+        //    altBuild = !altBuild;
+        //}
         #endregion
         #region Health and Death
 

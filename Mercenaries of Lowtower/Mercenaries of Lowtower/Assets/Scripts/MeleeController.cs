@@ -69,6 +69,10 @@ public class MeleeController : MonoBehaviour
     Health health;
     float h1;
     float h2;
+
+    //get the cannonball holder object
+    public PickUpBox ballHolderScript;
+
     #endregion
 
     // Use this for initialization
@@ -164,7 +168,7 @@ attacknum = Mathf.Clamp(attacknum, 0, attackNumMax);
             reviveCastTime = 0;
         }
 
-        if (CTRLID != 0 && Input.GetKeyDown("joystick " + CTRLID + " button 1") && cooldowns.activeCooldowns[8] <= 0 && altBuild && !health.isDead)
+        if (CTRLID != 0 && Input.GetKeyDown("joystick " + CTRLID + " button 1") && cooldowns.activeCooldowns[8] <= 0 && altBuild && !health.isDead && !ballHolderScript.holdingObject)
         {
             abilities.MeleeLunge(lungeDamage, 2, gameObject, lungeCD, lungeDistance);
         }
@@ -174,7 +178,7 @@ attacknum = Mathf.Clamp(attacknum, 0, attackNumMax);
             abilities.Whirlwind(whirlwindDamage, 2, gameObject, cycloneCD, strikeInterval);
         }
 
-        if (CTRLID != 0 && Input.GetKeyDown("joystick " + CTRLID + " button 2") && cooldowns.activeCooldowns[6] <= 0 && !health.isDead)
+        if (CTRLID != 0 && Input.GetKeyDown("joystick " + CTRLID + " button 2") && cooldowns.activeCooldowns[6] <= 0 && !health.isDead && !ballHolderScript.holdingObject)
         {
             visual = true;
             GetComponent<MeleeVisualization>().OnBool(visual);
@@ -197,7 +201,7 @@ attacknum = Mathf.Clamp(attacknum, 0, attackNumMax);
         {
         }
 
-        if (CTRLID != 0 && Input.GetKeyUp("joystick " + CTRLID + " button 2") && cooldowns.activeCooldowns[6] <= 0 && altBuild && !health.isDead)
+        if (CTRLID != 0 && Input.GetKeyUp("joystick " + CTRLID + " button 2") && cooldowns.activeCooldowns[6] <= 0 && altBuild && !health.isDead && !ballHolderScript.holdingObject)
         {
 
             visual = false;
@@ -214,10 +218,10 @@ attacknum = Mathf.Clamp(attacknum, 0, attackNumMax);
         {
         }
 
-        if (CTRLID != 0 && Input.GetKeyDown("joystick " + CTRLID + " button 5"))
-        {
-            altBuild = !altBuild;
-        }
+        //if (CTRLID != 0 && Input.GetKeyDown("joystick " + CTRLID + " button 5"))
+        //{
+        //    altBuild = !altBuild;
+        //}
 
         #endregion
         #region Health and Death

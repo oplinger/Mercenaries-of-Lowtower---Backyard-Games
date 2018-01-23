@@ -71,6 +71,9 @@ public class TankController : MonoBehaviour
     [Range(0, 10)]
     public float damageMultiplier;
 
+    //get the cannonball holder object
+    public PickUpBox ballHolderScript;
+
     #endregion
 
     // Use this for initialization
@@ -162,7 +165,7 @@ public class TankController : MonoBehaviour
             reviveCastTime = 0;
         }
 
-        if (CTRLID != 0 && Input.GetKey("joystick " + CTRLID + " button 1") && cooldowns.activeCooldowns[0]<=0 && !altBuild && !health.isDead)
+        if (CTRLID != 0 && Input.GetKey("joystick " + CTRLID + " button 1") && cooldowns.activeCooldowns[0]<=0 && !altBuild && !health.isDead && !ballHolderScript.holdingObject)
         {
 
 
@@ -200,7 +203,7 @@ public class TankController : MonoBehaviour
 
         }
 
-        if (CTRLID != 0 && Input.GetKeyDown("joystick " + CTRLID + " button 2") && cooldowns.activeCooldowns[1] <= 0 && !altBuild && !health.isDead)
+        if (CTRLID != 0 && Input.GetKeyDown("joystick " + CTRLID + " button 2") && cooldowns.activeCooldowns[1] <= 0 && !altBuild && !health.isDead && !ballHolderScript.holdingObject)
         {
             abilities.TankShield(shieldHealth, 0, gameObject, shieldCooldown, shieldDuration, InfiniteShield, shieldSize);
             anim.SetInteger("AnimState", 2);
@@ -236,10 +239,10 @@ public class TankController : MonoBehaviour
 
 
 
-        if (CTRLID != 0 && Input.GetKeyDown("joystick " + CTRLID + " button 5"))
-        {
-            altBuild = !altBuild;
-        }
+        //if (CTRLID != 0 && Input.GetKeyDown("joystick " + CTRLID + " button 5"))
+        //{
+        //    altBuild = !altBuild;
+        //}
         #endregion
         #region Health and Death
         if (h1 < h2)
