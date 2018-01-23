@@ -57,22 +57,31 @@ public class Health : MonoBehaviour {
     //and the ID is the character ID that is doing the damage. These are assigned to players by the boss on start.
     public void modifyHealth( float dam, int ID)
     {
-        if(health > 0 && shielded)
-        {
-            if (gameObject.tag == "Player")
-            {
-                //dam *= 0;
-                foundShield = GameObject.FindGameObjectWithTag("Shield");
-                foundShield.GetComponent<Health>().health -= dam;
-            } 
-            //if (gameObject.tag == "Shield")
-            //{
-            //    health -=dam*GetComponent<ShieldScript>().playersInShield.Length;
-            //}
-        }
-        else
+        //if(health > 0 && shielded)
+        //{
+        //    if (gameObject.tag == "Player")
+        //    {
+        //        //dam *= 0;
+        //        foundShield = GameObject.FindGameObjectWithTag("Shield");
+        //        foundShield.GetComponent<Health>().health -= dam;
+        //    } 
+        //    //if (gameObject.tag == "Shield")
+        //    //{
+        //    //    health -=dam*GetComponent<ShieldScript>().playersInShield.Length;
+        //    //}
+        //}
+        //else
+        //{
+        //    health -= dam;
+        //}
+
+        if (health >0 && !shielded)
         {
             health -= dam;
+        }
+        else if (health >0 && shielded)
+        {
+            health -= 0;
         }
 
 

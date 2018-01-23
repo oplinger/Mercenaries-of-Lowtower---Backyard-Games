@@ -19,10 +19,14 @@ public class ArmSlamHitbox : MonoBehaviour
     void OnTriggerEnter(Collider other)
     {
 
-        if (other.tag == "Player")
+        if (other.tag !="Enemy")
         {
             Health protagonistHealth = other.gameObject.GetComponent<Health>();
-            protagonistHealth.health -= slamDamage;
+
+            if (!protagonistHealth.shielded)
+            {
+                protagonistHealth.health -= slamDamage;
+            }
 
             //if (other.gameObject.tag == "Player")
             //{
