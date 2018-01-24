@@ -7,7 +7,7 @@ public class UIController : MonoBehaviour
 {
     #region Variables
     public GameObject[] players;
-    public GameObject boss;
+   // public GameObject boss;
     public GameObject controllerThing;
     ControllerThing controller;
     PlayerCDController playerCooldowns;
@@ -23,8 +23,8 @@ public class UIController : MonoBehaviour
 
 
 
-    Health[] playerHealth;
-    Health bossHealth;
+   public  Health[] playerHealth;
+   // Health bossHealth;
 #endregion
 
     // Use this for initialization
@@ -32,12 +32,12 @@ public class UIController : MonoBehaviour
     {
         controllerThing = GameObject.Find("Controller Thing");
         controller = controllerThing.GetComponent<ControllerThing>();
-        players = new GameObject[4];
+        //players = new GameObject[4];
         playerHealth = new Health[4];
         texts = GetComponentsInChildren<Text>();
         images = GetComponentsInChildren<Image>();
         timer = 600;
-        bossHealth = boss.GetComponent<Health>();
+        //bossHealth = boss.GetComponent<Health>();
         playerCooldowns = controller.GetComponent<PlayerCDController>();
         healths1 = new float[4];
 
@@ -48,6 +48,7 @@ public class UIController : MonoBehaviour
         //This might be changed to player positions. So P1 is in the top left, P2 top right, etc
         for (int i = 0; i < controller.IDs.Length; i++)
         {
+            print("THINGS FOUND");
             players[i] = controller.IDs[i].gameObject;
             playerHealth[i] = players[i].GetComponent<Health>();
             healths2[i] = playerHealth[i].health;
@@ -56,6 +57,7 @@ public class UIController : MonoBehaviour
 
         foreach (Image element in images)
         {
+            print("image found");
             if (element.tag == "AbilityIcon")
             {
                 icons.Add(element);
@@ -83,8 +85,8 @@ public class UIController : MonoBehaviour
 
             #region Timers
             timer -= Time.deltaTime;
-        texts[5].text = timer.ToString();
-        texts[4].text = bossHealth.health.ToString();
+        //texts[5].text = timer.ToString();
+        //texts[4].text = bossHealth.health.ToString();
         #endregion
 
         #region Cooldown Icons
@@ -343,7 +345,7 @@ public class UIController : MonoBehaviour
         healthBars[2].rectTransform.sizeDelta = new Vector2(100 * (playerHealth[2].health / playerHealth[2].maxHealth), 20);
         healthBars[3].rectTransform.sizeDelta = new Vector2(100 * (playerHealth[3].health / playerHealth[3].maxHealth), 20);
 
-        healthBars[4].rectTransform.sizeDelta = new Vector2(300 * (bossHealth.health / bossHealth.maxHealth), 25);
+       // healthBars[4].rectTransform.sizeDelta = new Vector2(300 * (bossHealth.health / bossHealth.maxHealth), 25);
 
 #endregion
 

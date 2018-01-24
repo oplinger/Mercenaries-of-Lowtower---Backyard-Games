@@ -30,8 +30,9 @@ public class ControllerThing : MonoBehaviour {
             Player.Add(null);
             PID.Add(9);
         }
-
-        SceneManager.sceneLoaded += OnSceneLoaded;
+        FindTarget();
+        sendIDs();
+        //SceneManager.sceneLoaded += OnSceneLoaded;
 
 
     }
@@ -39,7 +40,7 @@ public class ControllerThing : MonoBehaviour {
 
     private void Update()
     {
-
+    
         //press q to restart the level
         if (Input.GetKeyDown("q"))
         {
@@ -313,39 +314,39 @@ STEP BY STEP:
     }
     #endregion
 
-    void OnSceneLoaded(Scene scene, LoadSceneMode mode)
-    {
-        print("Scene Loaded");
+    //void OnSceneLoaded(Scene scene, LoadSceneMode mode)
+    //{
+    //    print("Scene Loaded");
 
-        //Instantiate(Resources.Load("Healer Character"));
-        //Instantiate(Resources.Load("Melee Character"));
-        //Instantiate(Resources.Load("Tank Character"));
-        //Instantiate(Resources.Load("Ranged Character"));
+    //    //Instantiate(Resources.Load("Healer Character"));
+    //    //Instantiate(Resources.Load("Melee Character"));
+    //    //Instantiate(Resources.Load("Tank Character"));
+    //    //Instantiate(Resources.Load("Ranged Character"));
 
-        //System.Array.Clear(targets, 0, targets.Length);
-        FindTarget();
+    //    //System.Array.Clear(targets, 0, targets.Length);
+    //    FindTarget();
 
-        for (int i = 0; i<IDs.Length; i++)
-        {
-            if(GameObject.Find("P" + i + "Spawn") == null)
-            {
+    //    for (int i = 0; i<IDs.Length; i++)
+    //    {
+    //        if(GameObject.Find("P" + i + "Spawn") == null)
+    //        {
 
-            } else
-            {
-                //IDs[i].gameObject.transform.position = GameObject.Find("P" + i + "Spawn").transform.position;
-                //IDs[i].GetComponent<Health>().health = IDs[i].GetComponent<Health>().maxHealth;
+    //        } else
+    //        {
+    //            //IDs[i].gameObject.transform.position = GameObject.Find("P" + i + "Spawn").transform.position;
+    //            //IDs[i].GetComponent<Health>().health = IDs[i].GetComponent<Health>().maxHealth;
 
-                IDs[0].transform.position = GameObject.Find("P0Spawn").transform.position;
-                IDs[1].transform.position = GameObject.Find("P1Spawn").transform.position;
-                IDs[2].transform.position = GameObject.Find("P2Spawn").transform.position;
-                IDs[3].transform.position = GameObject.Find("P3Spawn").transform.position;
+    //            IDs[0].transform.position = GameObject.Find("P0Spawn").transform.position;
+    //            IDs[1].transform.position = GameObject.Find("P1Spawn").transform.position;
+    //            IDs[2].transform.position = GameObject.Find("P2Spawn").transform.position;
+    //            IDs[3].transform.position = GameObject.Find("P3Spawn").transform.position;
 
 
 
-            }
-        }
+    //        }
+    //    }
 
-    }
+    //}
 
     // Rearranges the Target IDs into a static array, so the characters always have the same ID numbers for use in the threat system. possibly other applications. 
     //IE: Tank will always ALWAYS be 0, healer will ALWAYS be 1, etc
@@ -423,7 +424,7 @@ STEP BY STEP:
     {
         Collider[] hitColliders = Physics.OverlapSphere(transform.position, 1000, 1 << 8, QueryTriggerInteraction.Ignore);
         targets = hitColliders;
-        sendIDs();
+      
        
     }
     

@@ -18,6 +18,7 @@ public class HealerController : MonoBehaviour
     float timer;
     float timer1;
     float timer2;
+    [SerializeField]
     GameObject healObject;
     Health health;
     float h1;
