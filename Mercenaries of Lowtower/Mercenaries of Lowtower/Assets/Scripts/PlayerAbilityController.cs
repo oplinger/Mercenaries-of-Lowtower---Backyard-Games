@@ -178,6 +178,31 @@ public class PlayerAbilityController : MonoBehaviour
 
     }
 
+
+    public void HealerStun(int playerID, GameObject me, float CD, float stunRange, float stunDuration, GameObject stunAOE, float range)
+    {
+        //enemyMask = "Enemies" Layer
+        Collider[] EnemyColliders = Physics.OverlapSphere(me.transform.position, stunRange, enemyMask, QueryTriggerInteraction.Ignore);
+
+        Destroy(stunAOE.GetComponent<CapsuleCollider>());
+        stunAOE.transform.position = me.transform.position - new Vector3(0, 1, 0);
+        stunAOE.transform.localScale = new Vector3(range, 1, range);
+        stunAOE.transform.parent = me.transform;
+
+        
+        for (int i = 0; i < EnemyColliders.Length; i++)
+        {
+          
+            EnemyColliders[i].gameObject.GetComponent<AIController>().Stun(stunDuration);
+
+        }
+
+
+        cooldown.triggerCooldown(4, CD);
+
+    }
+
+
     public void Healaport(float damage, int playerID, GameObject me, float CD, float teleportrange)
     {
         RaycastHit hit;
@@ -190,6 +215,7 @@ public class PlayerAbilityController : MonoBehaviour
         }
 
     }
+
 
     public void HealerCC(float damage, int playerID, GameObject me, float CD, float fearrange, float runspeed, float fearduration)
     {
@@ -204,6 +230,7 @@ public class PlayerAbilityController : MonoBehaviour
 
         cooldown.triggerCooldown(5, CD);
     }
+
 
     // Creates 2 spheres, one for finding players one for finding enemies, loops through both to add damage to both.
     public void HealerAbsorb(float damage, int playerID, GameObject me, float CD)

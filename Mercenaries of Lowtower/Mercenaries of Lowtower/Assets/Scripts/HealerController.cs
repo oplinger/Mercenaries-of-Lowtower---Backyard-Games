@@ -71,6 +71,13 @@ public class HealerController : MonoBehaviour
     public float fearRunSpeed;
     [Range(0, 10)]
     public float fearDuration;
+    [Header("Stun Settings")]
+    [Range(0, 10)]
+    public float stunCooldown;
+    [Range(0, 50)]
+    public float stunRange;
+    [Range(0, 10)]
+    public float stunDuration;
 
     //get the cannonball holder object
     public PickUpBox ballHolderScript;
@@ -86,7 +93,7 @@ public class HealerController : MonoBehaviour
         healVisual.SetActive(false);
         DontDestroyOnLoad(healVisual);
 
-        healVisual.GetComponent<Renderer>().material.color = Color.green;
+        healVisual.GetComponent<Renderer>().material.color = Color.magenta;
         controllerThing = GameObject.Find("Controller Thing");
 
         controller = controllerThing.GetComponent<ControllerThing>();
@@ -215,6 +222,8 @@ public class HealerController : MonoBehaviour
 
             }
         }
+
+        ////Jump Ability
         if (CTRLID != 0 && colliders.Length > 0 && Input.GetKeyDown("joystick " + CTRLID + " button 0") && !health.isDead)
         {
             abilities.Jump(CTRLID, gameObject, jumpHeight);
@@ -224,6 +233,7 @@ public class HealerController : MonoBehaviour
         {
         }
 
+        ////Revive Ability
         if (CTRLID != 0 && Input.GetKey("joystick " + CTRLID + " button 3") && !health.isDead)
         {
             timer1 += Time.deltaTime;
@@ -248,6 +258,7 @@ public class HealerController : MonoBehaviour
         //{
         //}
 
+        ////Fear AOE
         if (CTRLID != 0 && Input.GetKeyDown("joystick " + CTRLID + " button 1") && cooldowns.activeCooldowns[4] <= 0 && altBuild && !health.isDead && !ballHolderScript.holdingObject)
         {
             abilities.HealerCC(0, 1, gameObject, fearCooldown, fearRange, fearRunSpeed, fearDuration);
@@ -257,6 +268,7 @@ public class HealerController : MonoBehaviour
         {
         }
 
+        ////Healing AOE
         if (CTRLID != 0 && Input.GetKey("joystick " + CTRLID + " button 2") && cooldowns.activeCooldowns[3] <= 0 && !health.isDead && altBuild && !ballHolderScript.holdingObject)
         {
             healVisual.SetActive(true);
@@ -274,14 +286,31 @@ public class HealerController : MonoBehaviour
             healVisual.SetActive(false);
         }
 
+        ////Stun AOE
         if (CTRLID != 0 && Input.GetKey("joystick " + CTRLID + " button 1") && cooldowns.activeCooldowns[4] <= 0 && !altBuild && !health.isDead && !ballHolderScript.holdingObject)
         {
             //teleportDelay += Time.deltaTime;
 
-            timer2 += Time.deltaTime;
-            if(timer2>=teleportDelay)
-            abilities.Healaport(0, 1, gameObject, teleportCooldown, teleportRange);
+
+            healVisual.SetActive(true);
+            abilities.HealerStun(1, gameObject, stunCooldown, stunRange, stunDuration, healVisual, stunRange);
+
         }
+        else 
+        {
+           
+                healVisual.SetActive(false);
+            
+            
+        }
+
+
+
+            //////Heal Teleport (Healaport)
+            //timer2 += Time.deltaTime;
+            //if(timer2>=teleportDelay)
+            //abilities.Healaport(0, 1, gameObject, teleportCooldown, teleportRange);
+        
 
 
         //if (CTRLID != 0 && Input.GetKeyDown("joystick " + CTRLID + " button 5"))

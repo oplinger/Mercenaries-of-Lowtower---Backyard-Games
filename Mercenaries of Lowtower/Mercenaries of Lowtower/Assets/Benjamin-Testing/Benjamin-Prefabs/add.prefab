@@ -27,7 +27,7 @@ GameObject:
   - component: {fileID: 114895118068829840}
   - component: {fileID: 65536015918156872}
   - component: {fileID: 114839556871227010}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: add
   m_TagString: Enemy
   m_Icon: {fileID: 0}
@@ -166,3 +166,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Player: {fileID: 4161420824376582, guid: 4384b171416968848a56c372a18576d7, type: 2}
+  MoveSpeed: 8
+  isStunned: 0
