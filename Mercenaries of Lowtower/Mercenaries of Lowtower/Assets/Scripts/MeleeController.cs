@@ -110,7 +110,7 @@ attacknum = Mathf.Clamp(attacknum, 0, attackNumMax);
 
         if (altBuild)
         {
-            meleeMat.color = Color.HSVToRGB(.016f, .788f, .5f);
+            //meleeMat.color = Color.HSVToRGB(.016f, .788f, .5f);
 
 
         }

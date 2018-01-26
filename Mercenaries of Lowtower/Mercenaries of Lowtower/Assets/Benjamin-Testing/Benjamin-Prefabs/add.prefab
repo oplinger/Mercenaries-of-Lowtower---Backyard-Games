@@ -153,7 +153,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3b1adf5a2b6a9fd43b7b303306a48966, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  slamDamage: 0.2
+  slamDamage: 0.5
 --- !u!114 &114978013338219618
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -168,3 +168,4 @@ MonoBehaviour:
   Player: {fileID: 4161420824376582, guid: 4384b171416968848a56c372a18576d7, type: 2}
   MoveSpeed: 8
   isStunned: 0
+  defaultEnemyMaterial: {fileID: 0}

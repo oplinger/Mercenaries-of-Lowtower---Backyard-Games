@@ -21,8 +21,11 @@ public class BoltDamage : MonoBehaviour {
         {
             health = other.GetComponent<Health>();
             ControllerThing CT = controller.GetComponent<ControllerThing>();
-            health.modifyHealth(10, 3);
-            Destroy(gameObject);
+            //health.modifyHealth(3, 3);
+
+            //deals 2x damage than it should, so 1.5 wnds up being 3
+            health.health -= 1.5f;
+            //Destroy(gameObject);
         }
     }
 }

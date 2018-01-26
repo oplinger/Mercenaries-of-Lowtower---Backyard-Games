@@ -37,7 +37,7 @@ public class RangedController : MonoBehaviour
     public float sniperAttackCD;
     public float boltRange;
     [Header("Arrow Settings")]
-    public float arrowDamage = 5;
+    public float arrowDamage;
     public float damageMultCap = 3;
     [Range(0, 10)]
     public float archerAttackCD;
@@ -93,7 +93,7 @@ public class RangedController : MonoBehaviour
     {
         if (altBuild)
         {
-            rangedMat.color = Color.HSVToRGB(.216f, .6f, .2f);
+            //rangedMat.color = Color.HSVToRGB(.216f, .6f, .2f);
 
 
         }
