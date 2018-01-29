@@ -81,11 +81,11 @@ public class Health : MonoBehaviour {
 
 
         // If the target is an enemy, it will convert any damage done to it to threat, for targeting purposes.
-        if (gameObject.tag == "Enemy")
-        {
-            BossTargetingAI threat = GetComponent<BossTargetingAI>();
-            threat.addThreat(dam, ID, false);
-        }
+        //if (gameObject.tag == "Enemy")
+        //{
+        //    BossTargetingAI threat = GetComponent<BossTargetingAI>();
+        //    //threat.addThreat(dam, ID, false);
+        //}
     }
 }
 

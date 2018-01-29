@@ -20,9 +20,9 @@ public class HealerCooldowns : MonoBehaviour
         CDvalues = new float[abilitynum];
 
 
-        cooldowns.Add("healCD", healCD);
+        cooldowns.Add("healCD", 0);
         CDvalues[0] = cooldowns["healCD"];
-        cooldowns.Add("teleportCD", teleportCD);
+        cooldowns.Add("teleportCD", 0);
         CDvalues[1] = cooldowns["teleportCD"];
         keys = new List<string>(cooldowns.Keys);
 

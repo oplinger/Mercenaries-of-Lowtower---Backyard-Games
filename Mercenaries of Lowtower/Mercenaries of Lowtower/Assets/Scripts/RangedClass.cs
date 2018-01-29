@@ -26,7 +26,7 @@ public class RangedClass : PlayerClass
     public float boltRange;
     [Header("Knockback Settings")]
     [Range(0, 10)]
-    public float lungeDamage;
+    public float knockbackDamage;
     [Range(0, 20)]
     public float knockbackRange;
     [Range(0, 10)]
@@ -49,6 +49,8 @@ public class RangedClass : PlayerClass
         ability1 = Jump;
         ability2 = abilities.RangedBolt;
         ability3 = abilities.BluntTipArrow;
+        maxHealth = 200;
+        currentHealth = maxHealth;
     }
 
     void Update()

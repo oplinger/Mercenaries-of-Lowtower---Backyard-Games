@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ArmSlamHitbox : MonoBehaviour
+public class ArmSlamHitbox : MonoBehaviour 
 {
     public float slamDamage;
 
@@ -21,12 +21,13 @@ public class ArmSlamHitbox : MonoBehaviour
 
         if (other.tag !="Enemy")
         {
-            Health protagonistHealth = other.gameObject.GetComponent<Health>();
+            other.GetComponent<IDamageable<float>>().TakeDamage(5f);
+            //Health protagonistHealth = other.gameObject.GetComponent<Health>();
 
-            if (!protagonistHealth.shielded)
-            {
-                protagonistHealth.health -= slamDamage;
-            }
+            //if (!protagonistHealth.shielded)
+            //{
+            //    protagonistHealth.health -= slamDamage;
+            //}
 
             //if (other.gameObject.tag == "Player")
             //{

@@ -15,12 +15,14 @@ public class TankAbilities : MonoBehaviour
     #region Tank Abilities
     public void TankShield()
     {
-        GameObject clone;
-        clone = Instantiate(Resources.Load("Shield_Magnetable"), transform.position, transform.rotation) as GameObject;
-        clone.transform.localScale = new Vector3(baseClass.shieldSize, baseClass.shieldSize, baseClass.shieldSize);
-        Destroy(clone, baseClass.shieldDuration);        
-        baseClass.abilityCooldowns.cooldowns["shieldCD"] = baseClass.abilityCooldowns.shieldCD;
-
+        if (baseClass.abilityCooldowns.cooldowns["shieldCD"] <= 0)
+        {
+            GameObject clone;
+            clone = Instantiate(Resources.Load("Shield_Magnetable"), transform.position, transform.rotation) as GameObject;
+            clone.transform.localScale = new Vector3(baseClass.shieldSize, baseClass.shieldSize, baseClass.shieldSize);
+            Destroy(clone, baseClass.shieldDuration);
+            baseClass.abilityCooldowns.cooldowns["shieldCD"] = baseClass.abilityCooldowns.shieldCD;
+        }
 
 
     }
@@ -36,7 +38,7 @@ public class TankAbilities : MonoBehaviour
     //}
     public void TankMagnet()
     {
-
+        print("something");
         Collider[] col = Physics.OverlapCapsule(transform.position, transform.position + (transform.forward * baseClass.magnetDistance), baseClass.magnetDiameter, baseClass.lMask, QueryTriggerInteraction.Collide);
         Debug.DrawLine(transform.position, transform.position + (transform.forward * baseClass.magnetDistance));
         for (int i = 0; i < col.Length; i++)
@@ -45,8 +47,14 @@ public class TankAbilities : MonoBehaviour
             {
 
                 col[i].gameObject.transform.position = Vector3.MoveTowards(new Vector3(col[i].gameObject.transform.position.x, col[i].gameObject.transform.position.y, col[i].gameObject.transform.position.z), new Vector3(transform.position.x, col[i].gameObject.transform.position.y, transform.position.z), baseClass.pullSpeed);
+
             }
         }
+
+
+
+
+
 
         //RaycastHit hit;
         ////Ray ray = new Ray(me.transform.position, me.transform.forward * 30);

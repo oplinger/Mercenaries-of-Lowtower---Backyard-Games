@@ -5,7 +5,6 @@ using UnityEngine;
 public class PlayerControls : MonoBehaviour {
     public List<int> PID;
     public GameObject[] players; 
-    SOcontrols controls;
 
 
     // Use this for initialization

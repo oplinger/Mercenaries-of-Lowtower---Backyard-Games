@@ -38,7 +38,6 @@ public class HealerClass : PlayerClass
         abilities = GetComponent<HealerAbilities>();
         abilityCooldowns = GetComponent<HealerCooldowns>();
         CTRLID = 2;
-
         //DOWNCASTING EXAMPLE
         //MeleeClass mC = new MeleeAbilities();
         //MeleeAbilities mA;
@@ -47,8 +46,10 @@ public class HealerClass : PlayerClass
         jumpheight = 5;
 
         ability1 = Jump;
-        ability2 = abilities.TargetedHeal;
-        ability3 = abilities.Healaport;
+        ability2 = abilities.Healaport;
+        ability3 =  abilities.TargetedHeal;
+        maxHealth = 200;
+        currentHealth = maxHealth;
     }
 
     void Update()
@@ -64,7 +65,7 @@ public class HealerClass : PlayerClass
         {
             buttonB();
         }
-        if (Input.GetKeyDown("joystick " + CTRLID + " button " + buttons["Xbutton"]))
+        if (Input.GetKeyUp("joystick " + CTRLID + " button " + buttons["Xbutton"]))
         {
             buttonX();
         }

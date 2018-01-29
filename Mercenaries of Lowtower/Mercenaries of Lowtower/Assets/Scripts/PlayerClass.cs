@@ -10,11 +10,10 @@ public abstract class PlayerClass : EntityClass
     protected Collider[] colliders;
     protected Animator anim;
     protected Vector3 _movement;
-    protected SOcontrols controls;
 
     protected Hashtable buttons;
 
-    protected float walkspeed;
+    public float walkspeed;
     protected float jumpheight;
     protected LayerMask groundMask;
     protected Material playerMat;
@@ -64,8 +63,6 @@ public abstract class PlayerClass : EntityClass
     }
     private void Start()
     {
-        controls.Init();
-        print(controls.ControlArrays[0, 0]);
     }
 
     // Update is called once per frame

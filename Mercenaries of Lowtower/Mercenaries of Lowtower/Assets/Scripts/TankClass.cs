@@ -13,6 +13,7 @@ public class TankClass : PlayerClass
 
     [SerializeField]
     int grounded;
+
     public LayerMask enemyMask;
     public LayerMask lMask;
     public LayerMask shieldMask;
@@ -24,12 +25,15 @@ public class TankClass : PlayerClass
     public float magnetDistance;
     public float magnetDiameter;
     public float pullSpeed;
+   
 
 
 
 
     // Use this for initialization
     void Start () {
+        maxHealth = 200;
+        currentHealth = maxHealth;
 
         abilities = GetComponent<TankAbilities>();
         abilityCooldowns = GetComponent<TankCooldowns>();
@@ -40,13 +44,12 @@ public class TankClass : PlayerClass
         ability2 = abilities.TankShield;
         ability3 = abilities.TankMagnet;
         CTRLID = 1;
-        shieldSize = 5;
+
     }
 
     // Update is called once per frame
     void Update () {
         grounded = JumpCheck();
-        print("Tank Class: "+shieldSize);
         Movement();
 
         if (Input.GetKeyDown("joystick " + CTRLID + " button " + buttons["Abutton"]))
@@ -58,7 +61,7 @@ public class TankClass : PlayerClass
         {
             buttonB();
         }
-        if (Input.GetKeyDown("joystick " + CTRLID + " button " + buttons["Xbutton"]))
+        if (Input.GetKey("joystick " + CTRLID + " button " + buttons["Xbutton"]))
         {
             buttonX();
         }
@@ -67,7 +70,17 @@ public class TankClass : PlayerClass
             buttonY();
         }
 
+        if (abilityCooldowns.cooldowns["magnetCD"] <= 0)
+        {
+            if (Input.GetKeyUp("joystick " + CTRLID + " button " + buttons["Xbutton"]))
+            {
+                print("magnet cooldown");
+                abilityCooldowns.cooldowns["magnetCD"] = abilityCooldowns.magnetCD;
 
+            }
+        }
+        print(currentHealth);
     }
+
 
 }

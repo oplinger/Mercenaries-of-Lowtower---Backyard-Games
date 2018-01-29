@@ -20,9 +20,9 @@ public class RangedCooldowns : MonoBehaviour
         CDvalues = new float[abilitynum];
 
 
-        cooldowns.Add("boltCD", boltCD);
+        cooldowns.Add("boltCD", 0);
         CDvalues[0] = cooldowns["boltCD"];
-        cooldowns.Add("knockbackCD", knockbackCD);
+        cooldowns.Add("knockbackCD", 0);
         CDvalues[1] = cooldowns["knockbackCD"];
         keys = new List<string>(cooldowns.Keys);
 

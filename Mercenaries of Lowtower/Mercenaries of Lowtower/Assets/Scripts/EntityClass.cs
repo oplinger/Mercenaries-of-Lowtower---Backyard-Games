@@ -4,8 +4,8 @@ using UnityEngine;
 
 public abstract class EntityClass : MonoBehaviour, IDamageable<float> {
 
-    protected float maxHealth;
-    protected float currentHealth;
+    public float maxHealth;
+    public float currentHealth;
     protected float lastFrameHealth;
     protected Vector3 movement;
     protected bool death;

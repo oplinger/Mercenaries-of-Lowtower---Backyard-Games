@@ -20,9 +20,9 @@ public class TankCooldowns : MonoBehaviour
         CDvalues = new float[abilitynum];
 
 
-        cooldowns.Add("shieldCD", shieldCD);
+        cooldowns.Add("shieldCD", 0);
         CDvalues[0] = cooldowns["shieldCD"];
-        cooldowns.Add("magnetCD", magnetCD);
+        cooldowns.Add("magnetCD", 0);
         CDvalues[1] = cooldowns["magnetCD"];
         keys = new List<string>(cooldowns.Keys);
 

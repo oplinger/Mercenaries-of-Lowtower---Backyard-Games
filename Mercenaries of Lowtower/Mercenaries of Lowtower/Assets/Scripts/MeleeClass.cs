@@ -29,8 +29,6 @@ public class MeleeClass : PlayerClass
     public float lungeDamage;
     [Range(0, 20)]
     public float lungeDistance;
-    [Range(0, 10)]
-    public float lungeCD;
     // Use this for initialization
 
     void Start()
@@ -50,6 +48,8 @@ public class MeleeClass : PlayerClass
         ability1 = Jump;
         ability3 = abilities.MeleeStrikeRogue;
         ability2 = abilities.MeleeLunge;
+        maxHealth = 200;
+        currentHealth = maxHealth;
     }
 
     void Update()
