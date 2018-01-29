@@ -9,7 +9,7 @@ public class UIController : MonoBehaviour
     public GameObject[] players;
    // public GameObject boss;
     public GameObject controllerThing;
-    ControllerThing controller;
+    PlayerControls controller;
     PlayerCDController playerCooldowns;
     public float timer = 600;
     public Text[] texts;
@@ -31,7 +31,7 @@ public class UIController : MonoBehaviour
     void Start()
     {
         controllerThing = GameObject.Find("Controller Thing");
-        controller = controllerThing.GetComponent<ControllerThing>();
+        controller = controllerThing.GetComponent<PlayerControls>();
         //players = new GameObject[4];
         playerHealth = new Health[4];
         texts = GetComponentsInChildren<Text>();
@@ -46,11 +46,11 @@ public class UIController : MonoBehaviour
         // Assigns players to slots based on IDs, for use with UI placement.
         //IE: Tank is in the top left, always.
         //This might be changed to player positions. So P1 is in the top left, P2 top right, etc
-        for (int i = 0; i < controller.IDs.Length; i++)
+        for (int i = 0; i < controller.PID.Count; i++)
         {
             print("THINGS FOUND");
-            players[i] = controller.IDs[i].gameObject;
-            playerHealth[i] = players[i].GetComponent<Health>();
+            players[i] = controller.players[i];
+            playerHealth[i] = controller.players[i].GetComponent<Health>();
             healths2[i] = playerHealth[i].health;
 
         }

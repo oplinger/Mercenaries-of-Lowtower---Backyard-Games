@@ -24,11 +24,11 @@ public class PlayerAbilityController : MonoBehaviour
 
 
     }
-    private void Update()
-    {
-        bossTargets = GameObject.Find("Boss").GetComponent<BossTargetingAI>();
+   // private void Update()
+    //{
+    //    bossTargets = GameObject.Find("Boss").GetComponent<BossTargetingAI>();
 
-    }
+    //}
 
     #region General Abilities
     public void Jump(int PlayerID, GameObject player, float jumpheight)
