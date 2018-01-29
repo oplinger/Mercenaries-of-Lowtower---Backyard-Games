@@ -40,10 +40,10 @@ public class MeleeTargetList : MonoBehaviour {
 
     private void OnDrawGizmos()
     {
-        Gizmos.color = Color.red;
-        Matrix4x4 matrix = Gizmos.matrix;
-        Gizmos.matrix = this.transform.localToWorldMatrix;
-        Gizmos.DrawWireMesh(m_mesh);
-        Gizmos.matrix = matrix;
+        //Gizmos.color = Color.red;
+        //Matrix4x4 matrix = Gizmos.matrix;
+        //Gizmos.matrix = this.transform.localToWorldMatrix;
+        //Gizmos.DrawWireMesh(m_mesh);
+        //Gizmos.matrix = matrix;
     }
 }

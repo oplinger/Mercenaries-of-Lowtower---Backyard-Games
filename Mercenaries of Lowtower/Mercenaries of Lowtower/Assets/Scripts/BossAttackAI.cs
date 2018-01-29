@@ -140,23 +140,23 @@ public class BossAttackAI : MonoBehaviour
     // Each CD ticks down every frame.
     void Update()
     {
-        print(Vector3.Dot(transform.forward, (targeting.currentTarget.transform.position-transform.position).normalized));
+       // print(Vector3.Dot(transform.forward, (targeting.currentTarget.transform.position-transform.position).normalized));
         if (scenelight == null)
         {
             scenelight = GameObject.Find("Directional Light");
         }
         currentGCD += Time.deltaTime;
 
-        if (health.health/health.maxHealth < .25f)
+        if (health.health/health.maxHealth < .25f && !range.stun)
         {
             tsunami = true;
         }
-        else if (health.health / health.maxHealth < .5f)
+        else if (health.health / health.maxHealth < .5f&&!range.stun)
         {
             lightningStorm = true;
 
         }
-        else if (health.health / health.maxHealth < .75f)
+        else if (health.health / health.maxHealth < .75f&& !range.stun)
         {
             hurricane = true;
         }
@@ -260,7 +260,7 @@ public class BossAttackAI : MonoBehaviour
 
 
         // If the Global Cool Down (GCD) is finished, boss loops through attack priority
-        if (currentGCD >= maxGCD)
+        if (currentGCD >= maxGCD && !range.stun)
         {
             checkAttacks();
 
@@ -502,7 +502,7 @@ public class BossAttackAI : MonoBehaviour
 
         //}
         /*else*/
-        if (attackCDs[1] <= 0 && range.inRange)
+        if (attackCDs[1] <= 0 && range.inRange && !range.stun)
         {
             Slam(targeting.currentTarget);
         }
@@ -510,7 +510,7 @@ public class BossAttackAI : MonoBehaviour
         //{
         //    Swipe(targeting.currentTarget);
         //}
-        else if (attackCDs[3] <= 0 && range.inRange)
+        else if (attackCDs[3] <= 0 && range.inRange && !range.stun)
         {
             Punch(targeting.currentTarget);
         }

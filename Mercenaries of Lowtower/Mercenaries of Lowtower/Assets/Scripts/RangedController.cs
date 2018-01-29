@@ -28,30 +28,42 @@ public class RangedController : MonoBehaviour
     public LayerMask groundMask;
     public LayerMask enemyMask;
     public Material rangedMat;
+    [Range(0, 10)]
     public float reviveRadius;
+    [Range(0, 10)]
     public float reviveCastTime;
 
     [Header("Bolt Settings")]
-    public float boltDamage = 25;
+    [Range(0, 25)]
+    public float boltDamage;
     [Range(0, 10)]
     public float sniperAttackCD;
+    [Range(0, 10)]
     public float boltRange;
     [Header("Arrow Settings")]
+    [Range(0, 10)]
     public float arrowDamage;
-    public float damageMultCap = 3;
+    [Range(0, 5)]
+    public float damageMultCap;
     [Range(0, 10)]
     public float archerAttackCD;
+    [Range(0, 10)]
     public float arrowRange;
     [Header("Smoke Bomb Settings")]
     [Range(0, 10)]
     public float smokeBombCD;
+    [Range(0, 10)]
     public float cloudSize;
+    [Range(0, 10)]
     public float smokeDuration;
+    [Range(0, 5)]
     public float dissipationRate;
     [Header("Knockback Settings")]
     [Range(0, 10)]
     public float KnockbackCD;
+    [Range(0, 10)]
     public float knockbackArrowRange;
+    [Range(0, 10)]
     public float knockbackSpread;
 
 
@@ -60,10 +72,6 @@ public class RangedController : MonoBehaviour
     Health health;
     float h1;
     float h2;
-
-    //get the cannonball holder object
-    public PickUpBox ballHolderScript;
-
     #endregion
     // Use this for initialization
     void Start()
@@ -93,7 +101,7 @@ public class RangedController : MonoBehaviour
     {
         if (altBuild)
         {
-            //rangedMat.color = Color.HSVToRGB(.216f, .6f, .2f);
+            rangedMat.color = Color.HSVToRGB(.216f, .6f, .2f);
 
 
         }
@@ -137,7 +145,7 @@ public class RangedController : MonoBehaviour
             timer1 += Time.deltaTime;
             if (timer1 > reviveCastTime)
             {
-                abilities.Revive(3, gameObject, reviveRadius);
+                abilities.Revive(1, gameObject, reviveRadius);
 
             }
         }
@@ -146,7 +154,7 @@ public class RangedController : MonoBehaviour
             reviveCastTime = 0;
         }
 
-        if (CTRLID != 0 && Input.GetKeyDown("joystick " + CTRLID + " button 1") && cooldowns.activeCooldowns[11] <= 0 && altBuild && !health.isDead && !ballHolderScript.holdingObject)
+        if (CTRLID != 0 && Input.GetKeyDown("joystick " + CTRLID + " button 1") && cooldowns.activeCooldowns[11] <= 0 && altBuild && !health.isDead)
         {
             abilities.BluntTipArrow(3, 3, gameObject, KnockbackCD, knockbackArrowRange, knockbackSpread);
             anim.SetInteger("AnimState", 2);
@@ -164,7 +172,7 @@ public class RangedController : MonoBehaviour
         {
         }
 
-        if (CTRLID != 0 && Input.GetKeyDown("joystick " + CTRLID + " button 2") && cooldowns.activeCooldowns[9] <= 0 && !health.isDead && !ballHolderScript.holdingObject)
+        if (CTRLID != 0 && Input.GetKeyDown("joystick " + CTRLID + " button 2") && cooldowns.activeCooldowns[9] <= 0 && !health.isDead)
         {
             visual = true;
             GetComponent<LineOfFireVisual>().OnBool(visual);
@@ -182,7 +190,7 @@ public class RangedController : MonoBehaviour
 
 
 
-        if (CTRLID != 0 && Input.GetKeyUp("joystick " + CTRLID + " button 2") && cooldowns.activeCooldowns[9] <= 0 && altBuild && !health.isDead && !ballHolderScript.holdingObject)
+        if (CTRLID != 0 && Input.GetKeyUp("joystick " + CTRLID + " button 2") && cooldowns.activeCooldowns[9] <= 0 && altBuild && !health.isDead)
         {
             visual = false;
             GetComponent<LineOfFireVisual>().OnBool(visual);
@@ -194,7 +202,7 @@ public class RangedController : MonoBehaviour
         {
         }
 
-        if (CTRLID != 0 && Input.GetKeyUp("joystick " + CTRLID + " button 2") && cooldowns.activeCooldowns[9] <= 0 && !altBuild && !health.isDead && !ballHolderScript.holdingObject)
+        if (CTRLID != 0 && Input.GetKeyUp("joystick " + CTRLID + " button 2") && cooldowns.activeCooldowns[9] <= 0 && !altBuild && !health.isDead)
         {
             visual = false;
             GetComponent<LineOfFireVisual>().OnBool(visual);
@@ -207,10 +215,10 @@ public class RangedController : MonoBehaviour
 
 
 
-        //if (CTRLID != 0 && Input.GetKeyDown("joystick " + CTRLID + " button 5"))
-        //{
-        //    altBuild = !altBuild;
-        //}
+        if (CTRLID != 0 && Input.GetKeyDown("joystick " + CTRLID + " button 5"))
+        {
+            altBuild = !altBuild;
+        }
         #endregion
         #region Health and Death
 
@@ -233,11 +241,7 @@ public class RangedController : MonoBehaviour
             walkspeed = 0;
             playermovement *= 0;
         }
-        else
-        {
-            walkspeed = 10;
 
-        }
         #endregion
     }
 }

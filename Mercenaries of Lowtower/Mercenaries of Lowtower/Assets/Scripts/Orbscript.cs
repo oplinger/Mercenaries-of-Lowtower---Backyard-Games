@@ -10,7 +10,7 @@ public class Orbscript : MonoBehaviour {
     int ID;
 	// Use this for initialization
 	void Start () {
-		
+        //IDamageable damage = (IDamageable)GetComponent(typeof(IDamageable));
 	}
 	
 	// Update is called once per frame
@@ -34,7 +34,8 @@ public class Orbscript : MonoBehaviour {
     {
         if (other.gameObject.name == Target.name)
         {
-            other.GetComponent<Health>().modifyHealth(-healAmount, ID);
+            //other.GetComponent<Health>().modifyHealth(-healAmount, ID);
+            other.GetComponent<IDamageable<float>>().TakeDamage(-5f);
             print(Target.name + " healed for " + healAmount);
             Destroy(gameObject);
         }

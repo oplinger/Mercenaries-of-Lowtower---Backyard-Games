@@ -1,6 +1,8 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AI;
+
 
 public class BossMovementAI : MonoBehaviour {
     BossTargetingAI targeting;
@@ -10,6 +12,9 @@ public class BossMovementAI : MonoBehaviour {
     public bool inRange;
     public float minimumDistance;
     public float maxDistance;
+    float stunTimer;
+    public bool stun;
+    NavMeshAgent _navMeshAgent;
 
     //Variable to hold the current speed of the boss
     public float speed;
@@ -20,6 +25,7 @@ public class BossMovementAI : MonoBehaviour {
     // Gets the targeting information from the BossTargetingAI script
     void Start () {
         targeting = GetComponent<BossTargetingAI>();
+        _navMeshAgent = GetComponent<NavMeshAgent>();
         currentTarget = targeting.currentTarget;
 	}
 
@@ -27,6 +33,11 @@ public class BossMovementAI : MonoBehaviour {
     // If the target is further than a minimum distance the boss will move towards the currentTarget, but not in the Y axis.
     // When in range the bool flips to true, and the boss attack AI resumes
     void Update () {
+        
+        if (stun)
+        {
+            Stun(4);
+        }
         if(currentTarget==null)
         {
             currentTarget = targeting.currentTarget;
@@ -43,7 +54,8 @@ public class BossMovementAI : MonoBehaviour {
             if (targetDistance > minimumDistance)
             {
                 inRange = false;
-                transform.position = Vector3.MoveTowards(transform.position, new Vector3(currentTarget.transform.position.x, transform.position.y, currentTarget.transform.position.z), speed * Time.deltaTime);
+                _navMeshAgent.SetDestination(currentTarget.transform.position);
+                //transform.position = Vector3.MoveTowards(transform.position, new Vector3(currentTarget.transform.position.x, transform.position.y, currentTarget.transform.position.z), speed * Time.deltaTime);
                 // .01f was in place of "speed"
 
                 //Orients the boss towards the player
@@ -60,4 +72,20 @@ public class BossMovementAI : MonoBehaviour {
 
         }
 	}
+
+    public void Stun(float duration)
+    {
+        
+        stunTimer += Time.deltaTime;
+        if (stunTimer < duration)
+        {
+            speed = 0;
+        } else if (stunTimer > duration)
+        {
+            stun = false;
+            speed = 10;
+            stunTimer = 0;
+
+        }
+    }
 }

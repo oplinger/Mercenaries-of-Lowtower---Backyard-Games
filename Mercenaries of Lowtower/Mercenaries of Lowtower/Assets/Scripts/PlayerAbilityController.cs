@@ -45,14 +45,29 @@ public class PlayerAbilityController : MonoBehaviour
             print(col[i]);
         }
         Health colhealth = col[0].GetComponent<Health>();
+        GameObject coltarget = col[0].gameObject;
 
         if (playerID != 1 && colhealth.isDead)
         {
             print(playerID);
             colhealth.health = colhealth.maxHealth / 2;
             colhealth.isDead = false;
-            
-
+            if(coltarget.name == "Tank Character")
+            {
+                coltarget.GetComponent<TankController>().walkspeed = 10;
+            }
+            if (coltarget.name == "Melee Character")
+            {
+                coltarget.GetComponent<MeleeController>().walkspeed = 10;
+            }
+            if (coltarget.name == "Ranged Character")
+            {
+                coltarget.GetComponent<RangedController>().walkspeed = 10;
+            }
+            if (coltarget.name == "Healer Character")
+            {
+                coltarget.GetComponent<HealerController>().walkspeed = 10;
+            }
 
         }
         else if (playerID == 1 && colhealth.isDead)
@@ -60,14 +75,23 @@ public class PlayerAbilityController : MonoBehaviour
             print(playerID);
             colhealth.health = colhealth.maxHealth;
             colhealth.isDead = false;
-
-
+            if (coltarget.name == "Tank Character")
+            {
+                coltarget.GetComponent<TankController>().walkspeed = 10;
+            }
+            if (coltarget.name == "Melee Character")
+            {
+                coltarget.GetComponent<MeleeController>().walkspeed = 10;
+            }
+            if (coltarget.name == "Ranged Character")
+            {
+                coltarget.GetComponent<RangedController>().walkspeed = 10;
+            }
+            if (coltarget.name == "Healer Character")
+            {
+                coltarget.GetComponent<HealerController>().walkspeed = 10;
+            }
         }
-
-
-
-
-
 
     }
     #endregion
@@ -99,26 +123,37 @@ public class PlayerAbilityController : MonoBehaviour
         cooldown.triggerCooldown(1, CD);
 
     }
-    public void TankMagnet(float damage, int playerID, GameObject me, float CD, LayerMask lMask, float magnetdistance, float pullspeed)
+    public void TankMagnet(float damage, int playerID, GameObject me, float CD, LayerMask lMask, float magnetdistance, float pullspeed, float magnetdiameter)
     {
 
-        RaycastHit hit;
-        //Ray ray = new Ray(me.transform.position, me.transform.forward * 30);
-        //if (Physics.Raycast(ray, out hit, 30))
-
-
-
-        if (Physics.Raycast(me.transform.position, me.transform.forward, out hit, magnetdistance, lMask))
+        Collider[] col = Physics.OverlapCapsule(me.transform.position, me.transform.position + (me.transform.forward * magnetdistance), magnetdiameter, lMask, QueryTriggerInteraction.Collide);
+        Debug.DrawLine(me.transform.position, me.transform.position+(me.transform.forward*magnetdistance));
+         for(int i = 0; i<col.Length; i++)
         {
-            GameObject target = hit.collider.gameObject;
-            if (Vector3.Distance(target.transform.position, me.transform.position) > 3)
+            if (Vector3.Distance(col[i].gameObject.transform.position, me.transform.position) > 5)
             {
-                target.transform.position = Vector3.MoveTowards(new Vector3(target.transform.position.x, target.transform.position.y, target.transform.position.z), new Vector3(me.transform.position.x, target.transform.position.y, me.transform.position.z), pullspeed);
-                bossTargets.addThreat(damage, playerID, false);
+
+                col[i].gameObject.transform.position = Vector3.MoveTowards(new Vector3(col[i].gameObject.transform.position.x, col[i].gameObject.transform.position.y, col[i].gameObject.transform.position.z), new Vector3(me.transform.position.x, col[i].gameObject.transform.position.y, me.transform.position.z), pullspeed);
             }
-
-
         }
+
+        //RaycastHit hit;
+        ////Ray ray = new Ray(me.transform.position, me.transform.forward * 30);
+        ////if (Physics.Raycast(ray, out hit, 30))
+
+
+
+        //if (Physics.Raycast(me.transform.position, me.transform.forward, out hit, magnetdistance, lMask))
+        //{
+        //    GameObject target = hit.collider.gameObject;
+        //    if (Vector3.Distance(target.transform.position, me.transform.position) > 3)
+        //    {
+        //        target.transform.position = Vector3.MoveTowards(new Vector3(target.transform.position.x, target.transform.position.y, target.transform.position.z), new Vector3(me.transform.position.x, target.transform.position.y, me.transform.position.z), pullspeed);
+        //        bossTargets.addThreat(damage, playerID, false);
+        //    }
+
+
+        //}
 
 
     }
@@ -293,11 +328,11 @@ public class PlayerAbilityController : MonoBehaviour
         cooldown.triggerCooldown(6, CD);
     }
 
-    public void Whirlwind(float damage, int playerID, GameObject me, float CD, float strikeinterval)
+    public void Whirlwind(float damage, int playerID, GameObject me, float CD, float strikeinterval, float WWdiameter, float walkspeedmult, float walkspeed, int WWnumber)
     {
         //Physics.OverlapSphere(me.transform.position, 3, enemyMask, QueryTriggerInteraction.Ignore);
 
-        StartCoroutine(WWAttack(damage, playerID, me, CD, strikeinterval));
+        StartCoroutine(WWAttack(damage, playerID, me, CD, strikeinterval, WWdiameter, walkspeedmult, walkspeed, WWnumber));
         cooldown.triggerCooldown(7, CD);
         //} else
         //{
@@ -419,42 +454,51 @@ public class PlayerAbilityController : MonoBehaviour
         }
     }
 
-    IEnumerator WWAttack(float damage, int playerID, GameObject me, float CD, float strikeinterval)
+    IEnumerator WWAttack(float damage, int playerID, GameObject me, float CD, float strikeinterval, float WWdiameter, float walkspeedMult, float walkSpeed, int WWnumber)
     {
-        Collider[] col = Physics.OverlapSphere(me.transform.position, 3, enemyMask, QueryTriggerInteraction.Ignore);
-        me.GetComponent<MeleeController>().walkspeed = 15;
+        float walkspeed1 = walkSpeed;
+        //Collider[] col = Physics.OverlapSphere(me.transform.position, WWdiameter, enemyMask, QueryTriggerInteraction.Ignore);
+        me.GetComponent<MeleeController>().walkspeed *= walkspeedMult;
         GameObject wwcyl = GameObject.CreatePrimitive(PrimitiveType.Cylinder);
         Destroy(wwcyl.GetComponent<CapsuleCollider>());
         wwcyl.transform.position = me.transform.position - new Vector3(0, 1, 0);
-        wwcyl.transform.localScale = new Vector3(3, .5f, 3);
+        wwcyl.transform.localScale = new Vector3(WWdiameter, .5f, WWdiameter);
         wwcyl.transform.parent = me.transform;
-        for (int i = 0; i < col.Length; i++)
-        {
-            Health health = col[i].GetComponent<Health>();
-            health.modifyHealth(damage, playerID);
-        }
-        print("WW1");
-        yield return new WaitForSeconds(strikeinterval);
-        Collider[] col1 = Physics.OverlapSphere(me.transform.position, 3, enemyMask, QueryTriggerInteraction.Ignore);
-        for (int i = 0; i < col1.Length; i++)
-        {
-            Health health = col1[i].GetComponent<Health>();
-            health.modifyHealth(damage, playerID);
-        }
-        print("WW2");
-        yield return new WaitForSeconds(strikeinterval);
-        Collider[] col2 = Physics.OverlapSphere(me.transform.position, 3, enemyMask, QueryTriggerInteraction.Ignore);
 
-        for (int i = 0; i < col2.Length; i++)
+        for (int wwIndex = 0; wwIndex < WWnumber; ++wwIndex)
         {
-            Health health = col2[i].GetComponent<Health>();
-            health.modifyHealth(damage, playerID);
+            Collider[] col = Physics.OverlapSphere(me.transform.position, 3, enemyMask, QueryTriggerInteraction.Ignore);
+            for (int i = 0; i < col.Length; i++)
+            {
+                Health health = col[i].GetComponent<Health>();
+                health.modifyHealth(damage, playerID);
+            }
+            print( string.Format( "WW{0}", wwIndex ) );
+            yield return new WaitForSeconds(strikeinterval);
         }
-        print("WW3");
-        me.GetComponent<MeleeController>().walkspeed = 10;
-
+        me.GetComponent<MeleeController>().WWarble = false;
+        me.GetComponent<MeleeController>().walkspeed = walkspeed1;
         Destroy(wwcyl);
-        yield return new WaitForSeconds(strikeinterval);
+
+        //Collider[] col1 = Physics.OverlapSphere(me.transform.position, 3, enemyMask, QueryTriggerInteraction.Ignore);
+        //for (int i = 0; i < col1.Length; i++)
+        //{
+        //    Health health = col1[i].GetComponent<Health>();
+        //    health.modifyHealth(damage, playerID);
+        //}
+        //print("WW2");
+        //yield return new WaitForSeconds(strikeinterval);
+        //Collider[] col2 = Physics.OverlapSphere(me.transform.position, 3, enemyMask, QueryTriggerInteraction.Ignore);
+
+        //for (int i = 0; i < col2.Length; i++)
+        //{
+        //    Health health = col2[i].GetComponent<Health>();
+        //    health.modifyHealth(damage, playerID);
+        //}
+        //print("WW3");
+        //yield return new WaitForSeconds(strikeinterval);
+        
+
     }
     // IEnumerator WW(float damage, int playerID, GameObject me, float CD)
     //{

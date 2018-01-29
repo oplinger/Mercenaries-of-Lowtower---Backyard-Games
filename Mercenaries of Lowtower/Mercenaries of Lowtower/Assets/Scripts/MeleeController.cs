@@ -19,10 +19,14 @@ public class MeleeController : MonoBehaviour
     int attacknum;
     float timer;
     float timer1;
+    float warbleTimer;
+    public GameObject model;
 
 
     [Header("General")]
     public bool altBuild;
+    public bool WWarble;
+
 
     [Range(1, 50)]
     public float walkspeed;
@@ -31,13 +35,20 @@ public class MeleeController : MonoBehaviour
     public LayerMask groundMask;
     public LayerMask enemyMask;
     public Material meleeMat;
+    [Range(0, 10)]
     public float reviveRadius;
+    [Range(0, 10)]
     public float reviveCastTime;
 
+
+
     [Header("Berserker Melee Settings")]
+    [Range(0, 10)]
+
     public float berserkerMeleeDamage;
     [Range(0, 10)]
     public float berserkerMeleeAttackCD;
+    [Range(0, 10)]
     public int attackNumMax;
     [Tooltip("CD - (SpeedInterval*attacknum)")]
     [Range(0, 1)]
@@ -46,18 +57,31 @@ public class MeleeController : MonoBehaviour
     public float speedReset;
 
     [Header("Rogue Melee Settings")]
+    [Range(0, 10)]
     public float rogueMeleeDamage;
     [Range(0, 10)]
     public float rogueMeleeAttackCD;
 
     [Header("Whirlwind Settings")]
+    [Range(0, 10)]
     public float whirlwindDamage;
     [Range(0, 10)]
     public float cycloneCD;
+    [Range(0,5)]
     public float strikeInterval;
+    [Range(0,10)]
+    public float whirlWindDiameter;
+    [Range(0,5)]
+    public float walkspeedmult;
+    [Range(0, 50)]
+    public float warbleDistanceMax;
+    float warbleDistanceMin;
+    public int WWnumber;
 
     [Header("Lunge Settings")]
+    [Range(0,10)]
     public float lungeDamage;
+    [Range(0,20)]
     public float lungeDistance;
     [Range(0, 10)]
     public float lungeCD;
@@ -106,8 +130,20 @@ public class MeleeController : MonoBehaviour
          */
     void Update()
     {
-attacknum = Mathf.Clamp(attacknum, 0, attackNumMax);
+    attacknum = Mathf.Clamp(attacknum, 0, attackNumMax);
+        if (WWarble)
+        {
+            //warbleTimer += Time.deltaTime;
 
+            model.transform.position = new Vector3(transform.position.x + Mathf.Sin(Time.time * warbleDistanceMax), transform.position.y, transform.position.z + Mathf.Cos(Time.time * warbleDistanceMax));
+            //if (warbleTimer > 3)
+            //{
+            //    WWarble = false;
+            //    warbleTimer = 0;
+            //}
+        }
+        else
+            model.transform.position = transform.position;
         if (altBuild)
         {
             //meleeMat.color = Color.HSVToRGB(.016f, .788f, .5f);
@@ -175,7 +211,8 @@ attacknum = Mathf.Clamp(attacknum, 0, attackNumMax);
 
         if (CTRLID != 0 && Input.GetKeyDown("joystick " + CTRLID + " button 1") && cooldowns.activeCooldowns[7] <= 0 && !altBuild && !health.isDead)
         {
-            abilities.Whirlwind(whirlwindDamage, 2, gameObject, cycloneCD, strikeInterval);
+            abilities.Whirlwind(whirlwindDamage, 2, gameObject, cycloneCD, strikeInterval, whirlWindDiameter, walkspeedmult, walkspeed, WWnumber);
+            WWarble = true;
         }
 
         if (CTRLID != 0 && Input.GetKeyDown("joystick " + CTRLID + " button 2") && cooldowns.activeCooldowns[6] <= 0 && !health.isDead && !ballHolderScript.holdingObject)
@@ -244,11 +281,7 @@ attacknum = Mathf.Clamp(attacknum, 0, attackNumMax);
             walkspeed = 0;
             playermovement *= 0;
         }
-        else
-        {
-            walkspeed = 10;
 
-        }
         #endregion
     }
 }

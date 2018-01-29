@@ -14,6 +14,7 @@ public class ControllerThing : MonoBehaviour {
     public TankController tankcontroller;
     public HealerController healercontroller;
     public RangedController rangedcontroller;
+    SOcontrols controls;
 
     #endregion
     private void Awake()
@@ -21,7 +22,7 @@ public class ControllerThing : MonoBehaviour {
 
         DontDestroyOnLoad(transform.gameObject);
         IDs = new Collider[4];
-
+        //controls = GetComponent<SOcontrols>();
         //FindTarget();
         deathcount = new int[4];
         // AssignIDsToArray();
@@ -30,9 +31,8 @@ public class ControllerThing : MonoBehaviour {
             Player.Add(null);
             PID.Add(9);
         }
-        FindTarget();
-        sendIDs();
-        //SceneManager.sceneLoaded += OnSceneLoaded;
+
+        SceneManager.sceneLoaded += OnSceneLoaded;
 
 
     }
@@ -40,7 +40,7 @@ public class ControllerThing : MonoBehaviour {
 
     private void Update()
     {
-    
+       // print(1 / Time.deltaTime);
         //press q to restart the level
         if (Input.GetKeyDown("q"))
         {
@@ -74,9 +74,11 @@ STEP BY STEP:
                 {
                     if (!Player.Contains(IDs[0].gameObject))
                     {
-                        Player.Insert(PID.IndexOf(1), IDs[0].gameObject);
+                        Player[PID.IndexOf(1)] = IDs[0].gameObject;
+
+                        //Player.Insert(PID.IndexOf(1), IDs[0].gameObject);
                         // Player.RemoveAt(Player.Count - 1);
-                        Player.Remove(null);
+                        //Player.Remove(null);
                         tankcontroller = GameObject.Find("Tank Character(Clone)").GetComponent<TankController>();
                         tankcontroller.CTRLID = 1;
                         IDs[0].gameObject.transform.position = GameObject.Find("P0Select").transform.position;
@@ -87,9 +89,11 @@ STEP BY STEP:
                 {
                     if (!Player.Contains(IDs[1].gameObject))
                     {
-                        Player.Insert(PID.IndexOf(1), IDs[1].gameObject);
-                        // Player.RemoveAt(Player.Count - 1);
-                        Player.Remove(null);
+                        Player[PID.IndexOf(1)] = IDs[1].gameObject;
+
+                        //Player.Insert(PID.IndexOf(1), IDs[1].gameObject);
+                        //// Player.RemoveAt(Player.Count - 1);
+                        //Player.Remove(null);
                         healercontroller = GameObject.Find("Healer Character(Clone)").GetComponent<HealerController>();
                         healercontroller.CTRLID = 1;
                         IDs[1].gameObject.transform.position = GameObject.Find("P0Select").transform.position;
@@ -100,9 +104,11 @@ STEP BY STEP:
                 {
                     if (!Player.Contains(IDs[2].gameObject))
                     {
-                        Player.Insert(PID.IndexOf(1), IDs[2].gameObject);
-                        // Player.RemoveAt(Player.Count - 1);
-                        Player.Remove(null);
+                        Player[PID.IndexOf(1)] = IDs[2].gameObject;
+
+                        //Player.Insert(PID.IndexOf(1), IDs[2].gameObject);
+                        //// Player.RemoveAt(Player.Count - 1);
+                        //Player.Remove(null);
                         meleecontroller = GameObject.Find("Melee Character(Clone)").GetComponent<MeleeController>();
                         meleecontroller.CTRLID = 1;
                         IDs[2].gameObject.transform.position = GameObject.Find("P0Select").transform.position;
@@ -113,9 +119,11 @@ STEP BY STEP:
                 {
                     if (!Player.Contains(IDs[3].gameObject))
                     {
-                        Player.Insert(PID.IndexOf(1), IDs[3].gameObject);
-                        // Player.RemoveAt(Player.Count - 1);
-                        Player.Remove(null);
+                        Player[PID.IndexOf(1)] = IDs[3].gameObject;
+
+                        //Player.Insert(PID.IndexOf(1), IDs[3].gameObject);
+                        //// Player.RemoveAt(Player.Count - 1);
+                        //Player.Remove(null);
                         rangedcontroller = GameObject.Find("Ranged Character(Clone)").GetComponent<RangedController>();
                         rangedcontroller.CTRLID = 1;
                         IDs[3].gameObject.transform.position = GameObject.Find("P0Select").transform.position;
@@ -135,9 +143,11 @@ STEP BY STEP:
                 {
                     if (!Player.Contains(IDs[0].gameObject))
                     {
-                        Player.Insert(PID.IndexOf(2), IDs[0].gameObject);
-                        // Player.RemoveAt(Player.Count - 1);
-                        Player.Remove(null);
+                        Player[PID.IndexOf(2)] = IDs[0].gameObject;
+
+                        //Player.Insert(PID.IndexOf(2), IDs[0].gameObject);
+                        //// Player.RemoveAt(Player.Count - 1);
+                        //Player.Remove(null);
                         tankcontroller = GameObject.Find("Tank Character(Clone)").GetComponent<TankController>();
                         tankcontroller.CTRLID = 2;
                         IDs[0].gameObject.transform.position = GameObject.Find("P1Select").transform.position;
@@ -148,9 +158,11 @@ STEP BY STEP:
                 {
                     if (!Player.Contains(IDs[1].gameObject))
                     {
-                        Player.Insert(PID.IndexOf(2), IDs[1].gameObject);
-                        // Player.RemoveAt(Player.Count - 1);
-                        Player.Remove(null);
+                        Player[PID.IndexOf(2)] = IDs[1].gameObject;
+
+                        //Player.Insert(PID.IndexOf(2), IDs[1].gameObject);
+                        //// Player.RemoveAt(Player.Count - 1);
+                        //Player.Remove(null);
                         healercontroller = GameObject.Find("Healer Character(Clone)").GetComponent<HealerController>();
                         healercontroller.CTRLID = 2;
                         IDs[1].gameObject.transform.position = GameObject.Find("P1Select").transform.position;
@@ -161,9 +173,11 @@ STEP BY STEP:
                 {
                     if (!Player.Contains(IDs[2].gameObject))
                     {
-                        Player.Insert(PID.IndexOf(2), IDs[2].gameObject);
-                        // Player.RemoveAt(Player.Count - 1);
-                        Player.Remove(null);
+                        Player[PID.IndexOf(2)] = IDs[2].gameObject;
+
+                        //Player.Insert(PID.IndexOf(2), IDs[2].gameObject);
+                        //// Player.RemoveAt(Player.Count - 1);
+                        //Player.Remove(null);
                         meleecontroller = GameObject.Find("Melee Character(Clone)").GetComponent<MeleeController>();
                         meleecontroller.CTRLID = 2;
                         IDs[2].gameObject.transform.position = GameObject.Find("P1Select").transform.position;
@@ -174,9 +188,11 @@ STEP BY STEP:
                 {
                     if (!Player.Contains(IDs[3].gameObject))
                     {
-                        Player.Insert(PID.IndexOf(2), IDs[3].gameObject);
-                        // Player.RemoveAt(Player.Count - 1);
-                        Player.Remove(null);
+                        Player[PID.IndexOf(2)] = IDs[3].gameObject;
+
+                        //Player.Insert(PID.IndexOf(2), IDs[3].gameObject);
+                        //// Player.RemoveAt(Player.Count - 1);
+                        //Player.Remove(null);
                         rangedcontroller = GameObject.Find("Ranged Character(Clone)").GetComponent<RangedController>();
                         rangedcontroller.CTRLID = 2;
                         IDs[3].gameObject.transform.position = GameObject.Find("P1Select").transform.position;
@@ -196,9 +212,11 @@ STEP BY STEP:
                 {
                     if (!Player.Contains(IDs[0].gameObject))
                     {
-                        Player.Insert(PID.IndexOf(3), IDs[0].gameObject);
-                        // Player.RemoveAt(Player.Count - 1);
-                        Player.Remove(null);
+                        Player[PID.IndexOf(3)] = IDs[0].gameObject;
+
+                        //Player.Insert(PID.IndexOf(3), IDs[0].gameObject);
+                        //// Player.RemoveAt(Player.Count - 1);
+                        //Player.Remove(null);
                         tankcontroller = GameObject.Find("Tank Character(Clone)").GetComponent<TankController>();
                         tankcontroller.CTRLID = 3;
                         IDs[0].gameObject.transform.position = GameObject.Find("P2Select").transform.position;
@@ -210,9 +228,11 @@ STEP BY STEP:
                 {
                     if (!Player.Contains(IDs[1].gameObject))
                     {
-                        Player.Insert(PID.IndexOf(3), IDs[1].gameObject);
-                        // Player.RemoveAt(Player.Count - 1);
-                        Player.Remove(null);
+                        Player[PID.IndexOf(3)] = IDs[1].gameObject;
+
+                        //Player.Insert(PID.IndexOf(3), IDs[1].gameObject);
+                        //// Player.RemoveAt(Player.Count - 1);
+                        //Player.Remove(null);
                         healercontroller = GameObject.Find("Healer Character(Clone)").GetComponent<HealerController>();
                         healercontroller.CTRLID = 3;
                         IDs[1].gameObject.transform.position = GameObject.Find("P2Select").transform.position;
@@ -223,9 +243,11 @@ STEP BY STEP:
                 {
                     if (!Player.Contains(IDs[2].gameObject))
                     {
-                        Player.Insert(PID.IndexOf(3), IDs[2].gameObject);
-                        // Player.RemoveAt(Player.Count - 1);
-                        Player.Remove(null);
+                        Player[PID.IndexOf(3)] = IDs[2].gameObject;
+
+                        //Player.Insert(PID.IndexOf(3), IDs[2].gameObject);
+                        //// Player.RemoveAt(Player.Count - 1);
+                        //Player.Remove(null);
                         meleecontroller = GameObject.Find("Melee Character(Clone)").GetComponent<MeleeController>();
                         meleecontroller.CTRLID = 3;
                         IDs[2].gameObject.transform.position = GameObject.Find("P2Select").transform.position;
@@ -236,9 +258,11 @@ STEP BY STEP:
                 {
                     if (!Player.Contains(IDs[3].gameObject))
                     {
-                        Player.Insert(PID.IndexOf(3), IDs[3].gameObject);
-                        // Player.RemoveAt(Player.Count - 1);
-                        Player.Remove(null);
+                        Player[PID.IndexOf(3)] = IDs[3].gameObject;
+
+                        //Player.Insert(PID.IndexOf(3), IDs[3].gameObject);
+                        //// Player.RemoveAt(Player.Count - 1);
+                        //Player.Remove(null);
                         rangedcontroller = GameObject.Find("Ranged Character(Clone)").GetComponent<RangedController>();
                         rangedcontroller.CTRLID = 3;
                         IDs[3].gameObject.transform.position = GameObject.Find("P2Select").transform.position;
@@ -258,9 +282,10 @@ STEP BY STEP:
                 {
                     if (!Player.Contains(IDs[0].gameObject))
                     {
-                        Player.Insert(PID.IndexOf(4), IDs[0].gameObject);
-                        // Player.RemoveAt(Player.Count - 1);
-                        Player.Remove(null);
+                        Player[PID.IndexOf(4)] = IDs[0].gameObject;
+                        //Player.Insert(PID.IndexOf(4), IDs[0].gameObject);
+                        //// Player.RemoveAt(Player.Count - 1);
+                        //Player.Remove(null);
                         tankcontroller = GameObject.Find("Tank Character(Clone)").GetComponent<TankController>();
                         tankcontroller.CTRLID = 4;
                         IDs[0].gameObject.transform.position = GameObject.Find("P3Select").transform.position;
@@ -271,9 +296,11 @@ STEP BY STEP:
                 {
                     if (!Player.Contains(IDs[1].gameObject))
                     {
-                        Player.Insert(PID.IndexOf(4), IDs[1].gameObject);
-                        // Player.RemoveAt(Player.Count - 1);
-                        Player.Remove(null);
+                        Player[PID.IndexOf(4)] = IDs[1].gameObject;
+
+                        //Player.Insert(PID.IndexOf(4), IDs[1].gameObject);
+                        //// Player.RemoveAt(Player.Count - 1);
+                        //Player.Remove(null);
                         healercontroller = GameObject.Find("Healer Character(Clone)").GetComponent<HealerController>();
                         healercontroller.CTRLID = 4;
                         IDs[1].gameObject.transform.position = GameObject.Find("P3Select").transform.position;
@@ -284,9 +311,11 @@ STEP BY STEP:
                 {
                     if (!Player.Contains(IDs[2].gameObject))
                     {
-                        Player.Insert(PID.IndexOf(4), IDs[2].gameObject);
-                        // Player.RemoveAt(Player.Count - 1);
-                        Player.Remove(null);
+                        Player[PID.IndexOf(4)] = IDs[2].gameObject;
+
+                        //Player.Insert(PID.IndexOf(4), IDs[2].gameObject);
+                        //// Player.RemoveAt(Player.Count - 1);
+                        //Player.Remove(null);
                         meleecontroller = GameObject.Find("Melee Character(Clone)").GetComponent<MeleeController>();
                         meleecontroller.CTRLID = 4;
                         IDs[2].gameObject.transform.position = GameObject.Find("P3Select").transform.position;
@@ -297,9 +326,11 @@ STEP BY STEP:
                 {
                     if (!Player.Contains(IDs[3].gameObject))
                     {
-                        Player.Insert(PID.IndexOf(4), IDs[3].gameObject);
-                        // Player.RemoveAt(Player.Count - 1);
-                        Player.Remove(null);
+                        Player[PID.IndexOf(4)] = IDs[3].gameObject;
+
+                        //Player.Insert(PID.IndexOf(4), IDs[3].gameObject);
+                        //// Player.RemoveAt(Player.Count - 1);
+                        //Player.Remove(null);
                         rangedcontroller = GameObject.Find("Ranged Character(Clone)").GetComponent<RangedController>();
                         rangedcontroller.CTRLID = 4;
                         IDs[3].gameObject.transform.position = GameObject.Find("P3Select").transform.position;
@@ -314,39 +345,39 @@ STEP BY STEP:
     }
     #endregion
 
-    //void OnSceneLoaded(Scene scene, LoadSceneMode mode)
-    //{
-    //    print("Scene Loaded");
+    void OnSceneLoaded(Scene scene, LoadSceneMode mode)
+    {
+        print("Scene Loaded");
 
-    //    //Instantiate(Resources.Load("Healer Character"));
-    //    //Instantiate(Resources.Load("Melee Character"));
-    //    //Instantiate(Resources.Load("Tank Character"));
-    //    //Instantiate(Resources.Load("Ranged Character"));
+        //Instantiate(Resources.Load("Healer Character"));
+        //Instantiate(Resources.Load("Melee Character"));
+        //Instantiate(Resources.Load("Tank Character"));
+        //Instantiate(Resources.Load("Ranged Character"));
 
-    //    //System.Array.Clear(targets, 0, targets.Length);
-    //    FindTarget();
+        //System.Array.Clear(targets, 0, targets.Length);
+        FindTarget();
 
-    //    for (int i = 0; i<IDs.Length; i++)
-    //    {
-    //        if(GameObject.Find("P" + i + "Spawn") == null)
-    //        {
+        for (int i = 0; i<IDs.Length; i++)
+        {
+            if(GameObject.Find("P" + i + "Spawn") == null)
+            {
 
-    //        } else
-    //        {
-    //            //IDs[i].gameObject.transform.position = GameObject.Find("P" + i + "Spawn").transform.position;
-    //            //IDs[i].GetComponent<Health>().health = IDs[i].GetComponent<Health>().maxHealth;
+            } else
+            {
+                //IDs[i].gameObject.transform.position = GameObject.Find("P" + i + "Spawn").transform.position;
+                //IDs[i].GetComponent<Health>().health = IDs[i].GetComponent<Health>().maxHealth;
 
-    //            IDs[0].transform.position = GameObject.Find("P0Spawn").transform.position;
-    //            IDs[1].transform.position = GameObject.Find("P1Spawn").transform.position;
-    //            IDs[2].transform.position = GameObject.Find("P2Spawn").transform.position;
-    //            IDs[3].transform.position = GameObject.Find("P3Spawn").transform.position;
+                IDs[0].transform.position = GameObject.Find("P0Spawn").transform.position;
+                IDs[1].transform.position = GameObject.Find("P1Spawn").transform.position;
+                IDs[2].transform.position = GameObject.Find("P2Spawn").transform.position;
+                IDs[3].transform.position = GameObject.Find("P3Spawn").transform.position;
 
 
 
-    //        }
-    //    }
+            }
+        }
 
-    //}
+    }
 
     // Rearranges the Target IDs into a static array, so the characters always have the same ID numbers for use in the threat system. possibly other applications. 
     //IE: Tank will always ALWAYS be 0, healer will ALWAYS be 1, etc
@@ -396,10 +427,10 @@ STEP BY STEP:
             }else if (PID[i] == 9)
             {
                 // Andrew says look here for input bug
-                //PID[i] = ID;
+                PID[i] = ID;
 
-                PID.Insert(i, ID);
-                PID.RemoveAt(PID.Count - 1);
+               //PID.Insert(i, ID);
+               //PID.RemoveAt(PID.Count - 1);
 
                 break;
             }
@@ -424,7 +455,7 @@ STEP BY STEP:
     {
         Collider[] hitColliders = Physics.OverlapSphere(transform.position, 1000, 1 << 8, QueryTriggerInteraction.Ignore);
         targets = hitColliders;
-      
+        sendIDs();
        
     }
     
