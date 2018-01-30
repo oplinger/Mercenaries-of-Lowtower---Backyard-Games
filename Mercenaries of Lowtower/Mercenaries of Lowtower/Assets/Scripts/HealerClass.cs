@@ -48,8 +48,8 @@ public class HealerClass : PlayerClass
         ability1 = Jump;
         ability2 = abilities.Healaport;
         ability3 =  abilities.TargetedHeal;
-        maxHealth = 200;
         currentHealth = maxHealth;
+
     }
 
     void Update()

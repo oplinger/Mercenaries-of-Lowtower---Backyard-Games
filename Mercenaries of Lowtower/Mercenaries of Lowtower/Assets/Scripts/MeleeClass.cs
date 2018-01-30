@@ -48,8 +48,8 @@ public class MeleeClass : PlayerClass
         ability1 = Jump;
         ability3 = abilities.MeleeStrikeRogue;
         ability2 = abilities.MeleeLunge;
-        maxHealth = 200;
         currentHealth = maxHealth;
+
     }
 
     void Update()

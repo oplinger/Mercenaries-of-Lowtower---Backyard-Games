@@ -49,8 +49,8 @@ public class RangedClass : PlayerClass
         ability1 = Jump;
         ability2 = abilities.RangedBolt;
         ability3 = abilities.BluntTipArrow;
-        maxHealth = 200;
         currentHealth = maxHealth;
+
     }
 
     void Update()

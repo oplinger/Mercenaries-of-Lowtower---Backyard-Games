@@ -32,8 +32,7 @@ public class TankClass : PlayerClass
 
     // Use this for initialization
     void Start () {
-        maxHealth = 200;
-        currentHealth = maxHealth;
+
 
         abilities = GetComponent<TankAbilities>();
         abilityCooldowns = GetComponent<TankCooldowns>();
@@ -44,6 +43,7 @@ public class TankClass : PlayerClass
         ability2 = abilities.TankShield;
         ability3 = abilities.TankMagnet;
         CTRLID = 1;
+        currentHealth = maxHealth;
 
     }
 
