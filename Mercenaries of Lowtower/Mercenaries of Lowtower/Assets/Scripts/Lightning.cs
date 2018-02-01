@@ -7,7 +7,7 @@ public class Lightning : MonoBehaviour {
     public Light lightningLight;
 	// Use this for initialization
 	void Start () {
-        lightningTime = Random.Range(2, 10);
+        lightningTime = Random.Range(2, 3);
 	}
 	
 	// Update is called once per frame
@@ -16,7 +16,7 @@ public class Lightning : MonoBehaviour {
 
         if (lightningTime <= 0)
         {
-            lightningTime = Random.Range(2, 10);
+            lightningTime = Random.Range(2, 3);
             StartCoroutine(lightning());
             Vector3 forks = new Vector3(transform.rotation.eulerAngles.x, Random.Range(-360, 360), transform.rotation.eulerAngles.z);
             transform.eulerAngles = forks;
