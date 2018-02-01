@@ -1,15 +1,320 @@
 fileFormatVersion: 2
-guid: ce3928164dfb6c243a32d3c44ce5fd29
-timeCreated: 1517507015
+guid: 7700122853f2ba845ba2d17bb11991b6
+timeCreated: 1517524270
 licenseType: Pro
 ModelImporter:
   serializedVersion: 21
   fileIDToRecycleName:
     100000: //RootNode
+    100002: CrowsNest
+    100004: Front_Mast
+    100006: group2_pCylinder3
+    100008: Main_Mast
+    100010: Main_MastBroken
+    100012: Masts
+    100014: pCube10
+    100016: pCube10 1
+    100018: pCube11
+    100020: pCube11 1
+    100022: pCube12
+    100024: pCube12 1
+    100026: pCube13
+    100028: pCube13 1
+    100030: pCube14
+    100032: pCube14 1
+    100034: pCube15
+    100036: pCube15 1
+    100038: pCube16
+    100040: pCube16 1
+    100042: pCube17
+    100044: pCube17 1
+    100046: pCube18
+    100048: pCube18 1
+    100050: pCube19
+    100052: pCube19 1
+    100054: pCube20
+    100056: pCube20 1
+    100058: pCube4
+    100060: pCube6
+    100062: pCube6 1
+    100064: pCube7
+    100066: pCube7 1
+    100068: pCube8
+    100070: pCube8 1
+    100072: pCube9
+    100074: pCube9 1
+    100076: pCylinder48
+    100078: pCylinder49
+    100080: pCylinder49 1
+    100082: pCylinder49 2
+    100084: pCylinder50
+    100086: pCylinder50 1
+    100088: pCylinder51
+    100090: pCylinder55
+    100092: pCylinder56
+    100094: pCylinder56 1
+    100096: pCylinder57
+    100098: pCylinder57 1
+    100100: pCylinder58
+    100102: pCylinder58 1
+    100104: pCylinder59
+    100106: pCylinder59 1
+    100108: pCylinder60
+    100110: pCylinder60 1
+    100112: pPlane1
+    100114: pPlane1 1
+    100116: pPlane2
+    100118: pPlane2 1
+    100120: pPlane3
+    100122: pPlane4
+    100124: pPlane5
+    100126: Secondary_Back_Mast
+    100128: Secondary_Front_Mast
+    100130: Secondary_Mast
+    100132: Stairs
+    100134: Stairs1
     400000: //RootNode
-    2300000: //RootNode
-    3300000: //RootNode
-    4300000: pCube1
+    400002: CrowsNest
+    400004: Front_Mast
+    400006: group2_pCylinder3
+    400008: Main_Mast
+    400010: Main_MastBroken
+    400012: Masts
+    400014: pCube10
+    400016: pCube10 1
+    400018: pCube11
+    400020: pCube11 1
+    400022: pCube12
+    400024: pCube12 1
+    400026: pCube13
+    400028: pCube13 1
+    400030: pCube14
+    400032: pCube14 1
+    400034: pCube15
+    400036: pCube15 1
+    400038: pCube16
+    400040: pCube16 1
+    400042: pCube17
+    400044: pCube17 1
+    400046: pCube18
+    400048: pCube18 1
+    400050: pCube19
+    400052: pCube19 1
+    400054: pCube20
+    400056: pCube20 1
+    400058: pCube4
+    400060: pCube6
+    400062: pCube6 1
+    400064: pCube7
+    400066: pCube7 1
+    400068: pCube8
+    400070: pCube8 1
+    400072: pCube9
+    400074: pCube9 1
+    400076: pCylinder48
+    400078: pCylinder49
+    400080: pCylinder49 1
+    400082: pCylinder49 2
+    400084: pCylinder50
+    400086: pCylinder50 1
+    400088: pCylinder51
+    400090: pCylinder55
+    400092: pCylinder56
+    400094: pCylinder56 1
+    400096: pCylinder57
+    400098: pCylinder57 1
+    400100: pCylinder58
+    400102: pCylinder58 1
+    400104: pCylinder59
+    400106: pCylinder59 1
+    400108: pCylinder60
+    400110: pCylinder60 1
+    400112: pPlane1
+    400114: pPlane1 1
+    400116: pPlane2
+    400118: pPlane2 1
+    400120: pPlane3
+    400122: pPlane4
+    400124: pPlane5
+    400126: Secondary_Back_Mast
+    400128: Secondary_Front_Mast
+    400130: Secondary_Mast
+    400132: Stairs
+    400134: Stairs1
+    2300000: CrowsNest
+    2300002: group2_pCylinder3
+    2300004: pCube10
+    2300006: pCube10 1
+    2300008: pCube11
+    2300010: pCube11 1
+    2300012: pCube12
+    2300014: pCube12 1
+    2300016: pCube13
+    2300018: pCube13 1
+    2300020: pCube14
+    2300022: pCube14 1
+    2300024: pCube15
+    2300026: pCube15 1
+    2300028: pCube16
+    2300030: pCube16 1
+    2300032: pCube17
+    2300034: pCube17 1
+    2300036: pCube18
+    2300038: pCube18 1
+    2300040: pCube19
+    2300042: pCube19 1
+    2300044: pCube20
+    2300046: pCube20 1
+    2300048: pCube4
+    2300050: pCube6
+    2300052: pCube6 1
+    2300054: pCube7
+    2300056: pCube7 1
+    2300058: pCube8
+    2300060: pCube8 1
+    2300062: pCube9
+    2300064: pCube9 1
+    2300066: pCylinder48
+    2300068: pCylinder49
+    2300070: pCylinder49 1
+    2300072: pCylinder49 2
+    2300074: pCylinder50
+    2300076: pCylinder50 1
+    2300078: pCylinder51
+    2300080: pCylinder55
+    2300082: pCylinder56
+    2300084: pCylinder56 1
+    2300086: pCylinder57
+    2300088: pCylinder57 1
+    2300090: pCylinder58
+    2300092: pCylinder58 1
+    2300094: pCylinder59
+    2300096: pCylinder59 1
+    2300098: pCylinder60
+    2300100: pCylinder60 1
+    2300102: pPlane1
+    2300104: pPlane1 1
+    2300106: pPlane2
+    2300108: pPlane2 1
+    2300110: pPlane3
+    2300112: pPlane4
+    2300114: pPlane5
+    3300000: CrowsNest
+    3300002: group2_pCylinder3
+    3300004: pCube10
+    3300006: pCube10 1
+    3300008: pCube11
+    3300010: pCube11 1
+    3300012: pCube12
+    3300014: pCube12 1
+    3300016: pCube13
+    3300018: pCube13 1
+    3300020: pCube14
+    3300022: pCube14 1
+    3300024: pCube15
+    3300026: pCube15 1
+    3300028: pCube16
+    3300030: pCube16 1
+    3300032: pCube17
+    3300034: pCube17 1
+    3300036: pCube18
+    3300038: pCube18 1
+    3300040: pCube19
+    3300042: pCube19 1
+    3300044: pCube20
+    3300046: pCube20 1
+    3300048: pCube4
+    3300050: pCube6
+    3300052: pCube6 1
+    3300054: pCube7
+    3300056: pCube7 1
+    3300058: pCube8
+    3300060: pCube8 1
+    3300062: pCube9
+    3300064: pCube9 1
+    3300066: pCylinder48
+    3300068: pCylinder49
+    3300070: pCylinder49 1
+    3300072: pCylinder49 2
+    3300074: pCylinder50
+    3300076: pCylinder50 1
+    3300078: pCylinder51
+    3300080: pCylinder55
+    3300082: pCylinder56
+    3300084: pCylinder56 1
+    3300086: pCylinder57
+    3300088: pCylinder57 1
+    3300090: pCylinder58
+    3300092: pCylinder58 1
+    3300094: pCylinder59
+    3300096: pCylinder59 1
+    3300098: pCylinder60
+    3300100: pCylinder60 1
+    3300102: pPlane1
+    3300104: pPlane1 1
+    3300106: pPlane2
+    3300108: pPlane2 1
+    3300110: pPlane3
+    3300112: pPlane4
+    3300114: pPlane5
+    4300000: group2_pCylinder3
+    4300002: pCube4
+    4300004: pCube6
+    4300006: pCube7
+    4300008: pCube8
+    4300010: pCube9
+    4300012: pCube10
+    4300014: pCube11
+    4300016: pCube12
+    4300018: pCube13
+    4300020: pCube14
+    4300022: pCube15
+    4300024: pCube16
+    4300026: pCube17
+    4300028: pCube18
+    4300030: pCube19
+    4300032: pCube20
+    4300034: pCube6
+    4300036: pCube7
+    4300038: pCube8
+    4300040: pCube9
+    4300042: pCube10
+    4300044: pCube11
+    4300046: pCube12
+    4300048: pCube13
+    4300050: pCube14
+    4300052: pCube15
+    4300054: pCube16
+    4300056: pCube17
+    4300058: pCube18
+    4300060: pCube19
+    4300062: pCube20
+    4300064: pCylinder59
+    4300066: pCylinder50
+    4300068: pCylinder60
+    4300070: pPlane3
+    4300072: pCylinder48
+    4300074: pCylinder51
+    4300076: pCylinder55
+    4300078: pPlane5
+    4300080: pCylinder49
+    4300082: pCylinder56
+    4300084: pCylinder57
+    4300086: pCylinder58
+    4300088: pPlane1
+    4300090: pPlane2
+    4300092: pCylinder59
+    4300094: pCylinder50
+    4300096: pCylinder60
+    4300098: pPlane4
+    4300100: pCylinder49
+    4300102: pCylinder56
+    4300104: pCylinder57
+    4300106: pCylinder58
+    4300108: pPlane1
+    4300110: pPlane2
+    4300112: CrowsNest
+    4300114: pCylinder49
     9500000: //RootNode
   materials:
     importMaterials: 1
