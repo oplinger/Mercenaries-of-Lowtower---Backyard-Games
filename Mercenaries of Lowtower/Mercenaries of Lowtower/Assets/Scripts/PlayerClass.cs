@@ -15,7 +15,7 @@ public abstract class PlayerClass : EntityClass
 
     public float walkspeed;
     protected float jumpheight;
-    protected LayerMask groundMask;
+    public LayerMask groundMask;
     protected Material playerMat;
     protected float reviveRadius;
     protected float reviveCastTime;
@@ -70,7 +70,7 @@ public abstract class PlayerClass : EntityClass
     public int JumpCheck()
     {
         Debug.DrawRay(transform.position, Vector3.up * -1f);
-        colliders = Physics.OverlapCapsule(transform.position, transform.position + (Vector3.up * -2f), .25f, groundMask, QueryTriggerInteraction.Ignore);
+        colliders = Physics.OverlapCapsule(transform.position, transform.position + (Vector3.up * -1f), .25f, groundMask, QueryTriggerInteraction.Ignore);
         int length;
         length = colliders.Length;
         return length;
@@ -78,6 +78,7 @@ public abstract class PlayerClass : EntityClass
 
     public void Jump()
     {
+        if(JumpCheck()>0)
         GetComponent<Rigidbody>().AddForce(0, jumpheight, 0, ForceMode.Impulse);
     }
 
