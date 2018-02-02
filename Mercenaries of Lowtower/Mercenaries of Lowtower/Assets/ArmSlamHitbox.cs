@@ -21,7 +21,7 @@ public class ArmSlamHitbox : MonoBehaviour
 
         if (other.tag !="Enemy")
         {
-            other.GetComponent<IDamageable<float>>().TakeDamage(5f);
+            other.GetComponent<IDamageable<float>>().TakeDamage(slamDamage);
             //Health protagonistHealth = other.gameObject.GetComponent<Health>();
 
             //if (!protagonistHealth.shielded)

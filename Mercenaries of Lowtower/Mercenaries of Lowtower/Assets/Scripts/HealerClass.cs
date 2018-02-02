@@ -24,7 +24,7 @@ public class HealerClass : PlayerClass
     int grounded;
     public LayerMask enemyMask;
     [Header("Heal Settings")]
-    [Range(0, 10)]
+    [Range(0, 100)]
     public float healAmount;
     public float orbSpeed;
     [Header("Teleport Settings")]
