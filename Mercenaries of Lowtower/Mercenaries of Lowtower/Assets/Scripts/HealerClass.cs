@@ -47,6 +47,7 @@ public class HealerClass : PlayerClass
 
         ability1 = Jump;
         ability2 = abilities.Healaport;
+        //ability2 = abilities.HealerStun();
         ability3 =  abilities.TargetedHeal;
         currentHealth = maxHealth;
 
