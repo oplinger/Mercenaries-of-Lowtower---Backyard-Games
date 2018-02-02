@@ -6,6 +6,7 @@ using UnityEngine;
 public class FireCannon : MonoBehaviour {
 
     public GameObject cannonball;
+    public Transform cannonballSpawner;
 
 	// Use this for initialization
 	void Start () {
@@ -21,11 +22,17 @@ public class FireCannon : MonoBehaviour {
 
     {
 
-        if (other.name == "cannonball")
+        if (other.tag == "PickUp")
         {
 
             print("is touching");
             Destroy(other.gameObject);
+            Instantiate(cannonball, cannonballSpawner.position, transform.rotation);
+
+            //GameObject firedBall = Instantiate(cannonball, transform.position, transform.rotation);
+            //Rigidbody rb = firedBall.GetComponent<Rigidbody>();
+            //rb.AddForce(transform.forward * 2);
+
             //other.transform.position = this.gameObject.transform.position;
             //Rigidbody rb = other.gameObject.GetComponent<Rigidbody>();
             //rb.AddForce(transform.forward * 2);

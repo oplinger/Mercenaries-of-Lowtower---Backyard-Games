@@ -33,6 +33,12 @@ public class AIController : MonoBehaviour
     {
         //print(Vector3.Distance(transform.position, Player.position));
 
+        if (Player == null)
+        {
+            Player = GameObject.FindGameObjectWithTag("PickUp").transform;
+        }
+
+
         transform.LookAt(Player);
 
         if (Vector3.Distance(transform.position, Player.position) >= MinDist && !isStunned)

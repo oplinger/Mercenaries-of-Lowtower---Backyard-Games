@@ -25,8 +25,12 @@ public class PickUpBox : MonoBehaviour
             }
             else
             {
+                heldObject.transform.position = new Vector3(gameObject.transform.position.x, gameObject.transform.position.y - .5f, gameObject.transform.position.z);
+
                 heldObject = null;
                 holdingObject = false;
+
+
             }
 
         }
@@ -38,7 +42,7 @@ public class PickUpBox : MonoBehaviour
         //}
 
             if (heldObject != null)
-            heldObject.transform.position = gameObject.transform.position;
+            heldObject.transform.position = new Vector3 (gameObject.transform.position.x, gameObject.transform.position.y+2, gameObject.transform.position.z);
 
     }
     void OnTriggerEnter(Collider other)

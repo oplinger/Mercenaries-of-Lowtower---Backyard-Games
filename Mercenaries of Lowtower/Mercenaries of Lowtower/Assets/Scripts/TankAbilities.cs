@@ -18,7 +18,7 @@ public class TankAbilities : MonoBehaviour
         if (baseClass.abilityCooldowns.cooldowns["shieldCD"] <= 0)
         {
             GameObject clone;
-            clone = Instantiate(Resources.Load("Shield_Magnetable"), transform.position, transform.rotation) as GameObject;
+            clone = Instantiate(Resources.Load("shield"), transform.position, transform.rotation) as GameObject;
             clone.transform.localScale = new Vector3(baseClass.shieldSize, baseClass.shieldSize, baseClass.shieldSize);
             Destroy(clone, baseClass.shieldDuration);
             baseClass.abilityCooldowns.cooldowns["shieldCD"] = baseClass.abilityCooldowns.shieldCD;
