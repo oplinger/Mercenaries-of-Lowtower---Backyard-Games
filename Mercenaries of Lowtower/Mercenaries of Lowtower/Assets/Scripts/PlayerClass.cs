@@ -60,6 +60,8 @@ public abstract class PlayerClass : EntityClass
         buttons = new Hashtable();
         AssignButtons();
 
+        reviveRadius = 1;
+
     }
     private void Start()
     {
@@ -100,36 +102,40 @@ public abstract class PlayerClass : EntityClass
 
     public void Revive()
     {
-        Collider[] col = Physics.OverlapSphere(transform.position, reviveRadius, 1 << 8, QueryTriggerInteraction.Ignore);
-        for (int i = 0; i < col.Length; i++)
+        List<Collider> col = new List<Collider>(Physics.OverlapSphere(transform.position, reviveRadius, 1 << 8, QueryTriggerInteraction.Ignore));
+        for (int i = 0; i < col.Count; i++)
         {
-            print(col[i]);
+            //print(col[i]);
         }
-        Health colhealth = col[0].GetComponent<Health>();
-        GameObject coltarget = col[0].gameObject;
-        //PlayerID needs to change to some sort of classID
-        if (colhealth.isDead)
+        if (col[0].gameObject == gameObject)
         {
-            colhealth.health = colhealth.maxHealth / 2;
-            colhealth.isDead = false;
-            if (coltarget.name == "Tank Character")
-            {
-                coltarget.GetComponent<TankController>().walkspeed = 10;
-            }
-            if (coltarget.name == "Melee Character")
-            {
-                coltarget.GetComponent<MeleeController>().walkspeed = 10;
-            }
-            if (coltarget.name == "Ranged Character")
-            {
-                coltarget.GetComponent<RangedController>().walkspeed = 10;
-            }
-            if (coltarget.name == "Healer Character")
-            {
-                coltarget.GetComponent<HealerController>().walkspeed = 10;
-            }
+            col.RemoveAt(0);
+        }
 
+        GameObject coltarget = col[0].gameObject;
+        print(col[0]);
+
+
+        if (coltarget.name == "Tank Character(Clone)" && coltarget.GetComponent<TankClass>().currentHealth<=0)
+        {
+            coltarget.GetComponent<TankClass>().walkspeed = 10;
+            coltarget.GetComponent<TankClass>().currentHealth = maxHealth/2;
+            coltarget.GetComponent<TankClass>().anim.SetInteger("AnimState", 0);
         }
+        if (coltarget.name == "Melee Character")
+        {
+            coltarget.GetComponent<MeleeController>().walkspeed = 10;
+        }
+        if (coltarget.name == "Ranged Character")
+        {
+            coltarget.GetComponent<RangedController>().walkspeed = 10;
+        }
+        if (coltarget.name == "Healer Character")
+        {
+            coltarget.GetComponent<HealerController>().walkspeed = 10;
+        }
+
+      
         //else if (playerID == 1 && colhealth.isDead)
         //{
         //    colhealth.health = colhealth.maxHealth;
@@ -181,4 +187,6 @@ public abstract class PlayerClass : EntityClass
         buttons.Add("Xbutton", 2);
         buttons.Add("Ybutton", 3);
     }
+
+  
 }

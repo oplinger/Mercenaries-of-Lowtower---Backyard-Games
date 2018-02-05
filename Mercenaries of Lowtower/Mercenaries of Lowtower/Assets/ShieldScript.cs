@@ -17,6 +17,7 @@ public class ShieldScript : MonoBehaviour {
     void Update () {
     playersInShield = Physics.OverlapSphere(transform.position, baseClass.shieldSize, baseClass.shieldMask, QueryTriggerInteraction.Ignore);
 
+
     //    //cols = Physics.OverlapSphere(transform.position, 10, 1<<8, QueryTriggerInteraction.Ignore);
     //    // for (int i = 0; i<cols.Length; i++)
     //    // {

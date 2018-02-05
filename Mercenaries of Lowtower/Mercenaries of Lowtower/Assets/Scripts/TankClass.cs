@@ -45,6 +45,8 @@ public class TankClass : PlayerClass
         CTRLID = 1;
         currentHealth = maxHealth;
 
+        anim = GetComponent<Animator>();
+
     }
 
     // Update is called once per frame
@@ -79,7 +81,23 @@ public class TankClass : PlayerClass
 
             }
         }
-        print(currentHealth);
+
+        if (currentHealth <= 0)
+        {
+            print(currentHealth);
+            Death();
+        }
+    }
+
+    public new void Death()
+    {
+       anim.SetInteger("AnimState", 5);
+        walkspeed = 0;
+        walkspeed *= 0;
+        ability1 = null;
+        ability2 = null;
+        ability3 = null;
+
     }
 
 
