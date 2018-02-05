@@ -49,6 +49,8 @@ public class MeleeClass : PlayerClass
         ability3 = abilities.MeleeStrikeRogue;
         ability2 = abilities.MeleeLunge;
         currentHealth = maxHealth;
+        
+        anim = GetComponent<Animator>();
 
     }
 
@@ -75,8 +77,21 @@ public class MeleeClass : PlayerClass
         }
 
 
-
+        if (currentHealth <= 0)
+        {
+            print(currentHealth);
+            Death();
+        }
     }
 
-    
+    public new void Death()
+    {
+        anim.SetInteger("AnimState", 5);
+        walkspeed = 0;
+        walkspeed *= 0;
+        ability1 = null;
+        ability2 = null;
+        ability3 = null;
+
+    }
 }

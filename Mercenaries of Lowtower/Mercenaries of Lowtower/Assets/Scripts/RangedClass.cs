@@ -51,6 +51,9 @@ public class RangedClass : PlayerClass
         ability3 = abilities.BluntTipArrow;
         currentHealth = maxHealth;
 
+        anim = GetComponent<Animator>();
+
+
     }
 
     void Update()
@@ -77,7 +80,21 @@ public class RangedClass : PlayerClass
 
 
 
+        if (currentHealth <= 0)
+        {
+            print(currentHealth);
+            Death();
+        }
     }
 
+    public new void Death()
+    {
+        anim.SetInteger("AnimState", 5);
+        walkspeed = 0;
+        walkspeed *= 0;
+        ability1 = null;
+        ability2 = null;
+        ability3 = null;
 
+    }
 }

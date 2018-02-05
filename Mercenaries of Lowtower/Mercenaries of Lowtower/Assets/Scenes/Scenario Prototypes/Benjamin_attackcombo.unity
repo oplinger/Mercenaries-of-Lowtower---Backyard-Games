@@ -8410,34 +8410,10 @@ Prefab:
       propertyPath: m_Name
       value: Tank Character(Clone)
       objectReference: {fileID: 0}
-    - target: {fileID: 136746193034427110, guid: dd9de9996069bb54fb61c0bd063feb4f,
+    - target: {fileID: 114103692630939230, guid: dd9de9996069bb54fb61c0bd063feb4f,
         type: 2}
-      propertyPath: m_Radius
-      value: 0.54
-      objectReference: {fileID: 0}
-    - target: {fileID: 4349172338250466, guid: dd9de9996069bb54fb61c0bd063feb4f, type: 2}
-      propertyPath: m_LocalPosition.z
-      value: 0.333
-      objectReference: {fileID: 0}
-    - target: {fileID: 65278136017239074, guid: dd9de9996069bb54fb61c0bd063feb4f,
-        type: 2}
-      propertyPath: m_Size.y
-      value: 2.51
-      objectReference: {fileID: 0}
-    - target: {fileID: 65278136017239074, guid: dd9de9996069bb54fb61c0bd063feb4f,
-        type: 2}
-      propertyPath: m_Center.y
-      value: 0.32
-      objectReference: {fileID: 0}
-    - target: {fileID: 65278136017239074, guid: dd9de9996069bb54fb61c0bd063feb4f,
-        type: 2}
-      propertyPath: m_Size.z
-      value: 1.3
-      objectReference: {fileID: 0}
-    - target: {fileID: 65278136017239074, guid: dd9de9996069bb54fb61c0bd063feb4f,
-        type: 2}
-      propertyPath: m_Size.x
-      value: 0.66
+      propertyPath: maxHealth
+      value: 200
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: dd9de9996069bb54fb61c0bd063feb4f, type: 2}

@@ -19,7 +19,7 @@ public class HealerClass : PlayerClass
     public GameObject healObject;
     public GameObject healTarget;
     public float stopTimer;
-    
+
 
     [SerializeField]
     int grounded;
@@ -49,8 +49,10 @@ public class HealerClass : PlayerClass
         ability1 = Jump;
         ability2 = abilities.Healaport;
         //ability2 = abilities.HealerStun();
-        ability3 =  abilities.TargetedHeal;
+        ability3 = abilities.TargetedHeal;
         currentHealth = maxHealth;
+
+        anim = GetComponent<Animator>();
 
     }
 
@@ -77,8 +79,21 @@ public class HealerClass : PlayerClass
         }
 
 
-
+        if (currentHealth <= 0)
+        {
+            print(currentHealth);
+            Death();
+        }
     }
 
+    public new void Death()
+    {
+        anim.SetInteger("AnimState", 5);
+        walkspeed = 0;
+        walkspeed *= 0;
+        ability1 = null;
+        ability2 = null;
+        ability3 = null;
 
+    }
 }

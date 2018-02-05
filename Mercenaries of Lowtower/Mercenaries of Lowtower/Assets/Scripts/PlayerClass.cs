@@ -118,23 +118,59 @@ public abstract class PlayerClass : EntityClass
         if (coltarget.name == "Tank Character(Clone)" && coltarget.GetComponent<TankClass>().currentHealth<=0)
         {
             coltarget.GetComponent<TankClass>().walkspeed = 10;
-            coltarget.GetComponent<TankClass>().currentHealth = maxHealth/2;
             coltarget.GetComponent<TankClass>().anim.SetInteger("AnimState", 0);
-        }
-        if (coltarget.name == "Melee Character")
-        {
-            coltarget.GetComponent<MeleeController>().walkspeed = 10;
-        }
-        if (coltarget.name == "Ranged Character")
-        {
-            coltarget.GetComponent<RangedController>().walkspeed = 10;
-        }
-        if (coltarget.name == "Healer Character")
-        {
-            coltarget.GetComponent<HealerController>().walkspeed = 10;
+
+            //if reviving teammate is the Healer, dead teammate gets 100% of health back
+            if (this.gameObject.name == "Healer Character(Clone)")
+            {
+                coltarget.GetComponent<TankClass>().currentHealth = coltarget.GetComponent<TankClass>().maxHealth;
+            }
+            else
+            {
+                coltarget.GetComponent<TankClass>().currentHealth = coltarget.GetComponent<TankClass>().maxHealth / 2;
+            }
         }
 
-      
+        if (coltarget.name == "Healer Character(Clone)" && coltarget.GetComponent<HealerClass>().currentHealth <= 0)
+        {
+            coltarget.GetComponent<HealerClass>().walkspeed = 10;
+            coltarget.GetComponent<TankClass>().currentHealth = coltarget.GetComponent<TankClass>().maxHealth / 2;
+            coltarget.GetComponent<HealerClass>().anim.SetInteger("AnimState", 0);
+        }
+
+        if (coltarget.name == "Melee Character(Clone)" && coltarget.GetComponent<MeleeClass>().currentHealth <= 0)
+        {
+            coltarget.GetComponent<MeleeClass>().walkspeed = 10;
+            coltarget.GetComponent<MeleeClass>().anim.SetInteger("AnimState", 0);
+
+            //if reviving teammate is the Healer, dead teammate gets 100% of health back
+            if (this.gameObject.name == "Healer Character(Clone)")
+            {
+                coltarget.GetComponent<MeleeClass>().currentHealth = coltarget.GetComponent<MeleeClass>().maxHealth;
+            }
+            else
+            {
+                coltarget.GetComponent<MeleeClass>().currentHealth = coltarget.GetComponent<MeleeClass>().maxHealth / 2;
+            }
+        }
+
+        if (coltarget.name == "Ranged Character(Clone)" && coltarget.GetComponent<RangedClass>().currentHealth <= 0)
+        {
+            coltarget.GetComponent<RangedClass>().walkspeed = 10;
+            coltarget.GetComponent<RangedClass>().anim.SetInteger("AnimState", 0);
+
+            //if reviving teammate is the Healer, dead teammate gets 100% of health back
+            if (this.gameObject.name == "Healer Character(Clone)")
+            {
+                coltarget.GetComponent<RangedClass>().currentHealth = coltarget.GetComponent<RangedClass>().maxHealth;
+            }
+            else
+            {
+                coltarget.GetComponent<RangedClass>().currentHealth = coltarget.GetComponent<RangedClass>().maxHealth / 2;
+            }
+        }
+
+
         //else if (playerID == 1 && colhealth.isDead)
         //{
         //    colhealth.health = colhealth.maxHealth;
