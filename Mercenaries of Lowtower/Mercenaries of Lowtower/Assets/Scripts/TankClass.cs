@@ -45,6 +45,8 @@ public class TankClass : PlayerClass
         CTRLID = 1;
         currentHealth = maxHealth;
 
+        shielded = false;
+
         anim = GetComponent<Animator>();
 
     }

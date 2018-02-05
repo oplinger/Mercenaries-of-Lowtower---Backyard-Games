@@ -9,10 +9,13 @@ public abstract class EntityClass : MonoBehaviour, IDamageable<float> {
     protected float lastFrameHealth;
     protected Vector3 movement;
     protected bool death;
+    public bool shielded;
 
 
     // Use this for initialization
     void Start () {
+
+        shielded = false;
 		
 	}
 	
@@ -28,6 +31,16 @@ public abstract class EntityClass : MonoBehaviour, IDamageable<float> {
 
     public void TakeDamage(float damageTaken)
     {
-        currentHealth -= damageTaken;
+        if (!shielded)
+        {
+            currentHealth -= damageTaken;
+        }
+        else if (shielded)
+        {
+      
+        }
+
+       
     }
+
 }

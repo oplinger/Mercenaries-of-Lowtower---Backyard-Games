@@ -19,6 +19,7 @@ public class HealerClass : PlayerClass
     public GameObject healObject;
     public GameObject healTarget;
     public float stopTimer;
+    
 
     [SerializeField]
     int grounded;

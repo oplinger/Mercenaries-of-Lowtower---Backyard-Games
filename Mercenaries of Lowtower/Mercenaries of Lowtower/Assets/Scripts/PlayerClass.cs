@@ -46,7 +46,6 @@ public abstract class PlayerClass : EntityClass
 
 
 
-
     // Use this for initialization
     void Awake() {
 
