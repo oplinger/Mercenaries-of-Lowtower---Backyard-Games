@@ -6,10 +6,8 @@ public class BossArmScript : EntityClass, IDamageable<float> {
 
     // Original transform position
     Vector3 originPoint;
-    // Transform position after the tentacle moves up to slam
-    Vector3 endPoint;
-    // The amount the tentacle will move up from the originPoint before slamming
-    public float elevationAmount;
+    // Transform for the waypoint of how high the tentacle will rise
+    public Transform elevationEndPoint;
     // The speed at which the tentacle elevates towards the endPoint
     public float elevationSpeed;
     // The speed at which the tentacle descends after slamming
@@ -37,8 +35,6 @@ public class BossArmScript : EntityClass, IDamageable<float> {
     void Start () {
         // Sets the origin point to the position the tentacles are in when the play button is pressed
         originPoint = gameObject.transform.position;
-        // Sets the end point by adding on the elevation amount to the originPoint
-        endPoint = new Vector3(originPoint.x, originPoint.y + elevationAmount, originPoint.z);
 	}
 	
 	// Update is called once per frame
@@ -82,9 +78,10 @@ public class BossArmScript : EntityClass, IDamageable<float> {
         // Multiplies the elevation speed by time
         float upStep = elevationSpeed * Time.deltaTime;
         // Moves the arm up towards the endPoint at a set speed
-        transform.position = Vector3.MoveTowards(transform.position, endPoint, upStep);
+        //transform.position = Vector3.MoveTowards(transform.position, endPoint, upStep);
+        transform.position = Vector3.MoveTowards(transform.position, elevationEndPoint.transform.position, upStep);
 
-        if(transform.position == endPoint)
+        if (transform.position == elevationEndPoint.transform.position)
         {
             armRotatingForward = true;
             armRaising = false;
