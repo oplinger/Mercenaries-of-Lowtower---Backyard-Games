@@ -15,7 +15,7 @@ public abstract class PlayerClass : EntityClass
 
     public float walkspeed;
     protected float jumpheight;
-    protected LayerMask groundMask;
+    public LayerMask groundMask;
     protected Material playerMat;
     protected float reviveRadius;
     protected float reviveCastTime;

@@ -47,8 +47,8 @@ public class RangedClass : PlayerClass
         jumpheight = 5;
 
         ability1 = Jump;
-        ability2 = abilities.RangedBolt;
-        ability3 = abilities.BluntTipArrow;
+        ability2 = abilities.BluntTipArrow;
+        ability3 = abilities.RangedBolt;
         currentHealth = maxHealth;
 
         anim = GetComponent<Animator>();
@@ -61,17 +61,35 @@ public class RangedClass : PlayerClass
         grounded = JumpCheck();
 
         Movement();
-        if (Input.GetKeyDown("joystick " + CTRLID + " button " + buttons["Abutton"]))
+        if (Input.GetKeyDown("joystick " + CTRLID + " button " + buttons["Abutton"]) && grounded > 0)
         {
             buttonA();
         }
-        if (Input.GetKeyDown("joystick " + CTRLID + " button " + buttons["Bbutton"]))
+        if (abilityCooldowns.cooldowns["knockbackCD"] <= 0)
         {
-            buttonB();
+            if (Input.GetKeyDown("joystick " + CTRLID + " button " + buttons["Bbutton"]))
+            {
+                GetComponent<LineOfFireVisual>().on = true;
+            }
+            if (Input.GetKeyUp("joystick " + CTRLID + " button " + buttons["Bbutton"]))
+            {
+                buttonB();
+
+                GetComponent<LineOfFireVisual>().on = false;
+            }
         }
-        if (Input.GetKeyDown("joystick " + CTRLID + " button " + buttons["Xbutton"]))
+        if (abilityCooldowns.cooldowns["boltCD"] <= 0)
         {
-            buttonX();
+            if (Input.GetKey("joystick " + CTRLID + " button " + buttons["Xbutton"]))
+            {
+                GetComponent<LineOfFireVisual>().on = true;
+            }
+            if (Input.GetKeyUp("joystick " + CTRLID + " button " + buttons["Xbutton"]))
+            {
+                buttonX();
+
+                GetComponent<LineOfFireVisual>().on = false;
+            }
         }
         if (Input.GetKeyDown("joystick " + CTRLID + " button " + buttons["Ybutton"]))
         {

@@ -6895,6 +6895,16 @@ Prefab:
       propertyPath: m_ReferenceResolution.y
       value: 768
       objectReference: {fileID: 0}
+    - target: {fileID: 224560604094257880, guid: e116e053888fb9644a31ee5f200cdbd9,
+        type: 2}
+      propertyPath: m_RootOrder
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 224610219683010544, guid: e116e053888fb9644a31ee5f200cdbd9,
+        type: 2}
+      propertyPath: m_RootOrder
+      value: 4
+      objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 114700240316644100, guid: e116e053888fb9644a31ee5f200cdbd9, type: 2}
     - {fileID: 114472436364354976, guid: e116e053888fb9644a31ee5f200cdbd9, type: 2}
@@ -8415,6 +8425,11 @@ Prefab:
       propertyPath: maxHealth
       value: 200
       objectReference: {fileID: 0}
+    - target: {fileID: 114103692630939230, guid: dd9de9996069bb54fb61c0bd063feb4f,
+        type: 2}
+      propertyPath: groundMask.m_Bits
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: dd9de9996069bb54fb61c0bd063feb4f, type: 2}
   m_IsPrefabParent: 0
@@ -8501,6 +8516,16 @@ Prefab:
         type: 2}
       propertyPath: maxHealth
       value: 150
+      objectReference: {fileID: 0}
+    - target: {fileID: 114829381301220374, guid: f05e432990a5ae241acc47700a49aacd,
+        type: 2}
+      propertyPath: groundMask.m_Bits
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 136701169940483378, guid: f05e432990a5ae241acc47700a49aacd,
+        type: 2}
+      propertyPath: m_Center.y
+      value: 0.83
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: f05e432990a5ae241acc47700a49aacd, type: 2}
@@ -17396,6 +17421,11 @@ Prefab:
       propertyPath: healAmount
       value: 20
       objectReference: {fileID: 0}
+    - target: {fileID: 114455703097757542, guid: c8fc4b41195663843b1a76e878cbfbed,
+        type: 2}
+      propertyPath: groundMask.m_Bits
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: c8fc4b41195663843b1a76e878cbfbed, type: 2}
   m_IsPrefabParent: 0
@@ -18988,6 +19018,11 @@ Prefab:
         type: 2}
       propertyPath: maxHealth
       value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 114967145361279176, guid: b2e6eb9305a8c7b49985daca1f8a1094,
+        type: 2}
+      propertyPath: groundMask.m_Bits
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: b2e6eb9305a8c7b49985daca1f8a1094, type: 2}

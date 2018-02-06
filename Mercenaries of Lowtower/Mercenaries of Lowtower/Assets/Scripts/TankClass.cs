@@ -40,8 +40,8 @@ public class TankClass : PlayerClass
         //buttons.Add("Abutton", 0);
         jumpheight = 10;
         ability1 = Jump;
-        ability2 = abilities.TankShield;
-        ability3 = abilities.TankMagnet;
+        ability2 = abilities.TankMagnet;
+        ability3 = abilities.TankShield;
         CTRLID = 1;
         currentHealth = maxHealth;
 
@@ -56,7 +56,7 @@ public class TankClass : PlayerClass
         grounded = JumpCheck();
         Movement();
 
-        if (Input.GetKeyDown("joystick " + CTRLID + " button " + buttons["Abutton"]))
+        if (Input.GetKeyDown("joystick " + CTRLID + " button " + buttons["Abutton"]) && grounded > 0)
         {
             buttonA();
             
@@ -76,7 +76,7 @@ public class TankClass : PlayerClass
 
         if (abilityCooldowns.cooldowns["magnetCD"] <= 0)
         {
-            if (Input.GetKeyUp("joystick " + CTRLID + " button " + buttons["Xbutton"]))
+            if (Input.GetKeyUp("joystick " + CTRLID + " button " + buttons["Bbutton"]))
             {
                 print("magnet cooldown");
                 abilityCooldowns.cooldowns["magnetCD"] = abilityCooldowns.magnetCD;

@@ -61,7 +61,7 @@ public class HealerClass : PlayerClass
         grounded = JumpCheck();
 
         Movement();
-        if (Input.GetKeyDown("joystick " + CTRLID + " button " + buttons["Abutton"]))
+        if (Input.GetKeyDown("joystick " + CTRLID + " button " + buttons["Abutton"]) && grounded > 0)
         {
             buttonA();
         }
