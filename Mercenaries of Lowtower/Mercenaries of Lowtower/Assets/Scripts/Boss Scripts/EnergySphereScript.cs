@@ -33,14 +33,15 @@ public class EnergySphereScript : MonoBehaviour {
             currentTime += Time.deltaTime;
             yield return null;
         } while (currentTime <= chargeTime);
-        objectRigidbody.AddForce(transform.forward * 4000);
+        objectRigidbody.AddForce(transform.forward * 8000);
     }
 
     private void OnTriggerEnter(Collider other)
     {
-        if(other.tag == "Player")
+        if (other.tag == "Player")
         {
-            Destroy(gameObject);
+            //Destroy(gameObject);
+            other.GetComponent<IDamageable<float>>().TakeDamage(80);
         }
 
         if (other.tag == "Destroyer")

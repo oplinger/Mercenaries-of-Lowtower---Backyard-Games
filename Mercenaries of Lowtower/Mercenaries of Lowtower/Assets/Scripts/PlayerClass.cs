@@ -14,7 +14,7 @@ public abstract class PlayerClass : EntityClass
     protected Hashtable buttons;
 
     public float walkspeed;
-    protected float jumpheight;
+    public float jumpheight;
     public LayerMask groundMask;
     protected Material playerMat;
     protected float reviveRadius;
@@ -61,9 +61,13 @@ public abstract class PlayerClass : EntityClass
 
         reviveRadius = 1;
 
+
+        jumpheight = 8;
+
     }
     private void Start()
     {
+
     }
 
     // Update is called once per frame

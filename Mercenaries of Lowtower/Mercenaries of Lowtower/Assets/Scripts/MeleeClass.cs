@@ -43,7 +43,7 @@ public class MeleeClass : PlayerClass
         //MeleeAbilities mA;
         //mA = (MeleeAbilities)mC;
 
-        jumpheight = 5;
+        //jumpheight = 5;
 
         ability1 = Jump;
         ability3 = abilities.MeleeStrikeRogue;

@@ -38,7 +38,8 @@ public class TankClass : PlayerClass
         abilityCooldowns = GetComponent<TankCooldowns>();
         //Hashtable tButtons = new Hashtable(buttons);
         //buttons.Add("Abutton", 0);
-        jumpheight = 10;
+
+        //jumpheight = 10;
         ability1 = Jump;
         ability2 = abilities.TankMagnet;
         ability3 = abilities.TankShield;

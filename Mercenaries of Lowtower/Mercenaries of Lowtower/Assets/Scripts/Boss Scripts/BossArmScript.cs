@@ -132,4 +132,12 @@ public class BossArmScript : EntityClass, IDamageable<float> {
     {
         currentHealth -= damageTaken;
     }
+
+    public void OnTriggerEnter(Collider other)
+    {
+        if (other.tag == "Player"&&!armDown)
+        {
+            other.GetComponent<IDamageable<float>>().TakeDamage(20);
+        }
+    }
 }
