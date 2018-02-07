@@ -103,9 +103,8 @@ public abstract class PlayerClass : EntityClass
         }
     }
 
-    public void Revive()
+    public  void Revive()
     {
-
         List<Collider> col = new List<Collider>(Physics.OverlapSphere(transform.position, reviveRadius, 1 << 8, QueryTriggerInteraction.Ignore));
         for (int i = 0; i < col.Count; i++)
         {
@@ -120,7 +119,7 @@ public abstract class PlayerClass : EntityClass
         print(col[0]);
 
 
-        if (coltarget.name == "Tank Character(Clone)" && coltarget.GetComponent<TankClass>().currentHealth<=0)
+        if (coltarget.name == "Tank Character(Clone)" && coltarget.GetComponent<TankClass>().currentHealth <= 0)
         {
             coltarget.GetComponent<TankClass>().walkspeed = 10;
             coltarget.GetComponent<TankClass>().anim.SetInteger("AnimState", 0);

@@ -25,13 +25,14 @@ public class TankClass : PlayerClass
     public float magnetDistance;
     public float magnetDiameter;
     public float pullSpeed;
-   
+
 
 
 
 
     // Use this for initialization
-    void Start () {
+    void Start()
+    {
 
 
         abilities = GetComponent<TankAbilities>();
@@ -53,14 +54,15 @@ public class TankClass : PlayerClass
     }
 
     // Update is called once per frame
-    void Update () {
+    void Update()
+    {
         grounded = JumpCheck();
         Movement();
 
         if (Input.GetKeyDown("joystick " + CTRLID + " button " + buttons["Abutton"]) && grounded > 0)
         {
             buttonA();
-            
+
         }
         if (Input.GetKeyDown("joystick " + CTRLID + " button " + buttons["Bbutton"]))
         {
@@ -89,12 +91,23 @@ public class TankClass : PlayerClass
         {
             print(currentHealth);
             Death();
+
+            
         }
+        if (lastFrameHealth < currentHealth)
+        {
+            ability1 = Jump;
+            ability2 = abilities.TankMagnet;
+            ability3 = abilities.TankShield;
+            print("woerig");
+        }
+        lastFrameHealth = currentHealth;
+
     }
 
     public new void Death()
     {
-       anim.SetInteger("AnimState", 5);
+        anim.SetInteger("AnimState", 5);
         walkspeed = 0;
         walkspeed *= 0;
         ability1 = null;
@@ -102,6 +115,5 @@ public class TankClass : PlayerClass
         ability3 = null;
 
     }
-
 
 }

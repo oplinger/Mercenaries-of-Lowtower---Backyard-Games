@@ -81,6 +81,9 @@ public class AIController : MonoBehaviour, IDamageable<float>
         print("stunned");
         stunDuration = controllerStunDuration;
     }
-    
-    IDamageable
+
+    public void TakeDamage(float damageTaken)
+    {
+        
+    }
 }
