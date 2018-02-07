@@ -105,6 +105,7 @@ public abstract class PlayerClass : EntityClass
 
     public void Revive()
     {
+
         List<Collider> col = new List<Collider>(Physics.OverlapSphere(transform.position, reviveRadius, 1 << 8, QueryTriggerInteraction.Ignore));
         for (int i = 0; i < col.Count; i++)
         {
@@ -146,6 +147,7 @@ public abstract class PlayerClass : EntityClass
         {
             coltarget.GetComponent<MeleeClass>().walkspeed = 10;
             coltarget.GetComponent<MeleeClass>().anim.SetInteger("AnimState", 0);
+
 
             //if reviving teammate is the Healer, dead teammate gets 100% of health back
             if (this.gameObject.name == "Healer Character(Clone)")

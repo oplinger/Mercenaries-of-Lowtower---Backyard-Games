@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-public class AIController : MonoBehaviour
+public class AIController : MonoBehaviour, IDamageable<float>
 {
 
     public Transform Player;
@@ -81,5 +81,6 @@ public class AIController : MonoBehaviour
         print("stunned");
         stunDuration = controllerStunDuration;
     }
-
+    
+    IDamageable
 }

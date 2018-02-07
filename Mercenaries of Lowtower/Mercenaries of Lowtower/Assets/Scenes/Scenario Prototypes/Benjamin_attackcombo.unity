@@ -4428,6 +4428,30 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 1427329742960786, guid: ecc9ed82c52f99845ab490698f763b03, type: 2}
       propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1416303928948940, guid: ecc9ed82c52f99845ab490698f763b03, type: 2}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1969342194296694, guid: ecc9ed82c52f99845ab490698f763b03, type: 2}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1412389552292528, guid: ecc9ed82c52f99845ab490698f763b03, type: 2}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1540370450287246, guid: ecc9ed82c52f99845ab490698f763b03, type: 2}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1074104525024050, guid: ecc9ed82c52f99845ab490698f763b03, type: 2}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1967725407805800, guid: ecc9ed82c52f99845ab490698f763b03, type: 2}
+      propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
@@ -7275,6 +7299,11 @@ Prefab:
     - target: {fileID: 1239915997541124, guid: dd9de9996069bb54fb61c0bd063feb4f, type: 2}
       propertyPath: m_Name
       value: Tank Character(Clone)
+      objectReference: {fileID: 0}
+    - target: {fileID: 114103692630939230, guid: dd9de9996069bb54fb61c0bd063feb4f,
+        type: 2}
+      propertyPath: shieldMask.m_Bits
+      value: 256
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: dd9de9996069bb54fb61c0bd063feb4f, type: 2}
@@ -14995,7 +15024,7 @@ Prefab:
       objectReference: {fileID: 1829856406}
     - target: {fileID: 1506464340734884, guid: a434b68851b9cda41a306391c7f9015d, type: 2}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: a434b68851b9cda41a306391c7f9015d, type: 2}

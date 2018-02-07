@@ -21,10 +21,11 @@ public class MeleeAbilities : MonoBehaviour {
 
             for (int i = 0; i < baseClass.targetList.mTar.Count; i++)
             {
-                print(baseClass.abilityCooldowns.cooldowns["meleeCD"]);
+                //print(baseClass.abilityCooldowns.cooldowns["meleeCD"]);
 
-                Health health = baseClass.targetList.mTar[i].GetComponent<Health>();
-                health.modifyHealth(baseClass.meleeDamage, baseClass.CTRLID);
+                //Health health = baseClass.targetList.mTar[i].GetComponent<Health>();
+                //health.modifyHealth(baseClass.meleeDamage, baseClass.CTRLID);
+                baseClass.targetList.mTar[i].GetComponent<IDamageable<float>>().TakeDamage(baseClass.meleeDamage);
             }
 
             baseClass.abilityCooldowns.cooldowns["meleeCD"] = baseClass.abilityCooldowns.meleeCD;
