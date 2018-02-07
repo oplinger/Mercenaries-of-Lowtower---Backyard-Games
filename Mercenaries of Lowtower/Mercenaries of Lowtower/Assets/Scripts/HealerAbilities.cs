@@ -82,7 +82,7 @@ public class HealerAbilities : MonoBehaviour
         {
             baseClass.walkspeed = 10;
         }
-        if (Input.GetKeyUp("joystick " + baseClass.CTRLID + " button 2") && baseClass.abilityCooldowns.cooldowns["healCD"] <= 0)
+        if (Input.GetKeyUp("joystick " + baseClass.CTRLID + " button 2") && baseClass.abilityCooldowns.cooldowns["healCD"] <= 0 && baseClass.currentHealth>0)
         {
             baseClass.healTarget = baseClass.healObject;
             baseClass.stopTimer = 0;

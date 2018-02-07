@@ -20,8 +20,8 @@ GameObject:
   m_Component:
   - component: {fileID: 4136698859568760}
   - component: {fileID: 95279587547567740}
-  - component: {fileID: 136701169940483378}
   - component: {fileID: 114878381352017456}
+  - component: {fileID: 65292212852746396}
   - component: {fileID: 54286895689079622}
   - component: {fileID: 114829381301220374}
   - component: {fileID: 114242237713702096}
@@ -56,7 +56,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4956312723834658}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: Bolt Spawn
   m_TagString: Untagged
   m_Icon: {fileID: 6926474624037801865, guid: 0000000000000000d000000000000000, type: 0}
@@ -717,7 +717,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1011025319418690}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -2.55, y: 0, z: -16.92}
+  m_LocalPosition: {x: -2.55, y: 2.35, z: -16.92}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4442231369709806}
@@ -1267,6 +1267,18 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 112
   m_CollisionDetection: 0
+--- !u!65 &65292212852746396
+BoxCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1011025319418690}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.62, y: 1.71, z: 0.57}
+  m_Center: {x: 0, y: 0.85, z: 0.04}
 --- !u!65 &65484100984466714
 BoxCollider:
   m_ObjectHideFlags: 1
@@ -1349,11 +1361,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9d40463cba6717645a2b1054200b47cd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 200
+  maxHealth: 150
   currentHealth: 0
+  shielded: 0
   CTRLID: 0
   controller: {fileID: 0}
   walkspeed: 0
+  jumpheight: 0
+  groundMask:
+    serializedVersion: 2
+    m_Bits: 1
   abilities: {fileID: 0}
   abilityCooldowns: {fileID: 0}
   grounded: 0
@@ -1393,19 +1410,6 @@ MonoBehaviour:
   heldObject: {fileID: 0}
   triggerObject: {fileID: 0}
   cannonball: {fileID: 0}
---- !u!136 &136701169940483378
-CapsuleCollider:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1011025319418690}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  m_Radius: 0.5
-  m_Height: 2
-  m_Direction: 1
-  m_Center: {x: 0, y: 0.96, z: 0}
 --- !u!137 &137118342791704706
 SkinnedMeshRenderer:
   m_ObjectHideFlags: 1

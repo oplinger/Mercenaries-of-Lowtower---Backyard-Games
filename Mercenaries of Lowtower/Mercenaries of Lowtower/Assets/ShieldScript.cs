@@ -106,7 +106,6 @@ public class ShieldScript : MonoBehaviour {
     {
         for (int i = 0; i < playersInShield.Length; i++)
         {
-
             if (playersInShield[i].name == "Tank Character(Clone)")
             {
                 playersInShield[i].GetComponent<TankClass>().shielded = false;

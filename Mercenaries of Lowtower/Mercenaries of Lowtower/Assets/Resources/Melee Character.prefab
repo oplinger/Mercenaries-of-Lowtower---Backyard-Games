@@ -449,7 +449,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4666255736657194}
   - component: {fileID: 95888357206347014}
-  - component: {fileID: 136162221231187850}
+  - component: {fileID: 65881006338939476}
   - component: {fileID: 54213494874883376}
   - component: {fileID: 114967145361279176}
   - component: {fileID: 114242557046811990}
@@ -749,7 +749,7 @@ Transform:
   m_GameObject: {fileID: 1589034339966338}
   m_LocalRotation: {x: -0.7071068, y: 0, z: 0, w: 0.7071068}
   m_LocalPosition: {x: 0, y: 0.83, z: 1.661}
-  m_LocalScale: {x: 2.32, y: 1.66, z: 0.23}
+  m_LocalScale: {x: 2.32, y: 3.89, z: 0.23}
   m_Children: []
   m_Father: {fileID: 4666255736657194}
   m_RootOrder: 3
@@ -1013,7 +1013,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1633046841644568}
   m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 14.6, y: 0, z: -15.9}
+  m_LocalPosition: {x: 2.35, y: 2.35, z: -15.9}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4260797603962532}
@@ -1337,6 +1337,18 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!65 &65881006338939476
+BoxCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1633046841644568}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.62, y: 1.71, z: 0.57}
+  m_Center: {x: 0, y: 0.85, z: 0.04}
 --- !u!95 &95547611680755024
 Animator:
   serializedVersion: 3
@@ -1451,7 +1463,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   abilitynum: 0
   lungeCD: 5
-  meleeCD: 3
+  meleeCD: 1
 --- !u!114 &114967145361279176
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1463,11 +1475,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: abe7ea1661add9a4880788afe741956a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 200
+  maxHealth: 100
   currentHealth: 0
+  shielded: 0
   CTRLID: 0
   controller: {fileID: 0}
   walkspeed: 0
+  jumpheight: 0
+  groundMask:
+    serializedVersion: 2
+    m_Bits: 1
   abilities: {fileID: 0}
   abilityCooldowns: {fileID: 0}
   targetList: {fileID: 0}
@@ -1478,19 +1495,6 @@ MonoBehaviour:
   meleeDamage: 1.19
   lungeDamage: 0.54
   lungeDistance: 2
---- !u!136 &136162221231187850
-CapsuleCollider:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1633046841644568}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  m_Radius: 1.28
-  m_Height: 3.22
-  m_Direction: 1
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!137 &137190764575951826
 SkinnedMeshRenderer:
   m_ObjectHideFlags: 1

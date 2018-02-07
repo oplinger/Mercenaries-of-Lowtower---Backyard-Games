@@ -188,7 +188,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4749959044639280}
   - component: {fileID: 95152795306471460}
-  - component: {fileID: 136746193034427110}
+  - component: {fileID: 65093911289982238}
   - component: {fileID: 54236627484550926}
   - component: {fileID: 114103692630939230}
   - component: {fileID: 114242161729553622}
@@ -1104,7 +1104,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1239915997541124}
   m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 1.2, y: 0, z: -18.4}
+  m_LocalPosition: {x: 1.2, y: 2.35, z: -18.4}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4797044642794612}
@@ -1238,6 +1238,18 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 112
   m_CollisionDetection: 0
+--- !u!65 &65093911289982238
+BoxCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1239915997541124}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.62, y: 1.71, z: 0.57}
+  m_Center: {x: 0, y: 0.85, z: 0.04}
 --- !u!65 &65278136017239074
 BoxCollider:
   m_ObjectHideFlags: 1
@@ -1313,6 +1325,10 @@ MonoBehaviour:
   CTRLID: 0
   controller: {fileID: 0}
   walkspeed: 0
+  jumpheight: 0
+  groundMask:
+    serializedVersion: 2
+    m_Bits: 1
   abilities: {fileID: 0}
   abilityCooldowns: {fileID: 0}
   grounded: 0
@@ -1370,19 +1386,6 @@ MonoBehaviour:
   abilitynum: 0
   shieldCD: 5
   magnetCD: 3
---- !u!136 &136746193034427110
-CapsuleCollider:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1239915997541124}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  m_Radius: 0.54
-  m_Height: 2
-  m_Direction: 1
-  m_Center: {x: 0, y: 0.9, z: 0}
 --- !u!137 &137192872373329608
 SkinnedMeshRenderer:
   m_ObjectHideFlags: 1

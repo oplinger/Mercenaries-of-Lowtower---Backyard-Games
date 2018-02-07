@@ -175,7 +175,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4013550893604126}
   - component: {fileID: 95441956991010420}
-  - component: {fileID: 136544734566680112}
+  - component: {fileID: 65287068584371936}
   - component: {fileID: 54584167409954142}
   - component: {fileID: 114455703097757542}
   - component: {fileID: 114607165869489244}
@@ -660,7 +660,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1179733966427392}
   m_LocalRotation: {x: 0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 8, y: 0, z: -15.1}
+  m_LocalPosition: {x: 4.7, y: 3.73, z: -14.79}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4702114782767970}
@@ -1279,6 +1279,18 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!65 &65287068584371936
+BoxCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1179733966427392}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 0.62, y: 1.71, z: 0.57}
+  m_Center: {x: 0, y: 0.85, z: 0.04}
 --- !u!65 &65604804004091668
 BoxCollider:
   m_ObjectHideFlags: 1
@@ -1352,8 +1364,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   abilitynum: 0
-  healCD: 5
+  healCD: 1
   teleportCD: 3
+  stunCD: 0
 --- !u!114 &114455703097757542
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1365,11 +1378,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ae17176536239734499d533d3162e3b5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 200
+  maxHealth: 100
   currentHealth: 0
+  shielded: 0
   CTRLID: 1
   controller: {fileID: 0}
   walkspeed: 0
+  jumpheight: 0
+  groundMask:
+    serializedVersion: 2
+    m_Bits: 1
   abilities: {fileID: 0}
   abilityCooldowns: {fileID: 0}
   healObject: {fileID: 0}
@@ -1379,8 +1397,8 @@ MonoBehaviour:
   enemyMask:
     serializedVersion: 2
     m_Bits: 0
-  healAmount: 10
-  orbSpeed: 5
+  healAmount: 20
+  orbSpeed: 15
   teleportDistance: 10
 --- !u!114 &114607165869489244
 MonoBehaviour:
@@ -1393,19 +1411,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f1737e20334c26848845fdf353d5d9c8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!136 &136544734566680112
-CapsuleCollider:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1179733966427392}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  m_Radius: 0.5
-  m_Height: 2
-  m_Direction: 1
-  m_Center: {x: 0, y: 0.91, z: 0}
+  enemyMask:
+    serializedVersion: 2
+    m_Bits: 0
 --- !u!137 &137277356696946628
 SkinnedMeshRenderer:
   m_ObjectHideFlags: 1
