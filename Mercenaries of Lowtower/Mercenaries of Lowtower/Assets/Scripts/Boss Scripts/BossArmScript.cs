@@ -2,7 +2,8 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BossArmScript : EntityClass, IDamageable<float> {
+public class BossArmScript : EntityClass
+{
 
     // Original transform position
     Vector3 originPoint;
@@ -35,10 +36,17 @@ public class BossArmScript : EntityClass, IDamageable<float> {
     void Start () {
         // Sets the origin point to the position the tentacles are in when the play button is pressed
         originPoint = gameObject.transform.position;
+        currentHealth = maxHealth;
+        
 	}
-	
-	// Update is called once per frame
-	void Update () {
+
+    private void OnEnable()
+    {
+        currentHealth = maxHealth;
+    }
+
+    // Update is called once per frame
+    void Update () {
         /*if ()
         {
             armRaising = true;
@@ -70,6 +78,13 @@ public class BossArmScript : EntityClass, IDamageable<float> {
             BossManager.GetComponent<BossControlScript>().CheckIfReady();
             print("Arm check!");
             attackComplete = false;
+        }
+
+
+        //disables arm if health runs out
+        if (currentHealth<=0)
+        {
+            gameObject.SetActive(false);
         }
 	}
 
@@ -135,9 +150,23 @@ public class BossArmScript : EntityClass, IDamageable<float> {
 
     public void OnTriggerEnter(Collider other)
     {
-        if (other.tag == "Player"&&!armDown)
+        if (other.tag == "Ground")
         {
-            other.GetComponent<IDamageable<float>>().TakeDamage(20);
+            armDown = true;
+
+        }
+
+        //if (other.tag == "Player"&& armDown)
+        //{
+        //    other.GetComponent<IDamageable<float>>().TakeDamage(20);
+        //}
+    }
+
+    public void OnTriggerExit(Collider other)
+    {
+        if (other.tag=="Ground")
+        {
+            armDown = false;
         }
     }
 }

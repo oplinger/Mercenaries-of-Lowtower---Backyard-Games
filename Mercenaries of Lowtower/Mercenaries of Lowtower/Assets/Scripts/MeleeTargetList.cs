@@ -29,12 +29,12 @@ public class MeleeTargetList : MonoBehaviour {
 
     private void OnTriggerEnter(Collider other)
     {
-        if(other.tag=="Enemy")
+        if(other.tag=="Enemy"||other.tag=="Tentacle")
         mTar.Add(other);
     }
     private void OnTriggerExit(Collider other)
     {
-        if (other.tag == "Enemy")
+        if (other.tag == "Enemy" || other.tag == "Tentacle")
             mTar.Remove(other);
     }
 

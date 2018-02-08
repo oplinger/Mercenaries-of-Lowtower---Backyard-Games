@@ -92,7 +92,6 @@ public class MeleeClass : PlayerClass
             ability1 = Jump;
             ability3 = abilities.MeleeStrikeRogue;
             ability2 = abilities.MeleeLunge;
-            print("woerig");
         }
         lastFrameHealth = currentHealth;
     }

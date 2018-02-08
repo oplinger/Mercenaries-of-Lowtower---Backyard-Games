@@ -6,22 +6,33 @@ public class ArmSlamHitbox : MonoBehaviour
 {
     public float slamDamage;
 
+    public float damageTimer;
+
     // Use this for initialization
     void Start () {
 		
 	}
-	
-	// Update is called once per frame
-	void Update () {
-		
-	}
+
+    private void OnEnable()
+    {
+
+        //damageTimer = 30;
+    }
+
+    // Update is called once per frame
+    void Update ()
+    {
+
+    }
 
     void OnTriggerEnter(Collider other)
     {
 
-        if (other.tag !="Enemy")
+        if (other.tag=="Player")
         {
             other.GetComponent<IDamageable<float>>().TakeDamage(slamDamage);
+            
+            
             //Health protagonistHealth = other.gameObject.GetComponent<Health>();
 
             //if (!protagonistHealth.shielded)
