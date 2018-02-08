@@ -314,7 +314,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!1 &1510761596949486
 GameObject:
   m_ObjectHideFlags: 1
@@ -574,7 +574,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &4043663232888770
 Transform:
   m_ObjectHideFlags: 1
@@ -840,7 +840,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1456342129295262}
   m_LocalRotation: {x: -0, y: -0.49939883, z: -0, w: 0.8663723}
-  m_LocalPosition: {x: 22.405373, y: 20.090916, z: -21.47641}
+  m_LocalPosition: {x: 22.405373, y: 11.3, z: -21.47641}
   m_LocalScale: {x: 4.0581827, y: 4.0581784, z: 4.0581794}
   m_Children:
   - {fileID: 4595015393489622}
@@ -919,7 +919,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1986206471051702}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -19.31, y: 18.570915, z: -29.43}
+  m_LocalPosition: {x: -17.47, y: 18.570915, z: -30.09}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4195715990926452}
@@ -2670,6 +2670,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8914caa5aaa931946bb3321b54063453, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  maxHealth: 0
+  currentHealth: 0
+  shielded: 0
   Player: {fileID: 4917507445403092}
   MoveSpeed: 8
   isStunned: 0
@@ -2685,6 +2688,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8914caa5aaa931946bb3321b54063453, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  maxHealth: 0
+  currentHealth: 0
+  shielded: 0
   Player: {fileID: 4917507445403092}
   MoveSpeed: 8
   isStunned: 0
@@ -2717,6 +2723,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8914caa5aaa931946bb3321b54063453, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  maxHealth: 0
+  currentHealth: 0
+  shielded: 0
   Player: {fileID: 4917507445403092}
   MoveSpeed: 8
   isStunned: 0
@@ -2750,6 +2759,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   slamDamage: 0.2
+  damageTimer: 0
 --- !u!114 &114168886199085962
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2762,6 +2772,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   slamDamage: 0.2
+  damageTimer: 0
 --- !u!114 &114199434307345886
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2773,6 +2784,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8914caa5aaa931946bb3321b54063453, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  maxHealth: 0
+  currentHealth: 0
+  shielded: 0
   Player: {fileID: 4917507445403092}
   MoveSpeed: 8
   isStunned: 0
@@ -2806,6 +2820,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   slamDamage: 0.2
+  damageTimer: 0
 --- !u!114 &114267781652260812
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2817,6 +2832,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8914caa5aaa931946bb3321b54063453, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  maxHealth: 0
+  currentHealth: 0
+  shielded: 0
   Player: {fileID: 4917507445403092}
   MoveSpeed: 8
   isStunned: 0
@@ -2850,6 +2868,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   slamDamage: 0.2
+  damageTimer: 0
 --- !u!114 &114279269661007072
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2862,6 +2881,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   slamDamage: 0.2
+  damageTimer: 0
 --- !u!114 &114293679270820684
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2890,6 +2910,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8914caa5aaa931946bb3321b54063453, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  maxHealth: 0
+  currentHealth: 0
+  shielded: 0
   Player: {fileID: 4917507445403092}
   MoveSpeed: 8
   isStunned: 0
@@ -2906,6 +2929,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   slamDamage: 0.2
+  damageTimer: 0
 --- !u!114 &114305798466653372
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2934,6 +2958,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8914caa5aaa931946bb3321b54063453, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  maxHealth: 0
+  currentHealth: 0
+  shielded: 0
   Player: {fileID: 4917507445403092}
   MoveSpeed: 8
   isStunned: 0
@@ -2984,6 +3011,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   slamDamage: 0.2
+  damageTimer: 0
 --- !u!114 &114385094907927994
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -2995,6 +3023,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8914caa5aaa931946bb3321b54063453, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  maxHealth: 0
+  currentHealth: 0
+  shielded: 0
   Player: {fileID: 4917507445403092}
   MoveSpeed: 8
   isStunned: 0
@@ -3011,6 +3042,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   slamDamage: 0.2
+  damageTimer: 0
 --- !u!114 &114500691039976204
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -3023,6 +3055,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   slamDamage: 0.2
+  damageTimer: 0
 --- !u!114 &114503546084594380
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -3034,6 +3067,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8914caa5aaa931946bb3321b54063453, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  maxHealth: 5
+  currentHealth: 0
+  shielded: 0
   Player: {fileID: 4917507445403092}
   MoveSpeed: 8
   isStunned: 0
@@ -3050,6 +3086,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   slamDamage: 0.2
+  damageTimer: 0
 --- !u!114 &114525779640881112
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -3079,6 +3116,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   slamDamage: 0.2
+  damageTimer: 0
 --- !u!114 &114550755672248678
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -3090,6 +3128,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8914caa5aaa931946bb3321b54063453, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  maxHealth: 0
+  currentHealth: 0
+  shielded: 0
   Player: {fileID: 4917507445403092}
   MoveSpeed: 8
   isStunned: 0
@@ -3105,6 +3146,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8914caa5aaa931946bb3321b54063453, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  maxHealth: 0
+  currentHealth: 0
+  shielded: 0
   Player: {fileID: 4917507445403092}
   MoveSpeed: 8
   isStunned: 0
@@ -3137,6 +3181,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8914caa5aaa931946bb3321b54063453, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  maxHealth: 0
+  currentHealth: 0
+  shielded: 0
   Player: {fileID: 4917507445403092}
   MoveSpeed: 8
   isStunned: 0
@@ -3153,6 +3200,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   slamDamage: 0.2
+  damageTimer: 0
 --- !u!114 &114646008459869404
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -3195,6 +3243,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   slamDamage: 0.2
+  damageTimer: 0
 --- !u!114 &114685277535721912
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -3223,6 +3272,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8914caa5aaa931946bb3321b54063453, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  maxHealth: 0
+  currentHealth: 0
+  shielded: 0
   Player: {fileID: 4917507445403092}
   MoveSpeed: 8
   isStunned: 0
@@ -3238,6 +3290,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8914caa5aaa931946bb3321b54063453, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  maxHealth: 0
+  currentHealth: 0
+  shielded: 0
   Player: {fileID: 4917507445403092}
   MoveSpeed: 8
   isStunned: 0
@@ -3254,6 +3309,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   slamDamage: 0.2
+  damageTimer: 0
 --- !u!114 &114701155447139700
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -3300,6 +3356,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   slamDamage: 0.2
+  damageTimer: 0
 --- !u!114 &114743338836909566
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -3346,6 +3403,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   slamDamage: 0.2
+  damageTimer: 0
 --- !u!114 &114760314502871202
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -3357,6 +3415,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8914caa5aaa931946bb3321b54063453, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  maxHealth: 0
+  currentHealth: 0
+  shielded: 0
   Player: {fileID: 4917507445403092}
   MoveSpeed: 8
   isStunned: 0
@@ -3389,6 +3450,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8914caa5aaa931946bb3321b54063453, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  maxHealth: 0
+  currentHealth: 0
+  shielded: 0
   Player: {fileID: 4917507445403092}
   MoveSpeed: 8
   isStunned: 0
@@ -3439,6 +3503,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   slamDamage: 0.2
+  damageTimer: 0
 --- !u!114 &114868042803851726
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -3450,6 +3515,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8914caa5aaa931946bb3321b54063453, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  maxHealth: 0
+  currentHealth: 0
+  shielded: 0
   Player: {fileID: 4917507445403092}
   MoveSpeed: 8
   isStunned: 0
@@ -3483,6 +3551,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   slamDamage: 0.2
+  damageTimer: 0
 --- !u!114 &114939667119026020
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -3494,6 +3563,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8914caa5aaa931946bb3321b54063453, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  maxHealth: 0
+  currentHealth: 0
+  shielded: 0
   Player: {fileID: 4917507445403092}
   MoveSpeed: 8
   isStunned: 0
@@ -3509,6 +3581,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8914caa5aaa931946bb3321b54063453, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  maxHealth: 0
+  currentHealth: 0
+  shielded: 0
   Player: {fileID: 4917507445403092}
   MoveSpeed: 8
   isStunned: 0
@@ -3525,6 +3600,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   slamDamage: 0.2
+  damageTimer: 0
 --- !u!114 &114962440614054024
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -3536,6 +3612,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8914caa5aaa931946bb3321b54063453, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  maxHealth: 0
+  currentHealth: 0
+  shielded: 0
   Player: {fileID: 4917507445403092}
   MoveSpeed: 8
   isStunned: 0
@@ -3552,6 +3631,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   slamDamage: 0.2
+  damageTimer: 0
 --- !u!135 &135077588805119764
 SphereCollider:
   m_ObjectHideFlags: 1

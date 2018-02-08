@@ -31,12 +31,15 @@ public class BossArmScript : EntityClass
     public bool attackComplete;
     // Holds a reference to the BossManager game object
     public GameObject BossManager;
+    //Reference to the phase-changing script
+    public PhaseControllerScript phaseScript;
 
     // Use this for initialization
     void Start () {
         // Sets the origin point to the position the tentacles are in when the play button is pressed
         originPoint = gameObject.transform.position;
         currentHealth = maxHealth;
+        //phaseScript = GetComponent<PhaseControllerScript>();
         
 	}
 
@@ -84,6 +87,7 @@ public class BossArmScript : EntityClass
         //disables arm if health runs out
         if (currentHealth<=0)
         {
+            phaseScript.armIsDead=true;
             gameObject.SetActive(false);
         }
 	}

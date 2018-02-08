@@ -136,8 +136,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ac398f0ea74f4a649b1e2adb4a6b927b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  health: 5
-  maxHealth: 0
+  health: 0
+  maxHealth: 5
   player: {fileID: 0}
   shielded: 0
   foundShield: {fileID: 0}
@@ -154,6 +154,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   slamDamage: 0.5
+  damageTimer: 0
 --- !u!114 &114978013338219618
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -165,6 +166,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8914caa5aaa931946bb3321b54063453, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  maxHealth: 5
+  currentHealth: 5
+  shielded: 0
   Player: {fileID: 4161420824376582, guid: 4384b171416968848a56c372a18576d7, type: 2}
   MoveSpeed: 8
   isStunned: 0

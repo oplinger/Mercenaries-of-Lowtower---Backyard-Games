@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-public class AIController : MonoBehaviour, IDamageable<float>
+public class AIController : EntityClass
 {
 
     public Transform Player;
@@ -27,6 +27,8 @@ public class AIController : MonoBehaviour, IDamageable<float>
         enemyRenderer = GetComponent<Renderer>();
 
         defaultEnemyMaterial = enemyRenderer.material;
+
+        currentHealth = maxHealth;
     }
 
     void Update()
@@ -71,6 +73,11 @@ public class AIController : MonoBehaviour, IDamageable<float>
                 isStunned = false;
                 stunTimer = 0;
             }
+        }
+
+        if (currentHealth<=0)
+        {
+            Destroy(gameObject);
         }
 
     }
