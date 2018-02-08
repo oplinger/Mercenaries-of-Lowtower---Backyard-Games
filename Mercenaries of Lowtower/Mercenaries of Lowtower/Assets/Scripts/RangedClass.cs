@@ -103,6 +103,19 @@ public class RangedClass : PlayerClass
             print(currentHealth);
             Death();
         }
+        if (currentHealth > maxHealth)
+        {
+            currentHealth = maxHealth;
+        }
+
+        if (lastFrameHealth < currentHealth)
+        {
+            ability1 = Jump;
+            ability2 = abilities.BluntTipArrow;
+            ability3 = abilities.RangedBolt;
+            print("woerig");
+        }
+        lastFrameHealth = currentHealth;
     }
 
     public new void Death()

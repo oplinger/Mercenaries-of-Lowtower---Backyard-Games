@@ -138,7 +138,7 @@ public abstract class PlayerClass : EntityClass
         if (coltarget.name == "Healer Character(Clone)" && coltarget.GetComponent<HealerClass>().currentHealth <= 0)
         {
             coltarget.GetComponent<HealerClass>().walkspeed = 10;
-            coltarget.GetComponent<TankClass>().currentHealth = coltarget.GetComponent<TankClass>().maxHealth / 2;
+            coltarget.GetComponent<HealerClass>().currentHealth = coltarget.GetComponent<HealerClass>().maxHealth / 2;
             coltarget.GetComponent<HealerClass>().anim.SetInteger("AnimState", 0);
         }
 

@@ -92,8 +92,13 @@ public class TankClass : PlayerClass
             print(currentHealth);
             Death();
 
-            
+
         }
+        if (currentHealth > maxHealth)
+        {
+            currentHealth = maxHealth;
+        }
+
         if (lastFrameHealth < currentHealth)
         {
             ability1 = Jump;

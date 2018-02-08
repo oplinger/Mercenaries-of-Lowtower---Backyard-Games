@@ -46,9 +46,10 @@ public class HealerClass : PlayerClass
 
         //jumpheight = 5;
 
+
+        //ability2 = abilities.HealerStun();
         ability1 = Jump;
         ability2 = abilities.Healaport;
-        //ability2 = abilities.HealerStun();
         ability3 = abilities.TargetedHeal;
         currentHealth = maxHealth;
 
@@ -84,6 +85,19 @@ public class HealerClass : PlayerClass
             print(currentHealth);
             Death();
         }
+        if (currentHealth>maxHealth)
+        {
+            currentHealth = maxHealth;
+        }
+
+
+        if (lastFrameHealth < currentHealth)
+        {
+            ability1 = Jump;
+            ability2 = abilities.Healaport;
+            ability3 = abilities.TargetedHeal;
+        }
+        lastFrameHealth = currentHealth;
     }
 
     public new void Death()

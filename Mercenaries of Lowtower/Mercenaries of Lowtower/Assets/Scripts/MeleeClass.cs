@@ -82,6 +82,19 @@ public class MeleeClass : PlayerClass
             print(currentHealth);
             Death();
         }
+        if (currentHealth > maxHealth)
+        {
+            currentHealth = maxHealth;
+        }
+
+        if (lastFrameHealth < currentHealth)
+        {
+            ability1 = Jump;
+            ability3 = abilities.MeleeStrikeRogue;
+            ability2 = abilities.MeleeLunge;
+            print("woerig");
+        }
+        lastFrameHealth = currentHealth;
     }
 
     public new void Death()
