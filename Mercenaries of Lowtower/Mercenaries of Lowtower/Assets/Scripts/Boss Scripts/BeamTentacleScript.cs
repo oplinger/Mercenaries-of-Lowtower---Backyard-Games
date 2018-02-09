@@ -10,13 +10,17 @@ public class BeamTentacleScript : MonoBehaviour {
     public Transform beamEndPoint;
     // The speed at which the tentacle moves toward the waypoint
     public float beamSpeed;
-
+    // bool to check if the endPoint has been reached
     public bool endPointReached;
+
+    // Holds a reference to the BossManager game object
+    public GameObject BossManager;
 
     // Use this for initialization
     void Start () {
         // Sets the origin point to the position the tentacles are in when the play button is pressed
         originPoint = gameObject.transform.position;
+        beamSpeed = BossManager.GetComponent<BossControlScript>().beamSpeed;
     }
 	
 	// Update is called once per frame

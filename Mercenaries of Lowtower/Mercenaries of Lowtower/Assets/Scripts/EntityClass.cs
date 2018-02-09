@@ -29,7 +29,7 @@ public abstract class EntityClass : MonoBehaviour, IDamageable<float> {
 
     }
 
-    public void TakeDamage(float damageTaken)
+    public virtual void TakeDamage(float damageTaken)
     {
         if (!shielded)
         {

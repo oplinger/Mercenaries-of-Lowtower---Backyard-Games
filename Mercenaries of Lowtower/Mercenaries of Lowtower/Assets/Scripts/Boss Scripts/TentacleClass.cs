@@ -19,7 +19,7 @@ public class TentacleClass : BossClass {
         }
 	}
 
-    public new void TakeDamage(float damageTaken)
+    public override void TakeDamage(float damageTaken)
     {
         boss.GetComponent<BossClass>().currentHealth -= damageTaken;
     }
