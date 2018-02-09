@@ -5,10 +5,20 @@ using UnityEngine;
 public class MeleeAbilities : MonoBehaviour {
 
     MeleeClass baseClass;
+    public GameObject hitbox;
 
     private void Awake()
     {
         baseClass = GetComponent<MeleeClass>();
+    }
+
+    public void Update()
+    {
+        if (baseClass.abilityCooldowns.cooldowns["meleeCD"]<=0)
+        {
+            print("hitbox should be off");
+            hitbox.SetActive(false);
+        }
     }
 
 
@@ -19,17 +29,21 @@ public class MeleeAbilities : MonoBehaviour {
         if (baseClass.abilityCooldowns.cooldowns["meleeCD"] <= 0)
         {
 
-            for (int i = 0; i < baseClass.targetList.mTar.Count; i++)
-            {
-                //print(baseClass.abilityCooldowns.cooldowns["meleeCD"]);
+            //works with melee hitbox
+            hitbox.SetActive(true);
 
-                //Health health = baseClass.targetList.mTar[i].GetComponent<Health>();
-                //health.modifyHealth(baseClass.meleeDamage, baseClass.CTRLID);
-                baseClass.targetList.mTar[i].GetComponent<IDamageable<float>>().TakeDamage(baseClass.meleeDamage);
-            }
+            //for (int i = 0; i < baseClass.targetList.mTar.Count; i++)
+            //{
+            //    //print(baseClass.abilityCooldowns.cooldowns["meleeCD"]);
+
+            //    //Health health = baseClass.targetList.mTar[i].GetComponent<Health>();
+            //    //health.modifyHealth(baseClass.meleeDamage, baseClass.CTRLID);
+            //    baseClass.targetList.mTar[i].GetComponent<IDamageable<float>>().TakeDamage(baseClass.meleeDamage);
+            //}
 
             baseClass.abilityCooldowns.cooldowns["meleeCD"] = baseClass.abilityCooldowns.meleeCD;
         }
+       
     }
 
     public void MeleeLunge()
