@@ -9,23 +9,36 @@ public class PhaseControllerScript : MonoBehaviour {
     public GameObject cannonball;
     public GameObject addSpawner;
     public Transform retreatWaypoint;
+    public Transform returnWaypoint;
     public Transform cannonWaypoint;
     public bool armIsDead;
+    public bool cannonFired;
     public GameObject ballSpawner;
 
     public GameObject bossManager;
 
+    Vector3 bossOriginalposition;
+
 	// Use this for initialization
 	void Start () {
         armIsDead = false;
+        bossOriginalposition = boss.transform.position;
 		
 	}
 	
 	// Update is called once per frame
 	void Update () {
-        if (armIsDead)
+
+        if (armIsDead && cannon.transform.position!=cannonWaypoint.transform.position)
         {
             ActivatePhase2();
+        }
+        
+
+        if (cannonFired)
+        {
+            armIsDead = false;
+            ActivatePhase3();
         }
 		
 	}
@@ -49,5 +62,15 @@ public class PhaseControllerScript : MonoBehaviour {
 
         //activates add spawner
         addSpawner.SetActive(true);
+    }
+
+    public void ActivatePhase3()
+    {
+        print("phase activated");
+        //stop boss from attacking
+        bossManager.SetActive(true);
+
+        //boss retreating
+        boss.transform.position = Vector3.MoveTowards(boss.transform.position, bossOriginalposition, .2f);
     }
 }

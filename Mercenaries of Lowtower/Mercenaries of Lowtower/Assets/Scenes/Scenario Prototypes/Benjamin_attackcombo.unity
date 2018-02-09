@@ -1622,11 +1622,11 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4148288996948236, guid: b2e6eb9305a8c7b49985daca1f8a1094, type: 2}
       propertyPath: m_RootOrder
-      value: 5
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 4193789305185850, guid: b2e6eb9305a8c7b49985daca1f8a1094, type: 2}
       propertyPath: m_RootOrder
-      value: 4
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 1589034339966338, guid: b2e6eb9305a8c7b49985daca1f8a1094, type: 2}
       propertyPath: m_IsActive
@@ -2973,6 +2973,34 @@ Prefab:
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: ecc9ed82c52f99845ab490698f763b03, type: 2}
   m_IsPrefabParent: 0
+--- !u!1 &633089450
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 633089451}
+  m_Layer: 0
+  m_Name: Boss Return Waypoint
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &633089451
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 633089450}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -0.1, y: 0, z: 5.904853}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 729866415}
+  m_RootOrder: 2
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &651045619
 Prefab:
   m_ObjectHideFlags: 0
@@ -3165,8 +3193,10 @@ MonoBehaviour:
   cannonball: {fileID: 2126812894}
   addSpawner: {fileID: 771425361}
   retreatWaypoint: {fileID: 879023130}
+  returnWaypoint: {fileID: 633089451}
   cannonWaypoint: {fileID: 987790418}
   armIsDead: 0
+  cannonFired: 0
   ballSpawner: {fileID: 1089168705}
   bossManager: {fileID: 1512002455}
 --- !u!4 &729866415
@@ -3181,6 +3211,7 @@ Transform:
   m_Children:
   - {fileID: 987790418}
   - {fileID: 879023130}
+  - {fileID: 633089451}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -9951,6 +9982,11 @@ Prefab:
       propertyPath: maxHealth
       value: 5
       objectReference: {fileID: 0}
+    - target: {fileID: 114652662786293824, guid: 7f3dde4b84e92e549b8162c8a7aef04a,
+        type: 2}
+      propertyPath: phaseScript
+      value: 
+      objectReference: {fileID: 729866414}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 7f3dde4b84e92e549b8162c8a7aef04a, type: 2}
   m_IsPrefabParent: 0

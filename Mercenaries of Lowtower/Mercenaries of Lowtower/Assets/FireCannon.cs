@@ -8,8 +8,11 @@ public class FireCannon : MonoBehaviour {
     public GameObject cannonball;
     public Transform cannonballSpawner;
 
-	// Use this for initialization
-	void Start () {
+    //Reference to the phase-changing script
+    public PhaseControllerScript phaseScript;
+
+    // Use this for initialization
+    void Start () {
 		
 	}
 	
@@ -26,6 +29,7 @@ public class FireCannon : MonoBehaviour {
         {
 
             print("is touching");
+            phaseScript.cannonFired = true;
             Destroy(other.gameObject);
             Instantiate(cannonball, cannonballSpawner.position, transform.rotation);
 
