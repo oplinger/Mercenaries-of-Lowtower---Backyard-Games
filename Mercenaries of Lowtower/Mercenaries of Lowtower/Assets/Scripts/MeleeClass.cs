@@ -29,6 +29,9 @@ public class MeleeClass : PlayerClass
     public float lungeDamage;
     [Range(0, 20)]
     public float lungeDistance;
+
+    public PickUpBox cannonballHolder;
+
     // Use this for initialization
 
     void Start()
@@ -89,11 +92,20 @@ public class MeleeClass : PlayerClass
 
         if (lastFrameHealth < currentHealth)
         {
-            ability1 = Jump;
-            ability3 = abilities.MeleeStrikeRogue;
-            ability2 = abilities.MeleeLunge;
+            EnableAbilities();
         }
         lastFrameHealth = currentHealth;
+
+        //disables abilities if player is holding cannonball, re-enables them if they aren't holding it
+        if (cannonballHolder.holdingObject)
+        {
+            DisableAbilities();
+        }
+        else if (!cannonballHolder.holdingObject)
+
+        {
+            EnableAbilities();
+        }
     }
 
     public new void Death()
@@ -101,9 +113,21 @@ public class MeleeClass : PlayerClass
         anim.SetInteger("AnimState", 5);
         walkspeed = 0;
         walkspeed *= 0;
+        DisableAbilities();
+
+    }
+
+    public void DisableAbilities()
+    {
         ability1 = null;
         ability2 = null;
         ability3 = null;
+    }
 
+    public void EnableAbilities()
+    {
+        ability1 = Jump;
+        ability3 = abilities.MeleeStrikeRogue;
+        ability2 = abilities.MeleeLunge;
     }
 }

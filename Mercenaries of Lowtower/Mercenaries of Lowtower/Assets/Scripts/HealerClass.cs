@@ -32,6 +32,8 @@ public class HealerClass : PlayerClass
     [Range(0, 10)]
     public float teleportDistance;
 
+    public PickUpBox cannonballHolder;
+
     // Use this for initialization
 
     void Start()
@@ -93,11 +95,20 @@ public class HealerClass : PlayerClass
 
         if (lastFrameHealth < currentHealth)
         {
-            ability1 = Jump;
-            ability2 = abilities.Healaport;
-            ability3 = abilities.TargetedHeal;
+            EnableAbilities();
         }
         lastFrameHealth = currentHealth;
+
+        //disables abilities if player is holding cannonball, re-enables them if they aren't holding it
+        if (cannonballHolder.holdingObject)
+        {
+            DisableAbilities();
+        }
+        else if (!cannonballHolder.holdingObject)
+
+        {
+            EnableAbilities();
+        }
     }
 
     public new void Death()
@@ -105,9 +116,21 @@ public class HealerClass : PlayerClass
         anim.SetInteger("AnimState", 5);
         walkspeed = 0;
         walkspeed *= 0;
+        DisableAbilities();
+
+    }
+
+    public void DisableAbilities()
+    {
         ability1 = null;
         ability2 = null;
         ability3 = null;
+    }
 
+    public void EnableAbilities()
+    {
+        ability1 = Jump;
+        ability2 = abilities.Healaport;
+        ability3 = abilities.TargetedHeal;
     }
 }

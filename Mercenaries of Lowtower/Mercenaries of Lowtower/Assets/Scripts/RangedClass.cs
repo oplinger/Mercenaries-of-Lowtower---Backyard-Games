@@ -31,6 +31,10 @@ public class RangedClass : PlayerClass
     public float knockbackRange;
     [Range(0, 10)]
     public float spread;
+
+    public PickUpBox cannonballHolder;
+
+
     // Use this for initialization
 
     void Start()
@@ -110,12 +114,20 @@ public class RangedClass : PlayerClass
 
         if (lastFrameHealth < currentHealth)
         {
-            ability1 = Jump;
-            ability2 = abilities.BluntTipArrow;
-            ability3 = abilities.RangedBolt;
-            print("woerig");
+            EnableAbilities();
         }
         lastFrameHealth = currentHealth;
+
+        //disables abilities if player is holding cannonball, re-enables them if they aren't holding it
+        if (cannonballHolder.holdingObject)
+        {
+            DisableAbilities();
+        }
+        else if (!cannonballHolder.holdingObject)
+
+        {
+            EnableAbilities();
+        }
     }
 
     public new void Death()
@@ -123,9 +135,21 @@ public class RangedClass : PlayerClass
         anim.SetInteger("AnimState", 5);
         walkspeed = 0;
         walkspeed *= 0;
+        DisableAbilities();
+
+    }
+
+    public void DisableAbilities()
+    {
         ability1 = null;
         ability2 = null;
         ability3 = null;
+    }
 
+    public void EnableAbilities()
+    {
+        ability1 = Jump;
+        ability2 = abilities.BluntTipArrow;
+        ability3 = abilities.RangedBolt;
     }
 }
