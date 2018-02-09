@@ -2,8 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BossArmScript : EntityClass
-{
+public class BossArmScript : BossClass {
 
     // Original transform position
     Vector3 originPoint;
@@ -31,32 +30,39 @@ public class BossArmScript : EntityClass
     public bool attackComplete;
     // Holds a reference to the BossManager game object
     public GameObject BossManager;
-    //Reference to the phase-changing script
-    public PhaseControllerScript phaseScript;
+    public GameObject Boss;
+    //
+    public bool armRotatingBackwardRetreat;
+    public bool armLoweringRetreat;
+    public bool armRetreating;
 
     // Use this for initialization
     void Start () {
         // Sets the origin point to the position the tentacles are in when the play button is pressed
         originPoint = gameObject.transform.position;
-        currentHealth = maxHealth;
-        //phaseScript = GetComponent<PhaseControllerScript>();
-        
-	}
 
-    private void OnEnable()
-    {
-        currentHealth = maxHealth;
+        // Sets the values to the values in the BossControlScript 
+        elevationSpeed = BossManager.GetComponent<BossControlScript>().elevationSpeed;
+        descendingSpeed = BossManager.GetComponent<BossControlScript>().descendingSpeed;
+        rotationSpeed = BossManager.GetComponent<BossControlScript>().rotationSpeed;
+        downTime = BossManager.GetComponent<BossControlScript>().downTime;
     }
-
-    // Update is called once per frame
-    void Update () {
+	
+	// Update is called once per frame
+	void Update () {
         /*if ()
         {
             armRaising = true;
         }
         */
+        /*// Sets the values to the values in the BossControlScript 
+        elevationSpeed = BossManager.GetComponent<BossControlScript>().elevationSpeed;
+        descendingSpeed = BossManager.GetComponent<BossControlScript>().descendingSpeed;
+        rotationSpeed = BossManager.GetComponent<BossControlScript>().elevationSpeed;
+        downTime = BossManager.GetComponent<BossControlScript>().downTime;
+        */
 
-        if(armRaising == true)
+        if (armRaising == true)
         {
             RaiseArm();
         }
@@ -82,15 +88,22 @@ public class BossArmScript : EntityClass
             print("Arm check!");
             attackComplete = false;
         }
-
-
-        //disables arm if health runs out
-        if (currentHealth<=0)
+        
+        if (armRetreating == true)
         {
-            phaseScript.armIsDead=true;
-            gameObject.SetActive(false);
+            armRotatingBackwardRetreat = true;
         }
-	}
+
+        if (armRotatingBackwardRetreat == true)
+        {
+            RotateArmBackward();
+        }
+
+        if (armLoweringRetreat == true)
+        {
+            LowerArmRetreat();
+        }
+    }
 
     void RaiseArm()
     {
@@ -121,11 +134,25 @@ public class BossArmScript : EntityClass
         }
     }
 
+    void LowerArmRetreat()
+    {
+        // Multiplies the elevation speed by time
+        float downStep = descendingSpeed * Time.deltaTime;
+        // Moves the arm down towards the endPoint at a set speed
+        transform.position = Vector3.MoveTowards(transform.position, originPoint, downStep);
+
+        if (transform.position == originPoint)
+        {
+            armLoweringRetreat = false;
+        }
+    }
+
     void RotateArmForward()
     {
         transform.Rotate(-rotationSpeed, 0, 0, Space.World);
         if (Mathf.Abs(transform.eulerAngles.x - 270f) <1)
         {
+            armDown = true;
             StartCoroutine("ArmDown");
             armRotatingForward = false;
         }
@@ -134,6 +161,7 @@ public class BossArmScript : EntityClass
     IEnumerator ArmDown()
     {
         yield return new WaitForSeconds(downTime);
+        armDown = false;
         armRotatingBackward = true;
     }
 
@@ -147,30 +175,35 @@ public class BossArmScript : EntityClass
         }
     }
 
-    public void TakeDamage(float damageTaken)
+    void RotateArmBackwardRetreat()
     {
-        currentHealth -= damageTaken;
+        transform.Rotate(rotationSpeed, 0, 0, Space.World);
+        if (Mathf.Abs(transform.eulerAngles.x - 0f) < 1)
+        {
+            armLoweringRetreat = true;
+            armRotatingBackwardRetreat = false;
+        }
     }
+    void ArmRetreat()
+    {
+        StopCoroutine("ArmDown");
+        armDown = false;
+        armRotatingBackward = true;
+    }
+    public override void TakeDamage(float damageTaken)
+    {
+        if(armDown == true)
+        {
+            Boss.GetComponent<BossClass>().currentHealth -= damageTaken;
+        }
+    }
+
 
     public void OnTriggerEnter(Collider other)
     {
-        if (other.tag == "Ground")
+        if (other.tag == "Player" && armRotatingForward == true)
         {
-            armDown = true;
-
-        }
-
-        //if (other.tag == "Player"&& armDown)
-        //{
-        //    other.GetComponent<IDamageable<float>>().TakeDamage(20);
-        //}
-    }
-
-    public void OnTriggerExit(Collider other)
-    {
-        if (other.tag=="Ground")
-        {
-            armDown = false;
+           other.GetComponent<IDamageable<float>>().TakeDamage(50);
         }
     }
 }

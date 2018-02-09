@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class BoltDamage : MonoBehaviour {
-   public Health health;
+    public Health health;
     public GameObject controller;
 	// Use this for initialization
 	void Start () {
@@ -17,10 +17,10 @@ public class BoltDamage : MonoBehaviour {
     void OnTriggerEnter(Collider other)
     {
 
-        if (other.tag == "Enemy" || other.tag=="Tentacle")
+        if (other.tag == "Enemy" || other.tag == "Tentacle")
         {
-
             other.GetComponent<IDamageable<float>>().TakeDamage(3);
+            Destroy(gameObject);
             //health = other.GetComponent<Health>();
             //ControllerThing CT = controller.GetComponent<ControllerThing>();
             //health.modifyHealth(3, 3);
