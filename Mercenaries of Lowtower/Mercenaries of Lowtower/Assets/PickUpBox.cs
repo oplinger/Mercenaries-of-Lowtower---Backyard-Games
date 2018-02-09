@@ -11,6 +11,11 @@ public class PickUpBox : MonoBehaviour
 
     private void Update()
     {
+        if (heldObject == null)
+        {
+            holdingObject = false;
+        }
+
         if (holdingObject == true)
         {
             // heldObject.transform.position = gameObject.transform.position;
@@ -42,7 +47,10 @@ public class PickUpBox : MonoBehaviour
         //}
 
             if (heldObject != null)
-            heldObject.transform.position = new Vector3 (gameObject.transform.position.x, gameObject.transform.position.y+2, gameObject.transform.position.z);
+        {
+            heldObject.transform.position = new Vector3(gameObject.transform.position.x, gameObject.transform.position.y + 2, gameObject.transform.position.z);
+
+        }
 
     }
     void OnTriggerEnter(Collider other)
