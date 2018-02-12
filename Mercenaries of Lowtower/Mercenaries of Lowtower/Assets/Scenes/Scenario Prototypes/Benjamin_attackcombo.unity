@@ -410,6 +410,11 @@ MonoBehaviour:
   shielded: 0
   foundShield: {fileID: 0}
   isDead: 0
+--- !u!4 &114374750 stripped
+Transform:
+  m_PrefabParentObject: {fileID: 4526915690256042, guid: ecc9ed82c52f99845ab490698f763b03,
+    type: 2}
+  m_PrefabInternal: {fileID: 582997285}
 --- !u!1 &119760569
 GameObject:
   m_ObjectHideFlags: 0
@@ -1664,6 +1669,37 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &394297811
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 394297805}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c0765a74540bebe48b5d797e7cf210d1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxHealth: 200
+  currentHealth: 0
+  shielded: 0
+  TentacleMaxHealth: []
+  TentacleCurrentHealth: []
+  tentacleHealthDelta: 0
+  tentacleArray: []
+  elevationEndPoint: {fileID: 1246037364}
+  elevationSpeed: 20
+  descendingSpeed: 160
+  rotationSpeed: 5
+  armRaising: 0
+  armLowering: 0
+  armRotatingForward: 0
+  armRotatingBackward: 0
+  armDown: 0
+  downTime: 5
+  attackComplete: 0
+  BossManager: {fileID: 1512002455}
+  phaseScript: {fileID: 729866414}
 --- !u!1 &406763886
 GameObject:
   m_ObjectHideFlags: 0
@@ -3771,6 +3807,37 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &737461488
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 737461482}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c0765a74540bebe48b5d797e7cf210d1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxHealth: 200
+  currentHealth: 0
+  shielded: 0
+  TentacleMaxHealth: []
+  TentacleCurrentHealth: []
+  tentacleHealthDelta: 0
+  tentacleArray: []
+  elevationEndPoint: {fileID: 1996495715}
+  elevationSpeed: 20
+  descendingSpeed: 160
+  rotationSpeed: 5
+  armRaising: 0
+  armLowering: 0
+  armRotatingForward: 0
+  armRotatingBackward: 0
+  armDown: 0
+  downTime: 5
+  attackComplete: 0
+  BossManager: {fileID: 1512002455}
+  phaseScript: {fileID: 729866414}
 --- !u!1 &744082214
 GameObject:
   m_ObjectHideFlags: 0
@@ -5223,6 +5290,11 @@ MonoBehaviour:
   shielded: 0
   foundShield: {fileID: 0}
   isDead: 0
+--- !u!4 &877969828 stripped
+Transform:
+  m_PrefabParentObject: {fileID: 4109231134758240, guid: ecc9ed82c52f99845ab490698f763b03,
+    type: 2}
+  m_PrefabInternal: {fileID: 582997285}
 --- !u!1 &879023129
 GameObject:
   m_ObjectHideFlags: 0
@@ -5335,6 +5407,11 @@ Transform:
   m_Father: {fileID: 865719535}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!4 &918593259 stripped
+Transform:
+  m_PrefabParentObject: {fileID: 4315360479878004, guid: ecc9ed82c52f99845ab490698f763b03,
+    type: 2}
+  m_PrefabInternal: {fileID: 582997285}
 --- !u!1001 &925047861
 Prefab:
   m_ObjectHideFlags: 0
@@ -5689,6 +5766,37 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &1001429421
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1001429415}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c0765a74540bebe48b5d797e7cf210d1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxHealth: 200
+  currentHealth: 0
+  shielded: 0
+  TentacleMaxHealth: []
+  TentacleCurrentHealth: []
+  tentacleHealthDelta: 0
+  tentacleArray: []
+  elevationEndPoint: {fileID: 114374750}
+  elevationSpeed: 20
+  descendingSpeed: 160
+  rotationSpeed: 5
+  armRaising: 0
+  armLowering: 0
+  armRotatingForward: 0
+  armRotatingBackward: 0
+  armDown: 0
+  downTime: 5
+  attackComplete: 0
+  BossManager: {fileID: 1512002455}
+  phaseScript: {fileID: 729866414}
 --- !u!1 &1008254688
 GameObject:
   m_ObjectHideFlags: 0
@@ -6554,6 +6662,11 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 32
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!4 &1246037364 stripped
+Transform:
+  m_PrefabParentObject: {fileID: 4732699017652216, guid: ecc9ed82c52f99845ab490698f763b03,
+    type: 2}
+  m_PrefabInternal: {fileID: 582997285}
 --- !u!1 &1256106357
 GameObject:
   m_ObjectHideFlags: 0
@@ -10236,6 +10349,37 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &1348874977
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1348874971}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c0765a74540bebe48b5d797e7cf210d1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxHealth: 200
+  currentHealth: 0
+  shielded: 0
+  TentacleMaxHealth: []
+  TentacleCurrentHealth: []
+  tentacleHealthDelta: 0
+  tentacleArray: []
+  elevationEndPoint: {fileID: 877969828}
+  elevationSpeed: 20
+  descendingSpeed: 160
+  rotationSpeed: 5
+  armRaising: 0
+  armLowering: 0
+  armRotatingForward: 0
+  armRotatingBackward: 0
+  armDown: 0
+  downTime: 5
+  attackComplete: 0
+  BossManager: {fileID: 1512002455}
+  phaseScript: {fileID: 729866414}
 --- !u!1 &1364979335
 GameObject:
   m_ObjectHideFlags: 0
@@ -10933,6 +11077,34 @@ GameObject:
   m_PrefabParentObject: {fileID: 1506464340734884, guid: a434b68851b9cda41a306391c7f9015d,
     type: 2}
   m_PrefabInternal: {fileID: 1769548535}
+--- !u!114 &1512002458
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1512002455}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: eb4b6d8cb189ea74a810baade51892ae, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  BossArmsList:
+  - {fileID: 394297805}
+  - {fileID: 1348874971}
+  - {fileID: 1001429415}
+  - {fileID: 737461482}
+  - {fileID: 2016163760}
+  - {fileID: 1829856406}
+  bossPhase: 0
+  bossSlamAttack: 0
+  startTime: 2
+  restTime: 6
+  isWaiting: 0
+  armsReady: 0
+  bossReady: 0
+  energySphere: {fileID: 1361610532594434, guid: b63369dab7f98004c95dacd9fd2f3b33,
+    type: 2}
+  energySphereReady: 0
 --- !u!1 &1525563837
 GameObject:
   m_ObjectHideFlags: 0
@@ -11314,6 +11486,11 @@ Prefab:
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 99c4e6b74b887404397c913caba85d7c, type: 2}
   m_IsPrefabParent: 0
+--- !u!4 &1589904744 stripped
+Transform:
+  m_PrefabParentObject: {fileID: 4920075754561572, guid: ecc9ed82c52f99845ab490698f763b03,
+    type: 2}
+  m_PrefabInternal: {fileID: 582997285}
 --- !u!1 &1605299753
 GameObject:
   m_ObjectHideFlags: 0
@@ -12186,6 +12363,11 @@ Prefab:
       value: 
       objectReference: {fileID: 1361610532594434, guid: b63369dab7f98004c95dacd9fd2f3b33,
         type: 2}
+    - target: {fileID: 114532884975150508, guid: a434b68851b9cda41a306391c7f9015d,
+        type: 2}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: a434b68851b9cda41a306391c7f9015d, type: 2}
   m_IsPrefabParent: 0
@@ -12532,6 +12714,37 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &1829856412
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1829856406}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c0765a74540bebe48b5d797e7cf210d1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxHealth: 200
+  currentHealth: 0
+  shielded: 0
+  TentacleMaxHealth: []
+  TentacleCurrentHealth: []
+  tentacleHealthDelta: 0
+  tentacleArray: []
+  elevationEndPoint: {fileID: 918593259}
+  elevationSpeed: 20
+  descendingSpeed: 160
+  rotationSpeed: 5
+  armRaising: 0
+  armLowering: 0
+  armRotatingForward: 0
+  armRotatingBackward: 0
+  armDown: 0
+  downTime: 5
+  attackComplete: 0
+  BossManager: {fileID: 1512002455}
+  phaseScript: {fileID: 729866414}
 --- !u!1 &1855096889 stripped
 GameObject:
   m_PrefabParentObject: {fileID: 1468569634297050, guid: ecc9ed82c52f99845ab490698f763b03,
@@ -13149,6 +13362,11 @@ Prefab:
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: dd9de9996069bb54fb61c0bd063feb4f, type: 2}
   m_IsPrefabParent: 0
+--- !u!4 &1996495715 stripped
+Transform:
+  m_PrefabParentObject: {fileID: 4747032435052796, guid: ecc9ed82c52f99845ab490698f763b03,
+    type: 2}
+  m_PrefabInternal: {fileID: 582997285}
 --- !u!1 &2001002893
 GameObject:
   m_ObjectHideFlags: 0
@@ -13478,6 +13696,37 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
+--- !u!114 &2016163766
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 2016163760}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c0765a74540bebe48b5d797e7cf210d1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxHealth: 200
+  currentHealth: 0
+  shielded: 0
+  TentacleMaxHealth: []
+  TentacleCurrentHealth: []
+  tentacleHealthDelta: 0
+  tentacleArray: []
+  elevationEndPoint: {fileID: 1589904744}
+  elevationSpeed: 20
+  descendingSpeed: 160
+  rotationSpeed: 5
+  armRaising: 0
+  armLowering: 0
+  armRotatingForward: 0
+  armRotatingBackward: 0
+  armDown: 0
+  downTime: 5
+  attackComplete: 0
+  BossManager: {fileID: 1512002455}
+  phaseScript: {fileID: 729866414}
 --- !u!1 &2025989870 stripped
 GameObject:
   m_PrefabParentObject: {fileID: 1221143167105836, guid: ecc9ed82c52f99845ab490698f763b03,

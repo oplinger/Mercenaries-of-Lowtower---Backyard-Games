@@ -20,7 +20,7 @@ public class TentacleDamage : MonoBehaviour {
     void Update () {
         //armDownCheck = GetComponentInParent<BossArmScript>().armDown;
 
-        armDownCheck = GetComponentInParent<BossArmScript>().armDown;
+        armDownCheck = GetComponentInParent<THICCBossArmScript>().armDown;
 
         if (armDownCheck && !damageDealt)
         {
