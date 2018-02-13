@@ -1683,10 +1683,6 @@ MonoBehaviour:
   maxHealth: 200
   currentHealth: 0
   shielded: 0
-  TentacleMaxHealth: []
-  TentacleCurrentHealth: []
-  tentacleHealthDelta: 0
-  tentacleArray: []
   elevationEndPoint: {fileID: 1246037364}
   elevationSpeed: 20
   descendingSpeed: 160
@@ -3285,7 +3281,78 @@ Prefab:
       propertyPath: m_Enabled
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    - target: {fileID: 114007333529116380, guid: ecc9ed82c52f99845ab490698f763b03,
+        type: 2}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 114513620003255770, guid: ecc9ed82c52f99845ab490698f763b03,
+        type: 2}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 114178669953470804, guid: ecc9ed82c52f99845ab490698f763b03,
+        type: 2}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 114888045953429814, guid: ecc9ed82c52f99845ab490698f763b03,
+        type: 2}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 114736123000734288, guid: ecc9ed82c52f99845ab490698f763b03,
+        type: 2}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 114623193096934256, guid: ecc9ed82c52f99845ab490698f763b03,
+        type: 2}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 114614738411883160, guid: ecc9ed82c52f99845ab490698f763b03,
+        type: 2}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 114370611356580550, guid: ecc9ed82c52f99845ab490698f763b03,
+        type: 2}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 114531379804359986, guid: ecc9ed82c52f99845ab490698f763b03,
+        type: 2}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 114928517230534328, guid: ecc9ed82c52f99845ab490698f763b03,
+        type: 2}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 114012535684912500, guid: ecc9ed82c52f99845ab490698f763b03,
+        type: 2}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 114313519601010496, guid: ecc9ed82c52f99845ab490698f763b03,
+        type: 2}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 114007333529116380, guid: ecc9ed82c52f99845ab490698f763b03,
+        type: 2}
+      propertyPath: currentHealth
+      value: 200
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 114513620003255770, guid: ecc9ed82c52f99845ab490698f763b03, type: 2}
+    - {fileID: 114178669953470804, guid: ecc9ed82c52f99845ab490698f763b03, type: 2}
+    - {fileID: 114007333529116380, guid: ecc9ed82c52f99845ab490698f763b03, type: 2}
+    - {fileID: 114736123000734288, guid: ecc9ed82c52f99845ab490698f763b03, type: 2}
+    - {fileID: 114888045953429814, guid: ecc9ed82c52f99845ab490698f763b03, type: 2}
+    - {fileID: 114623193096934256, guid: ecc9ed82c52f99845ab490698f763b03, type: 2}
   m_ParentPrefab: {fileID: 100100000, guid: ecc9ed82c52f99845ab490698f763b03, type: 2}
   m_IsPrefabParent: 0
 --- !u!1 &633089450
@@ -3821,10 +3888,6 @@ MonoBehaviour:
   maxHealth: 200
   currentHealth: 0
   shielded: 0
-  TentacleMaxHealth: []
-  TentacleCurrentHealth: []
-  tentacleHealthDelta: 0
-  tentacleArray: []
   elevationEndPoint: {fileID: 1996495715}
   elevationSpeed: 20
   descendingSpeed: 160
@@ -5780,10 +5843,6 @@ MonoBehaviour:
   maxHealth: 200
   currentHealth: 0
   shielded: 0
-  TentacleMaxHealth: []
-  TentacleCurrentHealth: []
-  tentacleHealthDelta: 0
-  tentacleArray: []
   elevationEndPoint: {fileID: 114374750}
   elevationSpeed: 20
   descendingSpeed: 160
@@ -10363,10 +10422,6 @@ MonoBehaviour:
   maxHealth: 200
   currentHealth: 0
   shielded: 0
-  TentacleMaxHealth: []
-  TentacleCurrentHealth: []
-  tentacleHealthDelta: 0
-  tentacleArray: []
   elevationEndPoint: {fileID: 877969828}
   elevationSpeed: 20
   descendingSpeed: 160
@@ -12728,10 +12783,6 @@ MonoBehaviour:
   maxHealth: 200
   currentHealth: 0
   shielded: 0
-  TentacleMaxHealth: []
-  TentacleCurrentHealth: []
-  tentacleHealthDelta: 0
-  tentacleArray: []
   elevationEndPoint: {fileID: 918593259}
   elevationSpeed: 20
   descendingSpeed: 160
@@ -13710,10 +13761,6 @@ MonoBehaviour:
   maxHealth: 200
   currentHealth: 0
   shielded: 0
-  TentacleMaxHealth: []
-  TentacleCurrentHealth: []
-  tentacleHealthDelta: 0
-  tentacleArray: []
   elevationEndPoint: {fileID: 1589904744}
   elevationSpeed: 20
   descendingSpeed: 160

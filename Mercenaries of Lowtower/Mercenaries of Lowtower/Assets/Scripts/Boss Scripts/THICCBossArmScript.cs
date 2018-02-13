@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class THICCBossArmScript : BossClass {
+public class THICCBossArmScript : EntityClass {
 
     // Original transform position
     Vector3 originPoint;
@@ -79,7 +79,7 @@ public class THICCBossArmScript : BossClass {
 
         if (attackComplete == true)
         {
-            BossManager.GetComponent<BossControlScript>().CheckIfReady();
+            BossManager.GetComponent<THICCBossControlScript>().CheckIfReady();
             print("Arm check!");
             attackComplete = false;
         }
@@ -148,10 +148,10 @@ public class THICCBossArmScript : BossClass {
         }
     }
 
-    public void TakeDamage(float damageTaken)
-    {
-        currentHealth -= damageTaken;
-    }
+    //public void TakeDamage(float damageTaken)
+    //{
+    //    print("boss arm should be taking damage");
+    //}
 
     public void OnTriggerEnter(Collider other)
     {
