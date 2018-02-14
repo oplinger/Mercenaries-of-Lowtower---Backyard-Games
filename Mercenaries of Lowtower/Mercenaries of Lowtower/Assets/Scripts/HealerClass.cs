@@ -31,6 +31,12 @@ public class HealerClass : PlayerClass
     [Header("Teleport Settings")]
     [Range(0, 10)]
     public float teleportDistance;
+    [Header ("Stun Range")]
+    [Range(0,10)]
+    public float stunRange;
+    [Header("Stun Duration")]
+    [Range(0, 10)]
+    public float stunDuration;
 
     public PickUpBox cannonballHolder;
 
@@ -49,9 +55,9 @@ public class HealerClass : PlayerClass
         //jumpheight = 5;
 
 
-        //ability2 = abilities.HealerStun();
+        ability2 = abilities.HealerStun;
         ability1 = Jump;
-        ability2 = abilities.Healaport;
+        //ability2 = abilities.Healaport;
         ability3 = abilities.TargetedHeal;
         currentHealth = maxHealth;
 
@@ -61,6 +67,7 @@ public class HealerClass : PlayerClass
 
     void Update()
     {
+
         grounded = JumpCheck();
 
         Movement();
@@ -130,7 +137,7 @@ public class HealerClass : PlayerClass
     public void EnableAbilities()
     {
         ability1 = Jump;
-        ability2 = abilities.Healaport;
+        ability2 = abilities.HealerStun;
         ability3 = abilities.TargetedHeal;
     }
 }

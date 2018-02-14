@@ -6,15 +6,17 @@ public class AIController : EntityClass
 {
 
     public Transform Player;
-    public int MoveSpeed = 8; //Speed 4
-    int tempMoveSpeed = 0;
+    //public int MoveSpeed = 8; //Speed 4
     int MaxDist = 10;
     int MinDist = 4;
 
 
-    public bool isStunned;
-    float stunTimer;
-    float stunDuration;
+    public float stunTimer;
+    
+
+
+
+    //public float stunDuration;
 
     Renderer enemyRenderer;
    public  Material defaultEnemyMaterial;
@@ -29,11 +31,18 @@ public class AIController : EntityClass
         defaultEnemyMaterial = enemyRenderer.material;
 
         currentHealth = maxHealth;
+
+        moveSpeed = 8;
+
+        stunTimer = 0;
+
+
     }
 
     void Update()
     {
         //print(Vector3.Distance(transform.position, Player.position));
+        
 
         if (Player == null)
         {
@@ -46,7 +55,7 @@ public class AIController : EntityClass
         if (Vector3.Distance(transform.position, Player.position) >= MinDist && !isStunned)
         {
 
-            transform.position += transform.forward * MoveSpeed * Time.deltaTime;
+            transform.position += transform.forward * moveSpeed * Time.deltaTime;
             enemyRenderer.material = defaultEnemyMaterial;
 
 
@@ -57,23 +66,23 @@ public class AIController : EntityClass
 
         }
 
-
         if (isStunned)
         {
-            stunTimer += Time.deltaTime;
+            stunTimer++;
 
-            ////material colour won't change back
-            //enemyRenderer.material.color = Color.magenta;
-
-            //stops movement
-            transform.position += transform.forward * tempMoveSpeed * Time.deltaTime;
-
-            if (stunTimer >= stunDuration)
+            if (stunTimer / 60 >= 5)
             {
                 isStunned = false;
+                //moveSpeed = 8;
                 stunTimer = 0;
             }
+
         }
+
+        
+
+
+
 
         if (currentHealth<=0)
         {
@@ -82,15 +91,22 @@ public class AIController : EntityClass
 
     }
 
-    public void Stun(float controllerStunDuration)
-    {
-        isStunned = true;
-        print("stunned");
-        stunDuration = controllerStunDuration;
-    }
+    //public void Stun(float controllerStunDuration)
+    //{
+    //    isStunned = true;
+    //    print("stunned");
+    //    stunDuration = controllerStunDuration;
+    //}
 
     public void TakeDamage(float damageTaken)
     {
         
     }
+
+    public void StunThis()
+    {
+
+    }
+
+   
 }

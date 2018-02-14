@@ -13,10 +13,14 @@ public class HealerAbilities : MonoBehaviour
 
     HealerCooldowns cooldown;
 
+    public GameObject stunAOE;
+
 
     private void Awake()
     {
         baseClass = GetComponent<HealerClass>();
+        stunAOE.SetActive(false);
+        
     }
 
     private void Update()
@@ -118,17 +122,29 @@ public class HealerAbilities : MonoBehaviour
 
     //    }
 
-    public void Healaport()
+    //public void Healaport()
+    //{
+    //    RaycastHit hit;
+    //    Debug.DrawRay(transform.position, transform.forward * (baseClass.teleportDistance / 2));
+    //    if (Physics.Raycast(transform.position, transform.forward, out hit, baseClass.teleportDistance, 1 << 8, QueryTriggerInteraction.Ignore ) && baseClass.abilityCooldowns.cooldowns["teleportCD"] <= 0)
+    //    {
+    //        transform.position = hit.point;
+    //        baseClass.abilityCooldowns.cooldowns["teleportCD"] = baseClass.abilityCooldowns.teleportCD;
+
+    //    }
+
+    //}
+
+    public void HealerStun()
     {
-        RaycastHit hit;
-        Debug.DrawRay(transform.position, transform.forward * (baseClass.teleportDistance / 2));
-        if (Physics.Raycast(transform.position, transform.forward, out hit, baseClass.teleportDistance, 1 << 8, QueryTriggerInteraction.Ignore ) && baseClass.abilityCooldowns.cooldowns["teleportCD"] <= 0)
-        {
-            transform.position = hit.point;
-            baseClass.abilityCooldowns.cooldowns["teleportCD"] = baseClass.abilityCooldowns.teleportCD;
+        print("stun activated");
+        stunAOE.transform.localScale = new Vector3(baseClass.stunRange, 0.125f, baseClass.stunRange);
+        stunAOE.SetActive(true);
 
-        }
 
+
+        //enemyMask = "Enemies" Layer
+        //Collider[] EnemyColliders = Physics.OverlapSphere(baseClass.transform.position, baseClass.stunRange, enemyMask, QueryTriggerInteraction.Ignore);
     }
 
     //////////////////////////////////////STUN

@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public abstract class EntityClass : MonoBehaviour, IDamageable<float> {
+public abstract class EntityClass : MonoBehaviour, IDamageable<float>, IStunnable<float> {
 
     public float maxHealth;
     public float currentHealth;
@@ -10,6 +10,10 @@ public abstract class EntityClass : MonoBehaviour, IDamageable<float> {
     protected Vector3 movement;
     protected bool death;
     public bool shielded;
+
+    public bool isStunned;
+    public float tempMoveSpeed;
+    public int moveSpeed;
 
 
     // Use this for initialization
@@ -21,8 +25,13 @@ public abstract class EntityClass : MonoBehaviour, IDamageable<float> {
 	
 	// Update is called once per frame
 	void Update () {
-		
-	}
+
+
+
+        //if (!isStunned)
+        //{ }
+
+    }
 
     public void Death()
     {
@@ -42,5 +51,20 @@ public abstract class EntityClass : MonoBehaviour, IDamageable<float> {
 
        
     }
+
+    public virtual void StunThis()
+    {
+        print("got stunned");
+        isStunned = true;
+        
+
+        //stops movement
+        moveSpeed=0;
+
+      
+
+    }
+
+
 
 }

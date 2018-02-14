@@ -228,7 +228,7 @@ public class PlayerAbilityController : MonoBehaviour
         for (int i = 0; i < EnemyColliders.Length; i++)
         {
           
-            EnemyColliders[i].gameObject.GetComponent<AIController>().Stun(stunDuration);
+            //EnemyColliders[i].gameObject.GetComponent<AIController>().Stun(stunDuration);
 
         }
 
