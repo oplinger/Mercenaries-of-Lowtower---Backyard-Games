@@ -185,7 +185,7 @@ public class UIController : MonoBehaviour
 
         }
 
-        icons[4].material.SetFloat("_Tween", players[1].GetComponent<HealerCooldowns>().cooldowns["teleportCD"] / players[1].GetComponent<HealerCooldowns>().teleportCD);
+        icons[4].material.SetFloat("_Tween", players[1].GetComponent<HealerCooldowns>().cooldowns["stunCD"] / players[1].GetComponent<HealerCooldowns>().stunCD);
         icons[4].material.SetTexture("_MainTex", Resources.Load("Textures/Teleport") as Texture);
         icons[4].material.SetTexture("_SecondTex", Resources.Load("Textures/TeleportBlack") as Texture);
         if (icons[4].material.GetFloat("_Tween") <= 0)

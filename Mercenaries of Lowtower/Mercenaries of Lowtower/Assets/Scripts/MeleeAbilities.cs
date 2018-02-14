@@ -16,7 +16,6 @@ public class MeleeAbilities : MonoBehaviour {
     {
         if (baseClass.abilityCooldowns.cooldowns["meleeCD"]<=0)
         {
-            print("hitbox should be off");
             hitbox.SetActive(false);
         }
     }

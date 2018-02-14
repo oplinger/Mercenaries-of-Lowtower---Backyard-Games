@@ -15,16 +15,39 @@ public class HealerAbilities : MonoBehaviour
 
     public GameObject stunAOE;
 
+    public bool vizOn;
+    int vizTimer;
+
 
     private void Awake()
     {
         baseClass = GetComponent<HealerClass>();
         stunAOE.SetActive(false);
+        vizTimer = 20;
         
     }
 
     private void Update()
     {
+
+        //if (baseClass.abilityCooldowns.cooldowns["stunCD"] <= 0)
+        //{
+        //    stunAOE.SetActive(false);
+        //}
+
+        if (vizOn)
+        {
+             vizTimer--;
+
+            if (vizTimer <= 0)
+            {
+                stunAOE.SetActive(false);
+                vizOn = false;
+                vizTimer = 20;
+            }
+        }
+
+
         if (Input.GetKey("joystick " + baseClass.CTRLID + " button 2"))
         {
             baseClass.walkspeed = 0;
@@ -137,9 +160,16 @@ public class HealerAbilities : MonoBehaviour
 
     public void HealerStun()
     {
-        print("stun activated");
-        stunAOE.transform.localScale = new Vector3(baseClass.stunRange, 0.125f, baseClass.stunRange);
-        stunAOE.SetActive(true);
+        if (baseClass.abilityCooldowns.cooldowns["stunCD"] <= 0)
+        {
+            print("stun activated");
+            stunAOE.transform.localScale = new Vector3(baseClass.stunRange, 0.125f, baseClass.stunRange);
+            stunAOE.SetActive(true);
+
+            baseClass.abilityCooldowns.cooldowns["stunCD"] = baseClass.abilityCooldowns.stunCD;
+
+            vizOn = true;
+        }
 
 
 

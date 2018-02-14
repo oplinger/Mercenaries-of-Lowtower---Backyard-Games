@@ -169,7 +169,10 @@ MonoBehaviour:
   maxHealth: 5
   currentHealth: 5
   shielded: 0
-  Player: {fileID: 4161420824376582, guid: 4384b171416968848a56c372a18576d7, type: 2}
-  MoveSpeed: 8
   isStunned: 0
+  tempMoveSpeed: 0
+  moveSpeed: 0
+  Player: {fileID: 4161420824376582, guid: 4384b171416968848a56c372a18576d7, type: 2}
+  stunTimer: 0
   defaultEnemyMaterial: {fileID: 0}
+  stunnedMaterial: {fileID: 2100000, guid: 235ed031a8345fb4daf93604e764679a, type: 2}

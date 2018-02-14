@@ -23,11 +23,11 @@ public class HealerCooldowns : MonoBehaviour
 
         cooldowns.Add("healCD", 0);
         CDvalues[0] = cooldowns["healCD"];
-        cooldowns.Add("teleportCD", 0);
-        CDvalues[1] = cooldowns["teleportCD"];
+        //cooldowns.Add("teleportCD", 0);
+        //CDvalues[1] = cooldowns["teleportCD"];
 
-        //cooldowns.Add("stunCD", 0);
-        //CDvalues[1] = cooldowns["stunCD"];
+        cooldowns.Add("stunCD", 0);
+        CDvalues[1] = cooldowns["stunCD"];
 
         keys = new List<string>(cooldowns.Keys);
 

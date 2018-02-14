@@ -20,6 +20,7 @@ public class AIController : EntityClass
 
     Renderer enemyRenderer;
    public  Material defaultEnemyMaterial;
+    public Material stunnedMaterial;
 
 
     void Start()
@@ -69,12 +70,14 @@ public class AIController : EntityClass
         if (isStunned)
         {
             stunTimer++;
+            enemyRenderer.material = stunnedMaterial;
 
             if (stunTimer / 60 >= 5)
             {
                 isStunned = false;
-                //moveSpeed = 8;
+                moveSpeed = 8;
                 stunTimer = 0;
+                enemyRenderer.material = defaultEnemyMaterial;
             }
 
         }
