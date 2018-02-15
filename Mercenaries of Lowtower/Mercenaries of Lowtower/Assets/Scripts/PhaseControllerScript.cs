@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class PhaseControllerScript : MonoBehaviour {
 
-    public GameObject boss;
+    public GameObject bossHead;
     public GameObject cannon;
     public GameObject cannonball;
     public GameObject addSpawner;
@@ -18,21 +18,39 @@ public class PhaseControllerScript : MonoBehaviour {
     public GameObject bossManager;
 
     Vector3 bossOriginalposition;
+    public Transform cameraPosition2;
+    BossControlScript bossScript;
+    public GameObject[] doors;
+
+    //public Camera camera;
 
 	// Use this for initialization
 	void Start () {
         armIsDead = false;
-        bossOriginalposition = boss.transform.position;
-		
+        bossOriginalposition = bossHead.transform.position;
+
+        bossScript = bossManager.GetComponent<BossControlScript>();
 	}
 	
 	// Update is called once per frame
 	void Update () {
 
-        if (armIsDead && cannon.transform.position!=cannonWaypoint.transform.position)
+        if (bossScript.bossPhase==2)
         {
+            print("phase 2 on phase manager active");
             ActivatePhase2();
+            
+            for(int i=0; i<doors.Length; i++)
+            {
+                doors[i].transform.position -= new Vector3(0, 10, 0);
+            }
+
         }
+
+        //if (armIsDead && cannon.transform.position!=cannonWaypoint.transform.position)
+        //{
+        //    ActivatePhase2();
+        //}
         
 
         if (cannonFired)
@@ -49,13 +67,16 @@ public class PhaseControllerScript : MonoBehaviour {
         bossManager.SetActive(false);
 
         //boss retreating
-        boss.transform.position = Vector3.MoveTowards(boss.transform.position, retreatWaypoint.position, .2f);
+        bossHead.transform.position = Vector3.MoveTowards(bossHead.transform.position, retreatWaypoint.position, .2f);
 
         //cannonball "spawning"
         cannonball.SetActive(true);
 
-        //cannon rising from below the deck
-        cannon.transform.position = Vector3.MoveTowards(cannon.transform.position, cannonWaypoint.position, .05f);
+        ////cannon rising from below the deck
+        //cannon.transform.position = Vector3.MoveTowards(cannon.transform.position, cannonWaypoint.position, .05f);
+
+        //camera pulling back
+        Camera.main.transform.position = Vector3.MoveTowards(Camera.main.transform.position, cameraPosition2.position, .05f);
 
         //activates cannonball spawner
         ballSpawner.SetActive(true);
@@ -71,6 +92,6 @@ public class PhaseControllerScript : MonoBehaviour {
         bossManager.SetActive(true);
 
         //boss retreating
-        boss.transform.position = Vector3.MoveTowards(boss.transform.position, bossOriginalposition, .2f);
+        bossHead.transform.position = Vector3.MoveTowards(bossHead.transform.position, bossOriginalposition, .2f);
     }
 }
