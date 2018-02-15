@@ -6,6 +6,7 @@ using UnityEngine;
 public class FireCannon : MonoBehaviour {
 
     public GameObject cannonball;
+    public GameObject cannonballProp;
     public Transform cannonballSpawner;
 
     //Reference to the phase-changing script
@@ -18,8 +19,9 @@ public class FireCannon : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		
-	}
+
+
+    }
 
     private void OnTriggerEnter(Collider other)
 
@@ -27,11 +29,13 @@ public class FireCannon : MonoBehaviour {
 
         if (other.tag == "PickUp")
         {
-
-            print("is touching");
+            
             phaseScript.cannonFired = true;
             Destroy(other.gameObject);
             Instantiate(cannonball, cannonballSpawner.position, transform.rotation);
+            Instantiate(cannonballProp, new Vector3(transform.position.x, transform.position.y+3, transform.position.z), transform.rotation);
+
+
 
             //GameObject firedBall = Instantiate(cannonball, transform.position, transform.rotation);
             //Rigidbody rb = firedBall.GetComponent<Rigidbody>();
