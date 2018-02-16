@@ -7,22 +7,25 @@ public class TankArm : MonoBehaviour {
     public GameObject target;
     public Vector3 offset;
     public Vector3[] defaultJointPosition;
+    public LayerMask tankArmMask;
 	// Use this for initialization
 	void Start () {
-		for(int i = 0; i < armJoint.Length; i++)
-        {
-            defaultJointPosition[i] = armJoint[i].transform.position;
-        }
+		
 	}
 	
 	// Update is called once per frame
 	void Update () {
-        Debug.DrawRay(armJoint[2].transform.position, armJoint[2].transform.forward * -100);
+        Debug.DrawRay(armJoint[2].transform.position, armJoint[2].transform.forward * 10);
 
         if (Input.GetKeyDown("f"))
         {
             RaycastHit hit;
-            Physics.Raycast(armJoint[2].transform.position, armJoint[2].transform.forward*-100, out hit);
+            Physics.Raycast(armJoint[2].transform.position, armJoint[2].transform.forward*10, out hit, 10);
+
+            for (int i = 0; i < armJoint.Length; i++)
+            {
+                defaultJointPosition[i] = armJoint[i].transform.position;
+            }
 
             if (hit.collider != null)
             {
@@ -42,6 +45,8 @@ public class TankArm : MonoBehaviour {
         {
             if (target != null)
             {
+                print("arm should let go");
+
                 armJoint[2].transform.localScale = new Vector3(1,1,1);
                 target.transform.parent = armJoint[2].transform;
                 armJoint[1].transform.position = defaultJointPosition[1];

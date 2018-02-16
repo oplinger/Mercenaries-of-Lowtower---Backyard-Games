@@ -2773,7 +2773,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 4397301585664442, guid: de5023b1bcd934c45a89964c70daf0f6, type: 2}
       propertyPath: m_LocalPosition.z
-      value: -76.3
+      value: -174.4
       objectReference: {fileID: 0}
     - target: {fileID: 4397301585664442, guid: de5023b1bcd934c45a89964c70daf0f6, type: 2}
       propertyPath: m_LocalRotation.x
@@ -11352,7 +11352,7 @@ Prefab:
       objectReference: {fileID: 418004396}
     - target: {fileID: 1506464340734884, guid: a434b68851b9cda41a306391c7f9015d, type: 2}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 114532884975150508, guid: a434b68851b9cda41a306391c7f9015d,
         type: 2}
@@ -12462,7 +12462,13 @@ MonoBehaviour:
   - {fileID: 883967172}
   target: {fileID: 0}
   offset: {x: 0, y: 0, z: 0}
-  defaultJointPosition: []
+  defaultJointPosition:
+  - {x: 0, y: 0, z: 0}
+  - {x: 0, y: 0, z: 0}
+  - {x: 0, y: 0, z: 0}
+  tankArmMask:
+    serializedVersion: 2
+    m_Bits: 2048
 --- !u!4 &2058336513 stripped
 Transform:
   m_PrefabParentObject: {fileID: 4666255736657194, guid: b2e6eb9305a8c7b49985daca1f8a1094,
