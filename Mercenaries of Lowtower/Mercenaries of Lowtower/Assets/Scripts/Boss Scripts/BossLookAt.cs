@@ -9,6 +9,8 @@ public class BossLookAt : MonoBehaviour {
     public float speed;
     public bool isCharging;
 
+    public PhaseControllerScript phaseScript;
+
 
 	// Use this for initialization
 	void Start () {
@@ -41,5 +43,13 @@ public class BossLookAt : MonoBehaviour {
     public void TargetPlayer()
     {
         target = PlayerList[Random.Range(0, 3)].GetComponent<Transform>();
+    }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        if (other.name=="cannonball_prop(Clone)")
+        {
+            phaseScript.cannonballHits += 1;
+        }
     }
 }

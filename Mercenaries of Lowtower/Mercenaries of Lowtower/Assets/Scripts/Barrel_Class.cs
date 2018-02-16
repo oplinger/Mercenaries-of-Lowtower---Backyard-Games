@@ -15,6 +15,11 @@ public class Barrel_Class : EnemyClass {
     public bool endPointReached;
     public Transform target;
 
+    public float stunTimer;
+    Renderer enemyRenderer;
+    public Material defaultEnemyMaterial;
+    public Material stunnedMaterial;
+
 
     // Use this for initialization
     void Start () {
@@ -26,18 +31,22 @@ public class Barrel_Class : EnemyClass {
         lastFrameHealth = currentHealth;
         //target = barrelWaypoints[0];
 
+        enemyRenderer = GetComponent<Renderer>();
+        defaultEnemyMaterial = enemyRenderer.material;
+        stunTimer = 0;
+
     }
 
     // Update is called once per frame
     void Update () {
-        if (rolling)
+        if (rolling && !isStunned)
         {
             MoveBarrel();
         }
 
         if (breakable)
         {
-            if (currentHealth < lastFrameHealth)
+            if (currentHealth < lastFrameHealth )
             {
                 if (currentHealth <= 0)
                 {
@@ -57,7 +66,22 @@ public class Barrel_Class : EnemyClass {
             }
 
         }
-    }
+
+        if (rolling && isStunned)
+        {
+            stunTimer++;
+            enemyRenderer.material = stunnedMaterial;
+
+            if (stunTimer / 60 >= 5)
+            {
+                isStunned = false;
+                moveSpeed = 8;
+                stunTimer = 0;
+                enemyRenderer.material = defaultEnemyMaterial;
+            }
+        }
+
+        }
 
     void MoveBarrel()
     {
@@ -76,6 +100,11 @@ public class Barrel_Class : EnemyClass {
         {
             target = barrelWaypoints[1];
         }
+    }
+
+    public void StunThis()
+    {
+
     }
 
     //void ReturnBarrel()

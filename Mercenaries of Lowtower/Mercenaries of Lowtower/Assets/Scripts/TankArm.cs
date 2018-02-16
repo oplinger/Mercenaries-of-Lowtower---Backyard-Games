@@ -41,7 +41,7 @@ public class TankArm : MonoBehaviour {
         }
         // Tags or names can be used to create different actions. Or call different functions. (functions would be more efficient). So the arm can grab minions, and pull them back to the tank. Replace target with an overlap sphere array
         // and you can grab multiple. 
-        if (Input.GetKeyDown("joystick " + 1 + " button " + "1"))
+        if (Input.GetKeyUp("joystick " + 1 + " button " + "1"))
         {
             if (target != null)
             {
@@ -50,6 +50,8 @@ public class TankArm : MonoBehaviour {
                 armJoint[2].transform.localScale = new Vector3(1,1,1);
                 target.transform.parent = armJoint[2].transform;
                 armJoint[1].transform.position = defaultJointPosition[1];
+                //armJoint[1].transform.position = defaultJointPosition[1]-new Vector3(1,0,1);
+                //armJoint[1].transform.position = Vector3.MoveTowards(armJoint[1].transform.position, defaultJointPosition[1], 6);
                 target.transform.parent = null;
                 target = null;
             } else

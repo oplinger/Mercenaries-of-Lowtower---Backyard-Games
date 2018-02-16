@@ -22,6 +22,8 @@ public class PhaseControllerScript : MonoBehaviour {
     BossControlScript bossScript;
     public GameObject[] doors;
 
+    public float cannonballHits;
+
     //public Camera camera;
 
 	// Use this for initialization
@@ -30,6 +32,8 @@ public class PhaseControllerScript : MonoBehaviour {
         bossOriginalposition = bossHead.transform.position;
 
         bossScript = bossManager.GetComponent<BossControlScript>();
+
+        cannonballHits = 0;
 	}
 	
 	// Update is called once per frame
@@ -58,6 +62,15 @@ public class PhaseControllerScript : MonoBehaviour {
             armIsDead = false;
             //ActivatePhase3();
         }
+
+        if (cannonballHits==3)
+        {
+            bossHead.transform.position += (Vector3.down*Time.deltaTime)*3;
+
+            ballSpawner.SetActive(false);
+            addSpawner.SetActive(false);
+            cannonball.SetActive(false);
+        }
 		
 	}
 
@@ -67,7 +80,7 @@ public class PhaseControllerScript : MonoBehaviour {
         bossManager.SetActive(false);
 
         //boss stops tracking player movement
-        bossHead.GetComponent<BossLookAt>().enabled = false;
+        //bossHead.GetComponent<BossLookAt>().enabled = false;
 
         //boss retreating
         bossHead.transform.position = Vector3.MoveTowards(bossHead.transform.position, retreatWaypoint.position, .2f);
