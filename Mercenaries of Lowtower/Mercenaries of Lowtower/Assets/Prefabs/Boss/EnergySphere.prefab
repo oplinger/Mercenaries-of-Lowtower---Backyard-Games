@@ -112,7 +112,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 87b1b567843aab5459795f1b38e59e07, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  chargeTime: 2
+  chargeTime: 1
+  isCharging: 0
+  energySphereSpawn: {fileID: 0}
+  bossHead: {fileID: 0}
 --- !u!122 &122926218818638886
 Halo:
   m_ObjectHideFlags: 1
@@ -195,7 +198,7 @@ ParticleSystem:
   moveWithTransform: 0
   moveWithCustomTransform: {fileID: 0}
   scalingMode: 1
-  randomSeed: -1246972337
+  randomSeed: 143079499
   InitialModule:
     serializedVersion: 3
     enabled: 1

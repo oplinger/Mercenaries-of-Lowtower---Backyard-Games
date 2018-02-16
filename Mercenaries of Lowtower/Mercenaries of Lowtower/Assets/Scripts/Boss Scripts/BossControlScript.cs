@@ -6,25 +6,14 @@ public class BossControlScript : MonoBehaviour {
 
     //Array holding all the bosses arms
     public List<GameObject> BossArmsList = new List<GameObject>();
-
-    // Current phase of the boss fight
-    public int bossAttack;
-    public int bossSlamAttack;
-    public int bossPhase;
-    // How long before the boss starts attacking
-    public float startTime;
-    // Holds the wait time for coroutines
-    private float waitTime;
-    public float restTime;
-    //
-    public bool isWaiting;
-    public int armsReady;
-    public bool bossReady;
+    public List<GameObject> BossBeamList = new List<GameObject>();
+    public GameObject Boss;
+    public GameObject BossHead;
+    public GameObject energySphere;
+    public Transform energySphereSpawn;
 
     // The speed at which the tentacle moves toward the waypoint
     public float beamSpeed;
-    // Float to control how long the arm is down
-    public float downTime;
     // The speed at which the tentacle elevates towards the endPoint
     public float elevationSpeed;
     // The speed at which the tentacle descends after slamming
@@ -32,10 +21,26 @@ public class BossControlScript : MonoBehaviour {
     // The amount the tentacle rotates per frame while slamming
     public float rotationSpeed;
 
-    public GameObject energySphere;
-    public bool energySphereReady;
+    // How long before the boss starts attacking
+    public float startTime;
+    // Holds the wait time for coroutines
+    private float waitTime;
+    // Float to control how long the arm is down
+    public float downTime;
 
-    public GameObject Boss;
+    //
+    public int bossPhase;
+    // Current phase of the boss fight
+    public int bossAttack;
+    public int armsReady;
+    public int beamsDone;
+
+
+    public bool isWaiting;
+    public bool bossReady;
+    public bool energySphereReady;
+    public bool beamActivated;
+    public bool beamAttackComplete;
 
     // Use this for initialization
     void Start()
@@ -53,17 +58,16 @@ public class BossControlScript : MonoBehaviour {
 
         if(bossPhase == 1)
         {
-            if (Boss.GetComponent<BossClass>().currentHealth <= 190)
+            beamActivated = false;
+            if (Boss.GetComponent<BossClass>().currentHealth <= 100)
             {
-                bossPhase = 2;
+                bossPhase = 5;
             }
             if (bossAttack == 1)
             {
                 BossArmsList[0].GetComponent<BossArmScript>().armRaising = true;
                 BossArmsList[1].GetComponent<BossArmScript>().armRaising = true;
                 BossArmsList[2].GetComponent<BossArmScript>().armRaising = true;
-                BossArmsList[3].GetComponent<BossArmScript>().armRaising = true;
-                BossArmsList[7].GetComponent<BossArmScript>().armRaising = true;
                 BossArmsList[8].GetComponent<BossArmScript>().armRaising = true;
                 BossArmsList[9].GetComponent<BossArmScript>().armRaising = true;
                 BossArmsList[10].GetComponent<BossArmScript>().armRaising = true;
@@ -72,11 +76,59 @@ public class BossControlScript : MonoBehaviour {
 
             if (bossAttack == 3)
             {
-                BossArmsList[3].GetComponent<BossArmScript>().armRaising = true;
                 BossArmsList[4].GetComponent<BossArmScript>().armRaising = true;
                 BossArmsList[5].GetComponent<BossArmScript>().armRaising = true;
                 BossArmsList[6].GetComponent<BossArmScript>().armRaising = true;
+                bossAttack++;
+            }
+
+            if (bossAttack == 5)
+            {
+                BossArmsList[0].GetComponent<BossArmScript>().armRaising = true;
+                BossArmsList[2].GetComponent<BossArmScript>().armRaising = true;
+                BossArmsList[3].GetComponent<BossArmScript>().armRaising = true;
                 BossArmsList[7].GetComponent<BossArmScript>().armRaising = true;
+                BossArmsList[8].GetComponent<BossArmScript>().armRaising = true;
+                BossArmsList[10].GetComponent<BossArmScript>().armRaising = true;
+                bossAttack++;
+            }
+
+            if (bossAttack == 7)
+            {
+                BossArmsList[1].GetComponent<BossArmScript>().armRaising = true;
+                BossArmsList[2].GetComponent<BossArmScript>().armRaising = true;
+                BossArmsList[4].GetComponent<BossArmScript>().armRaising = true;
+                BossArmsList[5].GetComponent<BossArmScript>().armRaising = true;
+                BossArmsList[6].GetComponent<BossArmScript>().armRaising = true;
+                BossArmsList[8].GetComponent<BossArmScript>().armRaising = true;
+                BossArmsList[9].GetComponent<BossArmScript>().armRaising = true;
+                bossAttack++;
+            }
+
+            if (bossAttack == 9)
+            {
+                BossArmsList[0].GetComponent<BossArmScript>().armRaising = true;
+                BossArmsList[1].GetComponent<BossArmScript>().armRaising = true;
+                BossArmsList[3].GetComponent<BossArmScript>().armRaising = true;
+                BossArmsList[4].GetComponent<BossArmScript>().armRaising = true;
+                BossArmsList[6].GetComponent<BossArmScript>().armRaising = true;
+                BossArmsList[7].GetComponent<BossArmScript>().armRaising = true;
+                BossArmsList[9].GetComponent<BossArmScript>().armRaising = true;
+                BossArmsList[10].GetComponent<BossArmScript>().armRaising = true;
+                bossAttack++;
+            }
+
+            if (bossAttack == 11)
+            {
+                BossArmsList[0].GetComponent<BossArmScript>().armRaising = true;
+                BossArmsList[1].GetComponent<BossArmScript>().armRaising = true;
+                BossArmsList[2].GetComponent<BossArmScript>().armRaising = true;
+                BossArmsList[4].GetComponent<BossArmScript>().armRaising = true;
+                BossArmsList[5].GetComponent<BossArmScript>().armRaising = true;
+                BossArmsList[6].GetComponent<BossArmScript>().armRaising = true;
+                BossArmsList[8].GetComponent<BossArmScript>().armRaising = true;
+                BossArmsList[9].GetComponent<BossArmScript>().armRaising = true;
+                BossArmsList[10].GetComponent<BossArmScript>().armRaising = true;
                 bossAttack++;
             }
 
@@ -94,23 +146,93 @@ public class BossControlScript : MonoBehaviour {
                     bossReady = false;
                 }
 
-                if (bossAttack == 5)
+                if (bossAttack == 6)
                 {
-                    bossAttack = 1;
+                    bossAttack = 7;
+                    bossReady = false;
+                }
+
+                if (bossAttack == 8)
+                {
+                    bossAttack = 9;
+                    bossReady = false;
+                }
+
+                if (bossAttack == 10)
+                {
+                    bossAttack = 11;
+                    bossReady = false;
+                }
+
+                if (bossAttack == 12)
+                {
+                    bossPhase = 2;
                     bossReady = false;
                 }
             }
         }
 
+        
         if (bossPhase == 2)
+        {
+            /*
+                BossArmsList[0].GetComponent<BossArmScript>().armRetreating = true;
+                BossArmsList[1].GetComponent<BossArmScript>().armRetreating = true;
+                BossArmsList[2].GetComponent<BossArmScript>().armRetreating = true;
+                BossArmsList[4].GetComponent<BossArmScript>().armRetreating = true;
+                BossArmsList[5].GetComponent<BossArmScript>().armRetreating = true;
+                BossArmsList[6].GetComponent<BossArmScript>().armRetreating = true;
+                BossArmsList[8].GetComponent<BossArmScript>().armRetreating = true;
+                BossArmsList[9].GetComponent<BossArmScript>().armRetreating = true;
+                BossArmsList[10].GetComponent<BossArmScript>().armRetreating = true;
+                */
+            bossAttack = 0;
+            bossPhase = 3;
+        }
+
+        if (bossPhase == 3)
+        {
+            if (energySphereReady == true)
+            {
+                BossHead.GetComponent<BossLookAt>().isCharging = false;
+                Instantiate(energySphere, energySphereSpawn.position, energySphereSpawn.rotation);
+                StartCoroutine("EnergySphereCD");
+                energySphereReady = false;
+            }
+
+            if (beamActivated == false)
+            {
+                BossBeamList[0].GetComponent<BeamTentacleScript>().beamAscending = true;
+                BossBeamList[1].GetComponent<BeamTentacleScript>().beamAscending = true;
+                BossBeamList[2].GetComponent<BeamTentacleScript>().beamAscending = true;
+                BossBeamList[3].GetComponent<BeamTentacleScript>().beamAscending = true;
+                beamActivated = true;
+            }
+
+            CheckBeams();
+
+            if (beamAttackComplete == true)
+            {
+                bossPhase = 4;
+                beamAttackComplete = false;
+            }
+        }
+
+        if(bossPhase == 4)
+        {
+            beamsDone = 0;
+            bossAttack = 5;
+            bossPhase = 1;
+        }
+
+        /*
+        if (bossPhase == 5)
         {
             if (bossAttack == 1)
             {
                 BossArmsList[0].GetComponent<BossArmScript>().armRetreating = true;
                 BossArmsList[1].GetComponent<BossArmScript>().armRetreating = true;
                 BossArmsList[2].GetComponent<BossArmScript>().armRetreating = true;
-                BossArmsList[3].GetComponent<BossArmScript>().armRetreating = true;
-                BossArmsList[7].GetComponent<BossArmScript>().armRetreating = true;
                 BossArmsList[8].GetComponent<BossArmScript>().armRetreating = true;
                 BossArmsList[9].GetComponent<BossArmScript>().armRetreating = true;
                 BossArmsList[10].GetComponent<BossArmScript>().armRetreating = true;
@@ -119,92 +241,98 @@ public class BossControlScript : MonoBehaviour {
 
             if (bossAttack == 3)
             {
-                BossArmsList[3].GetComponent<BossArmScript>().armRetreating = true;
                 BossArmsList[4].GetComponent<BossArmScript>().armRetreating = true;
                 BossArmsList[5].GetComponent<BossArmScript>().armRetreating = true;
                 BossArmsList[6].GetComponent<BossArmScript>().armRetreating = true;
-                BossArmsList[7].GetComponent<BossArmScript>().armRetreating = true;
                 bossAttack = 0;
+            }
+
+            if (bossAttack == 5)
+            {
+                BossArmsList[0].GetComponent<BossArmScript>().armRetreating = true;
+                BossArmsList[2].GetComponent<BossArmScript>().armRetreating = true;
+                BossArmsList[3].GetComponent<BossArmScript>().armRetreating = true;
+                BossArmsList[7].GetComponent<BossArmScript>().armRetreating = true;
+                BossArmsList[8].GetComponent<BossArmScript>().armRetreating = true;
+                BossArmsList[10].GetComponent<BossArmScript>().armRetreating = true;
+            }
+
+            if (bossAttack == 7)
+            {
+                BossArmsList[1].GetComponent<BossArmScript>().armRetreating = true;
+                BossArmsList[2].GetComponent<BossArmScript>().armRetreating = true;
+                BossArmsList[4].GetComponent<BossArmScript>().armRetreating = true;
+                BossArmsList[5].GetComponent<BossArmScript>().armRetreating = true;
+                BossArmsList[6].GetComponent<BossArmScript>().armRetreating = true;
+                BossArmsList[8].GetComponent<BossArmScript>().armRetreating = true;
+                BossArmsList[9].GetComponent<BossArmScript>().armRetreating = true;
+            }
+
+            if (bossAttack == 9)
+            {
+                BossArmsList[0].GetComponent<BossArmScript>().armRetreating = true;
+                BossArmsList[1].GetComponent<BossArmScript>().armRetreating = true;
+                BossArmsList[3].GetComponent<BossArmScript>().armRetreating = true;
+                BossArmsList[4].GetComponent<BossArmScript>().armRetreating = true;
+                BossArmsList[6].GetComponent<BossArmScript>().armRetreating = true;
+                BossArmsList[7].GetComponent<BossArmScript>().armRetreating = true;
+                BossArmsList[9].GetComponent<BossArmScript>().armRetreating = true;
+                BossArmsList[10].GetComponent<BossArmScript>().armRetreating = true;
+            }
+
+            if (bossAttack == 11)
+            {
+                BossArmsList[0].GetComponent<BossArmScript>().armRetreating = true;
+                BossArmsList[1].GetComponent<BossArmScript>().armRetreating = true;
+                BossArmsList[2].GetComponent<BossArmScript>().armRetreating = true;
+                BossArmsList[4].GetComponent<BossArmScript>().armRetreating = true;
+                BossArmsList[5].GetComponent<BossArmScript>().armRetreating = true;
+                BossArmsList[6].GetComponent<BossArmScript>().armRetreating = true;
+                BossArmsList[8].GetComponent<BossArmScript>().armRetreating = true;
+                BossArmsList[9].GetComponent<BossArmScript>().armRetreating = true;
+                BossArmsList[10].GetComponent<BossArmScript>().armRetreating = true;
             }
             StartCoroutine("PausePhase");
         }
-
-        if (bossPhase == 3)
-        {
-            if (energySphereReady == true)
-            {
-                Instantiate(energySphere);
-                StartCoroutine("EnergySphereCD");
-                energySphereReady = false;
-            }
-        }
-        /*
-        if (bossAttack == 5)
-        {
-            BossArmsList[0].GetComponent<BossArmScript>().armRaising = true;
-            BossArmsList[1].GetComponent<BossArmScript>().armRaising = true;
-            BossArmsList[2].GetComponent<BossArmScript>().armRaising = true;
-            BossArmsList[3].GetComponent<BossArmScript>().armRaising = true;
-            BossArmsList[4].GetComponent<BossArmScript>().armRaising = true;
-            BossArmsList[5].GetComponent<BossArmScript>().armRaising = true;
-            BossArmsList[6].GetComponent<BossArmScript>().armRaising = true;
-            BossArmsList[7].GetComponent<BossArmScript>().armRaising = true;
-            BossArmsList[8].GetComponent<BossArmScript>().armRaising = true;
-            BossArmsList[9].GetComponent<BossArmScript>().armRaising = true;
-            bossAttack++;
-        }
         */
 
-        /*
-        if (Input.GetKeyDown(KeyCode.R))
+        if(bossPhase == 6)
         {
-            BossArmsList[0].GetComponent<BossArmScript>().armRaising = true;
-            BossArmsList[2].GetComponent<BossArmScript>().armRaising = true;
-            BossArmsList[3].GetComponent<BossArmScript>().armRaising = true;
-            BossArmsList[5].GetComponent<BossArmScript>().armRaising = true;
+
         }
-
-        if (Input.GetKeyDown(KeyCode.Q))
-        {
-            BossArmsList[1].GetComponent<BossArmScript>().armRaising = true;
-            BossArmsList[4].GetComponent<BossArmScript>().armRaising = true;
-        }*/
-
-        /*if (isWaiting == false)
-        {
-            if (bossAttack == 1)
-            {
-                foreach (GameObject objects in BossArmsList)
-                {
-                    print("Arms up!");
-                    objects.GetComponent<BossArmScript>().armRaising = true;
-                }
-                isWaiting = true;
-            }
-        }*/
     }
 
     IEnumerator WaitTime()
     {
         yield return new WaitForSeconds(waitTime);
-        print("Waiting");
+        //print("Waiting");
         bossAttack++;
         isWaiting = false;
     }
 
+    /*
     IEnumerator PausePhase()
     {
-        yield return new WaitForSeconds(4);
-        bossPhase++;
-        StopCoroutine("PausePhase");
+        bossAttack = 0;
+        yield return new WaitForSeconds(2);
+        bossPhase = 3;
+        //StopCoroutine("PausePhase");
     }
+    */
 
     IEnumerator EnergySphereCD()
     {
-        yield return new WaitForSeconds(8);
+        yield return new WaitForSeconds(6);
         energySphereReady = true;
     }
 
+    public void CheckBeams()
+    {
+        if(beamsDone == 4)
+        {
+            beamAttackComplete = true;
+        }
+    }
 
     public void CheckIfReady()
     {
@@ -213,25 +341,60 @@ public class BossControlScript : MonoBehaviour {
             armsReady++;
             if (armsReady == 6)
             {
-                print("Ready!");
+                //print("Ready!");
                 bossReady = true;
                 armsReady = 0;
             }
-        } else if (bossAttack == 4)
+        }
+        if (bossAttack == 4)
         {
             armsReady++;
-            if (armsReady == 5)
+            if (armsReady == 3)
             {
-                print("Ready!");
+                //print("Ready!");
                 bossReady = true;
                 armsReady = 0;
             }
-        } else  if(bossAttack == 6)
+        }
+        if (bossAttack == 6)
         {
             armsReady++;
-            if (armsReady == 10)
+            if (armsReady == 6)
             {
-                print("Ready!");
+                //print("Ready!");
+                bossReady = true;
+                armsReady = 0;
+            }
+        }
+
+        if (bossAttack == 8)
+        {
+            armsReady++;
+            if (armsReady == 7)
+            {
+                //print("Ready!");
+                bossReady = true;
+                armsReady = 0;
+            }
+        }
+
+        if (bossAttack == 10)
+        {
+            armsReady++;
+            if (armsReady == 8)
+            {
+                //print("Ready!");
+                bossReady = true;
+                armsReady = 0;
+            }
+        }
+
+        if (bossAttack == 12)
+        {
+            armsReady++;
+            if (armsReady == 9)
+            {
+                //print("Ready!");
                 bossReady = true;
                 armsReady = 0;
             }

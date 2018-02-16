@@ -85,13 +85,14 @@ public class BossArmScript : BossClass {
         if(attackComplete == true)
         {
             BossManager.GetComponent<BossControlScript>().CheckIfReady();
-            print("Arm check!");
+            //print("Arm check!");
             attackComplete = false;
         }
         
         if (armRetreating == true)
         {
             armRotatingBackwardRetreat = true;
+            armRetreating = false;
         }
 
         if (armRotatingBackwardRetreat == true)

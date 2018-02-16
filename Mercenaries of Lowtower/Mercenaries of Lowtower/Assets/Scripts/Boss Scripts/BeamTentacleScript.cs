@@ -6,15 +6,34 @@ public class BeamTentacleScript : MonoBehaviour {
 
     // Original transform position
     Vector3 originPoint;
+    //
+    public Transform ascentEndPoint;
     // Transform for the waypoint of how far the beam will move
     public Transform beamEndPoint;
     // The speed at which the tentacle moves toward the waypoint
     public float beamSpeed;
+    //
+    public float beamAscentSpeed;
+    //
+    public float beamDescentSpeed;
+    //
+    public bool ascentPointReached;
     // bool to check if the endPoint has been reached
     public bool endPointReached;
-
     // Holds a reference to the BossManager game object
     public GameObject BossManager;
+    //
+    public bool beamAscending;
+    //
+    public bool beamDescending;
+    //
+    public bool beamAdvancing;
+    //
+    public bool beamReturning;
+    //
+    public int numDescents;
+    //
+    public int descentCap;
 
     // Use this for initialization
     void Start () {
@@ -25,17 +44,60 @@ public class BeamTentacleScript : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-        if(endPointReached == false)
+        if (beamAscending == true)
         {
-            MoveBeam();
+            RaiseBeam();
         }
-        if(endPointReached == true)
+
+        if (beamAdvancing == true)
+        {
+            AdvanceBeam();
+        }
+
+        if (beamReturning == true)
         {
             ReturnBeam();
         }
+
+
+        if (beamDescending == true)
+        {
+            LowerBeam();
+        }
+
+        if(endPointReached == true)
+        {
+            BossManager.GetComponent<BossControlScript>().beamsDone++;
+            numDescents = 0;
+            endPointReached = false;
+        }
+
+        /*
+        if (attackComplete == true)
+        {
+            BossManager.GetComponent<BossControlScript>().CheckIfReady();
+            print("Arm check!");
+            attackComplete = false;
+        }
+        */
     }
 
-    void MoveBeam()
+    void RaiseBeam()
+    {
+        // Multiplies the elevation speed by time
+        float upStep = beamAscentSpeed * Time.deltaTime;
+        // Moves the arm up towards the endPoint at a set speed
+        //transform.position = Vector3.MoveTowards(transform.position, endPoint, upStep);
+        transform.position = Vector3.MoveTowards(transform.position, ascentEndPoint.transform.position, upStep);
+
+        if (transform.position == ascentEndPoint.transform.position)
+        {
+            beamAdvancing = true;
+            beamAscending = false;
+        }
+    }
+
+    void AdvanceBeam()
     {
         // Multiplies the elevation speed by time
         float step = beamSpeed * Time.deltaTime;
@@ -44,7 +106,8 @@ public class BeamTentacleScript : MonoBehaviour {
 
         if (transform.position == beamEndPoint.transform.position)
         {
-            endPointReached = true;
+            beamReturning = true;
+            beamAdvancing = false;
         }
     }
 
@@ -53,11 +116,34 @@ public class BeamTentacleScript : MonoBehaviour {
         // Multiplies the elevation speed by time
         float step = beamSpeed * Time.deltaTime;
         // Moves the arm up towards the endPoint at a set speed
-        transform.position = Vector3.MoveTowards(transform.position, originPoint, step);
+        transform.position = Vector3.MoveTowards(transform.position, ascentEndPoint.transform.position, step);
+
+        if (transform.position == ascentEndPoint.transform.position)
+        {
+            beamDescending = true;
+            beamReturning = false;
+        }
+    }
+
+    void LowerBeam()
+    {
+        // Multiplies the elevation speed by time
+        float downStep = beamDescentSpeed * Time.deltaTime;
+        // Moves the arm up towards the endPoint at a set speed
+        transform.position = Vector3.MoveTowards(transform.position, originPoint, downStep);
 
         if (transform.position == originPoint)
         {
-            endPointReached = false;
+            beamDescending = false;
+            numDescents++;
+            if (numDescents < descentCap)
+            {
+                beamAscending = true;
+            }
+            else
+            {
+                endPointReached = true;
+            }
         }
     }
 }
