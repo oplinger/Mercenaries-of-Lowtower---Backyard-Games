@@ -42,6 +42,8 @@ public class BossControlScript : MonoBehaviour {
     public bool beamActivated;
     public bool beamAttackComplete;
 
+    public bool bossDamaged;
+
     // Use this for initialization
     void Start()
     {
@@ -59,9 +61,10 @@ public class BossControlScript : MonoBehaviour {
         if(bossPhase == 1)
         {
             beamActivated = false;
-            if (Boss.GetComponent<BossClass>().currentHealth <= 100)
+            if (Boss.GetComponent<BossClass>().currentHealth <= 195 && bossDamaged == false)
             {
                 bossPhase = 5;
+                bossDamaged = true;
             }
             if (bossAttack == 1)
             {
@@ -175,17 +178,6 @@ public class BossControlScript : MonoBehaviour {
         
         if (bossPhase == 2)
         {
-            /*
-                BossArmsList[0].GetComponent<BossArmScript>().armRetreating = true;
-                BossArmsList[1].GetComponent<BossArmScript>().armRetreating = true;
-                BossArmsList[2].GetComponent<BossArmScript>().armRetreating = true;
-                BossArmsList[4].GetComponent<BossArmScript>().armRetreating = true;
-                BossArmsList[5].GetComponent<BossArmScript>().armRetreating = true;
-                BossArmsList[6].GetComponent<BossArmScript>().armRetreating = true;
-                BossArmsList[8].GetComponent<BossArmScript>().armRetreating = true;
-                BossArmsList[9].GetComponent<BossArmScript>().armRetreating = true;
-                BossArmsList[10].GetComponent<BossArmScript>().armRetreating = true;
-                */
             bossAttack = 0;
             bossPhase = 3;
         }
@@ -225,80 +217,50 @@ public class BossControlScript : MonoBehaviour {
             bossPhase = 1;
         }
 
-        /*
+        
         if (bossPhase == 5)
         {
-            if (bossAttack == 1)
+            if (bossAttack == 2)
             {
-                BossArmsList[0].GetComponent<BossArmScript>().armRetreating = true;
-                BossArmsList[1].GetComponent<BossArmScript>().armRetreating = true;
-                BossArmsList[2].GetComponent<BossArmScript>().armRetreating = true;
-                BossArmsList[8].GetComponent<BossArmScript>().armRetreating = true;
-                BossArmsList[9].GetComponent<BossArmScript>().armRetreating = true;
-                BossArmsList[10].GetComponent<BossArmScript>().armRetreating = true;
                 bossAttack = 0;
+                bossPhase = 6;
             }
 
-            if (bossAttack == 3)
+            if (bossAttack == 4)
             {
-                BossArmsList[4].GetComponent<BossArmScript>().armRetreating = true;
-                BossArmsList[5].GetComponent<BossArmScript>().armRetreating = true;
-                BossArmsList[6].GetComponent<BossArmScript>().armRetreating = true;
                 bossAttack = 0;
+                bossPhase = 6;
             }
 
-            if (bossAttack == 5)
+            if (bossAttack == 6)
             {
-                BossArmsList[0].GetComponent<BossArmScript>().armRetreating = true;
-                BossArmsList[2].GetComponent<BossArmScript>().armRetreating = true;
-                BossArmsList[3].GetComponent<BossArmScript>().armRetreating = true;
-                BossArmsList[7].GetComponent<BossArmScript>().armRetreating = true;
-                BossArmsList[8].GetComponent<BossArmScript>().armRetreating = true;
-                BossArmsList[10].GetComponent<BossArmScript>().armRetreating = true;
+                bossAttack = 0;
+                bossPhase = 6;
             }
 
-            if (bossAttack == 7)
+            if (bossAttack == 8)
             {
-                BossArmsList[1].GetComponent<BossArmScript>().armRetreating = true;
-                BossArmsList[2].GetComponent<BossArmScript>().armRetreating = true;
-                BossArmsList[4].GetComponent<BossArmScript>().armRetreating = true;
-                BossArmsList[5].GetComponent<BossArmScript>().armRetreating = true;
-                BossArmsList[6].GetComponent<BossArmScript>().armRetreating = true;
-                BossArmsList[8].GetComponent<BossArmScript>().armRetreating = true;
-                BossArmsList[9].GetComponent<BossArmScript>().armRetreating = true;
+                bossAttack = 0;
+                bossPhase = 6;
             }
 
-            if (bossAttack == 9)
+            if (bossAttack == 10)
             {
-                BossArmsList[0].GetComponent<BossArmScript>().armRetreating = true;
-                BossArmsList[1].GetComponent<BossArmScript>().armRetreating = true;
-                BossArmsList[3].GetComponent<BossArmScript>().armRetreating = true;
-                BossArmsList[4].GetComponent<BossArmScript>().armRetreating = true;
-                BossArmsList[6].GetComponent<BossArmScript>().armRetreating = true;
-                BossArmsList[7].GetComponent<BossArmScript>().armRetreating = true;
-                BossArmsList[9].GetComponent<BossArmScript>().armRetreating = true;
-                BossArmsList[10].GetComponent<BossArmScript>().armRetreating = true;
+                bossAttack = 0;
+                bossPhase = 6;
             }
 
-            if (bossAttack == 11)
+            if (bossAttack == 12)
             {
-                BossArmsList[0].GetComponent<BossArmScript>().armRetreating = true;
-                BossArmsList[1].GetComponent<BossArmScript>().armRetreating = true;
-                BossArmsList[2].GetComponent<BossArmScript>().armRetreating = true;
-                BossArmsList[4].GetComponent<BossArmScript>().armRetreating = true;
-                BossArmsList[5].GetComponent<BossArmScript>().armRetreating = true;
-                BossArmsList[6].GetComponent<BossArmScript>().armRetreating = true;
-                BossArmsList[8].GetComponent<BossArmScript>().armRetreating = true;
-                BossArmsList[9].GetComponent<BossArmScript>().armRetreating = true;
-                BossArmsList[10].GetComponent<BossArmScript>().armRetreating = true;
+                bossAttack = 0;
+                bossPhase = 6;
             }
-            StartCoroutine("PausePhase");
         }
-        */
+        
 
         if(bossPhase == 6)
         {
-
+            //print("PHASE 6!");
         }
     }
 

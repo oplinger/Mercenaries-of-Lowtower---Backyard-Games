@@ -35,7 +35,7 @@ public class PhaseControllerScript : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 
-        if (bossScript.bossPhase==2)
+        if (bossScript.bossPhase==6)
         {
             print("phase 2 on phase manager active");
             ActivatePhase2();
@@ -65,6 +65,9 @@ public class PhaseControllerScript : MonoBehaviour {
     {
         //stop boss from attacking
         bossManager.SetActive(false);
+
+        //boss stops tracking player movement
+        bossHead.GetComponent<BossLookAt>().enabled = false;
 
         //boss retreating
         bossHead.transform.position = Vector3.MoveTowards(bossHead.transform.position, retreatWaypoint.position, .2f);
