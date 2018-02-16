@@ -17,7 +17,7 @@ public class TankArm : MonoBehaviour {
 	void Update () {
         Debug.DrawRay(armJoint[2].transform.position, armJoint[2].transform.forward * 10);
 
-        if (Input.GetKeyDown("f"))
+        if (Input.GetKeyDown("joystick " + 1 + " button " + "1"))
         {
             RaycastHit hit;
             Physics.Raycast(armJoint[2].transform.position, armJoint[2].transform.forward*10, out hit, 10, tankArmMask, QueryTriggerInteraction.Ignore);
@@ -41,7 +41,7 @@ public class TankArm : MonoBehaviour {
         }
         // Tags or names can be used to create different actions. Or call different functions. (functions would be more efficient). So the arm can grab minions, and pull them back to the tank. Replace target with an overlap sphere array
         // and you can grab multiple. 
-        if (Input.GetKeyUp("f"))
+        if (Input.GetKeyDown("joystick " + 1 + " button " + "1"))
         {
             if (target != null)
             {

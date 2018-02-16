@@ -67,6 +67,7 @@ public class TankClass : PlayerClass
         if (Input.GetKeyDown("joystick " + CTRLID + " button " + buttons["Bbutton"]))
         {
             buttonB();
+            print(("joystick " + CTRLID + " button " + buttons["Bbutton"]));
         }
         if (Input.GetKey("joystick " + CTRLID + " button " + buttons["Xbutton"]))
         {

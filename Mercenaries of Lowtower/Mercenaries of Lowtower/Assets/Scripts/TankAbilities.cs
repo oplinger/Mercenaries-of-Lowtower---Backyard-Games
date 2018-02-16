@@ -7,6 +7,13 @@ public class TankAbilities : MonoBehaviour
     protected TankClass baseClass;
 
 
+    public GameObject[] armJoint;
+    public GameObject target;
+    public Vector3 offset;
+    public Vector3[] defaultJointPosition;
+    public LayerMask tankArmMask;
+    public bool tankPulling;
+
 
     private void Awake()
     {
@@ -38,18 +45,26 @@ public class TankAbilities : MonoBehaviour
     //}
     public void TankMagnet()
     {
-        print("something");
-        Collider[] col = Physics.OverlapCapsule(transform.position, transform.position + (transform.forward * baseClass.magnetDistance), baseClass.magnetDiameter, baseClass.lMask, QueryTriggerInteraction.Collide);
-        Debug.DrawLine(transform.position, transform.position + (transform.forward * baseClass.magnetDistance));
-        for (int i = 0; i < col.Length; i++)
-        {
-            if (Vector3.Distance(col[i].gameObject.transform.position, transform.position) > 5)
-            {
 
-                col[i].gameObject.transform.position = Vector3.MoveTowards(new Vector3(col[i].gameObject.transform.position.x, col[i].gameObject.transform.position.y, col[i].gameObject.transform.position.z), new Vector3(transform.position.x, col[i].gameObject.transform.position.y, transform.position.z), baseClass.pullSpeed);
 
-            }
-        }
+
+
+
+
+
+
+        //print("something");
+        //Collider[] col = Physics.OverlapCapsule(transform.position, transform.position + (transform.forward * baseClass.magnetDistance), baseClass.magnetDiameter, baseClass.lMask, QueryTriggerInteraction.Collide);
+        //Debug.DrawLine(transform.position, transform.position + (transform.forward * baseClass.magnetDistance));
+        //for (int i = 0; i < col.Length; i++)
+        //{
+        //    if (Vector3.Distance(col[i].gameObject.transform.position, transform.position) > 5)
+        //    {
+
+        //        col[i].gameObject.transform.position = Vector3.MoveTowards(new Vector3(col[i].gameObject.transform.position.x, col[i].gameObject.transform.position.y, col[i].gameObject.transform.position.z), new Vector3(transform.position.x, col[i].gameObject.transform.position.y, transform.position.z), baseClass.pullSpeed);
+
+        //    }
+        //}
 
 
 
