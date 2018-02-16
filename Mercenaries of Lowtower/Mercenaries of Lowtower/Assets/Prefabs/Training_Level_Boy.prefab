@@ -638,7 +638,7 @@ GameObject:
   - component: {fileID: 23408344796177956}
   - component: {fileID: 95389941136686930}
   - component: {fileID: 65750760822868960}
-  m_Layer: 0
+  m_Layer: 11
   m_Name: Barrel (45)
   m_TagString: Tentacle
   m_Icon: {fileID: 0}
@@ -949,9 +949,10 @@ GameObject:
   - component: {fileID: 23690668009623412}
   - component: {fileID: 95923413665688426}
   - component: {fileID: 65528285108384050}
+  - component: {fileID: 114682135966431074}
   m_Layer: 0
-  m_Name: Barrel (53)
-  m_TagString: Untagged
+  m_Name: The_Barrel
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -5229,6 +5230,25 @@ MonoBehaviour:
   shielded: 0
   foundShield: {fileID: 0}
   isDead: 0
+--- !u!114 &114682135966431074
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1651980696579622}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 611f9da985124e24f8188d7eb104bd63, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxHealth: 5
+  currentHealth: 0
+  shielded: 0
+  isStunned: 0
+  tempMoveSpeed: 0
+  moveSpeed: 0
+  breakableMat: {fileID: 0}
+  breakable: 1
 --- !u!114 &114826575282244450
 MonoBehaviour:
   m_ObjectHideFlags: 1

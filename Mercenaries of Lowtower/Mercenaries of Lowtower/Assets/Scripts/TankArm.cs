@@ -20,7 +20,7 @@ public class TankArm : MonoBehaviour {
         if (Input.GetKeyDown("f"))
         {
             RaycastHit hit;
-            Physics.Raycast(armJoint[2].transform.position, armJoint[2].transform.forward*10, out hit, 10);
+            Physics.Raycast(armJoint[2].transform.position, armJoint[2].transform.forward*10, out hit, 10, tankArmMask, QueryTriggerInteraction.Ignore);
 
             for (int i = 0; i < armJoint.Length; i++)
             {
