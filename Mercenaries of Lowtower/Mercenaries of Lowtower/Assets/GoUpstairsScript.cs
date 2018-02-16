@@ -5,9 +5,11 @@ using UnityEngine.SceneManagement;
 
 public class GoUpstairsScript : MonoBehaviour {
 
+    public int playerCount;
+
 	// Use this for initialization
 	void Start () {
-		
+        playerCount = 0;
 	}
 	
 	// Update is called once per frame
@@ -20,8 +22,19 @@ public class GoUpstairsScript : MonoBehaviour {
         print("something has entered");
         if (other.tag=="Player")
         {
+            playerCount += 1;
+            if (playerCount == 4)
+            {
+                SceneManager.LoadScene(1);
+            }
+        }
+    }
 
-            SceneManager.LoadScene(1);
+    private void OnTriggerExit(Collider other)
+    {
+        if (other.tag=="Player")
+        {
+            playerCount -= 1;
         }
     }
 }

@@ -108,6 +108,11 @@ NavMeshSettings:
     tileSize: 256
     accuratePlacement: 0
   m_NavMeshData: {fileID: 0}
+--- !u!1 &1357687 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 1636794673031672, guid: 0c5008841bc791b4892bd77ee2f28cb8,
+    type: 2}
+  m_PrefabInternal: {fileID: 1800442467}
 --- !u!1 &1524315
 GameObject:
   m_ObjectHideFlags: 0
@@ -185,6 +190,11 @@ RectTransform:
   m_PrefabParentObject: {fileID: 224786242638896556, guid: e116e053888fb9644a31ee5f200cdbd9,
     type: 2}
   m_PrefabInternal: {fileID: 825890276}
+--- !u!1 &96164364 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 1315974055946988, guid: 0c5008841bc791b4892bd77ee2f28cb8,
+    type: 2}
+  m_PrefabInternal: {fileID: 1800442467}
 --- !u!1 &100885111
 GameObject:
   m_ObjectHideFlags: 0
@@ -2588,6 +2598,33 @@ Prefab:
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: b864a46051047c3438a00bf292e57296, type: 2}
   m_IsPrefabParent: 0
+--- !u!1 &596553832 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 1719371628321446, guid: 0c5008841bc791b4892bd77ee2f28cb8,
+    type: 2}
+  m_PrefabInternal: {fileID: 1800442467}
+--- !u!114 &596553834
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 596553832}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e22778fae1c034f43bcde8bc72ad474b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  rollingBarrels:
+  - {fileID: 1507882553}
+  - {fileID: 96164364}
+  - {fileID: 1357687}
+  - {fileID: 604460454}
+  phaseScript: {fileID: 729866414}
+--- !u!1 &604460454 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 1255176111530158, guid: 0c5008841bc791b4892bd77ee2f28cb8,
+    type: 2}
+  m_PrefabInternal: {fileID: 1800442467}
 --- !u!1 &633089450
 GameObject:
   m_ObjectHideFlags: 0
@@ -2777,6 +2814,7 @@ MonoBehaviour:
   cannonFired: 0
   ballSpawner: {fileID: 1089168705}
   bossManager: {fileID: 1304972857}
+  bossOriginalposition: {x: 0, y: 0, z: 0}
   cameraPosition2: {fileID: 1019332276}
   doors:
   - {fileID: 649578246}
@@ -9644,6 +9682,11 @@ MonoBehaviour:
   shielded: 0
   foundShield: {fileID: 0}
   isDead: 0
+--- !u!1 &1507882553 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 1015667710370868, guid: 0c5008841bc791b4892bd77ee2f28cb8,
+    type: 2}
+  m_PrefabInternal: {fileID: 1800442467}
 --- !u!1 &1510424911
 GameObject:
   m_ObjectHideFlags: 0

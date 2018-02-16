@@ -17,7 +17,7 @@ public class PhaseControllerScript : MonoBehaviour {
 
     public GameObject bossManager;
 
-    Vector3 bossOriginalposition;
+    public Vector3 bossOriginalposition;
     public Transform cameraPosition2;
     BossControlScript bossScript;
     public GameObject[] doors;
@@ -56,7 +56,7 @@ public class PhaseControllerScript : MonoBehaviour {
         if (cannonFired)
         {
             armIsDead = false;
-            ActivatePhase3();
+            //ActivatePhase3();
         }
 		
 	}
@@ -90,11 +90,10 @@ public class PhaseControllerScript : MonoBehaviour {
 
     public void ActivatePhase3()
     {
-        print("phase activated");
-        //stop boss from attacking
+        //allow boss to attack again
         bossManager.SetActive(true);
 
-        //boss retreating
+        //boss coming back to the field
         bossHead.transform.position = Vector3.MoveTowards(bossHead.transform.position, bossOriginalposition, .2f);
     }
 }
