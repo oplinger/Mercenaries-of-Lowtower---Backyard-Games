@@ -32,8 +32,19 @@ public class ShieldScript : MonoBehaviour {
     //    // }
     }
 
+    private void OnTriggerStay(Collider other)
+    {
+        if (other.tag == "Enemy")
+        {
+            print("enemy inside shield");
+            other.GetComponent<Rigidbody>().AddForce(other.transform.forward * -25, ForceMode.Impulse);
+        }
+
+    }
+
     private void OnTriggerEnter(Collider other)
     {
+
 
         if (other.name=="Tank Character(Clone)")
         {

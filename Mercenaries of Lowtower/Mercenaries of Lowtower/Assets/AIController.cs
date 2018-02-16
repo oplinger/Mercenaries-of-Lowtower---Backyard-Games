@@ -7,8 +7,8 @@ public class AIController : EntityClass
 
     public Transform Player;
     //public int MoveSpeed = 8; //Speed 4
-    int MaxDist = 10;
-    int MinDist = 4;
+    int MaxDist = 5;
+    int MinDist = 2;
 
 
     public float stunTimer;
