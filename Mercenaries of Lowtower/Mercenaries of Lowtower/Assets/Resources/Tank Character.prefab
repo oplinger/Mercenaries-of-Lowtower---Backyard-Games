@@ -1362,6 +1362,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eff9975f7466c7c4f851f24a1c359f77, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  armJoint:
+  - {fileID: 1764759459417114}
+  - {fileID: 1008277295350072}
+  - {fileID: 1196580848792164}
+  target: {fileID: 0}
+  offset: {x: 0, y: 0, z: 0}
+  defaultJointPosition:
+  - {x: 0, y: 0, z: 0}
+  - {x: 0, y: 0, z: 0}
+  - {x: 0, y: 0, z: 0}
+  tankArmMask:
+    serializedVersion: 2
+    m_Bits: 0
+  tankPulling: 0
 --- !u!114 &114263599344392354
 MonoBehaviour:
   m_ObjectHideFlags: 1
