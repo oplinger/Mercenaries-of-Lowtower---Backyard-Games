@@ -288,6 +288,7 @@ GameObject:
   - component: {fileID: 4572702513362288}
   - component: {fileID: 114514202637417222}
   - component: {fileID: 65041134101087506}
+  - component: {fileID: 54571289600119654}
   m_Layer: 0
   m_Name: Boss Tentacle (6)
   m_TagString: Tentacle
@@ -428,6 +429,7 @@ GameObject:
   - component: {fileID: 4194847536955026}
   - component: {fileID: 114373269089491692}
   - component: {fileID: 65103540012593016}
+  - component: {fileID: 54845456892790148}
   m_Layer: 0
   m_Name: Boss Tentacle (5)
   m_TagString: Tentacle
@@ -463,6 +465,7 @@ GameObject:
   - component: {fileID: 4290585567975292}
   - component: {fileID: 114288963373458458}
   - component: {fileID: 65249374445013674}
+  - component: {fileID: 54137319812252604}
   m_Layer: 0
   m_Name: Boss Tentacle (11)
   m_TagString: Tentacle
@@ -677,6 +680,7 @@ GameObject:
   - component: {fileID: 4232233061460212}
   - component: {fileID: 114939538848182630}
   - component: {fileID: 65035769983496600}
+  - component: {fileID: 54418598224039064}
   m_Layer: 0
   m_Name: Boss Tentacle (3)
   m_TagString: Tentacle
@@ -724,6 +728,7 @@ GameObject:
   - component: {fileID: 4759579243937694}
   - component: {fileID: 114333225947642112}
   - component: {fileID: 65648385493459412}
+  - component: {fileID: 54497938978581094}
   m_Layer: 0
   m_Name: Boss Tentacle (2)
   m_TagString: Tentacle
@@ -741,6 +746,7 @@ GameObject:
   - component: {fileID: 4797958256735486}
   - component: {fileID: 114887396912922170}
   - component: {fileID: 65270371980919110}
+  - component: {fileID: 54975124053671560}
   m_Layer: 0
   m_Name: Boss Tentacle (7)
   m_TagString: Tentacle
@@ -895,6 +901,7 @@ GameObject:
   - component: {fileID: 4289146244322370}
   - component: {fileID: 114508176946061742}
   - component: {fileID: 65823825916404956}
+  - component: {fileID: 54283924446746160}
   m_Layer: 0
   m_Name: Boss Tentacle (1)
   m_TagString: Tentacle
@@ -930,6 +937,7 @@ GameObject:
   - component: {fileID: 4293263071253368}
   - component: {fileID: 114296631744532234}
   - component: {fileID: 65956069745696786}
+  - component: {fileID: 54751470848879968}
   m_Layer: 0
   m_Name: Boss Tentacle (4)
   m_TagString: Tentacle
@@ -1015,6 +1023,7 @@ GameObject:
   - component: {fileID: 4844799736051244}
   - component: {fileID: 114078542268993808}
   - component: {fileID: 65706253622671028}
+  - component: {fileID: 54484950135061576}
   m_Layer: 0
   m_Name: Boss Tentacle (9)
   m_TagString: Tentacle
@@ -1032,6 +1041,7 @@ GameObject:
   - component: {fileID: 4546880667982210}
   - component: {fileID: 114390439134737864}
   - component: {fileID: 65402405168494754}
+  - component: {fileID: 54603785258813820}
   m_Layer: 0
   m_Name: Boss Tentacle (8)
   m_TagString: Tentacle
@@ -1121,6 +1131,7 @@ GameObject:
   - component: {fileID: 4828416694522320}
   - component: {fileID: 114661807909322748}
   - component: {fileID: 65994236522645118}
+  - component: {fileID: 54654092545027690}
   m_Layer: 0
   m_Name: Boss Tentacle (10)
   m_TagString: Tentacle
@@ -3732,6 +3743,171 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1896580857454550}
   m_Mesh: {fileID: 10208, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!54 &54137319812252604
+Rigidbody:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1543846301205150}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 0
+  m_IsKinematic: 1
+  m_Interpolate: 0
+  m_Constraints: 126
+  m_CollisionDetection: 0
+--- !u!54 &54283924446746160
+Rigidbody:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1805024545056100}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 0
+  m_IsKinematic: 1
+  m_Interpolate: 0
+  m_Constraints: 126
+  m_CollisionDetection: 0
+--- !u!54 &54418598224039064
+Rigidbody:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1692198433911900}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 0
+  m_IsKinematic: 1
+  m_Interpolate: 0
+  m_Constraints: 126
+  m_CollisionDetection: 0
+--- !u!54 &54484950135061576
+Rigidbody:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1862961712599330}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 0
+  m_IsKinematic: 1
+  m_Interpolate: 0
+  m_Constraints: 126
+  m_CollisionDetection: 0
+--- !u!54 &54497938978581094
+Rigidbody:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1714421381970578}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 0
+  m_IsKinematic: 1
+  m_Interpolate: 0
+  m_Constraints: 126
+  m_CollisionDetection: 0
+--- !u!54 &54571289600119654
+Rigidbody:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1255345736192364}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 0
+  m_IsKinematic: 1
+  m_Interpolate: 0
+  m_Constraints: 126
+  m_CollisionDetection: 0
+--- !u!54 &54603785258813820
+Rigidbody:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1869456836877990}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 0
+  m_IsKinematic: 1
+  m_Interpolate: 0
+  m_Constraints: 126
+  m_CollisionDetection: 0
+--- !u!54 &54654092545027690
+Rigidbody:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1956788060668916}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 0
+  m_IsKinematic: 1
+  m_Interpolate: 0
+  m_Constraints: 126
+  m_CollisionDetection: 0
+--- !u!54 &54751470848879968
+Rigidbody:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1816489268064452}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 0
+  m_IsKinematic: 1
+  m_Interpolate: 0
+  m_Constraints: 126
+  m_CollisionDetection: 0
+--- !u!54 &54845456892790148
+Rigidbody:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1503545879616446}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 0
+  m_IsKinematic: 1
+  m_Interpolate: 0
+  m_Constraints: 126
+  m_CollisionDetection: 0
+--- !u!54 &54975124053671560
+Rigidbody:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1721768428101542}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 0
+  m_IsKinematic: 1
+  m_Interpolate: 0
+  m_Constraints: 126
+  m_CollisionDetection: 0
 --- !u!65 &65035769983496600
 BoxCollider:
   m_ObjectHideFlags: 1
@@ -3823,7 +3999,7 @@ BoxCollider:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1862961712599330}
   m_Material: {fileID: 0}
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 3, y: 48, z: 3}
@@ -3878,6 +4054,9 @@ MonoBehaviour:
   maxHealth: 0
   currentHealth: 0
   shielded: 0
+  isStunned: 0
+  tempMoveSpeed: 0
+  moveSpeed: 0
   TentacleMaxHealth: []
   TentacleCurrentHealth: []
   tentacleHealthDelta: 0
@@ -3912,6 +4091,9 @@ MonoBehaviour:
   maxHealth: 0
   currentHealth: 0
   shielded: 0
+  isStunned: 0
+  tempMoveSpeed: 0
+  moveSpeed: 0
   TentacleMaxHealth: []
   TentacleCurrentHealth: []
   tentacleHealthDelta: 0
@@ -3946,6 +4128,9 @@ MonoBehaviour:
   maxHealth: 0
   currentHealth: 0
   shielded: 0
+  isStunned: 0
+  tempMoveSpeed: 0
+  moveSpeed: 0
   TentacleMaxHealth: []
   TentacleCurrentHealth: []
   tentacleHealthDelta: 0
@@ -3980,6 +4165,9 @@ MonoBehaviour:
   maxHealth: 0
   currentHealth: 0
   shielded: 0
+  isStunned: 0
+  tempMoveSpeed: 0
+  moveSpeed: 0
   TentacleMaxHealth: []
   TentacleCurrentHealth: []
   tentacleHealthDelta: 0
@@ -4014,6 +4202,9 @@ MonoBehaviour:
   maxHealth: 0
   currentHealth: 0
   shielded: 0
+  isStunned: 0
+  tempMoveSpeed: 0
+  moveSpeed: 0
   TentacleMaxHealth: []
   TentacleCurrentHealth: []
   tentacleHealthDelta: 0
@@ -4048,6 +4239,9 @@ MonoBehaviour:
   maxHealth: 0
   currentHealth: 0
   shielded: 0
+  isStunned: 0
+  tempMoveSpeed: 0
+  moveSpeed: 0
   TentacleMaxHealth: []
   TentacleCurrentHealth: []
   tentacleHealthDelta: 0
@@ -4123,6 +4317,9 @@ MonoBehaviour:
   maxHealth: 0
   currentHealth: 0
   shielded: 0
+  isStunned: 0
+  tempMoveSpeed: 0
+  moveSpeed: 0
   TentacleMaxHealth: []
   TentacleCurrentHealth: []
   tentacleHealthDelta: 0
@@ -4157,6 +4354,9 @@ MonoBehaviour:
   maxHealth: 0
   currentHealth: 0
   shielded: 0
+  isStunned: 0
+  tempMoveSpeed: 0
+  moveSpeed: 0
   TentacleMaxHealth: []
   TentacleCurrentHealth: []
   tentacleHealthDelta: 0
@@ -4252,6 +4452,9 @@ MonoBehaviour:
   maxHealth: 0
   currentHealth: 0
   shielded: 0
+  isStunned: 0
+  tempMoveSpeed: 0
+  moveSpeed: 0
   TentacleMaxHealth: []
   TentacleCurrentHealth: []
   tentacleHealthDelta: 0
@@ -4336,6 +4539,9 @@ MonoBehaviour:
   maxHealth: 0
   currentHealth: 0
   shielded: 0
+  isStunned: 0
+  tempMoveSpeed: 0
+  moveSpeed: 0
   TentacleMaxHealth: []
   TentacleCurrentHealth: []
   tentacleHealthDelta: 0
@@ -4370,6 +4576,9 @@ MonoBehaviour:
   maxHealth: 0
   currentHealth: 0
   shielded: 0
+  isStunned: 0
+  tempMoveSpeed: 0
+  moveSpeed: 0
   TentacleMaxHealth: []
   TentacleCurrentHealth: []
   tentacleHealthDelta: 0
@@ -4410,6 +4619,9 @@ MonoBehaviour:
   maxHealth: 0
   currentHealth: 0
   shielded: 0
+  isStunned: 0
+  tempMoveSpeed: 0
+  moveSpeed: 0
   TentacleMaxHealth: []
   TentacleCurrentHealth: []
   tentacleHealthDelta: 0

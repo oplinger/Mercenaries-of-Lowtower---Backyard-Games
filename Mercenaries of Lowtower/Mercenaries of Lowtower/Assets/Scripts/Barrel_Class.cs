@@ -24,7 +24,7 @@ public class Barrel_Class : EnemyClass {
         rend = GetComponent<Renderer>();
         breakableMat = rend.material;
         lastFrameHealth = currentHealth;
-        target = barrelWaypoints[0];
+        //target = barrelWaypoints[0];
 
     }
 

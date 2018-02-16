@@ -95,7 +95,7 @@ public class UIController : MonoBehaviour
 
 
 
-        print(playerCurrentHealth[0]);
+        //print(playerCurrentHealth[0]);
         //print(playerCurrentHealth[1]);
         //print(playerCurrentHealth[2]);
         //print(playerCurrentHealth[3]);

@@ -200,11 +200,21 @@ public class BossArmScript : BossClass {
     }
 
 
-    public void OnTriggerEnter(Collider other)
+    public void OnCollisionEnter( Collision other)
     {
-        if (other.tag == "Player" && armRotatingForward == true)
+
+        if (other.collider.gameObject.tag == "Player" && armRotatingForward == true)
         {
-           other.GetComponent<IDamageable<float>>().TakeDamage(50);
+            other.collider.gameObject.GetComponent<IDamageable<float>>().TakeDamage(50);
+
+
+        }
+
+        if (other.collider.gameObject.tag == "Enemy" && armRotatingForward == true)
+        {
+            print("jhfuyj");
+            other.collider.gameObject.GetComponent<IDamageable<float>>().TakeDamage(50);
+
         }
     }
 }
