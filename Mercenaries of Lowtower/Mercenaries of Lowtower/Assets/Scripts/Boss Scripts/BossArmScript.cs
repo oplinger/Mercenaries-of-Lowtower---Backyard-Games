@@ -199,7 +199,19 @@ public class BossArmScript : BossClass {
         }
     }
 
+    public void OnTriggerEnter(Collider other)
+    {
+        if (other.tag == "Player" && armRotatingForward == true)
+        {
+            other.GetComponent<IDamageable<float>>().TakeDamage(50);
+        }
 
+        if (other.tag == "Enemy" && armRotatingForward == true)
+        {
+            other.GetComponent<IDamageable<float>>().TakeDamage(50);
+        }
+    }
+    /*
     public void OnCollisionEnter( Collision other)
     {
 
@@ -217,4 +229,5 @@ public class BossArmScript : BossClass {
 
         }
     }
+    */
 }

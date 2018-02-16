@@ -24,7 +24,7 @@ GameObject:
   - component: {fileID: 95466507462541010}
   - component: {fileID: 65872006926945462}
   - component: {fileID: 114316962977894228}
-  - component: {fileID: 54011270270637672}
+  - component: {fileID: 54847563105999104}
   m_Layer: 0
   m_Name: The_Barrel
   m_TagString: Enemy
@@ -39,7 +39,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1488979589540800}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 12.457006, y: 0.97, z: -14.242074}
+  m_LocalPosition: {x: 13.99, y: 0.97, z: -16.19}
   m_LocalScale: {x: 15, y: 15, z: 15}
   m_Children: []
   m_Father: {fileID: 0}
@@ -84,7 +84,7 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1488979589540800}
   m_Mesh: {fileID: 4300000, guid: bfaf14193fd8b294e86c8ba29a64c51a, type: 3}
---- !u!54 &54011270270637672
+--- !u!54 &54847563105999104
 Rigidbody:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
