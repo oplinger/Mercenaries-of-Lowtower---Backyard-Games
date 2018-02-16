@@ -39,7 +39,7 @@ public class Barrel_Class : EnemyClass {
         {
             if (currentHealth < lastFrameHealth)
             {
-                if (currentHealth == 0)
+                if (currentHealth <= 0)
                 {
                     Destroy(gameObject);
                     return;
