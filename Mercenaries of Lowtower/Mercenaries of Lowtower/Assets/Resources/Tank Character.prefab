@@ -193,6 +193,7 @@ GameObject:
   - component: {fileID: 114103692630939230}
   - component: {fileID: 114242161729553622}
   - component: {fileID: 114327363096433510}
+  - component: {fileID: 114495970903881730}
   m_Layer: 8
   m_Name: Tank Character
   m_TagString: Player
@@ -1322,6 +1323,9 @@ MonoBehaviour:
   maxHealth: 200
   currentHealth: 0
   shielded: 0
+  isStunned: 0
+  tempMoveSpeed: 0
+  moveSpeed: 0
   CTRLID: 0
   controller: {fileID: 0}
   walkspeed: 0
@@ -1340,12 +1344,13 @@ MonoBehaviour:
     m_Bits: 512
   shieldMask:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 256
   shieldSize: 10
   shieldDuration: 5
   magnetDistance: 100
   magnetDiameter: 3
   pullSpeed: 0.5
+  cannonballHolder: {fileID: 114263599344392354}
 --- !u!114 &114242161729553622
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1386,6 +1391,30 @@ MonoBehaviour:
   abilitynum: 0
   shieldCD: 5
   magnetCD: 3
+--- !u!114 &114495970903881730
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1239915997541124}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6270eb8b67ebf4c4c94f9808f914cce5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  armJoint:
+  - {fileID: 1764759459417114}
+  - {fileID: 1008277295350072}
+  - {fileID: 1196580848792164}
+  target: {fileID: 0}
+  offset: {x: 0, y: 0, z: 0}
+  defaultJointPosition:
+  - {x: 0, y: 0, z: 0}
+  - {x: 0, y: 0, z: 0}
+  - {x: 0, y: 0, z: 0}
+  tankArmMask:
+    serializedVersion: 2
+    m_Bits: 2048
 --- !u!137 &137192872373329608
 SkinnedMeshRenderer:
   m_ObjectHideFlags: 1

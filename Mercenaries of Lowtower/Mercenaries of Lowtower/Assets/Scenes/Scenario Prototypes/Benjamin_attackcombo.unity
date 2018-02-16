@@ -358,12 +358,6 @@ RectTransform:
   m_PrefabParentObject: {fileID: 224713001184560994, guid: e116e053888fb9644a31ee5f200cdbd9,
     type: 2}
   m_PrefabInternal: {fileID: 825890276}
---- !u!114 &136339122 stripped
-MonoBehaviour:
-  m_PrefabParentObject: {fileID: 114263599344392354, guid: dd9de9996069bb54fb61c0bd063feb4f,
-    type: 2}
-  m_PrefabInternal: {fileID: 925047861}
-  m_Script: {fileID: 11500000, guid: ae8630875cfc0a2448b8e54099a420f0, type: 3}
 --- !u!1 &141179935
 GameObject:
   m_ObjectHideFlags: 0
@@ -996,11 +990,6 @@ GameObject:
   m_PrefabParentObject: {fileID: 1262663824286280, guid: d87faba7f4b20ae4b9b9abe4c0d6bba3,
     type: 2}
   m_PrefabInternal: {fileID: 1032914165}
---- !u!1 &329209148 stripped
-GameObject:
-  m_PrefabParentObject: {fileID: 1764759459417114, guid: dd9de9996069bb54fb61c0bd063feb4f,
-    type: 2}
-  m_PrefabInternal: {fileID: 925047861}
 --- !u!114 &350374273 stripped
 MonoBehaviour:
   m_PrefabParentObject: {fileID: 114847227745183046, guid: b2e6eb9305a8c7b49985daca1f8a1094,
@@ -4518,11 +4507,6 @@ Transform:
   m_Father: {fileID: 865719535}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &883967172 stripped
-GameObject:
-  m_PrefabParentObject: {fileID: 1196580848792164, guid: dd9de9996069bb54fb61c0bd063feb4f,
-    type: 2}
-  m_PrefabInternal: {fileID: 925047861}
 --- !u!1001 &925047861
 Prefab:
   m_ObjectHideFlags: 0
@@ -4571,21 +4555,6 @@ Prefab:
       propertyPath: m_Name
       value: Tank Character(Clone)
       objectReference: {fileID: 0}
-    - target: {fileID: 114103692630939230, guid: dd9de9996069bb54fb61c0bd063feb4f,
-        type: 2}
-      propertyPath: shieldMask.m_Bits
-      value: 256
-      objectReference: {fileID: 0}
-    - target: {fileID: 114263599344392354, guid: dd9de9996069bb54fb61c0bd063feb4f,
-        type: 2}
-      propertyPath: player
-      value: 
-      objectReference: {fileID: 2035211003}
-    - target: {fileID: 114103692630939230, guid: dd9de9996069bb54fb61c0bd063feb4f,
-        type: 2}
-      propertyPath: cannonballHolder
-      value: 
-      objectReference: {fileID: 136339122}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: dd9de9996069bb54fb61c0bd063feb4f, type: 2}
   m_IsPrefabParent: 0
@@ -10605,11 +10574,6 @@ Prefab:
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 99c4e6b74b887404397c913caba85d7c, type: 2}
   m_IsPrefabParent: 0
---- !u!1 &1592448088 stripped
-GameObject:
-  m_PrefabParentObject: {fileID: 1008277295350072, guid: dd9de9996069bb54fb61c0bd063feb4f,
-    type: 2}
-  m_PrefabInternal: {fileID: 925047861}
 --- !u!1 &1658025040
 GameObject:
   m_ObjectHideFlags: 0
@@ -12440,35 +12404,6 @@ GameObject:
   m_PrefabParentObject: {fileID: 1854110450942276, guid: b864a46051047c3438a00bf292e57296,
     type: 2}
   m_PrefabInternal: {fileID: 582997285}
---- !u!1 &2035211003 stripped
-GameObject:
-  m_PrefabParentObject: {fileID: 1239915997541124, guid: dd9de9996069bb54fb61c0bd063feb4f,
-    type: 2}
-  m_PrefabInternal: {fileID: 925047861}
---- !u!114 &2035211011
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 2035211003}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6270eb8b67ebf4c4c94f9808f914cce5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  armJoint:
-  - {fileID: 329209148}
-  - {fileID: 1592448088}
-  - {fileID: 883967172}
-  target: {fileID: 0}
-  offset: {x: 0, y: 0, z: 0}
-  defaultJointPosition:
-  - {x: 0, y: 0, z: 0}
-  - {x: 0, y: 0, z: 0}
-  - {x: 0, y: 0, z: 0}
-  tankArmMask:
-    serializedVersion: 2
-    m_Bits: 2048
 --- !u!4 &2058336513 stripped
 Transform:
   m_PrefabParentObject: {fileID: 4666255736657194, guid: b2e6eb9305a8c7b49985daca1f8a1094,
