@@ -32,7 +32,16 @@ public class RangedClass : PlayerClass
     [Range(0, 10)]
     public float spread;
 
+    [Header("Non-Ability Settings")]
+
     public PickUpBox cannonballHolder;
+
+    public GameObject rangedModel;
+
+    Renderer rangedRenderer;
+
+    float h1;
+    float h2;
 
 
     // Use this for initialization
@@ -56,6 +65,9 @@ public class RangedClass : PlayerClass
         currentHealth = maxHealth;
 
         anim = GetComponent<Animator>();
+
+        rangedRenderer = rangedModel.GetComponent<Renderer>();
+        h2 = currentHealth;
 
 
     }
@@ -127,6 +139,21 @@ public class RangedClass : PlayerClass
 
         {
             EnableAbilities();
+        }
+
+        //makes object flash red when it takes damage
+        h1 = currentHealth;
+
+        if (h1 < h2)
+        {
+            rangedRenderer.material.SetColor("_EmissionColor", Color.red);
+
+            h2 = h1;
+
+        }
+        else
+        {
+            rangedRenderer.material.SetColor("_EmissionColor", Color.black);
         }
     }
 

@@ -8,6 +8,8 @@ using UnityEngine;
 
 public class TankClass : PlayerClass
 {
+    
+
     public TankAbilities abilities;
     public TankCooldowns abilityCooldowns;
 
@@ -25,9 +27,17 @@ public class TankClass : PlayerClass
     public float magnetDistance;
     public float magnetDiameter;
     public float pullSpeed;
-
+    
+    [Header("Non-Ability Settings")]
 
     public PickUpBox cannonballHolder;
+
+    public GameObject tankModel;
+
+    Renderer tankRenderer;
+
+    float h1;
+    float h2;
 
 
     // Use this for initialization
@@ -50,6 +60,9 @@ public class TankClass : PlayerClass
         shielded = false;
 
         anim = GetComponent<Animator>();
+
+        tankRenderer = tankModel.GetComponent<Renderer>();
+        h2 = currentHealth;
 
     }
 
@@ -118,6 +131,22 @@ public class TankClass : PlayerClass
         {
            EnableAbilities();
         }
+
+        //makes object flash red when it takes damage
+        h1 = currentHealth;
+
+        if (h1 < h2)
+        {
+            tankRenderer.material.SetColor("_EmissionColor", Color.red);
+
+            h2 = h1;
+
+        }
+        else
+        {
+            tankRenderer.material.SetColor("_EmissionColor", Color.black);
+        }
+
 
     }
 

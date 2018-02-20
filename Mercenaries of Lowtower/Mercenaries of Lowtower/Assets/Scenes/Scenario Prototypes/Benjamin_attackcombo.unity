@@ -1522,6 +1522,11 @@ Prefab:
       propertyPath: cannonball
       value: 
       objectReference: {fileID: 2126812894}
+    - target: {fileID: 114967145361279176, guid: b2e6eb9305a8c7b49985daca1f8a1094,
+        type: 2}
+      propertyPath: meleeModel
+      value: 
+      objectReference: {fileID: 1556327833}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: b2e6eb9305a8c7b49985daca1f8a1094, type: 2}
   m_IsPrefabParent: 0
@@ -2706,6 +2711,11 @@ Prefab:
       propertyPath: cannonball
       value: 
       objectReference: {fileID: 2126812894}
+    - target: {fileID: 114829381301220374, guid: f05e432990a5ae241acc47700a49aacd,
+        type: 2}
+      propertyPath: rangedModel
+      value: 
+      objectReference: {fileID: 1298681016}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: f05e432990a5ae241acc47700a49aacd, type: 2}
   m_IsPrefabParent: 0
@@ -2771,6 +2781,11 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 18
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &701780197 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 1779515443904712, guid: c8fc4b41195663843b1a76e878cbfbed,
+    type: 2}
+  m_PrefabInternal: {fileID: 1466163004}
 --- !u!1 &708041665 stripped
 GameObject:
   m_PrefabParentObject: {fileID: 1443883969679938, guid: 0c5008841bc791b4892bd77ee2f28cb8,
@@ -4344,6 +4359,16 @@ Prefab:
       propertyPath: m_Name
       value: Tank Character(Clone)
       objectReference: {fileID: 0}
+    - target: {fileID: 137475211012691606, guid: dd9de9996069bb54fb61c0bd063feb4f,
+        type: 2}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114103692630939230, guid: dd9de9996069bb54fb61c0bd063feb4f,
+        type: 2}
+      propertyPath: tankModel
+      value: 
+      objectReference: {fileID: 2073378440}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: dd9de9996069bb54fb61c0bd063feb4f, type: 2}
   m_IsPrefabParent: 0
@@ -5177,6 +5202,11 @@ Prefab:
       propertyPath: phaseScript
       value: 
       objectReference: {fileID: 729866414}
+    - target: {fileID: 114933898608976118, guid: 6a37f7bff67a3f84f99d21ea93f1d99a,
+        type: 2}
+      propertyPath: bossHead
+      value: 
+      objectReference: {fileID: 1751170817}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 6a37f7bff67a3f84f99d21ea93f1d99a, type: 2}
   m_IsPrefabParent: 0
@@ -9085,6 +9115,11 @@ MonoBehaviour:
   shielded: 0
   foundShield: {fileID: 0}
   isDead: 0
+--- !u!1 &1298681016 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 1322955868867008, guid: f05e432990a5ae241acc47700a49aacd,
+    type: 2}
+  m_PrefabInternal: {fileID: 651045619}
 --- !u!1 &1304972857 stripped
 GameObject:
   m_PrefabParentObject: {fileID: 1897007917095854, guid: 6a37f7bff67a3f84f99d21ea93f1d99a,
@@ -9534,6 +9569,11 @@ Prefab:
       propertyPath: vizOn
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 114455703097757542, guid: c8fc4b41195663843b1a76e878cbfbed,
+        type: 2}
+      propertyPath: healerModel
+      value: 
+      objectReference: {fileID: 701780197}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: c8fc4b41195663843b1a76e878cbfbed, type: 2}
   m_IsPrefabParent: 0
@@ -9966,6 +10006,11 @@ Prefab:
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 5fc59e18afacfc141bd84e8d1a91fdec, type: 2}
   m_IsPrefabParent: 0
+--- !u!1 &1556327833 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 1735993119608186, guid: b2e6eb9305a8c7b49985daca1f8a1094,
+    type: 2}
+  m_PrefabInternal: {fileID: 412016419}
 --- !u!1 &1564100877
 GameObject:
   m_ObjectHideFlags: 0
@@ -10852,6 +10897,11 @@ MeshFilter:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1744813778}
   m_Mesh: {fileID: 10209, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!1 &1751170817 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 1325323089403952, guid: 6a37f7bff67a3f84f99d21ea93f1d99a,
+    type: 2}
+  m_PrefabInternal: {fileID: 1060582175}
 --- !u!1 &1761360279
 GameObject:
   m_ObjectHideFlags: 0
@@ -12176,6 +12226,11 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 20
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &2073378440 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 1826047356787204, guid: dd9de9996069bb54fb61c0bd063feb4f,
+    type: 2}
+  m_PrefabInternal: {fileID: 925047861}
 --- !u!1 &2126812894 stripped
 GameObject:
   m_PrefabParentObject: {fileID: 1986206471051702, guid: 7f3dde4b84e92e549b8162c8a7aef04a,

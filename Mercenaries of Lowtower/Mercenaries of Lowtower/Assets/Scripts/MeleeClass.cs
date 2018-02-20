@@ -30,7 +30,16 @@ public class MeleeClass : PlayerClass
     [Range(0, 20)]
     public float lungeDistance;
 
+    [Header("Non-Ability Settings")]
+
     public PickUpBox cannonballHolder;
+
+    public GameObject meleeModel;
+
+    Renderer meleeRenderer;
+
+    float h1;
+    float h2;
 
     // Use this for initialization
 
@@ -54,6 +63,9 @@ public class MeleeClass : PlayerClass
         currentHealth = maxHealth;
         
         anim = GetComponent<Animator>();
+
+        meleeRenderer = meleeModel.GetComponent<Renderer>();
+        h2 = currentHealth;
 
     }
 
@@ -105,6 +117,21 @@ public class MeleeClass : PlayerClass
 
         {
             EnableAbilities();
+        } 
+        
+        //makes object flash red when it takes damage
+        h1 = currentHealth;
+
+        if (h1 < h2)
+        {
+            meleeRenderer.material.SetColor("_EmissionColor", Color.red);
+
+            h2 = h1;
+
+        }
+        else
+        {
+            meleeRenderer.material.SetColor("_EmissionColor", Color.black);
         }
     }
 

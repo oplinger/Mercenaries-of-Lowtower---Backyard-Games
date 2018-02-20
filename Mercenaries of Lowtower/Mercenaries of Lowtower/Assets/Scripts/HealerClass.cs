@@ -38,7 +38,16 @@ public class HealerClass : PlayerClass
     [Range(0, 10)]
     public float stunDuration;
 
+    [Header("Non-Ability Settings")]
+
     public PickUpBox cannonballHolder;
+
+    public GameObject healerModel;
+
+    Renderer healerRenderer;
+
+    float h1;
+    float h2;
 
     // Use this for initialization
 
@@ -62,6 +71,9 @@ public class HealerClass : PlayerClass
         currentHealth = maxHealth;
 
         anim = GetComponent<Animator>();
+
+        healerRenderer = healerModel.GetComponent<Renderer>();
+        h2 = currentHealth;
 
     }
 
@@ -115,6 +127,22 @@ public class HealerClass : PlayerClass
 
         {
             EnableAbilities();
+        }
+        
+
+        //makes object flash red when it takes damage
+        h1 = currentHealth;
+
+        if (h1 < h2)
+        {
+            healerRenderer.material.SetColor("_EmissionColor", Color.red);
+
+            h2 = h1;
+
+        }
+        else
+        {
+            healerRenderer.material.SetColor("_EmissionColor", Color.black);
         }
     }
 
