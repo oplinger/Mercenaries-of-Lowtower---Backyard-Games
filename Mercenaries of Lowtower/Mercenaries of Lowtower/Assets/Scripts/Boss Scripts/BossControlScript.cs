@@ -44,10 +44,27 @@ public class BossControlScript : MonoBehaviour {
 
     public bool bossDamaged;
 
+    //PhaseControllerScript variables
+    public GameObject cannon;
+    public GameObject cannonball;
+    public GameObject addSpawner;
+    public Transform retreatWaypoint;
+    public Transform returnWaypoint;
+    public Transform cannonWaypoint;
+    public bool cannonFired;
+    public GameObject ballSpawner;
+    public Vector3 bossOriginalPosition;
+    public Transform cameraPosition2;
+    public List<GameObject> DoorList = new List<GameObject>();
+    public float cannonballHits;
+    //
+
     // Use this for initialization
     void Start()
     {
         bossAttack = 0;
+        bossOriginalPosition = BossHead.transform.position;
+        cannonballHits = 0;
         waitTime = startTime;
         isWaiting = true;
         StartCoroutine("WaitTime");
@@ -261,6 +278,29 @@ public class BossControlScript : MonoBehaviour {
         if(bossPhase == 6)
         {
             //print("PHASE 6!");
+            BeginCannonPhase();
+
+            for (int i = 0; i < DoorList.Count; i++)
+            {
+                DoorList[i].transform.position -= new Vector3(0, 10, 0);
+            }
+            if (cannonFired)
+            {
+                cannonballHits++;
+                cannonFired = false;
+            }
+            if (cannonballHits == 3)
+            {
+                bossPhase = 7;
+            }
+        }
+
+        if(bossPhase == 7)
+        {
+            BossHead.transform.position += (Vector3.down * Time.deltaTime) * 3;
+            ballSpawner.SetActive(false);
+            addSpawner.SetActive(false);
+            cannonball.SetActive(false);
         }
     }
 
@@ -365,5 +405,21 @@ public class BossControlScript : MonoBehaviour {
         {
 
         }
+    }
+
+    //
+
+    public void BeginCannonPhase()
+    {
+        //Moves the bosses head to the retreat waypoint position
+        BossHead.transform.position = Vector3.MoveTowards(BossHead.transform.position, retreatWaypoint.position, .2f);
+        //Activates the cannonball
+        cannonball.SetActive(true);
+        //Moves  the camera to the pulled back position
+        Camera.main.transform.position = Vector3.MoveTowards(Camera.main.transform.position, cameraPosition2.position, .05f);
+        //Activates the cannonball spawner
+        ballSpawner.SetActive(true);
+        //Activates the enemy spawner
+        addSpawner.SetActive(true);
     }
 }

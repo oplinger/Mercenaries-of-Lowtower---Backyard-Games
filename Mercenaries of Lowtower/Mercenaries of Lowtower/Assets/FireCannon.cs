@@ -7,10 +7,11 @@ public class FireCannon : MonoBehaviour {
 
     public GameObject cannonball;
     public GameObject cannonballProp;
+    public GameObject bossManager;
     public Transform cannonballSpawner;
 
     //Reference to the phase-changing script
-    public PhaseControllerScript phaseScript;
+    //public PhaseControllerScript phaseScript;
 
     // Use this for initialization
     void Start () {
@@ -29,8 +30,9 @@ public class FireCannon : MonoBehaviour {
 
         if (other.tag == "PickUp")
         {
-            
-            phaseScript.cannonFired = true;
+
+            //phaseScript.cannonFired = true;
+            bossManager.GetComponent<BossControlScript>().cannonFired = true;
             Destroy(other.gameObject);
             Instantiate(cannonball, cannonballSpawner.position, transform.rotation);
             Instantiate(cannonballProp, new Vector3(transform.position.x, transform.position.y+3, transform.position.z), transform.rotation);
