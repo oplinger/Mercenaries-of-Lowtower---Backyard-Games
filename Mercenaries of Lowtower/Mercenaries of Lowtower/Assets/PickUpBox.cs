@@ -18,52 +18,42 @@ public class PickUpBox : MonoBehaviour
             holdingObject = false;
         }
 
-        if (holdingObject == true)
-        {
-            // heldObject.transform.position = gameObject.transform.position;
-        }
+        
         if (Input.GetKeyDown("joystick button 4"))
         {
+            //if player is not holding an object already, but they detect something that can be picked up
             if (!holdingObject && triggerObject != null)
             {
-                heldObject = triggerObject;
-                //heldObject.gameObject.GetComponent<SphereCollider>().enabled = true;
-                holdingObject = true;
+                PickUpCannonball();
             }
             else
             {
-                heldObject.transform.position = new Vector3(gameObject.transform.position.x, gameObject.transform.position.y - .5f, gameObject.transform.position.z);
-
-                heldObject = null;
-                holdingObject = false;
+                DropCannonball();
 
 
             }
 
         }
 
-        //if (Input.GetKeyDown(KeyCode.Space)&& holdingObject)
-        //{
-
-        //    cannonball.GetComponent<Rigidbody>().AddForce(transform.forward * 2);
-        //}
-
-            if (heldObject != null)
+        //cannonball follows player if player is holding the ball
+        if (holdingObject)
         {
             heldObject.transform.position = new Vector3(gameObject.transform.position.x, gameObject.transform.position.y + 2, gameObject.transform.position.z);
-
         }
+        
+
+        //    if (heldObject != null)
+        //{
+
+        //}
 
     }
     void OnTriggerEnter(Collider other)
     {
         if (other.tag == "PickUp")
         {
-            //Debug.Log("Box picked up!");
-            //holdingObject = true;
+            //detects that something can be picked up
             triggerObject = other.gameObject;
-            //triggerObject.transform.position= new Vector3(transform.position.x, transform.position.y+3, transform.position.z);
-            //heldObject.gameObject.GetComponent<SphereCollider>().enabled = false;
         }
     }
 
@@ -73,6 +63,23 @@ public class PickUpBox : MonoBehaviour
         {
             triggerObject = null;
         }
+    }
+
+    public void DropCannonball()
+    {
+
+        heldObject.transform.position = new Vector3(gameObject.transform.position.x, gameObject.transform.position.y - .5f, gameObject.transform.position.z);
+
+        heldObject = null;
+        holdingObject = false;
+
+    }
+
+    public void PickUpCannonball()
+    {
+
+        heldObject = triggerObject;
+        holdingObject = true;
     }
 
 }

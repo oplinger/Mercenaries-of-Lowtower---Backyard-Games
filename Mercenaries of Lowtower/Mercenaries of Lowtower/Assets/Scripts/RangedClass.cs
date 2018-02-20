@@ -134,8 +134,14 @@ public class RangedClass : PlayerClass
         if (cannonballHolder.holdingObject)
         {
             DisableAbilities();
+
+            //drops cannonball if player dies while holding it
+            if(currentHealth<=0)
+            {
+                cannonballHolder.DropCannonball();
+            }
         }
-        else if (!cannonballHolder.holdingObject)
+        else if (!cannonballHolder.holdingObject && currentHealth>0)
 
         {
             EnableAbilities();
