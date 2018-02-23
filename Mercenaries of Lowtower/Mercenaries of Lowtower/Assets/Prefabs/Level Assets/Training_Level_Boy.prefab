@@ -5249,6 +5249,14 @@ MonoBehaviour:
   moveSpeed: 0
   breakableMat: {fileID: 0}
   breakable: 1
+  rolling: 0
+  barrelSpeed: 0
+  barrelWaypoints: []
+  endPointReached: 0
+  target: {fileID: 0}
+  stunTimer: 0
+  defaultEnemyMaterial: {fileID: 0}
+  stunnedMaterial: {fileID: 0}
 --- !u!114 &114826575282244450
 MonoBehaviour:
   m_ObjectHideFlags: 1
