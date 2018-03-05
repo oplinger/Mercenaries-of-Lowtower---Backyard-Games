@@ -38,7 +38,7 @@ public class PickUpBox : MonoBehaviour
         //cannonball follows player if player is holding the ball
         if (holdingObject)
         {
-            heldObject.transform.position = new Vector3(gameObject.transform.position.x, gameObject.transform.position.y + 2, gameObject.transform.position.z);
+            heldObject.transform.position = new Vector3(gameObject.transform.position.x, gameObject.transform.position.y+.5f, gameObject.transform.position.z);
         }
         
 

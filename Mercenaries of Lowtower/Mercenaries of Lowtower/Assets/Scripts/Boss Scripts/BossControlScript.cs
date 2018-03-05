@@ -274,28 +274,25 @@ public class BossControlScript : MonoBehaviour {
             }
         }
         
-
         if(bossPhase == 6)
         {
-            //print("PHASE 6!");
             BeginCannonPhase();
+        }
 
-            for (int i = 0; i < DoorList.Count; i++)
-            {
-                DoorList[i].transform.position -= new Vector3(0, 10, 0);
-            }
-            if (cannonFired)
+        if(bossPhase == 7)
+        {
+            if (cannonFired == true)
             {
                 cannonballHits++;
                 cannonFired = false;
             }
-            if (cannonballHits == 3)
+            if (cannonballHits >= 3)
             {
-                bossPhase = 7;
+                bossPhase = 8;
             }
         }
 
-        if(bossPhase == 7)
+        if(bossPhase == 8)
         {
             BossHead.transform.position += (Vector3.down * Time.deltaTime) * 3;
             ballSpawner.SetActive(false);
@@ -421,5 +418,15 @@ public class BossControlScript : MonoBehaviour {
         ballSpawner.SetActive(true);
         //Activates the enemy spawner
         addSpawner.SetActive(true);
+
+        for (int i = 0; i < DoorList.Count; i++)
+        {
+            DoorList[i].transform.position -= new Vector3(0, 10, 0);
+        }
+
+        if(BossHead.transform.position == retreatWaypoint.position && Camera.main.transform.position == cameraPosition2.position)
+        {
+            bossPhase = 7;
+        }
     }
 }

@@ -9,7 +9,7 @@ public class BossLookAt : MonoBehaviour {
     public float speed;
     public bool isCharging;
 
-    public PhaseControllerScript phaseScript;
+    public BossControlScript bossManagerScript;
 
 
 	// Use this for initialization
@@ -45,11 +45,13 @@ public class BossLookAt : MonoBehaviour {
         target = PlayerList[Random.Range(0, 3)].GetComponent<Transform>();
     }
 
+    /*
     private void OnTriggerEnter(Collider other)
     {
         if (other.name=="cannonball_prop(Clone)")
         {
-            phaseScript.cannonballHits += 1;
+            bossManagerScript.cannonFired=true;
         }
     }
+    */
 }
