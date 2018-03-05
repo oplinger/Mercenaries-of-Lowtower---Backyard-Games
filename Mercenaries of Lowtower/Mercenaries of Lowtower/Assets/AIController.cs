@@ -12,6 +12,9 @@ public class AIController : EntityClass
 
 
     public float stunTimer;
+
+    public SpawnAdd addSpawnerScript;
+    public GameObject addSpawner;
     
 
 
@@ -36,6 +39,10 @@ public class AIController : EntityClass
         moveSpeed = 8;
 
         stunTimer = 0;
+
+        addSpawner = GameObject.Find("add-pocalypse");
+        addSpawnerScript = addSpawner.GetComponent<SpawnAdd>();
+        addSpawnerScript.addCounter += 1;
 
 
     }
@@ -89,6 +96,7 @@ public class AIController : EntityClass
 
         if (currentHealth<=0)
         {
+            addSpawnerScript.addCounter -= 1;
             Destroy(gameObject);
         }
 
