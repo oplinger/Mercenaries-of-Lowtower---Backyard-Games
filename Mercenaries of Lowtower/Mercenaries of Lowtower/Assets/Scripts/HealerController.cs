@@ -192,7 +192,7 @@ public class HealerController : MonoBehaviour
         }
         if(CTRLID != 0 && Input.GetKeyUp("joystick " + CTRLID + " button 2") && cooldowns.activeCooldowns[3] <= 0 && !health.isDead && !altBuild && !ballHolderScript.holdingObject)
         {
-            abilities.TargetedHeal(20, 1, gameObject, orbCooldown, healObject, orbSpeed);
+            abilities.TargetedHeal(healAmount, 1, gameObject, orbCooldown, healObject, orbSpeed);
             stopTimer = 0;
         }
 

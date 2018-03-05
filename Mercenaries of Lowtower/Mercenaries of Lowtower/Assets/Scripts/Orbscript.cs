@@ -35,7 +35,7 @@ public class Orbscript : MonoBehaviour {
         if (other.gameObject.name == Target.name)
         {
             //other.GetComponent<Health>().modifyHealth(-healAmount, ID);
-            other.GetComponent<IDamageable<float>>().TakeDamage(-5f);
+            other.GetComponent<IDamageable<float>>().TakeDamage(-healAmount);
             print(Target.name + " healed for " + healAmount);
             Destroy(gameObject);
         }
