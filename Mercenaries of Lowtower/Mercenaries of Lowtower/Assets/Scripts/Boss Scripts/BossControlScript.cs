@@ -68,7 +68,7 @@ public class BossControlScript : MonoBehaviour {
         waitTime = startTime;
         isWaiting = true;
         StartCoroutine("WaitTime");
-        StartCoroutine("EnergySphereCD");
+        //StartCoroutine("EnergySphereCD");
     }
 
     // Update is called once per frame
@@ -196,6 +196,7 @@ public class BossControlScript : MonoBehaviour {
         if (bossPhase == 2)
         {
             bossAttack = 0;
+            StartCoroutine("EnergySphereCD");
             bossPhase = 3;
         }
 
@@ -327,7 +328,7 @@ public class BossControlScript : MonoBehaviour {
 
     public void CheckBeams()
     {
-        if(beamsDone == 4)
+        if(beamsDone == 2)
         {
             beamAttackComplete = true;
         }

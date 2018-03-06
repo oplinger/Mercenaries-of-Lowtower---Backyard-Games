@@ -54,6 +54,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4880758462808668}
   - component: {fileID: 95206989003624242}
+  - component: {fileID: 114628455035201958}
   m_Layer: 0
   m_Name: Target Arrow
   m_TagString: Untagged
@@ -115,7 +116,7 @@ MeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_Materials:
-  - {fileID: 2100000, guid: e16ac0e03c5d06a4d93933a882aee756, type: 2}
+  - {fileID: 2100000, guid: be4771fbf9bc2724abf0a05165df53cf, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -147,7 +148,7 @@ MeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_Materials:
-  - {fileID: 2100000, guid: e16ac0e03c5d06a4d93933a882aee756, type: 2}
+  - {fileID: 2100000, guid: be4771fbf9bc2724abf0a05165df53cf, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -197,3 +198,14 @@ Animator:
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
+--- !u!114 &114628455035201958
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1748575725302202}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c7974b359da03664d85a4038b6f28320, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

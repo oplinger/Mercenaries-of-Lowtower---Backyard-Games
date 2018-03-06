@@ -17,7 +17,7 @@ public class BossLookAt : MonoBehaviour
     // Use this for initialization
     void Start()
     {
-        isCharging = true;
+        isCharging = false;
         target = PlayerList[Random.Range(0, 3)].GetComponent<Transform>();
     }
 
