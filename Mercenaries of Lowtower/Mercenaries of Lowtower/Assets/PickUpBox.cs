@@ -8,7 +8,16 @@ public class PickUpBox : MonoBehaviour
     public GameObject heldObject;
     public GameObject triggerObject;
     public GameObject cannonball;
+
+    public GameObject enemy;
+    public AIController enemyScript;
+
+
+    private void Start()
+    {
+        enemyScript = enemy.GetComponent<AIController>();
     
+    }
 
 
     private void Update()
@@ -17,6 +26,12 @@ public class PickUpBox : MonoBehaviour
         {
             holdingObject = false;
         }
+
+
+        //if (heldObject!=null)
+        //{
+        //    addScript.Player = this.gameObject;
+        //}
 
         
         if (Input.GetKeyDown("joystick button 4"))
@@ -80,6 +95,9 @@ public class PickUpBox : MonoBehaviour
 
         heldObject = triggerObject;
         holdingObject = true;
+
+        enemyScript.Player = gameObject;
+        enemyScript.cannonballIsTarget = false;
     }
 
 }

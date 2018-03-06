@@ -5,7 +5,7 @@ using UnityEngine.UI;
 public class AIController : EntityClass
 {
 
-    public Transform Player;
+    public GameObject Player;
     //public int MoveSpeed = 8; //Speed 4
     int MaxDist = 5;
     int MinDist = 2;
@@ -15,8 +15,8 @@ public class AIController : EntityClass
 
     public SpawnAdd addSpawnerScript;
     public GameObject addSpawner;
-    
 
+    public bool cannonballIsTarget;
 
 
     //public float stunDuration;
@@ -26,9 +26,15 @@ public class AIController : EntityClass
     public Material stunnedMaterial;
 
 
+    private void Awake()
+    {
+        cannonballIsTarget = true;
+    }
+
     void Start()
     {
-        Player = GameObject.FindGameObjectWithTag("PickUp").transform;
+        //Player = GameObject.FindGameObjectWithTag("PickUp");
+
 
         enemyRenderer = GetComponent<Renderer>();
 
@@ -52,22 +58,28 @@ public class AIController : EntityClass
         //print(Vector3.Distance(transform.position, Player.position));
         
 
-        if (Player == null)
+        if (Player == null && cannonballIsTarget)
         {
-            Player = GameObject.FindGameObjectWithTag("PickUp").transform;
+            Player = GameObject.FindGameObjectWithTag("PickUp"); 
+        }
+
+        if (!cannonballIsTarget)
+
+        {
+
         }
 
 
-        transform.LookAt(Player);
+        transform.LookAt(Player.transform.position);
 
-        if (Vector3.Distance(transform.position, Player.position) >= MinDist && !isStunned)
+        if (Vector3.Distance(transform.position, Player.transform.position) >= MinDist && !isStunned)
         {
 
             transform.position += transform.forward * moveSpeed * Time.deltaTime;
             enemyRenderer.material = defaultEnemyMaterial;
 
 
-            if (Vector3.Distance(transform.position, Player.position) <= MaxDist)
+            if (Vector3.Distance(transform.position, Player.transform.position) <= MaxDist)
             {
 
             }

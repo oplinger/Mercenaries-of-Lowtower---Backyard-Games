@@ -54,7 +54,7 @@ public class ArmSlamR : MonoBehaviour {
     void Update() {
 
         tempTimeUntilSlam -= 1;
-        float t = 0.2f;
+        //float t = 0.2f;
 
         //can't activate / deactivate bools within a key imput read???
         if (Input.GetKeyDown(KeyCode.U))
