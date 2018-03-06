@@ -193,6 +193,35 @@ Prefab:
       propertyPath: m_RootOrder
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 4119209753838662, guid: 5c22eba3559a36246a834dbae0cc5c7b, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: 4.39
+      objectReference: {fileID: 0}
+    - target: {fileID: 4119209753838662, guid: 5c22eba3559a36246a834dbae0cc5c7b, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: 1.91
+      objectReference: {fileID: 0}
+    - target: {fileID: 114337364676369774, guid: 5c22eba3559a36246a834dbae0cc5c7b,
+        type: 2}
+      propertyPath: target
+      value: 
+      objectReference: {fileID: 230579425}
+    - target: {fileID: 4514100083087818, guid: 5c22eba3559a36246a834dbae0cc5c7b, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: 42.4
+      objectReference: {fileID: 0}
+    - target: {fileID: 4514100083087818, guid: 5c22eba3559a36246a834dbae0cc5c7b, type: 2}
+      propertyPath: m_LocalPosition.z
+      value: -8.9
+      objectReference: {fileID: 0}
+    - target: {fileID: 4419464348995770, guid: 5c22eba3559a36246a834dbae0cc5c7b, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: 0.18
+      objectReference: {fileID: 0}
+    - target: {fileID: 4419464348995770, guid: 5c22eba3559a36246a834dbae0cc5c7b, type: 2}
+      propertyPath: m_LocalPosition.z
+      value: -8.89
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 5c22eba3559a36246a834dbae0cc5c7b, type: 2}
   m_IsPrefabParent: 0
@@ -211,6 +240,11 @@ RectTransform:
   m_PrefabParentObject: {fileID: 224713001184560994, guid: e116e053888fb9644a31ee5f200cdbd9,
     type: 2}
   m_PrefabInternal: {fileID: 825890276}
+--- !u!4 &230579425 stripped
+Transform:
+  m_PrefabParentObject: {fileID: 4419464348995770, guid: 5c22eba3559a36246a834dbae0cc5c7b,
+    type: 2}
+  m_PrefabInternal: {fileID: 19389780}
 --- !u!1 &300728868 stripped
 GameObject:
   m_PrefabParentObject: {fileID: 1456342129295262, guid: 7f3dde4b84e92e549b8162c8a7aef04a,
