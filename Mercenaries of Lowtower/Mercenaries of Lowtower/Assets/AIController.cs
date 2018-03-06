@@ -29,6 +29,7 @@ public class AIController : EntityClass
     private void Awake()
     {
         cannonballIsTarget = true;
+        Player = null;
     }
 
     void Start()

@@ -41,7 +41,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1609669798712020}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 1.2, y: -0.030000001, z: -1.0900002}
+  m_LocalPosition: {x: 15.279365, y: 0.2699992, z: -19.745312}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -172,7 +172,10 @@ MonoBehaviour:
   isStunned: 0
   tempMoveSpeed: 0
   moveSpeed: 0
-  Player: {fileID: 4161420824376582, guid: 4384b171416968848a56c372a18576d7, type: 2}
+  Player: {fileID: 0}
   stunTimer: 0
+  addSpawnerScript: {fileID: 0}
+  addSpawner: {fileID: 0}
+  cannonballIsTarget: 0
   defaultEnemyMaterial: {fileID: 0}
   stunnedMaterial: {fileID: 2100000, guid: 235ed031a8345fb4daf93604e764679a, type: 2}
