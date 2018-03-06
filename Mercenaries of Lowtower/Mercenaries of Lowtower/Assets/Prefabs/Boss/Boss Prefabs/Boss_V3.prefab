@@ -318,6 +318,7 @@ GameObject:
   - component: {fileID: 4030040828453228}
   - component: {fileID: 114652581437328806}
   - component: {fileID: 65565538874322286}
+  - component: {fileID: 65396418999166324}
   m_Layer: 0
   m_Name: Boss Head
   m_TagString: Untagged
@@ -882,7 +883,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!1 &1653641331605936
 GameObject:
   m_ObjectHideFlags: 1
@@ -897,7 +898,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!1 &1663575203391990
 GameObject:
   m_ObjectHideFlags: 1
@@ -1566,7 +1567,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1390431607017674}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 4.1, z: 0}
+  m_LocalPosition: {x: 0, y: 3.2, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4425236438803668}
@@ -1701,7 +1702,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1258298828419106}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 4.1, z: 0}
+  m_LocalPosition: {x: 0, y: 3.2, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4021967695504680}
@@ -1850,7 +1851,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1901365411878212}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 19.69, y: 4.1, z: 0}
+  m_LocalPosition: {x: 19.69, y: 3.2, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4021967695504680}
@@ -2154,7 +2155,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1162320564487440}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -19.690004, y: 4.1, z: -0}
+  m_LocalPosition: {x: -19.690004, y: 3.2, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4425236438803668}
@@ -4248,6 +4249,18 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 3, y: 48, z: 3}
   m_Center: {x: 0, y: 19, z: 0}
+--- !u!65 &65396418999166324
+BoxCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1176357292810412}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 0
+  serializedVersion: 2
+  m_Size: {x: 23.2, y: 48.52, z: 35.3}
+  m_Center: {x: 0, y: 16.68, z: 0}
 --- !u!65 &65500059202985024
 BoxCollider:
   m_ObjectHideFlags: 1
@@ -4657,7 +4670,7 @@ MonoBehaviour:
   beamAttackComplete: 0
   bossDamaged: 0
   cannon: {fileID: 0}
-  cannonball: {fileID: 1493035584435006, guid: 7ba142e41126733499e963327654451d, type: 2}
+  cannonball: {fileID: 0}
   addSpawner: {fileID: 0}
   retreatWaypoint: {fileID: 4022918812956596}
   returnWaypoint: {fileID: 4193758435950266}
@@ -4665,7 +4678,7 @@ MonoBehaviour:
   cannonFired: 0
   ballSpawner: {fileID: 0}
   bossOriginalPosition: {x: 0, y: 0, z: 0}
-  cameraPosition2: {fileID: 4870655407655290}
+  cameraPosition2: {fileID: 0}
   DoorList:
   - {fileID: 0}
   - {fileID: 0}
@@ -4729,7 +4742,9 @@ MonoBehaviour:
   target: {fileID: 0}
   speed: 2
   isCharging: 0
-  phaseScript: {fileID: 0}
+  targetIndicator: {fileID: 1748575725302202, guid: ed19bd9c0387e0e4d9df094357490136,
+    type: 2}
+  bossManagerScript: {fileID: 114624972708970210}
 --- !u!114 &114689037640370938
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -4964,7 +4979,7 @@ MonoBehaviour:
   - {fileID: 1994267042019030}
   - {fileID: 1138977876782248}
   - {fileID: 1081928711809366}
-  bossHead: {fileID: 0}
+  bossHead: {fileID: 1325323089403952}
 --- !u!114 &114935247150722782
 MonoBehaviour:
   m_ObjectHideFlags: 1
