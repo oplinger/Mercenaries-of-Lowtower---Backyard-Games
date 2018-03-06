@@ -18,7 +18,7 @@ public class BossLookAt : MonoBehaviour
     void Start()
     {
         isCharging = false;
-        target = PlayerList[Random.Range(0, 3)].GetComponent<Transform>();
+        //target = PlayerList[Random.Range(0, 3)].GetComponent<Transform>();
     }
 
     // Update is called once per frame

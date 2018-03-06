@@ -19,6 +19,7 @@ public class EnergySphereScript : MonoBehaviour {
         isCharging = true;
         energySphereSpawn = GameObject.Find("EnergySphere Spawn").transform;
         bossHead = GameObject.Find("Boss Head");
+        bossHead.GetComponent<BossLookAt>().TargetPlayer();
     }
 	
 	// Update is called once per frame
@@ -52,7 +53,7 @@ public class EnergySphereScript : MonoBehaviour {
             yield return null;
         } while (currentTime <= chargeTime);
         objectRigidbody.AddForce(transform.forward * 5000);
-        bossHead.GetComponent<BossLookAt>().TargetPlayer();
+        //bossHead.GetComponent<BossLookAt>().TargetPlayer();
         bossHead.GetComponent<BossLookAt>().isCharging = true;
     }
 

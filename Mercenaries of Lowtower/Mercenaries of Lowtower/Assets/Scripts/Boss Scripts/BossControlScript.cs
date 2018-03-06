@@ -322,6 +322,7 @@ public class BossControlScript : MonoBehaviour {
 
     IEnumerator EnergySphereCD()
     {
+        //BossHead.GetComponent<BossLookAt>().TargetPlayer();
         yield return new WaitForSeconds(6);
         energySphereReady = true;
     }
