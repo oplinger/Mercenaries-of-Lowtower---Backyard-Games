@@ -67,7 +67,7 @@ public class UIController : MonoBehaviour
 
         foreach (Image element in images)
         {
-            print("image found");
+            //print("image found");
             if (element.tag == "AbilityIcon")
             {
                 icons.Add(element);
