@@ -78,7 +78,7 @@ public class BossControlScript : MonoBehaviour {
         if(bossPhase == 1)
         {
             beamActivated = false;
-            if (Boss.GetComponent<BossClass>().currentHealth <= 195 && bossDamaged == false)
+            if (Boss.GetComponent<BossClass>().currentHealth <= 60 && bossDamaged == false)
             {
                 bossPhase = 5;
                 bossDamaged = true;

@@ -22,8 +22,8 @@ public class JoystickPollingScript : MonoBehaviour {
             {
 
                 print("joystick " + i + " button 7");
-               ControllerThing CT = controllerThing.GetComponent<ControllerThing>();
-                CT.AssignIDsToArray(i);
+               //ControllerThing CT = controllerThing.GetComponent<ControllerThing>();
+               // CT.AssignIDsToArray(i);
 
 
             }
