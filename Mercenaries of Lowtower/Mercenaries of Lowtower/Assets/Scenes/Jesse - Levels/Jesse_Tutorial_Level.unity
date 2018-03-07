@@ -14766,6 +14766,7 @@ GameObject:
   - component: {fileID: 1474356332}
   - component: {fileID: 1474356334}
   - component: {fileID: 1474356333}
+  - component: {fileID: 1474356335}
   m_Layer: 0
   m_Name: Extrude_NURBS_1
   m_TagString: Untagged
@@ -14827,6 +14828,18 @@ MeshFilter:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1474356331}
   m_Mesh: {fileID: 4300000, guid: cee4cf16d5cb5974280afc368663d739, type: 3}
+--- !u!65 &1474356335
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1474356331}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 187.55377, y: 347.6619, z: 10}
+  m_Center: {x: -189.77689, y: 173.53824, z: -5}
 --- !u!1 &1474735379
 GameObject:
   m_ObjectHideFlags: 0
