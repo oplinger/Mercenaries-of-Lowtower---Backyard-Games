@@ -72,14 +72,14 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 4286072234145160}
-  - component: {fileID: 114685277535721912}
+  - component: {fileID: 114201907350853068}
   m_Layer: 0
   m_Name: add-pocalypse
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!1 &1680438925016558
 GameObject:
   m_ObjectHideFlags: 0
@@ -152,7 +152,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &4099137557307540
 Transform:
   m_ObjectHideFlags: 1
@@ -203,13 +203,13 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1879872503918172}
-  m_LocalRotation: {x: 0.5674379, y: 0.3013639, z: -0.1352784, w: 0.7542506}
-  m_LocalPosition: {x: 0.18136229, y: 0.6135757, z: 0.0851121}
+  m_LocalRotation: {x: 0.6754433, y: 0.26556218, z: -0.16406596, w: 0.6680834}
+  m_LocalPosition: {x: 0.038, y: 0.799, z: 0.322}
   m_LocalScale: {x: 0.72020316, y: 1.277027, z: 0.7202036}
   m_Children: []
   m_Father: {fileID: 4742691635568738}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 69.639, y: 0, z: 23.357}
+  m_LocalEulerAnglesHint: {x: 81.747, y: 111.880005, z: 76.414}
 --- !u!4 &4742691635568738
 Transform:
   m_ObjectHideFlags: 1
@@ -217,7 +217,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1456342129295262}
   m_LocalRotation: {x: -0, y: -0.49939883, z: -0, w: 0.8663723}
-  m_LocalPosition: {x: 22.405373, y: 11.3, z: -21.47641}
+  m_LocalPosition: {x: 37, y: 21.58, z: -17.6}
   m_LocalScale: {x: 4.0581827, y: 4.0581784, z: 4.0581794}
   m_Children:
   - {fileID: 4595015393489622}
@@ -231,7 +231,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1986206471051702}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -17.47, y: 18.570915, z: -30.09}
+  m_LocalPosition: {x: -34.49, y: 20.22, z: -16.95}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4195715990926452}
@@ -244,7 +244,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1367643060298386}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -17.61, y: 21.82, z: -28.34}
+  m_LocalPosition: {x: -34.63, y: 23.449085, z: -15.200001}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4195715990926452}
@@ -498,6 +498,21 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &114201907350853068
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1488994979862882}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f44740786158fb44a895a9a3f3e49d93, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  add: {fileID: 1784618918309506, guid: 43f9694338da0434c92a6b1204a03e11, type: 2}
+  timer: 0
+  addCounter: 0
+  maxAdds: 10
 --- !u!114 &114626324761155530
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -525,26 +540,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   cannonball: {fileID: 1493035584435006, guid: 7ba142e41126733499e963327654451d, type: 2}
-  cannonballProp: {fileID: 0}
+  cannonballProp: {fileID: 1493035584435006, guid: c4fce77add45fef419f883b06ed739f2,
+    type: 2}
   bossManager: {fileID: 0}
   cannonballSpawner: {fileID: 4921901599171504}
---- !u!114 &114685277535721912
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1488994979862882}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b0786f42674f93d4f84e55ef54012bea, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  blockBreakable: {fileID: 1609669798712020, guid: be51baa25d509bb4b84ba561723dbc19,
-    type: 2}
-  blockMagnetic: {fileID: 1609669798712020, guid: be51baa25d509bb4b84ba561723dbc19,
-    type: 2}
-  timer: 0
-  breakable: 0
 --- !u!135 &135077588805119764
 SphereCollider:
   m_ObjectHideFlags: 1
@@ -556,7 +555,7 @@ SphereCollider:
   m_Enabled: 1
   serializedVersion: 2
   m_Radius: 0.83
-  m_Center: {x: 0, y: -0.48, z: 0}
+  m_Center: {x: 0, y: -0.18, z: 0}
 --- !u!135 &135610012956293464
 SphereCollider:
   m_ObjectHideFlags: 1
