@@ -10,7 +10,7 @@ public class AIControllerNavMesh : EntityClass
     int MaxDist = 5;
     int MinDist = 2;
 
-
+    public float defaultSpeed;
     public float stunTimer;
 
     public SpawnAdd addSpawnerScript;
@@ -26,7 +26,7 @@ public class AIControllerNavMesh : EntityClass
     public Material stunnedMaterial;
 
     //NavMesh Things
-    NavMeshAgent navMeshAgent;
+    public NavMeshAgent navMeshAgent;
 
 
     private void Awake()
@@ -53,6 +53,8 @@ public class AIControllerNavMesh : EntityClass
         addSpawnerScript.addCounter += 1;
 
         navMeshAgent = GetComponent<NavMeshAgent>();
+
+        defaultSpeed = navMeshAgent.speed;
 
 
     }
@@ -102,6 +104,7 @@ public class AIControllerNavMesh : EntityClass
                 //moveSpeed = 8;
                 stunTimer = 0;
                 enemyRenderer.material = defaultEnemyMaterial;
+                navMeshAgent.speed = defaultSpeed;
             }
 
         }
@@ -131,9 +134,11 @@ public class AIControllerNavMesh : EntityClass
 
     }
 
-    public void StunThis()
+    public override void StunThis()
     {
-
+        print("speed should be zero");
+        navMeshAgent.speed = 0;
+        isStunned = true;
     }
 
 

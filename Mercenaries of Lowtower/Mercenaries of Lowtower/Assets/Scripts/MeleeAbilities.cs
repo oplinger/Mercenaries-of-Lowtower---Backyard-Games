@@ -77,17 +77,63 @@ public class MeleeAbilities : MonoBehaviour {
 
     IEnumerator Dash(GameObject me)
     {
+        if (Physics.Raycast(me.transform.position, me.transform.forward, 2, baseClass.lungeMask, QueryTriggerInteraction.Ignore ) == false)
+        {
+            me.transform.position = Vector3.Lerp(me.transform.position, me.transform.position + (me.transform.forward * 1f), 1);
+            yield return new WaitForSeconds(.01f);
+        }
+        else
+        {
+            yield break;
+        }
 
-        if (Physics.Raycast(me.transform.position, me.transform.forward, 2) == false)
+        if (Physics.Raycast(me.transform.position, me.transform.forward, 4, baseClass.lungeMask, QueryTriggerInteraction.Ignore) == false)
         {
-            me.transform.position = Vector3.Lerp(me.transform.position, me.transform.position + (me.transform.forward * .5f), 1);
+            me.transform.position = Vector3.Lerp(me.transform.position, me.transform.position + (me.transform.forward * 1.5f), 1);
             yield return new WaitForSeconds(.01f);
         }
         else
         {
             yield break;
         }
-        if (Physics.Raycast(me.transform.position, me.transform.forward, 4) == false)
+
+        if (Physics.Raycast(me.transform.position, me.transform.forward, 6, baseClass.lungeMask, QueryTriggerInteraction.Ignore) == false)
+        {
+            me.transform.position = Vector3.Lerp(me.transform.position, me.transform.position + (me.transform.forward * 2), 1);
+            yield return new WaitForSeconds(.01f);
+        }
+        else
+        {
+            yield break;
+        }
+        if (Physics.Raycast(me.transform.position, me.transform.forward, 6, baseClass.lungeMask, QueryTriggerInteraction.Ignore) == false)
+        {
+            me.transform.position = Vector3.Lerp(me.transform.position, me.transform.position + (me.transform.forward * 2), 1);
+            yield return new WaitForSeconds(.01f);
+        }
+        else
+        {
+            yield break;
+        }
+        if (Physics.Raycast(me.transform.position, me.transform.forward, 6) == false)
+        {
+            me.transform.position = Vector3.Lerp(me.transform.position, me.transform.position + (me.transform.forward * 2), 1);
+            yield return new WaitForSeconds(.01f);
+        }
+        else
+        {
+            yield break;
+        }
+        if (Physics.Raycast(me.transform.position, me.transform.forward, 4, baseClass.lungeMask, QueryTriggerInteraction.Ignore) == false)
+        {
+            me.transform.position = Vector3.Lerp(me.transform.position, me.transform.position + (me.transform.forward * 1.5f), 1);
+            yield return new WaitForSeconds(.01f);
+        }
+        else
+        {
+            yield break;
+        }
+        if (Physics.Raycast(me.transform.position, me.transform.forward, 2, baseClass.lungeMask, QueryTriggerInteraction.Ignore) == false)
         {
             me.transform.position = Vector3.Lerp(me.transform.position, me.transform.position + (me.transform.forward * 1), 1);
             yield return new WaitForSeconds(.01f);
@@ -96,51 +142,7 @@ public class MeleeAbilities : MonoBehaviour {
         {
             yield break;
         }
-        if (Physics.Raycast(me.transform.position, me.transform.forward, 6) == false)
-        {
-            me.transform.position = Vector3.Lerp(me.transform.position, me.transform.position + (me.transform.forward * 1.5f), 1);
-            yield return new WaitForSeconds(.01f);
-        }
-        else
-        {
-            yield break;
-        }
-        if (Physics.Raycast(me.transform.position, me.transform.forward, 6) == false)
-        {
-            me.transform.position = Vector3.Lerp(me.transform.position, me.transform.position + (me.transform.forward * 1.5f), 1);
-            yield return new WaitForSeconds(.01f);
-        }
-        else
-        {
-            yield break;
-        }
-        if (Physics.Raycast(me.transform.position, me.transform.forward, 6) == false)
-        {
-            me.transform.position = Vector3.Lerp(me.transform.position, me.transform.position + (me.transform.forward * 1.5f), 1);
-            yield return new WaitForSeconds(.01f);
-        }
-        else
-        {
-            yield break;
-        }
-        if (Physics.Raycast(me.transform.position, me.transform.forward, 4) == false)
-        {
-            me.transform.position = Vector3.Lerp(me.transform.position, me.transform.position + (me.transform.forward * 1), 1);
-            yield return new WaitForSeconds(.01f);
-        }
-        else
-        {
-            yield break;
-        }
-        if (Physics.Raycast(me.transform.position, me.transform.forward, 2) == false)
-        {
-            me.transform.position = Vector3.Lerp(me.transform.position, me.transform.position + (me.transform.forward * .5f), 1);
-            yield return new WaitForSeconds(.01f);
-        }
-        else
-        {
-            yield break;
-        }
+        print("lunge cooldown activated");
 
     }
 }

@@ -21,6 +21,7 @@ public class MeleeClass : PlayerClass
     [SerializeField]
     int grounded;
     public LayerMask enemyMask;
+    public LayerMask lungeMask;
     [Header("Melee Settings")]
     [Range(0, 10)]
     public float meleeDamage;

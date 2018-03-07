@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AI;
 
 public abstract class EntityClass : MonoBehaviour, IDamageable<float>, IStunnable<float> {
 
@@ -54,13 +55,11 @@ public abstract class EntityClass : MonoBehaviour, IDamageable<float>, IStunnabl
 
     public virtual void StunThis()
     {
-        print("got stunned");
         isStunned = true;
         
 
         //stops movement
         moveSpeed=0;
-
       
 
     }

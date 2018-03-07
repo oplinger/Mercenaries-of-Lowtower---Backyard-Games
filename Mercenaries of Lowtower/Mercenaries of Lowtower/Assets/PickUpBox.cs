@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AI;
 //Orange Player
 public class PickUpBox : MonoBehaviour
 {
@@ -10,12 +11,12 @@ public class PickUpBox : MonoBehaviour
     public GameObject cannonball;
 
     public GameObject enemy;
-    public AIController enemyScript;
+    public AIControllerNavMesh enemyScript;
 
 
     private void Start()
     {
-        enemyScript = enemy.GetComponent<AIController>();
+        enemyScript = enemy.GetComponent<AIControllerNavMesh>();
     
     }
 
