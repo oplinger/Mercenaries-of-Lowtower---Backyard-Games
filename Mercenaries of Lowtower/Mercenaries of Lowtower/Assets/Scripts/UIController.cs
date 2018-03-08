@@ -103,7 +103,6 @@ public class UIController : MonoBehaviour
 
 
 
-
         #region Timers
         timer -= Time.deltaTime;
         //texts[5].text = timer.ToString();

@@ -34,8 +34,12 @@ public class FireCannon : MonoBehaviour {
             //phaseScript.cannonFired = true;
             bossManager.GetComponent<BossControlScript>().cannonFired = true;
             Destroy(other.gameObject);
-            Instantiate(cannonball, cannonballSpawner.position, transform.rotation);
             Instantiate(cannonballProp, new Vector3(transform.position.x, transform.position.y+3, transform.position.z), transform.rotation);
+
+            if (bossManager.GetComponent<BossControlScript>().cannonballHits<2)
+            {
+                Instantiate(cannonball, cannonballSpawner.position, transform.rotation);
+            }
 
 
 
