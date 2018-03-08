@@ -23,7 +23,7 @@ GameObject:
   - component: {fileID: 114007166705230856}
   m_Layer: 0
   m_Name: Damage Detector (9)
-  m_TagString: Untagged
+  m_TagString: Tentacle
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -603,7 +603,7 @@ GameObject:
   - component: {fileID: 114061644655435200}
   m_Layer: 0
   m_Name: Damage Detector (4)
-  m_TagString: Untagged
+  m_TagString: Tentacle
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -665,7 +665,7 @@ GameObject:
   - component: {fileID: 114192838552189480}
   m_Layer: 0
   m_Name: Damage Detector (8)
-  m_TagString: Untagged
+  m_TagString: Tentacle
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -742,7 +742,7 @@ GameObject:
   - component: {fileID: 114649115261323060}
   m_Layer: 0
   m_Name: Damage Detector (1)
-  m_TagString: Untagged
+  m_TagString: Tentacle
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -864,7 +864,7 @@ GameObject:
   - component: {fileID: 114547715958436394}
   m_Layer: 0
   m_Name: Damage Detector (6)
-  m_TagString: Untagged
+  m_TagString: Tentacle
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1468,7 +1468,7 @@ GameObject:
   - component: {fileID: 114471121394514546}
   m_Layer: 0
   m_Name: Damage Detector (3)
-  m_TagString: Untagged
+  m_TagString: Tentacle
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -3829,7 +3829,7 @@ GameObject:
   - component: {fileID: 114086934392909370}
   m_Layer: 0
   m_Name: Damage Detector (2)
-  m_TagString: Untagged
+  m_TagString: Tentacle
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -4131,7 +4131,7 @@ GameObject:
   - component: {fileID: 114745553669614792}
   m_Layer: 0
   m_Name: Damage Detector (10)
-  m_TagString: Untagged
+  m_TagString: Tentacle
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -4487,7 +4487,7 @@ GameObject:
   - component: {fileID: 114590756557455822}
   m_Layer: 0
   m_Name: Damage Detector (13)
-  m_TagString: Untagged
+  m_TagString: Tentacle
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -4609,7 +4609,7 @@ GameObject:
   - component: {fileID: 114949541487685484}
   m_Layer: 0
   m_Name: Damage Detector (7)
-  m_TagString: Untagged
+  m_TagString: Tentacle
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -5350,7 +5350,7 @@ GameObject:
   - component: {fileID: 114321422822124156}
   m_Layer: 0
   m_Name: Damage Detector (12)
-  m_TagString: Untagged
+  m_TagString: Tentacle
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -5609,7 +5609,7 @@ GameObject:
   - component: {fileID: 114745820981446922}
   m_Layer: 0
   m_Name: Damage Detector (5)
-  m_TagString: Untagged
+  m_TagString: Tentacle
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -5690,7 +5690,7 @@ GameObject:
   - component: {fileID: 114513996260950870}
   m_Layer: 0
   m_Name: Damage Detector (11)
-  m_TagString: Untagged
+  m_TagString: Tentacle
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -12753,9 +12753,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ec07b768849ac9e4b8c1f6daf5692423, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  maxHealth: 0
+  currentHealth: 0
+  shielded: 0
+  isStunned: 0
+  tempMoveSpeed: 0
+  moveSpeed: 0
+  TentacleMaxHealth: []
+  TentacleCurrentHealth: []
+  tentacleHealthDelta: 0
+  tentacleArray: []
+  bossHead: {fileID: 1264972910579802}
   tentacle: {fileID: 1747058437223090}
+  boss: {fileID: 1608162778339028}
   tentacleSlamming: 0
   damageActiv: 0
+  tentDown: 0
   damageToggled: 0
 --- !u!114 &114013386427657032
 MonoBehaviour:
@@ -12768,21 +12781,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e0507750e0322d94087f3f138093538a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 0
-  currentHealth: 0
-  shielded: 0
-  isStunned: 0
-  tempMoveSpeed: 0
-  moveSpeed: 0
-  TentacleMaxHealth: []
-  TentacleCurrentHealth: []
-  tentacleHealthDelta: 0
-  tentacleArray: []
-  bossHead: {fileID: 0}
   elevationSpeed: 0
   descendingSpeed: 0
+  downTime: 3
   tentacleRaising: 0
   tentacleSlamming: 0
+  tentacleDown: 0
   tentacleLowering: 0
   damageActive: 0
   attackComplete: 0
@@ -12801,21 +12805,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e0507750e0322d94087f3f138093538a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 0
-  currentHealth: 0
-  shielded: 0
-  isStunned: 0
-  tempMoveSpeed: 0
-  moveSpeed: 0
-  TentacleMaxHealth: []
-  TentacleCurrentHealth: []
-  tentacleHealthDelta: 0
-  tentacleArray: []
-  bossHead: {fileID: 1264972910579802}
   elevationSpeed: 0
   descendingSpeed: 0
+  downTime: 3
   tentacleRaising: 0
   tentacleSlamming: 0
+  tentacleDown: 0
   tentacleLowering: 0
   damageActive: 0
   attackComplete: 0
@@ -12834,9 +12829,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ec07b768849ac9e4b8c1f6daf5692423, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  maxHealth: 0
+  currentHealth: 0
+  shielded: 0
+  isStunned: 0
+  tempMoveSpeed: 0
+  moveSpeed: 0
+  TentacleMaxHealth: []
+  TentacleCurrentHealth: []
+  tentacleHealthDelta: 0
+  tentacleArray: []
+  bossHead: {fileID: 1264972910579802}
   tentacle: {fileID: 1903798721620000}
+  boss: {fileID: 1608162778339028}
   tentacleSlamming: 0
   damageActiv: 0
+  tentDown: 0
   damageToggled: 0
 --- !u!114 &114065222287905424
 MonoBehaviour:
@@ -12873,9 +12881,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ec07b768849ac9e4b8c1f6daf5692423, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  maxHealth: 0
+  currentHealth: 0
+  shielded: 0
+  isStunned: 0
+  tempMoveSpeed: 0
+  moveSpeed: 0
+  TentacleMaxHealth: []
+  TentacleCurrentHealth: []
+  tentacleHealthDelta: 0
+  tentacleArray: []
+  bossHead: {fileID: 1264972910579802}
   tentacle: {fileID: 1473759561554458}
+  boss: {fileID: 1608162778339028}
   tentacleSlamming: 0
   damageActiv: 0
+  tentDown: 0
   damageToggled: 0
 --- !u!114 &114092838925830206
 MonoBehaviour:
@@ -12888,21 +12909,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e0507750e0322d94087f3f138093538a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 0
-  currentHealth: 0
-  shielded: 0
-  isStunned: 0
-  tempMoveSpeed: 0
-  moveSpeed: 0
-  TentacleMaxHealth: []
-  TentacleCurrentHealth: []
-  tentacleHealthDelta: 0
-  tentacleArray: []
-  bossHead: {fileID: 0}
   elevationSpeed: 0
   descendingSpeed: 0
+  downTime: 3
   tentacleRaising: 0
   tentacleSlamming: 0
+  tentacleDown: 0
   tentacleLowering: 0
   damageActive: 0
   attackComplete: 0
@@ -12921,21 +12933,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e0507750e0322d94087f3f138093538a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 0
-  currentHealth: 0
-  shielded: 0
-  isStunned: 0
-  tempMoveSpeed: 0
-  moveSpeed: 0
-  TentacleMaxHealth: []
-  TentacleCurrentHealth: []
-  tentacleHealthDelta: 0
-  tentacleArray: []
-  bossHead: {fileID: 0}
   elevationSpeed: 0
   descendingSpeed: 0
+  downTime: 3
   tentacleRaising: 0
   tentacleSlamming: 0
+  tentacleDown: 0
   tentacleLowering: 0
   damageActive: 0
   attackComplete: 0
@@ -13000,9 +13003,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ec07b768849ac9e4b8c1f6daf5692423, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  maxHealth: 0
+  currentHealth: 0
+  shielded: 0
+  isStunned: 0
+  tempMoveSpeed: 0
+  moveSpeed: 0
+  TentacleMaxHealth: []
+  TentacleCurrentHealth: []
+  tentacleHealthDelta: 0
+  tentacleArray: []
+  bossHead: {fileID: 0}
   tentacle: {fileID: 1597290495974084}
+  boss: {fileID: 0}
   tentacleSlamming: 0
   damageActiv: 0
+  tentDown: 0
   damageToggled: 0
 --- !u!114 &114154179214045978
 MonoBehaviour:
@@ -13037,9 +13053,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ec07b768849ac9e4b8c1f6daf5692423, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  maxHealth: 0
+  currentHealth: 0
+  shielded: 0
+  isStunned: 0
+  tempMoveSpeed: 0
+  moveSpeed: 0
+  TentacleMaxHealth: []
+  TentacleCurrentHealth: []
+  tentacleHealthDelta: 0
+  tentacleArray: []
+  bossHead: {fileID: 1264972910579802}
   tentacle: {fileID: 1597073148735944}
+  boss: {fileID: 1608162778339028}
   tentacleSlamming: 0
   damageActiv: 0
+  tentDown: 0
   damageToggled: 0
 --- !u!114 &114197147706806154
 MonoBehaviour:
@@ -13077,21 +13106,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e0507750e0322d94087f3f138093538a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 0
-  currentHealth: 0
-  shielded: 0
-  isStunned: 0
-  tempMoveSpeed: 0
-  moveSpeed: 0
-  TentacleMaxHealth: []
-  TentacleCurrentHealth: []
-  tentacleHealthDelta: 0
-  tentacleArray: []
-  bossHead: {fileID: 0}
   elevationSpeed: 0
   descendingSpeed: 0
+  downTime: 3
   tentacleRaising: 0
   tentacleSlamming: 0
+  tentacleDown: 0
   tentacleLowering: 0
   damageActive: 0
   attackComplete: 0
@@ -13133,21 +13153,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e0507750e0322d94087f3f138093538a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 0
-  currentHealth: 0
-  shielded: 0
-  isStunned: 0
-  tempMoveSpeed: 0
-  moveSpeed: 0
-  TentacleMaxHealth: []
-  TentacleCurrentHealth: []
-  tentacleHealthDelta: 0
-  tentacleArray: []
-  bossHead: {fileID: 0}
   elevationSpeed: 0
   descendingSpeed: 0
+  downTime: 3
   tentacleRaising: 0
   tentacleSlamming: 0
+  tentacleDown: 0
   tentacleLowering: 0
   damageActive: 0
   attackComplete: 0
@@ -13203,9 +13214,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ec07b768849ac9e4b8c1f6daf5692423, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  maxHealth: 0
+  currentHealth: 0
+  shielded: 0
+  isStunned: 0
+  tempMoveSpeed: 0
+  moveSpeed: 0
+  TentacleMaxHealth: []
+  TentacleCurrentHealth: []
+  tentacleHealthDelta: 0
+  tentacleArray: []
+  bossHead: {fileID: 1264972910579802}
   tentacle: {fileID: 1018649379421058}
+  boss: {fileID: 1608162778339028}
   tentacleSlamming: 0
   damageActiv: 0
+  tentDown: 0
   damageToggled: 0
 --- !u!114 &114351453025499252
 MonoBehaviour:
@@ -13218,21 +13242,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e0507750e0322d94087f3f138093538a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 0
-  currentHealth: 0
-  shielded: 0
-  isStunned: 0
-  tempMoveSpeed: 0
-  moveSpeed: 0
-  TentacleMaxHealth: []
-  TentacleCurrentHealth: []
-  tentacleHealthDelta: 0
-  tentacleArray: []
-  bossHead: {fileID: 0}
   elevationSpeed: 0
   descendingSpeed: 0
+  downTime: 3
   tentacleRaising: 0
   tentacleSlamming: 0
+  tentacleDown: 0
   tentacleLowering: 0
   damageActive: 0
   attackComplete: 0
@@ -13275,21 +13290,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e0507750e0322d94087f3f138093538a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 0
-  currentHealth: 0
-  shielded: 0
-  isStunned: 0
-  tempMoveSpeed: 0
-  moveSpeed: 0
-  TentacleMaxHealth: []
-  TentacleCurrentHealth: []
-  tentacleHealthDelta: 0
-  tentacleArray: []
-  bossHead: {fileID: 0}
   elevationSpeed: 0
   descendingSpeed: 0
+  downTime: 3
   tentacleRaising: 0
   tentacleSlamming: 0
+  tentacleDown: 0
   tentacleLowering: 0
   damageActive: 0
   attackComplete: 0
@@ -13308,9 +13314,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ec07b768849ac9e4b8c1f6daf5692423, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  maxHealth: 0
+  currentHealth: 0
+  shielded: 0
+  isStunned: 0
+  tempMoveSpeed: 0
+  moveSpeed: 0
+  TentacleMaxHealth: []
+  TentacleCurrentHealth: []
+  tentacleHealthDelta: 0
+  tentacleArray: []
+  bossHead: {fileID: 1264972910579802}
   tentacle: {fileID: 1683101277405516}
+  boss: {fileID: 1608162778339028}
   tentacleSlamming: 0
   damageActiv: 0
+  tentDown: 0
   damageToggled: 0
 --- !u!114 &114490432034175210
 MonoBehaviour:
@@ -13323,21 +13342,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e0507750e0322d94087f3f138093538a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 0
-  currentHealth: 0
-  shielded: 0
-  isStunned: 0
-  tempMoveSpeed: 0
-  moveSpeed: 0
-  TentacleMaxHealth: []
-  TentacleCurrentHealth: []
-  tentacleHealthDelta: 0
-  tentacleArray: []
-  bossHead: {fileID: 0}
   elevationSpeed: 0
   descendingSpeed: 0
+  downTime: 3
   tentacleRaising: 0
   tentacleSlamming: 0
+  tentacleDown: 0
   tentacleLowering: 0
   damageActive: 0
   attackComplete: 0
@@ -13356,9 +13366,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ec07b768849ac9e4b8c1f6daf5692423, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  maxHealth: 0
+  currentHealth: 0
+  shielded: 0
+  isStunned: 0
+  tempMoveSpeed: 0
+  moveSpeed: 0
+  TentacleMaxHealth: []
+  TentacleCurrentHealth: []
+  tentacleHealthDelta: 0
+  tentacleArray: []
+  bossHead: {fileID: 1264972910579802}
   tentacle: {fileID: 1351657807853836}
+  boss: {fileID: 1608162778339028}
   tentacleSlamming: 0
   damageActiv: 0
+  tentDown: 0
   damageToggled: 0
 --- !u!114 &114515948394282390
 MonoBehaviour:
@@ -13383,9 +13406,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ec07b768849ac9e4b8c1f6daf5692423, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  maxHealth: 0
+  currentHealth: 0
+  shielded: 0
+  isStunned: 0
+  tempMoveSpeed: 0
+  moveSpeed: 0
+  TentacleMaxHealth: []
+  TentacleCurrentHealth: []
+  tentacleHealthDelta: 0
+  tentacleArray: []
+  bossHead: {fileID: 1264972910579802}
   tentacle: {fileID: 1438762195865974}
+  boss: {fileID: 1608162778339028}
   tentacleSlamming: 0
   damageActiv: 0
+  tentDown: 0
   damageToggled: 0
 --- !u!114 &114590756557455822
 MonoBehaviour:
@@ -13398,9 +13434,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ec07b768849ac9e4b8c1f6daf5692423, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  maxHealth: 0
+  currentHealth: 0
+  shielded: 0
+  isStunned: 0
+  tempMoveSpeed: 0
+  moveSpeed: 0
+  TentacleMaxHealth: []
+  TentacleCurrentHealth: []
+  tentacleHealthDelta: 0
+  tentacleArray: []
+  bossHead: {fileID: 1264972910579802}
   tentacle: {fileID: 1966903991797094}
+  boss: {fileID: 1608162778339028}
   tentacleSlamming: 0
   damageActiv: 0
+  tentDown: 0
   damageToggled: 0
 --- !u!114 &114646275897850878
 MonoBehaviour:
@@ -13425,9 +13474,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ec07b768849ac9e4b8c1f6daf5692423, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  maxHealth: 0
+  currentHealth: 0
+  shielded: 0
+  isStunned: 0
+  tempMoveSpeed: 0
+  moveSpeed: 0
+  TentacleMaxHealth: []
+  TentacleCurrentHealth: []
+  tentacleHealthDelta: 0
+  tentacleArray: []
+  bossHead: {fileID: 1264972910579802}
   tentacle: {fileID: 1597290495974084}
+  boss: {fileID: 1608162778339028}
   tentacleSlamming: 0
   damageActiv: 0
+  tentDown: 0
   damageToggled: 0
 --- !u!114 &114663498793754412
 MonoBehaviour:
@@ -13452,21 +13514,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e0507750e0322d94087f3f138093538a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 0
-  currentHealth: 0
-  shielded: 0
-  isStunned: 0
-  tempMoveSpeed: 0
-  moveSpeed: 0
-  TentacleMaxHealth: []
-  TentacleCurrentHealth: []
-  tentacleHealthDelta: 0
-  tentacleArray: []
-  bossHead: {fileID: 0}
   elevationSpeed: 0
   descendingSpeed: 0
+  downTime: 3
   tentacleRaising: 0
   tentacleSlamming: 0
+  tentacleDown: 0
   tentacleLowering: 0
   damageActive: 0
   attackComplete: 0
@@ -13497,9 +13550,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ec07b768849ac9e4b8c1f6daf5692423, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  maxHealth: 0
+  currentHealth: 0
+  shielded: 0
+  isStunned: 0
+  tempMoveSpeed: 0
+  moveSpeed: 0
+  TentacleMaxHealth: []
+  TentacleCurrentHealth: []
+  tentacleHealthDelta: 0
+  tentacleArray: []
+  bossHead: {fileID: 1264972910579802}
   tentacle: {fileID: 1493521537042196}
+  boss: {fileID: 1608162778339028}
   tentacleSlamming: 0
   damageActiv: 0
+  tentDown: 0
   damageToggled: 0
 --- !u!114 &114745820981446922
 MonoBehaviour:
@@ -13512,9 +13578,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ec07b768849ac9e4b8c1f6daf5692423, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  maxHealth: 0
+  currentHealth: 0
+  shielded: 0
+  isStunned: 0
+  tempMoveSpeed: 0
+  moveSpeed: 0
+  TentacleMaxHealth: []
+  TentacleCurrentHealth: []
+  tentacleHealthDelta: 0
+  tentacleArray: []
+  bossHead: {fileID: 1264972910579802}
   tentacle: {fileID: 1349451883038552}
+  boss: {fileID: 1608162778339028}
   tentacleSlamming: 0
   damageActiv: 0
+  tentDown: 0
   damageToggled: 0
 --- !u!114 &114789753405479804
 MonoBehaviour:
@@ -13527,21 +13606,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e0507750e0322d94087f3f138093538a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 0
-  currentHealth: 0
-  shielded: 0
-  isStunned: 0
-  tempMoveSpeed: 0
-  moveSpeed: 0
-  TentacleMaxHealth: []
-  TentacleCurrentHealth: []
-  tentacleHealthDelta: 0
-  tentacleArray: []
-  bossHead: {fileID: 0}
   elevationSpeed: 0
   descendingSpeed: 0
+  downTime: 3
   tentacleRaising: 0
   tentacleSlamming: 0
+  tentacleDown: 0
   tentacleLowering: 0
   damageActive: 0
   attackComplete: 0
@@ -13607,21 +13677,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e0507750e0322d94087f3f138093538a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 0
-  currentHealth: 0
-  shielded: 0
-  isStunned: 0
-  tempMoveSpeed: 0
-  moveSpeed: 0
-  TentacleMaxHealth: []
-  TentacleCurrentHealth: []
-  tentacleHealthDelta: 0
-  tentacleArray: []
-  bossHead: {fileID: 0}
   elevationSpeed: 0
   descendingSpeed: 0
+  downTime: 3
   tentacleRaising: 0
   tentacleSlamming: 0
+  tentacleDown: 0
   tentacleLowering: 0
   damageActive: 0
   attackComplete: 0
@@ -13673,21 +13734,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e0507750e0322d94087f3f138093538a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 0
-  currentHealth: 0
-  shielded: 0
-  isStunned: 0
-  tempMoveSpeed: 0
-  moveSpeed: 0
-  TentacleMaxHealth: []
-  TentacleCurrentHealth: []
-  tentacleHealthDelta: 0
-  tentacleArray: []
-  bossHead: {fileID: 0}
   elevationSpeed: 0
   descendingSpeed: 0
+  downTime: 3
   tentacleRaising: 0
   tentacleSlamming: 0
+  tentacleDown: 0
   tentacleLowering: 0
   damageActive: 0
   attackComplete: 0
@@ -13706,9 +13758,22 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ec07b768849ac9e4b8c1f6daf5692423, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  maxHealth: 0
+  currentHealth: 0
+  shielded: 0
+  isStunned: 0
+  tempMoveSpeed: 0
+  moveSpeed: 0
+  TentacleMaxHealth: []
+  TentacleCurrentHealth: []
+  tentacleHealthDelta: 0
+  tentacleArray: []
+  bossHead: {fileID: 1264972910579802}
   tentacle: {fileID: 1408848024562866}
+  boss: {fileID: 1608162778339028}
   tentacleSlamming: 0
   damageActiv: 0
+  tentDown: 0
   damageToggled: 0
 --- !u!135 &135002642304453936
 SphereCollider:

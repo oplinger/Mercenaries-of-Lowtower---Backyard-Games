@@ -16,6 +16,10 @@ public class TentacleAnimationEvents : MonoBehaviour {
 		
 	}
 
+    void StayDown()
+    {
+        Tentacle.GetComponent<BossTentacleScript>().RestTentacle();
+    }
     void Retreat()
     {
         Tentacle.GetComponent<BossTentacleScript>().RetreatTentacle();

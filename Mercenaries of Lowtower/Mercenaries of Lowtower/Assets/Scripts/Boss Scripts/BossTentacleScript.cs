@@ -2,15 +2,20 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class BossTentacleScript : BossClass {
+public class BossTentacleScript : MonoBehaviour
+{
     // The speed at which the tentacle elevates towards the endPoint
     public float elevationSpeed;
     // The speed at which the tentacle descends after slamming
     public float descendingSpeed;
+    //
+    public float downTime;
     // Bool to track if the tentacle is currently raising
     public bool tentacleRaising;
     // Bool to track if the tentacle is currently slamming
     public bool tentacleSlamming;
+    //
+    public bool tentacleDown;
     // Bool to track if the tentacle is currently lowering
     public bool tentacleLowering;
     public bool damageActive;
@@ -79,11 +84,21 @@ public class BossTentacleScript : BossClass {
         anim.SetBool("tentacleSlamming", true);
     }
 
-    public void RetreatTentacle()
+    public void RestTentacle()
     {
-        DeactivateDamage();
         anim.SetBool("tentacleSlamming", false);
         tentacleSlamming = false;
+        DeactivateDamage();
+        tentacleDown = true;
+        anim.SetBool("tentacleDown", true);
+        StartCoroutine("TentacleDown");
+    }
+
+    public void RetreatTentacle()
+    {
+        //DeactivateDamage();
+        //anim.SetBool("tentacleSlamming", false);
+        //tentacleSlamming = false;
         anim.SetBool("tentacleRetreating", true);
     }
 
@@ -110,6 +125,14 @@ public class BossTentacleScript : BossClass {
         }
     }
 
+    IEnumerator TentacleDown()
+    {
+        yield return new WaitForSeconds(downTime);
+        tentacleDown = false;
+        anim.SetBool("tentacleDown", false);
+        RetreatTentacle();
+        //armRotatingBackward = true;
+    }
     public void OnTriggerEnter(Collider other)
     {
         if(damageActive == true)
@@ -142,5 +165,4 @@ public class BossTentacleScript : BossClass {
             damageActive = false;
         }
     }
-
 }

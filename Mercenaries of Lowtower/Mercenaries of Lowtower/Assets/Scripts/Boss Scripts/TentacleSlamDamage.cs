@@ -2,10 +2,12 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class TentacleSlamDamage : MonoBehaviour {
+public class TentacleSlamDamage : BossClass {
     public GameObject tentacle;
+    public GameObject boss;
     public bool tentacleSlamming;
     public bool damageActiv;
+    public bool tentDown;
     public bool damageToggled;
 
 	// Use this for initialization
@@ -17,6 +19,7 @@ public class TentacleSlamDamage : MonoBehaviour {
 	void Update () {
         //tentacleSlamming = tentacle.GetComponent<BossTentacleScript>().tentacleSlamming;
         damageActiv = tentacle.GetComponent<BossTentacleScript>().damageActive;
+        tentDown = tentacle.GetComponent<BossTentacleScript>().tentacleDown;
 
         if(damageActiv == true && damageToggled == false)
         {
@@ -59,6 +62,13 @@ public class TentacleSlamDamage : MonoBehaviour {
             {
                 other.GetComponent<IDamageable<float>>().TakeDamage(50);
             }
+        }
+    }
+    public override void TakeDamage(float damageTaken)
+    {
+        if (tentDown)
+        {
+            boss.GetComponent<BossClass>().currentHealth -= damageTaken;
         }
     }
 }
