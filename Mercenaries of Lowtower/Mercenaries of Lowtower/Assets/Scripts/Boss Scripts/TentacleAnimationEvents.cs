@@ -25,4 +25,14 @@ public class TentacleAnimationEvents : MonoBehaviour {
     {
         Tentacle.GetComponent<BossTentacleScript>().CompleteRetreat();
     }
+
+    void ActivDamage()
+    {
+        Tentacle.GetComponent<BossTentacleScript>().ActivateDamage();
+    }
+
+    void DeactivDamage()
+    {
+        Tentacle.GetComponent<BossTentacleScript>().DeactivateDamage();
+    }
 }

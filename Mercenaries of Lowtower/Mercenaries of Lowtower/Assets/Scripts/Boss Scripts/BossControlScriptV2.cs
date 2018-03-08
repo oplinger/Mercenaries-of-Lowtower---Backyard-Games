@@ -8,20 +8,30 @@ public class BossControlScriptV2 : MonoBehaviour {
     public int bossPhase;
     // Current phase of the boss fight
     public int bossAttack;
+    public int beamsDone;
     public int tentaclesReady;
     // The speed at which the tentacle elevates towards the endPoint
     public float elevationSpeed;
     // The speed at which the tentacle descends after slamming
     public float descendingSpeed;
+    // The speed at which the tentacle moves toward the waypoint
+    public float beamSpeed;
     // How long before the boss starts attacking
     public float startTime;
     // Holds the wait time for coroutines
     private float waitTime;
     public bool isWaiting;
     public bool bossReady;
+    public bool energySphereReady;
+    public bool beamActivated;
+    public bool beamAttackComplete;
     //Array holding all the bosses tentacles
     public List<GameObject> BossTentaclesList = new List<GameObject>();
+    public List<GameObject> BossBeamList = new List<GameObject>();
     public GameObject Boss;
+    public GameObject BossHead;
+    public GameObject energySphere;
+    public Transform energySphereSpawn;
 
     // Use this for initialization
     void Start () {
@@ -35,7 +45,7 @@ public class BossControlScriptV2 : MonoBehaviour {
 	void Update () {
         if (bossPhase == 1)
         {
-            //beamActivated = false;
+            beamActivated = false;
             /*
             if (Boss.GetComponent<BossClass>().currentHealth <= 195 && bossDamaged == false)
             {
@@ -70,7 +80,7 @@ public class BossControlScriptV2 : MonoBehaviour {
                 BossTentaclesList[8].GetComponent<BossTentacleScript>().tentacleRaising = true;
                 bossAttack++;
             }
-
+            /*
             if (bossAttack == 7)
             {
                 BossTentaclesList[0].GetComponent<BossTentacleScript>().tentacleRaising = true;
@@ -98,7 +108,7 @@ public class BossControlScriptV2 : MonoBehaviour {
                 BossTentaclesList[8].GetComponent<BossTentacleScript>().tentacleRaising = true;
                 bossAttack++;
             }
-
+            */
             //
             if (bossReady == true)
             {
@@ -116,10 +126,11 @@ public class BossControlScriptV2 : MonoBehaviour {
 
                 if (bossAttack == 6)
                 {
-                    bossAttack = 7;
+                    //bossAttack = 7;
+                    bossPhase = 2;
                     bossReady = false;
                 }
-
+                /*
                 if (bossAttack == 8)
                 {
                     bossAttack = 9;
@@ -137,6 +148,40 @@ public class BossControlScriptV2 : MonoBehaviour {
                     bossPhase = 2;
                     bossReady = false;
                 }
+                */
+            }
+        }
+
+        if (bossPhase == 2)
+        {
+            bossAttack = 0;
+            StartCoroutine("EnergySphereCD");
+            bossPhase = 3;
+        }
+
+        if (bossPhase == 3)
+        {
+            if (energySphereReady == true)
+            {
+                BossHead.GetComponent<BossLookAt>().isCharging = false;
+                Instantiate(energySphere, energySphereSpawn.position, energySphereSpawn.rotation);
+                StartCoroutine("EnergySphereCD");
+                energySphereReady = false;
+            }
+
+            if (beamActivated == false)
+            {
+                BossBeamList[0].GetComponent<BeamTentacleScript>().beamAscending = true;
+                BossBeamList[1].GetComponent<BeamTentacleScript>().beamAscending = true;
+                beamActivated = true;
+            }
+
+            CheckBeams();
+
+            if (beamAttackComplete == true)
+            {
+                bossPhase = 4;
+                beamAttackComplete = false;
             }
         }
     }
@@ -149,6 +194,13 @@ public class BossControlScriptV2 : MonoBehaviour {
         isWaiting = false;
     }
 
+    IEnumerator EnergySphereCD()
+    {
+        //BossHead.GetComponent<BossLookAt>().TargetPlayer();
+        yield return new WaitForSeconds(6);
+        energySphereReady = true;
+    }
+
     public void CheckIfReady()
     {
         if (bossAttack == 2)
@@ -156,7 +208,6 @@ public class BossControlScriptV2 : MonoBehaviour {
             tentaclesReady++;
             if (tentaclesReady == 4)
             {
-                print("Ready!");
                 bossReady = true;
                 tentaclesReady = 0;
             }
@@ -181,7 +232,7 @@ public class BossControlScriptV2 : MonoBehaviour {
                 tentaclesReady = 0;
             }
         }
-
+        /*
         if (bossAttack == 8)
         {
             tentaclesReady++;
@@ -214,9 +265,18 @@ public class BossControlScriptV2 : MonoBehaviour {
                 tentaclesReady = 0;
             }
         }
+        */
         else
         {
 
+        }
+    }
+
+    public void CheckBeams()
+    {
+        if (beamsDone == 2)
+        {
+            beamAttackComplete = true;
         }
     }
 }
