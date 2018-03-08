@@ -115,8 +115,8 @@ public class UIController : MonoBehaviour
 
 
         icons[0].material.SetFloat("_Tween", players[0].GetComponent<TankCooldowns>().cooldowns["magnetCD"] / players[0].GetComponent<TankCooldowns>().magnetCD);
-        icons[0].material.SetTexture("_MainTex", Resources.Load("Textures/MagnetPull") as Texture);
-        icons[0].material.SetTexture("_SecondTex", Resources.Load("Textures/MagnetPullBlack") as Texture);
+        icons[0].material.SetTexture("_MainTex", Resources.Load("Textures/Icon_Tank_Grab") as Texture);
+        icons[0].material.SetTexture("_SecondTex", Resources.Load("Textures/Icon_Tank_Grab_2") as Texture);
         if (icons[0].material.GetFloat("_Tween") <= 0)
         {
             icons[0].rectTransform.localScale = new Vector3(2, 2, 2);
@@ -128,8 +128,8 @@ public class UIController : MonoBehaviour
         }
 
         icons[1].material.SetFloat("_Tween", players[0].GetComponent<TankCooldowns>().cooldowns["shieldCD"] / players[0].GetComponent<TankCooldowns>().shieldCD);
-        icons[1].material.SetTexture("_MainTex", Resources.Load("Textures/BubbleShield") as Texture);
-        icons[1].material.SetTexture("_SecondTex", Resources.Load("Textures/BubbleShieldBlack") as Texture);
+        icons[1].material.SetTexture("_MainTex", Resources.Load("Textures/Icon_Tank_Bubble") as Texture);
+        icons[1].material.SetTexture("_SecondTex", Resources.Load("Textures/Icon_Tank_Bubble_2") as Texture);
         if (icons[1].material.GetFloat("_Tween") <= 0)
         {
             icons[1].rectTransform.localScale = new Vector3(2, 2, 2);
@@ -141,8 +141,8 @@ public class UIController : MonoBehaviour
         }
 
         icons[2].material.SetFloat("_Tween", 0);
-        icons[2].material.SetTexture("_MainTex", Resources.Load("Textures/ReflectionAttackww") as Texture);
-        icons[2].material.SetTexture("_SecondTex", Resources.Load("Textures/ReflectionAttackBlack") as Texture);
+        icons[2].material.SetTexture("_MainTex", Resources.Load("Textures/Icon_Transparent") as Texture);
+        icons[2].material.SetTexture("_SecondTex", Resources.Load("Textures/Icon_Transparent") as Texture);
         if (icons[2].material.GetFloat("_Tween") <= 0)
         {
             icons[2].rectTransform.localScale = new Vector3(2, 2, 2);
@@ -172,8 +172,8 @@ public class UIController : MonoBehaviour
         //}
 
         icons[3].material.SetFloat("_Tween", players[1].GetComponent<HealerCooldowns>().cooldowns["healCD"] / players[1].GetComponent<HealerCooldowns>().healCD);
-        icons[3].material.SetTexture("_MainTex", Resources.Load("Textures/HealEffect") as Texture);
-        icons[3].material.SetTexture("_SecondTex", Resources.Load("Textures/HealEffectBlack") as Texture);
+        icons[3].material.SetTexture("_MainTex", Resources.Load("Textures/Icon_Healer_Heal") as Texture);
+        icons[3].material.SetTexture("_SecondTex", Resources.Load("Textures/Icon_Healer_Heal_2") as Texture);
         if (icons[3].material.GetFloat("_Tween") <= 0)
         {
             icons[3].rectTransform.localScale = new Vector3(2, 2, 2);
@@ -185,8 +185,8 @@ public class UIController : MonoBehaviour
         }
 
         icons[4].material.SetFloat("_Tween", players[1].GetComponent<HealerCooldowns>().cooldowns["stunCD"] / players[1].GetComponent<HealerCooldowns>().stunCD);
-        icons[4].material.SetTexture("_MainTex", Resources.Load("Textures/Teleport") as Texture);
-        icons[4].material.SetTexture("_SecondTex", Resources.Load("Textures/TeleportBlack") as Texture);
+        icons[4].material.SetTexture("_MainTex", Resources.Load("Textures/Icon_Healer_Stun") as Texture);
+        icons[4].material.SetTexture("_SecondTex", Resources.Load("Textures/Icon_Healer_Stun_2") as Texture);
         if (icons[4].material.GetFloat("_Tween") <= 0)
         {
             icons[4].rectTransform.localScale = new Vector3(2, 2, 2);
@@ -198,8 +198,8 @@ public class UIController : MonoBehaviour
         }
 
         icons[5].material.SetFloat("_Tween", 0);
-        icons[5].material.SetTexture("_MainTex", Resources.Load("Textures/FearEffect") as Texture);
-        icons[5].material.SetTexture("_SecondTex", Resources.Load("Textures/FearEffectBlack") as Texture);
+        icons[5].material.SetTexture("_MainTex", Resources.Load("Textures/Icon_Transparent") as Texture);
+        icons[5].material.SetTexture("_SecondTex", Resources.Load("Textures/Icon_Transparent") as Texture);
         if (icons[5].material.GetFloat("_Tween") <= 0)
         {
             icons[5].rectTransform.localScale = new Vector3(2, 2, 2);
@@ -230,8 +230,8 @@ public class UIController : MonoBehaviour
         //}
 
         icons[6].material.SetFloat("_Tween", players[2].GetComponent<MeleeCooldowns>().cooldowns["meleeCD"] / players[2].GetComponent<MeleeCooldowns>().meleeCD);
-        icons[6].material.SetTexture("_MainTex", Resources.Load("Textures/MeleeStrike") as Texture);
-        icons[6].material.SetTexture("_SecondTex", Resources.Load("Textures/MeleeStrikeBlack") as Texture);
+        icons[6].material.SetTexture("_MainTex", Resources.Load("Textures/Icon_Melee_Attack") as Texture);
+        icons[6].material.SetTexture("_SecondTex", Resources.Load("Textures/Icon_Melee_Attack_2") as Texture);
         if (icons[6].material.GetFloat("_Tween") <= 0)
         {
             icons[6].rectTransform.localScale = new Vector3(2, 2, 2);
@@ -243,8 +243,8 @@ public class UIController : MonoBehaviour
         }
 
         icons[7].material.SetFloat("_Tween", 0);
-        icons[7].material.SetTexture("_MainTex", Resources.Load("Textures/MeleeCyclone1") as Texture);
-        icons[7].material.SetTexture("_SecondTex", Resources.Load("Textures/MeleeCycloneBlack1") as Texture);
+        icons[7].material.SetTexture("_MainTex", Resources.Load("Textures/Icon_Transparent") as Texture);
+        icons[7].material.SetTexture("_SecondTex", Resources.Load("Textures/Icon_Transparent") as Texture);
         if (icons[7].material.GetFloat("_Tween") <= 0)
         {
             icons[7].rectTransform.localScale = new Vector3(2, 2, 2);
@@ -256,8 +256,8 @@ public class UIController : MonoBehaviour
         }
 
         icons[8].material.SetFloat("_Tween", players[2].GetComponent<MeleeCooldowns>().cooldowns["lungeCD"] / players[2].GetComponent<MeleeCooldowns>().lungeCD);
-        icons[8].material.SetTexture("_MainTex", Resources.Load("Textures/MeleeLuge") as Texture);
-        icons[8].material.SetTexture("_SecondTex", Resources.Load("Textures/MeleeLugeBlack") as Texture);
+        icons[8].material.SetTexture("_MainTex", Resources.Load("Textures/Icon_Melee_Dash") as Texture);
+        icons[8].material.SetTexture("_SecondTex", Resources.Load("Textures/Icon_Melee_Dash_2") as Texture);
         if (icons[8].material.GetFloat("_Tween") <= 0)
         {
             icons[8].rectTransform.localScale = new Vector3(2, 2, 2);
@@ -288,8 +288,8 @@ public class UIController : MonoBehaviour
         //}
 
         icons[9].material.SetFloat("_Tween", players[3].GetComponent<RangedCooldowns>().cooldowns["boltCD"] / players[3].GetComponent<RangedCooldowns>().boltCD);
-        icons[9].material.SetTexture("_MainTex", Resources.Load("Textures/RangedArrowShot") as Texture);
-        icons[9].material.SetTexture("_SecondTex", Resources.Load("Textures/RangedArrowShotBlack") as Texture);
+        icons[9].material.SetTexture("_MainTex", Resources.Load("Textures/Icon_Ranger_Bolt") as Texture);
+        icons[9].material.SetTexture("_SecondTex", Resources.Load("Textures/Icon_Ranger_Bolt_2") as Texture);
         if (icons[9].material.GetFloat("_Tween") <= 0)
         {
             icons[9].rectTransform.localScale = new Vector3(2, 2, 2);
@@ -301,8 +301,8 @@ public class UIController : MonoBehaviour
         }
 
         icons[10].material.SetFloat("_Tween", 0);
-        icons[10].material.SetTexture("_MainTex", Resources.Load("Textures/SmokeBomb") as Texture);
-        icons[10].material.SetTexture("_SecondTex", Resources.Load("Textures/SmokeBombBlack") as Texture);
+        icons[10].material.SetTexture("_MainTex", Resources.Load("Textures/Icon_Transparent") as Texture);
+        icons[10].material.SetTexture("_SecondTex", Resources.Load("Textures/Icon_Transparent") as Texture);
         if (icons[10].material.GetFloat("_Tween") <= 0)
         {
             icons[10].rectTransform.localScale = new Vector3(2, 2, 2);
@@ -314,8 +314,8 @@ public class UIController : MonoBehaviour
         }
 
         icons[11].material.SetFloat("_Tween", players[3].GetComponent<RangedCooldowns>().cooldowns["knockbackCD"] / players[3].GetComponent<RangedCooldowns>().knockbackCD);
-        icons[11].material.SetTexture("_MainTex", Resources.Load("Textures/BluntTipped") as Texture);
-        icons[11].material.SetTexture("_SecondTex", Resources.Load("Textures/BluntTippedBlack") as Texture);
+        icons[11].material.SetTexture("_MainTex", Resources.Load("Textures/Icon_Ranger_Knockback") as Texture);
+        icons[11].material.SetTexture("_SecondTex", Resources.Load("Textures/Icon_Ranger_Knockback_2") as Texture);
         if (icons[11].material.GetFloat("_Tween") <= 0)
         {
             icons[11].rectTransform.localScale = new Vector3(2, 2, 2);
