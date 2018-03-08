@@ -23,12 +23,6 @@ AnimationClip:
         outSlope: {x: 0, y: 0, z: 0}
         tangentMode: 0
       - serializedVersion: 2
-        time: 0.25
-        value: {x: 0, y: -90.00001, z: 97.295006}
-        inSlope: {x: 0, y: 0, z: 0}
-        outSlope: {x: 0, y: 0, z: 0}
-        tangentMode: 0
-      - serializedVersion: 2
         time: 0.6
         value: {x: 0, y: -90.00001, z: 97.295006}
         inSlope: {x: 0, y: 0, z: 0}
@@ -48,16 +42,10 @@ AnimationClip:
         outSlope: {x: 0, y: 0, z: 0}
         tangentMode: 0
       - serializedVersion: 2
-        time: 0.25
-        value: {x: 0, y: 0, z: 5}
-        inSlope: {x: 0, y: 0, z: 30}
-        outSlope: {x: 0, y: 0, z: 30}
-        tangentMode: 0
-      - serializedVersion: 2
-        time: 0.5
-        value: {x: 0, y: 25, z: 15}
-        inSlope: {x: 0, y: 0, z: 0}
-        outSlope: {x: 0, y: 0, z: 0}
+        time: 0.3
+        value: {x: 0, y: 12.32, z: 0.5555568}
+        inSlope: {x: 0, y: 0, z: 1.8518559}
+        outSlope: {x: 0, y: 0, z: 1.8518559}
         tangentMode: 0
       - serializedVersion: 2
         time: 0.6
@@ -79,8 +67,8 @@ AnimationClip:
         outSlope: {x: 0, y: 0, z: 0}
         tangentMode: 0
       - serializedVersion: 2
-        time: 0.25
-        value: {x: 0, y: 0, z: 5}
+        time: 0.3
+        value: {x: 0, y: 22.12, z: 0}
         inSlope: {x: 0, y: 0, z: 0}
         outSlope: {x: 0, y: 0, z: 0}
         tangentMode: 0
@@ -104,12 +92,6 @@ AnimationClip:
         outSlope: {x: 0, y: 0, z: 0}
         tangentMode: 0
       - serializedVersion: 2
-        time: 0.25
-        value: {x: 0, y: 0, z: 5}
-        inSlope: {x: 0, y: 0, z: 0}
-        outSlope: {x: 0, y: 0, z: 0}
-        tangentMode: 0
-      - serializedVersion: 2
         time: 0.6
         value: {x: 0, y: 0, z: 0}
         inSlope: {x: 0, y: 0, z: 0}
@@ -129,12 +111,6 @@ AnimationClip:
         outSlope: {x: 0, y: 0, z: 0}
         tangentMode: 0
       - serializedVersion: 2
-        time: 0.5
-        value: {x: 0, y: -20, z: 0}
-        inSlope: {x: 0, y: 0, z: 0}
-        outSlope: {x: 0, y: 0, z: 0}
-        tangentMode: 0
-      - serializedVersion: 2
         time: 0.6
         value: {x: 0, y: -1.4814892, z: 0}
         inSlope: {x: 0, y: 0, z: 0}
@@ -144,6 +120,25 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     path: Storm_Kraken_19__1_:LimbJoint_24/Storm_Kraken_19__1_:LimbJoint_2/Storm_Kraken_19__1_:LimbJoint_3/Storm_Kraken_19__1_:LimbJoint_4/Storm_Kraken_19__1_:LimbJoint_5
+  - curve:
+      serializedVersion: 2
+      m_Curve:
+      - serializedVersion: 2
+        time: 0
+        value: {x: 0, y: 0, z: 0}
+        inSlope: {x: 0, y: 0, z: 0}
+        outSlope: {x: 0, y: 0, z: 0}
+        tangentMode: 0
+      - serializedVersion: 2
+        time: 0.3
+        value: {x: 0, y: 15.36, z: 0}
+        inSlope: {x: 0, y: 0, z: 0}
+        outSlope: {x: 0, y: 0, z: 0}
+        tangentMode: 0
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    path: Storm_Kraken_19__1_:LimbJoint_24/Storm_Kraken_19__1_:LimbJoint_2
   m_PositionCurves:
   - curve:
       serializedVersion: 2
@@ -153,12 +148,6 @@ AnimationClip:
         value: {x: 0.0002765849, y: -0.00038934304, z: 0.000604092}
         inSlope: {x: 0, y: 0, z: 0}
         outSlope: {x: 0, y: 0, z: 0}
-        tangentMode: 0
-      - serializedVersion: 2
-        time: 0.25
-        value: {x: 0.0002765846, y: -0.0003893281, z: 0.0006040955}
-        inSlope: {x: -0.0000000021342808, y: 0.00000009953509, z: 0}
-        outSlope: {x: -0.0000000021342808, y: 0.00000009953509, z: 0}
         tangentMode: 0
       - serializedVersion: 2
         time: 0.6
@@ -209,14 +198,21 @@ AnimationClip:
       customType: 14
       isPPtrCurve: 0
     - serializedVersion: 2
-      path: 2210816412
+      path: 3280016315
       attribute: 4
       script: {fileID: 0}
       typeID: 4
       customType: 14
       isPPtrCurve: 0
     - serializedVersion: 2
-      path: 3280016315
+      path: 381848112
+      attribute: 4
+      script: {fileID: 0}
+      typeID: 4
+      customType: 14
+      isPPtrCurve: 0
+    - serializedVersion: 2
+      path: 2210816412
       attribute: 4
       script: {fileID: 0}
       typeID: 4
@@ -254,12 +250,6 @@ AnimationClip:
         outSlope: 0
         tangentMode: 136
       - serializedVersion: 2
-        time: 0.25
-        value: 0
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 136
-      - serializedVersion: 2
         time: 0.6
         value: 0
         inSlope: 0
@@ -277,12 +267,6 @@ AnimationClip:
       m_Curve:
       - serializedVersion: 2
         time: 0
-        value: -90.00001
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 136
-      - serializedVersion: 2
-        time: 0.25
         value: -90.00001
         inSlope: 0
         outSlope: 0
@@ -310,12 +294,6 @@ AnimationClip:
         outSlope: 0
         tangentMode: 136
       - serializedVersion: 2
-        time: 0.25
-        value: 97.295006
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 136
-      - serializedVersion: 2
         time: 0.6
         value: 97.295006
         inSlope: 0
@@ -336,12 +314,6 @@ AnimationClip:
         value: 0.0002765849
         inSlope: 0
         outSlope: 0
-        tangentMode: 136
-      - serializedVersion: 2
-        time: 0.25
-        value: 0.0002765846
-        inSlope: -0.0000000021342808
-        outSlope: -0.0000000021342808
         tangentMode: 136
       - serializedVersion: 2
         time: 0.6
@@ -366,12 +338,6 @@ AnimationClip:
         outSlope: 0
         tangentMode: 136
       - serializedVersion: 2
-        time: 0.25
-        value: -0.0003893281
-        inSlope: 0.00000009953509
-        outSlope: 0.00000009953509
-        tangentMode: 136
-      - serializedVersion: 2
         time: 0.6
         value: -0.0000012688688
         inSlope: 0
@@ -390,12 +356,6 @@ AnimationClip:
       - serializedVersion: 2
         time: 0
         value: 0.000604092
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 136
-      - serializedVersion: 2
-        time: 0.25
-        value: 0.0006040955
         inSlope: 0
         outSlope: 0
         tangentMode: 136
@@ -422,13 +382,7 @@ AnimationClip:
         outSlope: 0
         tangentMode: 136
       - serializedVersion: 2
-        time: 0.25
-        value: 0
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 136
-      - serializedVersion: 2
-        time: 0.5
+        time: 0.3
         value: 0
         inSlope: 0
         outSlope: 0
@@ -456,14 +410,8 @@ AnimationClip:
         outSlope: 0
         tangentMode: 136
       - serializedVersion: 2
-        time: 0.25
-        value: 0
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 136
-      - serializedVersion: 2
-        time: 0.5
-        value: 25
+        time: 0.3
+        value: 12.32
         inSlope: 0
         outSlope: 0
         tangentMode: 136
@@ -490,16 +438,10 @@ AnimationClip:
         outSlope: 0
         tangentMode: 136
       - serializedVersion: 2
-        time: 0.25
-        value: 5
-        inSlope: 30
-        outSlope: 30
-        tangentMode: 136
-      - serializedVersion: 2
-        time: 0.5
-        value: 15
-        inSlope: 0
-        outSlope: 0
+        time: 0.3
+        value: 0.5555568
+        inSlope: 1.8518559
+        outSlope: 1.8518559
         tangentMode: 136
       - serializedVersion: 2
         time: 0.6
@@ -524,7 +466,7 @@ AnimationClip:
         outSlope: 0
         tangentMode: 136
       - serializedVersion: 2
-        time: 0.25
+        time: 0.3
         value: 0
         inSlope: 0
         outSlope: 0
@@ -552,8 +494,8 @@ AnimationClip:
         outSlope: 0
         tangentMode: 136
       - serializedVersion: 2
-        time: 0.25
-        value: 0
+        time: 0.3
+        value: 22.12
         inSlope: 0
         outSlope: 0
         tangentMode: 136
@@ -580,8 +522,8 @@ AnimationClip:
         outSlope: 0
         tangentMode: 136
       - serializedVersion: 2
-        time: 0.25
-        value: 5
+        time: 0.3
+        value: 0
         inSlope: 0
         outSlope: 0
         tangentMode: 136
@@ -603,12 +545,6 @@ AnimationClip:
       m_Curve:
       - serializedVersion: 2
         time: 0
-        value: 0
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 136
-      - serializedVersion: 2
-        time: 0.25
         value: 0
         inSlope: 0
         outSlope: 0
@@ -636,12 +572,6 @@ AnimationClip:
         outSlope: 0
         tangentMode: 136
       - serializedVersion: 2
-        time: 0.25
-        value: 0
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 136
-      - serializedVersion: 2
         time: 0.6
         value: 0
         inSlope: 0
@@ -664,12 +594,6 @@ AnimationClip:
         outSlope: 0
         tangentMode: 136
       - serializedVersion: 2
-        time: 0.25
-        value: 5
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 136
-      - serializedVersion: 2
         time: 0.6
         value: 0
         inSlope: 0
@@ -687,12 +611,6 @@ AnimationClip:
       m_Curve:
       - serializedVersion: 2
         time: 0
-        value: 0
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 136
-      - serializedVersion: 2
-        time: 0.5
         value: 0
         inSlope: 0
         outSlope: 0
@@ -716,12 +634,6 @@ AnimationClip:
       - serializedVersion: 2
         time: 0
         value: 0
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 136
-      - serializedVersion: 2
-        time: 0.5
-        value: -20
         inSlope: 0
         outSlope: 0
         tangentMode: 136
@@ -748,12 +660,6 @@ AnimationClip:
         outSlope: 0
         tangentMode: 136
       - serializedVersion: 2
-        time: 0.5
-        value: 0
-        inSlope: 0
-        outSlope: 0
-        tangentMode: 136
-      - serializedVersion: 2
         time: 0.6
         value: 0
         inSlope: 0
@@ -766,6 +672,72 @@ AnimationClip:
     path: Storm_Kraken_19__1_:LimbJoint_24/Storm_Kraken_19__1_:LimbJoint_2/Storm_Kraken_19__1_:LimbJoint_3/Storm_Kraken_19__1_:LimbJoint_4/Storm_Kraken_19__1_:LimbJoint_5
     classID: 4
     script: {fileID: 0}
+  - curve:
+      serializedVersion: 2
+      m_Curve:
+      - serializedVersion: 2
+        time: 0
+        value: 0
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 136
+      - serializedVersion: 2
+        time: 0.3
+        value: 0
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 136
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    attribute: localEulerAnglesRaw.x
+    path: Storm_Kraken_19__1_:LimbJoint_24/Storm_Kraken_19__1_:LimbJoint_2
+    classID: 4
+    script: {fileID: 0}
+  - curve:
+      serializedVersion: 2
+      m_Curve:
+      - serializedVersion: 2
+        time: 0
+        value: 0
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 136
+      - serializedVersion: 2
+        time: 0.3
+        value: 15.36
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 136
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    attribute: localEulerAnglesRaw.y
+    path: Storm_Kraken_19__1_:LimbJoint_24/Storm_Kraken_19__1_:LimbJoint_2
+    classID: 4
+    script: {fileID: 0}
+  - curve:
+      serializedVersion: 2
+      m_Curve:
+      - serializedVersion: 2
+        time: 0
+        value: 0
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 136
+      - serializedVersion: 2
+        time: 0.3
+        value: 0
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 136
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    attribute: localEulerAnglesRaw.z
+    path: Storm_Kraken_19__1_:LimbJoint_24/Storm_Kraken_19__1_:LimbJoint_2
+    classID: 4
+    script: {fileID: 0}
   m_EulerEditorCurves:
   - curve:
       serializedVersion: 2
@@ -774,6 +746,66 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalEulerAngles.z
+    path: Storm_Kraken_19__1_:LimbJoint_24/Storm_Kraken_19__1_:LimbJoint_2/Storm_Kraken_19__1_:LimbJoint_3/Storm_Kraken_19__1_:LimbJoint_4/Storm_Kraken_19__1_:LimbJoint_5/Storm_Kraken_19__1_:LimbJoint_6/Storm_Kraken_19__1_:LimbJoint_7/Storm_Kraken_19__1_:LimbJoint_8/Storm_Kraken_19__1_:LimbJoint_9/Storm_Kraken_19__1_:LimbJoint_10/Storm_Kraken_19__1_:LimbJoint_11/Storm_Kraken_19__1_:LimbJoint_12/Storm_Kraken_19__1_:LimbJoint_13/Storm_Kraken_19__1_:LimbJoint_14/Storm_Kraken_19__1_:LimbJoint_15/Storm_Kraken_19__1_:LimbJoint_16/Storm_Kraken_19__1_:LimbJoint_17/Storm_Kraken_19__1_:LimbJoint_18/Storm_Kraken_19__1_:LimbJoint_19/Storm_Kraken_19__1_:LimbJoint_20
+    classID: 4
+    script: {fileID: 0}
+  - curve:
+      serializedVersion: 2
+      m_Curve: []
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    attribute: m_LocalEulerAngles.y
+    path: Storm_Kraken_19__1_:LimbJoint_24/Storm_Kraken_19__1_:LimbJoint_2/Storm_Kraken_19__1_:LimbJoint_3/Storm_Kraken_19__1_:LimbJoint_4/Storm_Kraken_19__1_:LimbJoint_5/Storm_Kraken_19__1_:LimbJoint_6/Storm_Kraken_19__1_:LimbJoint_7/Storm_Kraken_19__1_:LimbJoint_8/Storm_Kraken_19__1_:LimbJoint_9/Storm_Kraken_19__1_:LimbJoint_10/Storm_Kraken_19__1_:LimbJoint_11/Storm_Kraken_19__1_:LimbJoint_12/Storm_Kraken_19__1_:LimbJoint_13/Storm_Kraken_19__1_:LimbJoint_14/Storm_Kraken_19__1_:LimbJoint_15/Storm_Kraken_19__1_:LimbJoint_16/Storm_Kraken_19__1_:LimbJoint_17/Storm_Kraken_19__1_:LimbJoint_18/Storm_Kraken_19__1_:LimbJoint_19/Storm_Kraken_19__1_:LimbJoint_20
+    classID: 4
+    script: {fileID: 0}
+  - curve:
+      serializedVersion: 2
+      m_Curve: []
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    attribute: m_LocalEulerAngles.x
+    path: Storm_Kraken_19__1_:LimbJoint_24/Storm_Kraken_19__1_:LimbJoint_2/Storm_Kraken_19__1_:LimbJoint_3/Storm_Kraken_19__1_:LimbJoint_4/Storm_Kraken_19__1_:LimbJoint_5/Storm_Kraken_19__1_:LimbJoint_6/Storm_Kraken_19__1_:LimbJoint_7/Storm_Kraken_19__1_:LimbJoint_8/Storm_Kraken_19__1_:LimbJoint_9/Storm_Kraken_19__1_:LimbJoint_10/Storm_Kraken_19__1_:LimbJoint_11/Storm_Kraken_19__1_:LimbJoint_12/Storm_Kraken_19__1_:LimbJoint_13/Storm_Kraken_19__1_:LimbJoint_14/Storm_Kraken_19__1_:LimbJoint_15/Storm_Kraken_19__1_:LimbJoint_16/Storm_Kraken_19__1_:LimbJoint_17/Storm_Kraken_19__1_:LimbJoint_18/Storm_Kraken_19__1_:LimbJoint_19/Storm_Kraken_19__1_:LimbJoint_20
+    classID: 4
+    script: {fileID: 0}
+  - curve:
+      serializedVersion: 2
+      m_Curve: []
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    attribute: m_LocalEulerAngles.z
+    path: Storm_Kraken_19__1_:LimbJoint_24/Storm_Kraken_19__1_:LimbJoint_2/Storm_Kraken_19__1_:LimbJoint_3/Storm_Kraken_19__1_:LimbJoint_4/Storm_Kraken_19__1_:LimbJoint_5/Storm_Kraken_19__1_:LimbJoint_6/Storm_Kraken_19__1_:LimbJoint_7/Storm_Kraken_19__1_:LimbJoint_8/Storm_Kraken_19__1_:LimbJoint_9/Storm_Kraken_19__1_:LimbJoint_10
+    classID: 4
+    script: {fileID: 0}
+  - curve:
+      serializedVersion: 2
+      m_Curve: []
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    attribute: m_LocalEulerAngles.y
+    path: Storm_Kraken_19__1_:LimbJoint_24/Storm_Kraken_19__1_:LimbJoint_2/Storm_Kraken_19__1_:LimbJoint_3/Storm_Kraken_19__1_:LimbJoint_4/Storm_Kraken_19__1_:LimbJoint_5/Storm_Kraken_19__1_:LimbJoint_6/Storm_Kraken_19__1_:LimbJoint_7/Storm_Kraken_19__1_:LimbJoint_8/Storm_Kraken_19__1_:LimbJoint_9/Storm_Kraken_19__1_:LimbJoint_10
+    classID: 4
+    script: {fileID: 0}
+  - curve:
+      serializedVersion: 2
+      m_Curve: []
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    attribute: m_LocalEulerAngles.x
+    path: Storm_Kraken_19__1_:LimbJoint_24/Storm_Kraken_19__1_:LimbJoint_2/Storm_Kraken_19__1_:LimbJoint_3/Storm_Kraken_19__1_:LimbJoint_4/Storm_Kraken_19__1_:LimbJoint_5/Storm_Kraken_19__1_:LimbJoint_6/Storm_Kraken_19__1_:LimbJoint_7/Storm_Kraken_19__1_:LimbJoint_8/Storm_Kraken_19__1_:LimbJoint_9/Storm_Kraken_19__1_:LimbJoint_10
+    classID: 4
+    script: {fileID: 0}
+  - curve:
+      serializedVersion: 2
+      m_Curve: []
+      m_PreInfinity: 2
+      m_PostInfinity: 2
+      m_RotationOrder: 4
+    attribute: m_LocalEulerAngles.z
     path: Storm_Kraken_19__1_:LimbJoint_24/Storm_Kraken_19__1_:LimbJoint_2/Storm_Kraken_19__1_:LimbJoint_3/Storm_Kraken_19__1_:LimbJoint_4/Storm_Kraken_19__1_:LimbJoint_5
     classID: 4
     script: {fileID: 0}
@@ -833,7 +865,7 @@ AnimationClip:
       m_PreInfinity: 2
       m_PostInfinity: 2
       m_RotationOrder: 4
-    attribute: m_LocalEulerAngles.z
+    attribute: m_LocalEulerAngles.x
     path: Storm_Kraken_19__1_:LimbJoint_24/Storm_Kraken_19__1_:LimbJoint_2/Storm_Kraken_19__1_:LimbJoint_3/Storm_Kraken_19__1_:LimbJoint_4/Storm_Kraken_19__1_:LimbJoint_5/Storm_Kraken_19__1_:LimbJoint_6/Storm_Kraken_19__1_:LimbJoint_7/Storm_Kraken_19__1_:LimbJoint_8/Storm_Kraken_19__1_:LimbJoint_9/Storm_Kraken_19__1_:LimbJoint_10/Storm_Kraken_19__1_:LimbJoint_11/Storm_Kraken_19__1_:LimbJoint_12/Storm_Kraken_19__1_:LimbJoint_13/Storm_Kraken_19__1_:LimbJoint_14/Storm_Kraken_19__1_:LimbJoint_15
     classID: 4
     script: {fileID: 0}
@@ -853,7 +885,7 @@ AnimationClip:
       m_PreInfinity: 2
       m_PostInfinity: 2
       m_RotationOrder: 4
-    attribute: m_LocalEulerAngles.x
+    attribute: m_LocalEulerAngles.z
     path: Storm_Kraken_19__1_:LimbJoint_24/Storm_Kraken_19__1_:LimbJoint_2/Storm_Kraken_19__1_:LimbJoint_3/Storm_Kraken_19__1_:LimbJoint_4/Storm_Kraken_19__1_:LimbJoint_5/Storm_Kraken_19__1_:LimbJoint_6/Storm_Kraken_19__1_:LimbJoint_7/Storm_Kraken_19__1_:LimbJoint_8/Storm_Kraken_19__1_:LimbJoint_9/Storm_Kraken_19__1_:LimbJoint_10/Storm_Kraken_19__1_:LimbJoint_11/Storm_Kraken_19__1_:LimbJoint_12/Storm_Kraken_19__1_:LimbJoint_13/Storm_Kraken_19__1_:LimbJoint_14/Storm_Kraken_19__1_:LimbJoint_15
     classID: 4
     script: {fileID: 0}
@@ -863,8 +895,8 @@ AnimationClip:
       m_PreInfinity: 2
       m_PostInfinity: 2
       m_RotationOrder: 4
-    attribute: m_LocalEulerAngles.z
-    path: Storm_Kraken_19__1_:LimbJoint_24/Storm_Kraken_19__1_:LimbJoint_2/Storm_Kraken_19__1_:LimbJoint_3/Storm_Kraken_19__1_:LimbJoint_4/Storm_Kraken_19__1_:LimbJoint_5/Storm_Kraken_19__1_:LimbJoint_6/Storm_Kraken_19__1_:LimbJoint_7/Storm_Kraken_19__1_:LimbJoint_8/Storm_Kraken_19__1_:LimbJoint_9/Storm_Kraken_19__1_:LimbJoint_10
+    attribute: m_LocalEulerAngles.x
+    path: Storm_Kraken_19__1_:LimbJoint_24/Storm_Kraken_19__1_:LimbJoint_2
     classID: 4
     script: {fileID: 0}
   - curve:
@@ -874,37 +906,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalEulerAngles.y
-    path: Storm_Kraken_19__1_:LimbJoint_24/Storm_Kraken_19__1_:LimbJoint_2/Storm_Kraken_19__1_:LimbJoint_3/Storm_Kraken_19__1_:LimbJoint_4/Storm_Kraken_19__1_:LimbJoint_5/Storm_Kraken_19__1_:LimbJoint_6/Storm_Kraken_19__1_:LimbJoint_7/Storm_Kraken_19__1_:LimbJoint_8/Storm_Kraken_19__1_:LimbJoint_9/Storm_Kraken_19__1_:LimbJoint_10
-    classID: 4
-    script: {fileID: 0}
-  - curve:
-      serializedVersion: 2
-      m_Curve: []
-      m_PreInfinity: 2
-      m_PostInfinity: 2
-      m_RotationOrder: 4
-    attribute: m_LocalEulerAngles.x
-    path: Storm_Kraken_19__1_:LimbJoint_24/Storm_Kraken_19__1_:LimbJoint_2/Storm_Kraken_19__1_:LimbJoint_3/Storm_Kraken_19__1_:LimbJoint_4/Storm_Kraken_19__1_:LimbJoint_5/Storm_Kraken_19__1_:LimbJoint_6/Storm_Kraken_19__1_:LimbJoint_7/Storm_Kraken_19__1_:LimbJoint_8/Storm_Kraken_19__1_:LimbJoint_9/Storm_Kraken_19__1_:LimbJoint_10
-    classID: 4
-    script: {fileID: 0}
-  - curve:
-      serializedVersion: 2
-      m_Curve: []
-      m_PreInfinity: 2
-      m_PostInfinity: 2
-      m_RotationOrder: 4
-    attribute: m_LocalEulerAngles.x
-    path: Storm_Kraken_19__1_:LimbJoint_24/Storm_Kraken_19__1_:LimbJoint_2/Storm_Kraken_19__1_:LimbJoint_3/Storm_Kraken_19__1_:LimbJoint_4/Storm_Kraken_19__1_:LimbJoint_5/Storm_Kraken_19__1_:LimbJoint_6/Storm_Kraken_19__1_:LimbJoint_7/Storm_Kraken_19__1_:LimbJoint_8/Storm_Kraken_19__1_:LimbJoint_9/Storm_Kraken_19__1_:LimbJoint_10/Storm_Kraken_19__1_:LimbJoint_11/Storm_Kraken_19__1_:LimbJoint_12/Storm_Kraken_19__1_:LimbJoint_13/Storm_Kraken_19__1_:LimbJoint_14/Storm_Kraken_19__1_:LimbJoint_15/Storm_Kraken_19__1_:LimbJoint_16/Storm_Kraken_19__1_:LimbJoint_17/Storm_Kraken_19__1_:LimbJoint_18/Storm_Kraken_19__1_:LimbJoint_19/Storm_Kraken_19__1_:LimbJoint_20
-    classID: 4
-    script: {fileID: 0}
-  - curve:
-      serializedVersion: 2
-      m_Curve: []
-      m_PreInfinity: 2
-      m_PostInfinity: 2
-      m_RotationOrder: 4
-    attribute: m_LocalEulerAngles.y
-    path: Storm_Kraken_19__1_:LimbJoint_24/Storm_Kraken_19__1_:LimbJoint_2/Storm_Kraken_19__1_:LimbJoint_3/Storm_Kraken_19__1_:LimbJoint_4/Storm_Kraken_19__1_:LimbJoint_5/Storm_Kraken_19__1_:LimbJoint_6/Storm_Kraken_19__1_:LimbJoint_7/Storm_Kraken_19__1_:LimbJoint_8/Storm_Kraken_19__1_:LimbJoint_9/Storm_Kraken_19__1_:LimbJoint_10/Storm_Kraken_19__1_:LimbJoint_11/Storm_Kraken_19__1_:LimbJoint_12/Storm_Kraken_19__1_:LimbJoint_13/Storm_Kraken_19__1_:LimbJoint_14/Storm_Kraken_19__1_:LimbJoint_15/Storm_Kraken_19__1_:LimbJoint_16/Storm_Kraken_19__1_:LimbJoint_17/Storm_Kraken_19__1_:LimbJoint_18/Storm_Kraken_19__1_:LimbJoint_19/Storm_Kraken_19__1_:LimbJoint_20
+    path: Storm_Kraken_19__1_:LimbJoint_24/Storm_Kraken_19__1_:LimbJoint_2
     classID: 4
     script: {fileID: 0}
   - curve:
@@ -914,7 +916,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalEulerAngles.z
-    path: Storm_Kraken_19__1_:LimbJoint_24/Storm_Kraken_19__1_:LimbJoint_2/Storm_Kraken_19__1_:LimbJoint_3/Storm_Kraken_19__1_:LimbJoint_4/Storm_Kraken_19__1_:LimbJoint_5/Storm_Kraken_19__1_:LimbJoint_6/Storm_Kraken_19__1_:LimbJoint_7/Storm_Kraken_19__1_:LimbJoint_8/Storm_Kraken_19__1_:LimbJoint_9/Storm_Kraken_19__1_:LimbJoint_10/Storm_Kraken_19__1_:LimbJoint_11/Storm_Kraken_19__1_:LimbJoint_12/Storm_Kraken_19__1_:LimbJoint_13/Storm_Kraken_19__1_:LimbJoint_14/Storm_Kraken_19__1_:LimbJoint_15/Storm_Kraken_19__1_:LimbJoint_16/Storm_Kraken_19__1_:LimbJoint_17/Storm_Kraken_19__1_:LimbJoint_18/Storm_Kraken_19__1_:LimbJoint_19/Storm_Kraken_19__1_:LimbJoint_20
+    path: Storm_Kraken_19__1_:LimbJoint_24/Storm_Kraken_19__1_:LimbJoint_2
     classID: 4
     script: {fileID: 0}
   m_HasGenericRootTransform: 0

@@ -5,6 +5,7 @@ using UnityEngine;
 public class TankArm : MonoBehaviour {
     public GameObject[] armJoint;
     public GameObject target;
+    //public GameObject grabbedTentacle;
     public Vector3 offset;
     public Vector3[] defaultJointPosition;
     public LayerMask tankArmMask;
@@ -43,6 +44,17 @@ public class TankArm : MonoBehaviour {
         // and you can grab multiple. 
         if (Input.GetKeyUp("joystick " + 1 + " button " + "1"))
         {
+            /*
+            if(target.tag == "Tentacle")
+            {
+                print("tentacle detected");
+                grabbedTentacle = target.GetComponent<TentacleSlamDamage>().tentacle;
+                if(target.GetComponent<TentacleSlamDamage>().tentDown == true)
+                {
+                    grabbedTentacle.GetComponent<BossTentacleScript>().FreezeTentacle();
+                }
+            }
+            */
             if (target != null)
             {
                 print("arm should let go");

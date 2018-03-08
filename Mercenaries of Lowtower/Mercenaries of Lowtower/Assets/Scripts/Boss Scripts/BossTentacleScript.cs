@@ -16,6 +16,10 @@ public class BossTentacleScript : MonoBehaviour
     public bool tentacleSlamming;
     //
     public bool tentacleDown;
+    //
+    //public bool tentacleGrabbed;
+    //
+    public bool tentacleRetreating;
     // Bool to track if the tentacle is currently lowering
     public bool tentacleLowering;
     public bool damageActive;
@@ -78,6 +82,15 @@ public class BossTentacleScript : MonoBehaviour
             tentacleRaising = false;
         }
     }
+    
+    /*
+    public void FreezeTentacle()
+    {
+        StopCoroutine("TentacleDown");
+        tentacleGrabbed = true;
+        StartCoroutine("HoldTentacle");
+    }
+    */
 
     public void SlamTentacle()
     {
@@ -99,11 +112,13 @@ public class BossTentacleScript : MonoBehaviour
         //DeactivateDamage();
         //anim.SetBool("tentacleSlamming", false);
         //tentacleSlamming = false;
+        tentacleRetreating = true;
         anim.SetBool("tentacleRetreating", true);
     }
 
     public void CompleteRetreat()
     {
+        tentacleRetreating = false;
         anim.SetBool("tentacleRetreating", false);
         anim.SetBool("tentacleLowering", true);
         tentacleLowering = true;
@@ -133,6 +148,19 @@ public class BossTentacleScript : MonoBehaviour
         RetreatTentacle();
         //armRotatingBackward = true;
     }
+
+    /*
+    IEnumerator HoldTentacle()
+    {
+        yield return new WaitForSeconds(downTime*2);
+        tentacleGrabbed = false;
+        tentacleDown = false;
+        anim.SetBool("tentacleDown", false);
+        RetreatTentacle();
+        //armRotatingBackward = true;
+    }
+    */
+
     public void OnTriggerEnter(Collider other)
     {
         if(damageActive == true)

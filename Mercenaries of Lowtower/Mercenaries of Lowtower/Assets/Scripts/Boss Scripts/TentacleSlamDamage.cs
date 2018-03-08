@@ -8,6 +8,7 @@ public class TentacleSlamDamage : BossClass {
     public bool tentacleSlamming;
     public bool damageActiv;
     public bool tentDown;
+    public bool tentRetreating;
     public bool damageToggled;
 
 	// Use this for initialization
@@ -20,10 +21,11 @@ public class TentacleSlamDamage : BossClass {
         //tentacleSlamming = tentacle.GetComponent<BossTentacleScript>().tentacleSlamming;
         damageActiv = tentacle.GetComponent<BossTentacleScript>().damageActive;
         tentDown = tentacle.GetComponent<BossTentacleScript>().tentacleDown;
+        tentRetreating = tentacle.GetComponent<BossTentacleScript>().tentacleRetreating;
 
-        if(damageActiv == true && damageToggled == false)
+        if (damageActiv == true && damageToggled == false)
         {
-            GetComponent<Collider>().enabled = false;
+            //GetComponent<Collider>().enabled = false;
             GetComponent<Collider>().enabled = true;
             damageToggled = true;
         }
@@ -31,6 +33,11 @@ public class TentacleSlamDamage : BossClass {
         if(damageActiv == false)
         {
             damageToggled = false;
+        }
+
+        if(tentRetreating == true)
+        {
+            GetComponent<Collider>().enabled = false;
         }
     }
 
