@@ -17,9 +17,12 @@ public class Orbscript : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
         distances = new float[4];
+        closestDistance = 100f;
+
         //IDamageable damage = (IDamageable)GetComponent(typeof(IDamageable));
         Origin.GetComponent<HealerClass>().currentHealth += healAmount;
-        cols = Physics.OverlapSphere(transform.position, trackingDistance, PlayerMask, QueryTriggerInteraction.Ignore);
+       // cols = Physics.OverlapSphere(transform.position, trackingDistance, PlayerMask, QueryTriggerInteraction.Ignore);
+        Destroy(gameObject, 20);
     }
 	
 	// Update is called once per frame
@@ -28,23 +31,33 @@ public class Orbscript : MonoBehaviour {
 
 
         //Physics.OverlapSphereNonAlloc(transform.position, trackingDistance, cols, PlayerMask, QueryTriggerInteraction.Ignore);
-        cols = Physics.OverlapSphere(transform.position, trackingDistance, PlayerMask, QueryTriggerInteraction.Ignore);
+        
+        cols = Physics.OverlapSphere(Origin.transform.position, trackingDistance, PlayerMask, QueryTriggerInteraction.Ignore);
         if (cols != null)
         {
+           
             for (int i = 0; i < cols.Length; i++)
             {
-                print(cols[i]);
-                closestDistance = 100f;
-                distances[i] = (Vector3.Distance(transform.position, cols[i].transform.position));
-                if (distances[i] < closestDistance)
+                if (Vector3.Distance(Origin.transform.position, cols[i].transform.position) > 1)
                 {
-
-                    Target = cols[i].gameObject;
-
+                    if (Vector3.Distance(Origin.transform.position, cols[i].transform.position) < closestDistance)
+                    {
+                        closestDistance = Vector3.Distance(Origin.transform.position, cols[i].transform.position);
+                        if (cols[i].gameObject.name != "Healer Character(Clone)")
+                        {
+                            Target = cols[i].gameObject;
+                        }
+                    }
                 }
 
             }
             transform.position = Vector3.MoveTowards(transform.position, Target.transform.position, orbSpeed * Time.deltaTime);
+            if(Vector3.Distance(transform.position, Target.transform.position)<1)
+            {
+                Target.GetComponent<IDamageable<float>>().TakeDamage(-healAmount);
+                Destroy(gameObject);
+            }
+            closestDistance = 100f;
         }
         else
         {
@@ -79,10 +92,10 @@ public class Orbscript : MonoBehaviour {
             //Destroy(gameObject);
        // }
     }
-    private void OnCollisionEnter(Collision collision)
-    {
-        collision.gameObject.GetComponent<IDamageable<float>>().TakeDamage(-healAmount);
-        print(Target.name + " healed for " + healAmount);
-        Destroy(gameObject);
-    }
+    //private void OnCollisionEnter(Collision collision)
+    //{
+    //    collision.collider.GetComponent<IDamageable<float>>().TakeDamage(-healAmount);
+    //    print(Target.name + " healed for " + healAmount);
+    //    Destroy(gameObject);
+    //}
 }
