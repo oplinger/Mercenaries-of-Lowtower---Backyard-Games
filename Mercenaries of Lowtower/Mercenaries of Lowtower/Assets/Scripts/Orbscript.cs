@@ -16,39 +16,43 @@ public class Orbscript : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
+        distances = new float[4];
         //IDamageable damage = (IDamageable)GetComponent(typeof(IDamageable));
         Origin.GetComponent<HealerClass>().currentHealth += healAmount;
-	}
+        cols = Physics.OverlapSphere(transform.position, trackingDistance, PlayerMask, QueryTriggerInteraction.Ignore);
+    }
 	
 	// Update is called once per frame
 	void Update () {
 
+
+
         //Physics.OverlapSphereNonAlloc(transform.position, trackingDistance, cols, PlayerMask, QueryTriggerInteraction.Ignore);
-        //    cols=Physics.OverlapSphere(transform.position,trackingDistance,PlayerMask,QueryTriggerInteraction.Ignore);
-        //    if (cols != null)
-        //    {
-        //        for (int i = 0; i < cols.Length; i++)
-        //        {
-        //            print(cols[i]);
-        //            closestDistance = 100f;
-        //            distances[i] = (Vector3.Distance(transform.position, cols[i].transform.position));
-        //            if (distances[i] < closestDistance)
-        //            {
+        cols = Physics.OverlapSphere(transform.position, trackingDistance, PlayerMask, QueryTriggerInteraction.Ignore);
+        if (cols != null)
+        {
+            for (int i = 0; i < cols.Length; i++)
+            {
+                print(cols[i]);
+                closestDistance = 100f;
+                distances[i] = (Vector3.Distance(transform.position, cols[i].transform.position));
+                if (distances[i] < closestDistance)
+                {
 
-        //                    Target = cols[i].gameObject;
+                    Target = cols[i].gameObject;
 
-        //            }
+                }
 
-        //        }
-        //        transform.position = Vector3.MoveTowards(transform.position, Target.transform.position, orbSpeed * Time.deltaTime);
-        //    }
-        //    else
-        //    {
+            }
+            transform.position = Vector3.MoveTowards(transform.position, Target.transform.position, orbSpeed * Time.deltaTime);
+        }
+        else
+        {
 
-        //        transform.position = Vector3.MoveTowards(transform.position, transform.forward, orbSpeed * Time.deltaTime);
+            transform.Translate(Vector3.forward);
 
-        //    }
-        transform.Translate(Vector3.forward);
+        }
+        
 
         
     }
