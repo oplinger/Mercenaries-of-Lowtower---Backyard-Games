@@ -4434,6 +4434,10 @@ Prefab:
       propertyPath: cannonballHolder
       value: 
       objectReference: {fileID: 1854242717}
+    - target: {fileID: 1689265972665930, guid: 94fb06edcd69881428bb18f52f510813, type: 2}
+      propertyPath: m_Name
+      value: TankCharacter(Clone)
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 94fb06edcd69881428bb18f52f510813, type: 2}
   m_IsPrefabParent: 0
@@ -4840,6 +4844,10 @@ Prefab:
       propertyPath: m_RootOrder
       value: 3
       objectReference: {fileID: 0}
+    - target: {fileID: 1984797693560620, guid: 91289ec3f3b32784bb65eaedc8cb3588, type: 2}
+      propertyPath: m_Name
+      value: RangerCharacter(Clone)
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 91289ec3f3b32784bb65eaedc8cb3588, type: 2}
   m_IsPrefabParent: 0
@@ -5157,6 +5165,10 @@ Prefab:
     - target: {fileID: 4016968062954598, guid: 4ca156b7028eb174c91f13205ade6d67, type: 2}
       propertyPath: m_RootOrder
       value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1503867113096118, guid: 4ca156b7028eb174c91f13205ade6d67, type: 2}
+      propertyPath: m_Name
+      value: HealerCharacter(Clone)
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 4ca156b7028eb174c91f13205ade6d67, type: 2}
@@ -6048,6 +6060,10 @@ Prefab:
     - target: {fileID: 4955732451437522, guid: a7ec7cb2b39ac644a827044b5554fc2d, type: 2}
       propertyPath: m_RootOrder
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1558603050725450, guid: a7ec7cb2b39ac644a827044b5554fc2d, type: 2}
+      propertyPath: m_Name
+      value: MeleeCharacter(Clone)
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: a7ec7cb2b39ac644a827044b5554fc2d, type: 2}
