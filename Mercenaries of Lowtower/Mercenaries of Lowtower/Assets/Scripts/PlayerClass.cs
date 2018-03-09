@@ -178,6 +178,7 @@ public abstract class PlayerClass : EntityClass
         }
 
 
+
         //else if (playerID == 1 && colhealth.isDead)
         //{
         //    colhealth.health = colhealth.maxHealth;
@@ -199,6 +200,12 @@ public abstract class PlayerClass : EntityClass
         //        coltarget.GetComponent<HealerController>().walkspeed = 10;
         //    }
         //}
+    }
+
+
+    public void EmptyAbility()
+    {
+        return;
     }
 
     public void buttonAfunction()

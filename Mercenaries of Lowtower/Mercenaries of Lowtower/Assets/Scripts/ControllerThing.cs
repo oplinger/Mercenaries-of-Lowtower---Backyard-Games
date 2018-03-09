@@ -347,6 +347,8 @@ STEP BY STEP:
 
     void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     {
+
+        Time.timeScale = 1;
         print("Scene Loaded");
 
         //Instantiate(Resources.Load("Healer Character"));
