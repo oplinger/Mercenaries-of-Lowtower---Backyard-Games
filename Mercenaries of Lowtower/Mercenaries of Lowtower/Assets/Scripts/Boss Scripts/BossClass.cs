@@ -17,6 +17,7 @@ public class BossClass : EnemyClass {
     float h1;
     float h2;
 
+
     // Use this for initialization
     void Start () {
         //TentacleMaxHealth = new float[6];

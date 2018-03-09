@@ -17,6 +17,7 @@ public abstract class EntityClass : MonoBehaviour, IDamageable<float>, IStunnabl
     public int moveSpeed;
 
 
+
     // Use this for initialization
     void Start () {
 

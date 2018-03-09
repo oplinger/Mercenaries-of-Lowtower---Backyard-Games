@@ -81,8 +81,8 @@ public class MenuUIController : MonoBehaviour {
         if (gameIsPaused && Input.GetKeyDown("joystick button 6"))
         {
 
-            //print("restart scene");
-            //SceneManager.LoadScene(2);
+            print("restart scene");
+            SceneManager.LoadScene(1);
         }
 
 

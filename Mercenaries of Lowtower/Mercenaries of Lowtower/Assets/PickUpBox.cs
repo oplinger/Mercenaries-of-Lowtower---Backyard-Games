@@ -83,11 +83,17 @@ public class PickUpBox : MonoBehaviour
 
     public void DropCannonball()
     {
+        if (heldObject != null)
+        {
+            heldObject.transform.position = new Vector3(gameObject.transform.position.x, gameObject.transform.position.y - .5f, gameObject.transform.position.z);
 
-        heldObject.transform.position = new Vector3(gameObject.transform.position.x, gameObject.transform.position.y - .5f, gameObject.transform.position.z);
+            heldObject = null;
+            holdingObject = false;
+        }
+        else
+        {
 
-        heldObject = null;
-        holdingObject = false;
+        }
 
     }
 
