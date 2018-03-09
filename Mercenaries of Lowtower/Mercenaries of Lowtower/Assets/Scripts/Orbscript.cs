@@ -17,7 +17,7 @@ public class Orbscript : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
         //IDamageable damage = (IDamageable)GetComponent(typeof(IDamageable));
-
+        Origin.GetComponent<HealerClass>().currentHealth += healAmount;
 	}
 	
 	// Update is called once per frame
@@ -32,15 +32,24 @@ public class Orbscript : MonoBehaviour {
                 distances[i] = (Vector3.Distance(transform.position, cols[i].transform.position));
                 if (distances[i] < closestDistance)
                 {
-                    Target = cols[i].gameObject;
+                    if (cols[i].gameObject.name != "Healer Character(Clone)")
+                    {
+                        Target = cols[i].gameObject;
+                    }
                 }
 
             }
+            transform.position = Vector3.MoveTowards(transform.position, Target.transform.position, orbSpeed * Time.deltaTime);
+        }
+        else
+        {
+
+            transform.position = Vector3.MoveTowards(transform.position, transform.forward, orbSpeed * Time.deltaTime);
+
         }
 
 
-        transform.position = Vector3.MoveTowards(transform.position, Target.transform.position, orbSpeed*Time.deltaTime);
-	}
+    }
 
     public void OrbBehavior(GameObject origin, GameObject target, float healamount, float orbspeed, int playerID)
     {
