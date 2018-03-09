@@ -63,7 +63,7 @@ public class BossControlScriptV2 : MonoBehaviour {
         if (bossPhase == 1)
         {
             
-            if (Boss.GetComponent<BossClass>().currentHealth <= 100 && bossDamaged == false)
+            if (Boss.GetComponent<BossClass>().currentHealth <= 195 && bossDamaged == false)
             {
                 bossPhase = 5;
                 bossDamaged = true;

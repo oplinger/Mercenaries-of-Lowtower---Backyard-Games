@@ -123,7 +123,7 @@ public class MeleeClass : PlayerClass
         else if (!cannonballHolder.holdingObject && currentHealth > 0)
 
         {
-            EnableAbilities();
+            //EnableAbilities();
         }
 
         //makes object flash red when it takes damage
