@@ -136,19 +136,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d61afd245e6e2e8479184ef1bbbc4966, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 5
+  maxHealth: 10
   currentHealth: 5
   shielded: 0
   isStunned: 0
   tempMoveSpeed: 0
   moveSpeed: 0
   Player: {fileID: 0}
+  defaultSpeed: 0
   stunTimer: 0
   addSpawnerScript: {fileID: 0}
   addSpawner: {fileID: 0}
   cannonballIsTarget: 0
   defaultEnemyMaterial: {fileID: 0}
   stunnedMaterial: {fileID: 2100000, guid: 235ed031a8345fb4daf93604e764679a, type: 2}
+  navMeshAgent: {fileID: 0}
 --- !u!114 &114773375494806266
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -160,7 +162,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3b1adf5a2b6a9fd43b7b303306a48966, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  slamDamage: 0.5
+  slamDamage: 1
   damageTimer: 0
 --- !u!195 &195713789280039862
 NavMeshAgent:
