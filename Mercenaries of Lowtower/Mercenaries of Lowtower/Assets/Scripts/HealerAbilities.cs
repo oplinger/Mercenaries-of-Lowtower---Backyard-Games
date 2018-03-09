@@ -48,63 +48,63 @@ public class HealerAbilities : MonoBehaviour
         }
 
 
-        if (Input.GetKey("joystick " + baseClass.CTRLID + " button 2"))
-        {
-            baseClass.walkspeed = 0;
+        //if (Input.GetKey("joystick " + baseClass.CTRLID + " button 2"))
+        //{
+        //    baseClass.walkspeed = 0;
 
-            if (Input.GetAxis("J" + baseClass.CTRLID + "Horizontal") >= -1 && Input.GetAxis("J" + baseClass.CTRLID + "Horizontal") <= 0)
-            {
-                if (Input.GetAxis("J" + baseClass.CTRLID + "Vertical") >= 0 && Input.GetAxis("J" + baseClass.CTRLID + "Vertical") <= 1)
-                {
-                    baseClass.healObject = baseClass.controller.players[0];
-                    // transform.rotation = Quaternion.LookRotation(controller.IDs[0].gameObject.transform.position);
-                    transform.LookAt(baseClass.controller.players[0].transform);
+        //    if (Input.GetAxis("J" + baseClass.CTRLID + "Horizontal") >= -1 && Input.GetAxis("J" + baseClass.CTRLID + "Horizontal") <= 0)
+        //    {
+        //        if (Input.GetAxis("J" + baseClass.CTRLID + "Vertical") >= 0 && Input.GetAxis("J" + baseClass.CTRLID + "Vertical") <= 1)
+        //        {
+        //            baseClass.healObject = baseClass.controller.players[0];
+        //            // transform.rotation = Quaternion.LookRotation(controller.IDs[0].gameObject.transform.position);
+        //            transform.LookAt(baseClass.controller.players[0].transform);
 
-                    print(baseClass.healObject);
-                }
+        //            print(baseClass.healObject);
+        //        }
 
-            }
-            if (Input.GetAxis("J" + baseClass.CTRLID + "Horizontal") >= 0 && Input.GetAxis("J" + baseClass.CTRLID + "Horizontal") <= 1)
-            {
-                if (Input.GetAxis("J" + baseClass.CTRLID + "Vertical") >= 0 && Input.GetAxis("J" + baseClass.CTRLID + "Vertical") <= 1)
-                {
-                    baseClass.healObject = baseClass.controller.players[1];
-                    //transform.rotation = Quaternion.LookRotation(controller.IDs[1].gameObject.transform.position);
-                    transform.LookAt(baseClass.controller.players[1].transform);
-
-
-                    print(baseClass.healObject);
-                }
-
-            }
-            if (Input.GetAxis("J" + baseClass.CTRLID + "Horizontal") >= -1 && Input.GetAxis("J" + baseClass.CTRLID + "Horizontal") <= 0)
-            {
-                if (Input.GetAxis("J" + baseClass.CTRLID + "Vertical") <= 0 && Input.GetAxis("J" + baseClass.CTRLID + "Vertical") >= -1)
-                {
-                    baseClass.healObject = baseClass.controller.players[2];
-                    //transform.rotation = Quaternion.LookRotation(controller.IDs[2].gameObject.transform.position);
-                    transform.LookAt(baseClass.controller.players[2].transform);
+        //    }
+        //    if (Input.GetAxis("J" + baseClass.CTRLID + "Horizontal") >= 0 && Input.GetAxis("J" + baseClass.CTRLID + "Horizontal") <= 1)
+        //    {
+        //        if (Input.GetAxis("J" + baseClass.CTRLID + "Vertical") >= 0 && Input.GetAxis("J" + baseClass.CTRLID + "Vertical") <= 1)
+        //        {
+        //            baseClass.healObject = baseClass.controller.players[1];
+        //            //transform.rotation = Quaternion.LookRotation(controller.IDs[1].gameObject.transform.position);
+        //            transform.LookAt(baseClass.controller.players[1].transform);
 
 
-                    print(baseClass.healObject);
-                }
+        //            print(baseClass.healObject);
+        //        }
 
-            }
-            if (Input.GetAxis("J" + baseClass.CTRLID + "Horizontal") >= 0 && Input.GetAxis("J" + baseClass.CTRLID + "Horizontal") <= 1)
-            {
-                if (Input.GetAxis("J" + baseClass.CTRLID + "Vertical") <= 0 && Input.GetAxis("J" + baseClass.CTRLID + "Vertical") >= -1)
-                {
-                    baseClass.healObject = baseClass.controller.players[3];
-                    //transform.rotation = Quaternion.LookRotation(controller.IDs[3].gameObject.transform.position);
-                    transform.LookAt(baseClass.controller.players[3].transform);
+        //    }
+        //    if (Input.GetAxis("J" + baseClass.CTRLID + "Horizontal") >= -1 && Input.GetAxis("J" + baseClass.CTRLID + "Horizontal") <= 0)
+        //    {
+        //        if (Input.GetAxis("J" + baseClass.CTRLID + "Vertical") <= 0 && Input.GetAxis("J" + baseClass.CTRLID + "Vertical") >= -1)
+        //        {
+        //            baseClass.healObject = baseClass.controller.players[2];
+        //            //transform.rotation = Quaternion.LookRotation(controller.IDs[2].gameObject.transform.position);
+        //            transform.LookAt(baseClass.controller.players[2].transform);
 
 
-                    print(baseClass.healObject);
-                }
+        //            print(baseClass.healObject);
+        //        }
 
-            }
+        //    }
+        //    if (Input.GetAxis("J" + baseClass.CTRLID + "Horizontal") >= 0 && Input.GetAxis("J" + baseClass.CTRLID + "Horizontal") <= 1)
+        //    {
+        //        if (Input.GetAxis("J" + baseClass.CTRLID + "Vertical") <= 0 && Input.GetAxis("J" + baseClass.CTRLID + "Vertical") >= -1)
+        //        {
+        //            baseClass.healObject = baseClass.controller.players[3];
+        //            //transform.rotation = Quaternion.LookRotation(controller.IDs[3].gameObject.transform.position);
+        //            transform.LookAt(baseClass.controller.players[3].transform);
 
-        }
+
+        //            print(baseClass.healObject);
+        //        }
+
+        //    }
+
+       // }
         if (Input.GetKeyUp("joystick " + baseClass.CTRLID + " button 2"))
         {
             baseClass.walkspeed = 10;
@@ -116,7 +116,7 @@ public class HealerAbilities : MonoBehaviour
             
 
             GameObject Horb = Resources.Load("Healing Orb") as GameObject;
-            GameObject clone = Instantiate(Horb, transform.position, Quaternion.identity);
+            GameObject clone = Instantiate(Horb, transform.position, transform.rotation);
 
             clone.GetComponent<Orbscript>().OrbBehavior(gameObject, baseClass.healTarget, baseClass.healAmount, baseClass.orbSpeed, baseClass.CTRLID);
             baseClass.abilityCooldowns.cooldowns["healCD"] = baseClass.abilityCooldowns.healCD;

@@ -4,12 +4,12 @@ using UnityEngine;
 
 public class Orbscript : MonoBehaviour {
     GameObject Origin;
-    GameObject Target;
+    public GameObject Target;
     float healAmount;
     float orbSpeed;
     public float trackingDistance;
     int ID;
-    Collider[] cols;
+    public Collider[] cols;
     public LayerMask PlayerMask;
     float closestDistance;    
     float[] distances;
@@ -23,32 +23,34 @@ public class Orbscript : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 
-        Physics.OverlapSphereNonAlloc(transform.position, trackingDistance, cols, PlayerMask, QueryTriggerInteraction.Ignore);
-        if (cols != null)
-        {
-            for (int i = 0; i < cols.Length; i++)
-            {
-                closestDistance = 100f;
-                distances[i] = (Vector3.Distance(transform.position, cols[i].transform.position));
-                if (distances[i] < closestDistance)
-                {
-                    if (cols[i].gameObject.name != "Healer Character(Clone)")
-                    {
-                        Target = cols[i].gameObject;
-                    }
-                }
+        //Physics.OverlapSphereNonAlloc(transform.position, trackingDistance, cols, PlayerMask, QueryTriggerInteraction.Ignore);
+        //    cols=Physics.OverlapSphere(transform.position,trackingDistance,PlayerMask,QueryTriggerInteraction.Ignore);
+        //    if (cols != null)
+        //    {
+        //        for (int i = 0; i < cols.Length; i++)
+        //        {
+        //            print(cols[i]);
+        //            closestDistance = 100f;
+        //            distances[i] = (Vector3.Distance(transform.position, cols[i].transform.position));
+        //            if (distances[i] < closestDistance)
+        //            {
 
-            }
-            transform.position = Vector3.MoveTowards(transform.position, Target.transform.position, orbSpeed * Time.deltaTime);
-        }
-        else
-        {
+        //                    Target = cols[i].gameObject;
 
-            transform.position = Vector3.MoveTowards(transform.position, transform.forward, orbSpeed * Time.deltaTime);
+        //            }
 
-        }
+        //        }
+        //        transform.position = Vector3.MoveTowards(transform.position, Target.transform.position, orbSpeed * Time.deltaTime);
+        //    }
+        //    else
+        //    {
 
+        //        transform.position = Vector3.MoveTowards(transform.position, transform.forward, orbSpeed * Time.deltaTime);
 
+        //    }
+        transform.Translate(Vector3.forward);
+
+        
     }
 
     public void OrbBehavior(GameObject origin, GameObject target, float healamount, float orbspeed, int playerID)
@@ -59,18 +61,24 @@ public class Orbscript : MonoBehaviour {
          orbSpeed=orbspeed;
          playerID=ID;
 
-        transform.position = Origin.transform.position;
+        //transform.position = Origin.transform.position;
 
 
     }
     private void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.name == Target.name)
-        {
+        //if (other.gameObject.name == Target.name)
+        //{
             //other.GetComponent<Health>().modifyHealth(-healAmount, ID);
-            other.GetComponent<IDamageable<float>>().TakeDamage(-healAmount);
-            print(Target.name + " healed for " + healAmount);
-            Destroy(gameObject);
-        }
+            //other.GetComponent<IDamageable<float>>().TakeDamage(-healAmount);
+            //print(Target.name + " healed for " + healAmount);
+            //Destroy(gameObject);
+       // }
+    }
+    private void OnCollisionEnter(Collision collision)
+    {
+        collision.gameObject.GetComponent<IDamageable<float>>().TakeDamage(-healAmount);
+        print(Target.name + " healed for " + healAmount);
+        Destroy(gameObject);
     }
 }

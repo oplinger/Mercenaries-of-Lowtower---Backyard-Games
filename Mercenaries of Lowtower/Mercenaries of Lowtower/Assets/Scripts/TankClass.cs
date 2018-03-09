@@ -54,7 +54,7 @@ public class TankClass : PlayerClass
         ability1 = Jump;
         ability2 = abilities.TankMagnet;
         ability3 = abilities.TankShield;
-        CTRLID = 1;
+        CTRLID = 2;
         currentHealth = maxHealth;
 
         shielded = false;
