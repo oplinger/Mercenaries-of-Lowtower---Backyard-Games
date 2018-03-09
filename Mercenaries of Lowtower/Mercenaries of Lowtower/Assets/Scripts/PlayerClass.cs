@@ -95,10 +95,12 @@ public abstract class PlayerClass : EntityClass
             {
                 transform.rotation = Quaternion.LookRotation(_movement);
                 transform.Translate(_movement * walkspeed * Time.deltaTime, Space.World);
-                //anim.SetInteger("AnimState", 1);
+                anim.SetInteger("AnimState", 1);
             }
             else
             {
+                anim.SetInteger("AnimState", 0);
+
             }
         }
     }

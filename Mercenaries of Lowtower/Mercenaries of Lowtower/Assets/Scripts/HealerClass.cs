@@ -154,7 +154,7 @@ public class HealerClass : PlayerClass
 
     public new void Death()
     {
-        anim.SetInteger("AnimState", 5);
+        anim.SetInteger("AnimState", 4);
         walkspeed = 0;
         walkspeed *= 0;
         DisableAbilities();
