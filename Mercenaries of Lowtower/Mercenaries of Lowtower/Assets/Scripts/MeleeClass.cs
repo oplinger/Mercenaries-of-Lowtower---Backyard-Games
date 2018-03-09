@@ -112,6 +112,7 @@ public class MeleeClass : PlayerClass
         //disables abilities if player is holding cannonball, re-enables them if they aren't holding it
         if (cannonballHolder.holdingObject)
         {
+            print("abilities disabled");
             DisableAbilities();
 
             //drops cannonball if player dies while holding it
@@ -153,9 +154,11 @@ public class MeleeClass : PlayerClass
 
     public void DisableAbilities()
     {
-        ability1 = null;
-        ability2 = null;
-        ability3 = null;
+
+       // print("abilities disabled");
+        ability1 = EmptyAbility;
+        ability2 = EmptyAbility;
+        ability3 = EmptyAbility;
     }
 
     public void EnableAbilities()
