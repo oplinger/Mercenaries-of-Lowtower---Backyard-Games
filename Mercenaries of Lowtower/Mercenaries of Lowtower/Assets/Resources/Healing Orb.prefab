@@ -93,6 +93,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c734caf024be42648b21e5e184e69498, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Target: {fileID: 0}
+  trackingDistance: 10
+  PlayerMask:
+    serializedVersion: 2
+    m_Bits: 256
 --- !u!135 &135612884720787758
 SphereCollider:
   m_ObjectHideFlags: 1
