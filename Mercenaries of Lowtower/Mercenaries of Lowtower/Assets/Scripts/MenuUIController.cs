@@ -10,6 +10,7 @@ public class MenuUIController : MonoBehaviour {
     public GameObject restartButton;
     public GameObject gamePaused;
     public GameObject startToResume;
+    public GameObject backToStartOver;
 
     public GameObject loseScreen;
     public GameObject startToRetry;
@@ -35,7 +36,8 @@ public class MenuUIController : MonoBehaviour {
 
         gamePaused.SetActive(false);
         startToResume.SetActive(false);
-        
+        backToStartOver.SetActive(false);
+
         loseScreen.SetActive(false);
         startToRetry.SetActive(false);
 
@@ -52,6 +54,14 @@ public class MenuUIController : MonoBehaviour {
     // Update is called once per frame
     void Update () {
 
+        //CHEAT TO RETURN TO LOBBY
+        if (gameIsPaused && Input.GetKey("joystick button 4") && Input.GetKey("joystick button 5") && Input.GetKey("joystick button 0"))
+        {
+
+            Time.timeScale = 1;
+            SceneManager.LoadScene(0);
+        }
+
         //PAUSE GAME
         if (Input.GetKeyDown("joystick button 7") && !pauseDisabled)
         {
@@ -63,6 +73,7 @@ public class MenuUIController : MonoBehaviour {
                 Time.timeScale = 0;
                 gamePaused.SetActive(true);
                 startToResume.SetActive(true);
+                backToStartOver.SetActive(true);
             }
 
             else
@@ -72,6 +83,7 @@ public class MenuUIController : MonoBehaviour {
                 Time.timeScale = 1;
                 gamePaused.SetActive(false);
                 startToResume.SetActive(false);
+                backToStartOver.SetActive(false);
             }
 
             
@@ -101,8 +113,9 @@ public class MenuUIController : MonoBehaviour {
 
             pauseDisabled = true;
 
-            if ((Input.GetKeyDown("joystick button 7")))
+            if ((Input.GetKeyDown("joystick button 6")))
             {
+                SceneManager.LoadScene(1);
                 print("game restarted");
             }
 

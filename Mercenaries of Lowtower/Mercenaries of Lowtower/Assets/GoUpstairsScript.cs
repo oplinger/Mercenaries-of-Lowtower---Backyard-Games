@@ -76,7 +76,7 @@ public class GoUpstairsScript : MonoBehaviour {
         text.text = playersReady + " MORE PLAYERS NEEDED" + Environment.NewLine + "TO START THE GAME.";
         if (other.tag=="Player")
         {
-            timeRemaining = 50;
+            timeRemaining = 10;
             playerCount -= 1;
 
            
