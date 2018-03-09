@@ -44,6 +44,7 @@ public class BossTentacleScript : MonoBehaviour
 	
 	// Update is called once per frame
 	void Update () {
+        SpeedUp();
         if (tentacleRaising == true)
         {
             RaiseTentacle();
@@ -192,5 +193,11 @@ public class BossTentacleScript : MonoBehaviour
         {
             damageActive = false;
         }
+    }
+
+    public void SpeedUp()
+    {
+        elevationSpeed = BossManager.GetComponent<BossControlScriptV2>().elevationSpeed;
+        descendingSpeed = BossManager.GetComponent<BossControlScriptV2>().descendingSpeed;
     }
 }

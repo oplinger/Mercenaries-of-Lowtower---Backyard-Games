@@ -15,7 +15,7 @@ public class MenuUIController : MonoBehaviour {
     public GameObject startToRetry;
 
     public GameObject bossManager;
-    public BossControlScript bossManagerScript;
+    public BossControlScriptV2 bossManagerScript;
 
     public bool gameIsPaused;
     public bool pauseDisabled;
@@ -30,7 +30,7 @@ public class MenuUIController : MonoBehaviour {
 
         //winScreen.SetActive(false);
 
-        bossManagerScript = bossManager.GetComponent<BossControlScript>();
+        bossManagerScript = bossManager.GetComponent<BossControlScriptV2>();
         gameIsPaused = false;
 
         gamePaused.SetActive(false);
@@ -91,7 +91,7 @@ public class MenuUIController : MonoBehaviour {
 
         //WIN THE GAME 
 
-        if (bossManagerScript.bossPhase == 8)
+        if (bossManagerScript.bossPhase == 7)
         {
             winScreen.SetActive(true);
             restartButton.SetActive(true);

@@ -39,11 +39,12 @@ public class BeamTentacleScript : MonoBehaviour {
     void Start () {
         // Sets the origin point to the position the tentacles are in when the play button is pressed
         originPoint = gameObject.transform.position;
-        beamSpeed = BossManager.GetComponent<BossControlScript>().beamSpeed;
+        beamSpeed = BossManager.GetComponent<BossControlScriptV2>().beamSpeed;
     }
 	
 	// Update is called once per frame
 	void Update () {
+        SpeedUp();
         if (beamAscending == true)
         {
             RaiseBeam();
@@ -67,7 +68,13 @@ public class BeamTentacleScript : MonoBehaviour {
 
         if(endPointReached == true)
         {
-            BossManager.GetComponent<BossControlScript>().beamsDone++;
+            BossManager.GetComponent<BossControlScriptV2>().beamsDone++;
+            print("BEAMS DONE!");
+            print("BEAMS DONE!");
+            print("BEAMS DONE!");
+            print("BEAMS DONE!");
+            print("BEAMS DONE!");
+            print("BEAMS DONE!");
             numDescents = 0;
             endPointReached = false;
         }
@@ -75,8 +82,7 @@ public class BeamTentacleScript : MonoBehaviour {
         /*
         if (attackComplete == true)
         {
-            BossManager.GetComponent<BossControlScript>().CheckIfReady();
-            print("Arm check!");
+            BossManager.GetComponent<BossControlScriptV2>().CheckIfReady();
             attackComplete = false;
         }
         */
@@ -143,7 +149,13 @@ public class BeamTentacleScript : MonoBehaviour {
             else
             {
                 endPointReached = true;
+                //attackComplete = true;
             }
         }
+    }
+
+    public void SpeedUp()
+    {
+        beamSpeed = BossManager.GetComponent<BossControlScriptV2>().beamSpeed;
     }
 }

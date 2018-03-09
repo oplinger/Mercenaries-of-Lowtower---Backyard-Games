@@ -14,30 +14,17 @@ public class EnergySphereScript : MonoBehaviour {
 
     // Use this for initialization
     void Start () {
+        bossHead = GameObject.Find("Boss Head");
         objectRigidbody = gameObject.GetComponent<Rigidbody>();
+        //bossHead.GetComponent<BossLookAt>().TargetPlayer();
         StartCoroutine(ChargeUp(chargeTime));
         isCharging = true;
         energySphereSpawn = GameObject.Find("EnergySphere Spawn").transform;
-        bossHead = GameObject.Find("Boss Head");
-        bossHead.GetComponent<BossLookAt>().TargetPlayer();
+        //bossHead.GetComponent<BossLookAt>().TargetPlayer();
     }
 	
 	// Update is called once per frame
 	void Update () {
-        /*
-        if(isCharging == true)
-        {
-            bossHead.GetComponent<BossLookAt>().isCharging = true;
-            //transform.position = energySphereSpawn.position;
-            //transform.rotation = energySphereSpawn.rotation;
-        }
-        if (isCharging == false)
-        {
-            bossHead.GetComponent<BossLookAt>().isCharging = false;
-            //transform.position = energySphereSpawn.position;
-            //transform.rotation = energySphereSpawn.rotation;
-        }
-        */
     }
 
     IEnumerator ChargeUp(float chargeTime)
