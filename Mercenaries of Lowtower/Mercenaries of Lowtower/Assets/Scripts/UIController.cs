@@ -7,7 +7,7 @@ public class UIController : MonoBehaviour
 {
     #region Variables
     public GameObject[] players;
-   // public GameObject boss;
+   public GameObject boss;
     public GameObject controllerThing;
     PlayerControls controller;
     PlayerCDController playerCooldowns;
@@ -25,6 +25,8 @@ public class UIController : MonoBehaviour
 
    public  float[] playerCurrentHealth;
     public float[] playerMaxHealth;
+    public float bossMaxHealth;
+    public float bossCurrentHealth;
 
     // Health bossHealth;
     #endregion
@@ -47,6 +49,7 @@ public class UIController : MonoBehaviour
 
         playerCurrentHealth = new float[4];
         playerMaxHealth = new float[4];
+        
 
         // Assigns players to slots based on IDs, for use with UI placement.
         //IE: Tank is in the top left, always.
@@ -64,6 +67,8 @@ public class UIController : MonoBehaviour
         playerMaxHealth[1] = controller.players[1].GetComponent<HealerClass>().maxHealth;
         playerMaxHealth[2] = controller.players[2].GetComponent<MeleeClass>().maxHealth;
         playerMaxHealth[3] = controller.players[3].GetComponent<RangedClass>().maxHealth;
+        bossMaxHealth = boss.GetComponent<BossClass>().maxHealth;
+        
 
         foreach (Image element in images)
         {
@@ -91,6 +96,7 @@ public class UIController : MonoBehaviour
         playerCurrentHealth[1] = players[1].GetComponent<HealerClass>().currentHealth;
         playerCurrentHealth[2] = players[2].GetComponent<MeleeClass>().currentHealth;
         playerCurrentHealth[3] = players[3].GetComponent<RangedClass>().currentHealth;
+        bossCurrentHealth = boss.GetComponent<BossClass>().currentHealth;
 
 
 
@@ -354,7 +360,7 @@ public class UIController : MonoBehaviour
         healthBars[2].rectTransform.sizeDelta = new Vector2(100 * (playerCurrentHealth[2] / playerMaxHealth[2]), 20);
         healthBars[3].rectTransform.sizeDelta = new Vector2(100 * (playerCurrentHealth[3] / playerMaxHealth[3]), 20);
 
-       // healthBars[4].rectTransform.sizeDelta = new Vector2(300 * (bossHealth.health / bossHealth.maxHealth), 25);
+        healthBars[4].rectTransform.sizeDelta = new Vector2(300 * (bossCurrentHealth / bossMaxHealth), 25);
 
 #endregion
 

@@ -42,18 +42,23 @@ public abstract class EntityClass : MonoBehaviour, IDamageable<float>, IStunnabl
 
     public virtual void TakeDamage(float damageTaken)
     {
-        if (!shielded)
+        if (currentHealth > 0)
         {
-            currentHealth -= damageTaken;
-        }
-        else if (shielded)
-        {
-            if (damageTaken < 0)
+            if (!shielded)
             {
                 currentHealth -= damageTaken;
             }
-        }
+            else if (shielded)
+            {
+                if (damageTaken < 0)
+                {
+                    currentHealth -= damageTaken;
+                }
+            }
+        } else
+        {
 
+        }
        
     }
 

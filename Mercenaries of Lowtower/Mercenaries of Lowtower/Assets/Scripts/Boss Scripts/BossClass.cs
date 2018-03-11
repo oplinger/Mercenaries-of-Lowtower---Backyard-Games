@@ -21,7 +21,6 @@ public class BossClass : EnemyClass {
     // Use this for initialization
     void Start () {
         //TentacleMaxHealth = new float[6];
-        maxHealth = 200;
         currentHealth = maxHealth;
 
         bossRenderer = bossHead.GetComponent<Renderer>();

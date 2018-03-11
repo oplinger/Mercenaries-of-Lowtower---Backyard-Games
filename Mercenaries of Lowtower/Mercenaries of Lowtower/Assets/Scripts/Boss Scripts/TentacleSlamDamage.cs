@@ -75,7 +75,16 @@ public class TentacleSlamDamage : BossClass {
     {
         if (tentDown)
         {
+            StartCoroutine("Flash");
             boss.GetComponent<BossClass>().currentHealth -= damageTaken;
         }
+    }
+
+    IEnumerator Flash()
+    {
+        tentacle.GetComponentInChildren<Renderer>().material.SetColor("_EmissionColor", Color.red);
+
+        yield return new WaitForSeconds(.016f);
+        tentacle.GetComponentInChildren<Renderer>().material.SetColor("_EmissionColor", Color.black);
     }
 }

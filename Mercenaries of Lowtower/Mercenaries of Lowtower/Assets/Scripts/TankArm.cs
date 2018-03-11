@@ -5,7 +5,7 @@ using UnityEngine;
 public class TankArm : MonoBehaviour {
     public GameObject[] armJoint;
     public GameObject target;
-    //public GameObject grabbedTentacle;
+    public GameObject grabbedTentacle;
     public Vector3 offset;
     public Vector3[] defaultJointPosition;
     public LayerMask tankArmMask;
@@ -16,20 +16,25 @@ public class TankArm : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
+
         Debug.DrawRay(armJoint[2].transform.position, armJoint[2].transform.forward * 10);
 
         if (Input.GetKeyDown("joystick " + 1 + " button " + "1"))
         {
+
             RaycastHit hit;
             Physics.Raycast(armJoint[2].transform.position, armJoint[2].transform.forward*10, out hit, 10, tankArmMask, QueryTriggerInteraction.Ignore);
 
             for (int i = 0; i < armJoint.Length; i++)
             {
                 defaultJointPosition[i] = armJoint[i].transform.position;
+
             }
 
             if (hit.collider != null)
             {
+                print("oihiu");
+
                 target = hit.collider.gameObject;
 
                 offset = armJoint[2].transform.position - armJoint[1].transform.position;
@@ -44,17 +49,19 @@ public class TankArm : MonoBehaviour {
         // and you can grab multiple. 
         if (Input.GetKeyUp("joystick " + 1 + " button " + "1"))
         {
-            /*
-            if(target.tag == "Tentacle")
+            if(target!= null)
             {
-                print("tentacle detected");
-                grabbedTentacle = target.GetComponent<TentacleSlamDamage>().tentacle;
-                if(target.GetComponent<TentacleSlamDamage>().tentDown == true)
+                if (target.tag == "Tentacle")
                 {
-                    grabbedTentacle.GetComponent<BossTentacleScript>().FreezeTentacle();
+                    print("tentacle detected");
+                    grabbedTentacle = target.GetComponent<TentacleGrabScript>().dmgDetector;
+                    if (target.GetComponent<TentacleGrabScript>().dmgDetectorActivated == true)
+                    {
+                        grabbedTentacle.GetComponent<BossTentacleScript>().FreezeTentacle();
+                    }
                 }
             }
-            */
+            
             if (target != null)
             {
                 print("arm should let go");

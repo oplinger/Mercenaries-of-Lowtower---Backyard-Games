@@ -135,6 +135,7 @@ public class MenuUIController : MonoBehaviour {
 
             if ((Input.GetKeyDown("joystick button 7")))
             {
+                SceneManager.LoadScene(1);
                 print("game restarted");
             }
         }

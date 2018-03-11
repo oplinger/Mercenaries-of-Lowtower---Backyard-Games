@@ -15,8 +15,10 @@ public class AIControllerNavMesh : EntityClass
 
     public SpawnAdd addSpawnerScript;
     public GameObject addSpawner;
+    public LayerMask PlayerMask;
+    Collider[] cols;
 
-    public bool cannonballIsTarget;
+    public bool cannonballIsHeld;
 
 
     //public float stunDuration;
@@ -31,7 +33,6 @@ public class AIControllerNavMesh : EntityClass
 
     private void Awake()
     {
-        cannonballIsTarget = true;
         Player = null;
     }
 
@@ -62,17 +63,18 @@ public class AIControllerNavMesh : EntityClass
     void Update()
     {
         //print(Vector3.Distance(transform.position, Player.position));
-
-
-        if (Player == null && cannonballIsTarget)
+        if (!cannonballIsHeld) { 
+       cols= Physics.OverlapSphere(transform.position, 1000, PlayerMask, QueryTriggerInteraction.Ignore);
+        for(int i  = 0; i<cols.Length; i++)
         {
-            Player = GameObject.FindGameObjectWithTag("PickUp");
-        }
-
-        if (!cannonballIsTarget)
-
-        {
-
+            float closestDistance = 100f;
+                if (Vector3.Distance(transform.position, cols[i].transform.position) < closestDistance)
+                {
+                    Vector3.Distance(transform.position, cols[i].transform.position);
+                    Player = cols[i].gameObject;
+                    SetDestination();
+                }
+            }
         }
 
 
@@ -82,14 +84,14 @@ public class AIControllerNavMesh : EntityClass
         if (!isStunned)
         {
 
-            navMeshAgent.SetDestination(Player.transform.position);
+            
             enemyRenderer.material = defaultEnemyMaterial;
 
 
-            if (Vector3.Distance(transform.position, Player.transform.position) <= MaxDist)
-            {
+            //if (Vector3.Distance(transform.position, Player.transform.position) <= MaxDist)
+            //{
 
-            }
+            //}
 
         }
 
@@ -129,9 +131,18 @@ public class AIControllerNavMesh : EntityClass
     //    stunDuration = controllerStunDuration;
     //}
 
-    public void TakeDamage(float damageTaken)
+    public void SetDestination()
     {
+        navMeshAgent.SetDestination(Player.transform.position);
+    }
 
+    public void CannonballHeld()
+    {
+        cannonballIsHeld = true;
+    }
+    public void CannonballDropped()
+    {
+        cannonballIsHeld = false;
     }
 
     public override void StunThis()

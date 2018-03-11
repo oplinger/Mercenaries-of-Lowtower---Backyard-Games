@@ -9,15 +9,15 @@ public class PickUpBox : MonoBehaviour
     public GameObject heldObject;
     public GameObject triggerObject;
     public GameObject cannonball;
-
+    public GameObject player;
+    public  GameObject parentPlayer;
     public GameObject enemy;
     public AIControllerNavMesh enemyScript;
 
 
     private void Start()
     {
-        enemyScript = enemy.GetComponent<AIControllerNavMesh>();
-    
+        player = cannonball;
     }
 
 
@@ -28,13 +28,24 @@ public class PickUpBox : MonoBehaviour
             holdingObject = false;
         }
 
+        //if (enemy = null)
+        //{
+        //    enemy = GameObject.Find("add_NavMesh");
+        //    enemyScript = enemy.GetComponent<AIControllerNavMesh>();
+
+        //}
+        //else if (enemy!=null)
+        //{
+        //    enemyScript.Player = player;
+
+        //}
 
         //if (heldObject!=null)
         //{
         //    addScript.Player = this.gameObject;
         //}
 
-        
+
         if (Input.GetKeyDown("joystick button 4"))
         {
             //if player is not holding an object already, but they detect something that can be picked up
@@ -89,6 +100,7 @@ public class PickUpBox : MonoBehaviour
 
             heldObject = null;
             holdingObject = false;
+            SendMessage("CannonballDrop");
         }
         else
         {
@@ -102,9 +114,10 @@ public class PickUpBox : MonoBehaviour
 
         heldObject = triggerObject;
         holdingObject = true;
+        SendMessage("SetDestination");
+        SendMessage("CannonballHeld");
+        enemyScript.Player = parentPlayer;
 
-        enemyScript.Player = gameObject;
-        enemyScript.cannonballIsTarget = false;
     }
 
 }
