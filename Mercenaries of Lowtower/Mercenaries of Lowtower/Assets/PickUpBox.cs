@@ -114,9 +114,10 @@ public class PickUpBox : MonoBehaviour
 
         heldObject = triggerObject;
         holdingObject = true;
+        enemyScript.Player = parentPlayer;
+
         SendMessage("SetDestination");
         SendMessage("CannonballHeld");
-        enemyScript.Player = parentPlayer;
 
     }
 

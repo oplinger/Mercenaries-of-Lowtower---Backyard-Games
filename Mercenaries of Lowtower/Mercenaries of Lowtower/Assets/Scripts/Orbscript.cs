@@ -59,7 +59,7 @@ public class Orbscript : MonoBehaviour {
             }
             closestDistance = 100f;
         }
-        else
+        if(Target==null)
         {
 
             transform.Translate(Vector3.forward);

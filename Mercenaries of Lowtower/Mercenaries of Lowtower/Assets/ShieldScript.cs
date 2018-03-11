@@ -37,7 +37,7 @@ public class ShieldScript : MonoBehaviour {
         if (other.tag == "Enemy")
         {
             print("enemy inside shield");
-            other.GetComponent<Rigidbody>().AddForce(other.transform.forward * -25, ForceMode.Impulse);
+            other.GetComponent<Rigidbody>().AddForce(other.transform.forward * -10, ForceMode.Impulse);
         }
 
     }

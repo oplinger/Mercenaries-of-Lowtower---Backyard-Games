@@ -88,9 +88,9 @@ public class BossTentacleScript : MonoBehaviour
     public void FreezeTentacle()
     {
         print("Freeze tentacle");
-        StopCoroutine("TentacleDown");
+        //StopCoroutine("TentacleDown");
         tentacleGrabbed = true;
-        StartCoroutine("HoldTentacle");
+        //StartCoroutine("HoldTentacle");
     }
     
 
@@ -144,11 +144,17 @@ public class BossTentacleScript : MonoBehaviour
 
     IEnumerator TentacleDown()
     {
+        if(tentacleGrabbed)
+        {
+            downTime = downTime * 2;
+        }
         yield return new WaitForSeconds(downTime);
         tentacleDown = false;
         anim.SetBool("tentacleDown", false);
         RetreatTentacle();
         //armRotatingBackward = true;
+        tentacleGrabbed = false;
+        downTime /= 2;
     }
 
     
