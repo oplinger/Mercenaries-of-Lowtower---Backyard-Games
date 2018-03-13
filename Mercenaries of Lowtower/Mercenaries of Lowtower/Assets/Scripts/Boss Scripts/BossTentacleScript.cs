@@ -146,15 +146,19 @@ public class BossTentacleScript : MonoBehaviour
     {
         if(tentacleGrabbed)
         {
-            downTime = downTime * 2;
+            
         }
         yield return new WaitForSeconds(downTime);
+        if (tentacleGrabbed)
+        {
+         yield return new WaitForSeconds(downTime);
+
+        }
         tentacleDown = false;
         anim.SetBool("tentacleDown", false);
         RetreatTentacle();
         //armRotatingBackward = true;
         tentacleGrabbed = false;
-        downTime /= 2;
     }
 
     

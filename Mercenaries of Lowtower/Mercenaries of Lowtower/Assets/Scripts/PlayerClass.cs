@@ -84,6 +84,7 @@ public abstract class PlayerClass : EntityClass
     public void Jump()
     {
         GetComponent<Rigidbody>().AddForce(0, jumpheight, 0, ForceMode.Impulse);
+        anim.SetInteger("AnimState", 3);
     }
 
     public void Movement()
@@ -91,16 +92,31 @@ public abstract class PlayerClass : EntityClass
         if (walkspeed >= 0 && CTRLID != 0)
         {
             _movement = new Vector3(Input.GetAxis("J" + CTRLID + "Horizontal"), 0, Input.GetAxis("J" + CTRLID + "Vertical"));
-            if (_movement != Vector3.zero)
+            if ( _movement.magnitude>.2)
             {
                 transform.rotation = Quaternion.LookRotation(_movement);
                 transform.Translate(_movement * walkspeed * Time.deltaTime, Space.World);
-                anim.SetInteger("AnimState", 1);
-            }
-            else
-            {
-                anim.SetInteger("AnimState", 0);
+                if(anim.GetInteger("AnimState") == 0 || anim.GetInteger("AnimState") == 1)
+                {
+                    anim.SetInteger("AnimState", 1);
+                }
+                //    if (anim.GetInteger("AnimState") > 1)
+                //    {
+                //        anim.SetInteger("AnimState", 1);
+                //    }
+                //}
+                //else if (anim.GetInteger("AnimState") <= 1)
+                //{
+                //    anim.SetInteger("AnimState", 0);
 
+            }
+
+            if (_movement.magnitude < .2)
+            {
+                if (anim.GetInteger("AnimState") == 0 || anim.GetInteger("AnimState") == 1)
+                {
+                    anim.SetInteger("AnimState", 0);
+                }
             }
         }
     }
@@ -237,5 +253,8 @@ public abstract class PlayerClass : EntityClass
         buttons.Add("Ybutton", 3);
     }
 
-  
+  public void AnimReset()
+    {
+        anim.SetInteger("AnimState", 0);
+    }
 }

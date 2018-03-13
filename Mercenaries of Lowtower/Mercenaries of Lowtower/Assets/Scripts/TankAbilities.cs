@@ -29,6 +29,7 @@ public class TankAbilities : MonoBehaviour
             clone.transform.localScale = new Vector3(baseClass.shieldSize, baseClass.shieldSize, baseClass.shieldSize);
             Destroy(clone, baseClass.shieldDuration);
             baseClass.abilityCooldowns.cooldowns["shieldCD"] = baseClass.abilityCooldowns.shieldCD;
+            GetComponent<Animator>().SetInteger("AnimState", 6);
         }
 
 
@@ -46,6 +47,7 @@ public class TankAbilities : MonoBehaviour
     public void TankMagnet()
     {
 
+        GetComponent<Animator>().SetInteger("AnimState", 5);
 
 
 

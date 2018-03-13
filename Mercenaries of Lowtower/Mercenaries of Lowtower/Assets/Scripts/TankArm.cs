@@ -23,20 +23,24 @@ public class TankArm : MonoBehaviour {
         {
 
             RaycastHit hit;
-            Physics.Raycast(armJoint[2].transform.position, armJoint[2].transform.forward*10, out hit, 10, tankArmMask, QueryTriggerInteraction.Ignore);
+            Physics.Raycast(armJoint[2].transform.position, armJoint[2].transform.forward*10, out hit, 10, tankArmMask);
 
             for (int i = 0; i < armJoint.Length; i++)
             {
-                defaultJointPosition[i] = armJoint[i].transform.position;
+                defaultJointPosition[i] = armJoint[i].transform.localPosition;
 
             }
 
             if (hit.collider != null)
             {
-                print("oihiu");
 
                 target = hit.collider.gameObject;
+                if (target.GetComponent<TentacleSlamDamage>() != null)
+                {
+                    print("oihiu");
 
+                    target.GetComponent<TentacleSlamDamage>().tentacle.GetComponent<BossTentacleScript>().tentacleGrabbed = true;
+                }
                 offset = armJoint[2].transform.position - armJoint[1].transform.position;
                 armJoint[1].transform.position = target.transform.position - offset;
                 armJoint[2].transform.localScale *= 2;
@@ -49,18 +53,18 @@ public class TankArm : MonoBehaviour {
         // and you can grab multiple. 
         if (Input.GetKeyUp("joystick " + 1 + " button " + "1"))
         {
-            if(target!= null)
-            {
-                if (target.tag == "Tentacle")
-                {
-                    print("tentacle detected");
-                    grabbedTentacle = target.GetComponent<TentacleGrabScript>().dmgDetector;
-                    if (target.GetComponent<TentacleGrabScript>().dmgDetectorActivated == true)
-                    {
-                        grabbedTentacle.GetComponent<BossTentacleScript>().FreezeTentacle();
-                    }
-                }
-            }
+            //if(target!= null)
+            //{
+            //    if (target.tag == "Tentacle")
+            //    {
+            //        print("tentacle detected");
+            //        grabbedTentacle = target.GetComponent<TentacleGrabScript>().dmgDetector;
+            //        if (target.GetComponent<TentacleGrabScript>().dmgDetectorActivated == true)
+            //        {
+            //            grabbedTentacle.GetComponent<BossTentacleScript>().FreezeTentacle();
+            //        }
+            //    }
+            //}
             
             if (target != null)
             {
@@ -68,7 +72,7 @@ public class TankArm : MonoBehaviour {
 
                 armJoint[2].transform.localScale = new Vector3(1,1,1);
                 target.transform.parent = armJoint[2].transform;
-                armJoint[1].transform.position = defaultJointPosition[1];
+                armJoint[1].transform.localPosition = defaultJointPosition[1];
                 //armJoint[1].transform.position = defaultJointPosition[1]-new Vector3(1,0,1);
                 //armJoint[1].transform.position = Vector3.MoveTowards(armJoint[1].transform.position, defaultJointPosition[1], 6);
                 target.transform.parent = null;
