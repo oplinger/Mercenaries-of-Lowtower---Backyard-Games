@@ -22,6 +22,7 @@ public class MeleeClass : PlayerClass
     int grounded;
     public LayerMask enemyMask;
     public LayerMask lungeMask;
+    public GameObject rayOrigin;
     [Header("Melee Settings")]
     [Range(0, 10)]
     public float meleeDamage;

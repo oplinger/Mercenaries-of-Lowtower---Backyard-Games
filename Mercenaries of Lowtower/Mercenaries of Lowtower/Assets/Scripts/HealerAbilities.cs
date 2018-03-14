@@ -111,6 +111,8 @@ public class HealerAbilities : MonoBehaviour
         }
         if (Input.GetKeyUp("joystick " + baseClass.CTRLID + " button 2") && baseClass.abilityCooldowns.cooldowns["healCD"] <= 0 && baseClass.currentHealth>0)
         {
+            GetComponent<Animator>().SetInteger("AnimState", 5);
+
             baseClass.healTarget = baseClass.healObject;
             baseClass.stopTimer = 0;
             
@@ -163,6 +165,9 @@ public class HealerAbilities : MonoBehaviour
         if (baseClass.abilityCooldowns.cooldowns["stunCD"] <= 0)
         {
             print("stun activated");
+
+            GetComponent<Animator>().SetInteger("AnimState", 6);
+
             stunAOE.transform.localScale = new Vector3(baseClass.stunRange, 0.125f, baseClass.stunRange);
             stunAOE.SetActive(true);
 

@@ -20,6 +20,7 @@ public class RangedClass : PlayerClass
     [SerializeField]
     int grounded;
     public LayerMask enemyMask;
+    public GameObject boltspawn;
     [Header("Bolt Settings")]
     [Range(0, 10)]
     public float boltDamage;
@@ -50,7 +51,7 @@ public class RangedClass : PlayerClass
     {
         abilities = GetComponent<RangedAbilities>();
         abilityCooldowns = GetComponent<RangedCooldowns>();
-        CTRLID = 4;
+        CTRLID = 1;
 
         //DOWNCASTING EXAMPLE
         //MeleeClass mC = new MeleeAbilities();
