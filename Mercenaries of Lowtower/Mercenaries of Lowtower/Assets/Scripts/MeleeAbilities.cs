@@ -18,6 +18,9 @@ public class MeleeAbilities : MonoBehaviour {
         {
             hitbox.SetActive(false);
         }
+
+       Debug.DrawRay(baseClass.rayOrigin.transform.position, transform.forward * 20);
+
     }
 
 
@@ -27,6 +30,7 @@ public class MeleeAbilities : MonoBehaviour {
 
         if (baseClass.abilityCooldowns.cooldowns["meleeCD"] <= 0)
         {
+            GetComponent<Animator>().SetInteger("AnimState", 6);
 
             //works with melee hitbox
             hitbox.SetActive(true);
@@ -48,24 +52,33 @@ public class MeleeAbilities : MonoBehaviour {
     public void MeleeLunge()
     {
         RaycastHit hit;
-
-        if (Physics.Raycast(transform.position, transform.forward, out hit, baseClass.lungeDistance, baseClass.enemyMask, QueryTriggerInteraction.Ignore) && baseClass.abilityCooldowns.cooldowns["lungeCD"] <= 0)
+        if (Physics.Raycast(baseClass.rayOrigin.transform.position, transform.forward, out hit, baseClass.lungeDistance, baseClass.enemyMask) && baseClass.abilityCooldowns.cooldowns["lungeCD"] <= 0)
         {
+            GetComponent<Animator>().SetInteger("AnimState", 6);
+
             transform.position = Vector3.MoveTowards(transform.position, hit.point, 1000 * Time.deltaTime);
-            Health health = hit.collider.gameObject.GetComponent<Health>();
-            health.modifyHealth(baseClass.lungeDamage, baseClass.CTRLID);
-            if (health.health <= 0)
+            //Health health = hit.collider.gameObject.GetComponent<Health>();
+            //health.modifyHealth(baseClass.lungeDamage, baseClass.CTRLID);
+
+            hit.collider.GetComponent<IDamageable<float>>().TakeDamage(baseClass.lungeDamage);
+
+            if (hit.collider.gameObject.name == "add_NavMesh(Clone)" && hit.collider.gameObject.GetComponent<AIControllerNavMesh>().currentHealth<baseClass.lungeDamage) 
             {
-                //baseClass.abilityCooldowns.lungeCD = 0;
+                baseClass.abilityCooldowns.cooldowns["lungeCD"] = 0;
+            } else
+            {
+                baseClass.abilityCooldowns.cooldowns["lungeCD"] = baseClass.abilityCooldowns.lungeCD;
+
             }
-            baseClass.abilityCooldowns.cooldowns["lungeCD"] = baseClass.abilityCooldowns.lungeCD;
 
         }
-        else if ( baseClass.abilityCooldowns.cooldowns["lungeCD"] <= 0)
+        else if (baseClass.abilityCooldowns.cooldowns["lungeCD"] <= 0)
         {
             //me.transform.position = Vector3.Lerp(me.transform.position, me.transform.position + (me.transform.forward * 10), 1);
             StartCoroutine(Dash(gameObject));
             baseClass.abilityCooldowns.cooldowns["lungeCD"] = baseClass.abilityCooldowns.lungeCD;
+
+            GetComponent<Animator>().SetInteger("AnimState", 5);
 
         }
         //me.transform.position = Vector3.MoveTowards(me.transform.position, me.transform.position + (me.transform.forward * 100), 1000 * Time.deltaTime);
