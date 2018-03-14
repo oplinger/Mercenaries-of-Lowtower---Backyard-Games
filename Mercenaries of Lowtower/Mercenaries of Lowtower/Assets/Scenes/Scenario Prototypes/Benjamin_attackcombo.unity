@@ -3175,6 +3175,11 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.03, y: 0.1, z: 0.25}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!1 &1284887520 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 1428634768605142, guid: 33826ba10da5e28439a9023c398a1832,
+    type: 2}
+  m_PrefabInternal: {fileID: 1840808385}
 --- !u!1 &1304972857 stripped
 GameObject:
   m_PrefabParentObject: {fileID: 1897007917095854, guid: 6a37f7bff67a3f84f99d21ea93f1d99a,
@@ -4393,6 +4398,23 @@ Prefab:
       propertyPath: rangedScript
       value: 
       objectReference: {fileID: 1860593307}
+    - target: {fileID: 1713185204692194, guid: 33826ba10da5e28439a9023c398a1832, type: 2}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1761401903613982, guid: 33826ba10da5e28439a9023c398a1832, type: 2}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1428634768605142, guid: 33826ba10da5e28439a9023c398a1832, type: 2}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 114577793126438462, guid: 33826ba10da5e28439a9023c398a1832,
+        type: 2}
+      propertyPath: restartButton
+      value: 
+      objectReference: {fileID: 1284887520}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 33826ba10da5e28439a9023c398a1832, type: 2}
   m_IsPrefabParent: 0

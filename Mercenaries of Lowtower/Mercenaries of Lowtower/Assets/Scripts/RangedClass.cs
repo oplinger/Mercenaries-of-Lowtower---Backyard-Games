@@ -51,7 +51,7 @@ public class RangedClass : PlayerClass
     {
         abilities = GetComponent<RangedAbilities>();
         abilityCooldowns = GetComponent<RangedCooldowns>();
-        CTRLID = 1;
+        CTRLID = 4;
 
         //DOWNCASTING EXAMPLE
         //MeleeClass mC = new MeleeAbilities();
