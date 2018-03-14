@@ -124,6 +124,7 @@ public class TankClass : PlayerClass
         if (cannonballHolder.holdingObject)
         {
             DisableAbilities();
+            walkspeed = 5;
 
             //drops cannonball if player dies while holding it
             if (currentHealth <= 0)
@@ -135,6 +136,7 @@ public class TankClass : PlayerClass
 
         {
             EnableAbilities();
+            walkspeed = 10;
         }
 
         //makes object flash red when it takes damage

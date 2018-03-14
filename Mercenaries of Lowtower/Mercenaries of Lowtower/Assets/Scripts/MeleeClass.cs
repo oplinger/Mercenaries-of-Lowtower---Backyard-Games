@@ -112,8 +112,8 @@ public class MeleeClass : PlayerClass
         //disables abilities if player is holding cannonball, re-enables them if they aren't holding it
         if (cannonballHolder.holdingObject)
         {
-            print("abilities disabled");
             DisableAbilities();
+            walkspeed = 5;
 
             //drops cannonball if player dies while holding it
             if (currentHealth <= 0)
@@ -124,7 +124,8 @@ public class MeleeClass : PlayerClass
         else if (!cannonballHolder.holdingObject && currentHealth > 0)
 
         {
-            //EnableAbilities();
+            EnableAbilities();
+            walkspeed = 10;
         }
 
         //makes object flash red when it takes damage
