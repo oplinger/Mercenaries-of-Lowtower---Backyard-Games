@@ -6,16 +6,26 @@ public class ShieldScript : MonoBehaviour {
 
     public Collider[] playersInShield;
     TankClass baseClass;
+    public float shieldTimer;
 
     // Use this for initialization
     void Start () {
         baseClass = GameObject.Find("Tank Character(Clone)").GetComponent<TankClass>();
-
+        shieldTimer = baseClass.shieldDuration;
     }
 
     //// Update is called once per frame
     void Update () {
     playersInShield = Physics.OverlapSphere(transform.position, baseClass.shieldSize, baseClass.shieldMask, QueryTriggerInteraction.Ignore);
+        if (shieldTimer > 0)
+        {
+            shieldTimer -= Time.deltaTime;
+        }
+
+        if (shieldTimer < 2)
+        {
+            StartCoroutine(shieldFlash());
+        }
 
 
     //    //cols = Physics.OverlapSphere(transform.position, 10, 1<<8, QueryTriggerInteraction.Ignore);
@@ -137,4 +147,20 @@ public class ShieldScript : MonoBehaviour {
         }
         //controllerThing.GetComponent<PlayerCDController>().triggerCooldown(1, controllerThing.GetComponent<PlayerCDController>().abilityCooldowns[1]);
     }
+
+    IEnumerator shieldFlash()
+    {
+        Vector4 currentColor = GetComponent<Renderer>().material.color;
+        Vector4 newColor = currentColor - new Vector4(0, 0, 0, .03f);
+        GetComponent<Renderer>().material.color = newColor;
+        yield return new WaitForSeconds(.25f);
+        GetComponent<Renderer>().material.color = currentColor;
+        yield return new WaitForSeconds(.25f);
+        GetComponent<Renderer>().material.color = newColor;
+        yield return new WaitForSeconds(.25f);
+        GetComponent<Renderer>().material.color = currentColor;
+        yield return new WaitForSeconds(.25f);
+        GetComponent<Renderer>().material.color = newColor;
+    }
+
 }
