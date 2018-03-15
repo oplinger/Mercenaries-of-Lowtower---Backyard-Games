@@ -44,6 +44,8 @@ public class HealerClass : PlayerClass
 
     public GameObject healerModel;
 
+    public GameObject yButtonToRevive;
+
     Renderer healerRenderer;
 
     float h1;
@@ -103,8 +105,8 @@ public class HealerClass : PlayerClass
 
         if (currentHealth <= 0)
         {
-            print(currentHealth);
             Death();
+            yButtonToRevive.SetActive(true);
         }
         if (currentHealth>maxHealth)
         {
@@ -115,6 +117,7 @@ public class HealerClass : PlayerClass
         if (lastFrameHealth < currentHealth)
         {
             EnableAbilities();
+            yButtonToRevive.SetActive(false);
         }
         lastFrameHealth = currentHealth;
 

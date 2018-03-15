@@ -39,6 +39,8 @@ public class RangedClass : PlayerClass
 
     public GameObject rangedModel;
 
+    public GameObject yButtonToRevive;
+
     Renderer rangedRenderer;
 
     float h1;
@@ -117,8 +119,8 @@ public class RangedClass : PlayerClass
 
         if (currentHealth <= 0)
         {
-            print(currentHealth);
             Death();
+            yButtonToRevive.SetActive(true);
         }
         if (currentHealth > maxHealth)
         {
@@ -128,6 +130,7 @@ public class RangedClass : PlayerClass
         if (lastFrameHealth < currentHealth)
         {
             EnableAbilities();
+            yButtonToRevive.SetActive(false);
         }
         lastFrameHealth = currentHealth;
 

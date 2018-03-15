@@ -34,6 +34,8 @@ public class TankClass : PlayerClass
 
     public GameObject tankModel;
 
+    public GameObject yButtonToRevive;
+
     Renderer tankRenderer;
 
     float h1;
@@ -102,8 +104,8 @@ public class TankClass : PlayerClass
 
         if (currentHealth <= 0)
         {
-            print(currentHealth);
             Death();
+            yButtonToRevive.SetActive(true);
 
 
         }
@@ -116,6 +118,7 @@ public class TankClass : PlayerClass
         if (lastFrameHealth < currentHealth)
         {
             EnableAbilities();
+            yButtonToRevive.SetActive(false);
         }
 
         lastFrameHealth = currentHealth;

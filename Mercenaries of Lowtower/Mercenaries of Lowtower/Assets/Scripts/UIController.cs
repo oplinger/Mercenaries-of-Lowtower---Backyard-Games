@@ -125,7 +125,7 @@ public class UIController : MonoBehaviour
         icons[0].material.SetTexture("_SecondTex", Resources.Load("Textures/Icon_Tank_Grab_2") as Texture);
         if (icons[0].material.GetFloat("_Tween") <= 0)
         {
-            icons[0].rectTransform.localScale = new Vector3(2, 2, 2);
+            icons[0].rectTransform.localScale = new Vector3(3, 3, 3);
         }
         else
         {
@@ -138,7 +138,7 @@ public class UIController : MonoBehaviour
         icons[1].material.SetTexture("_SecondTex", Resources.Load("Textures/Icon_Tank_Bubble_2") as Texture);
         if (icons[1].material.GetFloat("_Tween") <= 0)
         {
-            icons[1].rectTransform.localScale = new Vector3(2, 2, 2);
+            icons[1].rectTransform.localScale = new Vector3(3, 3, 3);
         }
         else
         {
@@ -151,7 +151,7 @@ public class UIController : MonoBehaviour
         icons[2].material.SetTexture("_SecondTex", Resources.Load("Textures/Icon_Transparent") as Texture);
         if (icons[2].material.GetFloat("_Tween") <= 0)
         {
-            icons[2].rectTransform.localScale = new Vector3(2, 2, 2);
+            icons[2].rectTransform.localScale = new Vector3(3, 3, 3);
         }
         else
         {
@@ -182,7 +182,7 @@ public class UIController : MonoBehaviour
         icons[3].material.SetTexture("_SecondTex", Resources.Load("Textures/Icon_Healer_Heal_2") as Texture);
         if (icons[3].material.GetFloat("_Tween") <= 0)
         {
-            icons[3].rectTransform.localScale = new Vector3(2, 2, 2);
+            icons[3].rectTransform.localScale = new Vector3(3, 3, 3);
         }
         else
         {
@@ -195,7 +195,7 @@ public class UIController : MonoBehaviour
         icons[4].material.SetTexture("_SecondTex", Resources.Load("Textures/Icon_Healer_Stun_2") as Texture);
         if (icons[4].material.GetFloat("_Tween") <= 0)
         {
-            icons[4].rectTransform.localScale = new Vector3(2, 2, 2);
+            icons[4].rectTransform.localScale = new Vector3(3, 3, 3);
         }
         else
         {
@@ -208,7 +208,7 @@ public class UIController : MonoBehaviour
         icons[5].material.SetTexture("_SecondTex", Resources.Load("Textures/Icon_Transparent") as Texture);
         if (icons[5].material.GetFloat("_Tween") <= 0)
         {
-            icons[5].rectTransform.localScale = new Vector3(2, 2, 2);
+            icons[5].rectTransform.localScale = new Vector3(3, 3, 3);
         }
         else
         {
@@ -240,7 +240,7 @@ public class UIController : MonoBehaviour
         icons[6].material.SetTexture("_SecondTex", Resources.Load("Textures/Icon_Melee_Attack_2") as Texture);
         if (icons[6].material.GetFloat("_Tween") <= 0)
         {
-            icons[6].rectTransform.localScale = new Vector3(2, 2, 2);
+            icons[6].rectTransform.localScale = new Vector3(3, 3, 3);
         }
         else
         {
@@ -253,7 +253,7 @@ public class UIController : MonoBehaviour
         icons[7].material.SetTexture("_SecondTex", Resources.Load("Textures/Icon_Transparent") as Texture);
         if (icons[7].material.GetFloat("_Tween") <= 0)
         {
-            icons[7].rectTransform.localScale = new Vector3(2, 2, 2);
+            icons[7].rectTransform.localScale = new Vector3(3, 3, 3);
         }
         else
         {
@@ -266,7 +266,7 @@ public class UIController : MonoBehaviour
         icons[8].material.SetTexture("_SecondTex", Resources.Load("Textures/Icon_Melee_Dash_2") as Texture);
         if (icons[8].material.GetFloat("_Tween") <= 0)
         {
-            icons[8].rectTransform.localScale = new Vector3(2, 2, 2);
+            icons[8].rectTransform.localScale = new Vector3(3, 3, 3);
         }
         else
         {
@@ -298,7 +298,7 @@ public class UIController : MonoBehaviour
         icons[9].material.SetTexture("_SecondTex", Resources.Load("Textures/Icon_Ranger_Bolt_2") as Texture);
         if (icons[9].material.GetFloat("_Tween") <= 0)
         {
-            icons[9].rectTransform.localScale = new Vector3(2, 2, 2);
+            icons[9].rectTransform.localScale = new Vector3(3, 3, 3);
         }
         else
         {
@@ -311,7 +311,7 @@ public class UIController : MonoBehaviour
         icons[10].material.SetTexture("_SecondTex", Resources.Load("Textures/Icon_Transparent") as Texture);
         if (icons[10].material.GetFloat("_Tween") <= 0)
         {
-            icons[10].rectTransform.localScale = new Vector3(2, 2, 2);
+            icons[10].rectTransform.localScale = new Vector3(3, 3, 3);
         }
         else
         {
@@ -324,7 +324,7 @@ public class UIController : MonoBehaviour
         icons[11].material.SetTexture("_SecondTex", Resources.Load("Textures/Icon_Ranger_Knockback_2") as Texture);
         if (icons[11].material.GetFloat("_Tween") <= 0)
         {
-            icons[11].rectTransform.localScale = new Vector3(2, 2, 2);
+            icons[11].rectTransform.localScale = new Vector3(3, 3, 3);
         }
         else
         {

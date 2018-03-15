@@ -38,6 +38,8 @@ public class MeleeClass : PlayerClass
 
     public GameObject meleeModel;
 
+    public GameObject yButtonToRevive;
+
     Renderer meleeRenderer;
 
     float h1;
@@ -96,8 +98,8 @@ public class MeleeClass : PlayerClass
 
         if (currentHealth <= 0)
         {
-            print(currentHealth);
             Death();
+            yButtonToRevive.SetActive(true);
         }
         if (currentHealth > maxHealth)
         {
@@ -107,6 +109,7 @@ public class MeleeClass : PlayerClass
         if (lastFrameHealth < currentHealth)
         {
             EnableAbilities();
+            yButtonToRevive.SetActive(false);
         }
         lastFrameHealth = currentHealth;
 
