@@ -5,8 +5,9 @@ using UnityEngine;
 public class BoltDamage : MonoBehaviour {
     public Health health;
     public GameObject controller;
-	// Use this for initialization
-	void Start () {
+    Renderer targetRenderer;
+    // Use this for initialization
+    void Start () {
         controller = GameObject.Find("Controller Thing");
 	}
 	
@@ -17,7 +18,7 @@ public class BoltDamage : MonoBehaviour {
     void OnTriggerEnter(Collider other)
     {
 
-        if (other.tag == "Enemy" || other.tag == "Tentacle")
+        if (other.tag == "Enemy" || other.tag == "Tentacle" || other.tag == "TRTarget")
         {
             other.GetComponent<IDamageable<float>>().TakeDamage(3);
             Destroy(gameObject);
@@ -30,4 +31,5 @@ public class BoltDamage : MonoBehaviour {
             //Destroy(gameObject);
         }
     }
-}
+   }
+ 
