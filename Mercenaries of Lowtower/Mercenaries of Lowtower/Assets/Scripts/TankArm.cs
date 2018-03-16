@@ -3,12 +3,16 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class TankArm : MonoBehaviour {
+
+    public TankClass baseClass;
+
     public GameObject[] armJoint;
     public GameObject target;
     public GameObject grabbedTentacle;
     public Vector3 offset;
     public Vector3[] defaultJointPosition;
     public LayerMask tankArmMask;
+
 	// Use this for initialization
 	void Start () {
 		
@@ -19,7 +23,7 @@ public class TankArm : MonoBehaviour {
 
         Debug.DrawRay(armJoint[2].transform.position, armJoint[2].transform.forward * 10);
 
-        if (Input.GetKeyDown("joystick " + 1 + " button " + "1"))
+        if (Input.GetKeyDown("joystick " + 1 + " button " + "1") && baseClass.abilityCooldowns.cooldowns["magnetCD"]<=0)
         {
 
             RaycastHit hit;
@@ -51,7 +55,7 @@ public class TankArm : MonoBehaviour {
         }
         // Tags or names can be used to create different actions. Or call different functions. (functions would be more efficient). So the arm can grab minions, and pull them back to the tank. Replace target with an overlap sphere array
         // and you can grab multiple. 
-        if (Input.GetKeyUp("joystick " + 1 + " button " + "1"))
+        if (Input.GetKeyUp("joystick " + 1 + " button " + "1") && baseClass.abilityCooldowns.cooldowns["magnetCD"] <= 0)
         {
             //if(target!= null)
             //{
@@ -77,9 +81,13 @@ public class TankArm : MonoBehaviour {
                 //armJoint[1].transform.position = Vector3.MoveTowards(armJoint[1].transform.position, defaultJointPosition[1], 6);
                 target.transform.parent = null;
                 target = null;
+
+                baseClass.abilityCooldowns.cooldowns["magnetCD"] = baseClass.abilityCooldowns.magnetCD;
             } else
             {
-                return;
+                baseClass.abilityCooldowns.cooldowns["magnetCD"] = .2f;
+
+                
             }
 
         }

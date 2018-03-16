@@ -20,6 +20,7 @@ public class UIController : MonoBehaviour
 
     public GameObject[] healthBarSprites;
     public GameObject[] labels;
+    public GameObject[] newIcons;
 
     public Camera mainCamera;
 
@@ -125,7 +126,86 @@ public class UIController : MonoBehaviour
         //texts[4].text = bossHealth.health.ToString();
         #endregion
 
-        //#region Cooldown Icons
+        #region Cooldown Icons
+
+       if(players[0].GetComponent<TankCooldowns>().cooldowns["shieldCD"] <=0)
+        {
+            newIcons[0].SetActive(true);
+        } else
+        {
+            newIcons[0].SetActive(false);
+
+        }
+
+        if (players[0].GetComponent<TankCooldowns>().cooldowns["magnetCD"] <= 0)
+        {
+            newIcons[1].SetActive(true);
+        }
+        else
+        {
+            newIcons[1].SetActive(false);
+
+        }
+
+        if (players[1].GetComponent<HealerCooldowns>().cooldowns["healCD"] <= 0)
+        {
+            newIcons[2].SetActive(true);
+        }
+        else
+        {
+            newIcons[2].SetActive(false);
+
+        }
+
+        if (players[1].GetComponent<HealerCooldowns>().cooldowns["stunCD"] <= 0)
+        {
+            newIcons[3].SetActive(true);
+        }
+        else
+        {
+            newIcons[3].SetActive(false);
+
+        }
+
+        if (players[2].GetComponent<MeleeCooldowns>().cooldowns["meleeCD"] <= 0)
+        {
+            newIcons[4].SetActive(true);
+        }
+        else
+        {
+            newIcons[4].SetActive(false);
+
+        }
+
+        if (players[2].GetComponent<MeleeCooldowns>().cooldowns["lungeCD"] <= 0)
+        {
+            newIcons[5].SetActive(true);
+        }
+        else
+        {
+            newIcons[5].SetActive(false);
+
+        }
+
+        if (players[3].GetComponent<RangedCooldowns>().cooldowns["boltCD"] <= 0)
+        {
+            newIcons[6].SetActive(true);
+        }
+        else
+        {
+            newIcons[6].SetActive(false);
+
+        }
+
+        if (players[3].GetComponent<RangedCooldowns>().cooldowns["knockbackCD"] <= 0)
+        {
+            newIcons[7].SetActive(true);
+        }
+        else
+        {
+            newIcons[7].SetActive(false);
+
+        }
 
         ////Fades from one textures into another. Visualization of the CD rather than a timer.
 
@@ -361,7 +441,7 @@ public class UIController : MonoBehaviour
 
         ////}
 
-        //#endregion
+        #endregion
 
         #region Health Bars
         //Health bars. Also changes the size of the health bars based on current health vs max health.
@@ -370,6 +450,8 @@ public class UIController : MonoBehaviour
         healthBarSprites[1].transform.localScale = new Vector3(200 * (playerCurrentHealth[1] / playerMaxHealth[1]), 20, 1);
         healthBarSprites[2].transform.localScale = new Vector3(200 * (playerCurrentHealth[2] / playerMaxHealth[2]), 20, 1);
         healthBarSprites[3].transform.localScale = new Vector3(200 * (playerCurrentHealth[3] / playerMaxHealth[3]), 20, 1);
+
+       // labels[0].transform.LookAt(mainCamera.transform.position, Vector3.up);
 
 
         //healthBars[0].rectTransform.sizeDelta = new Vector2(100 * (playerCurrentHealth[0] / playerMaxHealth[0]), 20);
