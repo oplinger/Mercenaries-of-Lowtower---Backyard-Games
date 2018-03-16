@@ -21,6 +21,7 @@ public class UIController : MonoBehaviour
     public GameObject[] healthBarSprites;
     public GameObject[] labels;
     public GameObject[] newIcons;
+    public GameObject[] coolDownTexts;
 
     public Camera mainCamera;
 
@@ -124,11 +125,14 @@ public class UIController : MonoBehaviour
         timer -= Time.deltaTime;
         //texts[5].text = timer.ToString();
         //texts[4].text = bossHealth.health.ToString();
+
+        //coolDownTexts[0].GetComponent<TextMesh>().text = players[0].GetComponent<TankCooldowns>().cooldowns["shieldCD"].ToString("#.#");
+
         #endregion
 
         #region Cooldown Icons
 
-       if(players[0].GetComponent<TankCooldowns>().cooldowns["shieldCD"] <=0)
+        if (players[0].GetComponent<TankCooldowns>().cooldowns["shieldCD"] <=0)
         {
             newIcons[0].SetActive(true);
         } else

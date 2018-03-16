@@ -43,7 +43,7 @@ public class AIControllerNavMesh : EntityClass
 
         enemyRenderer = GetComponent<Renderer>();
 
-        defaultEnemyMaterial = enemyRenderer.material;
+       // defaultEnemyMaterial = enemyRenderer.material;
 
         currentHealth = maxHealth;
 
@@ -85,7 +85,7 @@ public class AIControllerNavMesh : EntityClass
         {
 
             
-            enemyRenderer.material = defaultEnemyMaterial;
+            //enemyRenderer.material = defaultEnemyMaterial;
 
 
             //if (Vector3.Distance(transform.position, Player.transform.position) <= MaxDist)
