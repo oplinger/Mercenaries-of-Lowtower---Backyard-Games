@@ -12,7 +12,7 @@ public class AIControllerNavMesh : EntityClass
 
     public float defaultSpeed;
     public float stunTimer;
-
+    Rigidbody rb;
     public SpawnAdd addSpawnerScript;
     public GameObject addSpawner;
     public LayerMask PlayerMask;
@@ -46,7 +46,7 @@ public class AIControllerNavMesh : EntityClass
        // defaultEnemyMaterial = enemyRenderer.material;
 
         currentHealth = maxHealth;
-
+        rb = GetComponent<Rigidbody>();
         stunTimer = 0;
 
         addSpawner = GameObject.Find("add-pocalypse");
@@ -75,6 +75,14 @@ public class AIControllerNavMesh : EntityClass
                     SetDestination();
                 }
             }
+        }
+
+        if (rb.velocity.magnitude < .05)
+        {
+            rb.velocity = Vector3.zero;
+            //other.GetComponent<NavMeshAgent>().isStopped = false;
+           // navMeshAgent.enabled = true;
+
         }
 
 

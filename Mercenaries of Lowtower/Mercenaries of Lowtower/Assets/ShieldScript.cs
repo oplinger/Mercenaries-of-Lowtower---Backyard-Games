@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AI;
 
 public class ShieldScript : MonoBehaviour {
 
@@ -47,7 +48,16 @@ public class ShieldScript : MonoBehaviour {
         if (other.tag == "Enemy")
         {
             print("enemy inside shield");
-            other.GetComponent<Rigidbody>().AddForce(other.transform.forward * -10, ForceMode.Impulse);
+            //other.GetComponent<Rigidbody>().AddForce(other.transform.forward * -10, ForceMode.Impulse);
+            //Vector3 shieldPosition = new Vector3 (transform.position.x, transform.position.y-500, transform.position.z);
+            Rigidbody oRigid = other.GetComponent<Rigidbody>();
+            Vector3 reflectDirection = other.transform.position - transform.position;
+            //other.GetComponent<NavMeshAgent>().isStopped = true;
+            other.GetComponent<NavMeshAgent>().enabled = false;
+
+            oRigid.AddForce(reflectDirection*3, ForceMode.Impulse);
+            oRigid.AddForce(0, 5, 0, ForceMode.Impulse);
+            
         }
 
     }
