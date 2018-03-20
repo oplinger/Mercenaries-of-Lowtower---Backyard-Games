@@ -80,9 +80,23 @@ public class TentacleSlamDamage : BossClass {
         }
     }
 
+    public void PlayerColorFlash(Color playercolor)
+    {
+        StartCoroutine("IPlayerColorFlash", playercolor);
+
+    }
+
     IEnumerator Flash()
     {
         tentacle.GetComponentInChildren<Renderer>().material.SetColor("_EmissionColor", Color.red);
+
+        yield return new WaitForSeconds(.016f);
+        tentacle.GetComponentInChildren<Renderer>().material.SetColor("_EmissionColor", Color.black);
+    }
+
+    IEnumerator IPlayerColorFlash(Color playercolor)
+    {
+        tentacle.GetComponentInChildren<Renderer>().material.SetColor("_EmissionColor", playercolor);
 
         yield return new WaitForSeconds(.016f);
         tentacle.GetComponentInChildren<Renderer>().material.SetColor("_EmissionColor", Color.black);

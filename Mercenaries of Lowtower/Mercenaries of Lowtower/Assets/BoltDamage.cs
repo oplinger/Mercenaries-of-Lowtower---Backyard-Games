@@ -21,6 +21,13 @@ public class BoltDamage : MonoBehaviour {
         if (other.tag == "Enemy" || other.tag == "Tentacle" || other.tag == "TRTarget")
         {
             other.GetComponent<IDamageable<float>>().TakeDamage(3);
+
+            if (other.tag == "Tentacle")
+            {
+                Color colorflash = new Color(.047f, .756f, .066f);
+                other.GetComponent<TentacleSlamDamage>().PlayerColorFlash(colorflash);
+            }
+
             Destroy(gameObject);
             //health = other.GetComponent<Health>();
             //ControllerThing CT = controller.GetComponent<ControllerThing>();
