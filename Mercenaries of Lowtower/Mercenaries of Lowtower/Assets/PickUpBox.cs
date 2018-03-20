@@ -55,6 +55,8 @@ public class PickUpBox : MonoBehaviour
             }
             else
             {
+                heldObject.GetComponent<Light>().enabled = true;
+                GameObject.Find("cannon").GetComponent<Light>().enabled = false;
                 DropCannonball();
 
 
@@ -66,6 +68,9 @@ public class PickUpBox : MonoBehaviour
         if (holdingObject)
         {
             heldObject.transform.position = new Vector3(gameObject.transform.position.x, gameObject.transform.position.y+.5f, gameObject.transform.position.z);
+            heldObject.GetComponent<Light>().enabled = false;
+
+            GameObject.Find("cannon").GetComponent<Light>().enabled = true;
         }
         
 
@@ -96,7 +101,7 @@ public class PickUpBox : MonoBehaviour
     {
         if (heldObject != null)
         {
-            heldObject.transform.position = new Vector3(gameObject.transform.position.x, gameObject.transform.position.y - .5f, gameObject.transform.position.z);
+            heldObject.transform.position = new Vector3(gameObject.transform.position.x, gameObject.transform.position.y - .25f, gameObject.transform.position.z);
 
             heldObject = null;
             holdingObject = false;
