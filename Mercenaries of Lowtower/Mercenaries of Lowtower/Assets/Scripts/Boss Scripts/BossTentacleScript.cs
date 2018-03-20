@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class BossTentacleScript : MonoBehaviour
 {
+    public GameObject mainCam;
     // The speed at which the tentacle elevates towards the endPoint
     public float elevationSpeed;
     // The speed at which the tentacle descends after slamming
@@ -36,6 +37,7 @@ public class BossTentacleScript : MonoBehaviour
     // Use this for initialization
     void Start () {
         // Sets the origin point to the position the tentacles are in when the play button is pressed
+        mainCam = GameObject.Find("Main Camera_lowangle");
         originPoint = gameObject.transform.position;
         // Sets the values to the values in the BossControlScript 
         elevationSpeed = BossManager.GetComponent<BossControlScriptV2>().elevationSpeed;
@@ -105,6 +107,7 @@ public class BossTentacleScript : MonoBehaviour
         tentacleSlamming = false;
         DeactivateDamage();
         tentacleDown = true;
+        mainCam.GetComponent<CameraShake>().shaking = true;
         anim.SetBool("tentacleDown", true);
         StartCoroutine("TentacleDown");
     }
