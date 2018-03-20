@@ -17,6 +17,7 @@ public class AIControllerNavMesh : EntityClass
     public GameObject addSpawner;
     public LayerMask PlayerMask;
     Collider[] cols;
+    float currenthealth2;
 
     public bool cannonballIsHeld;
 
@@ -40,7 +41,7 @@ public class AIControllerNavMesh : EntityClass
     {
         //Player = GameObject.FindGameObjectWithTag("PickUp");
 
-
+        currenthealth2 = currentHealth;
         enemyRenderer = GetComponent<Renderer>();
 
        // defaultEnemyMaterial = enemyRenderer.material;
@@ -85,6 +86,15 @@ public class AIControllerNavMesh : EntityClass
 
         }
 
+        if (rb.velocity.magnitude > 0)
+        {
+            GetComponent<Animator>().SetInteger("AnimState", 1);
+        }
+        if (currentHealth < currenthealth2)
+        {
+            GetComponent<Animator>().SetInteger("AnimState", 2);
+
+        }
 
         //transform.LookAt(Player.transform.position);
 
@@ -127,7 +137,8 @@ public class AIControllerNavMesh : EntityClass
         if (currentHealth <= 0)
         {
             addSpawnerScript.addCounter -= 1;
-            Destroy(gameObject);
+            GetComponent<Animator>().SetInteger("AnimState", 3);
+
         }
 
     }

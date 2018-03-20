@@ -37,7 +37,7 @@ public abstract class EntityClass : MonoBehaviour, IDamageable<float>, IStunnabl
 
     public void Death()
     {
-
+        Destroy(gameObject);
     }
 
     public virtual void TakeDamage(float damageTaken)
