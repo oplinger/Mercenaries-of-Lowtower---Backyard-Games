@@ -81,7 +81,6 @@ public class TankClass : PlayerClass
         if (Input.GetKeyDown("joystick " + CTRLID + " button " + buttons["Bbutton"]))
         {
             buttonB();
-            print(("joystick " + CTRLID + " button " + buttons["Bbutton"]));
         }
         if (Input.GetKey("joystick " + CTRLID + " button " + buttons["Xbutton"]))
         {
@@ -92,15 +91,6 @@ public class TankClass : PlayerClass
             buttonY();
         }
 
-        if (abilityCooldowns.cooldowns["magnetCD"] <= 0)
-        {
-            if (Input.GetKeyUp("joystick " + CTRLID + " button " + buttons["Bbutton"]))
-            {
-                print("magnet cooldown");
-                abilityCooldowns.cooldowns["magnetCD"] = abilityCooldowns.magnetCD;
-
-            }
-        }
 
         if (currentHealth <= 0)
         {

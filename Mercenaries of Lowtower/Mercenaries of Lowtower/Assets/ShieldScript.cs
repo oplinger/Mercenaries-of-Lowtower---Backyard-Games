@@ -1,21 +1,32 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AI;
 
 public class ShieldScript : MonoBehaviour {
 
     public Collider[] playersInShield;
     TankClass baseClass;
+    public float shieldTimer;
 
     // Use this for initialization
     void Start () {
         baseClass = GameObject.Find("Tank Character(Clone)").GetComponent<TankClass>();
-
+        shieldTimer = baseClass.shieldDuration;
     }
 
     //// Update is called once per frame
     void Update () {
     playersInShield = Physics.OverlapSphere(transform.position, baseClass.shieldSize, baseClass.shieldMask, QueryTriggerInteraction.Ignore);
+        if (shieldTimer > 0)
+        {
+            shieldTimer -= Time.deltaTime;
+        }
+
+        if (shieldTimer < 2)
+        {
+            StartCoroutine(shieldFlash());
+        }
 
 
     //    //cols = Physics.OverlapSphere(transform.position, 10, 1<<8, QueryTriggerInteraction.Ignore);
@@ -37,7 +48,16 @@ public class ShieldScript : MonoBehaviour {
         if (other.tag == "Enemy")
         {
             print("enemy inside shield");
-            other.GetComponent<Rigidbody>().AddForce(other.transform.forward * -10, ForceMode.Impulse);
+            //other.GetComponent<Rigidbody>().AddForce(other.transform.forward * -10, ForceMode.Impulse);
+            //Vector3 shieldPosition = new Vector3 (transform.position.x, transform.position.y-500, transform.position.z);
+            Rigidbody oRigid = other.GetComponent<Rigidbody>();
+            Vector3 reflectDirection = other.transform.position - transform.position;
+            //other.GetComponent<NavMeshAgent>().isStopped = true;
+            other.GetComponent<NavMeshAgent>().enabled = false;
+
+            oRigid.AddForce(reflectDirection*3, ForceMode.Impulse);
+            oRigid.AddForce(0, 5, 0, ForceMode.Impulse);
+            
         }
 
     }
@@ -137,4 +157,20 @@ public class ShieldScript : MonoBehaviour {
         }
         //controllerThing.GetComponent<PlayerCDController>().triggerCooldown(1, controllerThing.GetComponent<PlayerCDController>().abilityCooldowns[1]);
     }
+
+    IEnumerator shieldFlash()
+    {
+        Vector4 currentColor = GetComponent<Renderer>().material.color;
+        Vector4 newColor = currentColor - new Vector4(0, 0, 0, .03f);
+        GetComponent<Renderer>().material.color = newColor;
+        yield return new WaitForSeconds(.25f);
+        GetComponent<Renderer>().material.color = currentColor;
+        yield return new WaitForSeconds(.25f);
+        GetComponent<Renderer>().material.color = newColor;
+        yield return new WaitForSeconds(.25f);
+        GetComponent<Renderer>().material.color = currentColor;
+        yield return new WaitForSeconds(.25f);
+        GetComponent<Renderer>().material.color = newColor;
+    }
+
 }

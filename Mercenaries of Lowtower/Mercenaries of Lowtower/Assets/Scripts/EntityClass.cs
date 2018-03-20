@@ -44,6 +44,12 @@ public abstract class EntityClass : MonoBehaviour, IDamageable<float>, IStunnabl
     {
         if (currentHealth > 0)
         {
+            if (currentHealth < damageTaken)
+            {
+                damageTaken = currentHealth;
+
+            }
+
             if (!shielded)
             {
                 currentHealth -= damageTaken;

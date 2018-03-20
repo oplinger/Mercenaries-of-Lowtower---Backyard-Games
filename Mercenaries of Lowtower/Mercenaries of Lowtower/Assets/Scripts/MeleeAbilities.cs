@@ -51,6 +51,7 @@ public class MeleeAbilities : MonoBehaviour {
 
     public void MeleeLunge()
     {
+        print("LUNGE!");
         RaycastHit hit;
         if (Physics.Raycast(baseClass.rayOrigin.transform.position, transform.forward, out hit, baseClass.lungeDistance, baseClass.enemyMask) && baseClass.abilityCooldowns.cooldowns["lungeCD"] <= 0)
         {
