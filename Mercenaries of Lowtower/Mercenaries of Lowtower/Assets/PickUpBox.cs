@@ -14,6 +14,8 @@ public class PickUpBox : MonoBehaviour
     public GameObject enemy;
     public AIControllerNavMesh enemyScript;
 
+    public int charID;
+
 
     private void Start()
     {
@@ -46,7 +48,7 @@ public class PickUpBox : MonoBehaviour
         //}
 
 
-        if (Input.GetKeyDown("joystick button 4"))
+        if (Input.GetKeyDown("joystick " + charID + " button 4"))
         {
             //if player is not holding an object already, but they detect something that can be picked up
             if (!holdingObject && triggerObject != null)
