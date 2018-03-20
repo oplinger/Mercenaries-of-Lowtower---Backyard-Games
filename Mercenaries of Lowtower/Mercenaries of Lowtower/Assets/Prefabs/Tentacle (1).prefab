@@ -837,11 +837,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e0507750e0322d94087f3f138093538a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  mainCam: {fileID: 0}
   elevationSpeed: 20
   descendingSpeed: 160
+  downTime: 0
   tentacleRaising: 0
   tentacleSlamming: 0
+  tentacleDown: 0
+  tentacleGrabbed: 0
+  tentacleRetreating: 0
   tentacleLowering: 0
+  damageActive: 0
   attackComplete: 0
   elevationEndPoint: {fileID: 0}
   BossManager: {fileID: 0}
