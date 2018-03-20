@@ -463,7 +463,7 @@ public class UIController : MonoBehaviour
         //healthBars[2].rectTransform.sizeDelta = new Vector2(100 * (playerCurrentHealth[2] / playerMaxHealth[2]), 20);
         //healthBars[3].rectTransform.sizeDelta = new Vector2(100 * (playerCurrentHealth[3] / playerMaxHealth[3]), 20);
 
-        //healthBars[4].rectTransform.sizeDelta = new Vector2(355 * (bossCurrentHealth / bossMaxHealth), 25);
+        healthBars[0].rectTransform.sizeDelta = new Vector2(355 * (bossCurrentHealth / bossMaxHealth), 25);
 
 #endregion
 
