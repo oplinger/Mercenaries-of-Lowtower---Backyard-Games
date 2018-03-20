@@ -39,7 +39,6 @@ public class BossTentacleScript : MonoBehaviour
         // Sets the origin point to the position the tentacles are in when the play button is pressed
         mainCam = GameObject.Find("Main Camera_lowangle");
         originPoint = gameObject.transform.position;
-        GetComponent<ParticleSystem>().Stop();
 
         // Sets the values to the values in the BossControlScript 
         elevationSpeed = BossManager.GetComponent<BossControlScriptV2>().elevationSpeed;
@@ -49,14 +48,6 @@ public class BossTentacleScript : MonoBehaviour
 	// Update is called once per frame
 	void Update () {
         SpeedUp();
-        if (damageActive == true)
-        {
-            GetComponent<ParticleSystem>().Play();
-        }
-        else{
-            GetComponent<ParticleSystem>().Stop();
-
-        }
 
         if (tentacleRaising == true)
         {
