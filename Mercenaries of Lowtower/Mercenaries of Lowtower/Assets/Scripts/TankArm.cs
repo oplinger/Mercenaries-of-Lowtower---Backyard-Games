@@ -46,7 +46,7 @@ public class TankArm : MonoBehaviour {
                     target.GetComponent<TentacleSlamDamage>().tentacle.GetComponent<BossTentacleScript>().tentacleGrabbed = true;
                 }
                 offset = armJoint[2].transform.position - armJoint[1].transform.position;
-                armJoint[1].transform.position = target.transform.position - offset;
+                armJoint[1].transform.position = hit.point - offset;
                 armJoint[2].transform.localScale *= 2;
             } else
             {

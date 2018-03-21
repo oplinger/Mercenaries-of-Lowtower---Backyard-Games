@@ -70,6 +70,15 @@ public class BossTentacleScript : MonoBehaviour
             //print("Tentacle check!");
             attackComplete = false;
         }
+
+        if (tentacleGrabbed)
+        {
+            gameObject.GetComponentInChildren<Renderer>().material.SetColor("_EmissionColor", Color.blue);
+        }
+        else
+        {
+            gameObject.GetComponentInChildren<Renderer>().material.SetColor("_EmissionColor", Color.black);
+        }
     }
 
     void RaiseTentacle()
@@ -174,6 +183,7 @@ public class BossTentacleScript : MonoBehaviour
         tentacleDown = false;
         anim.SetBool("tentacleDown", false);
         RetreatTentacle();
+        gameObject.GetComponentInChildren<Renderer>().material.SetColor("_EmissionColor", Color.black);
         //armRotatingBackward = true;
     }
     
