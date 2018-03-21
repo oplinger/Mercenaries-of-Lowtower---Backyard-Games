@@ -464,10 +464,6 @@ Prefab:
       propertyPath: m_RootOrder
       value: 7
       objectReference: {fileID: 0}
-    - target: {fileID: 1096026113430532, guid: be71d7e7457c9f64c9bf09eb300b554a, type: 2}
-      propertyPath: m_Name
-      value: Ranged Character(Clone)
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: be71d7e7457c9f64c9bf09eb300b554a, type: 2}
   m_IsPrefabParent: 0
@@ -4903,11 +4899,6 @@ Prefab:
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 43f9694338da0434c92a6b1204a03e11, type: 2}
   m_IsPrefabParent: 0
---- !u!1 &526381952 stripped
-GameObject:
-  m_PrefabParentObject: {fileID: 1096026113430532, guid: be71d7e7457c9f64c9bf09eb300b554a,
-    type: 2}
-  m_PrefabInternal: {fileID: 53972334}
 --- !u!1001 &530830373
 Prefab:
   m_ObjectHideFlags: 0
@@ -7285,11 +7276,6 @@ Transform:
   m_Father: {fileID: 1918149798}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 90, y: 0, z: 0}
---- !u!1 &784403777 stripped
-GameObject:
-  m_PrefabParentObject: {fileID: 1905964968196266, guid: 10f97ecad476ebc42ad1b48f43861fa6,
-    type: 2}
-  m_PrefabInternal: {fileID: 271294375}
 --- !u!1 &786014164
 GameObject:
   m_ObjectHideFlags: 0
@@ -8511,7 +8497,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 79e2755d1de3cdd4e8023ed8e9895602, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 10
+  maxHealth: 10000
   currentHealth: 0
   shielded: 0
   isStunned: 0
@@ -8669,11 +8655,6 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!1 &869882505 stripped
-GameObject:
-  m_PrefabParentObject: {fileID: 1619427166827492, guid: 5cce660b81a4b4543b297c9e659f0e57,
-    type: 2}
-  m_PrefabInternal: {fileID: 1838452146}
 --- !u!1 &870884573
 GameObject:
   m_ObjectHideFlags: 0
@@ -11646,7 +11627,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 79e2755d1de3cdd4e8023ed8e9895602, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 10
+  maxHealth: 10000
   currentHealth: 0
   shielded: 0
   isStunned: 0
@@ -14387,27 +14368,45 @@ Prefab:
         type: 2}
       propertyPath: players.Array.data[0]
       value: 
-      objectReference: {fileID: 1802995221}
+      objectReference: {fileID: 0}
     - target: {fileID: 114621322479623306, guid: e116e053888fb9644a31ee5f200cdbd9,
         type: 2}
       propertyPath: players.Array.data[1]
       value: 
-      objectReference: {fileID: 869882505}
+      objectReference: {fileID: 0}
     - target: {fileID: 114621322479623306, guid: e116e053888fb9644a31ee5f200cdbd9,
         type: 2}
       propertyPath: players.Array.data[2]
       value: 
-      objectReference: {fileID: 784403777}
+      objectReference: {fileID: 0}
     - target: {fileID: 114621322479623306, guid: e116e053888fb9644a31ee5f200cdbd9,
         type: 2}
       propertyPath: players.Array.data[3]
       value: 
-      objectReference: {fileID: 526381952}
+      objectReference: {fileID: 0}
     - target: {fileID: 114621322479623306, guid: e116e053888fb9644a31ee5f200cdbd9,
         type: 2}
       propertyPath: controllerThing
       value: 
-      objectReference: {fileID: 1029093221}
+      objectReference: {fileID: 0}
+    - target: {fileID: 1706589104755324, guid: e116e053888fb9644a31ee5f200cdbd9, type: 2}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114621322479623306, guid: e116e053888fb9644a31ee5f200cdbd9,
+        type: 2}
+      propertyPath: mainCamera
+      value: 
+      objectReference: {fileID: 1564100881}
+    - target: {fileID: 114621322479623306, guid: e116e053888fb9644a31ee5f200cdbd9,
+        type: 2}
+      propertyPath: boss
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 1809420814271362, guid: e116e053888fb9644a31ee5f200cdbd9, type: 2}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: e116e053888fb9644a31ee5f200cdbd9, type: 2}
   m_IsPrefabParent: 0
@@ -17718,11 +17717,6 @@ MeshFilter:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1798431882}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
---- !u!1 &1802995221 stripped
-GameObject:
-  m_PrefabParentObject: {fileID: 1362903556705936, guid: dd81d2b2f1393bd4981abb71cbff1fd5,
-    type: 2}
-  m_PrefabInternal: {fileID: 1201224070}
 --- !u!224 &1822570367 stripped
 RectTransform:
   m_PrefabParentObject: {fileID: 224045140004644312, guid: e116e053888fb9644a31ee5f200cdbd9,
@@ -19102,7 +19096,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 79e2755d1de3cdd4e8023ed8e9895602, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 10
+  maxHealth: 10000
   currentHealth: 0
   shielded: 0
   isStunned: 0

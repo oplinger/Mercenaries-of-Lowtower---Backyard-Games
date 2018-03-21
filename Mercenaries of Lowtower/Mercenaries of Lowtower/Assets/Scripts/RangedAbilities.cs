@@ -15,7 +15,7 @@ public class RangedAbilities : MonoBehaviour {
     {
         if (baseClass.abilityCooldowns.cooldowns["boltCD"] <= 0)
         {
-            GameObject clone = Instantiate(Resources.Load("Bolt") as GameObject, transform.position + (Vector3.forward * 2), transform.rotation);
+            GameObject clone = Instantiate(Resources.Load("Bolt") as GameObject, baseClass.boltspawn.transform.position, transform.rotation);
             Destroy(clone, baseClass.boltRange);
             baseClass.abilityCooldowns.cooldowns["boltCD"] = baseClass.abilityCooldowns.boltCD;
             GetComponent<Animator>().SetInteger("AnimState", 5);

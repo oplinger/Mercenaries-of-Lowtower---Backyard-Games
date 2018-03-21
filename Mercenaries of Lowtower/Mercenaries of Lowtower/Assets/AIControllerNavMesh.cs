@@ -138,6 +138,7 @@ public class AIControllerNavMesh : EntityClass
         {
             addSpawnerScript.addCounter -= 1;
             GetComponent<Animator>().SetInteger("AnimState", 3);
+            Destroy(this.gameObject);
 
         }
 

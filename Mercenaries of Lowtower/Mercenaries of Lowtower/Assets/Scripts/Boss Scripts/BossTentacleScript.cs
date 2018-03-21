@@ -34,6 +34,7 @@ public class BossTentacleScript : MonoBehaviour
     public GameObject BossManager;
     public GameObject Boss;
     public Animator anim;
+    
     // Use this for initialization
     void Start () {
         // Sets the origin point to the position the tentacles are in when the play button is pressed
@@ -77,7 +78,6 @@ public class BossTentacleScript : MonoBehaviour
         }
         else
         {
-            gameObject.GetComponentInChildren<Renderer>().material.SetColor("_EmissionColor", Color.black);
         }
     }
 
@@ -128,6 +128,7 @@ public class BossTentacleScript : MonoBehaviour
         //DeactivateDamage();
         //anim.SetBool("tentacleSlamming", false);
         //tentacleSlamming = false;
+        gameObject.GetComponentInChildren<Renderer>().material.SetColor("_EmissionColor", Color.black);
         tentacleRetreating = true;
         anim.SetBool("tentacleRetreating", true);
     }
@@ -183,7 +184,6 @@ public class BossTentacleScript : MonoBehaviour
         tentacleDown = false;
         anim.SetBool("tentacleDown", false);
         RetreatTentacle();
-        gameObject.GetComponentInChildren<Renderer>().material.SetColor("_EmissionColor", Color.black);
         //armRotatingBackward = true;
     }
     

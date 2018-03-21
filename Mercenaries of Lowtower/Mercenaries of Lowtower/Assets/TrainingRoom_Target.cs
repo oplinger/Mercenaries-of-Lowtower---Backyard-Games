@@ -36,6 +36,7 @@ public class TrainingRoom_Target : EnemyClass {
 
         if (h1 < h2)
         {
+            print("should be red");
             targetRenderer.material.SetColor("_EmissionColor", Color.red);
            // WaitForSeconds(5);
             h2 = h1;
@@ -46,6 +47,5 @@ public class TrainingRoom_Target : EnemyClass {
         {
             targetRenderer.material.SetColor("_EmissionColor", Color.black);
         }
-        print("LIT!!");
     }
 }
