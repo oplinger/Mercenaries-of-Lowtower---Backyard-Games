@@ -6,6 +6,7 @@ public class BoltDamage : MonoBehaviour {
     public Health health;
     public GameObject controller;
     Renderer targetRenderer;
+    public GameObject hitMarker;
     // Use this for initialization
     void Start () {
         controller = GameObject.Find("Controller Thing");
@@ -21,14 +22,17 @@ public class BoltDamage : MonoBehaviour {
         if (other.tag == "Enemy" || other.tag == "Tentacle" || other.tag == "TRTarget")
         {
             other.GetComponent<IDamageable<float>>().TakeDamage(3);
+            Instantiate(hitMarker, transform.position, Quaternion.identity);
+            hitMarker.layer = LayerMask.NameToLayer("Default");
 
             if (other.tag == "Tentacle")
             {
                 Color colorflash = new Color(.047f, .756f, .066f);
                 other.GetComponent<TentacleSlamDamage>().PlayerColorFlash(colorflash);
+                Instantiate(hitMarker, transform.position, Quaternion.identity);
             }
-
             Destroy(gameObject);
+
             //health = other.GetComponent<Health>();
             //ControllerThing CT = controller.GetComponent<ControllerThing>();
             //health.modifyHealth(3, 3);
@@ -37,6 +41,7 @@ public class BoltDamage : MonoBehaviour {
             //health.health -= 1.5f;
             //Destroy(gameObject);
         }
+
     }
    }
  

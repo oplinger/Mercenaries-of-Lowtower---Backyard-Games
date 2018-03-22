@@ -11,24 +11,6 @@ Prefab:
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 1619427166827492}
   m_IsPrefabParent: 1
---- !u!1 &1035191635404182
-GameObject:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  serializedVersion: 5
-  m_Component:
-  - component: {fileID: 4215554276210774}
-  - component: {fileID: 212843994563045332}
-  - component: {fileID: 95345840015555838}
-  - component: {fileID: 114353078474282252}
-  m_Layer: 0
-  m_Name: Revive Button_Healer
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 0
 --- !u!1 &1036089997909622
 GameObject:
   m_ObjectHideFlags: 1
@@ -385,6 +367,24 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!1 &1662698150120724
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 4940863976616404}
+  - component: {fileID: 212547195112789948}
+  - component: {fileID: 95840558706097624}
+  - component: {fileID: 114091683693920112}
+  m_Layer: 0
+  m_Name: Revive Button_Healer
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
 --- !u!1 &1688573729590264
 GameObject:
   m_ObjectHideFlags: 1
@@ -785,19 +785,6 @@ Transform:
   m_Father: {fileID: 4754218927407654}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!4 &4215554276210774
-Transform:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1035191635404182}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 2.55, z: 0}
-  m_LocalScale: {x: 0.07320559, y: 0.07320561, z: 0.07320561}
-  m_Children: []
-  m_Father: {fileID: 4414359701681698}
-  m_RootOrder: 6
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &4250890306682812
 Transform:
   m_ObjectHideFlags: 1
@@ -922,7 +909,7 @@ Transform:
   - {fileID: 4050588287692548}
   - {fileID: 4410796440916994}
   - {fileID: 4963765930299278}
-  - {fileID: 4215554276210774}
+  - {fileID: 4940863976616404}
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1147,6 +1134,19 @@ Transform:
   m_Father: {fileID: 4988046298486722}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!4 &4940863976616404
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1662698150120724}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 2.55, z: 0}
+  m_LocalScale: {x: 0.07320559, y: 0.07320561, z: 0.07320561}
+  m_Children: []
+  m_Father: {fileID: 4414359701681698}
+  m_RootOrder: 6
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &4961362489596300
 Transform:
   m_ObjectHideFlags: 1
@@ -1295,13 +1295,13 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 0.62, y: 1.71, z: 0.57}
   m_Center: {x: 0, y: 0.85, z: 0.04}
---- !u!95 &95345840015555838
+--- !u!95 &95840558706097624
 Animator:
   serializedVersion: 3
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1035191635404182}
+  m_GameObject: {fileID: 1662698150120724}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
   m_Controller: {fileID: 9100000, guid: a6dcef7baf64be74bbddd6580d2858f8, type: 2}
@@ -1344,6 +1344,18 @@ MonoBehaviour:
   healCD: 1
   teleportCD: 3
   stunCD: 3
+--- !u!114 &114091683693920112
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1662698150120724}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e8e7194d0a1a41046ba6c4f10120e5cc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Camera: {fileID: 0}
 --- !u!114 &114134682015433820
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1374,18 +1386,6 @@ MonoBehaviour:
   characterObj: {fileID: 1619427166827492}
   isDead: 0
   characterNum: 1
---- !u!114 &114353078474282252
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1035191635404182}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e8e7194d0a1a41046ba6c4f10120e5cc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Camera: {fileID: 0}
 --- !u!114 &114619861828360546
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1446,7 +1446,7 @@ MonoBehaviour:
   stunDuration: 5
   cannonballHolder: {fileID: 114619861828360546}
   healerModel: {fileID: 0}
-  yButtonToRevive: {fileID: 1035191635404182}
+  yButtonToRevive: {fileID: 1662698150120724}
 --- !u!114 &114889852143667998
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1592,12 +1592,12 @@ SpriteRenderer:
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
---- !u!212 &212843994563045332
+--- !u!212 &212547195112789948
 SpriteRenderer:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1035191635404182}
+  m_GameObject: {fileID: 1662698150120724}
   m_Enabled: 1
   m_CastShadows: 0
   m_ReceiveShadows: 0
