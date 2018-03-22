@@ -8,15 +8,20 @@ public class ShieldScript : MonoBehaviour {
     public Collider[] playersInShield;
     TankClass baseClass;
     public float shieldTimer;
+    public float shieldScaleTimer;
 
     // Use this for initialization
     void Start () {
         baseClass = GameObject.Find("Tank Character(Clone)").GetComponent<TankClass>();
         shieldTimer = baseClass.shieldDuration;
+        transform.localScale = new Vector3(.1f, .1f, .1f);
     }
 
     //// Update is called once per frame
     void Update () {
+        shieldScaleTimer += Time.deltaTime*10;
+        transform.localScale = Vector3.Lerp(new Vector3(.1f, .1f, .1f), Vector3.one*10, Mathf.Clamp(shieldScaleTimer, .1f, 1));
+
     playersInShield = Physics.OverlapSphere(transform.position, baseClass.shieldSize, baseClass.shieldMask, QueryTriggerInteraction.Ignore);
         if (shieldTimer > 0)
         {
