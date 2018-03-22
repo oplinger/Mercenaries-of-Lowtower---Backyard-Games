@@ -167,7 +167,6 @@ public class AIControllerNavMesh : EntityClass
 
     public override void StunThis()
     {
-        print("speed should be zero");
         navMeshAgent.speed = 0;
         isStunned = true;
     }

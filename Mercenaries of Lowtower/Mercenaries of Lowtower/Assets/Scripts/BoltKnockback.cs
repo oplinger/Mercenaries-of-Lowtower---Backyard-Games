@@ -18,7 +18,7 @@ public class BoltKnockback : MonoBehaviour {
     {
         if(other.gameObject.tag == "Enemy")
         {
-            other.GetComponent<Rigidbody>().AddForce((other.transform.position - gameObject.transform.position)*500, ForceMode.Impulse);
+            other.GetComponent<Rigidbody>().AddForce((other.transform.position - gameObject.transform.position)*50, ForceMode.Impulse);
             Destroy(gameObject);
         }
     }
