@@ -62,12 +62,12 @@ public class TentacleSlamDamage : BossClass {
         {
             if (other.tag == "Player")
             {
-                other.GetComponent<IDamageable<float>>().TakeDamage(50);
+                other.GetComponent<IDamageable<float>>().TakeDamage(30);
             }
 
             if (other.tag == "Enemy")
             {
-                other.GetComponent<IDamageable<float>>().TakeDamage(50);
+                other.GetComponent<IDamageable<float>>().TakeDamage(30);
             }
         }
     }

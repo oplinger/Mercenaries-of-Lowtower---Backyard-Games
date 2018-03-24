@@ -49,7 +49,7 @@ public class EnergySphereScript : MonoBehaviour {
         if (other.tag == "Player")
         {
             //Destroy(gameObject);
-            other.GetComponent<IDamageable<float>>().TakeDamage(80);
+            other.GetComponent<IDamageable<float>>().TakeDamage(50);
         }
 
         if (other.tag == "Destroyer")

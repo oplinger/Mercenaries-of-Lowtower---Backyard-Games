@@ -23,7 +23,6 @@ public class BoltDamage : MonoBehaviour {
         {
             other.GetComponent<IDamageable<float>>().TakeDamage(3);
             Instantiate(hitMarker, transform.position, Quaternion.identity);
-            hitMarker.layer = LayerMask.NameToLayer("Default");
 
             if (other.tag == "Tentacle")
             {

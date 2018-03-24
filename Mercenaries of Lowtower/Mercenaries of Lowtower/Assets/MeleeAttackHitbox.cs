@@ -27,7 +27,6 @@ public class MeleeAttackHitbox : MonoBehaviour {
 
         if (other.tag == "Enemy" || other.tag=="Tentacle")
         {
-            print("verSACHIE");
             print(baseClass.meleeDamage);
             other.GetComponent<IDamageable<float>>().TakeDamage(baseClass.meleeDamage);
 

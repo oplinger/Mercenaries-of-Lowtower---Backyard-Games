@@ -196,12 +196,12 @@ public class BossTentacleScript : MonoBehaviour
             if (other.tag == "Player")
             {
                 print("Collided with player");
-                other.GetComponent<IDamageable<float>>().TakeDamage(50);
+                other.GetComponent<IDamageable<float>>().TakeDamage(30);
             }
 
             if (other.tag == "Enemy")
             {
-                other.GetComponent<IDamageable<float>>().TakeDamage(50);
+                other.GetComponent<IDamageable<float>>().TakeDamage(30);
             }
         } else
         {
