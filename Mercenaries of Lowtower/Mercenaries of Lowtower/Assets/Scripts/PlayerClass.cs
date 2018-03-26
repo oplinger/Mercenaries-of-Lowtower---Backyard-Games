@@ -75,7 +75,7 @@ public abstract class PlayerClass : EntityClass
     public int JumpCheck()
     {
         Debug.DrawRay(transform.position, Vector3.up * -1f);
-        colliders = Physics.OverlapCapsule(transform.position, transform.position + (Vector3.up * -2f), .25f, groundMask, QueryTriggerInteraction.Ignore);
+        colliders = Physics.OverlapCapsule(transform.position, transform.position + (Vector3.up * -1f), .25f, groundMask, QueryTriggerInteraction.Ignore);
         int length;
         length = colliders.Length;
         return length;
