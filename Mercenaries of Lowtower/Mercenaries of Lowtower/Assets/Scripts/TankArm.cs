@@ -21,13 +21,13 @@ public class TankArm : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 
-        Debug.DrawRay(armJoint[2].transform.position, armJoint[2].transform.forward * 10);
+        Debug.DrawRay(armJoint[2].transform.position, armJoint[2].transform.right * -10);
 
         if (Input.GetKeyDown("joystick " + 1 + " button " + "1") && baseClass.abilityCooldowns.cooldowns["magnetCD"]<=0)
         {
 
             RaycastHit hit;
-            Physics.Raycast(armJoint[2].transform.position, armJoint[2].transform.forward*10, out hit, 10, tankArmMask);
+            Physics.Raycast(armJoint[2].transform.position, armJoint[2].transform.right*-10, out hit, 10, tankArmMask);
 
             for (int i = 0; i < armJoint.Length; i++)
             {
@@ -46,8 +46,11 @@ public class TankArm : MonoBehaviour {
                     target.GetComponent<TentacleSlamDamage>().tentacle.GetComponent<BossTentacleScript>().tentacleGrabbed = true;
                 }
                 offset = armJoint[2].transform.position - armJoint[1].transform.position;
-                armJoint[1].transform.position = hit.point - offset;
-                armJoint[2].transform.localScale *= 2;
+                armJoint[1].transform.position = hit.point;
+                armJoint[2].transform.position = hit.point - transform.right * 3;
+                armJoint[1].transform.localScale = new Vector3(1.5f,10,10);
+
+                //armJoint[2].transform.localScale *= 10;
             } else
             {
                 return;
@@ -74,9 +77,11 @@ public class TankArm : MonoBehaviour {
             {
                 print("arm should let go");
 
-                armJoint[2].transform.localScale = new Vector3(1,1,1);
+                armJoint[1].transform.localScale = new Vector3(1,1,1);
                 target.transform.parent = armJoint[2].transform;
                 armJoint[1].transform.localPosition = defaultJointPosition[1];
+                armJoint[2].transform.localPosition = defaultJointPosition[2];
+
                 //armJoint[1].transform.position = defaultJointPosition[1]-new Vector3(1,0,1);
                 //armJoint[1].transform.position = Vector3.MoveTowards(armJoint[1].transform.position, defaultJointPosition[1], 6);
                 target.transform.parent = null;

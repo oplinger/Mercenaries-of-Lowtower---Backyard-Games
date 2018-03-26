@@ -1050,7 +1050,7 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1056020261237514}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: 0, y: 0.7071068, z: 0, w: 0.7071068}
   m_LocalPosition: {x: -0.29, y: 0.39, z: 0.19}
   m_LocalScale: {x: 25, y: 25, z: 25}
   m_Children:
@@ -1058,7 +1058,7 @@ Transform:
   - {fileID: 4999896818408698}
   m_Father: {fileID: 4351573400375888}
   m_RootOrder: 3
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 90, z: 0}
 --- !u!4 &4604404774867150
 Transform:
   m_ObjectHideFlags: 1
@@ -1353,7 +1353,7 @@ BoxCollider:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1362903556705936}
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 13400000, guid: 923325e2bac007049b7cfa98bfddcbea, type: 2}
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
@@ -1523,7 +1523,7 @@ MonoBehaviour:
   magnetDiameter: 3
   pullSpeed: 0.5
   cannonballHolder: {fileID: 114110216967159774}
-  tankModel: {fileID: 0}
+  tankModel: {fileID: 1521341864269382}
   yButtonToRevive: {fileID: 1250323525362000}
 --- !u!114 &114435985154445804
 MonoBehaviour:
@@ -1590,7 +1590,7 @@ SkinnedMeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_Materials:
-  - {fileID: 2100000, guid: 032aaba524940ab41955e5b0e7197d1e, type: 2}
+  - {fileID: 2100000, guid: ea41026e3e600434aacf21e05191e86f, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
