@@ -13,6 +13,7 @@ public class PickUpBox : MonoBehaviour
     public  GameObject parentPlayer;
     public GameObject enemy;
     public AIControllerNavMesh enemyScript;
+    public GameObject minionSpawner;
 
     public int charID;
 
@@ -70,7 +71,7 @@ public class PickUpBox : MonoBehaviour
         if (holdingObject)
         {
             heldObject.transform.position = new Vector3(gameObject.transform.position.x, gameObject.transform.position.y+.5f, gameObject.transform.position.z);
-            heldObject.GetComponentInChildren<Light>().enabled = false;
+            //heldObject.GetComponentInChildren<Light>().enabled = false;
 
             GameObject.Find("cannon").GetComponentInChildren<Light>().enabled = true;
         }
@@ -119,6 +120,7 @@ public class PickUpBox : MonoBehaviour
     public void PickUpCannonball()
     {
 
+        minionSpawner.SetActive(true);
         heldObject = triggerObject;
         holdingObject = true;
         enemyScript.Player = parentPlayer;

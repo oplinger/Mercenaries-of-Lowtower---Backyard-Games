@@ -288,7 +288,7 @@ public class BossControlScriptV2 : MonoBehaviour {
         //Activates the cannonball spawner
         ballSpawner.SetActive(true);
         //Activates the enemy spawner
-        addSpawner.SetActive(true);
+        //addSpawner.SetActive(true);
 
         for (int i = 0; i < DoorList.Count; i++)
         {

@@ -60,8 +60,8 @@ public class ShieldScript : MonoBehaviour {
             //other.GetComponent<NavMeshAgent>().isStopped = true;
             other.GetComponent<NavMeshAgent>().enabled = false;
 
-            oRigid.AddForce(reflectDirection*3, ForceMode.Impulse);
-            oRigid.AddForce(0, 5, 0, ForceMode.Impulse);
+            oRigid.AddForce(reflectDirection*.25f, ForceMode.Impulse);
+            oRigid.AddForce(0, .75f, 0, ForceMode.Impulse);
             
         }
 
