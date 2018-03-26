@@ -450,10 +450,10 @@ public class UIController : MonoBehaviour
         #region Health Bars
         //Health bars. Also changes the size of the health bars based on current health vs max health.
 
-        healthBarSprites[0].transform.localScale = new Vector3(200 * (playerCurrentHealth[0] / playerMaxHealth[0]), 20,1);
-        healthBarSprites[1].transform.localScale = new Vector3(200 * (playerCurrentHealth[1] / playerMaxHealth[1]), 20, 1);
-        healthBarSprites[2].transform.localScale = new Vector3(200 * (playerCurrentHealth[2] / playerMaxHealth[2]), 20, 1);
-        healthBarSprites[3].transform.localScale = new Vector3(200 * (playerCurrentHealth[3] / playerMaxHealth[3]), 20, 1);
+        healthBarSprites[0].transform.localScale = new Vector3(20 * (playerCurrentHealth[0] / playerMaxHealth[0]), 20,1);
+        healthBarSprites[1].transform.localScale = new Vector3(20 * (playerCurrentHealth[1] / playerMaxHealth[1]), 20, 1);
+        healthBarSprites[2].transform.localScale = new Vector3(20 * (playerCurrentHealth[2] / playerMaxHealth[2]), 20, 1);
+        healthBarSprites[3].transform.localScale = new Vector3(20 * (playerCurrentHealth[3] / playerMaxHealth[3]), 20, 1);
 
        // labels[0].transform.LookAt(mainCamera.transform.position, Vector3.up);
 
