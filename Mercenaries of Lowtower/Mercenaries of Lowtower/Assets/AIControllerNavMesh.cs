@@ -82,7 +82,7 @@ public class AIControllerNavMesh : EntityClass
         {
             rb.velocity = Vector3.zero;
             //other.GetComponent<NavMeshAgent>().isStopped = false;
-           // navMeshAgent.enabled = true;
+           navMeshAgent.enabled = true;
 
         }
 
