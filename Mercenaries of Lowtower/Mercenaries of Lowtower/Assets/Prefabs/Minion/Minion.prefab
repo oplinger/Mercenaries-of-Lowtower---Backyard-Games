@@ -1426,8 +1426,11 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 256
   cannonballIsHeld: 0
-  defaultEnemyMaterial: {fileID: 0}
+  defaultEnemyMaterial: {fileID: 2100000, guid: 285799bbd9f70b8409757d1c32eeda36,
+    type: 2}
   stunnedMaterial: {fileID: 2100000, guid: 235ed031a8345fb4daf93604e764679a, type: 2}
+  stunnedTex: {fileID: 2800000, guid: 84fabeccaa63e21468cc6334165db9e9, type: 3}
+  defaultTex: {fileID: 2800000, guid: ba2677304742ff54a9e6e045725a40a4, type: 3}
   navMeshAgent: {fileID: 195484107355275924}
 --- !u!137 &137012832076218746
 SkinnedMeshRenderer:

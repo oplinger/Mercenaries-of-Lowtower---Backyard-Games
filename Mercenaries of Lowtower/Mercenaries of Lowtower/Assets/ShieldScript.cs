@@ -21,8 +21,8 @@ public class ShieldScript : MonoBehaviour {
     void Update () {
         shieldScaleTimer += Time.deltaTime*10;
         transform.localScale = Vector3.Lerp(new Vector3(.1f, .1f, .1f), Vector3.one*10, Mathf.Clamp(shieldScaleTimer, .1f, 1));
-
-    playersInShield = Physics.OverlapSphere(transform.position, baseClass.shieldSize, baseClass.shieldMask, QueryTriggerInteraction.Ignore);
+        //GetComponent<Renderer>().material.SetFloat("_DetailNormalMapScale", Random.Range(.4f, .8f));
+        playersInShield = Physics.OverlapSphere(transform.position, baseClass.shieldSize, baseClass.shieldMask, QueryTriggerInteraction.Ignore);
         if (shieldTimer > 0)
         {
             shieldTimer -= Time.deltaTime;
@@ -33,7 +33,7 @@ public class ShieldScript : MonoBehaviour {
             StartCoroutine(shieldFlash());
         }
 
-
+       
     //    //cols = Physics.OverlapSphere(transform.position, 10, 1<<8, QueryTriggerInteraction.Ignore);
     //    // for (int i = 0; i<cols.Length; i++)
     //    // {

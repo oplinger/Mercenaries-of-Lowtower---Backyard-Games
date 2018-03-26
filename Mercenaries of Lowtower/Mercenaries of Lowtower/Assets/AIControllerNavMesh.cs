@@ -24,9 +24,12 @@ public class AIControllerNavMesh : EntityClass
 
     //public float stunDuration;
 
-    Renderer enemyRenderer;
+    Renderer[] enemyRenderer;
     public Material defaultEnemyMaterial;
     public Material stunnedMaterial;
+
+    public Texture stunnedTex;
+    public Texture defaultTex;
 
     //NavMesh Things
     public NavMeshAgent navMeshAgent;
@@ -42,7 +45,7 @@ public class AIControllerNavMesh : EntityClass
         //Player = GameObject.FindGameObjectWithTag("PickUp");
 
         currenthealth2 = currentHealth;
-        enemyRenderer = GetComponent<Renderer>();
+        enemyRenderer = GetComponentsInChildren<Renderer>();
 
        // defaultEnemyMaterial = enemyRenderer.material;
 
@@ -116,15 +119,33 @@ public class AIControllerNavMesh : EntityClass
         if (isStunned)
         {
             stunTimer++;
-            enemyRenderer.material = stunnedMaterial;
+            foreach (Renderer item in enemyRenderer)
+            {
+                item.material.SetTexture("_MainTex", stunnedTex);
+                item.material.SetTexture("_EmissionMap", stunnedTex);
+
+            }
+            GetComponent<ArmSlamHitbox>().slamDamage = 0;
+            GetComponent<Animator>().enabled = false;
+            // enemyRenderer.material.SetTexture("_MainTex", stunnedTex);
 
             if (stunTimer / 60 >= 5)
             {
                 isStunned = false;
                 //moveSpeed = 8;
                 stunTimer = 0;
-                enemyRenderer.material = defaultEnemyMaterial;
+                //enemyRenderer.material = defaultEnemyMaterial;
+                // enemyRenderer.material.SetTexture("_MainTex", defaultTex);
+                foreach (Renderer item in enemyRenderer)
+                {
+                    item.material.SetTexture("_MainTex", defaultTex);
+                    item.material.SetTexture("_EmissionMap", defaultTex);
+                }
                 navMeshAgent.speed = defaultSpeed;
+                GetComponent<ArmSlamHitbox>().slamDamage = 3;
+
+                GetComponent<Animator>().enabled = false;
+
             }
 
         }
