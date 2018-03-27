@@ -14,6 +14,7 @@ public class PickUpBox : MonoBehaviour
     public GameObject enemy;
     public AIControllerNavMesh enemyScript;
     public GameObject minionSpawner;
+    public GameObject pickUpButton;
 
     public int charID;
 
@@ -89,6 +90,12 @@ public class PickUpBox : MonoBehaviour
         {
             //detects that something can be picked up
             triggerObject = other.gameObject;
+
+            if (heldObject == null)
+            {
+                pickUpButton = triggerObject.transform.GetChild(1).gameObject;
+                pickUpButton.SetActive(true);
+            }
         }
     }
 
@@ -97,6 +104,7 @@ public class PickUpBox : MonoBehaviour
         if (other.tag == "PickUp")
         {
             triggerObject = null;
+            pickUpButton.SetActive(false);
         }
     }
 
