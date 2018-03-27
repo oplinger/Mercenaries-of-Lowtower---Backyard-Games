@@ -1532,6 +1532,31 @@ Prefab:
       propertyPath: minionSpawner
       value: 
       objectReference: {fileID: 771425361}
+    - target: {fileID: 137625937341120542, guid: 5cce660b81a4b4543b297c9e659f0e57,
+        type: 2}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 31b92023f1221e84a8c57a1fc7156626, type: 2}
+    - target: {fileID: 114804518594876370, guid: 5cce660b81a4b4543b297c9e659f0e57,
+        type: 2}
+      propertyPath: flashTime
+      value: 0.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 114804518594876370, guid: 5cce660b81a4b4543b297c9e659f0e57,
+        type: 2}
+      propertyPath: flashColour.r
+      value: 0.5058824
+      objectReference: {fileID: 0}
+    - target: {fileID: 114804518594876370, guid: 5cce660b81a4b4543b297c9e659f0e57,
+        type: 2}
+      propertyPath: flashColour.g
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 114804518594876370, guid: 5cce660b81a4b4543b297c9e659f0e57,
+        type: 2}
+      propertyPath: flashColour.b
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 5cce660b81a4b4543b297c9e659f0e57, type: 2}
   m_IsPrefabParent: 0
@@ -7715,6 +7740,26 @@ Prefab:
       propertyPath: minionSpawner
       value: 
       objectReference: {fileID: 771425361}
+    - target: {fileID: 114203603406541840, guid: dd81d2b2f1393bd4981abb71cbff1fd5,
+        type: 2}
+      propertyPath: flashColour.r
+      value: 0.5058824
+      objectReference: {fileID: 0}
+    - target: {fileID: 114203603406541840, guid: dd81d2b2f1393bd4981abb71cbff1fd5,
+        type: 2}
+      propertyPath: flashColour.g
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 114203603406541840, guid: dd81d2b2f1393bd4981abb71cbff1fd5,
+        type: 2}
+      propertyPath: flashColour.b
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 114203603406541840, guid: dd81d2b2f1393bd4981abb71cbff1fd5,
+        type: 2}
+      propertyPath: flashTime
+      value: 0.1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: dd81d2b2f1393bd4981abb71cbff1fd5, type: 2}
   m_IsPrefabParent: 0
@@ -8136,6 +8181,26 @@ Prefab:
       propertyPath: minionSpawner
       value: 
       objectReference: {fileID: 771425361}
+    - target: {fileID: 114430226747379360, guid: 10f97ecad476ebc42ad1b48f43861fa6,
+        type: 2}
+      propertyPath: flashColour.r
+      value: 0.50735295
+      objectReference: {fileID: 0}
+    - target: {fileID: 114430226747379360, guid: 10f97ecad476ebc42ad1b48f43861fa6,
+        type: 2}
+      propertyPath: flashColour.g
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 114430226747379360, guid: 10f97ecad476ebc42ad1b48f43861fa6,
+        type: 2}
+      propertyPath: flashColour.b
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 114430226747379360, guid: 10f97ecad476ebc42ad1b48f43861fa6,
+        type: 2}
+      propertyPath: flashTime
+      value: 0.1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 10f97ecad476ebc42ad1b48f43861fa6, type: 2}
   m_IsPrefabParent: 0
@@ -9114,6 +9179,16 @@ Prefab:
       propertyPath: minionSpawner
       value: 
       objectReference: {fileID: 771425361}
+    - target: {fileID: 114628122457225874, guid: be71d7e7457c9f64c9bf09eb300b554a,
+        type: 2}
+      propertyPath: flashColour.r
+      value: 0.5058824
+      objectReference: {fileID: 0}
+    - target: {fileID: 114628122457225874, guid: be71d7e7457c9f64c9bf09eb300b554a,
+        type: 2}
+      propertyPath: flashTime
+      value: 0.1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: be71d7e7457c9f64c9bf09eb300b554a, type: 2}
   m_IsPrefabParent: 0

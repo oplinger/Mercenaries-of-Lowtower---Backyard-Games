@@ -137,15 +137,15 @@ public class TankClass : PlayerClass
 
         if (h1 < h2)
         {
-            tankRenderer.material.SetColor("_EmissionColor", Color.red);
+            StartCoroutine(PumpColour(flashColour, flashTime));
 
             h2 = h1;
 
         }
-        else
-        {
-            tankRenderer.material.SetColor("_EmissionColor", Color.black);
-        }
+        //else
+        //{
+        //    tankRenderer.material.SetColor("_EmissionColor", Color.black);
+        //}
 
 
     }
@@ -170,6 +170,25 @@ public class TankClass : PlayerClass
         ability1 = Jump;
         ability2 = abilities.TankMagnet;
         ability3 = abilities.TankShield;
+    }
+
+    private IEnumerator PumpColour(Color target, float time)
+    {
+        float timer = 0;
+        while (timer < time)
+        {
+            timer += Time.deltaTime;
+            tankRenderer.material.SetColor("_Colour", Color.Lerp(Color.white, target, Mathf.Pow((timer / time), 2)));
+            yield return null;
+        }
+
+        timer = 0;
+        while (timer < time)
+        {
+            timer += Time.deltaTime;
+            tankRenderer.material.SetColor("_Colour", Color.Lerp(target, Color.white, timer / time));
+            yield return null;
+        }
     }
 
 }

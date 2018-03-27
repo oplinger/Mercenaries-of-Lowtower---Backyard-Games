@@ -146,15 +146,15 @@ public class HealerClass : PlayerClass
 
         if (h1 < h2)
         {
-            healerRenderer.material.SetColor("_EmissionColor", Color.red);
+            StartCoroutine(PumpColour(flashColour, flashTime));
 
             h2 = h1;
 
         }
-        else
-        {
-            healerRenderer.material.SetColor("_EmissionColor", Color.black);
-        }
+        //else
+        //{
+        //    healerRenderer.material.SetColor("_EmissionColor", Color.black);
+        //}
     }
 
     public new void Death()
@@ -178,5 +178,24 @@ public class HealerClass : PlayerClass
         ability1 = Jump;
         ability2 = abilities.HealerStun;
         ability3 = abilities.TargetedHeal;
+    }
+
+    private IEnumerator PumpColour(Color target, float time)
+    {
+        float timer = 0;
+        while (timer < time)
+        {
+            timer += Time.deltaTime;
+            healerRenderer.material.SetColor("_Colour", Color.Lerp(Color.white, target, Mathf.Pow((timer / time), 2)));
+            yield return null;
+        }
+
+        timer = 0;
+        while (timer < time)
+        {
+            timer += Time.deltaTime;
+            healerRenderer.material.SetColor("_Colour", Color.Lerp(target, Color.white, timer / time));
+            yield return null;
+        }
     }
 }

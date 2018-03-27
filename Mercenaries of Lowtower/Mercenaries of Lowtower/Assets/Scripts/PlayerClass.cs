@@ -44,6 +44,8 @@ public abstract class PlayerClass : EntityClass
     protected Ability2 ability2;
     protected Ability3 ability3;
 
+    public Color flashColour;
+    public float flashTime;
 
 
     // Use this for initialization

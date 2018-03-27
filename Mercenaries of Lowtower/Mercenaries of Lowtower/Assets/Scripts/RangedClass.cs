@@ -158,15 +158,15 @@ public class RangedClass : PlayerClass
 
         if (h1 < h2)
         {
-            rangedRenderer.material.SetColor("_EmissionColor", Color.red);
+            StartCoroutine(PumpColour(flashColour, flashTime));
 
             h2 = h1;
 
         }
-        else
-        {
-            rangedRenderer.material.SetColor("_EmissionColor", Color.black);
-        }
+        //else
+        //{
+        //    rangedRenderer.material.SetColor("_EmissionColor", Color.black);
+        //}
     }
 
     public new void Death()
@@ -190,5 +190,24 @@ public class RangedClass : PlayerClass
         ability1 = Jump;
         ability2 = abilities.BluntTipArrow;
         ability3 = abilities.RangedBolt;
+    }
+
+    private IEnumerator PumpColour(Color target, float time)
+    {
+        float timer = 0;
+        while (timer < time)
+        {
+            timer += Time.deltaTime;
+            rangedRenderer.material.SetColor("_Colour", Color.Lerp(Color.white, target, Mathf.Pow((timer / time), 2)));
+            yield return null;
+        }
+
+        timer = 0;
+        while (timer < time)
+        {
+            timer += Time.deltaTime;
+            rangedRenderer.material.SetColor("_Colour", Color.Lerp(target, Color.white, timer / time));
+            yield return null;
+        }
     }
 }
