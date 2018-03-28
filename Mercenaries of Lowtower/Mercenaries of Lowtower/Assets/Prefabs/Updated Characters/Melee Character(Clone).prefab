@@ -1603,6 +1603,8 @@ MonoBehaviour:
   groundMask:
     serializedVersion: 2
     m_Bits: 16385
+  flashColour: {r: 0.50735295, g: 0, b: 0, a: 0}
+  flashTime: 0.1
   abilities: {fileID: 0}
   abilityCooldowns: {fileID: 0}
   targetList: {fileID: 0}
@@ -1614,7 +1616,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 4294964991
   rayOrigin: {fileID: 1937094388559854}
-  meleeDamage: 1.5
+  meleeDamage: 0.75
   lungeDamage: 0.54
   lungeDistance: 2
   cannonballHolder: {fileID: 114511462212443548}
@@ -1634,11 +1636,13 @@ MonoBehaviour:
   holdingObject: 0
   heldObject: {fileID: 0}
   triggerObject: {fileID: 0}
-  cannonball: {fileID: 1493035584435006, guid: 7ba142e41126733499e963327654451d, type: 2}
+  cannonball: {fileID: 1109184205617202, guid: e4e7f303fd71aa549b91df4f7fea64b6, type: 2}
   player: {fileID: 1905964968196266}
   parentPlayer: {fileID: 1905964968196266}
   enemy: {fileID: 0}
   enemyScript: {fileID: 0}
+  minionSpawner: {fileID: 0}
+  pickUpButton: {fileID: 0}
   charID: 3
 --- !u!114 &114699136205144712
 MonoBehaviour:

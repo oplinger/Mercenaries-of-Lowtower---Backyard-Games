@@ -8,6 +8,7 @@ public class SpawnAdd : MonoBehaviour {
     public int timer;
     public int addCounter;
     public int maxAdds;
+    public GameObject[] addSpawnPoints;
     
 
    
@@ -26,8 +27,8 @@ public class SpawnAdd : MonoBehaviour {
 
         if (timer >= 100&&addCounter<maxAdds)
         {
-
-            Instantiate(add, transform.position, transform.rotation);
+            int spawnPoint = Random.Range(0,10);
+            Instantiate(add, addSpawnPoints[spawnPoint].transform.position, addSpawnPoints[spawnPoint].transform.rotation);
             timer = 0;
         }
         
