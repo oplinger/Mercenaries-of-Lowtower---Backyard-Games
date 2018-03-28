@@ -5,6 +5,7 @@ using UnityEngine;
 public class BossControlScriptV2 : MonoBehaviour {
 
     //
+    public Animator bossAnim;
     public int bossPhase;
     // Current phase of the boss fight
     public int bossAttack;
@@ -48,6 +49,8 @@ public class BossControlScriptV2 : MonoBehaviour {
     public Transform cameraPosition2;
     public List<GameObject> DoorList = new List<GameObject>();
     public float cannonballHits;
+
+    public float transitionTimer;
     //
 
     // Use this for initialization
@@ -134,6 +137,9 @@ public class BossControlScriptV2 : MonoBehaviour {
         {
             if (energySphereReady == true)
             {
+                bossAnim.SetInteger("AnimState", 5);
+
+                print("wackadoo");
                 BossHead.GetComponent<BossLookAt>().isCharging = false;
                 BossHead.GetComponent<BossLookAt>().targetAcquired = false;
                 Instantiate(energySphere, energySphereSpawn.position, energySphereSpawn.rotation);
@@ -175,7 +181,11 @@ public class BossControlScriptV2 : MonoBehaviour {
 
         if(bossPhase == 5)
         {
+            transitionTimer += Time.deltaTime;
+
             BeginCannonPhase();
+            bossAnim.SetInteger("AnimState", 3);
+            BossHead.transform.localPosition = Vector3.Lerp(BossHead.transform.localPosition, new Vector3(0, -30f, 100f), transitionTimer/100);
         }
 
         if (bossPhase == 6)

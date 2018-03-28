@@ -9,8 +9,12 @@ public class BossClass : EnemyClass {
     public GameObject[] tentacleArray;
 
     Renderer bossRenderer;
+    protected Animator anim;
+
 
     public GameObject bossHead;
+    public GameObject bossHeadModel;
+
 
     Color defaultColor;
 
@@ -22,8 +26,8 @@ public class BossClass : EnemyClass {
     void Start () {
         //TentacleMaxHealth = new float[6];
         currentHealth = maxHealth;
-
-        bossRenderer = bossHead.GetComponent<Renderer>();
+        anim = GetComponent<Animator>();
+        bossRenderer = bossHeadModel.GetComponent<Renderer>();
         h2 = currentHealth;
 
         defaultColor = bossRenderer.material.color;
@@ -48,7 +52,7 @@ public class BossClass : EnemyClass {
         if (h1 < h2)
         {
             bossRenderer.material.SetColor("_EmissionColor", Color.red);
-
+            anim.SetInteger("AnimState", 2);
             h2 = h1;
             //print("H2 = " + h2);
             
@@ -58,5 +62,10 @@ public class BossClass : EnemyClass {
             bossRenderer.material.SetColor("_EmissionColor", Color.black);
         }
 
+    }
+
+    public void AnimReset()
+    {
+        anim.SetInteger("AnimState", 0);
     }
 }

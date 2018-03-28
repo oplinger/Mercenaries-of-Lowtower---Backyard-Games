@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class EnemyClass : EntityClass {
 
-	// Use this for initialization
-	void Start () {
+    // Use this for initialization
+    void Start () {
 		
 	}
 	
@@ -13,4 +13,6 @@ public class EnemyClass : EntityClass {
 	void Update () {
 		
 	}
+
+
 }

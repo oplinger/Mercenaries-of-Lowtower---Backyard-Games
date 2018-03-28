@@ -41,7 +41,7 @@ public class EnergySphereScript : MonoBehaviour {
         } while (currentTime <= chargeTime);
         objectRigidbody.AddForce(transform.forward * 5000);
         //bossHead.GetComponent<BossLookAt>().TargetPlayer();
-        bossHead.GetComponent<BossLookAt>().isCharging = true;
+       // bossHead.GetComponent<BossLookAt>().isCharging = true;
     }
 
     private void OnTriggerEnter(Collider other)

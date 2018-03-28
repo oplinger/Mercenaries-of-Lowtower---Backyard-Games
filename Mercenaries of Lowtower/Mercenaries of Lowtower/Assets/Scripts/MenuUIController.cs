@@ -21,6 +21,8 @@ public class MenuUIController : MonoBehaviour {
     public bool gameIsPaused;
     public bool pauseDisabled;
 
+    float resetTimer = 10;
+
     public TankClass tankScript;
     public HealerClass healerScript;
     public MeleeClass meleeScript;
@@ -110,15 +112,21 @@ public class MenuUIController : MonoBehaviour {
             restartButton.SetActive(true);
             float scale = .22f + Mathf.PingPong(Time.time/18, .15f);
             winScreen.transform.localScale = new Vector3(scale,scale,scale);
-
+            resetTimer -= Time.deltaTime;
             pauseDisabled = true;
+
+            
 
             if ((Input.GetKeyDown("joystick button 6")))
             {
                 SceneManager.LoadScene(1);
                 print("game restarted");
             }
-
+            if (resetTimer <= 0)
+            {
+                SceneManager.LoadScene(0);
+                print("game restarted");
+            }
        
         }
 
