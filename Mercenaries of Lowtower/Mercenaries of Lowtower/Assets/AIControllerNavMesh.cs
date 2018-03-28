@@ -144,7 +144,7 @@ public class AIControllerNavMesh : EntityClass
                 navMeshAgent.speed = defaultSpeed;
                 GetComponent<ArmSlamHitbox>().slamDamage = 3;
 
-                GetComponent<Animator>().enabled = false;
+                GetComponent<Animator>().enabled = true;
 
             }
 
