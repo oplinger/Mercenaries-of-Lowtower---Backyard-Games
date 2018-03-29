@@ -36,6 +36,8 @@ public class TankClass : PlayerClass
 
     public GameObject yButtonToRevive;
 
+    public GameObject healingParticles;
+
     Renderer tankRenderer;
 
     float h1;
@@ -142,10 +144,14 @@ public class TankClass : PlayerClass
             h2 = h1;
 
         }
-        //else
-        //{
-        //    tankRenderer.material.SetColor("_EmissionColor", Color.black);
-        //}
+
+        //healing particles
+        if (h1 > h2)
+        {
+            StartCoroutine(ShowHealParticles());
+
+            h2 = h1;
+        }
 
 
     }
@@ -189,6 +195,16 @@ public class TankClass : PlayerClass
             tankRenderer.material.SetColor("_Colour", Color.Lerp(target, Color.white, timer / time));
             yield return null;
         }
+    }
+
+    private IEnumerator ShowHealParticles()
+    {
+        healingParticles.SetActive(true);
+
+        yield return new WaitForSeconds(1);
+
+        healingParticles.SetActive(false);
+
     }
 
 }

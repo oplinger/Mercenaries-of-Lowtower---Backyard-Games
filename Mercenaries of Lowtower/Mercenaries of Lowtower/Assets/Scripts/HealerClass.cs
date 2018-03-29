@@ -46,6 +46,8 @@ public class HealerClass : PlayerClass
 
     public GameObject yButtonToRevive;
 
+    public GameObject healingParticles;
+
     Renderer healerRenderer;
 
     float h1;
@@ -151,10 +153,14 @@ public class HealerClass : PlayerClass
             h2 = h1;
 
         }
-        //else
-        //{
-        //    healerRenderer.material.SetColor("_EmissionColor", Color.black);
-        //}
+
+        //healing particles
+        if (h1 > h2)
+        {
+            StartCoroutine(ShowHealParticles());
+
+            h2 = h1;
+        }
     }
 
     public new void Death()
@@ -197,5 +203,15 @@ public class HealerClass : PlayerClass
             healerRenderer.material.SetColor("_Colour", Color.Lerp(target, Color.white, timer / time));
             yield return null;
         }
+    }
+
+    private IEnumerator ShowHealParticles()
+    {
+        healingParticles.SetActive(true);
+
+        yield return new WaitForSeconds(1);
+
+        healingParticles.SetActive(false);
+
     }
 }
