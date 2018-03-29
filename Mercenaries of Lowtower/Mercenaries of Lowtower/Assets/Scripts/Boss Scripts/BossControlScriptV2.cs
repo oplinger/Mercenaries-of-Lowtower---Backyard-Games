@@ -40,6 +40,7 @@ public class BossControlScriptV2 : MonoBehaviour {
     public GameObject cannon;
     public GameObject cannonball;
     public GameObject addSpawner;
+    public Transform startWaypoint;
     public Transform retreatWaypoint;
     public Transform returnWaypoint;
     public Transform cannonWaypoint;
@@ -56,13 +57,26 @@ public class BossControlScriptV2 : MonoBehaviour {
     // Use this for initialization
     void Start () {
         bossAttack = 0;
+        /*
         waitTime = startTime;
         isWaiting = true;
         StartCoroutine("WaitTime");
+        */
     }
 	
 	// Update is called once per frame
 	void Update () {
+        if(bossPhase == 0)
+        {
+            BossHead.transform.position = Vector3.MoveTowards(BossHead.transform.position, retreatWaypoint.position, .4f);
+            /*
+            BossHead.transform.position = returnWaypoint.position;
+            waitTime = startTime;
+            isWaiting = true;
+            StartCoroutine("WaitTime");
+            */
+        }
+
         if (bossPhase == 1)
         {
             
