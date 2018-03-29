@@ -3283,8 +3283,8 @@ MonoBehaviour:
   groundMask:
     serializedVersion: 2
     m_Bits: 16385
-  flashColour: {r: 0, g: 0, b: 0, a: 0}
-  flashTime: 0
+  flashColour: {r: 0.5019608, g: 0, b: 0, a: 0}
+  flashTime: 0.1
   abilities: {fileID: 0}
   abilityCooldowns: {fileID: 0}
   grounded: 0
@@ -3305,6 +3305,7 @@ MonoBehaviour:
   cannonballHolder: {fileID: 114110216967159774}
   tankModel: {fileID: 1521341864269382}
   yButtonToRevive: {fileID: 1250323525362000}
+  healingParticles: {fileID: 0}
 --- !u!114 &114205916573330062
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -3431,6 +3432,7 @@ MonoBehaviour:
   cannonballHolder: {fileID: 114095329803364650}
   tankModel: {fileID: 1338497102780400}
   yButtonToRevive: {fileID: 1927678980273396}
+  healingParticles: {fileID: 0}
 --- !u!114 &114551867244992890
 MonoBehaviour:
   m_ObjectHideFlags: 1
