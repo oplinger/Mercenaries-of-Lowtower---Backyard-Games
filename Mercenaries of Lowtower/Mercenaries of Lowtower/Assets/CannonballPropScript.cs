@@ -10,10 +10,12 @@ public class CannonballPropScript : MonoBehaviour {
 
     Rigidbody rb;
     public GameObject cannonTarget;
+    public BossControlScriptV2 bossScript;
 
     private void Awake()
     {
         cannonTarget = GameObject.Find("Cannon Target");
+        bossScript = GameObject.Find("Boss Manager").GetComponent<BossControlScriptV2>();
     }
 
     void Start () {
@@ -41,6 +43,8 @@ public class CannonballPropScript : MonoBehaviour {
     {
         if (other.tag == "Boss")
         {
+            bossScript.cannonballHits++;
+            bossScript.cannonFired = true;
             print("ball hit the boss");
             Destroy(gameObject);
             //transform.position = originalPosition.position;

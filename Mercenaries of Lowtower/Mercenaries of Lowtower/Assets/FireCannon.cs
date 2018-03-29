@@ -18,7 +18,8 @@ public class FireCannon : MonoBehaviour {
     public GameObject cannonBarrel;
     public GameObject shootFromHere;
     public GameObject sparkParticles;
-    public GameObject smokeParticles;
+    public GameObject postSmokeParticles;
+    public GameObject cannonFireParticles;
 
     public float ogScale;
     //Reference to the phase-changing script
@@ -51,7 +52,7 @@ public class FireCannon : MonoBehaviour {
 
             //phaseScript.cannonFired = true;
             StartCoroutine(PumpColour(flashColour, flashTime));
-            bossManager.GetComponent<BossControlScriptV2>().cannonFired = true;
+            //bossManager.GetComponent<BossControlScriptV2>().cannonFired = true;
             Destroy(other.gameObject);
            GetComponentInChildren<Light>().enabled = false;
 
@@ -105,8 +106,9 @@ public class FireCannon : MonoBehaviour {
         //turn off particle sparks
         sparkParticles.SetActive(false);
 
-        //turn on smoke particles
-        smokeParticles.SetActive(true);
+        //turn on fire particles
+        cannonFireParticles.SetActive(true);
+        
 
         //cannon stretch
         timer = 0;
@@ -129,9 +131,16 @@ public class FireCannon : MonoBehaviour {
             yield return null;
         }
 
-        //turn off smoke particles
-        yield return new WaitForSeconds(3);
-        smokeParticles.SetActive(false);
+        ////turn on smoke particles
+        //postSmokeParticles.SetActive(true);
+
+        //turn off fire particles
+        yield return new WaitForSeconds(10);
+        cannonFireParticles.SetActive(false);
+
+       // //turn off smoke particles
+       // yield return new WaitForSeconds(3);
+       //postSmokeParticles.SetActive(false);
 
 
 

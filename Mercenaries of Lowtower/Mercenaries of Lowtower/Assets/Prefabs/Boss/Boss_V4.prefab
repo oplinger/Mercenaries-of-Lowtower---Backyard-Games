@@ -807,7 +807,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4965733887432868}
   m_Layer: 0
-  m_Name: Cannon (1)
+  m_Name: Waypoints
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -968,6 +968,22 @@ GameObject:
   m_Name: Storm_Kraken_19__1_:LimbJoint_14
   m_TagString: Untagged
   m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!1 &1124550689303000
+GameObject:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 5
+  m_Component:
+  - component: {fileID: 4282888802090278}
+  - component: {fileID: 65001950670294586}
+  m_Layer: 0
+  m_Name: Cannon Target
+  m_TagString: Boss
+  m_Icon: {fileID: 7240890024493199768, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
@@ -9623,6 +9639,7 @@ Transform:
   m_Children:
   - {fileID: 4822145710043884}
   - {fileID: 4774596760474246}
+  - {fileID: 4282888802090278}
   m_Father: {fileID: 4192688920001092}
   m_RootOrder: 15
   m_LocalEulerAnglesHint: {x: 0, y: -180, z: 0}
@@ -10501,6 +10518,19 @@ Transform:
   m_Children: []
   m_Father: {fileID: 4649618992802216}
   m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!4 &4282888802090278
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1124550689303000}
+  m_LocalRotation: {x: -0, y: 1, z: -0, w: 0}
+  m_LocalPosition: {x: 0, y: 23.5, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 4157206233315086}
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &4283782581830982
 Transform:
@@ -17235,6 +17265,18 @@ MeshFilter:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1250961934718864}
   m_Mesh: {fileID: 10207, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!65 &65001950670294586
+BoxCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1124550689303000}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 18.469212, y: 21.078356, z: 21.701754}
+  m_Center: {x: -1.0814819, y: 0.5943079, z: 5.0309057}
 --- !u!65 &65012306052275754
 BoxCollider:
   m_ObjectHideFlags: 1
@@ -17975,7 +18017,7 @@ BoxCollider:
   m_GameObject: {fileID: 1264972910579802}
   m_Material: {fileID: 0}
   m_IsTrigger: 1
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 2
   m_Size: {x: 23.2, y: 48.52, z: 35.3}
   m_Center: {x: 0, y: 16.68, z: 0}
@@ -19683,7 +19725,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bossAnim: {fileID: 95061221684329578}
-  bossPhase: 5
+  bossPhase: 1
   bossAttack: 0
   beamsDone: 0
   tentaclesReady: 0
@@ -22830,7 +22872,7 @@ SkinnedMeshRenderer:
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
   m_Materials:
-  - {fileID: 2100000, guid: b648268f03a67324eac85cc93d2c51f6, type: 2}
+  - {fileID: 2100000, guid: 491f6776129b4de439dd5eeb6f3ebb54, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0

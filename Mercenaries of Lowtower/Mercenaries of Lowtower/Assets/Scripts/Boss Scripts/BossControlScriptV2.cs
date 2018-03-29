@@ -192,7 +192,6 @@ public class BossControlScriptV2 : MonoBehaviour {
         {
             if (cannonFired == true)
             {
-                cannonballHits++;
                 cannonFired = false;
                 Boss.GetComponent<BossClass>().currentHealth -= 33;
                 
@@ -305,7 +304,7 @@ public class BossControlScriptV2 : MonoBehaviour {
             DoorList[i].transform.position -= new Vector3(0, 10, 0);
         }
 
-        if (BossHead.transform.position == retreatWaypoint.position && Camera.main.transform.position == cameraPosition2.position)
+        if (Camera.main.transform.position == cameraPosition2.position)
         {
             bossPhase = 6;
         }
