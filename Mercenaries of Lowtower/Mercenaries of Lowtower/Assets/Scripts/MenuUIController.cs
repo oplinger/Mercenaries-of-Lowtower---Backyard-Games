@@ -140,7 +140,7 @@ public class MenuUIController : MonoBehaviour {
             loseScreen.transform.localScale = new Vector3(scale, scale, scale);
 
             pauseDisabled = true;
-
+            bossManagerScript.bossAnim.SetInteger("AnimState", 6);
             if ((Input.GetKeyDown("joystick button 7")))
             {
                 SceneManager.LoadScene(1);
