@@ -1166,7 +1166,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1612437269927336}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 1.37, z: -13.51}
+  m_LocalPosition: {x: -13.502399, y: 0.64, z: -23.478699}
   m_LocalScale: {x: 25, y: 25, z: 25}
   m_Children:
   - {fileID: 4399114366039988}
@@ -1339,8 +1339,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.14, y: 0.08, z: 0.11}
-  m_Center: {x: 0.004, y: 0.012, z: 0.029}
+  m_Size: {x: 0.07940845, y: 0.08, z: 0.05885391}
+  m_Center: {x: 0.0074933455, y: 0.011999998, z: 0.032125548}
 --- !u!65 &65590326790891994
 BoxCollider:
   m_ObjectHideFlags: 1
@@ -1351,8 +1351,8 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.14, y: 0.08, z: 0.11}
-  m_Center: {x: 0.004, y: 0.012, z: 0.029}
+  m_Size: {x: 0.07940845, y: 0.08, z: 0.05885391}
+  m_Center: {x: 0.0074933455, y: 0.011999998, z: 0.032125548}
 --- !u!95 &95167110323693570
 Animator:
   serializedVersion: 3
@@ -1411,7 +1411,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d61afd245e6e2e8479184ef1bbbc4966, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 10
+  maxHealth: 4
   currentHealth: 5
   shielded: 0
   isStunned: 0
@@ -1430,7 +1430,7 @@ MonoBehaviour:
     type: 2}
   stunnedMaterial: {fileID: 2100000, guid: 235ed031a8345fb4daf93604e764679a, type: 2}
   stunnedTex: {fileID: 2800000, guid: 84fabeccaa63e21468cc6334165db9e9, type: 3}
-  defaultTex: {fileID: 2800000, guid: 26984661f6be812428fae25d184d5c80, type: 3}
+  defaultTex: {fileID: 2800000, guid: c6f91183840daaa4aaf50c3b0d4c15f0, type: 3}
   navMeshAgent: {fileID: 195484107355275924}
 --- !u!137 &137012832076218746
 SkinnedMeshRenderer:

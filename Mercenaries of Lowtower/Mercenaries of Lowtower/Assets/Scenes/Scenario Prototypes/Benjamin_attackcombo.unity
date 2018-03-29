@@ -5471,6 +5471,11 @@ Prefab:
       propertyPath: PlayerList.Array.data[3]
       value: 
       objectReference: {fileID: 1942605507}
+    - target: {fileID: 114127250740623276, guid: f229add419d613d478da1a67ad84d7d0,
+        type: 2}
+      propertyPath: bossPhase
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: f229add419d613d478da1a67ad84d7d0, type: 2}
   m_IsPrefabParent: 0
@@ -6902,21 +6907,16 @@ Prefab:
       propertyPath: m_RootOrder
       value: 21
       objectReference: {fileID: 0}
-    - target: {fileID: 114511462212443548, guid: 10f97ecad476ebc42ad1b48f43861fa6,
-        type: 2}
-      propertyPath: minionSpawner
-      value: 
-      objectReference: {fileID: 771425361}
     - target: {fileID: 114923601479508068, guid: 10f97ecad476ebc42ad1b48f43861fa6,
         type: 2}
       propertyPath: m_Camera
       value: 
       objectReference: {fileID: 1043207481}
-    - target: {fileID: 114430226747379360, guid: 10f97ecad476ebc42ad1b48f43861fa6,
+    - target: {fileID: 114511462212443548, guid: 10f97ecad476ebc42ad1b48f43861fa6,
         type: 2}
-      propertyPath: meleeDamage
-      value: 0.75
-      objectReference: {fileID: 0}
+      propertyPath: minionSpawner
+      value: 
+      objectReference: {fileID: 771425361}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 10f97ecad476ebc42ad1b48f43861fa6, type: 2}
   m_IsPrefabParent: 0
@@ -7781,32 +7781,16 @@ Prefab:
       propertyPath: m_RootOrder
       value: 22
       objectReference: {fileID: 0}
-    - target: {fileID: 114431067509238596, guid: be71d7e7457c9f64c9bf09eb300b554a,
-        type: 2}
-      propertyPath: m_Camera
-      value: 
-      objectReference: {fileID: 1043207481}
-    - target: {fileID: 114383974490491202, guid: be71d7e7457c9f64c9bf09eb300b554a,
-        type: 2}
-      propertyPath: cannonball
-      value: 
-      objectReference: {fileID: 1109184205617202, guid: e4e7f303fd71aa549b91df4f7fea64b6,
-        type: 2}
     - target: {fileID: 114383974490491202, guid: be71d7e7457c9f64c9bf09eb300b554a,
         type: 2}
       propertyPath: minionSpawner
       value: 
       objectReference: {fileID: 771425361}
-    - target: {fileID: 114628122457225874, guid: be71d7e7457c9f64c9bf09eb300b554a,
+    - target: {fileID: 114431067509238596, guid: be71d7e7457c9f64c9bf09eb300b554a,
         type: 2}
-      propertyPath: flashColour.r
-      value: 0.5058824
-      objectReference: {fileID: 0}
-    - target: {fileID: 114628122457225874, guid: be71d7e7457c9f64c9bf09eb300b554a,
-        type: 2}
-      propertyPath: flashTime
-      value: 0.1
-      objectReference: {fileID: 0}
+      propertyPath: m_Camera
+      value: 
+      objectReference: {fileID: 1043207481}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: be71d7e7457c9f64c9bf09eb300b554a, type: 2}
   m_IsPrefabParent: 0

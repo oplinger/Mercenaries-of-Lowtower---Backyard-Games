@@ -18,8 +18,15 @@ public class BoltDamage : MonoBehaviour {
 	}
     void OnTriggerEnter(Collider other)
     {
+        if (other.tag == "Enemy")
+        {
+            other.GetComponent<IDamageable<float>>().TakeDamage(5);
+            Instantiate(hitMarker, transform.position, Quaternion.identity);
+            Destroy(gameObject);
+        }
 
-        if (other.tag == "Enemy" || other.tag == "Tentacle" || other.tag == "TRTarget")
+
+        if (other.tag == "Tentacle" || other.tag == "TRTarget")
         {
             other.GetComponent<IDamageable<float>>().TakeDamage(3);
             Instantiate(hitMarker, transform.position, Quaternion.identity);
@@ -32,13 +39,7 @@ public class BoltDamage : MonoBehaviour {
             }
             Destroy(gameObject);
 
-            //health = other.GetComponent<Health>();
-            //ControllerThing CT = controller.GetComponent<ControllerThing>();
-            //health.modifyHealth(3, 3);
-
-            //deals 2x damage than it should, so 1.5 wnds up being 3
-            //health.health -= 1.5f;
-            //Destroy(gameObject);
+           
         }
 
     }
