@@ -93,7 +93,7 @@ Rigidbody:
   m_Mass: 10
   m_Drag: 0
   m_AngularDrag: 0.05
-  m_UseGravity: 1
+  m_UseGravity: 0
   m_IsKinematic: 0
   m_Interpolate: 0
   m_Constraints: 112
@@ -109,6 +109,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 494483d3f8a89b544a2b130690007d33, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  cannonTarget: {fileID: 0}
 --- !u!135 &135323904007053636
 SphereCollider:
   m_ObjectHideFlags: 1

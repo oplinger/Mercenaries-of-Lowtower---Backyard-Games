@@ -9,9 +9,14 @@ public class CannonballPropScript : MonoBehaviour {
     //Transform originalPosition;
 
     Rigidbody rb;
+    public GameObject cannonTarget;
 
-	// Use this for initialization
-	void Start () {
+    private void Awake()
+    {
+        cannonTarget = GameObject.Find("Cannon Target");
+    }
+
+    void Start () {
 
         rb=GetComponent<Rigidbody>();
         //phaseControllerScript = phaseController.GetComponent<PhaseControllerScript>();
@@ -22,8 +27,8 @@ public class CannonballPropScript : MonoBehaviour {
     // Update is called once per frame
     void FixedUpdate ()
     {
-
-        rb.AddForce(-3, 2, 3, ForceMode.Impulse);
+        transform.position = Vector3.MoveTowards(transform.position, cannonTarget.transform.position,Time.deltaTime*50);
+        //rb.AddForce(-3, 2, 3, ForceMode.Impulse);
 
         //if (phaseControllerScript.cannonFired)
         //{

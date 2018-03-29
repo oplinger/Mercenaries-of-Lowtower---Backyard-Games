@@ -16,6 +16,9 @@ public class FireCannon : MonoBehaviour {
     public int flashTime;
 
     public GameObject cannonBarrel;
+    public GameObject shootFromHere;
+    public GameObject sparkParticles;
+    public GameObject smokeParticles;
 
     public float ogScale;
     //Reference to the phase-changing script
@@ -47,10 +50,9 @@ public class FireCannon : MonoBehaviour {
         {
 
             //phaseScript.cannonFired = true;
-                StartCoroutine(PumpColour(flashColour, flashTime));
+            StartCoroutine(PumpColour(flashColour, flashTime));
             bossManager.GetComponent<BossControlScriptV2>().cannonFired = true;
             Destroy(other.gameObject);
-            Instantiate(cannonballProp, new Vector3(transform.position.x, transform.position.y+3, transform.position.z), transform.rotation);
            GetComponentInChildren<Light>().enabled = false;
 
             if (bossManager.GetComponent<BossControlScriptV2>().cannonballHits<2)
@@ -74,14 +76,10 @@ public class FireCannon : MonoBehaviour {
     private IEnumerator PumpColour(Color target, float time)
     {
 
-        //float timer = 0;
-        //while (timer < time)
-        //{
-        //    timer += Time.deltaTime;
-        //    cannonRenderer.material.SetColor("_EmissionColor", Color.Lerp(flashColour, flashColour2, Mathf.PingPong(Time.time * 3, 1)));
-        //    yield return null;
-        //}
+        //turn on particle sparks
+        sparkParticles.SetActive(true);
 
+        //cannon flashing
        float timer = 0;
         while (timer < time)
         {
@@ -101,8 +99,17 @@ public class FireCannon : MonoBehaviour {
             yield return null;
         }
 
+        //shoot prop cannonball
+        Instantiate(cannonballProp, new Vector3(shootFromHere.transform.position.x, shootFromHere.transform.position.y, shootFromHere.transform.position.z), shootFromHere.transform.rotation);
+
+        //turn off particle sparks
+        sparkParticles.SetActive(false);
+
+        //turn on smoke particles
+        smokeParticles.SetActive(true);
+
         //cannon stretch
-         timer = 0;
+        timer = 0;
         while (timer < time)
         {
             timer += Time.deltaTime;
@@ -111,7 +118,8 @@ public class FireCannon : MonoBehaviour {
             yield return null;
         }
 
-        //cannon return
+
+        //cannon return to size
         timer = 0;
         while (timer < time)
         {
@@ -120,6 +128,12 @@ public class FireCannon : MonoBehaviour {
             cannonBarrel.transform.localScale = Vector3.Lerp(cannonBarrel.transform.localScale, new Vector3(ogScale, ogScale, ogScale), time);
             yield return null;
         }
+
+        //turn off smoke particles
+        yield return new WaitForSeconds(3);
+        smokeParticles.SetActive(false);
+
+
 
     }
 }
