@@ -4,7 +4,7 @@
  
  public class Remove_PR : MonoBehaviour
 {
-    public float time = 4; //Seconds to read the text
+    public float time = 2; //Seconds to read the text
 
     IEnumerator Start()
     {
