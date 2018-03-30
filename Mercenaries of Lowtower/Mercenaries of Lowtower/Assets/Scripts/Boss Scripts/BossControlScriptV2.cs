@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class BossControlScriptV2 : MonoBehaviour {
 
@@ -21,6 +22,9 @@ public class BossControlScriptV2 : MonoBehaviour {
     public float startTime;
     // Holds the wait time for coroutines
     private float waitTime;
+    //
+    public float fadeTime;
+    //
     public bool isWaiting;
     public bool bossReady;
     public bool energySphereReady;
@@ -35,6 +39,19 @@ public class BossControlScriptV2 : MonoBehaviour {
     public GameObject BossHead;
     public GameObject energySphere;
     public Transform energySphereSpawn;
+
+    // Boss Entrance GameObjects
+    public GameObject lightningFX;
+    public GameObject lightningLight;
+    public GameObject rainFX;
+    //
+    public GameObject portal;
+    public GameObject portalCircle;
+    public GameObject portalBeam;
+    public GameObject portalParticles;
+    public GameObject portalSmoke;
+
+    public Image blindsImage;
 
     //PhaseControllerScript variables
     public GameObject cannon;
@@ -57,18 +74,34 @@ public class BossControlScriptV2 : MonoBehaviour {
     // Use this for initialization
     void Start () {
         bossAttack = 0;
-        /*
+        
         waitTime = startTime;
         isWaiting = true;
-        StartCoroutine("WaitTime");
-        */
+        //BossHead.transform.position = startWaypoint.position;
+        //StartCoroutine("WaitTime");
+        //StartCoroutine("FadeInBlinds");
     }
 	
 	// Update is called once per frame
 	void Update () {
+        if(bossPhase == -2)
+        {
+            BossHead.transform.position = startWaypoint.position;
+            StartCoroutine("WaitTime");
+            bossPhase = -1;
+        }
+        if(bossPhase == -1)
+        {
+            // Nothing happens until the wait time coroutine ends
+        }
         if(bossPhase == 0)
         {
-            BossHead.transform.position = Vector3.MoveTowards(BossHead.transform.position, retreatWaypoint.position, .4f);
+            //BossHead.transform.position = startWaypoint.position;
+            BossHead.transform.position = Vector3.MoveTowards(BossHead.transform.position, returnWaypoint.position, 1f);
+            if (BossHead.transform.position == returnWaypoint.position)
+            {
+                StartCoroutine("FadeOutBlinds");
+            }
             /*
             BossHead.transform.position = returnWaypoint.position;
             waitTime = startTime;
@@ -245,6 +278,12 @@ public class BossControlScriptV2 : MonoBehaviour {
         yield return new WaitForSeconds(waitTime);
         //print("Waiting");
         bossAttack++;
+        StartCoroutine("FadeInBlinds");
+        rainFX.SetActive(true);
+        lightningFX.SetActive(true);
+        lightningLight.SetActive(true);
+        portal.SetActive(true);
+        bossPhase = 0;
         isWaiting = false;
     }
 
@@ -253,6 +292,34 @@ public class BossControlScriptV2 : MonoBehaviour {
         yield return new WaitForSeconds(4);
         //BossHead.GetComponent<BossLookAt>().TargetPlayer();
         energySphereReady = true;
+    }
+
+    IEnumerator FadeInBlinds()
+    {
+        float elapsedTime = 0.0f;
+        Color c = blindsImage.color;
+        while (elapsedTime < fadeTime)
+        {
+            elapsedTime += Time.deltaTime;
+            c.a = Mathf.Clamp01(elapsedTime / fadeTime);
+            blindsImage.color = c;
+            yield return null;
+        }
+    }
+
+    IEnumerator FadeOutBlinds()
+    {
+        float elapsedTime = 0.0f;
+        Color c = blindsImage.color;
+        while (elapsedTime < fadeTime)
+        {
+            elapsedTime += Time.deltaTime;
+            c.a = 1.0f - Mathf.Clamp01(elapsedTime / fadeTime);
+            blindsImage.color = c;
+            yield return null;
+        }
+        FadePortal();
+        bossPhase = 1;
     }
 
     public void CheckIfReady()
@@ -292,6 +359,18 @@ public class BossControlScriptV2 : MonoBehaviour {
         }
     }
 
+    /*
+    IEnumerator DarkenBlinds(float aValue, float aTime)
+    {
+        float alpha = blinds.GetComponent<Renderer>().material.color.a;
+        for(float t = 0.0f; t<1.0f; t += Time.deltaTime / aTime)
+        {
+            Color newColor = new Color(0, 0, 0, Mathf.Lerp(alpha, aValue, t));
+            blinds.GetComponent<Renderer>().material.color = newColor;
+            yield return null;
+        }
+    }
+    */
     public void CheckBeams()
     {
         if (beamsDone == 2)
@@ -322,5 +401,13 @@ public class BossControlScriptV2 : MonoBehaviour {
         {
             bossPhase = 6;
         }
+    }
+
+    public void FadePortal()
+    {
+        portalCircle.GetComponent<ParticleSystem>().Stop();
+        portalBeam.GetComponent<ParticleSystem>().Stop();
+        portalParticles.GetComponent<ParticleSystem>().Stop();
+        portalSmoke.GetComponent<ParticleSystem>().Stop();
     }
 }

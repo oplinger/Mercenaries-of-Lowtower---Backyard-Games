@@ -9683,7 +9683,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1264972910579802}
   m_LocalRotation: {x: -0, y: -1, z: -0, w: 0}
-  m_LocalPosition: {x: 0, y: -88.5, z: 303.7}
+  m_LocalPosition: {x: 0, y: 0, z: 23.8}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4822145710043884}
@@ -11014,13 +11014,13 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1293819019595824}
-  m_LocalRotation: {x: -0, y: -1, z: -0, w: 0}
-  m_LocalPosition: {x: 0, y: -0.8386, z: 335.78003}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: -2.74, z: 775}
   m_LocalScale: {x: 0.01, y: 0.01, z: 1}
   m_Children: []
   m_Father: {fileID: 4965733887432868}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: -180, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &4340886720956036
 Transform:
   m_ObjectHideFlags: 1
@@ -19867,14 +19867,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   bossAnim: {fileID: 95061221684329578}
-  bossPhase: 0
+  bossPhase: -2
   bossAttack: 0
   beamsDone: 0
   tentaclesReady: 0
   elevationSpeed: 20
   descendingSpeed: 70
   beamSpeed: 2.5
-  startTime: 10
+  startTime: 5
+  fadeTime: 4
   isWaiting: 0
   bossReady: 0
   energySphereReady: 0
@@ -19904,6 +19905,15 @@ MonoBehaviour:
   energySphere: {fileID: 1361610532594434, guid: b63369dab7f98004c95dacd9fd2f3b33,
     type: 2}
   energySphereSpawn: {fileID: 4948169602547286}
+  lightningFX: {fileID: 0}
+  lightningLight: {fileID: 0}
+  rainFX: {fileID: 0}
+  portal: {fileID: 0}
+  portalCircle: {fileID: 0}
+  portalBeam: {fileID: 0}
+  portalParticles: {fileID: 0}
+  portalSmoke: {fileID: 0}
+  blindsImage: {fileID: 0}
   cannon: {fileID: 0}
   cannonball: {fileID: 0}
   addSpawner: {fileID: 0}
@@ -21682,7 +21692,7 @@ MonoBehaviour:
   tentacleHealthDelta: 0
   tentacleArray: []
   bossHead: {fileID: 1735439699672052}
-  bossHeadModel: {fileID: 0}
+  bossHeadModel: {fileID: 1271111982055944}
   boss: {fileID: 1608162778339028}
   bossManager: {fileID: 1529934767512226}
   bossPhaseCounter: 0
