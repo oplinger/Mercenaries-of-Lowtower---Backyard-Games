@@ -5,7 +5,7 @@ using UnityEngine;
 public class TankArm : MonoBehaviour {
 
     public TankClass baseClass;
-
+    public GameObject rayCaster;
     public GameObject[] armJoint;
     public GameObject target;
     public GameObject grabbedTentacle;
@@ -21,13 +21,13 @@ public class TankArm : MonoBehaviour {
 	// Update is called once per frame
 	void Update () {
 
-        Debug.DrawRay(armJoint[2].transform.position, armJoint[2].transform.right * -10);
+        Debug.DrawRay(rayCaster.transform.position, rayCaster.transform.forward * 10);
 
         if (Input.GetKeyDown("joystick " + 1 + " button " + "1") && baseClass.abilityCooldowns.cooldowns["magnetCD"]<=0)
         {
 
             RaycastHit hit;
-            Physics.Raycast(armJoint[2].transform.position, armJoint[2].transform.right*-10, out hit, 10, tankArmMask);
+            Physics.Raycast(rayCaster.transform.position, rayCaster.transform.forward*10, out hit, 10, tankArmMask);
 
             for (int i = 0; i < armJoint.Length; i++)
             {
