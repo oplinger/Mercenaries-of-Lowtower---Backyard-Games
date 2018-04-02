@@ -10,9 +10,9 @@ public class PickUpBox : MonoBehaviour
     public GameObject triggerObject;
     public GameObject cannonball;
     public GameObject player;
-    public  GameObject parentPlayer;
-    public GameObject enemy;
-    public AIControllerNavMesh enemyScript;
+    public GameObject parentPlayer;
+    public GameObject[] enemies;
+    public AIControllerNavMesh[] enemyScripts;
     public GameObject minionSpawner;
     public GameObject pickUpButton;
 
@@ -55,6 +55,7 @@ public class PickUpBox : MonoBehaviour
             //if player is not holding an object already, but they detect something that can be picked up
             if (!holdingObject && triggerObject != null)
             {
+                enemies = GameObject.FindGameObjectsWithTag("Enemy");
                 PickUpCannonball();
             }
             else
@@ -75,6 +76,14 @@ public class PickUpBox : MonoBehaviour
             //heldObject.GetComponentInChildren<Light>().enabled = false;
 
             GameObject.Find("cannon").GetComponentInChildren<Light>().enabled = true;
+
+            for (int i = 0; i <= enemies.Length; i++)
+            {
+                enemies[i].GetComponent<AIControllerNavMesh>().Player = this.gameObject;
+                enemies[i].GetComponent<AIControllerNavMesh>().cannonballIsHeld = true;
+                enemies[i].GetComponent<AIControllerNavMesh>().SetDestination();
+
+            }
         }
         
 
@@ -113,9 +122,15 @@ public class PickUpBox : MonoBehaviour
         if (heldObject != null)
         {
             heldObject.transform.position = new Vector3(gameObject.transform.position.x, gameObject.transform.position.y - .25f, gameObject.transform.position.z);
-
             heldObject = null;
             holdingObject = false;
+
+            for (int i =0; i<=enemies.Length; i++)
+            {
+                enemies[i].GetComponent<AIControllerNavMesh>().cannonballIsHeld = false;
+            }
+            //enemyScript.cannonballIsHeld = false;
+
             SendMessage("CannonballDrop");
         }
         else
@@ -131,7 +146,8 @@ public class PickUpBox : MonoBehaviour
         minionSpawner.SetActive(true);
         heldObject = triggerObject;
         holdingObject = true;
-        enemyScript.Player = parentPlayer;
+        //enemyScript.Player = this.gameObject;
+        //enemyScript.cannonballIsHeld = true;
 
         SendMessage("SetDestination");
         SendMessage("CannonballHeld");
