@@ -69,11 +69,21 @@ public class BossControlScriptV2 : MonoBehaviour {
     public float cannonballHits;
 
     public float transitionTimer;
-    //
+
+    public static bool gameRestarted;
 
     // Use this for initialization
     void Start () {
-        bossAttack = 0;
+
+        if (gameRestarted)
+        {
+            bossPhase = 1;
+            bossAttack = 1;
+        }
+        else
+        {
+            bossAttack = 0;
+        }
         
         waitTime = startTime;
         isWaiting = true;

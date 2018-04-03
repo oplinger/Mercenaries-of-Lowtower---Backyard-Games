@@ -97,6 +97,7 @@ public class MenuUIController : MonoBehaviour {
 
             Time.timeScale = 1;
             print("restart scene");
+            BossControlScriptV2.gameRestarted = true;
             SceneManager.LoadScene(1);
         }
 
@@ -119,6 +120,7 @@ public class MenuUIController : MonoBehaviour {
 
             if ((Input.GetKeyDown("joystick button 6")))
             {
+                BossControlScriptV2.gameRestarted = false;
                 SceneManager.LoadScene(1);
                 print("game restarted");
             }
@@ -143,6 +145,7 @@ public class MenuUIController : MonoBehaviour {
             bossManagerScript.bossAnim.SetInteger("AnimState", 6);
             if ((Input.GetKeyDown("joystick button 7")))
             {
+                BossControlScriptV2.gameRestarted = true;
                 SceneManager.LoadScene(1);
                 print("game restarted");
             }

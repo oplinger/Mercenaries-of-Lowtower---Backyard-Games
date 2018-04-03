@@ -63,6 +63,7 @@ public class GoUpstairsScript : MonoBehaviour {
             text.text = "STARTING IN  " + (int)timeRemaining/2;
             if (timeRemaining <= 0)
             {
+                BossControlScriptV2.gameRestarted = false;
                 SceneManager.LoadScene(1);
             }
         }
