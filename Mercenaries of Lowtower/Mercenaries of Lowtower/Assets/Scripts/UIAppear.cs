@@ -6,6 +6,9 @@ using UnityEngine.UI;
 public class UIAppear : MonoBehaviour
 {
     [SerializeField] private Text customText;
+    public GameObject arrow;
+    public Transform arrowLocation;
+    public GameObject arrowClone;
 
 
     void OnTriggerEnter(Collider other)
@@ -13,6 +16,7 @@ public class UIAppear : MonoBehaviour
         if (other.CompareTag("Player"))
         {
             customText.enabled = true;
+           arrowClone = Instantiate(arrow, arrowLocation);
         }
     }
 
@@ -23,6 +27,7 @@ public class UIAppear : MonoBehaviour
             if (other.CompareTag("Player"))
             {
                 customText.enabled = false;
+                Destroy(arrowClone);
             }
         }
 }
