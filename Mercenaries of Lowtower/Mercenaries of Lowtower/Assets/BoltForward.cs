@@ -21,6 +21,6 @@ public class BoltForward : MonoBehaviour {
         {
             transform.Translate(Vector3.forward);
         }
-        //Destroy(gameObject, 5);
+        Destroy(gameObject, 3);
 	}
 }

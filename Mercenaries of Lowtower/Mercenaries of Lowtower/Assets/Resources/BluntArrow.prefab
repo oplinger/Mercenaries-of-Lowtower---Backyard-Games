@@ -142,7 +142,7 @@ Transform:
   m_GameObject: {fileID: 1763984529659748}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1.0000005, z: 1.0000005}
+  m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
   m_Children: []
   m_Father: {fileID: 4454039159938574}
   m_RootOrder: 4
@@ -155,7 +155,7 @@ Transform:
   m_GameObject: {fileID: 1620791344188942}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
   m_Children: []
   m_Father: {fileID: 4454039159938574}
   m_RootOrder: 3
@@ -168,7 +168,7 @@ Transform:
   m_GameObject: {fileID: 1859591999145964}
   m_LocalRotation: {x: -0.7071068, y: -0, z: -0, w: 0.7071068}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
   m_Children:
   - {fileID: 4580323799886316}
   - {fileID: 4910241587949874}
@@ -186,7 +186,7 @@ Transform:
   m_GameObject: {fileID: 1882317370102942}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
   m_Children: []
   m_Father: {fileID: 4454039159938574}
   m_RootOrder: 0
@@ -199,7 +199,7 @@ Transform:
   m_GameObject: {fileID: 1884452361532456}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
   m_Children: []
   m_Father: {fileID: 4454039159938574}
   m_RootOrder: 2
@@ -226,7 +226,7 @@ Transform:
   m_GameObject: {fileID: 1150215413100332}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1.0000005, z: 1.0000005}
+  m_LocalScale: {x: 0.5, y: 0.5, z: 0.5}
   m_Children: []
   m_Father: {fileID: 4454039159938574}
   m_RootOrder: 1
@@ -307,7 +307,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 76b4a13c5bb7c5541824f6a1e138fde0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  boltSpeed: 0.3
+  boltSpeed: 0.1
 --- !u!135 &135860903680155432
 SphereCollider:
   m_ObjectHideFlags: 1
@@ -379,7 +379,7 @@ ParticleSystem:
   moveWithTransform: 0
   moveWithCustomTransform: {fileID: 0}
   scalingMode: 1
-  randomSeed: 456847705
+  randomSeed: -532093543
   InitialModule:
     serializedVersion: 3
     enabled: 1
@@ -3641,7 +3641,7 @@ ParticleSystem:
   moveWithTransform: 1
   moveWithCustomTransform: {fileID: 0}
   scalingMode: 1
-  randomSeed: 1266008069
+  randomSeed: -982913298
   InitialModule:
     serializedVersion: 3
     enabled: 1
@@ -6903,7 +6903,7 @@ ParticleSystem:
   moveWithTransform: 1
   moveWithCustomTransform: {fileID: 0}
   scalingMode: 1
-  randomSeed: 1293851578
+  randomSeed: 2005981781
   InitialModule:
     serializedVersion: 3
     enabled: 1
@@ -10165,7 +10165,7 @@ ParticleSystem:
   moveWithTransform: 0
   moveWithCustomTransform: {fileID: 0}
   scalingMode: 1
-  randomSeed: 1660889634
+  randomSeed: 1517715022
   InitialModule:
     serializedVersion: 3
     enabled: 1
@@ -13427,7 +13427,7 @@ ParticleSystem:
   moveWithTransform: 0
   moveWithCustomTransform: {fileID: 0}
   scalingMode: 1
-  randomSeed: -1810739218
+  randomSeed: 892399473
   InitialModule:
     serializedVersion: 3
     enabled: 1
@@ -16689,7 +16689,7 @@ ParticleSystem:
   moveWithTransform: 0
   moveWithCustomTransform: {fileID: 0}
   scalingMode: 1
-  randomSeed: -319316714
+  randomSeed: -555779219
   InitialModule:
     serializedVersion: 3
     enabled: 1
