@@ -12,6 +12,7 @@ public class TankClass : PlayerClass
 
     public TankAbilities abilities;
     public TankCooldowns abilityCooldowns;
+    public GameObject tankArm;
 
     [SerializeField]
     int grounded;
@@ -205,6 +206,37 @@ public class TankClass : PlayerClass
 
         healingParticles.SetActive(false);
 
+    }
+
+    public void WhichGrab()
+    {
+        if (tankArm.GetComponent<TankArm>().target != null)
+        {
+            if (tankArm.GetComponent<TankArm>().target.tag == "Tentacle")
+            {
+                anim.SetInteger("AnimState", 7);
+
+            }
+            else if (tankArm.GetComponent<TankArm>().target.tag == "Enemey")
+            {
+                anim.SetInteger("AnimState", 8);
+            }
+        }
+        else
+        {
+            anim.SetInteger("AnimState", 8);
+        }
+    }
+
+    public void FreezeTentacle()
+    {
+        if (tankArm.GetComponent<TankArm>().target.GetComponent<TentacleSlamDamage>() != null)
+        {
+            print("oihiu");
+            tankArm.GetComponent<TankArm>().armJoint[2].transform.position = new Vector3(tankArm.GetComponent<TankArm>().hitPoint.x, tankArm.GetComponent<TankArm>().armJoint[2].transform.position.y, tankArm.GetComponent<TankArm>().hitPoint.z);
+            Instantiate(Resources.Load("FrozenWaterArm"), tankArm.GetComponent<TankArm>().hitPoint, Quaternion.Euler(0,0,90));
+            tankArm.GetComponent<TankArm>().target.GetComponent<TentacleSlamDamage>().tentacle.GetComponent<BossTentacleScript>().tentacleGrabbed = true;
+        }
     }
 
 }

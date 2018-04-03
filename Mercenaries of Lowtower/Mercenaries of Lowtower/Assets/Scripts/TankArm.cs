@@ -12,6 +12,7 @@ public class TankArm : MonoBehaviour {
     public Vector3 offset;
     public Vector3[] defaultJointPosition;
     public LayerMask tankArmMask;
+    public Vector3 hitPoint;
 
 	// Use this for initialization
 	void Start () {
@@ -39,16 +40,16 @@ public class TankArm : MonoBehaviour {
             {
 
                 target = hit.collider.gameObject;
-                if (target.GetComponent<TentacleSlamDamage>() != null)
-                {
-                    print("oihiu");
+                hitPoint = hit.point;
+                //if (target.GetComponent<TentacleSlamDamage>() != null)
+                //{
+                //    print("oihiu");
 
-                    target.GetComponent<TentacleSlamDamage>().tentacle.GetComponent<BossTentacleScript>().tentacleGrabbed = true;
-                }
-                offset = armJoint[2].transform.position - armJoint[1].transform.position;
-                armJoint[1].transform.position = hit.point;
-                armJoint[2].transform.position = hit.point - transform.right * 3;
-                armJoint[1].transform.localScale = new Vector3(1.5f,10,10);
+                //    target.GetComponent<TentacleSlamDamage>().tentacle.GetComponent<BossTentacleScript>().tentacleGrabbed = true;
+                //}
+                //offset = armJoint[2].transform.position - armJoint[1].transform.position;
+                //armJoint[2].transform.position = hit.point - transform.right * 3;
+                //armJoint[1].transform.localScale = new Vector3(1.5f,10,10);
 
                 //armJoint[2].transform.localScale *= 10;
             } else
@@ -77,7 +78,7 @@ public class TankArm : MonoBehaviour {
             {
                 print("arm should let go");
 
-                armJoint[1].transform.localScale = new Vector3(1,1,1);
+                //armJoint[1].transform.localScale = new Vector3(1,1,1);
                 target.transform.parent = armJoint[2].transform;
                 armJoint[1].transform.localPosition = defaultJointPosition[1];
                 armJoint[2].transform.localPosition = defaultJointPosition[2];
