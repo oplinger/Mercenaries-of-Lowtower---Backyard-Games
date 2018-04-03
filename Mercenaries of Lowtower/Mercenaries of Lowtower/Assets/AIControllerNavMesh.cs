@@ -61,14 +61,20 @@ public class AIControllerNavMesh : EntityClass
 
         defaultSpeed = navMeshAgent.speed;
 
+        LookForCannonball();
+
 
     }
 
     void Update()
     {
         //print(Vector3.Distance(transform.position, Player.position));
-        if (!cannonballIsHeld) { 
+        if (!cannonballIsHeld) {
+
+            CannonballDropped();
+
        cols= Physics.OverlapSphere(transform.position, 1000, PlayerMask, QueryTriggerInteraction.Ignore);
+
         for(int i  = 0; i<cols.Length; i++)
         {
             float closestDistance = 100f;
@@ -79,6 +85,10 @@ public class AIControllerNavMesh : EntityClass
                     SetDestination();
                 }
             }
+        }
+        else
+        {
+            SetDestination();
         }
 
         if (rb.velocity.magnitude < .05)
@@ -190,6 +200,27 @@ public class AIControllerNavMesh : EntityClass
     {
         navMeshAgent.speed = 0;
         isStunned = true;
+    }
+
+    public void LookForCannonball ()
+    {
+        GameObject[] players = GameObject.FindGameObjectsWithTag("Player");
+
+        for (int i=0; i<players.Length; i++)
+        {
+            if (players[i].GetComponentInChildren<PickUpBox>().holdingObject)
+            {
+                Player = players[i];
+                cannonballIsHeld = true;
+                print("found cannonball on spawn");
+            }
+            else
+            {
+
+            }
+        }
+
+
     }
 
 
