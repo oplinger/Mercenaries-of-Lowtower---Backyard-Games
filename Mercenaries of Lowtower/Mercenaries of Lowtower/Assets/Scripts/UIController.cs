@@ -35,7 +35,18 @@ public class UIController : MonoBehaviour
     public float bossMaxHealth;
     public float bossCurrentHealth;
 
-    // Health bossHealth;
+    public float cooldownTimerShield;
+    public float cooldownTimerMagnet;
+    public float cooldownTimerHeal;
+    public float cooldownTimerStun;
+    public float cooldownTimerMelee;
+    public float cooldownTimerLunge;
+    public float cooldownTimerBolt;
+    public float cooldownTimerKnockback;
+
+    public Color ogColourX;
+    public Color ogColourB;
+    public Color cooldownColour;
     #endregion
 
     // Use this for initialization
@@ -56,7 +67,12 @@ public class UIController : MonoBehaviour
 
         playerCurrentHealth = new float[4];
         playerMaxHealth = new float[4];
-        
+
+        ogColourX = new Color(0, 0, 1);
+        ogColourB = new Color(0.8f, 0, 0);
+        cooldownColour = Color.grey;
+
+
 
         // Assigns players to slots based on IDs, for use with UI placement.
         //IE: Tank is in the top left, always.
@@ -134,80 +150,129 @@ public class UIController : MonoBehaviour
 
         if (players[0].GetComponent<TankCooldowns>().cooldowns["shieldCD"] <=0)
         {
-            newIcons[0].SetActive(true);
-        } else
+            //newIcons[0].SetActive(true);
+            newIcons[0].GetComponent<SpriteRenderer>().color = ogColourX;
+            cooldownTimerShield = 0;
+            newIcons[0].transform.localScale = new Vector3(10, 20, 0);
+        }
+        else
         {
-            newIcons[0].SetActive(false);
+            //newIcons[0].SetActive(false);
+            newIcons[0].GetComponent<SpriteRenderer>().color = cooldownColour;
+            cooldownTimerShield += Time.deltaTime;
+            newIcons[0].transform.localScale = Vector3.Lerp(new Vector3(0, 20, 0), new Vector3(10, 20, 0), cooldownTimerShield / 10);
 
         }
 
         if (players[0].GetComponent<TankCooldowns>().cooldowns["magnetCD"] <= 0)
         {
-            newIcons[1].SetActive(true);
+            //newIcons[1].SetActive(true);
+            newIcons[1].GetComponent<SpriteRenderer>().color = ogColourB;
+            cooldownTimerMagnet = 0;
+            newIcons[1].transform.localScale = new Vector3(10, 20, 0);
         }
         else
         {
-            newIcons[1].SetActive(false);
+            //newIcons[1].SetActive(false);
+            newIcons[1].GetComponent<SpriteRenderer>().color = cooldownColour;
+            cooldownTimerMagnet += Time.deltaTime;
+            newIcons[1].transform.localScale = Vector3.Lerp(new Vector3(0, 20, 0), new Vector3(10, 20, 0), cooldownTimerMagnet / 3);
 
         }
 
         if (players[1].GetComponent<HealerCooldowns>().cooldowns["healCD"] <= 0)
         {
-            newIcons[2].SetActive(true);
+            //newIcons[2].SetActive(true);
+            newIcons[2].GetComponent<SpriteRenderer>().color = ogColourX;
+            cooldownTimerHeal = 0;
+            newIcons[2].transform.localScale = new Vector3(10, 20, 0);
         }
         else
         {
-            newIcons[2].SetActive(false);
+            //newIcons[2].SetActive(false);
+            newIcons[2].GetComponent<SpriteRenderer>().color = cooldownColour;
+            cooldownTimerHeal += Time.deltaTime;
+            newIcons[2].transform.localScale = Vector3.Lerp(new Vector3(0, 20, 0), new Vector3(10, 20, 0), cooldownTimerHeal / 1);
 
         }
 
         if (players[1].GetComponent<HealerCooldowns>().cooldowns["stunCD"] <= 0)
         {
-            newIcons[3].SetActive(true);
+            //newIcons[3].SetActive(true);
+            newIcons[3].GetComponent<SpriteRenderer>().color = ogColourB;
+            cooldownTimerStun = 0;
+            newIcons[3].transform.localScale = new Vector3(10, 20, 0);
         }
         else
         {
-            newIcons[3].SetActive(false);
+            //newIcons[3].SetActive(false);
+            newIcons[3].GetComponent<SpriteRenderer>().color = cooldownColour;
+            cooldownTimerStun += Time.deltaTime;
+            newIcons[3].transform.localScale = Vector3.Lerp(new Vector3(0, 20, 0), new Vector3(10, 20, 0), cooldownTimerStun / 3);
 
         }
 
         if (players[2].GetComponent<MeleeCooldowns>().cooldowns["meleeCD"] <= 0)
         {
-            newIcons[4].SetActive(true);
+            //newIcons[4].SetActive(true);
+            newIcons[4].GetComponent<SpriteRenderer>().color = ogColourX;
+            cooldownTimerMelee = 0;
+            newIcons[4].transform.localScale = new Vector3(10, 20, 0);
         }
         else
         {
-            newIcons[4].SetActive(false);
+            //newIcons[4].SetActive(false);
+            newIcons[4].GetComponent<SpriteRenderer>().color = cooldownColour;
+            cooldownTimerMelee += Time.deltaTime;
+            newIcons[4].transform.localScale = Vector3.Lerp(new Vector3(0, 20, 0), new Vector3(10, 20, 0), cooldownTimerMelee / .1f);
 
         }
 
         if (players[2].GetComponent<MeleeCooldowns>().cooldowns["lungeCD"] <= 0)
         {
-            newIcons[5].SetActive(true);
+            //newIcons[5].SetActive(true);
+            newIcons[5].GetComponent<SpriteRenderer>().color = ogColourB;
+            cooldownTimerLunge = 0;
+            newIcons[5].transform.localScale = new Vector3(10, 20, 0);
         }
         else
         {
-            newIcons[5].SetActive(false);
+            //newIcons[5].SetActive(false);
+            newIcons[5].GetComponent<SpriteRenderer>().color = cooldownColour;
+            cooldownTimerLunge += Time.deltaTime;
+            newIcons[5].transform.localScale = Vector3.Lerp(new Vector3(0, 20, 0), new Vector3(10, 20, 0), cooldownTimerLunge / 5);
 
         }
 
         if (players[3].GetComponent<RangedCooldowns>().cooldowns["boltCD"] <= 0)
         {
-            newIcons[6].SetActive(true);
+            //newIcons[6].SetActive(true);
+            newIcons[6].GetComponent<SpriteRenderer>().color = ogColourX;
+            cooldownTimerBolt = 0;
+            newIcons[6].transform.localScale = new Vector3(10, 20, 0);
         }
         else
         {
-            newIcons[6].SetActive(false);
+            //newIcons[6].SetActive(false);
+            newIcons[6].GetComponent<SpriteRenderer>().color = cooldownColour;
+            cooldownTimerBolt += Time.deltaTime;
+            newIcons[6].transform.localScale = Vector3.Lerp(new Vector3(0, 20, 0), new Vector3(10, 20, 0), cooldownTimerBolt / 1);
 
         }
 
         if (players[3].GetComponent<RangedCooldowns>().cooldowns["knockbackCD"] <= 0)
         {
-            newIcons[7].SetActive(true);
+            //newIcons[7].SetActive(true);
+            newIcons[7].GetComponent<SpriteRenderer>().color = ogColourB;
+            cooldownTimerKnockback = 0;
+            newIcons[7].transform.localScale = new Vector3(10, 20, 0);
         }
         else
         {
-            newIcons[7].SetActive(false);
+            //newIcons[7].SetActive(false);
+            newIcons[7].GetComponent<SpriteRenderer>().color = cooldownColour;
+            cooldownTimerKnockback += Time.deltaTime;
+            newIcons[7].transform.localScale = Vector3.Lerp(new Vector3(0, 20, 0), new Vector3(10, 20, 0), cooldownTimerKnockback / 3);
 
         }
 
