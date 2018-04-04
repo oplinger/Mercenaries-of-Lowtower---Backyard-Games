@@ -21,7 +21,7 @@ public class MenuUIController : MonoBehaviour {
     public bool gameIsPaused;
     public bool pauseDisabled;
 
-    float resetTimer = 10;
+    float resetTimer = 15;
 
     public TankClass tankScript;
     public HealerClass healerScript;
@@ -61,7 +61,7 @@ public class MenuUIController : MonoBehaviour {
         {
 
             Time.timeScale = 1;
-            SceneManager.LoadScene(0);
+            SceneManager.LoadScene(1);
         }
 
         //PAUSE GAME
@@ -98,7 +98,7 @@ public class MenuUIController : MonoBehaviour {
             Time.timeScale = 1;
             print("restart scene");
             BossControlScriptV2.gameRestarted = true;
-            SceneManager.LoadScene(1);
+            SceneManager.LoadScene(2);
         }
 
 
@@ -121,7 +121,7 @@ public class MenuUIController : MonoBehaviour {
             if ((Input.GetKeyDown("joystick button 6")))
             {
                 BossControlScriptV2.gameRestarted = false;
-                SceneManager.LoadScene(1);
+                SceneManager.LoadScene(2);
                 print("game restarted");
             }
             if (resetTimer <= 0)
@@ -140,13 +140,20 @@ public class MenuUIController : MonoBehaviour {
             startToRetry.SetActive(true);
             float scale = .22f + Mathf.PingPong(Time.time / 18, .15f);
             loseScreen.transform.localScale = new Vector3(scale, scale, scale);
+            resetTimer -= Time.deltaTime;
 
             pauseDisabled = true;
             bossManagerScript.bossAnim.SetInteger("AnimState", 6);
             if ((Input.GetKeyDown("joystick button 7")))
             {
                 BossControlScriptV2.gameRestarted = true;
-                SceneManager.LoadScene(1);
+                SceneManager.LoadScene(2);
+                print("game restarted");
+            }
+
+            if (resetTimer <= 0)
+            {
+                SceneManager.LoadScene(0);
                 print("game restarted");
             }
         }

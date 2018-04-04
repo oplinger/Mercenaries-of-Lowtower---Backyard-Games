@@ -38,6 +38,7 @@ public class BossControlScriptV2 : MonoBehaviour {
     public GameObject Boss;
     public GameObject BossHead;
     public GameObject energySphere;
+    public GameObject bossShield;
     public Transform energySphereSpawn;
 
     // Boss Entrance GameObjects
@@ -245,6 +246,7 @@ public class BossControlScriptV2 : MonoBehaviour {
             BeginCannonPhase();
             bossAnim.SetInteger("AnimState", 3);
             BossHead.transform.localPosition = Vector3.Lerp(BossHead.transform.localPosition, new Vector3(0, -30f, 100f), transitionTimer/100);
+            bossShield.SetActive(true);
         }
 
         if (bossPhase == 6)
