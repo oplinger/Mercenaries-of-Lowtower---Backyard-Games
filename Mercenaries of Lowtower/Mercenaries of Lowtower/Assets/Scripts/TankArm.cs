@@ -77,8 +77,9 @@ public class TankArm : MonoBehaviour {
             if (target != null)
             {
                 print("arm should let go");
-
+                if (target.tag == "Enemy") { 
                 target.transform.position = armJoint[1].transform.position;
+                    }
 
                 //armJoint[1].transform.localScale = new Vector3(1,1,1);
                 //target.transform.parent = armJoint[2].transform;

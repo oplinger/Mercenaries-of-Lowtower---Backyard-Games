@@ -56,7 +56,7 @@ public class FireCannon : MonoBehaviour {
             Destroy(other.gameObject);
            GetComponentInChildren<Light>().enabled = false;
 
-            if (bossManager.GetComponent<BossControlScriptV2>().cannonballHits<2)
+            if (bossManager.GetComponent<BossControlScriptV2>().cannonballHits<=2)
             {
                 if (!GameObject.Find("cannonball(Clone)"))
                 {

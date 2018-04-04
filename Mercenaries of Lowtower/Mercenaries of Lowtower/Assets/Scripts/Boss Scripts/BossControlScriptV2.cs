@@ -330,7 +330,7 @@ public class BossControlScriptV2 : MonoBehaviour {
         while (elapsedTime < fadeTime)
         {
             elapsedTime += Time.deltaTime;
-            c.a = 1.0f - Mathf.Clamp01(elapsedTime / fadeTime);
+            c.a = 1f - Mathf.Clamp01(elapsedTime / fadeTime);
             blindsImage.color = c;
             yield return null;
         }
