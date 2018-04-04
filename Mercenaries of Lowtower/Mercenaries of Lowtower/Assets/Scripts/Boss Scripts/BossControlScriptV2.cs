@@ -97,6 +97,8 @@ public class BossControlScriptV2 : MonoBehaviour {
         if(bossPhase == -2)
         {
             BossHead.transform.position = startWaypoint.position;
+            bossAnim.SetInteger("AnimState", -1);
+
             StartCoroutine("WaitTime");
             bossPhase = -1;
         }
@@ -250,6 +252,8 @@ public class BossControlScriptV2 : MonoBehaviour {
             if (cannonFired == true)
             {
                 cannonFired = false;
+                bossAnim.SetInteger("AnimState", Random.Range(8,10));
+
                 Boss.GetComponent<BossClass>().currentHealth -= 33;
                 
             }
@@ -262,6 +266,8 @@ public class BossControlScriptV2 : MonoBehaviour {
         if (bossPhase == 7)
         {
             BossHead.transform.position += (Vector3.down * Time.deltaTime) * 3;
+            bossAnim.SetInteger("AnimState", 7);
+
             ballSpawner.SetActive(false);
             addSpawner.SetActive(false);
             cannonball.SetActive(false);
