@@ -68,4 +68,18 @@ public class BossClass : EnemyClass {
     {
         anim.SetInteger("AnimState", 0);
     }
+
+    public void PlayerColorFlash(Color playercolor)
+    {
+        StartCoroutine("IPlayerColorFlash", playercolor);
+
+    }
+
+    IEnumerator IPlayerColorFlash(Color playercolor)
+    {
+        bossRenderer.material.SetColor("_EmissionColor", playercolor);
+
+        yield return new WaitForSeconds(.016f);
+        bossRenderer.material.SetColor("_EmissionColor", Color.black);
+    }
 }

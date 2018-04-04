@@ -18,6 +18,14 @@ public class BoltDamage : MonoBehaviour {
 	}
     void OnTriggerEnter(Collider other)
     {
+        if (other.tag == "Boss")
+        {
+            Color colorflash = new Color(.047f, .756f, .066f);
+            other.GetComponent<BossClass>().PlayerColorFlash(colorflash);
+            other.GetComponent<IDamageable<float>>().TakeDamage(3);
+            Instantiate(hitMarker, transform.position, Quaternion.identity);
+        }
+
         if (other.tag == "Enemy")
         {
             other.GetComponent<IDamageable<float>>().TakeDamage(5);
