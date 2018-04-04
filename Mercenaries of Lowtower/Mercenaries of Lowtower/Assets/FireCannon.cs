@@ -58,7 +58,10 @@ public class FireCannon : MonoBehaviour {
 
             if (bossManager.GetComponent<BossControlScriptV2>().cannonballHits<2)
             {
-                Instantiate(cannonball, cannonballSpawner.position, transform.rotation);
+                if (!GameObject.Find("cannonball(Clone)"))
+                {
+                    Instantiate(cannonball, cannonballSpawner.position, transform.rotation);
+                }
             }
 
 
