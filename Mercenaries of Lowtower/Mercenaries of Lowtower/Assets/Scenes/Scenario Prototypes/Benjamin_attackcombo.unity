@@ -9563,6 +9563,26 @@ Prefab:
       propertyPath: m_RootOrder
       value: 4
       objectReference: {fileID: 0}
+    - target: {fileID: 114154179214045978, guid: f229add419d613d478da1a67ad84d7d0,
+        type: 2}
+      propertyPath: PlayerList.Array.data[0]
+      value: 
+      objectReference: {fileID: 872265761}
+    - target: {fileID: 114154179214045978, guid: f229add419d613d478da1a67ad84d7d0,
+        type: 2}
+      propertyPath: PlayerList.Array.data[1]
+      value: 
+      objectReference: {fileID: 1257598276}
+    - target: {fileID: 114154179214045978, guid: f229add419d613d478da1a67ad84d7d0,
+        type: 2}
+      propertyPath: PlayerList.Array.data[2]
+      value: 
+      objectReference: {fileID: 154853856}
+    - target: {fileID: 114154179214045978, guid: f229add419d613d478da1a67ad84d7d0,
+        type: 2}
+      propertyPath: PlayerList.Array.data[3]
+      value: 
+      objectReference: {fileID: 1942605507}
     - target: {fileID: 114127250740623276, guid: f229add419d613d478da1a67ad84d7d0,
         type: 2}
       propertyPath: lightningFX
@@ -9653,31 +9673,6 @@ Prefab:
       propertyPath: DoorList.Array.data[3]
       value: 
       objectReference: {fileID: 1195013820}
-    - target: {fileID: 114154179214045978, guid: f229add419d613d478da1a67ad84d7d0,
-        type: 2}
-      propertyPath: PlayerList.Array.data[0]
-      value: 
-      objectReference: {fileID: 872265761}
-    - target: {fileID: 114154179214045978, guid: f229add419d613d478da1a67ad84d7d0,
-        type: 2}
-      propertyPath: PlayerList.Array.data[1]
-      value: 
-      objectReference: {fileID: 1257598276}
-    - target: {fileID: 114154179214045978, guid: f229add419d613d478da1a67ad84d7d0,
-        type: 2}
-      propertyPath: PlayerList.Array.data[2]
-      value: 
-      objectReference: {fileID: 154853856}
-    - target: {fileID: 114154179214045978, guid: f229add419d613d478da1a67ad84d7d0,
-        type: 2}
-      propertyPath: PlayerList.Array.data[3]
-      value: 
-      objectReference: {fileID: 1942605507}
-    - target: {fileID: 114127250740623276, guid: f229add419d613d478da1a67ad84d7d0,
-        type: 2}
-      propertyPath: bossPhase
-      value: 5
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: f229add419d613d478da1a67ad84d7d0, type: 2}
   m_IsPrefabParent: 0
