@@ -78,15 +78,18 @@ public class TankArm : MonoBehaviour {
             {
                 print("arm should let go");
 
+                target.transform.position = armJoint[1].transform.position;
+
                 //armJoint[1].transform.localScale = new Vector3(1,1,1);
-                target.transform.parent = armJoint[2].transform;
+                //target.transform.parent = armJoint[2].transform;
                 armJoint[1].transform.localPosition = defaultJointPosition[1];
                 armJoint[2].transform.localPosition = defaultJointPosition[2];
+                baseClass.GetComponent<Animator>().SetInteger("AnimState", 0);
 
-                //armJoint[1].transform.position = defaultJointPosition[1]-new Vector3(1,0,1);
-                //armJoint[1].transform.position = Vector3.MoveTowards(armJoint[1].transform.position, defaultJointPosition[1], 6);
-                target.transform.parent = null;
-                target = null;
+                ////armJoint[1].transform.position = defaultJointPosition[1]-new Vector3(1,0,1);
+                ////armJoint[1].transform.position = Vector3.MoveTowards(armJoint[1].transform.position, defaultJointPosition[1], 6);
+                //target.transform.parent = null;
+                //target = null;
 
                 baseClass.abilityCooldowns.cooldowns["magnetCD"] = baseClass.abilityCooldowns.magnetCD;
             } else
