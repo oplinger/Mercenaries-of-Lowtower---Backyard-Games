@@ -27,8 +27,11 @@ public class MeleeAttackHitbox : MonoBehaviour {
 
         if (other.tag == "Enemy" || other.tag=="Tentacle")
         {
-            print(baseClass.meleeDamage);
             other.GetComponent<IDamageable<float>>().TakeDamage(baseClass.meleeDamage);
+            if (other.tag=="Enemy")
+            {
+                other.GetComponent<AIControllerNavMesh>().PlayerColorFlash();
+            }
 
 
             //Health protagonistHealth = other.gameObject.GetComponent<Health>();

@@ -30,6 +30,8 @@ public class AIControllerNavMesh : EntityClass
 
     public Texture stunnedTex;
     public Texture defaultTex;
+    public Texture damagedTex;
+    public Texture damagedTex2;
 
     //NavMesh Things
     public NavMeshAgent navMeshAgent;
@@ -221,6 +223,40 @@ public class AIControllerNavMesh : EntityClass
         }
 
 
+    }
+
+    public void PlayerColorFlash()
+    {
+        StartCoroutine("IPlayerColorFlash");
+
+    }
+
+    IEnumerator IPlayerColorFlash()
+    {
+        foreach (Renderer item in enemyRenderer)
+        {
+            item.material.SetTexture("_MainTex", damagedTex);
+
+            yield return new WaitForSeconds(.08f);
+            item.material.SetTexture("_MainTex", defaultTex);
+        }
+    }
+
+    public void PlayerColorFlash2()
+    {
+        StartCoroutine("IPlayerColorFlash2");
+
+    }
+
+    IEnumerator IPlayerColorFlash2()
+    {
+        foreach (Renderer item in enemyRenderer)
+        {
+            item.material.SetTexture("_MainTex", damagedTex2);
+
+            yield return new WaitForSeconds(0.15f);
+            item.material.SetTexture("_MainTex", defaultTex);
+        }
     }
 
 

@@ -28,7 +28,8 @@ public class BoltDamage : MonoBehaviour {
 
         if (other.tag == "Enemy")
         {
-            other.GetComponent<IDamageable<float>>().TakeDamage(5);
+            other.GetComponent<AIControllerNavMesh>().PlayerColorFlash2();
+            other.GetComponent<IDamageable<float>>().TakeDamage(3);
             Instantiate(hitMarker, transform.position, Quaternion.identity);
             Destroy(gameObject);
         }
