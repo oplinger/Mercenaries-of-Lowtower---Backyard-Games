@@ -17,7 +17,7 @@ public class LoadScene : MonoBehaviour {
 
         if (Input.GetKey(KeyCode.B))
         {
-            cannonScene.SetActive(true);
+            SceneManager.LoadScene(2);
         }
 		
 	}

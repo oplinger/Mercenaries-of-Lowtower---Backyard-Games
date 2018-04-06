@@ -64,7 +64,7 @@ public class GoUpstairsScript : MonoBehaviour {
             if (timeRemaining <= 0)
             {
                 BossControlScriptV2.gameRestarted = false;
-                SceneManager.LoadScene(1);
+                SceneManager.LoadScene(2);
             }
         }
         else
