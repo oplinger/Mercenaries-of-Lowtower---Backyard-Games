@@ -2080,6 +2080,11 @@ MonoBehaviour:
   - {fileID: 173264947}
   - {fileID: 1202890937}
   - {fileID: 1440199239}
+  round1: 0
+  round2: 0
+  round3: 0
+  bossScript: {fileID: 0}
+  bossManager: {fileID: 1344714493}
 --- !u!4 &771425363
 Transform:
   m_ObjectHideFlags: 0
@@ -6206,7 +6211,7 @@ Prefab:
     - target: {fileID: 114127250740623276, guid: f229add419d613d478da1a67ad84d7d0,
         type: 2}
       propertyPath: bossPhase
-      value: -2
+      value: 5
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: f229add419d613d478da1a67ad84d7d0, type: 2}
@@ -7732,6 +7737,11 @@ Prefab:
       propertyPath: m_Camera
       value: 
       objectReference: {fileID: 1043207481}
+    - target: {fileID: 114069297143841652, guid: 10f97ecad476ebc42ad1b48f43861fa6,
+        type: 2}
+      propertyPath: lungeCD
+      value: 2
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 10f97ecad476ebc42ad1b48f43861fa6, type: 2}
   m_IsPrefabParent: 0
