@@ -2173,6 +2173,18 @@ Prefab:
       propertyPath: rangedScript
       value: 
       objectReference: {fileID: 1860593307}
+    - target: {fileID: 1251073094857674, guid: 33826ba10da5e28439a9023c398a1832, type: 2}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1556344899262478, guid: 33826ba10da5e28439a9023c398a1832, type: 2}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1581292536054476, guid: 33826ba10da5e28439a9023c398a1832, type: 2}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 33826ba10da5e28439a9023c398a1832, type: 2}
   m_IsPrefabParent: 0
@@ -6211,7 +6223,7 @@ Prefab:
     - target: {fileID: 114127250740623276, guid: f229add419d613d478da1a67ad84d7d0,
         type: 2}
       propertyPath: bossPhase
-      value: 5
+      value: -2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: f229add419d613d478da1a67ad84d7d0, type: 2}
