@@ -23,7 +23,7 @@ public class HealerAbilities : MonoBehaviour
     {
         baseClass = GetComponent<HealerClass>();
         stunAOE.SetActive(false);
-        vizTimer = 20;
+        vizTimer = 40;
         
     }
 
@@ -43,7 +43,7 @@ public class HealerAbilities : MonoBehaviour
             {
                 stunAOE.SetActive(false);
                 vizOn = false;
-                vizTimer = 20;
+                vizTimer = 40;
             }
         }
 
