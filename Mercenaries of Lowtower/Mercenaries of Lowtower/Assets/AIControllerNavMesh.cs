@@ -12,19 +12,19 @@ public class AIControllerNavMesh : EntityClass
 
     public float defaultSpeed;
     public float stunTimer;
-    Rigidbody rb;
+    protected Rigidbody rb;
     public SpawnAdd addSpawnerScript;
     public GameObject addSpawner;
     public LayerMask PlayerMask;
-    Collider[] cols;
-    float currenthealth2;
+    protected Collider[] cols;
+    protected float currenthealth2;
 
     public bool cannonballIsHeld;
 
 
     //public float stunDuration;
 
-    Renderer[] enemyRenderer;
+    protected Renderer[] enemyRenderer;
     public Material defaultEnemyMaterial;
     public Material stunnedMaterial;
 
@@ -34,7 +34,7 @@ public class AIControllerNavMesh : EntityClass
     public Texture damagedTex2;
 
     //NavMesh Things
-    public NavMeshAgent navMeshAgent;
+    NavMeshAgent navMeshAgent;
 
 
     private void Awake()
@@ -49,7 +49,7 @@ public class AIControllerNavMesh : EntityClass
         currenthealth2 = currentHealth;
         enemyRenderer = GetComponentsInChildren<Renderer>();
 
-       // defaultEnemyMaterial = enemyRenderer.material;
+        // defaultEnemyMaterial = enemyRenderer.material;
 
         currentHealth = maxHealth;
         rb = GetComponent<Rigidbody>();
@@ -71,15 +71,16 @@ public class AIControllerNavMesh : EntityClass
     void Update()
     {
         //print(Vector3.Distance(transform.position, Player.position));
-        if (!cannonballIsHeld) {
+        if (!cannonballIsHeld)
+        {
 
             CannonballDropped();
 
-       cols= Physics.OverlapSphere(transform.position, 1000, PlayerMask, QueryTriggerInteraction.Ignore);
+            cols = Physics.OverlapSphere(transform.position, 1000, PlayerMask, QueryTriggerInteraction.Ignore);
 
-        for(int i  = 0; i<cols.Length; i++)
-        {
-            float closestDistance = 100f;
+            for (int i = 0; i < cols.Length; i++)
+            {
+                float closestDistance = 100f;
                 if (Vector3.Distance(transform.position, cols[i].transform.position) < closestDistance)
                 {
                     Vector3.Distance(transform.position, cols[i].transform.position);
@@ -97,7 +98,7 @@ public class AIControllerNavMesh : EntityClass
         {
             rb.velocity = Vector3.zero;
             //other.GetComponent<NavMeshAgent>().isStopped = false;
-           navMeshAgent.enabled = true;
+            navMeshAgent.enabled = true;
 
         }
 
@@ -117,7 +118,7 @@ public class AIControllerNavMesh : EntityClass
         if (!isStunned)
         {
 
-            
+
             //enemyRenderer.material = defaultEnemyMaterial;
 
 
@@ -204,11 +205,11 @@ public class AIControllerNavMesh : EntityClass
         isStunned = true;
     }
 
-    public void LookForCannonball ()
+    public void LookForCannonball()
     {
         GameObject[] players = GameObject.FindGameObjectsWithTag("Player");
 
-        for (int i=0; i<players.Length; i++)
+        for (int i = 0; i < players.Length; i++)
         {
             if (players[i].GetComponentInChildren<PickUpBox>().holdingObject)
             {
