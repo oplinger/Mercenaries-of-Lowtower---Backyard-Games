@@ -273,6 +273,7 @@ public class BossControlScriptV2 : MonoBehaviour {
             ballSpawner.SetActive(false);
             addSpawner.SetActive(false);
             cannonball.SetActive(false);
+            
         }
     }
 

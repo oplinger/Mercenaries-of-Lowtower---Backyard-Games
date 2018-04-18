@@ -28,6 +28,8 @@ public class MenuUIController : MonoBehaviour {
     public MeleeClass meleeScript;
     public RangedClass rangedScript;
 
+    public GameObject bossHead;
+
     // Use this for initialization
     void Start () {
 
@@ -107,7 +109,7 @@ public class MenuUIController : MonoBehaviour {
 
         //WIN THE GAME 
 
-        if (bossManagerScript.bossPhase == 7)
+        if (bossManagerScript.bossPhase == 7 && bossHead.transform.position.y <= -55)
         {
             winScreen.SetActive(true);
             restartButton.SetActive(true);

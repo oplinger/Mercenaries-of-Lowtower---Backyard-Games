@@ -11,32 +11,36 @@ public class CannonballPropScript : MonoBehaviour {
     Rigidbody rb;
     public GameObject cannonTarget;
     public BossControlScriptV2 bossScript;
+    public GameObject propCamera;
 
     private void Awake()
     {
         cannonTarget = GameObject.Find("Cannon Target");
         bossScript = GameObject.Find("Boss Manager").GetComponent<BossControlScriptV2>();
+
+
+        //propCamera = GetComponentInChildren<Camera>().gameObject;
+
     }
 
     void Start () {
 
         rb=GetComponent<Rigidbody>();
-        //phaseControllerScript = phaseController.GetComponent<PhaseControllerScript>();
-        //originalPosition.position = transform.position;
 
     }
 
     // Update is called once per frame
-    void FixedUpdate ()
+    void FixedUpdate()
     {
-        transform.position = Vector3.MoveTowards(transform.position, cannonTarget.transform.position,Time.deltaTime*50);
-        //rb.AddForce(-3, 2, 3, ForceMode.Impulse);
+        transform.position = Vector3.MoveTowards(transform.position, cannonTarget.transform.position, Time.deltaTime * 50);
 
-        //if (phaseControllerScript.cannonFired)
-        //{
-        //    this.gameObject.GetComponent<Rigidbody>().AddForce(new Vector3(5, 0, 5));
-        //}
+        if (bossScript.cannonballHits == 2)
+        {
+            GetComponentInChildren<Camera>().enabled = true;
 
+            //propCamera.SetActive(true);
+
+        }
     }
 
     private void OnTriggerEnter(Collider other)
