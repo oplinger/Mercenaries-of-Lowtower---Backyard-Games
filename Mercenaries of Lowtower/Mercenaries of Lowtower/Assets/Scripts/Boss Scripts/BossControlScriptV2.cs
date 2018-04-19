@@ -73,6 +73,8 @@ public class BossControlScriptV2 : MonoBehaviour {
 
     public static bool gameRestarted;
 
+    public GameObject dyingParticles;
+
     // Use this for initialization
     void Start () {
 
@@ -270,6 +272,8 @@ public class BossControlScriptV2 : MonoBehaviour {
             BossHead.transform.position += (Vector3.down * Time.deltaTime) * 3;
             bossAnim.SetInteger("AnimState", 7);
 
+            bossShield.SetActive(false);
+            dyingParticles.SetActive(true);
             ballSpawner.SetActive(false);
             addSpawner.SetActive(false);
             cannonball.SetActive(false);

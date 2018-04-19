@@ -115,8 +115,9 @@ public class MenuUIController : MonoBehaviour {
             restartButton.SetActive(true);
             float scale = .22f + Mathf.PingPong(Time.time/18, .15f);
             winScreen.transform.localScale = new Vector3(scale,scale,scale);
-            resetTimer -= Time.deltaTime;
             pauseDisabled = true;
+            /*resetTimer -= Time.deltaTime;*/
+            
 
             
 
@@ -126,11 +127,11 @@ public class MenuUIController : MonoBehaviour {
                 SceneManager.LoadScene(2);
                 print("game restarted");
             }
-            if (resetTimer <= 0)
-            {
-                SceneManager.LoadScene(0);
-                print("game restarted");
-            }
+            //if (resetTimer <= 0)
+            //{
+            //    SceneManager.LoadScene(0);
+            //    print("game restarted");
+            //}
        
         }
 
@@ -142,7 +143,7 @@ public class MenuUIController : MonoBehaviour {
             startToRetry.SetActive(true);
             float scale = .22f + Mathf.PingPong(Time.time / 18, .15f);
             loseScreen.transform.localScale = new Vector3(scale, scale, scale);
-            resetTimer -= Time.deltaTime;
+            //resetTimer -= Time.deltaTime;
 
             pauseDisabled = true;
             bossManagerScript.bossAnim.SetInteger("AnimState", 6);
@@ -153,11 +154,11 @@ public class MenuUIController : MonoBehaviour {
                 print("game restarted");
             }
 
-            if (resetTimer <= 0)
-            {
-                SceneManager.LoadScene(0);
-                print("game restarted");
-            }
+            //if (resetTimer <= 0)
+            //{
+            //    SceneManager.LoadScene(0);
+            //    print("game restarted");
+            //}
         }
 
     }

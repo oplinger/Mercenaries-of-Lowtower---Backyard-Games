@@ -36,7 +36,7 @@ public class CannonballPropScript : MonoBehaviour {
 
         if (bossScript.cannonballHits == 2)
         {
-            GetComponentInChildren<Camera>().enabled = true;
+            //GetComponentInChildren<Camera>().enabled = true;
 
             //propCamera.SetActive(true);
 

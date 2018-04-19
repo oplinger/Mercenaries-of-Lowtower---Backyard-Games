@@ -176,7 +176,7 @@ public class UIController : MonoBehaviour
             //newIcons[1].SetActive(false);
             newIcons[1].GetComponent<SpriteRenderer>().color = cooldownColour;
             cooldownTimerMagnet += Time.deltaTime;
-            newIcons[1].transform.localScale = Vector3.Lerp(new Vector3(0, 20, 0), new Vector3(10, 20, 0), cooldownTimerMagnet / 3);
+            newIcons[1].transform.localScale = Vector3.Lerp(new Vector3(0, 20, 0), new Vector3(10, 20, 0), cooldownTimerMagnet / 1);
 
         }
 
