@@ -8,7 +8,8 @@ public class MenuUIControllerTR : MonoBehaviour {
     
     public GameObject gamePaused;
     public GameObject startToResume;
-    
+    public GameObject quitGameImage;
+
     public bool gameIsPaused;
     public bool pauseDisabled;
 
@@ -32,8 +33,9 @@ public class MenuUIControllerTR : MonoBehaviour {
         if (gameIsPaused && Input.GetKey("joystick button 4") && Input.GetKey("joystick button 5") && Input.GetKey("joystick button 0"))
         {
 
+            Application.Quit();
             Time.timeScale = 1;
-            SceneManager.LoadScene(1);
+            //SceneManager.LoadScene(1);
         }
 
         //PAUSE GAME
@@ -47,6 +49,7 @@ public class MenuUIControllerTR : MonoBehaviour {
                 Time.timeScale = 0;
                 gamePaused.SetActive(true);
                 startToResume.SetActive(true);
+                quitGameImage.SetActive(true);
             }
 
             else
@@ -56,6 +59,7 @@ public class MenuUIControllerTR : MonoBehaviour {
                 Time.timeScale = 1;
                 gamePaused.SetActive(false);
                 startToResume.SetActive(false);
+                quitGameImage.SetActive(false);
             }
 
             

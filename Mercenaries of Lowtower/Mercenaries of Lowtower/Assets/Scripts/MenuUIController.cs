@@ -11,6 +11,7 @@ public class MenuUIController : MonoBehaviour {
     public GameObject gamePaused;
     public GameObject startToResume;
     public GameObject backToStartOver;
+    public GameObject quitGameImage;
 
     public GameObject loseScreen;
     public GameObject startToRetry;
@@ -58,12 +59,13 @@ public class MenuUIController : MonoBehaviour {
     // Update is called once per frame
     void Update () {
 
-        //CHEAT TO RETURN TO LOBBY
+        //CHEAT TO RETURN TO LOBBY REFORMATTED INTO QUIT SEQUENCE
         if (gameIsPaused && Input.GetKey("joystick button 4") && Input.GetKey("joystick button 5") && Input.GetKey("joystick button 0"))
         {
 
+            Application.Quit();
             Time.timeScale = 1;
-            SceneManager.LoadScene(1);
+            //SceneManager.LoadScene(1);
         }
 
         //PAUSE GAME
@@ -78,6 +80,7 @@ public class MenuUIController : MonoBehaviour {
                 gamePaused.SetActive(true);
                 startToResume.SetActive(true);
                 backToStartOver.SetActive(true);
+                quitGameImage.SetActive(true);
             }
 
             else
@@ -88,6 +91,7 @@ public class MenuUIController : MonoBehaviour {
                 gamePaused.SetActive(false);
                 startToResume.SetActive(false);
                 backToStartOver.SetActive(false);
+                quitGameImage.SetActive(false);
             }
 
             
@@ -147,7 +151,7 @@ public class MenuUIController : MonoBehaviour {
 
             pauseDisabled = true;
             bossManagerScript.bossAnim.SetInteger("AnimState", 6);
-            if ((Input.GetKeyDown("joystick button 7")))
+            if ((Input.GetKeyDown("joystick button 6")))
             {
                 BossControlScriptV2.gameRestarted = true;
                 SceneManager.LoadScene(2);

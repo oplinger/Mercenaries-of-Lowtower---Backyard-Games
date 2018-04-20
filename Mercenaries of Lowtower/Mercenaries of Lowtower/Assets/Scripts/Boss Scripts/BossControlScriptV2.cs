@@ -112,7 +112,7 @@ public class BossControlScriptV2 : MonoBehaviour {
         if(bossPhase == 0)
         {
             //BossHead.transform.position = startWaypoint.position;
-            BossHead.transform.position = Vector3.MoveTowards(BossHead.transform.position, returnWaypoint.position, 1f);
+            BossHead.transform.position = Vector3.MoveTowards(BossHead.transform.position, returnWaypoint.position, 1.5f);
             if (BossHead.transform.position == returnWaypoint.position)
             {
                 StartCoroutine("FadeOutBlinds");
