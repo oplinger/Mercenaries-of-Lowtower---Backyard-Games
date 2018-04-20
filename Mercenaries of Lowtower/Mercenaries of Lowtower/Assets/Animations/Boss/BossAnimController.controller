@@ -237,7 +237,7 @@ AnimatorStateTransition:
   serializedVersion: 3
   m_TransitionDuration: 0.25
   m_TransitionOffset: 0
-  m_ExitTime: 0.96240604
+  m_ExitTime: 2.5
   m_HasExitTime: 1
   m_HasFixedDuration: 1
   m_InterruptionSource: 0
@@ -415,7 +415,7 @@ AnimatorState:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_Name: PortalEntrance
-  m_Speed: 1
+  m_Speed: 0.75
   m_CycleOffset: 0
   m_Transitions:
   - {fileID: 1101039583495319156}
@@ -763,7 +763,7 @@ AnimatorStateMachine:
     m_Position: {x: 1176, y: -36, z: 0}
   - serializedVersion: 1
     m_State: {fileID: 1102255995212530108}
-    m_Position: {x: 192, y: -60, z: 0}
+    m_Position: {x: 96, y: -144, z: 0}
   m_ChildStateMachines: []
   m_AnyStateTransitions:
   - {fileID: 1101011025011544676}
