@@ -12,6 +12,10 @@ public class EnergySphereScript : MonoBehaviour {
     public Transform energySphereSpawn;
     public GameObject bossHead;
 
+    public AudioSource energyBallAudioSource;
+
+    public AudioClip energyBall;
+
     // Use this for initialization
     void Start () {
         bossHead = GameObject.Find("Boss Head");
@@ -21,6 +25,9 @@ public class EnergySphereScript : MonoBehaviour {
         isCharging = true;
         energySphereSpawn = GameObject.Find("EnergySphere Spawn").transform;
         //bossHead.GetComponent<BossLookAt>().TargetPlayer();
+
+        energyBallAudioSource = GetComponent<AudioSource>();
+        
     }
 	
 	// Update is called once per frame
@@ -40,6 +47,7 @@ public class EnergySphereScript : MonoBehaviour {
             yield return null;
         } while (currentTime <= chargeTime);
         objectRigidbody.AddForce(transform.forward * 5000);
+        energyBallAudioSource.PlayOneShot(energyBall);
         //bossHead.GetComponent<BossLookAt>().TargetPlayer();
        // bossHead.GetComponent<BossLookAt>().isCharging = true;
     }

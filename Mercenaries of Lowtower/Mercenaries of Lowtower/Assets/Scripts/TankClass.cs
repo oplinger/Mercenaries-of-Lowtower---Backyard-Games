@@ -44,6 +44,10 @@ public class TankClass : PlayerClass
     float h1;
     float h2;
 
+    public AudioSource tankAudioSource;
+
+    public AudioClip healing;
+
 
     // Use this for initialization
     void Start()
@@ -68,6 +72,8 @@ public class TankClass : PlayerClass
 
         tankRenderer = tankModel.GetComponent<Renderer>();
         h2 = currentHealth;
+
+        tankAudioSource = GetComponent<AudioSource>();
 
     }
 
@@ -150,6 +156,7 @@ public class TankClass : PlayerClass
         if (h1 > h2)
         {
             StartCoroutine(ShowHealParticles());
+            tankAudioSource.PlayOneShot(healing);
 
             h2 = h1;
         }

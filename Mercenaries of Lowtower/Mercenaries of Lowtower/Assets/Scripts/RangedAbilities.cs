@@ -6,9 +6,14 @@ public class RangedAbilities : MonoBehaviour {
 
     RangedClass baseClass;
 
+    AudioSource rangedAudioSource;
+    public AudioClip arrow;
+
     private void Awake()
     {
         baseClass = GetComponent<RangedClass>();
+
+        rangedAudioSource = GetComponent<AudioSource>();
     }
     #region Ranged Abilities
     public void RangedBolt()
@@ -19,6 +24,7 @@ public class RangedAbilities : MonoBehaviour {
             Destroy(clone, baseClass.boltRange);
             baseClass.abilityCooldowns.cooldowns["boltCD"] = baseClass.abilityCooldowns.boltCD;
             GetComponent<Animator>().SetInteger("AnimState", 5);
+            rangedAudioSource.PlayOneShot(arrow);
 
         }
     }

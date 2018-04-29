@@ -48,6 +48,10 @@ public class RangedClass : PlayerClass
     float h1;
     float h2;
 
+    public AudioSource rangedAudioSource;
+
+    public AudioClip healing;
+
 
     // Use this for initialization
 
@@ -73,6 +77,8 @@ public class RangedClass : PlayerClass
 
         rangedRenderer = rangedModel.GetComponent<Renderer>();
         h2 = currentHealth;
+
+        rangedAudioSource = GetComponent<AudioSource>();
 
 
     }
@@ -170,6 +176,7 @@ public class RangedClass : PlayerClass
         if (h1 > h2)
         {
             StartCoroutine(ShowHealParticles());
+            rangedAudioSource.PlayOneShot(healing);
 
             h2 = h1;
         }

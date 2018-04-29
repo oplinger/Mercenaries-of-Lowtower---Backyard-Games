@@ -47,6 +47,9 @@ public abstract class PlayerClass : EntityClass
     public Color flashColour;
     public float flashTime;
 
+    public AudioSource playerAudioSource;
+    public AudioClip jumping;
+
 
     // Use this for initialization
     void Awake() {
@@ -65,6 +68,8 @@ public abstract class PlayerClass : EntityClass
 
 
         jumpheight = 8;
+
+        playerAudioSource = GetComponent<AudioSource>();
 
     }
     private void Start()
@@ -87,6 +92,8 @@ public abstract class PlayerClass : EntityClass
     {
         GetComponent<Rigidbody>().AddForce(0, jumpheight, 0, ForceMode.Impulse);
         anim.SetInteger("AnimState", 3);
+
+        playerAudioSource.PlayOneShot(jumping);
     }
 
     public void Movement()

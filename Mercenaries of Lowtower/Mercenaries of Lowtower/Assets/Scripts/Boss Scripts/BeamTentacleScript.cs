@@ -35,11 +35,17 @@ public class BeamTentacleScript : MonoBehaviour {
     //
     public int descentCap;
 
+    public AudioSource laserAudioSource;
+
     // Use this for initialization
     void Start () {
         // Sets the origin point to the position the tentacles are in when the play button is pressed
         originPoint = gameObject.transform.position;
         beamSpeed = BossManager.GetComponent<BossControlScriptV2>().beamSpeed;
+
+        laserAudioSource = GetComponent<AudioSource>();
+
+        laserAudioSource.volume = 0;
     }
 	
 	// Update is called once per frame
@@ -101,6 +107,8 @@ public class BeamTentacleScript : MonoBehaviour {
             beamAdvancing = true;
             beamAscending = false;
         }
+
+        laserAudioSource.volume = .6f;
     }
 
     void AdvanceBeam()
@@ -152,6 +160,8 @@ public class BeamTentacleScript : MonoBehaviour {
                 //attackComplete = true;
             }
         }
+
+        laserAudioSource.volume = 0;
     }
 
     public void SpeedUp()

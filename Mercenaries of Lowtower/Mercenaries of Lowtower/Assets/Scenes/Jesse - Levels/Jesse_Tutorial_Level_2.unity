@@ -436,10 +436,6 @@ Prefab:
       propertyPath: m_RootOrder
       value: 25
       objectReference: {fileID: 0}
-    - target: {fileID: 4143684327372678, guid: be71d7e7457c9f64c9bf09eb300b554a, type: 2}
-      propertyPath: m_LocalPosition.x
-      value: -1.48
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: be71d7e7457c9f64c9bf09eb300b554a, type: 2}
   m_IsPrefabParent: 0
@@ -1063,6 +1059,7 @@ GameObject:
   - component: {fileID: 199075242}
   - component: {fileID: 199075241}
   - component: {fileID: 199075240}
+  - component: {fileID: 199075244}
   m_Layer: 0
   m_Name: f
   m_TagString: Untagged
@@ -1139,6 +1136,86 @@ RectTransform:
   m_AnchoredPosition: {x: -4.159998, y: 11.599628}
   m_SizeDelta: {x: 100, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
+--- !u!82 &199075244
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 199075239}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 8300000, guid: 678dbb426524ed4468978049058ab472, type: 3}
+  m_PlayOnAwake: 1
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 1
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    - serializedVersion: 2
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 0
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 0
 --- !u!1 &204223422
 GameObject:
   m_ObjectHideFlags: 0
@@ -1192,6 +1269,8 @@ MonoBehaviour:
   defaultTex: {fileID: 2800000, guid: 6f17d087b1d665b4d961522cdf3fadc5, type: 3}
   damagedTex: {fileID: 2800000, guid: 3ff1e8b97829a9b489a510f70f04c2d6, type: 3}
   damagedTex2: {fileID: 2800000, guid: 1d845d5bc23a9be43ab828ee91bf00ed, type: 3}
+  minionAudioSource: {fileID: 0}
+  minionHurt: {fileID: 0}
 --- !u!195 &204223424
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -2174,11 +2253,6 @@ Prefab:
       propertyPath: m_RootOrder
       value: 26
       objectReference: {fileID: 0}
-    - target: {fileID: 114430226747379360, guid: 10f97ecad476ebc42ad1b48f43861fa6,
-        type: 2}
-      propertyPath: CTRLID
-      value: 0
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 10f97ecad476ebc42ad1b48f43861fa6, type: 2}
   m_IsPrefabParent: 0
@@ -2724,6 +2798,8 @@ MonoBehaviour:
   defaultTex: {fileID: 2800000, guid: 6f17d087b1d665b4d961522cdf3fadc5, type: 3}
   damagedTex: {fileID: 2800000, guid: 3ff1e8b97829a9b489a510f70f04c2d6, type: 3}
   damagedTex2: {fileID: 2800000, guid: 1d845d5bc23a9be43ab828ee91bf00ed, type: 3}
+  minionAudioSource: {fileID: 0}
+  minionHurt: {fileID: 0}
 --- !u!195 &330370804
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -3130,6 +3206,8 @@ MonoBehaviour:
   defaultTex: {fileID: 2800000, guid: 6f17d087b1d665b4d961522cdf3fadc5, type: 3}
   damagedTex: {fileID: 2800000, guid: 3ff1e8b97829a9b489a510f70f04c2d6, type: 3}
   damagedTex2: {fileID: 2800000, guid: 1d845d5bc23a9be43ab828ee91bf00ed, type: 3}
+  minionAudioSource: {fileID: 0}
+  minionHurt: {fileID: 0}
 --- !u!195 &350512053
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -3384,6 +3462,8 @@ MonoBehaviour:
   defaultTex: {fileID: 2800000, guid: 6f17d087b1d665b4d961522cdf3fadc5, type: 3}
   damagedTex: {fileID: 2800000, guid: 3ff1e8b97829a9b489a510f70f04c2d6, type: 3}
   damagedTex2: {fileID: 2800000, guid: 1d845d5bc23a9be43ab828ee91bf00ed, type: 3}
+  minionAudioSource: {fileID: 0}
+  minionHurt: {fileID: 0}
 --- !u!195 &355041300
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -4359,6 +4439,8 @@ MonoBehaviour:
   defaultTex: {fileID: 2800000, guid: 6f17d087b1d665b4d961522cdf3fadc5, type: 3}
   damagedTex: {fileID: 2800000, guid: 3ff1e8b97829a9b489a510f70f04c2d6, type: 3}
   damagedTex2: {fileID: 2800000, guid: 1d845d5bc23a9be43ab828ee91bf00ed, type: 3}
+  minionAudioSource: {fileID: 0}
+  minionHurt: {fileID: 0}
 --- !u!195 &459331656
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -5216,6 +5298,8 @@ MonoBehaviour:
   defaultTex: {fileID: 2800000, guid: 6f17d087b1d665b4d961522cdf3fadc5, type: 3}
   damagedTex: {fileID: 2800000, guid: 3ff1e8b97829a9b489a510f70f04c2d6, type: 3}
   damagedTex2: {fileID: 2800000, guid: 1d845d5bc23a9be43ab828ee91bf00ed, type: 3}
+  minionAudioSource: {fileID: 0}
+  minionHurt: {fileID: 0}
 --- !u!4 &516166643
 Transform:
   m_ObjectHideFlags: 0
@@ -7231,6 +7315,8 @@ MonoBehaviour:
   defaultTex: {fileID: 2800000, guid: 6f17d087b1d665b4d961522cdf3fadc5, type: 3}
   damagedTex: {fileID: 2800000, guid: 3ff1e8b97829a9b489a510f70f04c2d6, type: 3}
   damagedTex2: {fileID: 2800000, guid: 1d845d5bc23a9be43ab828ee91bf00ed, type: 3}
+  minionAudioSource: {fileID: 0}
+  minionHurt: {fileID: 0}
 --- !u!195 &662596822
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -7808,6 +7894,8 @@ MonoBehaviour:
   defaultTex: {fileID: 2800000, guid: 6f17d087b1d665b4d961522cdf3fadc5, type: 3}
   damagedTex: {fileID: 2800000, guid: 3ff1e8b97829a9b489a510f70f04c2d6, type: 3}
   damagedTex2: {fileID: 2800000, guid: 1d845d5bc23a9be43ab828ee91bf00ed, type: 3}
+  minionAudioSource: {fileID: 0}
+  minionHurt: {fileID: 0}
 --- !u!195 &677925240
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -9993,6 +10081,91 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1.56, y: 2.36, z: 1}
   m_Center: {x: -0.19, y: 0, z: 0}
+--- !u!1 &863763824 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 1508137949381304, guid: 8fd4fa793ce5ce14cb8dcb0b8e4af270,
+    type: 2}
+  m_PrefabInternal: {fileID: 1441680898}
+--- !u!82 &863763833
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 863763824}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 8300000, guid: 1d0ad833ec7e58b4399f61c9061df727, type: 3}
+  m_PlayOnAwake: 1
+  m_Volume: 0.4
+  m_Pitch: 1
+  Loop: 1
+  Mute: 0
+  Spatialize: 0
+  SpatializePostEffects: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    - serializedVersion: 2
+      time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 0
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 2
+      time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 0
 --- !u!1 &865719534
 GameObject:
   m_ObjectHideFlags: 0
@@ -11789,6 +11962,8 @@ MonoBehaviour:
   defaultTex: {fileID: 0}
   damagedTex: {fileID: 0}
   damagedTex2: {fileID: 0}
+  minionAudioSource: {fileID: 0}
+  minionHurt: {fileID: 0}
 --- !u!4 &1083381002
 Transform:
   m_ObjectHideFlags: 0
@@ -12825,6 +13000,8 @@ MonoBehaviour:
   defaultTex: {fileID: 2800000, guid: 6f17d087b1d665b4d961522cdf3fadc5, type: 3}
   damagedTex: {fileID: 2800000, guid: 3ff1e8b97829a9b489a510f70f04c2d6, type: 3}
   damagedTex2: {fileID: 2800000, guid: 1d845d5bc23a9be43ab828ee91bf00ed, type: 3}
+  minionAudioSource: {fileID: 0}
+  minionHurt: {fileID: 0}
 --- !u!195 &1199425694
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -12985,6 +13162,16 @@ Prefab:
     - target: {fileID: 4687844762159826, guid: 8eefe3bd5cbbc8a469223322530312a0, type: 2}
       propertyPath: m_RootOrder
       value: 23
+      objectReference: {fileID: 0}
+    - target: {fileID: 114763241809934366, guid: 8eefe3bd5cbbc8a469223322530312a0,
+        type: 2}
+      propertyPath: m_ReferenceResolution.x
+      value: 1920
+      objectReference: {fileID: 0}
+    - target: {fileID: 114763241809934366, guid: 8eefe3bd5cbbc8a469223322530312a0,
+        type: 2}
+      propertyPath: m_ReferenceResolution.y
+      value: 1200
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 8eefe3bd5cbbc8a469223322530312a0, type: 2}
@@ -13248,6 +13435,8 @@ MonoBehaviour:
   defaultTex: {fileID: 2800000, guid: 6f17d087b1d665b4d961522cdf3fadc5, type: 3}
   damagedTex: {fileID: 2800000, guid: 3ff1e8b97829a9b489a510f70f04c2d6, type: 3}
   damagedTex2: {fileID: 2800000, guid: 1d845d5bc23a9be43ab828ee91bf00ed, type: 3}
+  minionAudioSource: {fileID: 0}
+  minionHurt: {fileID: 0}
 --- !u!195 &1227419134
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -14162,6 +14351,8 @@ MonoBehaviour:
   defaultTex: {fileID: 2800000, guid: 6f17d087b1d665b4d961522cdf3fadc5, type: 3}
   damagedTex: {fileID: 2800000, guid: 3ff1e8b97829a9b489a510f70f04c2d6, type: 3}
   damagedTex2: {fileID: 2800000, guid: 1d845d5bc23a9be43ab828ee91bf00ed, type: 3}
+  minionAudioSource: {fileID: 0}
+  minionHurt: {fileID: 0}
 --- !u!195 &1354527404
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -14698,6 +14889,8 @@ MonoBehaviour:
   defaultTex: {fileID: 2800000, guid: 6f17d087b1d665b4d961522cdf3fadc5, type: 3}
   damagedTex: {fileID: 2800000, guid: 3ff1e8b97829a9b489a510f70f04c2d6, type: 3}
   damagedTex2: {fileID: 2800000, guid: 1d845d5bc23a9be43ab828ee91bf00ed, type: 3}
+  minionAudioSource: {fileID: 0}
+  minionHurt: {fileID: 0}
 --- !u!195 &1391836343
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -17319,6 +17512,8 @@ MonoBehaviour:
   defaultTex: {fileID: 2800000, guid: 6f17d087b1d665b4d961522cdf3fadc5, type: 3}
   damagedTex: {fileID: 2800000, guid: 3ff1e8b97829a9b489a510f70f04c2d6, type: 3}
   damagedTex2: {fileID: 2800000, guid: 1d845d5bc23a9be43ab828ee91bf00ed, type: 3}
+  minionAudioSource: {fileID: 0}
+  minionHurt: {fileID: 0}
 --- !u!195 &1687146381
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -19399,17 +19594,6 @@ Prefab:
       propertyPath: m_RootOrder
       value: 27
       objectReference: {fileID: 0}
-    - target: {fileID: 114619861828360546, guid: 5cce660b81a4b4543b297c9e659f0e57,
-        type: 2}
-      propertyPath: cannonball
-      value: 
-      objectReference: {fileID: 1109184205617202, guid: e4e7f303fd71aa549b91df4f7fea64b6,
-        type: 2}
-    - target: {fileID: 114804518594876370, guid: 5cce660b81a4b4543b297c9e659f0e57,
-        type: 2}
-      propertyPath: CTRLID
-      value: 0
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 5cce660b81a4b4543b297c9e659f0e57, type: 2}
   m_IsPrefabParent: 0
@@ -19930,6 +20114,8 @@ MonoBehaviour:
   defaultTex: {fileID: 2800000, guid: 6f17d087b1d665b4d961522cdf3fadc5, type: 3}
   damagedTex: {fileID: 2800000, guid: 3ff1e8b97829a9b489a510f70f04c2d6, type: 3}
   damagedTex2: {fileID: 2800000, guid: 1d845d5bc23a9be43ab828ee91bf00ed, type: 3}
+  minionAudioSource: {fileID: 0}
+  minionHurt: {fileID: 0}
 --- !u!195 &1882440253
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -21738,6 +21924,8 @@ MonoBehaviour:
   defaultTex: {fileID: 2800000, guid: 6f17d087b1d665b4d961522cdf3fadc5, type: 3}
   damagedTex: {fileID: 2800000, guid: 3ff1e8b97829a9b489a510f70f04c2d6, type: 3}
   damagedTex2: {fileID: 2800000, guid: 1d845d5bc23a9be43ab828ee91bf00ed, type: 3}
+  minionAudioSource: {fileID: 0}
+  minionHurt: {fileID: 0}
 --- !u!195 &2042102612
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -21991,6 +22179,8 @@ MonoBehaviour:
   defaultTex: {fileID: 2800000, guid: 6f17d087b1d665b4d961522cdf3fadc5, type: 3}
   damagedTex: {fileID: 2800000, guid: 3ff1e8b97829a9b489a510f70f04c2d6, type: 3}
   damagedTex2: {fileID: 2800000, guid: 1d845d5bc23a9be43ab828ee91bf00ed, type: 3}
+  minionAudioSource: {fileID: 0}
+  minionHurt: {fileID: 0}
 --- !u!195 &2070259553
 NavMeshAgent:
   m_ObjectHideFlags: 0

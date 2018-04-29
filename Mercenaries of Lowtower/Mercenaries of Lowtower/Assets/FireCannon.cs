@@ -21,6 +21,10 @@ public class FireCannon : MonoBehaviour {
     public GameObject postSmokeParticles;
     public GameObject cannonFireParticles;
 
+    public AudioSource cannonAudioSource;
+
+    public AudioClip fire;
+
     public float ogScale;
     //Reference to the phase-changing script
     //public PhaseControllerScript phaseScript;
@@ -31,6 +35,8 @@ public class FireCannon : MonoBehaviour {
         cannonRenderer = cannonBarrel.GetComponent<Renderer>();
 
         ogScale = cannonBarrel.transform.localScale.y;
+
+        cannonAudioSource = GetComponent<AudioSource>();
         
 		
 	}
@@ -78,6 +84,7 @@ public class FireCannon : MonoBehaviour {
 
     private IEnumerator PumpColour(Color target, float time)
     {
+        cannonAudioSource.PlayOneShot(fire, 2);
 
         //turn on particle sparks
         sparkParticles.SetActive(true);

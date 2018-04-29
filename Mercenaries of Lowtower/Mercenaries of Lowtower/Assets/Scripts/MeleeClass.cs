@@ -47,6 +47,10 @@ public class MeleeClass : PlayerClass
     float h1;
     float h2;
 
+    public AudioSource meleeAudioSource;
+
+    public AudioClip healing;
+
     // Use this for initialization
 
     void Start()
@@ -72,6 +76,8 @@ public class MeleeClass : PlayerClass
 
         meleeRenderer = meleeModel.GetComponent<Renderer>();
         h2 = currentHealth;
+
+        meleeAudioSource = GetComponent<AudioSource>();
 
     }
 
@@ -149,6 +155,7 @@ public class MeleeClass : PlayerClass
         if (h1>h2)
         {
             StartCoroutine(ShowHealParticles());
+            meleeAudioSource.PlayOneShot(healing);
 
             h2 = h1;
         }

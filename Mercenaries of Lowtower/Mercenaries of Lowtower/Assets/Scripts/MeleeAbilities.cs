@@ -7,9 +7,15 @@ public class MeleeAbilities : MonoBehaviour {
     MeleeClass baseClass;
     public GameObject hitbox;
 
+    AudioSource meleeAudioSource;
+    public AudioClip slash;
+    public AudioClip dash;
+
     private void Awake()
     {
         baseClass = GetComponent<MeleeClass>();
+
+        meleeAudioSource = GetComponent<AudioSource>();
     }
 
     public void Update()
@@ -45,13 +51,14 @@ public class MeleeAbilities : MonoBehaviour {
             //}
 
             baseClass.abilityCooldowns.cooldowns["meleeCD"] = baseClass.abilityCooldowns.meleeCD;
+            meleeAudioSource.pitch = 1;
+            meleeAudioSource.PlayOneShot(slash,0.4f);
         }
        
     }
 
     public void MeleeLunge()
     {
-        print("LUNGE!");
         RaycastHit hit;
         if (Physics.Raycast(baseClass.rayOrigin.transform.position, transform.forward, out hit, baseClass.lungeDistance, baseClass.enemyMask) && baseClass.abilityCooldowns.cooldowns["lungeCD"] <= 0)
         {
@@ -80,6 +87,9 @@ public class MeleeAbilities : MonoBehaviour {
             baseClass.abilityCooldowns.cooldowns["lungeCD"] = baseClass.abilityCooldowns.lungeCD;
 
             GetComponent<Animator>().SetInteger("AnimState", 5);
+
+            meleeAudioSource.pitch = 2;
+            meleeAudioSource.PlayOneShot(slash);
 
         }
         //me.transform.position = Vector3.MoveTowards(me.transform.position, me.transform.position + (me.transform.forward * 100), 1000 * Time.deltaTime);

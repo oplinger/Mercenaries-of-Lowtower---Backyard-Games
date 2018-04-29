@@ -14,10 +14,16 @@ public class TankAbilities : MonoBehaviour
     public LayerMask tankArmMask;
     public bool tankPulling;
 
+    AudioSource tankAudioSource;
+    public AudioClip shield;
+    public AudioClip grab;
+
 
     private void Awake()
     {
         baseClass = GetComponent<TankClass>();
+
+        tankAudioSource = GetComponent<AudioSource>();
     }
     #region Tank Abilities
     public void TankShield()
@@ -30,6 +36,7 @@ public class TankAbilities : MonoBehaviour
             Destroy(clone, baseClass.shieldDuration);
             baseClass.abilityCooldowns.cooldowns["shieldCD"] = baseClass.abilityCooldowns.shieldCD;
             GetComponent<Animator>().SetInteger("AnimState", 6);
+            tankAudioSource.PlayOneShot(shield);
         }
 
 
@@ -48,6 +55,7 @@ public class TankAbilities : MonoBehaviour
     {
 
         GetComponent<Animator>().SetInteger("AnimState", 5);
+        tankAudioSource.PlayOneShot(grab);
 
 
 

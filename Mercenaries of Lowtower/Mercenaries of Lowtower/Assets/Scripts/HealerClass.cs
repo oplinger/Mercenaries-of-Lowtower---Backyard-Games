@@ -48,6 +48,10 @@ public class HealerClass : PlayerClass
 
     public GameObject healingParticles;
 
+    public AudioSource healerAudioSource;
+
+    public AudioClip healing;
+
     Renderer healerRenderer;
 
     float h1;
@@ -78,6 +82,8 @@ public class HealerClass : PlayerClass
 
         healerRenderer = healerModel.GetComponent<Renderer>();
         h2 = currentHealth;
+
+        healerAudioSource = GetComponent<AudioSource>();
 
     }
 
@@ -158,6 +164,7 @@ public class HealerClass : PlayerClass
         if (h1 > h2)
         {
             StartCoroutine(ShowHealParticles());
+            healerAudioSource.PlayOneShot(healing);
 
             h2 = h1;
         }

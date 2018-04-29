@@ -36,6 +36,10 @@ public class AIControllerNavMesh : EntityClass
     //NavMesh Things
     NavMeshAgent navMeshAgent;
 
+    public AudioSource minionAudioSource;
+
+    public AudioClip minionHurt;
+
 
     private void Awake()
     {
@@ -64,6 +68,8 @@ public class AIControllerNavMesh : EntityClass
         defaultSpeed = navMeshAgent.speed;
 
         LookForCannonball();
+
+        minionAudioSource = GetComponent<AudioSource>();
 
 
     }
@@ -230,6 +236,8 @@ public class AIControllerNavMesh : EntityClass
     {
         StartCoroutine("IPlayerColorFlash");
 
+        minionAudioSource.PlayOneShot(minionHurt);
+
     }
 
     IEnumerator IPlayerColorFlash()
@@ -246,6 +254,8 @@ public class AIControllerNavMesh : EntityClass
     public void PlayerColorFlash2()
     {
         StartCoroutine("IPlayerColorFlash2");
+
+        minionAudioSource.PlayOneShot(minionHurt);
 
     }
 

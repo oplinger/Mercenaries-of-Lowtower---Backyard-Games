@@ -18,12 +18,18 @@ public class HealerAbilities : MonoBehaviour
     public bool vizOn;
     int vizTimer;
 
+    AudioSource healerAudioSource;
+    public AudioClip orb;
+    public AudioClip stun;
+
 
     private void Awake()
     {
         baseClass = GetComponent<HealerClass>();
         stunAOE.SetActive(false);
         vizTimer = 40;
+
+        healerAudioSource = GetComponent<AudioSource>();
         
     }
 
@@ -122,6 +128,8 @@ public class HealerAbilities : MonoBehaviour
 
             clone.GetComponent<Orbscript>().OrbBehavior(gameObject, baseClass.healTarget, baseClass.healAmount, baseClass.orbSpeed, baseClass.CTRLID);
             baseClass.abilityCooldowns.cooldowns["healCD"] = baseClass.abilityCooldowns.healCD;
+
+            healerAudioSource.PlayOneShot(orb , 0.4f);
         }
     }
 
@@ -174,6 +182,8 @@ public class HealerAbilities : MonoBehaviour
             baseClass.abilityCooldowns.cooldowns["stunCD"] = baseClass.abilityCooldowns.stunCD;
 
             vizOn = true;
+
+            healerAudioSource.PlayOneShot(stun);
         }
 
 

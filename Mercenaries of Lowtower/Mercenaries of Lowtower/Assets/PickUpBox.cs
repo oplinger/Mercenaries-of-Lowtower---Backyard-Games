@@ -18,10 +18,18 @@ public class PickUpBox : MonoBehaviour
 
     public int charID;
 
+    public AudioSource holderAudioSource;
+
+    public AudioClip pickup;
+
+    public AudioClip drop;
+
 
     private void Start()
     {
         player = cannonball;
+
+        holderAudioSource = GetComponent<AudioSource>();
     }
 
 
@@ -124,6 +132,7 @@ public class PickUpBox : MonoBehaviour
             heldObject.transform.position = new Vector3(gameObject.transform.position.x, gameObject.transform.position.y - .25f, gameObject.transform.position.z);
             heldObject = null;
             holdingObject = false;
+            holderAudioSource.PlayOneShot(drop);
 
             for (int i =0; i<=enemies.Length; i++)
             {
@@ -132,11 +141,13 @@ public class PickUpBox : MonoBehaviour
             //enemyScript.cannonballIsHeld = false;
 
             SendMessage("CannonballDrop");
+
         }
         else
         {
 
         }
+
 
     }
 
@@ -151,6 +162,8 @@ public class PickUpBox : MonoBehaviour
 
         SendMessage("SetDestination");
         SendMessage("CannonballHeld");
+
+        holderAudioSource.PlayOneShot(pickup);
 
     }
 

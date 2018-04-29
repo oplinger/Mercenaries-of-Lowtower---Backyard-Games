@@ -34,6 +34,9 @@ public class BossTentacleScript : MonoBehaviour
     public GameObject BossManager;
     public GameObject Boss;
     public Animator anim;
+
+    public AudioSource tentacleAudioSource;
+    public AudioClip slam;
     
     // Use this for initialization
     void Start () {
@@ -44,6 +47,8 @@ public class BossTentacleScript : MonoBehaviour
         // Sets the values to the values in the BossControlScript 
         elevationSpeed = BossManager.GetComponent<BossControlScriptV2>().elevationSpeed;
         descendingSpeed = BossManager.GetComponent<BossControlScriptV2>().descendingSpeed;
+
+        tentacleAudioSource = GetComponent<AudioSource>();
     }
 	
 	// Update is called once per frame
@@ -114,6 +119,7 @@ public class BossTentacleScript : MonoBehaviour
 
     public void RestTentacle()
     {
+        tentacleAudioSource.PlayOneShot(slam, 0.25f);
         anim.SetBool("tentacleSlamming", false);
         tentacleSlamming = false;
         DeactivateDamage();

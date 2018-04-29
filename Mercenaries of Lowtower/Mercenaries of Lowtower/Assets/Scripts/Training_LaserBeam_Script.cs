@@ -4,6 +4,14 @@ using UnityEngine;
 
 public class Training_LaserBeam_Script : MonoBehaviour {
 
+    AudioSource laserAudioSource;
+
+    void Start()
+    {
+        laserAudioSource = GetComponent<AudioSource>();
+        laserAudioSource.Play();
+    }
+
 
     private void OnTriggerEnter(Collider other)
     {
@@ -12,10 +20,6 @@ public class Training_LaserBeam_Script : MonoBehaviour {
             other.GetComponent<IDamageable<float>>().TakeDamage(40);
         }
     }
-    // Use this for initialization
-    void Start () {
-		
-	}
 	
 	// Update is called once per frame
 	void Update () {

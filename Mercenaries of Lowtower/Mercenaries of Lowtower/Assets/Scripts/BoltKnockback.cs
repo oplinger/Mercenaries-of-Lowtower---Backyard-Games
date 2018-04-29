@@ -4,15 +4,29 @@ using UnityEngine;
 
 public class BoltKnockback : MonoBehaviour {
 
-	// Use this for initialization
-	void Start () {
-		
-	}
+    public AudioClip[] gust;
+    int chosenOne;
+
+    public AudioSource knockbackAudioSource;
+
+    // Use this for initialization
+    void Start () {
+
+        knockbackAudioSource = GetComponent<AudioSource>();
+
+        chosenOne = Random.Range(0, 2);
+        
+        knockbackAudioSource.pitch = Random.Range(1, 3);
+
+        knockbackAudioSource.PlayOneShot(gust[chosenOne], .8f);
+    }
 	
 	// Update is called once per frame
-	void Update () {
-		
-	}
+	void Update ()
+    {
+
+
+    }
 
     private void OnTriggerEnter(Collider other)
     {
